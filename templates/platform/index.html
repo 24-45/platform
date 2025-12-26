@@ -3,62 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>24°45° | منصة الإحداثيات الإعلامية</title>
-    <meta name="description" content="منصة متخصصة في تجريف البيانات وتحليل المضمون وضبط الإحداثيات الإعلامية">
-    
-    <!-- Fonts -->
+    <title>24°45° | نضبط إحداثياتك</title>
+    <meta name="description" content="منصة إدارة العمليات الاتصالية مؤتمتة بدون ملفات">
+    <link rel="icon" href="/static/images/24.png" type="image/png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
-    <!-- AOS Animation -->
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-    
     <style>
         :root {
-            --primary: #1a5f7a;
-            --primary-dark: #0d2137;
-            --secondary: #ffffff;
-            --accent: #f9a825;
-            --accent-light: #ffd95a;
-            --text: #333333;
-            --text-light: #666666;
-            --bg-light: #f8f9fa;
-            --gradient: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+            --black: #0a0a0a;
+            --white: #ffffff;
+            --green: #00d46a;
+            --green-dark: #00a854;
+            --green-light: #00ff7f;
+            --gray: #888888;
+            --gray-dark: #333333;
+            --gray-light: #f5f5f5;
         }
         
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body {
             font-family: 'Cairo', sans-serif;
-            background: var(--bg-light);
-            color: var(--text);
+            background: var(--black);
+            color: var(--white);
             line-height: 1.8;
+            overflow-x: hidden;
         }
         
-        /* Navigation */
+        /* Navbar */
         .navbar {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
             z-index: 1000;
-            background: rgba(13, 33, 55, 0.95);
-            backdrop-filter: blur(10px);
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(20px);
             padding: 1rem 0;
-            transition: all 0.3s ease;
-        }
-        
-        .navbar.scrolled {
-            padding: 0.5rem 0;
-            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
         }
         
         .nav-container {
@@ -75,215 +59,366 @@
             align-items: center;
             gap: 1rem;
             text-decoration: none;
-            color: var(--secondary);
         }
         
-        .logo-icon {
-            width: 50px;
-            height: 50px;
-            background: var(--accent);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 900;
-            font-size: 1.2rem;
-            color: var(--primary-dark);
-        }
-        
-        .logo-text {
-            font-size: 1.5rem;
-            font-weight: 800;
-        }
-        
-        .logo-text span {
-            color: var(--accent);
+        .logo img {
+            height: 45px;
+            width: auto;
         }
         
         .nav-links {
             display: flex;
-            gap: 2rem;
+            gap: 2.5rem;
             list-style: none;
+            align-items: center;
         }
         
         .nav-links a {
-            color: var(--secondary);
+            color: var(--gray);
             text-decoration: none;
             font-weight: 500;
-            transition: color 0.3s ease;
-        }
-        
-        .nav-links a:hover {
-            color: var(--accent);
-        }
-        
-        .nav-login-btn {
-            background: var(--accent) !important;
-            color: var(--primary-dark) !important;
-            padding: 0.5rem 1.5rem;
-            border-radius: 8px;
             transition: all 0.3s ease;
+            font-size: 0.95rem;
         }
         
-        .nav-login-btn:hover {
-            background: var(--accent-light) !important;
-            transform: translateY(-2px);
+        .nav-links a:hover { color: var(--white); }
+        
+        .nav-login {
+            background: var(--green) !important;
+            color: var(--black) !important;
+            padding: 0.6rem 1.8rem;
+            border-radius: 50px;
+            font-weight: 600;
         }
         
+        .nav-login:hover {
+            background: var(--green-light) !important;
+            transform: scale(1.05);
+        }
+
         /* Hero Section */
         .hero {
             min-height: 100vh;
-            background: var(--gradient);
             display: flex;
             align-items: center;
             position: relative;
             overflow: hidden;
+            background: var(--black);
         }
         
-        .hero::before {
-            content: '';
+        /* Saudi Map Background */
+        .hero-map {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            max-width: 900px;
+            opacity: 0;
+            animation: fadeInMap 2s ease-out 0.5s forwards;
+        }
+        
+        .hero-map svg {
+            width: 100%;
+            height: auto;
+        }
+        
+        /* Grid Lines Animation */
+        .grid-lines {
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            overflow: hidden;
         }
         
+        .grid-line-h, .grid-line-v {
+            position: absolute;
+            background: var(--green);
+            opacity: 0;
+        }
+        
+        .grid-line-h {
+            height: 1px;
+            width: 100%;
+            animation: drawLineH 1.5s ease-out forwards;
+        }
+        
+        .grid-line-v {
+            width: 1px;
+            height: 100%;
+            animation: drawLineV 1.5s ease-out forwards;
+        }
+        
+        .grid-line-h.lat-24 { top: 45%; animation-delay: 0.3s; }
+        .grid-line-v.lon-45 { left: 55%; animation-delay: 0.6s; }
+        
+        .coord-label {
+            position: absolute;
+            color: var(--green);
+            font-size: 1rem;
+            font-weight: 700;
+            opacity: 0;
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+        
+        .coord-label.lat { top: 44%; right: 5%; animation-delay: 1.2s; }
+        .coord-label.lon { top: 10%; left: 54%; animation-delay: 1.4s; }
+        
+        /* Intersection Point */
+        .intersection-point {
+            position: absolute;
+            top: 45%;
+            left: 55%;
+            transform: translate(-50%, -50%);
+            width: 20px;
+            height: 20px;
+            background: var(--green);
+            border-radius: 50%;
+            opacity: 0;
+            animation: pulsePoint 2s ease-out 1.5s infinite;
+            box-shadow: 0 0 30px var(--green), 0 0 60px var(--green);
+        }
+
+        @keyframes drawLineH {
+            0% { width: 0; opacity: 0.3; }
+            100% { width: 100%; opacity: 0.3; }
+        }
+        
+        @keyframes drawLineV {
+            0% { height: 0; opacity: 0.3; }
+            100% { height: 100%; opacity: 0.3; }
+        }
+        
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+        
+        @keyframes fadeInMap {
+            to { opacity: 0.15; }
+        }
+        
+        @keyframes pulsePoint {
+            0%, 100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+            50% { opacity: 0.5; transform: translate(-50%, -50%) scale(1.5); }
+        }
+
+        /* Hero Content */
         .hero-content {
+            position: relative;
+            z-index: 10;
             max-width: 1400px;
             margin: 0 auto;
             padding: 8rem 2rem 4rem;
+            text-align: center;
+        }
+        
+        .hero-logo {
+            width: 120px;
+            height: auto;
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 2s forwards;
+        }
+        
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 2.2s forwards;
+        }
+        
+        .hero-title span { color: var(--green); }
+        
+        .hero-slogan {
+            font-size: 2rem;
+            color: var(--green);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 2.4s forwards;
+        }
+        
+        .hero-desc {
+            font-size: 1.3rem;
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto 2.5rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 2.6s forwards;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 2.8s forwards;
+        }
+        
+        .btn {
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .btn-primary {
+            background: var(--green);
+            color: var(--black);
+        }
+        
+        .btn-primary:hover {
+            background: var(--green-light);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 212, 106, 0.3);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid var(--gray-dark);
+        }
+        
+        .btn-outline:hover {
+            border-color: var(--green);
+            color: var(--green);
+        }
+        
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Automation Section */
+        .automation {
+            padding: 8rem 2rem;
+            background: linear-gradient(180deg, var(--black) 0%, #0f1a0f 100%);
             position: relative;
-            z-index: 1;
+        }
+        
+        .automation::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--green), transparent);
+        }
+        
+        .automation-content {
+            max-width: 1200px;
+            margin: 0 auto;
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 4rem;
             align-items: center;
         }
         
-        .hero-text h1 {
-            font-size: 3.5rem;
-            font-weight: 900;
-            color: var(--secondary);
-            margin-bottom: 1rem;
-            line-height: 1.2;
-        }
-        
-        .hero-text h1 span {
-            color: var(--accent);
-        }
-        
-        .hero-subtitle {
-            font-size: 1.5rem;
-            color: var(--accent);
+        .automation-text h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
             margin-bottom: 1.5rem;
-            font-weight: 600;
         }
         
-        .hero-description {
+        .automation-text h2 span { color: var(--green); }
+        
+        .automation-text p {
+            color: var(--gray);
             font-size: 1.2rem;
-            color: rgba(255,255,255,0.8);
             margin-bottom: 2rem;
         }
         
-        .hero-coordinates {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: rgba(255,255,255,0.1);
-            padding: 0.75rem 1.5rem;
-            border-radius: 50px;
-            color: var(--secondary);
-            font-size: 0.95rem;
-            margin-bottom: 2rem;
-        }
-        
-        .hero-coordinates i {
-            color: var(--accent);
-        }
-        
-        .hero-buttons {
+        .automation-features {
             display: flex;
+            flex-direction: column;
             gap: 1rem;
         }
         
-        .btn {
-            padding: 1rem 2rem;
-            border-radius: 8px;
-            font-weight: 600;
-            text-decoration: none;
+        .auto-feature {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 1.5rem;
+            background: rgba(0, 212, 106, 0.05);
+            border-radius: 12px;
+            border: 1px solid rgba(0, 212, 106, 0.1);
             transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
         }
         
-        .btn-primary {
-            background: var(--accent);
-            color: var(--primary-dark);
+        .auto-feature:hover {
+            background: rgba(0, 212, 106, 0.1);
+            border-color: var(--green);
+            transform: translateX(-10px);
         }
         
-        .btn-primary:hover {
-            background: var(--accent-light);
-            transform: translateY(-2px);
+        .auto-feature i {
+            color: var(--green);
+            font-size: 1.5rem;
+            width: 40px;
         }
         
-        .btn-outline {
-            background: transparent;
-            color: var(--secondary);
-            border: 2px solid rgba(255,255,255,0.3);
-        }
-        
-        .btn-outline:hover {
-            background: rgba(255,255,255,0.1);
-            border-color: var(--accent);
-        }
-        
-        .hero-visual {
+        .automation-visual {
             display: flex;
             justify-content: center;
             align-items: center;
         }
         
-        .coordinates-globe {
-            width: 400px;
-            height: 400px;
-            background: rgba(255,255,255,0.05);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .files-animation {
             position: relative;
-            border: 2px solid rgba(255,255,255,0.1);
+            width: 300px;
+            height: 300px;
         }
         
-        .coordinates-globe::before {
-            content: '';
+        .file-icon {
             position: absolute;
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            border: 1px dashed rgba(255,255,255,0.2);
-            animation: rotate 20s linear infinite;
+            font-size: 3rem;
+            color: var(--gray);
+            animation: floatFiles 3s ease-in-out infinite;
         }
         
-        .coordinates-text {
-            font-size: 4rem;
-            font-weight: 900;
-            color: var(--accent);
-            text-shadow: 0 0 30px rgba(249, 168, 37, 0.5);
+        .file-icon:nth-child(1) { top: 20%; left: 10%; animation-delay: 0s; }
+        .file-icon:nth-child(2) { top: 10%; right: 20%; animation-delay: 0.5s; }
+        .file-icon:nth-child(3) { bottom: 30%; left: 20%; animation-delay: 1s; }
+        .file-icon:nth-child(4) { bottom: 20%; right: 10%; animation-delay: 1.5s; }
+        
+        .central-platform {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100px;
+            height: 100px;
+            background: var(--green);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 50px rgba(0, 212, 106, 0.5);
         }
         
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
+        .central-platform i {
+            font-size: 2.5rem;
+            color: var(--black);
         }
         
+        @keyframes floatFiles {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); opacity: 0.5; }
+            50% { transform: translate(10px, -10px) rotate(5deg); opacity: 0.3; }
+        }
+
         /* Services Section */
         .services {
-            padding: 6rem 2rem;
-            background: var(--secondary);
+            padding: 8rem 2rem;
+            background: var(--black);
         }
         
         .section-header {
@@ -294,13 +429,14 @@
         .section-header h2 {
             font-size: 2.5rem;
             font-weight: 800;
-            color: var(--primary-dark);
             margin-bottom: 1rem;
         }
         
+        .section-header h2 span { color: var(--green); }
+        
         .section-header p {
+            color: var(--gray);
             font-size: 1.2rem;
-            color: var(--text-light);
             max-width: 600px;
             margin: 0 auto;
         }
@@ -309,28 +445,46 @@
             max-width: 1400px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 2rem;
         }
         
         .service-card {
-            background: var(--bg-light);
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.05);
             border-radius: 20px;
             padding: 2.5rem;
-            transition: all 0.3s ease;
-            border: 1px solid transparent;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--green);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
         }
         
         .service-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(26, 95, 122, 0.15);
-            border-color: var(--accent);
+            border-color: var(--green);
+            box-shadow: 0 20px 40px rgba(0, 212, 106, 0.1);
+        }
+        
+        .service-card:hover::before {
+            transform: scaleX(1);
         }
         
         .service-icon {
             width: 70px;
             height: 70px;
-            background: var(--gradient);
+            background: rgba(0, 212, 106, 0.1);
             border-radius: 16px;
             display: flex;
             align-items: center;
@@ -340,66 +494,85 @@
         
         .service-icon i {
             font-size: 1.8rem;
-            color: var(--secondary);
+            color: var(--green);
         }
         
         .service-card h3 {
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             font-weight: 700;
-            color: var(--primary-dark);
             margin-bottom: 1rem;
         }
         
         .service-card p {
-            color: var(--text-light);
-            line-height: 1.8;
+            color: var(--gray);
+            font-size: 1rem;
+        }
+
+        /* How We Work */
+        .how-we-work {
+            padding: 8rem 2rem;
+            background: linear-gradient(180deg, var(--black) 0%, #050505 100%);
         }
         
-        /* Features Section */
-        .features {
-            padding: 6rem 2rem;
-            background: var(--gradient);
-        }
-        
-        .features .section-header h2,
-        .features .section-header p {
-            color: var(--secondary);
-        }
-        
-        .features-grid {
+        .steps-container {
             max-width: 1000px;
             margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
+            position: relative;
         }
         
-        .feature-item {
+        .steps-line {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 30px;
+            width: 2px;
+            background: linear-gradient(180deg, var(--green), transparent);
+        }
+        
+        .step {
+            display: flex;
+            align-items: flex-start;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: var(--green);
+            border-radius: 50%;
             display: flex;
             align-items: center;
-            gap: 1rem;
-            color: var(--secondary);
-            background: rgba(255,255,255,0.1);
-            padding: 1rem 1.5rem;
-            border-radius: 12px;
-            transition: all 0.3s ease;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--black);
+            flex-shrink: 0;
+            position: relative;
+            z-index: 1;
         }
         
-        .feature-item:hover {
-            background: rgba(255,255,255,0.15);
-            transform: translateX(-5px);
+        .step-content {
+            flex: 1;
+            padding-top: 0.5rem;
         }
         
-        .feature-item i {
-            color: var(--accent);
-            font-size: 1.2rem;
+        .step-content h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
         }
         
+        .step-content p {
+            color: var(--gray);
+        }
+
         /* Footer */
         .footer {
-            background: var(--primary-dark);
-            color: var(--secondary);
+            background: #050505;
             padding: 4rem 2rem 2rem;
+            border-top: 1px solid rgba(255,255,255,0.05);
         }
         
         .footer-content {
@@ -410,25 +583,20 @@
             gap: 4rem;
         }
         
-        .footer-brand h3 {
-            font-size: 2rem;
-            font-weight: 800;
+        .footer-brand img {
+            height: 50px;
             margin-bottom: 1rem;
         }
         
-        .footer-brand h3 span {
-            color: var(--accent);
-        }
-        
         .footer-brand p {
-            color: rgba(255,255,255,0.7);
-            margin-bottom: 1.5rem;
+            color: var(--gray);
+            margin-bottom: 1rem;
         }
         
         .footer-links h4 {
-            font-size: 1.2rem;
+            color: var(--green);
             margin-bottom: 1.5rem;
-            color: var(--accent);
+            font-size: 1.1rem;
         }
         
         .footer-links ul {
@@ -440,107 +608,223 @@
         }
         
         .footer-links a {
-            color: rgba(255,255,255,0.7);
+            color: var(--gray);
             text-decoration: none;
             transition: color 0.3s ease;
         }
         
         .footer-links a:hover {
-            color: var(--accent);
+            color: var(--green);
         }
         
         .footer-bottom {
             max-width: 1400px;
             margin: 3rem auto 0;
             padding-top: 2rem;
-            border-top: 1px solid rgba(255,255,255,0.1);
+            border-top: 1px solid rgba(255,255,255,0.05);
             text-align: center;
-            color: rgba(255,255,255,0.5);
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        /* Chat Bot Widget */
+        .chat-widget {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            z-index: 1000;
         }
         
+        .chat-button {
+            width: 60px;
+            height: 60px;
+            background: var(--green);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 5px 30px rgba(0, 212, 106, 0.4);
+            transition: all 0.3s ease;
+        }
+        
+        .chat-button:hover {
+            transform: scale(1.1);
+        }
+        
+        .chat-button i {
+            font-size: 1.5rem;
+            color: var(--black);
+        }
+        
+        .chat-popup {
+            position: absolute;
+            bottom: 80px;
+            left: 0;
+            width: 350px;
+            background: var(--gray-dark);
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+            display: none;
+            overflow: hidden;
+        }
+        
+        .chat-popup.active {
+            display: block;
+            animation: slideUp 0.3s ease-out;
+        }
+        
+        .chat-header {
+            background: var(--green);
+            color: var(--black);
+            padding: 1rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .chat-header h4 {
+            font-weight: 700;
+        }
+        
+        .chat-close {
+            background: none;
+            border: none;
+            color: var(--black);
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+        
+        .chat-body {
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        .chat-body i {
+            font-size: 4rem;
+            color: var(--green);
+            margin-bottom: 1rem;
+        }
+        
+        .chat-body h3 {
+            margin-bottom: 0.5rem;
+        }
+        
+        .chat-body p {
+            color: var(--gray);
+        }
+        
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
         /* Responsive */
         @media (max-width: 1024px) {
-            .hero-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-            
-            .hero-buttons {
-                justify-content: center;
-            }
-            
-            .hero-visual {
-                display: none;
-            }
-            
-            .hero-text h1 {
-                font-size: 2.5rem;
-            }
-            
-            .footer-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
+            .hero-title { font-size: 3rem; }
+            .hero-slogan { font-size: 1.5rem; }
+            .automation-content { grid-template-columns: 1fr; text-align: center; }
+            .automation-visual { order: -1; }
+            .footer-content { grid-template-columns: 1fr; text-align: center; }
         }
         
         @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            
-            .services-grid,
-            .clients-grid {
-                grid-template-columns: 1fr;
-            }
+            .nav-links { display: none; }
+            .hero-title { font-size: 2.2rem; }
+            .hero-desc { font-size: 1rem; }
+            .hero-buttons { flex-direction: column; align-items: center; }
+            .services-grid { grid-template-columns: 1fr; }
+            .steps-line { display: none; }
         }
     </style>
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="navbar" id="navbar">
+    <nav class="navbar">
         <div class="nav-container">
             <a href="/" class="logo">
-                <div class="logo-icon">24°</div>
-                <div class="logo-text">24°<span>45°</span></div>
+                <img src="/static/images/24.png" alt="24°45°">
             </a>
             <ul class="nav-links">
-                <li><a href="/">الرئيسية</a></li>
                 <li><a href="#services">الخدمات</a></li>
-                <li><a href="#features">المميزات</a></li>
+                <li><a href="#how">كيف نعمل</a></li>
                 <li><a href="/about">من نحن</a></li>
-                <li><a href="/contact">تواصل معنا</a></li>
-                <li><a href="/login" class="nav-login-btn">تسجيل الدخول</a></li>
+                <li><a href="/login" class="nav-login">تسجيل الدخول</a></li>
             </ul>
         </div>
     </nav>
 
     <!-- Hero Section -->
     <section class="hero">
+        <!-- Grid Lines -->
+        <div class="grid-lines">
+            <div class="grid-line-h lat-24"></div>
+            <div class="grid-line-v lon-45"></div>
+            <span class="coord-label lat">24°</span>
+            <span class="coord-label lon">45°</span>
+            <div class="intersection-point"></div>
+        </div>
+        
+        <!-- Saudi Map SVG -->
+        <div class="hero-map">
+            <svg viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M650 150 L700 200 L720 280 L700 350 L650 400 L600 450 L500 480 L400 470 L300 450 L200 400 L150 350 L100 280 L120 200 L180 150 L250 120 L350 100 L450 110 L550 130 Z" 
+                      stroke="#00d46a" stroke-width="2" fill="none" opacity="0.5"/>
+            </svg>
+        </div>
+        
         <div class="hero-content">
-            <div class="hero-text" data-aos="fade-up">
-                <div class="hero-coordinates">
-                    <i class="fas fa-map-marker-alt"></i>
-                    24°45° إحداثيات المملكة العربية السعودية
-                </div>
-                <h1>منصة <span>24°45°</span><br>الإحداثيات الإعلامية</h1>
-                <p class="hero-subtitle">من الفكرة إلى التطبيق</p>
-                <p class="hero-description">
-                    {{ platform.description | default('منصة متخصصة في تجريف البيانات وتحليل المضمون وضبط الإحداثيات الإعلامية، وتحويل العملية الاتصالية لعملية مؤتمتة بدون ملفات') }}
-                </p>
-                <div class="hero-buttons">
-                    <a href="/login" class="btn btn-primary">
-                        <i class="fas fa-sign-in-alt"></i>
-                        تسجيل الدخول
-                    </a>
-                    <a href="#services" class="btn btn-outline">
-                        <i class="fas fa-cogs"></i>
-                        خدماتنا
-                    </a>
+            <img src="/static/images/24.png" alt="24°45°" class="hero-logo">
+            <h1 class="hero-title">منصة <span>24°45°</span></h1>
+            <p class="hero-slogan">نضبط إحداثياتك</p>
+            <p class="hero-desc">منصة إدارة العمليات الاتصالية مؤتمتة بدون ملفات - من الفكرة إلى التنفيذ في مكان واحد</p>
+            <div class="hero-buttons">
+                <a href="/login" class="btn btn-primary">
+                    <i class="fas fa-rocket"></i>
+                    ابدأ الآن
+                </a>
+                <a href="#services" class="btn btn-outline">
+                    <i class="fas fa-compass"></i>
+                    اكتشف خدماتنا
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Automation Section -->
+    <section class="automation">
+        <div class="automation-content">
+            <div class="automation-text">
+                <h2>وداعاً للملفات المتناثرة<br><span>مرحباً بالأتمتة</span></h2>
+                <p>منصتنا صُممت لتوحيد جميع عملياتك الاتصالية في مكان واحد، بدون ملفات Excel أو Word أو PDF متناثرة</p>
+                <div class="automation-features">
+                    <div class="auto-feature">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <span>كل شيء في السحابة - الوصول من أي مكان</span>
+                    </div>
+                    <div class="auto-feature">
+                        <i class="fas fa-users-cog"></i>
+                        <span>فريق واحد - منصة واحدة - رؤية موحدة</span>
+                    </div>
+                    <div class="auto-feature">
+                        <i class="fas fa-sync-alt"></i>
+                        <span>تحديثات لحظية - بدون إرسال ملفات</span>
+                    </div>
+                    <div class="auto-feature">
+                        <i class="fas fa-chart-pie"></i>
+                        <span>تقارير تفاعلية تُنشأ تلقائياً</span>
+                    </div>
                 </div>
             </div>
-            <div class="hero-visual" data-aos="fade-up" data-aos-delay="200">
-                <div class="coordinates-globe">
-                    <span class="coordinates-text">24°45°</span>
+            <div class="automation-visual">
+                <div class="files-animation">
+                    <i class="fas fa-file-excel file-icon"></i>
+                    <i class="fas fa-file-word file-icon"></i>
+                    <i class="fas fa-file-pdf file-icon"></i>
+                    <i class="fas fa-file-powerpoint file-icon"></i>
+                    <div class="central-platform">
+                        <i class="fas fa-layer-group"></i>
+                    </div>
                 </div>
             </div>
         </div>
@@ -548,80 +832,90 @@
 
     <!-- Services Section -->
     <section class="services" id="services">
-        <div class="section-header" data-aos="fade-up">
-            <h2>خدماتنا</h2>
-            <p>نقدم حلولاً متكاملة لتحويل العمليات الاتصالية لعمليات مؤتمتة</p>
+        <div class="section-header">
+            <h2>خدماتنا <span>المتكاملة</span></h2>
+            <p>حلول شاملة لإدارة العمليات الاتصالية من الألف إلى الياء</p>
         </div>
         <div class="services-grid">
-            {% if platform.services %}
-                {% for service in platform.services %}
-                <div class="service-card" data-aos="fade-up" data-aos-delay="{{ loop.index * 100 }}">
-                    <div class="service-icon">
-                        <i class="fas {{ service.icon | default('fa-cog') }}"></i>
-                    </div>
-                    <h3>{{ service.name }}</h3>
-                    <p>{{ service.description }}</p>
-                </div>
-                {% endfor %}
-            {% else %}
-                <div class="service-card" data-aos="fade-up">
-                    <div class="service-icon"><i class="fas fa-database"></i></div>
-                    <h3>تجريف البيانات</h3>
-                    <p>جمع وتجريف البيانات من مصادر متعددة بدقة وكفاءة عالية</p>
-                </div>
-                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="service-icon"><i class="fas fa-chart-line"></i></div>
-                    <h3>تحليل المضمون</h3>
-                    <p>تحليل المحتوى الإعلامي واستخراج الرؤى والأنماط</p>
-                </div>
-                <div class="service-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="service-icon"><i class="fas fa-compass"></i></div>
-                    <h3>ضبط الإحداثيات الإعلامية</h3>
-                    <p>ضبط وتوجيه الرسائل الإعلامية للوصول للجمهور المستهدف</p>
-                </div>
-                <div class="service-card" data-aos="fade-up" data-aos-delay="300">
-                    <div class="service-icon"><i class="fas fa-robot"></i></div>
-                    <h3>الأتمتة الاتصالية</h3>
-                    <p>تحويل العمليات الاتصالية لعمليات مؤتمتة بدون ملفات ورقية</p>
-                </div>
-                <div class="service-card" data-aos="fade-up" data-aos-delay="400">
-                    <div class="service-icon"><i class="fas fa-tasks"></i></div>
-                    <h3>إدارة المشاريع</h3>
-                    <p>إدارة المشاريع من الفكرة إلى التطبيق بكفاءة</p>
-                </div>
-                <div class="service-card" data-aos="fade-up" data-aos-delay="500">
-                    <div class="service-icon"><i class="fas fa-file-alt"></i></div>
-                    <h3>التقارير التفاعلية</h3>
-                    <p>تقارير تفاعلية ولوحات معلومات ذكية</p>
-                </div>
-            {% endif %}
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-database"></i></div>
+                <h3>تجريف البيانات</h3>
+                <p>جمع وتحليل البيانات من مصادر متعددة بدقة عالية لدعم قراراتك الاتصالية</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-microscope"></i></div>
+                <h3>تحليل المضمون الإعلامي</h3>
+                <p>تحليل عميق للمحتوى الإعلامي واستخراج الرؤى والأنماط والتوجهات</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-compass"></i></div>
+                <h3>ضبط الإحداثيات الإعلامية</h3>
+                <p>بناء الاستراتيجيات الاتصالية للإعلام والعلاقات العامة بدقة متناهية</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-sitemap"></i></div>
+                <h3>بناء الخطط الاتصالية</h3>
+                <p>خطط اتصالية متكاملة من التخطيط إلى التنفيذ والمتابعة والتقييم</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-robot"></i></div>
+                <h3>الأتمتة الاتصالية</h3>
+                <p>تحويل العمليات اليدوية لعمليات آلية توفر الوقت وتقلل الأخطاء</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-tasks"></i></div>
+                <h3>إدارة المشاريع</h3>
+                <p>إدارة مشاريعك الاتصالية بكفاءة من الفكرة إلى التسليم النهائي</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-chart-line"></i></div>
+                <h3>التقارير التفاعلية</h3>
+                <p>لوحات معلومات ذكية وتقارير تفاعلية تُحدّث لحظياً</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-broadcast-tower"></i></div>
+                <h3>المرصد الإعلامي</h3>
+                <p>قاعدة بيانات شاملة للمؤثرين والصحف والقنوات لاختيار الأنسب لحملتك <span style="color: var(--green);">(قريباً)</span></p>
+            </div>
         </div>
     </section>
 
-    <!-- Features Section -->
-    <section class="features" id="features">
-        <div class="section-header" data-aos="fade-up">
-            <h2>لماذا 24°45°؟</h2>
-            <p>نقدم مزايا فريدة تميزنا عن غيرنا</p>
+    <!-- How We Work -->
+    <section class="how-we-work" id="how">
+        <div class="section-header">
+            <h2>كيف <span>نعمل</span></h2>
+            <p>رحلة سلسة من الفكرة إلى النتائج</p>
         </div>
-        <div class="features-grid">
-            {% if platform.features %}
-                {% for feature in platform.features %}
-                <div class="feature-item" data-aos="fade-up" data-aos-delay="{{ loop.index * 50 }}">
-                    <i class="fas fa-check-circle"></i>
-                    <span>{{ feature }}</span>
+        <div class="steps-container">
+            <div class="steps-line"></div>
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h3>التحليل والفهم</h3>
+                    <p>نبدأ بفهم احتياجاتك وأهدافك الاتصالية بدقة</p>
                 </div>
-                {% endfor %}
-            {% else %}
-                <div class="feature-item" data-aos="fade-up"><i class="fas fa-check-circle"></i><span>تجريف بيانات آلي</span></div>
-                <div class="feature-item" data-aos="fade-up" data-aos-delay="50"><i class="fas fa-check-circle"></i><span>تحليل بالذكاء الاصطناعي</span></div>
-                <div class="feature-item" data-aos="fade-up" data-aos-delay="100"><i class="fas fa-check-circle"></i><span>لوحات تحكم تفاعلية</span></div>
-                <div class="feature-item" data-aos="fade-up" data-aos-delay="150"><i class="fas fa-check-circle"></i><span>تقارير مخصصة</span></div>
-                <div class="feature-item" data-aos="fade-up" data-aos-delay="200"><i class="fas fa-check-circle"></i><span>أتمتة كاملة</span></div>
-                <div class="feature-item" data-aos="fade-up" data-aos-delay="250"><i class="fas fa-check-circle"></i><span>بدون ملفات ورقية</span></div>
-                <div class="feature-item" data-aos="fade-up" data-aos-delay="300"><i class="fas fa-check-circle"></i><span>هوية مستقلة لكل عميل</span></div>
-                <div class="feature-item" data-aos="fade-up" data-aos-delay="350"><i class="fas fa-check-circle"></i><span>دعم فني متواصل</span></div>
-            {% endif %}
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h3>ضبط الإحداثيات</h3>
+                    <p>نحدد الاستراتيجية المثلى ونرسم خارطة الطريق</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h3>التنفيذ والأتمتة</h3>
+                    <p>ننفذ الخطة على المنصة مع أتمتة كاملة للعمليات</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                    <h3>المتابعة والتقييم</h3>
+                    <p>تقارير لحظية وتحسين مستمر لتحقيق أفضل النتائج</p>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -629,16 +923,16 @@
     <footer class="footer">
         <div class="footer-content">
             <div class="footer-brand">
-                <h3>24°<span>45°</span></h3>
-                <p>منصة الإحداثيات الإعلامية المتخصصة في تجريف البيانات وتحليل المضمون</p>
-                <p><i class="fas fa-map-marker-alt"></i> المملكة العربية السعودية</p>
+                <img src="/static/images/24.png" alt="24°45°">
+                <p>منصة إدارة العمليات الاتصالية مؤتمتة بدون ملفات</p>
+                <p><i class="fas fa-map-marker-alt" style="color: var(--green);"></i> المملكة العربية السعودية</p>
             </div>
             <div class="footer-links">
                 <h4>روابط سريعة</h4>
                 <ul>
                     <li><a href="/">الرئيسية</a></li>
                     <li><a href="#services">الخدمات</a></li>
-                    <li><a href="#clients">العملاء</a></li>
+                    <li><a href="#how">كيف نعمل</a></li>
                     <li><a href="/about">من نحن</a></li>
                 </ul>
             </div>
@@ -646,31 +940,55 @@
                 <h4>تواصل معنا</h4>
                 <ul>
                     <li><a href="mailto:info@24-45.com"><i class="fas fa-envelope"></i> info@24-45.com</a></li>
-                    <li><a href="/contact"><i class="fas fa-phone"></i> تواصل معنا</a></li>
                 </ul>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>© 2025 منصة 24°45° - جميع الحقوق محفوظة</p>
+            <p>© 2025 منصة 24°45° - جميع الحقوق محفوظة | نضبط إحداثياتك</p>
         </div>
     </footer>
 
-    <!-- AOS Animation -->
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <!-- Chat Widget -->
+    <div class="chat-widget">
+        <div class="chat-button" onclick="toggleChat()">
+            <i class="fas fa-comments"></i>
+        </div>
+        <div class="chat-popup" id="chatPopup">
+            <div class="chat-header">
+                <h4>مرحباً بك 👋</h4>
+                <button class="chat-close" onclick="toggleChat()"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="chat-body">
+                <i class="fas fa-robot"></i>
+                <h3>سأكون جاهزاً قريباً!</h3>
+                <p>نعمل على تطوير خدمة الدردشة الذكية لمساعدتك. تابعنا!</p>
+            </div>
+        </div>
+    </div>
+
     <script>
-        AOS.init({
-            duration: 800,
-            once: true
+        function toggleChat() {
+            document.getElementById('chatPopup').classList.toggle('active');
+        }
+        
+        // Navbar scroll
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.background = 'rgba(10, 10, 10, 0.98)';
+            } else {
+                navbar.style.background = 'rgba(10, 10, 10, 0.95)';
+            }
         });
         
-        // Navbar scroll effect
-        window.addEventListener('scroll', function() {
-            const navbar = document.getElementById('navbar');
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
         });
     </script>
 </body>
