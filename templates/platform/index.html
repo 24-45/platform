@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>24°45° | منصة الإحداثيات الإعلامية</title>
+    <meta name="description" content="منصة متخصصة في تجريف البيانات وتحليل المضمون وضبط الإحداثيات الإعلامية">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- AOS Animation -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    
+    <style>
+        :root {
+            --primary: #1a5f7a;
+            --primary-dark: #0d2137;
+            --secondary: #ffffff;
+            --accent: #f9a825;
+            --accent-light: #ffd95a;
+            --text: #333333;
+            --text-light: #666666;
+            --bg-light: #f8f9fa;
+            --gradient: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: var(--bg-light);
+            color: var(--text);
+            line-height: 1.8;
+        }
+        
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(13, 33, 55, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+        
+        .navbar.scrolled {
+            padding: 0.5rem 0;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+        
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+            color: var(--secondary);
+        }
+        
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--accent);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 1.2rem;
+            color: var(--primary-dark);
+        }
+        
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 800;
+        }
+        
+        .logo-text span {
+            color: var(--accent);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+        
+        .nav-login-btn {
+            background: var(--accent) !important;
+            color: var(--primary-dark) !important;
+            padding: 0.5rem 1.5rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-login-btn:hover {
+            background: var(--accent-light) !important;
+            transform: translateY(-2px);
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: var(--gradient);
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        
+        .hero-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 8rem 2rem 4rem;
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .hero-text h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+        
+        .hero-text h1 span {
+            color: var(--accent);
+        }
+        
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+        
+        .hero-description {
+            font-size: 1.2rem;
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 2rem;
+        }
+        
+        .hero-coordinates {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255,255,255,0.1);
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            color: var(--secondary);
+            font-size: 0.95rem;
+            margin-bottom: 2rem;
+        }
+        
+        .hero-coordinates i {
+            color: var(--accent);
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .btn-primary {
+            background: var(--accent);
+            color: var(--primary-dark);
+        }
+        
+        .btn-primary:hover {
+            background: var(--accent-light);
+            transform: translateY(-2px);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            color: var(--secondary);
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+        
+        .btn-outline:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: var(--accent);
+        }
+        
+        .hero-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .coordinates-globe {
+            width: 400px;
+            height: 400px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            border: 2px solid rgba(255,255,255,0.1);
+        }
+        
+        .coordinates-globe::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 1px dashed rgba(255,255,255,0.2);
+            animation: rotate 20s linear infinite;
+        }
+        
+        .coordinates-text {
+            font-size: 4rem;
+            font-weight: 900;
+            color: var(--accent);
+            text-shadow: 0 0 30px rgba(249, 168, 37, 0.5);
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        /* Services Section */
+        .services {
+            padding: 6rem 2rem;
+            background: var(--secondary);
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary-dark);
+            margin-bottom: 1rem;
+        }
+        
+        .section-header p {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .services-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+        
+        .service-card {
+            background: var(--bg-light);
+            border-radius: 20px;
+            padding: 2.5rem;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(26, 95, 122, 0.15);
+            border-color: var(--accent);
+        }
+        
+        .service-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--gradient);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .service-icon i {
+            font-size: 1.8rem;
+            color: var(--secondary);
+        }
+        
+        .service-card h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-bottom: 1rem;
+        }
+        
+        .service-card p {
+            color: var(--text-light);
+            line-height: 1.8;
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 6rem 2rem;
+            background: var(--gradient);
+        }
+        
+        .features .section-header h2,
+        .features .section-header p {
+            color: var(--secondary);
+        }
+        
+        .features-grid {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            color: var(--secondary);
+            background: rgba(255,255,255,0.1);
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+        
+        .feature-item:hover {
+            background: rgba(255,255,255,0.15);
+            transform: translateX(-5px);
+        }
+        
+        .feature-item i {
+            color: var(--accent);
+            font-size: 1.2rem;
+        }
+        
+        /* Footer */
+        .footer {
+            background: var(--primary-dark);
+            color: var(--secondary);
+            padding: 4rem 2rem 2rem;
+        }
+        
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 4rem;
+        }
+        
+        .footer-brand h3 {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-brand h3 span {
+            color: var(--accent);
+        }
+        
+        .footer-brand p {
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-links h4 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+        
+        .footer-links a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+        
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 3rem auto 0;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+            color: rgba(255,255,255,0.5);
+        }
+        
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .hero-buttons {
+                justify-content: center;
+            }
+            
+            .hero-visual {
+                display: none;
+            }
+            
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .services-grid,
+            .clients-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="/" class="logo">
+                <div class="logo-icon">24°</div>
+                <div class="logo-text">24°<span>45°</span></div>
+            </a>
+            <ul class="nav-links">
+                <li><a href="/">الرئيسية</a></li>
+                <li><a href="#services">الخدمات</a></li>
+                <li><a href="#features">المميزات</a></li>
+                <li><a href="/about">من نحن</a></li>
+                <li><a href="/contact">تواصل معنا</a></li>
+                <li><a href="/login" class="nav-login-btn">تسجيل الدخول</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text" data-aos="fade-up">
+                <div class="hero-coordinates">
+                    <i class="fas fa-map-marker-alt"></i>
+                    24°45° إحداثيات المملكة العربية السعودية
+                </div>
+                <h1>منصة <span>24°45°</span><br>الإحداثيات الإعلامية</h1>
+                <p class="hero-subtitle">من الفكرة إلى التطبيق</p>
+                <p class="hero-description">
+                    {{ platform.description | default('منصة متخصصة في تجريف البيانات وتحليل المضمون وضبط الإحداثيات الإعلامية، وتحويل العملية الاتصالية لعملية مؤتمتة بدون ملفات') }}
+                </p>
+                <div class="hero-buttons">
+                    <a href="/login" class="btn btn-primary">
+                        <i class="fas fa-sign-in-alt"></i>
+                        تسجيل الدخول
+                    </a>
+                    <a href="#services" class="btn btn-outline">
+                        <i class="fas fa-cogs"></i>
+                        خدماتنا
+                    </a>
+                </div>
+            </div>
+            <div class="hero-visual" data-aos="fade-up" data-aos-delay="200">
+                <div class="coordinates-globe">
+                    <span class="coordinates-text">24°45°</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="section-header" data-aos="fade-up">
+            <h2>خدماتنا</h2>
+            <p>نقدم حلولاً متكاملة لتحويل العمليات الاتصالية لعمليات مؤتمتة</p>
+        </div>
+        <div class="services-grid">
+            {% if platform.services %}
+                {% for service in platform.services %}
+                <div class="service-card" data-aos="fade-up" data-aos-delay="{{ loop.index * 100 }}">
+                    <div class="service-icon">
+                        <i class="fas {{ service.icon | default('fa-cog') }}"></i>
+                    </div>
+                    <h3>{{ service.name }}</h3>
+                    <p>{{ service.description }}</p>
+                </div>
+                {% endfor %}
+            {% else %}
+                <div class="service-card" data-aos="fade-up">
+                    <div class="service-icon"><i class="fas fa-database"></i></div>
+                    <h3>تجريف البيانات</h3>
+                    <p>جمع وتجريف البيانات من مصادر متعددة بدقة وكفاءة عالية</p>
+                </div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-icon"><i class="fas fa-chart-line"></i></div>
+                    <h3>تحليل المضمون</h3>
+                    <p>تحليل المحتوى الإعلامي واستخراج الرؤى والأنماط</p>
+                </div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-icon"><i class="fas fa-compass"></i></div>
+                    <h3>ضبط الإحداثيات الإعلامية</h3>
+                    <p>ضبط وتوجيه الرسائل الإعلامية للوصول للجمهور المستهدف</p>
+                </div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="service-icon"><i class="fas fa-robot"></i></div>
+                    <h3>الأتمتة الاتصالية</h3>
+                    <p>تحويل العمليات الاتصالية لعمليات مؤتمتة بدون ملفات ورقية</p>
+                </div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="service-icon"><i class="fas fa-tasks"></i></div>
+                    <h3>إدارة المشاريع</h3>
+                    <p>إدارة المشاريع من الفكرة إلى التطبيق بكفاءة</p>
+                </div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="service-icon"><i class="fas fa-file-alt"></i></div>
+                    <h3>التقارير التفاعلية</h3>
+                    <p>تقارير تفاعلية ولوحات معلومات ذكية</p>
+                </div>
+            {% endif %}
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="section-header" data-aos="fade-up">
+            <h2>لماذا 24°45°؟</h2>
+            <p>نقدم مزايا فريدة تميزنا عن غيرنا</p>
+        </div>
+        <div class="features-grid">
+            {% if platform.features %}
+                {% for feature in platform.features %}
+                <div class="feature-item" data-aos="fade-up" data-aos-delay="{{ loop.index * 50 }}">
+                    <i class="fas fa-check-circle"></i>
+                    <span>{{ feature }}</span>
+                </div>
+                {% endfor %}
+            {% else %}
+                <div class="feature-item" data-aos="fade-up"><i class="fas fa-check-circle"></i><span>تجريف بيانات آلي</span></div>
+                <div class="feature-item" data-aos="fade-up" data-aos-delay="50"><i class="fas fa-check-circle"></i><span>تحليل بالذكاء الاصطناعي</span></div>
+                <div class="feature-item" data-aos="fade-up" data-aos-delay="100"><i class="fas fa-check-circle"></i><span>لوحات تحكم تفاعلية</span></div>
+                <div class="feature-item" data-aos="fade-up" data-aos-delay="150"><i class="fas fa-check-circle"></i><span>تقارير مخصصة</span></div>
+                <div class="feature-item" data-aos="fade-up" data-aos-delay="200"><i class="fas fa-check-circle"></i><span>أتمتة كاملة</span></div>
+                <div class="feature-item" data-aos="fade-up" data-aos-delay="250"><i class="fas fa-check-circle"></i><span>بدون ملفات ورقية</span></div>
+                <div class="feature-item" data-aos="fade-up" data-aos-delay="300"><i class="fas fa-check-circle"></i><span>هوية مستقلة لكل عميل</span></div>
+                <div class="feature-item" data-aos="fade-up" data-aos-delay="350"><i class="fas fa-check-circle"></i><span>دعم فني متواصل</span></div>
+            {% endif %}
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>24°<span>45°</span></h3>
+                <p>منصة الإحداثيات الإعلامية المتخصصة في تجريف البيانات وتحليل المضمون</p>
+                <p><i class="fas fa-map-marker-alt"></i> المملكة العربية السعودية</p>
+            </div>
+            <div class="footer-links">
+                <h4>روابط سريعة</h4>
+                <ul>
+                    <li><a href="/">الرئيسية</a></li>
+                    <li><a href="#services">الخدمات</a></li>
+                    <li><a href="#clients">العملاء</a></li>
+                    <li><a href="/about">من نحن</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>تواصل معنا</h4>
+                <ul>
+                    <li><a href="mailto:info@24-45.com"><i class="fas fa-envelope"></i> info@24-45.com</a></li>
+                    <li><a href="/contact"><i class="fas fa-phone"></i> تواصل معنا</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 منصة 24°45° - جميع الحقوق محفوظة</p>
+        </div>
+    </footer>
+
+    <!-- AOS Animation -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+        
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>

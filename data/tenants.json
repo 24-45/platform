@@ -1,0 +1,50 @@
+{
+    "tenants": [
+        {
+            "id": "nobles",
+            "name": "نوبلز العقارية",
+            "name_en": "Nobles Properties",
+            "slug": "nobles",
+            "logo": "nobles-logo.png",
+            "primary_color": "#dc1f27",
+            "secondary_color": "#ffffff",
+            "accent_color": "#00502F",
+            "type": "عقاري",
+            "type_en": "Real Estate",
+            "description": "شركة تطوير عقاري عالمية تأسست في دبي عام 2008",
+            "website": "https://noblesproperties.com",
+            "active": true,
+            "featured": true
+        },
+        {
+            "id": "zakah",
+            "name": "صندوق الزكاة",
+            "name_en": "Zakah Fund",
+            "slug": "zakah",
+            "logo": "zakah-logo.png",
+            "primary_color": "#2E7D32",
+            "secondary_color": "#ffffff",
+            "accent_color": "#1B5E20",
+            "type": "خيري",
+            "type_en": "Charity",
+            "description": "صندوق الزكاة لجمع وتوزيع أموال الزكاة على مستحقيها",
+            "active": true,
+            "featured": true
+        },
+        {
+            "id": "waqf",
+            "name": "مؤسسة الأوقاف",
+            "name_en": "Waqf Foundation",
+            "slug": "waqf",
+            "logo": "waqf-logo.png",
+            "primary_color": "#6A1B9A",
+            "secondary_color": "#ffffff",
+            "accent_color": "#4A148C",
+            "type": "وقفي",
+            "type_en": "Endowment",
+            "description": "مؤسسة الأوقاف لإدارة واستثمار الأموال الوقفية",
+            "active": true,
+            "featured": false
+        }
+    ]
+}

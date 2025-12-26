@@ -1,0 +1,78 @@
+{
+    "platform": {
+        "name": "24°45°",
+        "name_ar": "٢٤°٤٥°",
+        "full_name": "منصة الإحداثيات الإعلامية",
+        "full_name_en": "Media Coordinates Platform",
+        "tagline": "من الفكرة إلى التطبيق",
+        "tagline_en": "From Idea to Implementation",
+        "description": "منصة متخصصة في تجريف البيانات وتحليل المضمون وضبط الإحداثيات الإعلامية، وتحويل العملية الاتصالية لعملية مؤتمتة بدون ملفات",
+        "description_en": "A specialized platform for data scraping, content analysis, and media coordination calibration, transforming communication processes into automated, paperless workflows",
+        "coordinates_meaning": "24°45° تمثل الإحداثيات الجغرافية للمملكة العربية السعودية",
+        "domain": "www.24-45.com",
+        "email": "info@24-45.com",
+        "version": "1.0.0",
+        "established": "2025",
+        "location": "المملكة العربية السعودية",
+        "colors": {
+            "primary": "#1a5f7a",
+            "secondary": "#ffffff",
+            "accent": "#f9a825",
+            "dark": "#0d2137"
+        },
+        "services": [
+            {
+                "id": "data-scraping",
+                "name": "تجريف البيانات",
+                "name_en": "Data Scraping",
+                "icon": "fa-database",
+                "description": "جمع وتجريف البيانات من مصادر متعددة بدقة وكفاءة عالية"
+            },
+            {
+                "id": "content-analysis",
+                "name": "تحليل المضمون",
+                "name_en": "Content Analysis",
+                "icon": "fa-chart-line",
+                "description": "تحليل المحتوى الإعلامي واستخراج الرؤى والأنماط"
+            },
+            {
+                "id": "media-calibration",
+                "name": "ضبط الإحداثيات الإعلامية",
+                "name_en": "Media Calibration",
+                "icon": "fa-compass",
+                "description": "ضبط وتوجيه الرسائل الإعلامية للوصول للجمهور المستهدف"
+            },
+            {
+                "id": "automation",
+                "name": "الأتمتة الاتصالية",
+                "name_en": "Communication Automation",
+                "icon": "fa-robot",
+                "description": "تحويل العمليات الاتصالية لعمليات مؤتمتة بدون ملفات ورقية"
+            },
+            {
+                "id": "project-management",
+                "name": "إدارة المشاريع",
+                "name_en": "Project Management",
+                "icon": "fa-tasks",
+                "description": "إدارة المشاريع من الفكرة إلى التطبيق بكفاءة"
+            },
+            {
+                "id": "reporting",
+                "name": "التقارير التفاعلية",
+                "name_en": "Interactive Reports",
+                "icon": "fa-file-chart-pie",
+                "description": "تقارير تفاعلية ولوحات معلومات ذكية"
+            }
+        ],
+        "features": [
+            "تجريف بيانات آلي من مصادر متعددة",
+            "تحليل مضمون بالذكاء الاصطناعي",
+            "لوحات تحكم تفاعلية",
+            "تقارير مخصصة لكل عميل",
+            "أتمتة كاملة للعمليات",
+            "بدون ملفات ورقية",
+            "هوية بصرية مستقلة لكل عميل",
+            "دعم فني متواصل"
+        ]
+    }
+}

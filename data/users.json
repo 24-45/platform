@@ -1,0 +1,33 @@
+{
+    "users": [
+        {
+            "id": "user1",
+            "email": "taher.irshaid@gmail.com",
+            "password": "admin123",
+            "name": "طاهر إرشيد",
+            "role": "admin",
+            "tenant_access": ["nobles", "zakah", "waqf"],
+            "active": true
+        },
+        {
+            "id": "user2",
+            "email": "tahir.irshid@gmail.com",
+            "password": "nobles123",
+            "name": "مستخدم نوبلز",
+            "role": "client",
+            "tenant_access": ["nobles"],
+            "default_tenant": "nobles",
+            "active": true
+        },
+        {
+            "id": "user3",
+            "email": "nobles@24-45.com",
+            "password": "nobles123",
+            "name": "نوبلز العقارية",
+            "role": "client",
+            "tenant_access": ["nobles"],
+            "default_tenant": "nobles",
+            "active": true
+        }
+    ]
+}
