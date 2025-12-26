@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="جميع مشاريع نوبلز العقارية | منصة 24°45°">
+    <title>المشاريع | نوبلز العقارية</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='images/tenants/nobles/favicon.svg') }}">
+    
+    <!-- Google Fonts - Tajawal -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        :root {
+            --nobles-red: #dc1f27;
+            --nobles-red-dark: #b51920;
+            --nobles-green: #00502F;
+            --nobles-white: #ffffff;
+            --nobles-black: #1a1a1a;
+            --nobles-gray: #f8f9fa;
+            --platform-green: #00d46a;
+            --platform-black: #0a0a0a;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background: var(--nobles-gray);
+            color: var(--nobles-black);
+            line-height: 1.8;
+        }
+        
+        /* Platform Bar */
+        .platform-bar {
+            background: var(--platform-black);
+            padding: 0.5rem 0;
+            font-size: 0.85rem;
+        }
+        
+        .platform-bar .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .platform-link {
+            color: var(--platform-green);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .platform-link span { color: #888; }
+        
+        .user-info {
+            color: #888;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .logout-link {
+            color: #888;
+            text-decoration: none;
+        }
+        
+        .logout-link:hover { color: var(--nobles-red); }
+        
+        /* Navbar */
+        .navbar {
+            background: linear-gradient(135deg, var(--nobles-black) 0%, #2d2d2d 100%);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo img { height: 45px; }
+        
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: var(--nobles-white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a:hover, .nav-links a.active { color: var(--nobles-red); }
+        
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(135deg, var(--nobles-red) 0%, var(--nobles-red-dark) 100%);
+            padding: 4rem 2rem;
+            color: white;
+            text-align: center;
+        }
+        
+        .page-header h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+        
+        .breadcrumb {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+        
+        .breadcrumb a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        .breadcrumb a:hover { text-decoration: underline; }
+        
+        /* Filter Section */
+        .filter-section {
+            background: white;
+            padding: 1.5rem 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .filter-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .filter-tabs {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .filter-tab {
+            padding: 0.5rem 1.5rem;
+            border: 2px solid #e9ecef;
+            border-radius: 25px;
+            background: white;
+            cursor: pointer;
+            font-family: 'Tajawal', sans-serif;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .filter-tab:hover { border-color: var(--nobles-red); color: var(--nobles-red); }
+        .filter-tab.active { background: var(--nobles-red); color: white; border-color: var(--nobles-red); }
+        
+        .projects-count {
+            color: #666;
+            font-size: 0.95rem;
+        }
+        
+        .projects-count strong { color: var(--nobles-red); }
+        
+        /* Projects Grid */
+        .projects-section {
+            padding: 3rem 2rem;
+        }
+        
+        .section-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 2rem;
+        }
+        
+        .project-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: all 0.4s ease;
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(220,31,39,0.15);
+        }
+        
+        .project-image {
+            height: 220px;
+            background: linear-gradient(135deg, var(--nobles-red), var(--nobles-green));
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .project-card:hover .project-image img { transform: scale(1.05); }
+        
+        .placeholder-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 4rem;
+            color: rgba(255,255,255,0.3);
+        }
+        
+        .project-status {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .project-status.active { background: var(--nobles-green); color: white; }
+        .project-status.upcoming { background: #f59e0b; color: white; }
+        
+        .project-content { padding: 1.5rem; }
+        
+        .project-type-tag {
+            display: inline-block;
+            background: rgba(220,31,39,0.1);
+            color: var(--nobles-red);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-bottom: 0.75rem;
+        }
+        
+        .project-content h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--nobles-black);
+        }
+        
+        .project-location {
+            color: #666;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .project-meta {
+            display: flex;
+            justify-content: space-between;
+            padding-top: 1rem;
+            border-top: 1px solid #eee;
+            font-size: 0.85rem;
+            color: #666;
+        }
+        
+        .project-meta span { display: flex; align-items: center; gap: 0.5rem; }
+        .project-meta i { color: var(--nobles-red); }
+        
+        .project-progress { margin-top: 1rem; }
+        
+        .progress-bar {
+            height: 8px;
+            background: #e9ecef;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--nobles-red), var(--nobles-green));
+            border-radius: 4px;
+        }
+        
+        .progress-info {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+            color: #666;
+        }
+        
+        .progress-percentage { font-weight: 700; color: var(--nobles-red); }
+        
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, var(--nobles-black) 0%, #2d2d2d 100%);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+        
+        .footer-container { max-width: 1400px; margin: 0 auto; }
+        
+        .footer-logo { margin-bottom: 1rem; }
+        .footer-logo img { height: 40px; }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 1.5rem 0;
+            list-style: none;
+        }
+        
+        .footer-links a { color: #999; text-decoration: none; }
+        .footer-links a:hover { color: var(--nobles-red); }
+        
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .footer-bottom p { color: #666; font-size: 0.9rem; }
+        
+        .platform-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(0,212,106,0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            color: var(--platform-green);
+            text-decoration: none;
+            font-size: 0.85rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .platform-bar .container { flex-direction: column; gap: 0.5rem; }
+            .nav-links { display: none; }
+            .mobile-toggle { display: block; }
+            .filter-container { flex-direction: column; }
+            .filter-tabs { flex-wrap: wrap; justify-content: center; }
+            .projects-grid { grid-template-columns: 1fr; }
+            .footer-bottom { flex-direction: column; gap: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Platform Top Bar -->
+    <div class="platform-bar">
+        <div class="container">
+            <a href="/" class="platform-link">
+                <i class="fas fa-globe"></i>
+                <span>مدعوم من</span>
+                <strong>24°45°</strong>
+            </a>
+            <div class="user-info">
+                <span><i class="fas fa-user-circle"></i> {{ session.user_name | default('المستخدم') }}</span>
+                <a href="/logout" class="logout-link"><i class="fas fa-sign-out-alt"></i> خروج</a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="/nobles/" class="logo">
+                <img src="{{ url_for('static', filename='images/tenants/nobles/logo.svg') }}" alt="نوبلز العقارية">
+            </a>
+            
+            <ul class="nav-links">
+                <li><a href="/nobles/"><i class="fas fa-home"></i> الرئيسية</a></li>
+                <li><a href="/nobles/projects" class="active"><i class="fas fa-building"></i> المشاريع</a></li>
+                <li><a href="/nobles/reports"><i class="fas fa-chart-line"></i> التقارير</a></li>
+                <li><a href="/nobles/about"><i class="fas fa-info-circle"></i> من نحن</a></li>
+            </ul>
+            
+            <button class="mobile-toggle" onclick="toggleMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+    
+    <!-- Page Header -->
+    <section class="page-header">
+        <h1>المشاريع</h1>
+        <div class="breadcrumb">
+            <a href="/nobles/">الرئيسية</a>
+            <span>/</span>
+            <span>المشاريع</span>
+        </div>
+    </section>
+    
+    <!-- Filter Section -->
+    <section class="filter-section">
+        <div class="filter-container">
+            <div class="filter-tabs">
+                <button class="filter-tab active" data-filter="all">الكل</button>
+                <button class="filter-tab" data-filter="active">قيد التنفيذ</button>
+                <button class="filter-tab" data-filter="upcoming">قريباً</button>
+                <button class="filter-tab" data-filter="industrial">صناعي</button>
+                <button class="filter-tab" data-filter="residential">سكني</button>
+            </div>
+            <div class="projects-count">
+                عرض <strong>{{ projects | length }}</strong> مشروع
+            </div>
+        </div>
+    </section>
+    
+    <!-- Projects Grid -->
+    <section class="projects-section">
+        <div class="section-container">
+            <div class="projects-grid">
+                {% for project in projects %}
+                <a href="/nobles/project/{{ project.slug }}" class="project-card" 
+                   data-status="{{ 'active' if project.active else 'upcoming' }}"
+                   data-type="{{ 'industrial' if 'صناعي' in project.type else 'residential' }}">
+                    <div class="project-image">
+                        {% if project.images and project.images.main %}
+                        <img src="{{ url_for('static', filename='images/tenants/nobles/projects/' + project.images.main) }}" alt="{{ project.name }}">
+                        {% else %}
+                        <i class="fas fa-building placeholder-icon"></i>
+                        {% endif %}
+                        
+                        {% if project.active %}
+                        <span class="project-status active">قيد التنفيذ</span>
+                        {% else %}
+                        <span class="project-status upcoming">قريباً</span>
+                        {% endif %}
+                    </div>
+                    <div class="project-content">
+                        <span class="project-type-tag">{{ project.type }}</span>
+                        <h3>{{ project.name }}</h3>
+                        <p class="project-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            {{ project.location }}
+                        </p>
+                        
+                        <div class="project-meta">
+                            {% if project.total_area %}
+                            <span><i class="fas fa-expand"></i> {{ project.total_area }}</span>
+                            {% endif %}
+                            {% if project.total_units %}
+                            <span><i class="fas fa-th-large"></i> {{ project.total_units }} وحدة</span>
+                            {% endif %}
+                        </div>
+                        
+                        {% if project.completion_percentage is defined %}
+                        <div class="project-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: {{ project.completion_percentage }}%"></div>
+                            </div>
+                            <div class="progress-info">
+                                <span>نسبة الإنجاز</span>
+                                <span class="progress-percentage">{{ project.completion_percentage }}%</span>
+                            </div>
+                        </div>
+                        {% endif %}
+                    </div>
+                </a>
+                {% else %}
+                <div class="project-card">
+                    <div class="project-content" style="text-align: center; padding: 3rem;">
+                        <i class="fas fa-folder-open" style="font-size: 3rem; color: #ccc; margin-bottom: 1rem;"></i>
+                        <p>لا توجد مشاريع حالياً</p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-logo">
+                <img src="{{ url_for('static', filename='images/tenants/nobles/logo.svg') }}" alt="نوبلز العقارية">
+            </div>
+            <ul class="footer-links">
+                <li><a href="/nobles/">الرئيسية</a></li>
+                <li><a href="/nobles/projects">المشاريع</a></li>
+                <li><a href="/nobles/reports">التقارير</a></li>
+                <li><a href="/nobles/about">من نحن</a></li>
+            </ul>
+            <div class="footer-bottom">
+                <p>© 2025 نوبلز العقارية. جميع الحقوق محفوظة.</p>
+                <a href="/" class="platform-badge">
+                    <i class="fas fa-globe"></i>
+                    <span>مدعوم من</span>
+                    <strong>24°45°</strong>
+                </a>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Filter functionality
+        document.querySelectorAll('.filter-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                // Update active tab
+                document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+                
+                const filter = this.dataset.filter;
+                const cards = document.querySelectorAll('.project-card');
+                
+                cards.forEach(card => {
+                    if (filter === 'all') {
+                        card.style.display = 'block';
+                    } else if (filter === 'active' || filter === 'upcoming') {
+                        card.style.display = card.dataset.status === filter ? 'block' : 'none';
+                    } else {
+                        card.style.display = card.dataset.type === filter ? 'block' : 'none';
+                    }
+                });
+            });
+        });
+        
+        function toggleMenu() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        }
+    </script>
+</body>
+</html>

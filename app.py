@@ -326,6 +326,22 @@ def platform_clients():
 
 # ==================== مسارات العميل (Tenant Routes) ====================
 
+def get_tenant_template(tenant_slug, template_name):
+    """
+    جلب القالب المناسب للعميل
+    إذا وجد قالب مخصص للعميل، يستخدمه
+    وإلا يستخدم القالب الافتراضي
+    """
+    custom_template = f'tenant/{tenant_slug}/{template_name}'
+    default_template = f'tenant/{template_name}'
+    
+    # التحقق من وجود القالب المخصص
+    template_path = Path(app.root_path) / 'templates' / 'tenant' / tenant_slug / template_name
+    if template_path.exists():
+        return custom_template
+    return default_template
+
+
 @app.route('/<tenant_slug>/')
 @login_required
 @tenant_access_required
@@ -337,7 +353,8 @@ def tenant_home(tenant_slug):
     
     data = load_tenant_projects(tenant_slug)
     config = load_tenant_config(tenant_slug)
-    return render_template('tenant/index.html', 
+    template = get_tenant_template(tenant_slug, 'index.html')
+    return render_template(template, 
                          tenant=tenant,
                          config=config,
                          projects=data.get('projects', []))
@@ -353,7 +370,8 @@ def tenant_projects(tenant_slug):
         return render_template('404.html'), 404
     
     data = load_tenant_projects(tenant_slug)
-    return render_template('tenant/projects.html', 
+    template = get_tenant_template(tenant_slug, 'projects.html')
+    return render_template(template, 
                          tenant=tenant,
                          projects=data.get('projects', []))
 
@@ -371,7 +389,8 @@ def tenant_project_detail(tenant_slug, project_slug):
     if not project:
         return render_template('404.html'), 404
     
-    return render_template('tenant/project_detail.html', 
+    template = get_tenant_template(tenant_slug, 'project_detail.html')
+    return render_template(template, 
                          tenant=tenant,
                          project=project)
 
@@ -386,7 +405,8 @@ def tenant_reports(tenant_slug):
         return render_template('404.html'), 404
     
     data = load_tenant_projects(tenant_slug)
-    return render_template('tenant/reports.html', 
+    template = get_tenant_template(tenant_slug, 'reports.html')
+    return render_template(template, 
                          tenant=tenant,
                          projects=data.get('projects', []))
 
@@ -404,7 +424,8 @@ def tenant_project_report(tenant_slug, project_slug):
     if not project:
         return render_template('404.html'), 404
     
-    return render_template('tenant/project_report.html', 
+    template = get_tenant_template(tenant_slug, 'project_report.html')
+    return render_template(template, 
                          tenant=tenant,
                          project=project)
 
@@ -419,7 +440,8 @@ def tenant_about(tenant_slug):
         return render_template('404.html'), 404
     
     config = load_tenant_config(tenant_slug)
-    return render_template('tenant/about.html', tenant=tenant, config=config)
+    template = get_tenant_template(tenant_slug, 'about.html')
+    return render_template(template, tenant=tenant, config=config)
 
 
 @app.route('/<tenant_slug>/login')
