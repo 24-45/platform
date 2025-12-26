@@ -179,13 +179,8 @@ def platform_home():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     """صفحة تسجيل الدخول"""
-    # إذا المستخدم مسجل دخول بالفعل
-    if 'user_id' in session:
-        default_tenant = session.get('default_tenant')
-        if default_tenant:
-            return redirect(url_for('tenant_home', tenant_slug=default_tenant))
-        return redirect(url_for('platform_home'))
-    
+    # عرض صفحة تسجيل الدخول للجميع
+    # إذا المستخدم مسجل دخول، يمكنه تسجيل الخروج أو الاستمرار
     return render_template('platform/login.html')
 
 
