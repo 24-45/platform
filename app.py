@@ -479,6 +479,119 @@ def internal_error(e):
     return render_template('500.html'), 500
 
 
+# ==================== إدارة المستخدمين (الأدمن) ====================
+
+def save_users(users):
+    """حفظ المستخدمين في الملف"""
+    users_file = DATA_PATH / 'users.json'
+    with open(users_file, 'w', encoding='utf-8') as f:
+        json.dump({'users': users}, f, ensure_ascii=False, indent=2)
+
+
+@app.route('/admin/users/add', methods=['POST'])
+@login_required
+def admin_add_user():
+    """إضافة مستخدم جديد"""
+    if not is_admin():
+        return redirect(url_for('access_denied'))
+    
+    name = request.form.get('name', '').strip()
+    email = request.form.get('email', '').strip().lower()
+    role = request.form.get('role', 'user')
+    default_tenant = request.form.get('default_tenant', '')
+    tenants = request.form.getlist('tenants')
+    
+    if not name or not email:
+        flash('الاسم والإيميل مطلوبان', 'error')
+        return redirect(url_for('admin_dashboard'))
+    
+    # تحقق من عدم وجود المستخدم
+    users = load_users()
+    for user in users:
+        if user['email'] == email:
+            flash('هذا الإيميل مسجل مسبقاً', 'error')
+            return redirect(url_for('admin_dashboard'))
+    
+    # إنشاء مستخدم جديد
+    import uuid
+    new_user = {
+        'id': str(uuid.uuid4())[:8],
+        'email': email,
+        'name': name,
+        'role': role,
+        'tenants': tenants,
+        'default_tenant': default_tenant,
+        'active': True
+    }
+    
+    users.append(new_user)
+    save_users(users)
+    
+    flash(f'تم إضافة المستخدم {name} بنجاح', 'success')
+    return redirect(url_for('admin_dashboard'))
+
+
+@app.route('/admin/users/edit', methods=['POST'])
+@login_required
+def admin_edit_user():
+    """تعديل مستخدم"""
+    if not is_admin():
+        return redirect(url_for('access_denied'))
+    
+    user_id = request.form.get('user_id')
+    name = request.form.get('name', '').strip()
+    email = request.form.get('email', '').strip().lower()
+    default_tenant = request.form.get('default_tenant', '')
+    tenants = request.form.getlist('tenants')
+    
+    users = load_users()
+    for user in users:
+        if user['id'] == user_id:
+            user['name'] = name
+            user['email'] = email
+            user['default_tenant'] = default_tenant
+            user['tenants'] = tenants
+            break
+    
+    save_users(users)
+    flash(f'تم تعديل المستخدم {name} بنجاح', 'success')
+    return redirect(url_for('admin_dashboard'))
+
+
+@app.route('/admin/users/toggle/<user_id>', methods=['POST'])
+@login_required
+def admin_toggle_user(user_id):
+    """تفعيل/تعطيل مستخدم"""
+    if not is_admin():
+        return redirect(url_for('access_denied'))
+    
+    users = load_users()
+    for user in users:
+        if user['id'] == user_id:
+            user['active'] = not user.get('active', True)
+            status = 'تفعيل' if user['active'] else 'تعطيل'
+            flash(f'تم {status} المستخدم {user["name"]}', 'success')
+            break
+    
+    save_users(users)
+    return redirect(url_for('admin_dashboard'))
+
+
+@app.route('/admin/users/delete/<user_id>', methods=['POST'])
+@login_required
+def admin_delete_user(user_id):
+    """حذف مستخدم"""
+    if not is_admin():
+        return redirect(url_for('access_denied'))
+    
+    users = load_users()
+    users = [u for u in users if u['id'] != user_id]
+    save_users(users)
+    
+    flash('تم حذف المستخدم بنجاح', 'success')
+    return redirect(url_for('admin_dashboard'))
+
+
 # ==================== تشغيل التطبيق ====================
 
 if __name__ == '__main__':
@@ -489,3 +602,4 @@ if __name__ == '__main__':
         threaded=True,
         use_reloader=True
     )
+
