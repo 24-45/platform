@@ -13,17 +13,15 @@
     <style>
         :root {
             --black: #0a0a0a;
+            --black-light: #111111;
             --white: #ffffff;
             --green: #00d46a;
             --green-dark: #00a854;
             --green-light: #00ff7f;
             --gray: #888888;
             --gray-dark: #333333;
-            --gray-light: #f5f5f5;
         }
-        
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        
         body {
             font-family: 'Cairo', sans-serif;
             background: var(--black);
@@ -31,20 +29,15 @@
             line-height: 1.8;
             overflow-x: hidden;
         }
-        
-        /* Navbar */
         .navbar {
             position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
+            top: 0; left: 0; right: 0;
             z-index: 1000;
             background: rgba(10, 10, 10, 0.95);
             backdrop-filter: blur(20px);
             padding: 1rem 0;
             border-bottom: 1px solid rgba(255,255,255,0.05);
         }
-        
         .nav-container {
             max-width: 1400px;
             margin: 0 auto;
@@ -53,36 +46,29 @@
             justify-content: space-between;
             align-items: center;
         }
-        
         .logo {
             display: flex;
             align-items: center;
-            gap: 1rem;
+            gap: 0.5rem;
             text-decoration: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            font-weight: 800;
         }
-        
-        .logo img {
-            height: 45px;
-            width: auto;
-        }
-        
+        .logo img { height: 40px; }
         .nav-links {
             display: flex;
             gap: 2.5rem;
             list-style: none;
             align-items: center;
         }
-        
         .nav-links a {
             color: var(--gray);
             text-decoration: none;
             font-weight: 500;
             transition: all 0.3s ease;
-            font-size: 0.95rem;
         }
-        
         .nav-links a:hover { color: var(--white); }
-        
         .nav-login {
             background: var(--green) !important;
             color: var(--black) !important;
@@ -90,70 +76,65 @@
             border-radius: 50px;
             font-weight: 600;
         }
-        
-        .nav-login:hover {
-            background: var(--green-light) !important;
-            transform: scale(1.05);
-        }
-
-        /* Hero Section */
+        .nav-login:hover { background: var(--green-light) !important; }
         .hero {
             min-height: 100vh;
             display: flex;
             align-items: center;
+            justify-content: center;
             position: relative;
             overflow: hidden;
             background: var(--black);
+            padding-top: 80px;
         }
-        
-        /* Saudi Map Background */
-        .hero-map {
+        .saudi-map-container {
             position: absolute;
-            top: 50%;
-            left: 50%;
+            top: 50%; left: 50%;
             transform: translate(-50%, -50%);
-            width: 80%;
-            max-width: 900px;
-            opacity: 0;
-            animation: fadeInMap 2s ease-out 0.5s forwards;
+            width: 60%;
+            max-width: 700px;
+            opacity: 0.25;
+            z-index: 1;
         }
-        
-        .hero-map svg {
+        .saudi-map-container img {
             width: 100%;
             height: auto;
+            filter: brightness(0.8);
         }
-        
-        /* Grid Lines Animation */
-        .grid-lines {
+        .coordinate-grid {
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            overflow: hidden;
+            top: 0; left: 0; right: 0; bottom: 0;
+            z-index: 2;
+            pointer-events: none;
         }
-        
-        .grid-line-h, .grid-line-v {
+        .grid-line {
             position: absolute;
             background: var(--green);
-            opacity: 0;
         }
-        
-        .grid-line-h {
+        .grid-h {
             height: 1px;
-            width: 100%;
-            animation: drawLineH 1.5s ease-out forwards;
+            width: 0;
+            top: 50%;
+            left: 0;
+            animation: expandH 2s ease-out 0.5s forwards;
+            opacity: 0.4;
         }
-        
-        .grid-line-v {
+        .grid-v {
             width: 1px;
-            height: 100%;
-            animation: drawLineV 1.5s ease-out forwards;
+            height: 0;
+            left: 50%;
+            top: 0;
+            animation: expandV 2s ease-out 0.8s forwards;
+            opacity: 0.4;
         }
-        
-        .grid-line-h.lat-24 { top: 45%; animation-delay: 0.3s; }
-        .grid-line-v.lon-45 { left: 55%; animation-delay: 0.6s; }
-        
+        @keyframes expandH { to { width: 100%; } }
+        @keyframes expandV { to { height: 100%; } }
+        .coord-labels {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            z-index: 3;
+            pointer-events: none;
+        }
         .coord-label {
             position: absolute;
             color: var(--green);
@@ -162,102 +143,107 @@
             opacity: 0;
             animation: fadeIn 0.5s ease-out forwards;
         }
-        
-        .coord-label.lat { top: 44%; right: 5%; animation-delay: 1.2s; }
-        .coord-label.lon { top: 10%; left: 54%; animation-delay: 1.4s; }
-        
-        /* Intersection Point */
-        .intersection-point {
+        .label-24 {
+            top: 49%;
+            left: 3%;
+            animation-delay: 2s;
+        }
+        .label-45 {
+            top: 49%;
+            right: 3%;
+            animation-delay: 2.2s;
+        }
+        @keyframes fadeIn { to { opacity: 1; } }
+        .intersection-marker {
             position: absolute;
-            top: 45%;
-            left: 55%;
+            top: 50%; left: 50%;
             transform: translate(-50%, -50%);
-            width: 20px;
-            height: 20px;
+            z-index: 4;
+        }
+        .marker-dot {
+            width: 16px; height: 16px;
             background: var(--green);
             border-radius: 50%;
+            box-shadow: 0 0 20px var(--green), 0 0 40px var(--green);
+            animation: pulse 2s ease-in-out infinite;
+        }
+        .marker-ring {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 40px; height: 40px;
+            border: 2px solid var(--green);
+            border-radius: 50%;
             opacity: 0;
-            animation: pulsePoint 2s ease-out 1.5s infinite;
-            box-shadow: 0 0 30px var(--green), 0 0 60px var(--green);
+            animation: ripple 2s ease-out infinite;
         }
-
-        @keyframes drawLineH {
-            0% { width: 0; opacity: 0.3; }
-            100% { width: 100%; opacity: 0.3; }
+        .marker-ring:nth-child(2) { animation-delay: 0.5s; }
+        .marker-ring:nth-child(3) { animation-delay: 1s; }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
         }
-        
-        @keyframes drawLineV {
-            0% { height: 0; opacity: 0.3; }
-            100% { height: 100%; opacity: 0.3; }
+        @keyframes ripple {
+            0% { transform: translate(-50%, -50%) scale(1); opacity: 0.6; }
+            100% { transform: translate(-50%, -50%) scale(3); opacity: 0; }
         }
-        
-        @keyframes fadeIn {
-            to { opacity: 1; }
-        }
-        
-        @keyframes fadeInMap {
-            to { opacity: 0.15; }
-        }
-        
-        @keyframes pulsePoint {
-            0%, 100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-            50% { opacity: 0.5; transform: translate(-50%, -50%) scale(1.5); }
-        }
-
-        /* Hero Content */
         .hero-content {
             position: relative;
             z-index: 10;
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 8rem 2rem 4rem;
             text-align: center;
+            padding: 2rem;
         }
-        
-        .hero-logo {
-            width: 120px;
-            height: auto;
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(0, 212, 106, 0.1);
+            border: 1px solid rgba(0, 212, 106, 0.3);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            color: var(--green);
+            font-size: 0.9rem;
             margin-bottom: 2rem;
             opacity: 0;
-            animation: fadeInUp 1s ease-out 2s forwards;
+            animation: fadeInUp 0.8s ease-out 1.5s forwards;
         }
-        
         .hero-title {
-            font-size: 4rem;
+            font-size: 4.5rem;
             font-weight: 900;
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
             opacity: 0;
-            animation: fadeInUp 1s ease-out 2.2s forwards;
+            animation: fadeInUp 0.8s ease-out 1.7s forwards;
+            text-shadow: 0 0 60px rgba(0, 212, 106, 0.3);
         }
-        
         .hero-title span { color: var(--green); }
-        
         .hero-slogan {
-            font-size: 2rem;
+            font-size: 2.2rem;
             color: var(--green);
             font-weight: 700;
             margin-bottom: 1.5rem;
             opacity: 0;
-            animation: fadeInUp 1s ease-out 2.4s forwards;
+            animation: fadeInUp 0.8s ease-out 1.9s forwards;
         }
-        
         .hero-desc {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             color: var(--gray);
-            max-width: 700px;
+            max-width: 600px;
             margin: 0 auto 2.5rem;
             opacity: 0;
-            animation: fadeInUp 1s ease-out 2.6s forwards;
+            animation: fadeInUp 0.8s ease-out 2.1s forwards;
         }
-        
         .hero-buttons {
             display: flex;
             gap: 1rem;
             justify-content: center;
+            flex-wrap: wrap;
             opacity: 0;
-            animation: fadeInUp 1s ease-out 2.8s forwards;
+            animation: fadeInUp 0.8s ease-out 2.3s forwards;
         }
-        
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
         .btn {
             padding: 1rem 2.5rem;
             border-radius: 50px;
@@ -267,53 +253,40 @@
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            font-size: 1.1rem;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
         }
-        
         .btn-primary {
             background: var(--green);
             color: var(--black);
         }
-        
         .btn-primary:hover {
             background: var(--green-light);
             transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(0, 212, 106, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 212, 106, 0.4);
         }
-        
         .btn-outline {
             background: transparent;
             color: var(--white);
             border: 2px solid var(--gray-dark);
         }
-        
         .btn-outline:hover {
             border-color: var(--green);
             color: var(--green);
         }
-        
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Automation Section */
         .automation {
             padding: 8rem 2rem;
-            background: linear-gradient(180deg, var(--black) 0%, #0f1a0f 100%);
+            background: linear-gradient(180deg, var(--black) 0%, var(--black-light) 100%);
             position: relative;
         }
-        
         .automation::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
+            top: 0; left: 0; right: 0;
             height: 1px;
             background: linear-gradient(90deg, transparent, var(--green), transparent);
         }
-        
         .automation-content {
             max-width: 1200px;
             margin: 0 auto;
@@ -322,27 +295,23 @@
             gap: 4rem;
             align-items: center;
         }
-        
         .automation-text h2 {
             font-size: 2.5rem;
             font-weight: 800;
             margin-bottom: 1.5rem;
+            line-height: 1.3;
         }
-        
         .automation-text h2 span { color: var(--green); }
-        
-        .automation-text p {
+        .automation-text > p {
             color: var(--gray);
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             margin-bottom: 2rem;
         }
-        
         .automation-features {
             display: flex;
             flex-direction: column;
             gap: 1rem;
         }
-        
         .auto-feature {
             display: flex;
             align-items: center;
@@ -353,193 +322,152 @@
             border: 1px solid rgba(0, 212, 106, 0.1);
             transition: all 0.3s ease;
         }
-        
         .auto-feature:hover {
             background: rgba(0, 212, 106, 0.1);
             border-color: var(--green);
             transform: translateX(-10px);
         }
-        
         .auto-feature i {
             color: var(--green);
-            font-size: 1.5rem;
-            width: 40px;
+            font-size: 1.3rem;
+            width: 35px;
         }
-        
         .automation-visual {
             display: flex;
             justify-content: center;
             align-items: center;
         }
-        
         .files-animation {
             position: relative;
-            width: 300px;
-            height: 300px;
+            width: 280px;
+            height: 280px;
         }
-        
         .file-icon {
             position: absolute;
-            font-size: 3rem;
-            color: var(--gray);
-            animation: floatFiles 3s ease-in-out infinite;
+            font-size: 2.5rem;
+            animation: floatFile 4s ease-in-out infinite;
+            opacity: 0.5;
         }
-        
-        .file-icon:nth-child(1) { top: 20%; left: 10%; animation-delay: 0s; }
-        .file-icon:nth-child(2) { top: 10%; right: 20%; animation-delay: 0.5s; }
-        .file-icon:nth-child(3) { bottom: 30%; left: 20%; animation-delay: 1s; }
-        .file-icon:nth-child(4) { bottom: 20%; right: 10%; animation-delay: 1.5s; }
-        
-        .central-platform {
+        .file-icon:nth-child(1) { top: 10%; left: 5%; color: #217346; }
+        .file-icon:nth-child(2) { top: 5%; right: 15%; color: #2b579a; animation-delay: 1s; }
+        .file-icon:nth-child(3) { bottom: 25%; left: 10%; color: #d04423; animation-delay: 2s; }
+        .file-icon:nth-child(4) { bottom: 15%; right: 5%; color: #d24726; animation-delay: 3s; }
+        @keyframes floatFile {
+            0%, 100% { transform: translate(0, 0); opacity: 0.5; }
+            50% { transform: translate(5px, -10px); opacity: 0.3; }
+        }
+        .central-hub {
             position: absolute;
-            top: 50%;
-            left: 50%;
+            top: 50%; left: 50%;
             transform: translate(-50%, -50%);
-            width: 100px;
-            height: 100px;
+            width: 90px; height: 90px;
             background: var(--green);
             border-radius: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 0 50px rgba(0, 212, 106, 0.5);
+            box-shadow: 0 0 40px rgba(0, 212, 106, 0.5);
         }
-        
-        .central-platform i {
-            font-size: 2.5rem;
-            color: var(--black);
-        }
-        
-        @keyframes floatFiles {
-            0%, 100% { transform: translate(0, 0) rotate(0deg); opacity: 0.5; }
-            50% { transform: translate(10px, -10px) rotate(5deg); opacity: 0.3; }
-        }
-
-        /* Services Section */
+        .central-hub i { font-size: 2.2rem; color: var(--black); }
         .services {
             padding: 8rem 2rem;
             background: var(--black);
         }
-        
         .section-header {
             text-align: center;
             margin-bottom: 4rem;
         }
-        
         .section-header h2 {
             font-size: 2.5rem;
             font-weight: 800;
             margin-bottom: 1rem;
         }
-        
         .section-header h2 span { color: var(--green); }
-        
         .section-header p {
             color: var(--gray);
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             max-width: 600px;
             margin: 0 auto;
         }
-        
         .services-grid {
             max-width: 1400px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
         }
-        
         .service-card {
             background: rgba(255,255,255,0.02);
             border: 1px solid rgba(255,255,255,0.05);
-            border-radius: 20px;
-            padding: 2.5rem;
+            border-radius: 16px;
+            padding: 2rem;
             transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
         }
-        
         .service-card::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
+            top: 0; left: 0; right: 0;
             height: 3px;
             background: var(--green);
             transform: scaleX(0);
             transition: transform 0.4s ease;
         }
-        
         .service-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--green);
-            box-shadow: 0 20px 40px rgba(0, 212, 106, 0.1);
+            transform: translateY(-5px);
+            border-color: rgba(0, 212, 106, 0.3);
+            box-shadow: 0 15px 30px rgba(0, 212, 106, 0.1);
         }
-        
-        .service-card:hover::before {
-            transform: scaleX(1);
-        }
-        
+        .service-card:hover::before { transform: scaleX(1); }
         .service-icon {
-            width: 70px;
-            height: 70px;
+            width: 60px; height: 60px;
             background: rgba(0, 212, 106, 0.1);
-            border-radius: 16px;
+            border-radius: 14px;
             display: flex;
             align-items: center;
             justify-content: center;
             margin-bottom: 1.5rem;
         }
-        
-        .service-icon i {
-            font-size: 1.8rem;
-            color: var(--green);
-        }
-        
+        .service-icon i { font-size: 1.5rem; color: var(--green); }
         .service-card h3 {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             font-weight: 700;
-            margin-bottom: 1rem;
+            margin-bottom: 0.75rem;
         }
-        
         .service-card p {
             color: var(--gray);
-            font-size: 1rem;
+            font-size: 0.95rem;
+            line-height: 1.7;
         }
-
-        /* How We Work */
+        .coming-soon { color: var(--green); font-size: 0.85rem; font-weight: 600; }
         .how-we-work {
             padding: 8rem 2rem;
             background: linear-gradient(180deg, var(--black) 0%, #050505 100%);
         }
-        
         .steps-container {
-            max-width: 1000px;
+            max-width: 900px;
             margin: 0 auto;
-            position: relative;
         }
-        
-        .steps-line {
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            right: 30px;
-            width: 2px;
-            background: linear-gradient(180deg, var(--green), transparent);
-        }
-        
         .step {
             display: flex;
             align-items: flex-start;
             gap: 2rem;
-            margin-bottom: 3rem;
+            margin-bottom: 2.5rem;
             position: relative;
         }
-        
+        .step::before {
+            content: '';
+            position: absolute;
+            top: 60px;
+            right: 29px;
+            width: 2px;
+            height: calc(100% + 1rem);
+            background: linear-gradient(180deg, var(--green), transparent);
+        }
+        .step:last-child::before { display: none; }
         .step-number {
-            width: 60px;
-            height: 60px;
+            width: 60px; height: 60px;
             background: var(--green);
             border-radius: 50%;
             display: flex;
@@ -549,32 +477,18 @@
             font-weight: 900;
             color: var(--black);
             flex-shrink: 0;
-            position: relative;
-            z-index: 1;
         }
-        
-        .step-content {
-            flex: 1;
-            padding-top: 0.5rem;
-        }
-        
         .step-content h3 {
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             font-weight: 700;
             margin-bottom: 0.5rem;
         }
-        
-        .step-content p {
-            color: var(--gray);
-        }
-
-        /* Footer */
+        .step-content p { color: var(--gray); }
         .footer {
             background: #050505;
             padding: 4rem 2rem 2rem;
             border-top: 1px solid rgba(255,255,255,0.05);
         }
-        
         .footer-content {
             max-width: 1400px;
             margin: 0 auto;
@@ -582,41 +496,26 @@
             grid-template-columns: 2fr 1fr 1fr;
             gap: 4rem;
         }
-        
-        .footer-brand img {
-            height: 50px;
-            margin-bottom: 1rem;
-        }
-        
+        .footer-brand img { height: 45px; margin-bottom: 1rem; }
         .footer-brand p {
             color: var(--gray);
             margin-bottom: 1rem;
+            font-size: 0.95rem;
         }
-        
         .footer-links h4 {
             color: var(--green);
             margin-bottom: 1.5rem;
-            font-size: 1.1rem;
+            font-size: 1rem;
         }
-        
-        .footer-links ul {
-            list-style: none;
-        }
-        
-        .footer-links li {
-            margin-bottom: 0.75rem;
-        }
-        
+        .footer-links ul { list-style: none; }
+        .footer-links li { margin-bottom: 0.75rem; }
         .footer-links a {
             color: var(--gray);
             text-decoration: none;
             transition: color 0.3s ease;
+            font-size: 0.95rem;
         }
-        
-        .footer-links a:hover {
-            color: var(--green);
-        }
-        
+        .footer-links a:hover { color: var(--green); }
         .footer-bottom {
             max-width: 1400px;
             margin: 3rem auto 0;
@@ -626,54 +525,38 @@
             color: var(--gray);
             font-size: 0.9rem;
         }
-
-        /* Chat Bot Widget */
         .chat-widget {
             position: fixed;
             bottom: 30px;
             left: 30px;
             z-index: 1000;
         }
-        
-        .chat-button {
-            width: 60px;
-            height: 60px;
+        .chat-btn {
+            width: 60px; height: 60px;
             background: var(--green);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            box-shadow: 0 5px 30px rgba(0, 212, 106, 0.4);
+            box-shadow: 0 5px 25px rgba(0, 212, 106, 0.4);
             transition: all 0.3s ease;
+            border: none;
         }
-        
-        .chat-button:hover {
-            transform: scale(1.1);
-        }
-        
-        .chat-button i {
-            font-size: 1.5rem;
-            color: var(--black);
-        }
-        
+        .chat-btn:hover { transform: scale(1.1); }
+        .chat-btn i { font-size: 1.5rem; color: var(--black); }
         .chat-popup {
             position: absolute;
             bottom: 80px;
             left: 0;
-            width: 350px;
+            width: 320px;
             background: var(--gray-dark);
-            border-radius: 20px;
+            border-radius: 16px;
             box-shadow: 0 10px 40px rgba(0,0,0,0.5);
             display: none;
             overflow: hidden;
         }
-        
-        .chat-popup.active {
-            display: block;
-            animation: slideUp 0.3s ease-out;
-        }
-        
+        .chat-popup.active { display: block; }
         .chat-header {
             background: var(--green);
             color: var(--black);
@@ -682,11 +565,7 @@
             justify-content: space-between;
             align-items: center;
         }
-        
-        .chat-header h4 {
-            font-weight: 700;
-        }
-        
+        .chat-header h4 { font-weight: 700; }
         .chat-close {
             background: none;
             border: none;
@@ -694,57 +573,36 @@
             font-size: 1.2rem;
             cursor: pointer;
         }
-        
         .chat-body {
             padding: 2rem;
             text-align: center;
         }
-        
-        .chat-body i {
-            font-size: 4rem;
-            color: var(--green);
-            margin-bottom: 1rem;
-        }
-        
-        .chat-body h3 {
-            margin-bottom: 0.5rem;
-        }
-        
-        .chat-body p {
-            color: var(--gray);
-        }
-        
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Responsive */
+        .chat-body i { font-size: 3rem; color: var(--green); margin-bottom: 1rem; }
+        .chat-body h3 { margin-bottom: 0.5rem; font-size: 1.1rem; }
+        .chat-body p { color: var(--gray); font-size: 0.95rem; }
         @media (max-width: 1024px) {
             .hero-title { font-size: 3rem; }
-            .hero-slogan { font-size: 1.5rem; }
+            .hero-slogan { font-size: 1.6rem; }
             .automation-content { grid-template-columns: 1fr; text-align: center; }
-            .automation-visual { order: -1; }
+            .automation-visual { order: -1; margin-bottom: 2rem; }
             .footer-content { grid-template-columns: 1fr; text-align: center; }
         }
-        
         @media (max-width: 768px) {
             .nav-links { display: none; }
-            .hero-title { font-size: 2.2rem; }
+            .hero-title { font-size: 2.5rem; }
+            .hero-slogan { font-size: 1.3rem; }
             .hero-desc { font-size: 1rem; }
             .hero-buttons { flex-direction: column; align-items: center; }
+            .btn { width: 100%; max-width: 280px; justify-content: center; }
             .services-grid { grid-template-columns: 1fr; }
-            .steps-line { display: none; }
+            .saudi-map-container { width: 90%; opacity: 0.15; }
         }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
-            <a href="/" class="logo">
-                <img src="/static/images/24.png" alt="24°45°">
-            </a>
+            <a href="/" class="logo"><img src="/static/images/24.png" alt="24°45°"></a>
             <ul class="nav-links">
                 <li><a href="#services">الخدمات</a></li>
                 <li><a href="#how">كيف نعمل</a></li>
@@ -754,66 +612,49 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <section class="hero">
-        <!-- Grid Lines -->
-        <div class="grid-lines">
-            <div class="grid-line-h lat-24"></div>
-            <div class="grid-line-v lon-45"></div>
-            <span class="coord-label lat">24°</span>
-            <span class="coord-label lon">45°</span>
-            <div class="intersection-point"></div>
+        <div class="saudi-map-container">
+            <img src="/static/images/sa.svg" alt="Saudi Arabia">
         </div>
-        
-        <!-- Saudi Map SVG -->
-        <div class="hero-map">
-            <svg viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M650 150 L700 200 L720 280 L700 350 L650 400 L600 450 L500 480 L400 470 L300 450 L200 400 L150 350 L100 280 L120 200 L180 150 L250 120 L350 100 L450 110 L550 130 Z" 
-                      stroke="#00d46a" stroke-width="2" fill="none" opacity="0.5"/>
-            </svg>
+        <div class="coordinate-grid">
+            <div class="grid-line grid-h"></div>
+            <div class="grid-line grid-v"></div>
         </div>
-        
+        <div class="coord-labels">
+            <span class="coord-label label-24">24°</span>
+            <span class="coord-label label-45">45°</span>
+        </div>
+        <div class="intersection-marker">
+            <div class="marker-ring"></div>
+            <div class="marker-ring"></div>
+            <div class="marker-ring"></div>
+            <div class="marker-dot"></div>
+        </div>
         <div class="hero-content">
-            <img src="/static/images/24.png" alt="24°45°" class="hero-logo">
+            <div class="hero-badge">
+                <i class="fas fa-map-marker-alt"></i>
+                إحداثيات المملكة العربية السعودية
+            </div>
             <h1 class="hero-title">منصة <span>24°45°</span></h1>
             <p class="hero-slogan">نضبط إحداثياتك</p>
             <p class="hero-desc">منصة إدارة العمليات الاتصالية مؤتمتة بدون ملفات - من الفكرة إلى التنفيذ في مكان واحد</p>
             <div class="hero-buttons">
-                <a href="/login" class="btn btn-primary">
-                    <i class="fas fa-rocket"></i>
-                    ابدأ الآن
-                </a>
-                <a href="#services" class="btn btn-outline">
-                    <i class="fas fa-compass"></i>
-                    اكتشف خدماتنا
-                </a>
+                <a href="/login" class="btn btn-primary"><i class="fas fa-rocket"></i> ابدأ الآن</a>
+                <a href="#services" class="btn btn-outline"><i class="fas fa-compass"></i> اكتشف خدماتنا</a>
             </div>
         </div>
     </section>
 
-    <!-- Automation Section -->
     <section class="automation">
         <div class="automation-content">
             <div class="automation-text">
                 <h2>وداعاً للملفات المتناثرة<br><span>مرحباً بالأتمتة</span></h2>
-                <p>منصتنا صُممت لتوحيد جميع عملياتك الاتصالية في مكان واحد، بدون ملفات Excel أو Word أو PDF متناثرة</p>
+                <p>منصتنا صُممت لتوحيد جميع عملياتك الاتصالية في مكان واحد</p>
                 <div class="automation-features">
-                    <div class="auto-feature">
-                        <i class="fas fa-cloud-upload-alt"></i>
-                        <span>كل شيء في السحابة - الوصول من أي مكان</span>
-                    </div>
-                    <div class="auto-feature">
-                        <i class="fas fa-users-cog"></i>
-                        <span>فريق واحد - منصة واحدة - رؤية موحدة</span>
-                    </div>
-                    <div class="auto-feature">
-                        <i class="fas fa-sync-alt"></i>
-                        <span>تحديثات لحظية - بدون إرسال ملفات</span>
-                    </div>
-                    <div class="auto-feature">
-                        <i class="fas fa-chart-pie"></i>
-                        <span>تقارير تفاعلية تُنشأ تلقائياً</span>
-                    </div>
+                    <div class="auto-feature"><i class="fas fa-cloud"></i><span>كل شيء في السحابة</span></div>
+                    <div class="auto-feature"><i class="fas fa-users"></i><span>فريق واحد - منصة واحدة</span></div>
+                    <div class="auto-feature"><i class="fas fa-sync"></i><span>تحديثات لحظية</span></div>
+                    <div class="auto-feature"><i class="fas fa-chart-bar"></i><span>تقارير تلقائية</span></div>
                 </div>
             </div>
             <div class="automation-visual">
@@ -822,109 +663,44 @@
                     <i class="fas fa-file-word file-icon"></i>
                     <i class="fas fa-file-pdf file-icon"></i>
                     <i class="fas fa-file-powerpoint file-icon"></i>
-                    <div class="central-platform">
-                        <i class="fas fa-layer-group"></i>
-                    </div>
+                    <div class="central-hub"><i class="fas fa-layer-group"></i></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Services Section -->
     <section class="services" id="services">
         <div class="section-header">
             <h2>خدماتنا <span>المتكاملة</span></h2>
-            <p>حلول شاملة لإدارة العمليات الاتصالية من الألف إلى الياء</p>
+            <p>حلول شاملة لإدارة العمليات الاتصالية</p>
         </div>
         <div class="services-grid">
-            <div class="service-card">
-                <div class="service-icon"><i class="fas fa-database"></i></div>
-                <h3>تجريف البيانات</h3>
-                <p>جمع وتحليل البيانات من مصادر متعددة بدقة عالية لدعم قراراتك الاتصالية</p>
-            </div>
-            <div class="service-card">
-                <div class="service-icon"><i class="fas fa-microscope"></i></div>
-                <h3>تحليل المضمون الإعلامي</h3>
-                <p>تحليل عميق للمحتوى الإعلامي واستخراج الرؤى والأنماط والتوجهات</p>
-            </div>
-            <div class="service-card">
-                <div class="service-icon"><i class="fas fa-compass"></i></div>
-                <h3>ضبط الإحداثيات الإعلامية</h3>
-                <p>بناء الاستراتيجيات الاتصالية للإعلام والعلاقات العامة بدقة متناهية</p>
-            </div>
-            <div class="service-card">
-                <div class="service-icon"><i class="fas fa-sitemap"></i></div>
-                <h3>بناء الخطط الاتصالية</h3>
-                <p>خطط اتصالية متكاملة من التخطيط إلى التنفيذ والمتابعة والتقييم</p>
-            </div>
-            <div class="service-card">
-                <div class="service-icon"><i class="fas fa-robot"></i></div>
-                <h3>الأتمتة الاتصالية</h3>
-                <p>تحويل العمليات اليدوية لعمليات آلية توفر الوقت وتقلل الأخطاء</p>
-            </div>
-            <div class="service-card">
-                <div class="service-icon"><i class="fas fa-tasks"></i></div>
-                <h3>إدارة المشاريع</h3>
-                <p>إدارة مشاريعك الاتصالية بكفاءة من الفكرة إلى التسليم النهائي</p>
-            </div>
-            <div class="service-card">
-                <div class="service-icon"><i class="fas fa-chart-line"></i></div>
-                <h3>التقارير التفاعلية</h3>
-                <p>لوحات معلومات ذكية وتقارير تفاعلية تُحدّث لحظياً</p>
-            </div>
-            <div class="service-card">
-                <div class="service-icon"><i class="fas fa-broadcast-tower"></i></div>
-                <h3>المرصد الإعلامي</h3>
-                <p>قاعدة بيانات شاملة للمؤثرين والصحف والقنوات لاختيار الأنسب لحملتك <span style="color: var(--green);">(قريباً)</span></p>
-            </div>
+            <div class="service-card"><div class="service-icon"><i class="fas fa-database"></i></div><h3>تجريف البيانات</h3><p>جمع وتحليل البيانات بدقة عالية</p></div>
+            <div class="service-card"><div class="service-icon"><i class="fas fa-microscope"></i></div><h3>تحليل المضمون</h3><p>تحليل عميق للمحتوى الإعلامي</p></div>
+            <div class="service-card"><div class="service-icon"><i class="fas fa-compass"></i></div><h3>ضبط الإحداثيات</h3><p>بناء الاستراتيجيات الاتصالية</p></div>
+            <div class="service-card"><div class="service-icon"><i class="fas fa-sitemap"></i></div><h3>الخطط الاتصالية</h3><p>خطط متكاملة من التخطيط للتقييم</p></div>
+            <div class="service-card"><div class="service-icon"><i class="fas fa-robot"></i></div><h3>الأتمتة الاتصالية</h3><p>تحويل العمليات لآلية فعالة</p></div>
+            <div class="service-card"><div class="service-icon"><i class="fas fa-tasks"></i></div><h3>إدارة المشاريع</h3><p>من الفكرة إلى التسليم</p></div>
+            <div class="service-card"><div class="service-icon"><i class="fas fa-chart-line"></i></div><h3>التقارير التفاعلية</h3><p>لوحات معلومات ذكية</p></div>
+            <div class="service-card"><div class="service-icon"><i class="fas fa-address-book"></i></div><h3>دليل القنوات الاتصالية</h3><p>قاعدة بيانات للمؤثرين والصحف والقنوات والإذاعات وكتّاب الرأي <span class="coming-soon">(قريباً)</span></p></div>
         </div>
     </section>
 
-    <!-- How We Work -->
     <section class="how-we-work" id="how">
-        <div class="section-header">
-            <h2>كيف <span>نعمل</span></h2>
-            <p>رحلة سلسة من الفكرة إلى النتائج</p>
-        </div>
+        <div class="section-header"><h2>كيف <span>نعمل</span></h2><p>رحلة سلسة من الفكرة إلى النتائج</p></div>
         <div class="steps-container">
-            <div class="steps-line"></div>
-            <div class="step">
-                <div class="step-number">1</div>
-                <div class="step-content">
-                    <h3>التحليل والفهم</h3>
-                    <p>نبدأ بفهم احتياجاتك وأهدافك الاتصالية بدقة</p>
-                </div>
-            </div>
-            <div class="step">
-                <div class="step-number">2</div>
-                <div class="step-content">
-                    <h3>ضبط الإحداثيات</h3>
-                    <p>نحدد الاستراتيجية المثلى ونرسم خارطة الطريق</p>
-                </div>
-            </div>
-            <div class="step">
-                <div class="step-number">3</div>
-                <div class="step-content">
-                    <h3>التنفيذ والأتمتة</h3>
-                    <p>ننفذ الخطة على المنصة مع أتمتة كاملة للعمليات</p>
-                </div>
-            </div>
-            <div class="step">
-                <div class="step-number">4</div>
-                <div class="step-content">
-                    <h3>المتابعة والتقييم</h3>
-                    <p>تقارير لحظية وتحسين مستمر لتحقيق أفضل النتائج</p>
-                </div>
-            </div>
+            <div class="step"><div class="step-number">1</div><div class="step-content"><h3>التحليل والفهم</h3><p>نفهم احتياجاتك بدقة</p></div></div>
+            <div class="step"><div class="step-number">2</div><div class="step-content"><h3>ضبط الإحداثيات</h3><p>نحدد الاستراتيجية المثلى</p></div></div>
+            <div class="step"><div class="step-number">3</div><div class="step-content"><h3>التنفيذ والأتمتة</h3><p>ننفذ مع أتمتة كاملة</p></div></div>
+            <div class="step"><div class="step-number">4</div><div class="step-content"><h3>المتابعة والتقييم</h3><p>تقارير وتحسين مستمر</p></div></div>
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="footer">
         <div class="footer-content">
             <div class="footer-brand">
                 <img src="/static/images/24.png" alt="24°45°">
-                <p>منصة إدارة العمليات الاتصالية مؤتمتة بدون ملفات</p>
+                <p>منصة إدارة العمليات الاتصالية مؤتمتة</p>
                 <p><i class="fas fa-map-marker-alt" style="color: var(--green);"></i> المملكة العربية السعودية</p>
             </div>
             <div class="footer-links">
@@ -938,58 +714,19 @@
             </div>
             <div class="footer-links">
                 <h4>تواصل معنا</h4>
-                <ul>
-                    <li><a href="mailto:info@24-45.com"><i class="fas fa-envelope"></i> info@24-45.com</a></li>
-                </ul>
+                <ul><li><a href="mailto:info@24-45.com"><i class="fas fa-envelope"></i> info@24-45.com</a></li></ul>
             </div>
         </div>
-        <div class="footer-bottom">
-            <p>© 2025 منصة 24°45° - جميع الحقوق محفوظة | نضبط إحداثياتك</p>
-        </div>
+        <div class="footer-bottom"><p>© 2025 منصة 24°45° - جميع الحقوق محفوظة | نضبط إحداثياتك</p></div>
     </footer>
 
-    <!-- Chat Widget -->
     <div class="chat-widget">
-        <div class="chat-button" onclick="toggleChat()">
-            <i class="fas fa-comments"></i>
-        </div>
+        <button class="chat-btn" onclick="toggleChat()"><i class="fas fa-comments"></i></button>
         <div class="chat-popup" id="chatPopup">
-            <div class="chat-header">
-                <h4>مرحباً بك 👋</h4>
-                <button class="chat-close" onclick="toggleChat()"><i class="fas fa-times"></i></button>
-            </div>
-            <div class="chat-body">
-                <i class="fas fa-robot"></i>
-                <h3>سأكون جاهزاً قريباً!</h3>
-                <p>نعمل على تطوير خدمة الدردشة الذكية لمساعدتك. تابعنا!</p>
-            </div>
+            <div class="chat-header"><h4>مرحباً 👋</h4><button class="chat-close" onclick="toggleChat()"><i class="fas fa-times"></i></button></div>
+            <div class="chat-body"><i class="fas fa-robot"></i><h3>سأكون جاهزاً قريباً!</h3><p>نعمل على تطوير الدردشة</p></div>
         </div>
     </div>
-
-    <script>
-        function toggleChat() {
-            document.getElementById('chatPopup').classList.toggle('active');
-        }
-        
-        // Navbar scroll
-        window.addEventListener('scroll', function() {
-            const navbar = document.querySelector('.navbar');
-            if (window.scrollY > 50) {
-                navbar.style.background = 'rgba(10, 10, 10, 0.98)';
-            } else {
-                navbar.style.background = 'rgba(10, 10, 10, 0.95)';
-            }
-        });
-        
-        // Smooth scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-    </script>
+    <script>function toggleChat() { document.getElementById('chatPopup').classList.toggle('active'); }</script>
 </body>
 </html>
