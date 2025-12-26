@@ -353,6 +353,11 @@ def tenant_home(tenant_slug):
     
     data = load_tenant_projects(tenant_slug)
     config = load_tenant_config(tenant_slug)
+    
+    # إذا كان config فارغ، نستخدم بيانات الشركة من ملف المشاريع
+    if not config and 'company' in data:
+        config = data
+    
     template = get_tenant_template(tenant_slug, 'index.html')
     return render_template(template, 
                          tenant=tenant,
