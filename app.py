@@ -170,14 +170,7 @@ def favicon():
 @app.route('/')
 def platform_home():
     """الصفحة الرئيسية للمنصة"""
-    # إذا المستخدم مسجل دخول، وجهه لعميله
-    if 'user_id' in session:
-        default_tenant = session.get('default_tenant')
-        if default_tenant:
-            return redirect(url_for('tenant_home', tenant_slug=default_tenant))
-        # إذا أدمن، اعرض لوحة التحكم
-        if is_admin():
-            return redirect(url_for('admin_dashboard'))
+    # عرض الصفحة الرئيسية للجميع (مسجل أو غير مسجل)
     
     config = load_platform_config()
     return render_template('platform/index.html', platform=config.get('platform', {}))
