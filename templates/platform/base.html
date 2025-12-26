@@ -111,6 +111,24 @@
             color: var(--primary-color);
         }
         
+        .nav .btn-logout {
+            background: #dc3545;
+            color: white;
+            padding: 10px 25px;
+            border-radius: 25px;
+            transition: background 0.3s;
+        }
+        
+        .nav .btn-logout:hover {
+            background: #c82333;
+            color: white;
+        }
+        
+        .user-name {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+        
         /* Main Content */
         main {
             flex: 1;
@@ -217,7 +235,15 @@
             <nav class="nav">
                 <a href="/">الرئيسية</a>
                 <a href="/about">عن المنصة</a>
-                <a href="/login" class="btn-login">تسجيل الدخول</a>
+                {% if session.user_id %}
+                    {% if session.role == 'admin' %}
+                    <a href="/admin">لوحة التحكم</a>
+                    {% endif %}
+                    <span class="user-name">👤 {{ session.user_name }}</span>
+                    <a href="/logout" class="btn-logout">تسجيل الخروج</a>
+                {% else %}
+                    <a href="/login" class="btn-login">تسجيل الدخول</a>
+                {% endif %}
             </nav>
         </div>
     </header>
