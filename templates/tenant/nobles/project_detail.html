@@ -251,8 +251,8 @@ document.addEventListener('DOMContentLoaded', function() {
             thumbnails.forEach(t => t.classList.remove('active'));
             this.classList.add('active');
             mainImage.src = this.dataset.image;
-        })();
-    })();
+        });
+    });
     
     // Initialize progress chart if data exists
     {% if project.monthly_progress %}
@@ -293,7 +293,7 @@ if (bypassCode === 'nobles2025') {
         } else {
             window.location.href = '/login?redirect=' + encodeURIComponent(window.location.pathname);
         }
-    })();
+    });
 }
 </script>
 </div>
