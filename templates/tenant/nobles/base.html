@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="{% block meta_description %}نوبلز العقارية - شركة تطوير عقاري عالمية{% endblock %}">
-    <meta name="keywords" content="نوبلز، عقارات، تطوير عقاري، الأردن، دبي، مشاريع سكنية">
-    <meta name="author" content="Nobles Properties">
+    <meta name="description" content="{% block meta_description %}نوبلز العقارية - بوابة على منصة 24°45°{% endblock %}">
+    <meta name="keywords" content="نوبلز، عقارات، تطوير عقاري، الأردن، دبي، مشاريع سكنية، 24-45">
+    <meta name="author" content="24°45° Platform">
     
-    <title>{% block title %}نوبلز العقارية{% endblock %}</title>
+    <title>{% block title %}نوبلز العقارية | 24°45°{% endblock %}</title>
     
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='images/tenants/nobles/favicon.svg') }}">
@@ -28,12 +28,159 @@
     
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/tenants/nobles/main.css') }}">
+    
+    <!-- Platform Base Styles -->
+    <style>
+    /* Platform Banner */
+    .platform-banner {
+        background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+        padding: 12px 0;
+        border-bottom: 2px solid #00D46A;
+    }
+    .platform-banner .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .platform-logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: #fff;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 1.1rem;
+    }
+    .platform-logo span {
+        color: #00D46A;
+    }
+    .platform-tagline {
+        color: #888;
+        font-size: 0.85rem;
+    }
+    .back-to-platform {
+        color: #00D46A;
+        text-decoration: none;
+        font-size: 0.9rem;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        transition: all 0.3s;
+    }
+    .back-to-platform:hover {
+        color: #fff;
+    }
+    
+    /* Platform Footer */
+    .platform-footer {
+        background: #000;
+        padding: 40px 0 20px;
+        border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    .platform-footer .footer-brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 15px;
+    }
+    .platform-footer .footer-brand span {
+        color: #00D46A;
+        font-size: 1.5rem;
+        font-weight: 800;
+    }
+    .platform-footer .footer-brand small {
+        color: #888;
+        font-size: 0.9rem;
+    }
+    .platform-footer .footer-desc {
+        color: #666;
+        font-size: 0.9rem;
+        max-width: 300px;
+    }
+    .platform-footer h5 {
+        color: #fff;
+        font-size: 1rem;
+        font-weight: 700;
+        margin-bottom: 15px;
+    }
+    .platform-footer .footer-links {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    .platform-footer .footer-links li {
+        margin-bottom: 8px;
+    }
+    .platform-footer .footer-links a {
+        color: #888;
+        text-decoration: none;
+        font-size: 0.9rem;
+        transition: color 0.3s;
+    }
+    .platform-footer .footer-links a:hover {
+        color: #00D46A;
+    }
+    .platform-footer .footer-contact li {
+        color: #888;
+        font-size: 0.9rem;
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    .platform-footer .footer-contact i {
+        color: #00D46A;
+        width: 16px;
+    }
+    .platform-footer .footer-bottom {
+        border-top: 1px solid rgba(255,255,255,0.1);
+        padding-top: 20px;
+        margin-top: 30px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    .platform-footer .footer-bottom p {
+        color: #666;
+        font-size: 0.85rem;
+        margin: 0;
+    }
+    .platform-footer .footer-bottom .portal-info {
+        color: #888;
+        font-size: 0.85rem;
+    }
+    .platform-footer .footer-bottom .portal-info span {
+        color: #00D46A;
+    }
+    
+    /* Hide old footer class */
+    footer.footer:not(.platform-footer) {
+        display: none !important;
+    }
+    </style>
+    
     {% block extra_css %}{% endblock %}
     
     <!-- Print CSS -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/tenants/nobles/print.css') }}" media="print">
 </head>
 <body>
+    <!-- Platform Banner -->
+    <div class="platform-banner">
+        <div class="container">
+            <a href="/" class="platform-logo">
+                <span>24°45°</span> منصة
+                <span class="platform-tagline">| نضبط إحداثياتك</span>
+            </a>
+            <a href="/" class="back-to-platform">
+                <i class="fas fa-arrow-right"></i>
+                العودة للمنصة
+            </a>
+        </div>
+    </div>
+
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
         <div class="container">
@@ -70,7 +217,6 @@
                             <i class="fas fa-external-link-alt"></i> الموقع الرسمي
                         </a>
                     </li>
-                    <!-- زر تسجيل الخروج -->
                     {% if session.get('user_id') %}
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url_for('logout') }}">
@@ -88,39 +234,44 @@
         {% block content %}{% endblock %}
     </main>
 
-    <!-- Footer -->
-    <footer class="footer">
+    <!-- Platform Footer -->
+    <footer class="platform-footer">
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 mb-4">
-                    <img src="{{ url_for('static', filename='images/tenants/nobles/logo.svg') }}" alt="نوبلز العقارية" height="50" class="mb-3">
-                    <p class="text-muted">شركة تطوير عقاري عالمية تأسست في دبي عام 2008، نبتكر مفاهيم غير مسبوقة في صناعة العقار.</p>
+                    <div class="footer-brand">
+                        <span>24°45°</span>
+                        <small>منصة | نضبط إحداثياتك</small>
+                    </div>
+                    <p class="footer-desc">منصة متكاملة لخدمات التسويق والاتصال الاستراتيجي للشركات والمؤسسات.</p>
                 </div>
-                <div class="col-lg-4 mb-4">
+                <div class="col-lg-2 col-md-4 mb-4">
                     <h5>روابط سريعة</h5>
-                    <ul class="list-unstyled">
-                        <li><a href="{{ url_for('tenant_home', tenant_slug='nobles') }}">الرئيسية</a></li>
-                        <li><a href="{{ url_for('tenant_projects', tenant_slug='nobles') }}">المشاريع</a></li>
-                        <li><a href="{{ url_for('tenant_about', tenant_slug='nobles') }}">من نحن</a></li>
+                    <ul class="footer-links">
+                        <li><a href="/">الرئيسية</a></li>
+                        <li><a href="/#services">خدماتنا</a></li>
+                        <li><a href="/#clients">عملاؤنا</a></li>
                     </ul>
                 </div>
-                <div class="col-lg-4 mb-4">
+                <div class="col-lg-3 col-md-4 mb-4">
+                    <h5>بوابة نوبلز</h5>
+                    <ul class="footer-links">
+                        <li><a href="{{ url_for('tenant_home', tenant_slug='nobles') }}">الرئيسية</a></li>
+                        <li><a href="{{ url_for('tenant_projects', tenant_slug='nobles') }}">المشاريع</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-4 mb-4">
                     <h5>تواصل معنا</h5>
-                    <ul class="list-unstyled">
-                        <li><i class="fas fa-envelope me-2"></i> info@noblesproperties.com</li>
-                        <li><i class="fas fa-globe me-2"></i> <a href="https://noblesproperties.com" target="_blank">noblesproperties.com</a></li>
+                    <ul class="footer-links footer-contact">
+                        <li><i class="fas fa-envelope"></i> info@24-45.com</li>
+                        <li><i class="fas fa-headset"></i> support@24-45.com</li>
                     </ul>
                 </div>
             </div>
-            <hr>
-            <div class="row">
-                <div class="col-md-6">
-                    <p class="mb-0 text-muted">&copy; 2025 نوبلز العقارية. جميع الحقوق محفوظة.</p>
-                </div>
-                <div class="col-md-6 text-md-end">
-                    <a href="https://www.24-45.com" target="_blank" class="text-muted">
-                        <img src="{{ url_for('static', filename='images/tenants/nobles/Logo-Turjuman1.png') }}" alt="ترجمان" style="height: 30px; filter: brightness(1.1);">
-                    </a>
+            <div class="footer-bottom">
+                <p>© 2025 منصة 24°45° - جميع الحقوق محفوظة</p>
+                <div class="portal-info">
+                    بوابة: <span>نوبلز العقارية</span>
                 </div>
             </div>
         </div>
