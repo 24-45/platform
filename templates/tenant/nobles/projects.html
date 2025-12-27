@@ -63,7 +63,7 @@
                         {% endif %}
                         <div class="project-overlay">
                             {% if project.active %}
-                            <a href="{{ url_for('tenant_project_report', tenant_slug='nobles', slug=project.slug) }}" class="btn btn-light">
+                            <a href="{{ url_for('tenant_project_report', tenant_slug='nobles', project_slug=project.slug) }}" class="btn btn-light">
                                 <i class="fas fa-bullhorn"></i> خطة الاتصال
                             </a>
                             {% endif %}
@@ -79,7 +79,7 @@
                         </div>
                         {% if project.active %}
                         <div class="project-actions">
-                            <a href="{{ url_for('tenant_project_report', tenant_slug='nobles', slug=project.slug) }}" class="btn btn-primary btn-sm">
+                            <a href="{{ url_for('tenant_project_report', tenant_slug='nobles', project_slug=project.slug) }}" class="btn btn-primary btn-sm">
                                 <i class="fas fa-bullhorn"></i> خطة الاتصال
                             </a>
                         </div>
