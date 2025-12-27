@@ -251,8 +251,8 @@ document.addEventListener('DOMContentLoaded', function() {
             thumbnails.forEach(t => t.classList.remove('active'));
             this.classList.add('active');
             mainImage.src = this.dataset.image;
-        });
-    });
+        })();
+    })();
     
     // Initialize progress chart if data exists
     {% if project.monthly_progress %}
@@ -281,7 +281,9 @@ if (bypassCode === 'nobles2025') {
     document.getElementById('authLoading').style.display = 'none';
     document.getElementById('pageContent').classList.add('visible');
 } else {
-    auth.onAuthStateChanged((user) => {
+    // Auth handled by platform
+    (function() { var user = true; // Platform handles auth
+        
         const authLoading = document.getElementById('authLoading');
         const pageContent = document.getElementById('pageContent');
         
@@ -291,7 +293,7 @@ if (bypassCode === 'nobles2025') {
         } else {
             window.location.href = '/login?redirect=' + encodeURIComponent(window.location.pathname);
         }
-    });
+    })();
 }
 </script>
 </div>
