@@ -26,9 +26,6 @@
     font-weight: 700;
     font-size: 1.1rem;
 }
-.platform-logo img {
-    height: 30px;
-}
 .platform-logo span {
     color: #00D46A;
 }
@@ -107,84 +104,11 @@
     margin: 20px 0 30px;
     line-height: 1.8;
 }
-.service-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.1);
-    color: #fff;
-    padding: 6px 14px;
-    border-radius: 20px;
-    font-size: 0.85rem;
-    margin: 5px;
-}
-.service-badge i {
-    color: #00D46A;
-}
-
-/* Services Section */
-.services-section {
-    background: #f8f9fa;
-    padding: 80px 0;
-}
-.services-section .section-header {
-    text-align: center;
-    margin-bottom: 50px;
-}
-.services-section .section-title {
-    font-size: 2rem;
-    font-weight: 800;
-    color: #1a1a1a;
-    margin-bottom: 15px;
-}
-.services-section .section-subtitle {
-    color: #666;
-    font-size: 1.1rem;
-}
-.service-card {
-    background: #fff;
-    border-radius: 16px;
-    padding: 30px;
-    height: 100%;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-    border: 1px solid #eee;
-    transition: all 0.3s;
-}
-.service-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 40px rgba(0,0,0,0.1);
-    border-color: #00D46A;
-}
-.service-icon {
-    width: 60px;
-    height: 60px;
-    background: linear-gradient(135deg, #00D46A 0%, #00a854 100%);
-    border-radius: 14px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 20px;
-}
-.service-icon i {
-    font-size: 1.5rem;
-    color: #fff;
-}
-.service-card h4 {
-    font-weight: 700;
-    color: #1a1a1a;
-    margin-bottom: 10px;
-}
-.service-card p {
-    color: #666;
-    font-size: 0.95rem;
-    margin: 0;
-}
 
 /* Projects Section */
 .projects-section {
     padding: 80px 0;
-    background: #fff;
+    background: #f8f9fa;
 }
 .projects-section .section-header {
     display: flex;
@@ -266,38 +190,153 @@
     color: #00D46A;
 }
 
-/* CTA Section */
-.cta-section {
+/* Support Section */
+.support-section {
     background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
-    padding: 60px 0;
+    padding: 50px 0;
+}
+.support-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 16px;
+    padding: 40px;
     text-align: center;
 }
-.cta-section h3 {
-    color: #fff;
+.support-icon {
+    width: 70px;
+    height: 70px;
+    background: rgba(0, 212, 106, 0.1);
+    border: 2px solid rgba(0, 212, 106, 0.3);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+}
+.support-icon i {
     font-size: 1.8rem;
-    font-weight: 700;
-    margin-bottom: 15px;
+    color: #00D46A;
 }
-.cta-section p {
+.support-card h3 {
+    color: #fff;
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+.support-card p {
     color: #888;
-    margin-bottom: 30px;
+    font-size: 0.95rem;
+    margin-bottom: 20px;
 }
-.btn-platform {
-    background: #00D46A;
-    color: #000;
-    font-weight: 700;
-    padding: 14px 30px;
-    border-radius: 8px;
-    text-decoration: none;
+.support-btn {
     display: inline-flex;
     align-items: center;
     gap: 8px;
+    padding: 12px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
     transition: all 0.3s;
 }
-.btn-platform:hover {
+.btn-support-primary {
+    background: #00D46A;
+    color: #000;
+}
+.btn-support-primary:hover {
     background: #00a854;
     color: #000;
     transform: translateY(-2px);
+}
+.btn-support-outline {
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.2);
+    color: #fff;
+}
+.btn-support-outline:hover {
+    border-color: #00D46A;
+    color: #00D46A;
+}
+
+/* Platform Footer Override */
+.platform-footer {
+    background: #000;
+    padding: 40px 0 20px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
+.platform-footer .footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+.platform-footer .footer-brand span {
+    color: #00D46A;
+    font-size: 1.5rem;
+    font-weight: 800;
+}
+.platform-footer .footer-brand small {
+    color: #888;
+    font-size: 0.9rem;
+}
+.platform-footer .footer-desc {
+    color: #666;
+    font-size: 0.9rem;
+    max-width: 300px;
+}
+.platform-footer h5 {
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+.platform-footer .footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.platform-footer .footer-links li {
+    margin-bottom: 8px;
+}
+.platform-footer .footer-links a {
+    color: #888;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s;
+}
+.platform-footer .footer-links a:hover {
+    color: #00D46A;
+}
+.platform-footer .footer-contact li {
+    color: #888;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.platform-footer .footer-contact i {
+    color: #00D46A;
+    width: 16px;
+}
+.platform-footer .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 20px;
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.platform-footer .footer-bottom p {
+    color: #666;
+    font-size: 0.85rem;
+    margin: 0;
+}
+.platform-footer .footer-bottom .client-info {
+    color: #888;
+    font-size: 0.85rem;
+}
+.platform-footer .footer-bottom .client-info span {
+    color: #00D46A;
 }
 </style>
 {% endblock %}
@@ -338,85 +377,12 @@
                 <p class="client-description">
                     شركة تطوير عقاري عالمية تأسست في دبي عام 2008. نقدم لها خدمات التسويق والاتصال الاستراتيجي لمشاريعها في الأردن.
                 </p>
-                
-                <div class="service-badges">
-                    <span class="service-badge"><i class="fas fa-bullhorn"></i> خطط الاتصال</span>
-                    <span class="service-badge"><i class="fas fa-chart-line"></i> التسويق الرقمي</span>
-                    <span class="service-badge"><i class="fas fa-tasks"></i> إدارة الحملات</span>
-                </div>
             </div>
             <div class="col-lg-5 text-center">
                 <img src="{{ url_for('static', filename='images/tenants/nobles/nnnn.jpg') }}" 
                      alt="نوبلز العقارية"
                      style="max-width: 100%; border-radius: 20px; box-shadow: 0 20px 60px rgba(0,0,0,0.3);"
                      onerror="this.style.display='none'">
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Services We Provide -->
-<section class="services-section">
-    <div class="container">
-        <div class="section-header">
-            <h2 class="section-title">الخدمات المقدمة</h2>
-            <p class="section-subtitle">نقدم لنوبلز العقارية مجموعة متكاملة من خدمات التسويق والاتصال</p>
-        </div>
-        
-        <div class="row g-4">
-            <div class="col-lg-4 col-md-6">
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-bullhorn"></i>
-                    </div>
-                    <h4>خطط الاتصال</h4>
-                    <p>إعداد خطط اتصال شاملة لكل مشروع تشمل الرسائل الرئيسية والجمهور المستهدف وقنوات التواصل</p>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-chart-bar"></i>
-                    </div>
-                    <h4>تحليل المنافسين</h4>
-                    <p>دراسة وتحليل السوق والمنافسين لتحديد نقاط القوة والفرص التنافسية</p>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-tasks"></i>
-                    </div>
-                    <h4>إدارة الحملات</h4>
-                    <p>تخطيط وتنفيذ ومتابعة الحملات التسويقية بمراحلها المختلفة</p>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-file-alt"></i>
-                    </div>
-                    <h4>المحتوى الإبداعي</h4>
-                    <p>كتابة وإنتاج المحتوى التسويقي المناسب لكل قناة ومنصة</p>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <h4>العلاقات العامة</h4>
-                    <p>بناء وإدارة العلاقات مع وسائل الإعلام والمؤثرين</p>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-tachometer-alt"></i>
-                    </div>
-                    <h4>المتابعة والتقييم</h4>
-                    <p>قياس أداء الحملات وتقديم تقارير دورية مع توصيات التحسين</p>
-                </div>
             </div>
         </div>
     </div>
@@ -466,15 +432,80 @@
     </div>
 </section>
 
-<!-- CTA Section -->
-<section class="cta-section">
+<!-- Support Section -->
+<section class="support-section">
     <div class="container">
-        <h3>هل تريد خدمات مشابهة لشركتك؟</h3>
-        <p>انضم لمنصة 24°45° واحصل على خدمات التسويق والاتصال المتكاملة</p>
-        <a href="/" class="btn-platform">
-            <i class="fas fa-rocket"></i>
-            تعرف على منصة 24°45°
-        </a>
+        <div class="row justify-content-center g-4">
+            <div class="col-lg-4 col-md-6">
+                <div class="support-card">
+                    <div class="support-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>الدعم الفني</h3>
+                    <p>هل تواجه مشكلة تقنية؟ فريق الدعم جاهز لمساعدتك</p>
+                    <a href="mailto:support@24-45.com" class="support-btn btn-support-primary">
+                        <i class="fas fa-envelope"></i>
+                        تواصل معنا
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="support-card">
+                    <div class="support-icon">
+                        <i class="fas fa-question-circle"></i>
+                    </div>
+                    <h3>استفسارات عامة</h3>
+                    <p>لديك سؤال أو اقتراح؟ نسعد بسماع رأيك</p>
+                    <a href="mailto:info@24-45.com" class="support-btn btn-support-outline">
+                        <i class="fas fa-paper-plane"></i>
+                        إرسال استفسار
+                    </a>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
+
+<!-- Platform Footer -->
+<footer class="platform-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 mb-4">
+                <div class="footer-brand">
+                    <span>24°45°</span>
+                    <small>منصة | نضبط إحداثياتك</small>
+                </div>
+                <p class="footer-desc">منصة متكاملة لخدمات التسويق والاتصال الاستراتيجي للشركات والمؤسسات.</p>
+            </div>
+            <div class="col-lg-2 col-md-4 mb-4">
+                <h5>روابط سريعة</h5>
+                <ul class="footer-links">
+                    <li><a href="/">الرئيسية</a></li>
+                    <li><a href="/#services">خدماتنا</a></li>
+                    <li><a href="/#clients">عملاؤنا</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-3 col-md-4 mb-4">
+                <h5>صفحة العميل</h5>
+                <ul class="footer-links">
+                    <li><a href="{{ url_for('tenant_home', tenant_slug='nobles') }}">نوبلز - الرئيسية</a></li>
+                    <li><a href="{{ url_for('tenant_projects', tenant_slug='nobles') }}">المشاريع</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-3 col-md-4 mb-4">
+                <h5>تواصل معنا</h5>
+                <ul class="footer-links footer-contact">
+                    <li><i class="fas fa-envelope"></i> info@24-45.com</li>
+                    <li><i class="fas fa-headset"></i> support@24-45.com</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 منصة 24°45° - جميع الحقوق محفوظة</p>
+            <div class="client-info">
+                العميل الحالي: <span>نوبلز العقارية</span>
+            </div>
+        </div>
+    </div>
+</footer>
 {% endblock %}
