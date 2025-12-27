@@ -68,7 +68,7 @@
                             <a href="{{ url_for('project_report', slug=project.slug) }}" class="btn btn-primary btn-sm">
                                 <i class="fas fa-file-alt"></i> عرض التقرير الكامل
                             </a>
-                            <a href="{{ url_for('project_detail', slug=project.slug) }}" class="btn btn-outline-primary btn-sm">
+                            <a href="{{ url_for('tenant_project_detail', tenant_slug='nobles', project_slug=project.slug) }}" class="btn btn-outline-primary btn-sm">
                                 <i class="fas fa-eye"></i> تفاصيل المشروع
                             </a>
                             <button class="btn btn-outline-secondary btn-sm" onclick="exportReport('{{ project.slug }}')">

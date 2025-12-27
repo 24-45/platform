@@ -99,6 +99,52 @@ def is_admin():
     return session.get('role') == 'admin'
 
 
+# ==================== Context Processor للقوالب ====================
+
+@app.context_processor
+def inject_tenant_urls():
+    """توفير دوال url_for البديلة للقوالب"""
+    def get_current_tenant():
+        """الحصول على tenant_slug من المسار الحالي"""
+        if request.view_args and 'tenant_slug' in request.view_args:
+            return request.view_args['tenant_slug']
+        # محاولة استخراج من المسار
+        path_parts = request.path.strip('/').split('/')
+        if path_parts and path_parts[0] in ['nobles', 'zakah', 'waqf']:
+            return path_parts[0]
+        return None
+    
+    current_tenant = get_current_tenant()
+    
+    # دوال مساعدة للقوالب
+    def tenant_url_for(endpoint, **kwargs):
+        """url_for مخصص للمستأجرين"""
+        tenant = current_tenant
+        if not tenant:
+            return url_for(endpoint, **kwargs)
+        
+        # تحويل الـ endpoints القديمة للجديدة
+        endpoint_map = {
+            'index': 'tenant_home',
+            'projects': 'tenant_projects', 
+            'reports': 'tenant_reports',
+            'about': 'tenant_about',
+            'project_report': 'tenant_project_report',
+            'project_detail': 'tenant_project_detail',
+        }
+        
+        new_endpoint = endpoint_map.get(endpoint, endpoint)
+        if new_endpoint.startswith('tenant_'):
+            kwargs['tenant_slug'] = tenant
+        
+        return url_for(new_endpoint, **kwargs)
+    
+    return {
+        'current_tenant': current_tenant,
+        'tenant_url_for': tenant_url_for,
+    }
+
+
 # ==================== وظائف تحميل البيانات ====================
 
 def load_platform_config():
