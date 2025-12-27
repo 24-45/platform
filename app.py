@@ -592,7 +592,7 @@ def admin_add_user():
         'email': email,
         'name': name,
         'role': role,
-        'tenants': tenants,
+        'tenant_access': tenants,
         'default_tenant': default_tenant,
         'active': True
     }
@@ -623,7 +623,7 @@ def admin_edit_user():
             user['name'] = name
             user['email'] = email
             user['default_tenant'] = default_tenant
-            user['tenants'] = tenants
+            user['tenant_access'] = tenants
             break
     
     save_users(users)
