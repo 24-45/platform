@@ -281,19 +281,9 @@ if (bypassCode === 'nobles2025') {
     document.getElementById('authLoading').style.display = 'none';
     document.getElementById('pageContent').classList.add('visible');
 } else {
-    // Auth handled by platform
-    (function() { var user = true; // Platform handles auth
-        
-        const authLoading = document.getElementById('authLoading');
-        const pageContent = document.getElementById('pageContent');
-        
-        if (user) {
-            authLoading.style.display = 'none';
-            pageContent.classList.add('visible');
-        } else {
-            window.location.href = '/login?redirect=' + encodeURIComponent(window.location.pathname);
-        }
-    });
+    // Auth handled by platform - execute immediately
+    document.getElementById('authLoading').style.display = 'none';
+    document.getElementById('pageContent').classList.add('visible');
 }
 </script>
 </div>
