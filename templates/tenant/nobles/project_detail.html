@@ -217,7 +217,7 @@
                     {% endif %}
                     
                     <div class="action-buttons">
-                        <a href="{{ url_for('project_report', slug=project.slug) }}" class="btn btn-primary btn-block">
+                        <a href="{{ url_for('tenant_project_report', tenant_slug='nobles', project_slug=project.slug) }}" class="btn btn-primary btn-block">
                             <i class="fas fa-bullhorn"></i> عرض الخطة الاتصالية
                         </a>
                     </div>
@@ -239,7 +239,7 @@
 {% endblock %}
 
 {% block extra_js %}
-<script src="{{ url_for('static', filename='js/charts.js') }}"></script>
+<script src="{{ url_for('static', filename='js/tenants/nobles/charts.js') }}"></script>
 <script>
 // Gallery functionality
 document.addEventListener('DOMContentLoaded', function() {
