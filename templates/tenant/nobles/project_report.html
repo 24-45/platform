@@ -13738,7 +13738,7 @@
 }
 </style>
 <!-- Campaign Manager CSS -->
-<link rel="stylesheet" href="{{ url_for('static', filename='css/campaign-manager.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/tenants/nobles/campaign-manager.css') }}">
 {% endblock %}
 
 {% block content %}
@@ -13810,14 +13810,14 @@
                 <div class="cover-badges no-print">
                     <span class="platform-pill">منصة 24°45°</span>
                     <span class="tenant-pill">
-                        <img src="{{ url_for('static', filename='images/logo.svg') }}" alt="شعار نوبلز العقارية">
+                        <img src="{{ url_for('static', filename='images/tenants/nobles/logo.svg') }}" alt="شعار نوبلز العقارية">
                         نوبلز العقارية
                     </span>
                 </div>
                 <nav aria-label="breadcrumb" class="no-print">
                     <ol class="breadcrumb" style="background: transparent;">
-                        <li class="breadcrumb-item"><a href="{{ url_for('index') }}">الرئيسية</a></li>
-                        <li class="breadcrumb-item"><a href="{{ url_for('reports') }}">التقارير</a></li>
+                        <li class="breadcrumb-item"><a href="{{ url_for('tenant_home', tenant_slug='nobles') }}">الرئيسية</a></li>
+                        <li class="breadcrumb-item"><a href="{{ url_for('tenant_reports', tenant_slug='nobles') }}">التقارير</a></li>
                         <li class="breadcrumb-item active">{{ project.name }}</li>
                     </ol>
                 </nav>
@@ -13862,7 +13862,7 @@
                 </div>
                 <div class="identity-divider"></div>
                 <div class="tenant-emblem">
-                    <img src="{{ url_for('static', filename='images/logo.svg') }}" alt="شعار نوبلز العقارية">
+                    <img src="{{ url_for('static', filename='images/tenants/nobles/logo.svg') }}" alt="شعار نوبلز العقارية">
                     <span>شريك المنصة</span>
                 </div>
             </div>
@@ -29456,7 +29456,7 @@ function showRejectedScreen() {
 </script>
 
 <!-- Campaign Manager JS -->
-<script src="{{ url_for('static', filename='js/campaign-manager.js') }}?v=2.4"></script>
+<script src="{{ url_for('static', filename='js/tenants/nobles/campaign-manager.js') }}?v=2.4"></script>
 <script>
 // تهيئة نظام إدارة الحملة عند فتح تاب المراقبة
 document.addEventListener('DOMContentLoaded', function() {
