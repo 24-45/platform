@@ -10,7 +10,7 @@
     <title>{% block title %}نوبلز العقارية{% endblock %}</title>
     
     <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='images/favicon.svg') }}">
+    <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='images/tenants/nobles/favicon.svg') }}">
     
     <!-- Google Fonts - Tajawal -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,18 +27,18 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.0.0/css/flag-icons.min.css">
     
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/tenants/nobles/main.css') }}">
     {% block extra_css %}{% endblock %}
     
     <!-- Print CSS -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/print.css') }}" media="print">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/tenants/nobles/print.css') }}" media="print">
 </head>
 <body>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
         <div class="container">
-            <a class="navbar-brand" href="{{ url_for('index') }}">
-                <img src="{{ url_for('static', filename='images/logo.svg') }}" alt="نوبلز العقارية" height="40">
+            <a class="navbar-brand" href="{{ url_for('tenant_home', tenant_slug='nobles') }}">
+                <img src="{{ url_for('static', filename='images/tenants/nobles/logo.svg') }}" alt="نوبلز العقارية" height="40">
             </a>
             
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -48,17 +48,17 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">
-                        <a class="nav-link {% if request.endpoint == 'index' %}active{% endif %}" href="{{ url_for('index') }}">
+                        <a class="nav-link {% if request.endpoint == 'tenant_home' %}active{% endif %}" href="{{ url_for('tenant_home', tenant_slug='nobles') }}">
                             <i class="fas fa-home"></i> الرئيسية
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {% if request.endpoint == 'projects' %}active{% endif %}" href="{{ url_for('projects') }}">
+                        <a class="nav-link {% if request.endpoint == 'tenant_projects' %}active{% endif %}" href="{{ url_for('tenant_projects', tenant_slug='nobles') }}">
                             <i class="fas fa-building"></i> المشاريع
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {% if request.endpoint == 'about' %}active{% endif %}" href="{{ url_for('about') }}">
+                        <a class="nav-link {% if request.endpoint == 'tenant_about' %}active{% endif %}" href="{{ url_for('tenant_about', tenant_slug='nobles') }}">
                             <i class="fas fa-info-circle"></i> من نحن
                         </a>
                     </li>
@@ -99,7 +99,7 @@
             <div class="row">
                 <div class="col-lg-4 mb-4">
                     <div class="footer-brand">
-                        <img src="{{ url_for('static', filename='images/logo.svg') }}" alt="نوبلز العقارية" height="50">
+                        <img src="{{ url_for('static', filename='images/tenants/nobles/logo.svg') }}" alt="نوبلز العقارية" height="50">
                         <p class="mt-3">
                             شركة تطوير عقاري عالمية تأسست في دبي عام 2008. نمتلك ونقوم بتطوير وإدارة العقارات السكنية والتجارية.
                         </p>
@@ -109,9 +109,9 @@
                 <div class="col-lg-2 col-md-4 mb-4">
                     <h5>روابط سريعة</h5>
                     <ul class="footer-links">
-                        <li><a href="{{ url_for('index') }}">الرئيسية</a></li>
-                        <li><a href="{{ url_for('projects') }}">المشاريع</a></li>
-                        <li><a href="{{ url_for('about') }}">من نحن</a></li>
+                        <li><a href="{{ url_for('tenant_home', tenant_slug='nobles') }}">الرئيسية</a></li>
+                        <li><a href="{{ url_for('tenant_projects', tenant_slug='nobles') }}">المشاريع</a></li>
+                        <li><a href="{{ url_for('tenant_about', tenant_slug='nobles') }}">من نحن</a></li>
                     </ul>
                 </div>
                 
