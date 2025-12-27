@@ -26603,7 +26603,7 @@
 <script>
 // Firebase stubs - platform handles auth
 var db = { collection: function() { return { doc: function() { return { get: function() { return Promise.resolve({ exists: false }); }, set: function() { return Promise.resolve(); } }; }, orderBy: function() { return { onSnapshot: function() {} }; }, where: function() { return { get: function() { return Promise.resolve({ empty: true, docs: [] }); } }; }, add: function() { return Promise.resolve(); } }; } };
-var auth = { onAuthStateChanged: function(cb) { cb(null); }, signInWithPopup: function() { return Promise.reject("Use platform login"); }, signInWithEmailAndPassword: function() { return Promise.reject("Use platform login"); }, createUserWithEmailAndPassword: function() { return Promise.reject("Use platform login"); }, signOut: function() { window.location.href = "/logout"; } };
+var auth = { currentUser: null, onAuthStateChanged: function(cb) { cb(null); }, signInWithPopup: function() { return Promise.reject("Use platform login"); }, signInWithEmailAndPassword: function() { return Promise.reject("Use platform login"); }, createUserWithEmailAndPassword: function() { return Promise.reject("Use platform login"); }, signOut: function() { window.location.href = "/logout"; } };
 var firebase = { firestore: { FieldValue: { serverTimestamp: function() { return new Date(); }, arrayUnion: function(v) { return [v]; } } }, auth: { GoogleAuthProvider: function() {} } };
 function signInWithGoogle() { alert("يرجى استخدام تسجيل الدخول من صفحة المنصة"); window.location.href = "/login"; }
 function signOut() { window.location.href = "/logout"; }
