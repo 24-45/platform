@@ -29354,63 +29354,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 1000);
 });
 
-// التحقق من تسجيل الدخول والموافقة
-const bypassCode = new URLSearchParams(window.location.search).get('access');
-if (bypassCode === 'nobles2025') {
-    document.getElementById('authLoading').style.display = 'none';
-    document.getElementById('pageContent').classList.add('visible');
-} else {
-    // التأكد من تحميل Firebase أولاً
-    if (typeof auth === 'undefined') {
-        console.error('Firebase auth not loaded');
-        // انتظر قليلاً ثم حاول مرة أخرى
-        setTimeout(() => {
-            window.location.reload();
-        }, 2000);
-    } else {
-        auth.onAuthStateChanged(async (user) => {
-        const authLoading = document.getElementById('authLoading');
-        const pageContent = document.getElementById('pageContent');
-        const pendingScreen = document.getElementById('pending-approval-screen');
-        
-        if (user) {
-            // الحصول على بيانات المستخدم
-            await getCurrentUserData();
-            
-            // التحقق إذا كان أدمن (يتجاوز فحص الموافقة)
-            const isAdmin = ADMIN_EMAILS.includes(user.email.toLowerCase());
-            
-            // التحقق من حالة الموافقة
-            if (isAdmin || (currentUserData && currentUserData.status === 'approved')) {
-                // المستخدم مُوافق عليه أو أدمن
-                updateUIForRole();
-                authLoading.style.display = 'none';
-                if (pendingScreen) pendingScreen.style.display = 'none';
-                pageContent.classList.add('visible');
-                
-                // تحديث شارة الطلبات المعلقة للأدمن
-                if (hasPermission('manage_users')) {
-                    updatePendingRequestsBadge();
-                }
-            } else if (currentUserData && currentUserData.status === 'rejected') {
-                // المستخدم مرفوض
-                authLoading.style.display = 'none';
-                pageContent.classList.remove('visible');
-                showRejectedScreen();
-            } else {
-                // المستخدم بانتظار الموافقة أو لم يُحدد له status
-                authLoading.style.display = 'none';
-                if (pendingScreen) pendingScreen.style.display = 'flex';
-                pageContent.classList.remove('visible');
-            }
-        } else {
-            // غير مسجل دخول - إظهار صفحة تسجيل الدخول
-            pageContent.classList.remove('visible');
-            showLoginPrompt();
-        }
-    });
-    }
-}
+// Auth handled by platform - show content immediately
+document.getElementById("authLoading").style.display = "none";
+document.getElementById("pageContent").classList.add("visible");
 
 // إظهار صفحة طلب تسجيل الدخول
 function showLoginPrompt() {
