@@ -10,7 +10,7 @@
             <h1>من نحن</h1>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{ url_for('index') }}">الرئيسية</a></li>
+                    <li class="breadcrumb-item"><a href="{{ url_for('tenant_home', tenant_slug='nobles') }}">الرئيسية</a></li>
                     <li class="breadcrumb-item active">من نحن</li>
                 </ol>
             </nav>
@@ -26,7 +26,7 @@
                 <img src="{{ url_for('static', filename='images/nnnn.jpg') }}" 
                      alt="نوبلز العقارية" 
                      class="img-fluid rounded shadow"
-                     onerror="this.src='{{ url_for('static', filename='images/placeholder.jpg') }}'">
+                     onerror="this.src='{{ url_for('static', filename='images/tenants/nobles/placeholder.jpg') }}'">
             </div>
             <div class="col-lg-6">
                 <h2>عن نوبلز العقارية</h2>

@@ -61,8 +61,8 @@
             <p class="project-name-en-large">{{ project.name_en }}</p>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{ url_for('index') }}">الرئيسية</a></li>
-                    <li class="breadcrumb-item"><a href="{{ url_for('projects') }}">المشاريع</a></li>
+                    <li class="breadcrumb-item"><a href="{{ url_for('tenant_home', tenant_slug='nobles') }}">الرئيسية</a></li>
+                    <li class="breadcrumb-item"><a href="{{ url_for('tenant_projects', tenant_slug='nobles') }}">المشاريع</a></li>
                     <li class="breadcrumb-item active">{{ project.name }}</li>
                 </ol>
             </nav>
@@ -79,23 +79,23 @@
                 <!-- Project Gallery -->
                 <div class="project-gallery card-section">
                     <div class="gallery-main">
-                        <img src="{{ url_for('static', filename='images/projects/' + project.images.main) }}" 
+                        <img src="{{ url_for('static', filename='images/tenants/nobles/projects/' + project.images.main) }}" 
                              alt="{{ project.name }}" 
                              id="main-gallery-image"
-                             onerror="this.src='{{ url_for('static', filename='images/placeholder.jpg') }}'">
+                             onerror="this.src='{{ url_for('static', filename='images/tenants/nobles/placeholder.jpg') }}'">
                     </div>
                     {% if project.images.gallery %}
                     <div class="gallery-thumbnails">
-                        <div class="thumbnail active" data-image="{{ url_for('static', filename='images/projects/' + project.images.main) }}">
-                            <img src="{{ url_for('static', filename='images/projects/' + project.images.main) }}" 
+                        <div class="thumbnail active" data-image="{{ url_for('static', filename='images/tenants/nobles/projects/' + project.images.main) }}">
+                            <img src="{{ url_for('static', filename='images/tenants/nobles/projects/' + project.images.main) }}" 
                                  alt="{{ project.name }}"
-                                 onerror="this.src='{{ url_for('static', filename='images/placeholder.jpg') }}'">
+                                 onerror="this.src='{{ url_for('static', filename='images/tenants/nobles/placeholder.jpg') }}'">
                         </div>
                         {% for image in project.images.gallery %}
-                        <div class="thumbnail" data-image="{{ url_for('static', filename='images/projects/' + image) }}">
-                            <img src="{{ url_for('static', filename='images/projects/' + image) }}" 
+                        <div class="thumbnail" data-image="{{ url_for('static', filename='images/tenants/nobles/projects/' + image) }}">
+                            <img src="{{ url_for('static', filename='images/tenants/nobles/projects/' + image) }}" 
                                  alt="{{ project.name }}"
-                                 onerror="this.src='{{ url_for('static', filename='images/placeholder.jpg') }}'">
+                                 onerror="this.src='{{ url_for('static', filename='images/tenants/nobles/placeholder.jpg') }}'">
                         </div>
                         {% endfor %}
                     </div>

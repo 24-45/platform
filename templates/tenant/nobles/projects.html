@@ -50,7 +50,7 @@
             <h1>مشاريعنا</h1>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{ url_for('index') }}">الرئيسية</a></li>
+                    <li class="breadcrumb-item"><a href="{{ url_for('tenant_home', tenant_slug='nobles') }}">الرئيسية</a></li>
                     <li class="breadcrumb-item active">المشاريع</li>
                 </ol>
             </nav>
@@ -80,9 +80,9 @@
                  data-active="{{ 'active' if project.active else 'inactive' }}">
                 <div class="project-card {% if not project.active %}project-card-inactive{% endif %}">
                     <div class="project-image">
-                        <img src="{{ url_for('static', filename='images/projects/' + project.images.main) }}" 
+                        <img src="{{ url_for('static', filename='images/tenants/nobles/projects/' + project.images.main) }}" 
                              alt="{{ project.name }}"
-                             onerror="this.src='{{ url_for('static', filename='images/placeholder.jpg') }}'">
+                             onerror="this.src='{{ url_for('static', filename='images/tenants/nobles/placeholder.jpg') }}'">
                         {% if project.featured %}
                         <span class="project-badge featured">جاري العمل</span>
                         {% endif %}

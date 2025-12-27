@@ -77,9 +77,9 @@
             <div class="col-lg-4 col-md-6 mb-4">
                 <div class="project-card {% if not project.active %}project-card-inactive{% endif %}">
                     <div class="project-image">
-                        <img src="{{ url_for('static', filename='images/projects/' + project.images.main) }}" 
+                        <img src="{{ url_for('static', filename='images/tenants/nobles/projects/' + project.images.main) }}" 
                              alt="{{ project.name }}"
-                             onerror="this.src='{{ url_for('static', filename='images/placeholder.jpg') }}'">
+                             onerror="this.src='{{ url_for('static', filename='images/tenants/nobles/placeholder.jpg') }}'">
                         {% if project.featured %}
                         <span class="project-badge featured">جاري العمل</span>
                         {% endif %}
@@ -108,7 +108,7 @@
         </div>
         
         <div class="text-center mt-4">
-            <a href="{{ url_for('projects') }}" class="btn btn-primary btn-lg">
+            <a href="{{ url_for('tenant_projects', tenant_slug='nobles') }}" class="btn btn-primary btn-lg">
                 <i class="fas fa-th-large"></i> عرض جميع المشاريع
             </a>
         </div>
@@ -121,9 +121,9 @@
         <div class="row align-items-center">
             <div class="col-lg-6 mb-4 mb-lg-0">
                 <div class="about-image">
-                    <img src="{{ url_for('static', filename='images/nnnn.jpg') }}" 
+                    <img src="{{ url_for('static', filename='images/tenants/nobles/nnnn.jpg') }}" 
                          alt="عن نوبلز العقارية"
-                         onerror="this.src='{{ url_for('static', filename='images/placeholder.jpg') }}'">
+                         onerror="this.src='{{ url_for('static', filename='images/tenants/nobles/placeholder.jpg') }}'">
                 </div>
             </div>
             <div class="col-lg-6">
@@ -157,7 +157,7 @@
                         </div>
                     </div>
                     
-                    <a href="{{ url_for('about') }}" class="btn btn-outline-primary">
+                    <a href="{{ url_for('tenant_about', tenant_slug='nobles') }}" class="btn btn-outline-primary">
                         <i class="fas fa-info-circle"></i> المزيد عنا
                     </a>
                 </div>
