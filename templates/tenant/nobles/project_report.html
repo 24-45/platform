@@ -26844,8 +26844,10 @@ document.addEventListener('DOMContentLoaded', function() {
         textarea.addEventListener('input', updateProgress);
     });
     
-    // Load saved data from Firebase
-    loadQuestionnaireFromFirebase();
+    // Load saved data from Firebase (only if Firebase is available)
+    if (typeof db !== 'undefined') {
+        loadQuestionnaireFromFirebase();
+    }
 });
 
 // Load questionnaire data from Firebase
@@ -29413,17 +29415,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // التحقق من تسجيل الدخول والموافقة
 const bypassCode = new URLSearchParams(window.location.search).get('access');
-if (bypassCode === 'nobles2025') {
+const isPlatform = window.location.hostname.includes('24-45.com') || window.location.pathname.includes('/nobles/');
+
+if (bypassCode === 'nobles2025' || isPlatform) {
     document.getElementById('authLoading').style.display = 'none';
     document.getElementById('pageContent').classList.add('visible');
 } else {
     // التأكد من تحميل Firebase أولاً
     if (typeof auth === 'undefined') {
-        console.error('Firebase auth not loaded');
-        // انتظر قليلاً ثم حاول مرة أخرى
-        setTimeout(() => {
-            window.location.reload();
-        }, 2000);
+        // على المنصة، لا نحتاج Firebase
+        if (!isPlatform) {
+            console.error('Firebase auth not loaded');
+            setTimeout(() => {
+                window.location.reload();
+            }, 2000);
+        }
     } else {
         auth.onAuthStateChanged(async (user) => {
         const authLoading = document.getElementById('authLoading');
