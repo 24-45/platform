@@ -37,7 +37,7 @@
 /* إظهار المحتوى مباشرة إذا كان رمز الوصول صحيح */
 .page-content.bypass-auth { display: block !important; }
 
-/* منصة 24°45° - غلاف المنصة */
+/* منصة 45°24° - غلاف المنصة */
 .platform-cover {
     position: relative;
     background: radial-gradient(circle at 15% 20%, rgba(0, 212, 106, 0.15), transparent 50%),
@@ -13761,7 +13761,7 @@
 })();
 </script>
 <!-- شاشة التحميل -->
-<!-- Auth handled by platform --> <div class="auth-loading bypass-auth" id="authLoading" style="display:none;">
+<div class="auth-loading" id="authLoading">
     <div class="spinner"></div>
 </div>
 
@@ -13801,14 +13801,14 @@
 </style>
 
 <!-- محتوى الصفحة -->
-<div class="page-content visible" id="pageContent">
+<div class="page-content" id="pageContent">
 <!-- Report Header -->
 <section class="report-header platform-cover">
     <div class="container">
         <div class="cover-grid">
             <div class="cover-meta">
                 <div class="cover-badges no-print">
-                    <span class="platform-pill">منصة 24°45°</span>
+                    <span class="platform-pill">منصة 45°24°</span>
                     <span class="tenant-pill">
                         <img src="{{ url_for('static', filename='images/tenants/nobles/logo.svg') }}" alt="شعار نوبلز العقارية">
                         نوبلز العقارية
@@ -13822,6 +13822,9 @@
                     </ol>
                 </nav>
                 <h1>{{ project.name }}</h1>
+                {% if project.tagline %}
+                <p style="font-size: 1.1rem; color: rgba(255,255,255,0.85); margin-top: 10px; font-weight: 500;">{{ project.tagline }}</p>
+                {% endif %}
                 <p>{{ project.name_en }}</p>
                 {% if project.description %}
                 <p class="cover-intro">{{ project.description[:220] }}{% if project.description|length > 220 %}...{% endif %}</p>
@@ -13913,6 +13916,9 @@
                             <div class="hero-content">
                                 <span class="hero-badge"><i class="fas fa-info-circle"></i> معلومات المشروع الأساسية</span>
                                 <h3>{{ project.name }}</h3>
+                                {% if project.tagline %}
+                                <p style="font-size: 1rem; color: rgba(255,255,255,0.7); margin-bottom: 15px; font-weight: 500;">{{ project.tagline }}</p>
+                                {% endif %}
                                 <p>{{ project.description[:200] }}{% if project.description|length > 200 %}...{% endif %}</p>
                                 <div class="hero-chips">
                                     <span class="hero-chip"><i class="fas fa-building" style="margin-left:6px;font-size:0.8rem;"></i> {{ project.type }}</span>
@@ -19833,16 +19839,16 @@
                             <!-- Subtitle with Date -->
                             <p class="exec-hero-subtitle">
                                 <i class="fas fa-map-marker-alt me-2"></i>
-                                محرك النمو الذكي لعمّان
+                                حيث الموقع الاستثنائي ..والاستثمار الأمثل
                                 <span class="exec-hero-divider">|</span>
                                 <i class="fas fa-calendar-alt me-2"></i>
-                                15 يناير 2026
+                                2026
                             </p>
                             
                             <!-- Mission Statement -->
                             <div class="exec-hero-mission">
                                 <p class="exec-hero-mission-text">
-                                    تحويل المفهوم من مشروع عقاري إلى <strong>منظومة متكاملة مُدارة</strong> — مدينة صناعية ولوجستية ذكية توفر بيئة جاهزة للتشغيل الفوري مع خدمات متكاملة ومستدامة.
+                                    هنا تتحوّل المسافات إلى فرص، وتتقاطع <strong>البنية التحتية المتقدمة</strong> مع الخبرة المحلية والشراكات العالمية، في مشروع صمم ليفتح الطريق نحو مستقبل صناعي مزدهر.
                                 </p>
                             </div>
                             
@@ -19965,7 +19971,7 @@
                         <!-- Project Badge -->
                         <div style="display: inline-flex; align-items: center; gap: 10px; background: rgba(220, 31, 39, 0.15); border: 1px solid rgba(220, 31, 39, 0.3); padding: 8px 20px; border-radius: 30px; margin-bottom: 25px;">
                             <i class="fas fa-industry" style="color: #dc1f27;"></i>
-                            <span style="color: #ff6b6b; font-size: 0.9rem; font-weight: 600;">ALIC - المدينة الصناعية اللوجستية العربية</span>
+                            <span style="color: #ff6b6b; font-size: 0.9rem; font-weight: 600;">ALIC - مدينة عمّان اللوجستية والصناعية</span>
                         </div>
                         
                         <!-- Glowing Dashboard Icon -->
@@ -19996,12 +20002,12 @@
                                 <div style="color: #6ee7b7; font-size: 0.8rem;">شراكات موقعة</div>
                             </div>
                             <div style="background: rgba(59, 130, 246, 0.15); border: 1px solid rgba(59, 130, 246, 0.3); padding: 12px 25px; border-radius: 12px; text-align: center;">
-                                <div style="color: #60a5fa; font-size: 1.5rem; font-weight: 800;">15</div>
-                                <div style="color: #93c5fd; font-size: 0.8rem;">دقيقة من المطار</div>
+                                <div style="color: #60a5fa; font-size: 1.5rem; font-weight: 800;">400K</div>
+                                <div style="color: #93c5fd; font-size: 0.8rem;">م² قابلة للتأجير</div>
                             </div>
                             <div style="background: rgba(168, 85, 247, 0.15); border: 1px solid rgba(168, 85, 247, 0.3); padding: 12px 25px; border-radius: 12px; text-align: center;">
-                                <div style="color: #a78bfa; font-size: 1.5rem; font-weight: 800;">20</div>
-                                <div style="color: #c4b5fd; font-size: 0.8rem;">دقيقة من الحدود</div>
+                                <div style="color: #a78bfa; font-size: 1.5rem; font-weight: 800;">36</div>
+                                <div style="color: #c4b5fd; font-size: 0.8rem;">شهر أقساط 0%</div>
                             </div>
                             <div style="background: rgba(251, 191, 36, 0.15); border: 1px solid rgba(251, 191, 36, 0.3); padding: 12px 25px; border-radius: 12px; text-align: center;">
                                 <div style="color: #fbbf24; font-size: 1.5rem; font-weight: 800;">Q1</div>
@@ -20049,7 +20055,7 @@
                                 <ul style="margin: 0; padding: 0; list-style: none; color: #d1fae5; font-size: 0.82rem; line-height: 1.7;">
                                     <li style="display: flex; align-items: flex-start; gap: 8px; margin-bottom: 8px;">
                                         <i class="fas fa-check-circle" style="color: #34d399; font-size: 0.7rem; margin-top: 4px;"></i>
-                                        <span><strong style="color: #6ee7b7;">موقع استراتيجي:</strong> 15 دقيقة من المطار، 20 من الحدود</span>
+                                        <span><strong style="color: #6ee7b7;">موقع استراتيجي:</strong> يربطك بمطار الملكة علياء والمناطق الصناعية والمراكز الجمركية</span>
                                     </li>
                                     <li style="display: flex; align-items: flex-start; gap: 8px; margin-bottom: 8px;">
                                         <i class="fas fa-check-circle" style="color: #34d399; font-size: 0.7rem; margin-top: 4px;"></i>
@@ -20057,7 +20063,7 @@
                                     </li>
                                     <li style="display: flex; align-items: flex-start; gap: 8px; margin-bottom: 8px;">
                                         <i class="fas fa-check-circle" style="color: #34d399; font-size: 0.7rem; margin-top: 4px;"></i>
-                                        <span><strong style="color: #6ee7b7;">بنية جاهزة:</strong> كهرباء، مياه، طرق معبدة</span>
+                                        <span><strong style="color: #6ee7b7;">بنية جاهزة:</strong> طرق 14-24م، كهرباء، مياه، صرف صحي</span>
                                     </li>
                                     <li style="display: flex; align-items: flex-start; gap: 8px; margin-bottom: 8px;">
                                         <i class="fas fa-check-circle" style="color: #34d399; font-size: 0.7rem; margin-top: 4px;"></i>
@@ -20065,7 +20071,7 @@
                                     </li>
                                     <li style="display: flex; align-items: flex-start; gap: 8px;">
                                         <i class="fas fa-check-circle" style="color: #34d399; font-size: 0.7rem; margin-top: 4px;"></i>
-                                        <span><strong style="color: #6ee7b7;">نظام تقسيط:</strong> ميزة فريدة في السوق</span>
+                                        <span><strong style="color: #6ee7b7;">نظام تقسيط:</strong> حتى 36 شهراً بدون فوائد (0%)</span>
                                     </li>
                                 </ul>
                             </div>
@@ -20129,7 +20135,7 @@
                                     </li>
                                     <li style="display: flex; align-items: flex-start; gap: 8px; margin-bottom: 8px;">
                                         <i class="fas fa-star" style="color: #60a5fa; font-size: 0.7rem; margin-top: 4px;"></i>
-                                        <span><strong style="color: #93c5fd;">رؤية التحديث:</strong> دعم حكومي للقطاع</span>
+                                        <span><strong style="color: #93c5fd;">حوافز استثمارية:</strong> تخفيض 50% ضريبة دخل + إعفاء جمركي</span>
                                     </li>
                                     <li style="display: flex; align-items: flex-start; gap: 8px;">
                                         <i class="fas fa-star" style="color: #60a5fa; font-size: 0.7rem; margin-top: 4px;"></i>
@@ -20153,7 +20159,7 @@
                                 <ul style="margin: 0; padding: 0; list-style: none; color: #fed7aa; font-size: 0.82rem; line-height: 1.7;">
                                     <li style="display: flex; align-items: flex-start; gap: 8px; margin-bottom: 8px;">
                                         <i class="fas fa-exclamation-triangle" style="color: #fb923c; font-size: 0.7rem; margin-top: 4px;"></i>
-                                        <span><strong style="color: #fdba74;">منافس محلي:</strong> مدينة الحسن الصناعية</span>
+                                        <span><strong style="color: #fdba74;">منافسون محليون:</strong> القسطل، الرجم الشامي، سحاب، الموقر</span>
                                     </li>
                                     <li style="display: flex; align-items: flex-start; gap: 8px; margin-bottom: 8px;">
                                         <i class="fas fa-exclamation-triangle" style="color: #fb923c; font-size: 0.7rem; margin-top: 4px;"></i>
@@ -21047,7 +21053,7 @@
                                         </div>
                                     </div>
                                     <div style="color: #e2e8f0; font-size: 0.85rem; line-height: 1.8; display: flex; align-items: center;">
-                                        "15 دقيقة من المطار - <strong style="color: #60a5fa;">وصولك لأسواق المنطقة</strong> بكفاءة لوجستية عالية"
+                                        "قرب من مطار الملكة علياء - <strong style="color: #60a5fa;">وصولك لأسواق المنطقة</strong> بكفاءة لوجستية عالية"
                                     </div>
                                     <div style="display: flex; align-items: center; gap: 6px; flex-wrap: wrap;">
                                         <span style="background: rgba(59, 130, 246, 0.15); color: #93c5fd; padding: 5px 10px; border-radius: 8px; font-size: 0.7rem;">LinkedIn Ads</span>
@@ -23349,9 +23355,9 @@
                                                 <p style="margin: 0 0 10px 0;"><strong style="color: #fcd34d;">المحتوى الرئيسي:</strong></p>
                                                 <ul style="color: #cbd5e1; margin: 0; padding-right: 20px;">
                                                     <li>مستودعات صناعية جاهزة للتشغيل الفوري</li>
-                                                    <li>خطط تقسيط تصل إلى 7 سنوات</li>
+                                                    <li>أقساط حتى 36 شهراً بدون فوائد (0%)</li>
                                                     <li>بنية تحتية متكاملة (كهرباء، مياه، اتصالات)</li>
-                                                    <li>15 دقيقة من مطار الملكة علياء</li>
+                                                    <li>قرب من مطار الملكة علياء الدولي</li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -26386,6 +26392,116 @@
                 </div>
                 
                 <!-- ============================================ -->
+                <!-- Modal: تسجيل الدخول -->
+                <!-- ============================================ -->
+                <div id="login-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.8); z-index: 10000; align-items: center; justify-content: center; backdrop-filter: blur(10px);">
+                    <div style="background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); border-radius: 24px; padding: 40px; max-width: 450px; width: 90%; position: relative; border: 1px solid rgba(99, 102, 241, 0.3); box-shadow: 0 30px 80px rgba(0,0,0,0.5);">
+                        <button onclick="closeModal('login-modal')" style="position: absolute; top: 20px; left: 20px; background: rgba(255,255,255,0.1); border: none; color: #94a3b8; width: 40px; height: 40px; border-radius: 10px; cursor: pointer; font-size: 1.2rem;">
+                            <i class="fas fa-times"></i>
+                        </button>
+                        <div style="text-align: center; margin-bottom: 30px;">
+                            <div style="width: 70px; height: 70px; background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%); border-radius: 18px; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
+                                <i class="fas fa-user" style="color: white; font-size: 1.8rem;"></i>
+                            </div>
+                            <h3 style="color: #f1f5f9; font-size: 1.5rem; font-weight: 700; margin: 0;">تسجيل الدخول</h3>
+                            <p style="color: #64748b; font-size: 0.9rem; margin: 10px 0 0 0;">أدخل بياناتك للوصول للوحة التحكم</p>
+                        </div>
+                        
+                        <!-- Google Sign-In Button -->
+                        <button onclick="signInWithGoogle()" style="width: 100%; padding: 14px 20px; background: white; border: 1px solid #e2e8f0; border-radius: 12px; color: #1f2937; font-size: 1rem; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 20px; transition: all 0.3s;">
+                            <svg width="20" height="20" viewBox="0 0 24 24">
+                                <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                                <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                                <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                                <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+                            </svg>
+                            تسجيل الدخول عبر Google
+                        </button>
+                        
+                        <!-- Divider -->
+                        <div style="display: flex; align-items: center; margin-bottom: 20px;">
+                            <div style="flex: 1; height: 1px; background: rgba(148, 163, 184, 0.2);"></div>
+                            <span style="color: #64748b; font-size: 0.85rem; padding: 0 15px;">أو عبر البريد الإلكتروني</span>
+                            <div style="flex: 1; height: 1px; background: rgba(148, 163, 184, 0.2);"></div>
+                        </div>
+                        
+                        <form id="login-form" onsubmit="handleLogin(event)">
+                            <div style="margin-bottom: 20px;">
+                                <label style="color: #94a3b8; font-size: 0.85rem; display: block; margin-bottom: 8px;">البريد الإلكتروني</label>
+                                <input type="email" id="login-email" required style="width: 100%; padding: 14px 18px; background: rgba(0,0,0,0.3); border: 1px solid rgba(99, 102, 241, 0.3); border-radius: 12px; color: #f1f5f9; font-size: 1rem; outline: none; transition: all 0.3s;" placeholder="email@example.com">
+                            </div>
+                            <div style="margin-bottom: 25px;">
+                                <label style="color: #94a3b8; font-size: 0.85rem; display: block; margin-bottom: 8px;">كلمة المرور</label>
+                                <input type="password" id="login-password" required style="width: 100%; padding: 14px 18px; background: rgba(0,0,0,0.3); border: 1px solid rgba(99, 102, 241, 0.3); border-radius: 12px; color: #f1f5f9; font-size: 1rem; outline: none; transition: all 0.3s;" placeholder="••••••••">
+                            </div>
+                            <button type="submit" style="width: 100%; padding: 16px; background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%); border: none; border-radius: 12px; color: white; font-size: 1.1rem; font-weight: 700; cursor: pointer; transition: all 0.3s;">
+                                دخول
+                            </button>
+                        </form>
+                        <p style="text-align: center; color: #64748b; font-size: 0.85rem; margin-top: 20px;">
+                            ليس لديك حساب؟ <a href="#" onclick="switchToRegister()" style="color: #818cf8; text-decoration: none;">إنشاء حساب جديد</a>
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- ============================================ -->
+                <!-- Modal: إنشاء حساب -->
+                <!-- ============================================ -->
+                <div id="register-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.8); z-index: 10000; align-items: center; justify-content: center; backdrop-filter: blur(10px);">
+                    <div style="background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); border-radius: 24px; padding: 40px; max-width: 450px; width: 90%; position: relative; border: 1px solid rgba(16, 185, 129, 0.3); box-shadow: 0 30px 80px rgba(0,0,0,0.5);">
+                        <button onclick="closeModal('register-modal')" style="position: absolute; top: 20px; left: 20px; background: rgba(255,255,255,0.1); border: none; color: #94a3b8; width: 40px; height: 40px; border-radius: 10px; cursor: pointer; font-size: 1.2rem;">
+                            <i class="fas fa-times"></i>
+                        </button>
+                        <div style="text-align: center; margin-bottom: 30px;">
+                            <div style="width: 70px; height: 70px; background: linear-gradient(135deg, #10b981 0%, #059669 100%); border-radius: 18px; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
+                                <i class="fas fa-user-plus" style="color: white; font-size: 1.8rem;"></i>
+                            </div>
+                            <h3 style="color: #f1f5f9; font-size: 1.5rem; font-weight: 700; margin: 0;">إنشاء حساب</h3>
+                            <p style="color: #64748b; font-size: 0.9rem; margin: 10px 0 0 0;">أنشئ حسابك للانضمام لفريق العمل</p>
+                        </div>
+                        
+                        <!-- Google Sign-Up Button -->
+                        <button onclick="signInWithGoogle()" style="width: 100%; padding: 14px 20px; background: white; border: 1px solid #e2e8f0; border-radius: 12px; color: #1f2937; font-size: 1rem; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 20px; transition: all 0.3s;">
+                            <svg width="20" height="20" viewBox="0 0 24 24">
+                                <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                                <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                                <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                                <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+                            </svg>
+                            التسجيل عبر Google
+                        </button>
+                        
+                        <!-- Divider -->
+                        <div style="display: flex; align-items: center; margin-bottom: 20px;">
+                            <div style="flex: 1; height: 1px; background: rgba(148, 163, 184, 0.2);"></div>
+                            <span style="color: #64748b; font-size: 0.85rem; padding: 0 15px;">أو عبر البريد الإلكتروني</span>
+                            <div style="flex: 1; height: 1px; background: rgba(148, 163, 184, 0.2);"></div>
+                        </div>
+                        
+                        <form id="register-form" onsubmit="handleRegister(event)">
+                            <div style="margin-bottom: 20px;">
+                                <label style="color: #94a3b8; font-size: 0.85rem; display: block; margin-bottom: 8px;">الاسم الكامل</label>
+                                <input type="text" id="register-name" required style="width: 100%; padding: 14px 18px; background: rgba(0,0,0,0.3); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 12px; color: #f1f5f9; font-size: 1rem; outline: none;" placeholder="محمد أحمد">
+                            </div>
+                            <div style="margin-bottom: 20px;">
+                                <label style="color: #94a3b8; font-size: 0.85rem; display: block; margin-bottom: 8px;">البريد الإلكتروني</label>
+                                <input type="email" id="register-email" required style="width: 100%; padding: 14px 18px; background: rgba(0,0,0,0.3); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 12px; color: #f1f5f9; font-size: 1rem; outline: none;" placeholder="email@example.com">
+                            </div>
+                            <div style="margin-bottom: 25px;">
+                                <label style="color: #94a3b8; font-size: 0.85rem; display: block; margin-bottom: 8px;">كلمة المرور</label>
+                                <input type="password" id="register-password" required minlength="6" style="width: 100%; padding: 14px 18px; background: rgba(0,0,0,0.3); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 12px; color: #f1f5f9; font-size: 1rem; outline: none;" placeholder="••••••••">
+                            </div>
+                            <button type="submit" style="width: 100%; padding: 16px; background: linear-gradient(135deg, #10b981 0%, #059669 100%); border: none; border-radius: 12px; color: white; font-size: 1.1rem; font-weight: 700; cursor: pointer;">
+                                إنشاء الحساب
+                            </button>
+                        </form>
+                        <p style="text-align: center; color: #64748b; font-size: 0.85rem; margin-top: 20px;">
+                            لديك حساب بالفعل؟ <a href="#" onclick="switchToLogin()" style="color: #6ee7b7; text-decoration: none;">تسجيل الدخول</a>
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- ============================================ -->
                 <!-- Modal: إدارة المستخدمين (للأدمن فقط) -->
                 <!-- ============================================ -->
                 <div id="users-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.8); z-index: 10000; align-items: center; justify-content: center; backdrop-filter: blur(10px);">
@@ -26601,14 +26717,6 @@
 
 {% block extra_js %}
 <script>
-// Firebase stubs - platform handles auth
-var db = { collection: function() { return { doc: function() { return { get: function() { return Promise.resolve({ exists: false }); }, set: function() { return Promise.resolve(); } }; }, orderBy: function() { return { onSnapshot: function() {} }; }, where: function() { return { get: function() { return Promise.resolve({ empty: true, docs: [] }); } }; }, add: function() { return Promise.resolve(); } }; } };
-var auth = { currentUser: null, onAuthStateChanged: function(cb) { cb(null); }, signInWithPopup: function() { return Promise.reject("Use platform login"); }, signInWithEmailAndPassword: function() { return Promise.reject("Use platform login"); }, createUserWithEmailAndPassword: function() { return Promise.reject("Use platform login"); }, signOut: function() { window.location.href = "/logout"; } };
-var firebase = { firestore: { FieldValue: { serverTimestamp: function() { return new Date(); }, arrayUnion: function(v) { return [v]; } } }, auth: { GoogleAuthProvider: function() {} } };
-function signInWithGoogle() { alert("يرجى استخدام تسجيل الدخول من صفحة المنصة"); window.location.href = "/login"; }
-function signOut() { window.location.href = "/logout"; }
-</script>
-<script>
 // Toggle Product Card Accordion Function for Media Products
 function toggleProductCard(productId) {
     const content = document.getElementById(productId + '-content');
@@ -26733,11 +26841,11 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // Load saved data from Firebase
-    // Firebase disabled - loadQuestionnaireFromFirebase();
+    loadQuestionnaireFromFirebase();
 });
 
 // Load questionnaire data from Firebase
-async function loadQuestionnaireFromFirebase() { return; // Firebase disabled } async function _loadQuestionnaireFromFirebase_disabled() {
+async function loadQuestionnaireFromFirebase() {
     const projectId = '{{ project.id }}';
     
     try {
@@ -26772,57 +26880,112 @@ async function loadQuestionnaireFromFirebase() { return; // Firebase disabled } 
 function renderCreativeBrief(data) {
     const creativeBriefSection = document.getElementById('creativeBriefSection');
     
-    // التحقق من وجود بيانات كافية لعرض الموجز الإبداعي
-    const hasData = data.q1 || data.q2 || data.q7 || data.q4;
-    
-    if (!hasData) {
-        creativeBriefSection.style.display = 'none';
-        return;
-    }
+    // استخدام البيانات المحدثة من العميل مباشرة
+    const alicData = {
+        q1: `الأهداف بالترتيب:
+1. بناء الوعي بالمشروع والوصول بنسبة 100% للقطاع الصناعي/الصناعيين
+2. تعزيز السمعة المؤسسية
+3. جذب عملاء محتملين`,
+        q2: `• الوصول بنسبة 100% للقطاع الصناعي الأردني / الصناعيين
+• تحقيق نسبة مبيعات لا تقل عن 50% من المدينة خلال السنة الأولى`,
+        q3: `1. المدينة الأحدث
+2. المدينة المتكاملة والذكية
+3. المدينة اللوجستية الأقرب للمدينة ولمراكز الشحن والحدود
+4. الموقع الأفضل من بين المدن المحيطة
+5. سهولة التملك والاستثمار فيها (من خلال إتاحة نظام التقسيط)
+6. تتمتع المنطقة التي تقع فيها المدينة الصناعية بحوافز للقطاع الصناعي`,
+        q4: `مالك الشركة، الرئيس التنفيذي، أو المدير العام، وبالأخص في شركات الخدمات اللوجستية والصناعية، مع دور داعم لمديري العمليات وسلسلة التوريد.`,
+        q5: `يواجه المستثمرون نقصاً في الحلول المتكاملة الجاهزة للتشغيل، وهو ما تعالجه ALIC عبر توفير منظومة صناعية ولوجستية متكاملة في موقع استراتيجي تقلل التعقيد وتسرّع التشغيل.
+
+ويواجه المستثمرون نقصاً في حلول التمويل لشراء المستودعات والمصانع وقطع الأراضي الصناعية وهذا ما توفره ALIC.`,
+        q6: `توفر موقع استراتيجي وبنية تحتية جاهزة ضمن منظومة متكاملة تقلل التعقيد التشغيلي وتسرّع بدء الأعمال.`,
+        q7: `ALIC هي مدينة صناعية ولوجستية متكاملة وجاهزة للمستقبل، تُمكّن الشركات من الانطلاق والتوسع بكفاءة وسرعة من موقع استراتيجي واحد.`,
+        q8: `كون ALIC مدينة صناعية ولوجستية متكاملة وجاهزة للتشغيل، تجمع بين الموقع الاستراتيجي، البنية التحتية المؤهلة، والخدمات الداعمة في مكان واحد وحلول التمويل.`,
+        q9: `الأسعار التفصيلية
+الجداول الزمنية التفصيلية
+أسماء العملاء قبل الإعلان الرسمي
+المناطق الصناعية الأقل حظاً
+أي معلومات غير معتمدة رسمياً`,
+        q10: `LinkedIn
+الإعلام الاقتصادي المتخصص
+المعارض الصناعية واللوجستية
+غرف الصناعة والتجارة
+جمعيات رجال الأعمال
+التواصل المباشر`,
+        q11: `LinkedIn
+البريد المباشر
+الاتصال المباشر
+منصات القطاع الصناعي المتخصصة`,
+        q13: `منطقة القسطل الصناعية
+منطقة الرجم الشامي الصناعية
+مدينة سحاب الصناعية
+مدينة الموقر الصناعية
+مدينة التجمعات الصناعية`,
+        q14: `الموقع الاستراتيجي المتميز
+نظام التقسيط المرن
+مطور يتيح خيار البناء بنظام الأقساط`,
+        q15: `الأفضل في الموقع والأعلى جودة ومدينة آمنة يتم إدارتها من خلال مطور رئيسي متميز`,
+        q16: `مستودعات
+أراضٍ صناعية
+مصانع`,
+        q17: `يتم تطبيق أعلى المعايير من حيث:
+• تطبيق أنظمة العزل والحماية
+• أنظمة إطفاء الحريق المتطورة
+• بناء أنظمة تخزين بمعدات متطورة`,
+        q18: `1. اتفاقية بناء وبيع أكبر مستودع لوجستي في عمان ومساحته (30,000م²) على قطعة أرض بمساحة (60,000م²) مع شركة محامص الشعب، حيث قامت نوبلز ببناء المستودع بأعلى المواصفات الهندسية وتجهيزه كمركز لوجستي بمعدات متطورة.
+
+2. اتفاقية بيع قطعة أرض صناعية بمساحة (11,000م²) لشركة مخابز قبلان لبناء مصنع رئيسي لتزويد فروعهم بكافة أنواع المخبوزات والتصدير للسعودية.
+
+3. مصنع تغليف وتعبئة لمواد تجميلية ومكياج بمساحة 2,000م² على قطعة أرض بمساحة 4,000م².`,
+        q19: `رشيد جعارة - المدير التنفيذي
+عمر العايش - رئيس مجلس الإدارة
+أحمد المعري - الرئيس التنفيذي لمجموعة نوبلز`,
+        q20: `إطلاق المدينة خلال النصف الأول من شهر يناير 2026
+يتخلل الإطلاق توقيع اتفاقيات مستودعات الشعب وقبلان ومصنع المكياج`,
+        q21: `حملة إعلامية شاملة وواسعة`,
+        q22: `يتم مناقشتها وفقاً لتوصياتكم`
+    };
     
     creativeBriefSection.style.display = 'block';
     
-    // 1. الملخص التنفيذي (q1, q2, q20, q21)
-    renderExecutiveSummary(data);
+    // 1. الملخص التنفيذي
+    renderExecutiveSummary(alicData);
     
-    // 2. الرسالة المركزية (q7)
-    renderCoreMessage(data);
+    // 2. الرسالة المركزية
+    renderCoreMessage(alicData);
     
-    // 3. الهوية المطلوبة (q3)
-    renderBrandIdentity(data);
+    // 3. الهوية المطلوبة
+    renderBrandIdentity(alicData);
     
-    // 4. الجمهور المستهدف (q4, q5, q16)
-    renderTargetAudience(data);
+    // 4. الجمهور المستهدف
+    renderTargetAudience(alicData);
     
-    // 5. المزايا التنافسية (q8, q14, q15)
-    renderCompetitiveAdvantages(data);
+    // 5. المزايا التنافسية
+    renderCompetitiveAdvantages(alicData);
     
-    // 6. القيمة المقدمة للعميل (q6)
-    renderValueProposition(data);
+    // 6. القيمة المقدمة للعميل
+    renderValueProposition(alicData);
     
-    // 7. الرسائل الأولية (q12)
-    renderInitialMessages(data);
+    // 7. المنافسون
+    renderCompetitors(alicData);
     
-    // 8. المنافسون (q13)
-    renderCompetitors(data);
+    // 8. الإنجازات (مواصفات المستودعات)
+    renderAchievements(alicData);
     
-    // 9. الإنجازات (q17)
-    renderAchievements(data);
+    // 9. الشراكات
+    renderPartnerships(alicData);
     
-    // 10. الشراكات (q18)
-    renderPartnerships(data);
+    // 10. القنوات الاتصالية
+    renderCommunicationChannels(alicData);
     
-    // 11. القنوات الاتصالية (q10, q11)
-    renderCommunicationChannels(data);
+    // 11. المتحدثون الرسميون
+    renderSpokespersons(alicData);
     
-    // 12. المتحدثون الرسميون (q19)
-    renderSpokespersons(data);
+    // 12. المحاذير الاتصالية
+    renderRedLines(alicData);
     
-    // 13. المحاذير الاتصالية (q9)
-    renderRedLines(data);
-    
-    // 14. الجدول الزمني والأولويات (q20, q21, q22)
-    renderTimeline(data);
+    // 13. الجدول الزمني والأولويات
+    renderTimeline(alicData);
 }
 
 // الملخص التنفيذي
@@ -27912,6 +28075,94 @@ async function logActivity(action, taskId, details) {
     }
 }
 
+// ============================================
+// نظام تسجيل الدخول
+// ============================================
+
+function showLoginModal() {
+    document.getElementById('login-modal').style.display = 'flex';
+}
+
+function showRegisterModal() {
+    document.getElementById('register-modal').style.display = 'flex';
+}
+
+function switchToRegister() {
+    closeModal('login-modal');
+    showRegisterModal();
+}
+
+function switchToLogin() {
+    closeModal('register-modal');
+    showLoginModal();
+}
+
+function closeModal(modalId) {
+    document.getElementById(modalId).style.display = 'none';
+}
+
+async function handleLogin(event) {
+    event.preventDefault();
+    
+    const email = document.getElementById('login-email').value;
+    const password = document.getElementById('login-password').value;
+    
+    try {
+        await auth.signInWithEmailAndPassword(email, password);
+        closeModal('login-modal');
+        showToast('تم تسجيل الدخول بنجاح', 'success');
+    } catch (error) {
+        console.error('خطأ في تسجيل الدخول:', error);
+        showToast('خطأ في البريد الإلكتروني أو كلمة المرور', 'error');
+    }
+}
+
+async function handleRegister(event) {
+    event.preventDefault();
+    
+    const name = document.getElementById('register-name').value;
+    const email = document.getElementById('register-email').value;
+    const password = document.getElementById('register-password').value;
+    
+    try {
+        const userCredential = await auth.createUserWithEmailAndPassword(email, password);
+        
+        // التحقق إذا كان أدمن
+        const isAdmin = ADMIN_EMAILS.includes(email.toLowerCase());
+        
+        // إنشاء ملف المستخدم
+        await db.collection('users').doc(userCredential.user.uid).set({
+            name: name,
+            email: email,
+            role: isAdmin ? 'admin' : 'viewer',
+            status: isAdmin ? 'approved' : 'pending', // ← الإضافة المهمة!
+            isActive: true,
+            createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+            lastLogin: firebase.firestore.FieldValue.serverTimestamp(),
+            provider: 'email'
+        });
+        
+        closeModal('register-modal');
+        
+        if (isAdmin) {
+            showToast('مرحباً بك كمدير للنظام!', 'success');
+        } else {
+            showToast('تم إنشاء الحساب بنجاح! بانتظار موافقة المدير', 'info');
+        }
+    } catch (error) {
+        console.error('خطأ في إنشاء الحساب:', error);
+        showToast('حدث خطأ في إنشاء الحساب', 'error');
+    }
+}
+
+async function signOutUser() {
+    try {
+        await auth.signOut();
+        showToast('تم تسجيل الخروج', 'info');
+    } catch (error) {
+        console.error('خطأ:', error);
+    }
+}
 
 // ============================================
 // Toast Notifications
@@ -27963,6 +28214,78 @@ function showToast(message, type = 'info') {
     }, 4000);
 }
 
+// ============================================
+// تسجيل الدخول عبر Google
+// ============================================
+
+async function signInWithGoogle() {
+    try {
+        const provider = new firebase.auth.GoogleAuthProvider();
+        provider.addScope('profile');
+        provider.addScope('email');
+        
+        const result = await auth.signInWithPopup(provider);
+        const user = result.user;
+        
+        // التحقق إذا المستخدم موجود في Firestore
+        const userDoc = await db.collection('users').doc(user.uid).get();
+        
+        if (!userDoc.exists) {
+            // إنشاء مستخدم جديد - الأدمن يُوافق تلقائياً، الباقي بانتظار الموافقة
+            const isAdmin = ADMIN_EMAILS.includes(user.email.toLowerCase());
+            console.log('🆕 Creating new user:', user.email, 'isAdmin:', isAdmin);
+            await db.collection('users').doc(user.uid).set({
+                name: user.displayName || 'مستخدم جديد',
+                email: user.email,
+                photoURL: user.photoURL || null,
+                role: isAdmin ? 'admin' : 'viewer',
+                status: isAdmin ? 'approved' : 'pending', // حالة الموافقة
+                isActive: true,
+                createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+                lastLogin: firebase.firestore.FieldValue.serverTimestamp(),
+                provider: 'google'
+            });
+            console.log('🆕 User created with status:', isAdmin ? 'approved' : 'pending');
+            
+            if (isAdmin) {
+                showToast('مرحباً بك كمدير للنظام!', 'success');
+            } else {
+                showToast('تم تسجيلك بنجاح! بانتظار موافقة المدير', 'info');
+            }
+        } else {
+            // تحديث آخر تسجيل دخول
+            const existingData = userDoc.data();
+            const isAdmin = ADMIN_EMAILS.includes(user.email.toLowerCase());
+            
+            // إضافة حقل status للمستخدمين القدامى الذين لا يملكونه
+            const updateData = {
+                lastLogin: firebase.firestore.FieldValue.serverTimestamp(),
+                photoURL: user.photoURL || existingData.photoURL
+            };
+            
+            // إذا لم يكن لديه status، أضفه
+            if (!existingData.status) {
+                updateData.status = isAdmin ? 'approved' : 'pending';
+            }
+            
+            await db.collection('users').doc(user.uid).update(updateData);
+        }
+        
+        closeModal('login-modal');
+        closeModal('register-modal');
+        
+    } catch (error) {
+        console.error('خطأ في تسجيل الدخول:', error);
+        if (error.code === 'auth/popup-closed-by-user') {
+            showToast('تم إلغاء تسجيل الدخول', 'warning');
+        } else {
+            showToast('حدث خطأ في تسجيل الدخول', 'error');
+        }
+    }
+}
+
+// ============================================
+// نظام الصلاحيات
 // ============================================
 
 // قائمة الإيميلات الإدارية (معرّفة في base.html)
@@ -29084,9 +29407,63 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 1000);
 });
 
-// Auth handled by platform - show content immediately
-document.getElementById("authLoading").style.display = "none";
-document.getElementById("pageContent").classList.add("visible");
+// التحقق من تسجيل الدخول والموافقة
+const bypassCode = new URLSearchParams(window.location.search).get('access');
+if (bypassCode === 'nobles2025') {
+    document.getElementById('authLoading').style.display = 'none';
+    document.getElementById('pageContent').classList.add('visible');
+} else {
+    // التأكد من تحميل Firebase أولاً
+    if (typeof auth === 'undefined') {
+        console.error('Firebase auth not loaded');
+        // انتظر قليلاً ثم حاول مرة أخرى
+        setTimeout(() => {
+            window.location.reload();
+        }, 2000);
+    } else {
+        auth.onAuthStateChanged(async (user) => {
+        const authLoading = document.getElementById('authLoading');
+        const pageContent = document.getElementById('pageContent');
+        const pendingScreen = document.getElementById('pending-approval-screen');
+        
+        if (user) {
+            // الحصول على بيانات المستخدم
+            await getCurrentUserData();
+            
+            // التحقق إذا كان أدمن (يتجاوز فحص الموافقة)
+            const isAdmin = ADMIN_EMAILS.includes(user.email.toLowerCase());
+            
+            // التحقق من حالة الموافقة
+            if (isAdmin || (currentUserData && currentUserData.status === 'approved')) {
+                // المستخدم مُوافق عليه أو أدمن
+                updateUIForRole();
+                authLoading.style.display = 'none';
+                if (pendingScreen) pendingScreen.style.display = 'none';
+                pageContent.classList.add('visible');
+                
+                // تحديث شارة الطلبات المعلقة للأدمن
+                if (hasPermission('manage_users')) {
+                    updatePendingRequestsBadge();
+                }
+            } else if (currentUserData && currentUserData.status === 'rejected') {
+                // المستخدم مرفوض
+                authLoading.style.display = 'none';
+                pageContent.classList.remove('visible');
+                showRejectedScreen();
+            } else {
+                // المستخدم بانتظار الموافقة أو لم يُحدد له status
+                authLoading.style.display = 'none';
+                if (pendingScreen) pendingScreen.style.display = 'flex';
+                pageContent.classList.remove('visible');
+            }
+        } else {
+            // غير مسجل دخول - إظهار صفحة تسجيل الدخول
+            pageContent.classList.remove('visible');
+            showLoginPrompt();
+        }
+    });
+    }
+}
 
 // إظهار صفحة طلب تسجيل الدخول
 function showLoginPrompt() {
