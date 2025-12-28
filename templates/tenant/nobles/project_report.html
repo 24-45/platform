@@ -29527,21 +29527,35 @@ function showRejectedScreen() {
 </script>
 
 <!-- Campaign Manager JS -->
-<script src="{{ url_for('static', filename='js/tenants/nobles/campaign-manager.js') }}?v=2.4"></script>
+<script src="{{ url_for('static', filename='js/tenants/nobles/campaign-manager.js') }}?v=2.5"></script>
 <script>
-// تهيئة نظام إدارة الحملة عند فتح تاب المراقبة
+// تهيئة نظام إدارة الحملة
 document.addEventListener('DOMContentLoaded', function() {
+    const projectId = '{{ project.id }}';
+    
+    // دالة لتهيئة CampaignManager
+    function initCampaignManager() {
+        if (typeof CampaignManager !== 'undefined' && !CampaignManager._initialized) {
+            CampaignManager.init(projectId);
+            CampaignManager._initialized = true;
+        }
+    }
+    
     // Initialize Campaign Manager when monitoring tab is clicked
     const monitoringTab = document.querySelector('a[href="#monitoring"]');
     if (monitoringTab) {
         monitoringTab.addEventListener('click', function() {
-            setTimeout(function() {
-                if (typeof CampaignManager !== 'undefined') {
-                    const projectId = '{{ project.id }}';
-                    CampaignManager.init(projectId);
-                }
-            }, 500);
+            setTimeout(initCampaignManager, 500);
         });
+    }
+    
+    // تهيئة تلقائية إذا كان الـ hash يشير لـ monitoring أو على منصة 24-45
+    const isPlatform = window.location.hostname.includes('24-45.com') || window.location.pathname.includes('/nobles/');
+    const isMonitoringTab = window.location.hash === '#monitoring' || document.getElementById('monitoring')?.classList.contains('active');
+    
+    if (isPlatform || isMonitoringTab) {
+        // تهيئة CampaignManager تلقائياً على المنصة
+        setTimeout(initCampaignManager, 1000);
     }
 });
 </script>

@@ -671,17 +671,29 @@ const CampaignManager = {
     // ==========================================
     init: function(projectId) {
         this.currentProjectId = projectId || 'alic-almuwaqqar';
-        this.db = firebase.firestore();
-        this.setupRealtimeListeners();
+        
+        // التحقق من وجود Firebase
+        this.hasFirebase = typeof firebase !== 'undefined' && firebase.firestore;
+        if (this.hasFirebase) {
+            this.db = firebase.firestore();
+            this.setupRealtimeListeners();
+            this.loadQuestionnaireData(); // تحميل بيانات الاستبيان
+        } else {
+            console.log('⚠️ Firebase not available - running in offline mode');
+        }
+        
+        // عرض التبويبات دائماً (حتى بدون Firebase)
         this.renderSubTabs();
         this.loadDashboard();
-        this.loadQuestionnaireData(); // تحميل بيانات الاستبيان
+        
         console.log('✅ Campaign Manager initialized for:', this.currentProjectId);
         console.log('🤖 AI Assistant loaded with project knowledge');
     },
     
     // تحميل بيانات الاستبيان من Firebase
     loadQuestionnaireData: async function() {
+        if (!this.hasFirebase || !this.db) return;
+        
         try {
             const doc = await this.db.collection('questionnaires').doc(this.currentProjectId).get();
             if (doc.exists) {
@@ -2432,6 +2444,12 @@ ${cp.strategicObjectives[0].title}
     // Firebase Realtime Listeners
     // ==========================================
     setupRealtimeListeners: function() {
+        // التحقق من وجود Firebase
+        if (!this.hasFirebase || !this.db) {
+            console.log('⚠️ Realtime listeners skipped - Firebase not available');
+            return;
+        }
+        
         // Tasks listener
         this.db.collection('projects').doc(this.currentProjectId)
             .collection('tasks')
