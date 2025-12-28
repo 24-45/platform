@@ -221,6 +221,18 @@
             color: var(--green);
         }
         
+        .alert-warning {
+            background: rgba(255, 165, 2, 0.1);
+            border: 1px solid rgba(255, 165, 2, 0.3);
+            color: #ffa502;
+        }
+        
+        .alert-info {
+            background: rgba(0, 168, 255, 0.1);
+            border: 1px solid rgba(0, 168, 255, 0.3);
+            color: #00a8ff;
+        }
+        
         /* Google Button */
         .btn-google {
             width: 100%;
@@ -396,7 +408,7 @@
                 {% if messages %}
                     {% for category, message in messages %}
                     <div class="alert alert-{{ category }}">
-                        <i class="fas fa-{% if category == 'error' %}exclamation-circle{% else %}check-circle{% endif %}"></i>
+                        <i class="fas fa-{% if category == 'error' %}exclamation-circle{% elif category == 'warning' %}exclamation-triangle{% elif category == 'info' %}info-circle{% else %}check-circle{% endif %}"></i>
                         {{ message }}
                     </div>
                     {% endfor %}
@@ -417,12 +429,16 @@
             
             <div class="login-info">
                 <div class="info-item">
+                    <i class="fas fa-user-plus"></i>
+                    <span>مستخدم جديد؟ سيتم تسجيلك تلقائياً</span>
+                </div>
+                <div class="info-item">
                     <i class="fas fa-shield-alt"></i>
                     <span>تسجيل دخول آمن ومشفر بالكامل</span>
                 </div>
                 <div class="info-item">
-                    <i class="fas fa-bolt"></i>
-                    <span>وصول فوري بضغطة واحدة</span>
+                    <i class="fas fa-clock"></i>
+                    <span>الموافقة على حسابك خلال 24 ساعة</span>
                 </div>
             </div>
             

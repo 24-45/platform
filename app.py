@@ -252,33 +252,90 @@ def google_callback():
             # البحث عن المستخدم في قاعدة البيانات
             user = get_user_by_email(email)
             
-            if user and user.get('active', True):
-                # مستخدم موجود - تسجيل الدخول
-                session['user_id'] = user['id']
-                session['user_email'] = user['email']
-                session['user_name'] = user.get('name', name)
-                session['user_picture'] = picture
-                session['role'] = user['role']
-                session['tenant_access'] = user.get('tenant_access', [])
-                session['default_tenant'] = user.get('default_tenant')
+            if user:
+                # التحقق من حالة الحساب
+                status = user.get('status', 'approved')  # للتوافق مع الحسابات القديمة
                 
-                # توجيه حسب الصلاحية
-                if user['role'] == 'admin':
-                    return redirect(url_for('admin_dashboard'))
-                elif user.get('default_tenant'):
-                    return redirect(url_for('tenant_home', tenant_slug=user['default_tenant']))
+                if status == 'pending':
+                    # حساب منتظر الموافقة
+                    session['pending_user'] = {
+                        'name': user.get('name', name),
+                        'email': email,
+                        'picture': picture
+                    }
+                    flash('حسابك بانتظار موافقة المسؤول. سيتم إشعارك عند الموافقة.', 'warning')
+                    return redirect(url_for('pending_approval'))
+                    
+                elif status == 'rejected':
+                    flash('تم رفض طلب تسجيلك. تواصل مع المسؤول لمزيد من المعلومات.', 'error')
+                    return redirect(url_for('login'))
+                    
+                elif not user.get('active', True):
+                    flash('حسابك معطل. تواصل مع المسؤول.', 'error')
+                    return redirect(url_for('login'))
+                    
                 else:
-                    return redirect(url_for('platform_home'))
+                    # حساب موافق عليه - تسجيل الدخول
+                    session['user_id'] = user['id']
+                    session['user_email'] = user['email']
+                    session['user_name'] = user.get('name', name)
+                    session['user_picture'] = picture
+                    session['role'] = user['role']
+                    session['tenant_access'] = user.get('tenant_access', [])
+                    session['default_tenant'] = user.get('default_tenant')
+                    
+                    # توجيه حسب الصلاحية
+                    if user['role'] == 'admin':
+                        return redirect(url_for('admin_dashboard'))
+                    elif user.get('default_tenant'):
+                        return redirect(url_for('tenant_home', tenant_slug=user['default_tenant']))
+                    else:
+                        return redirect(url_for('platform_home'))
             else:
-                # مستخدم غير مسجل
-                flash('هذا البريد الإلكتروني غير مسجل في النظام. تواصل مع المسؤول للحصول على صلاحية الدخول.', 'error')
-                return redirect(url_for('login'))
+                # مستخدم جديد - إنشاء حساب بانتظار الموافقة
+                import uuid
+                new_user = {
+                    'id': str(uuid.uuid4())[:8],
+                    'email': email,
+                    'name': name,
+                    'picture': picture,
+                    'role': 'client',
+                    'tenant_access': [],
+                    'default_tenant': '',
+                    'active': True,
+                    'status': 'pending',  # بانتظار الموافقة
+                    'registered_at': __import__('datetime').datetime.now().isoformat()
+                }
+                
+                users = load_users()
+                users.append(new_user)
+                save_users(users)
+                
+                # رسالة ترحيب للمستخدم الجديد
+                flash(f'مرحباً {name}! تم إنشاء حسابك بنجاح وهو الآن بانتظار موافقة المسؤول.', 'success')
+                
+                # توجيه لصفحة الانتظار
+                session['pending_user'] = {
+                    'name': name,
+                    'email': email,
+                    'picture': picture
+                }
+                return redirect(url_for('pending_approval'))
                 
     except Exception as e:
         print(f"Google OAuth Error: {e}")
         flash('حدث خطأ أثناء تسجيل الدخول. حاول مرة أخرى.', 'error')
     
     return redirect(url_for('login'))
+
+
+@app.route('/pending-approval')
+def pending_approval():
+    """صفحة انتظار موافقة الأدمن"""
+    pending_user = session.get('pending_user')
+    if not pending_user:
+        return redirect(url_for('login'))
+    return render_template('platform/pending_approval.html', user=pending_user)
 
 
 @app.route('/login/password', methods=['POST'])
@@ -289,7 +346,20 @@ def login_password():
     
     user = get_user_by_email(email)
     
-    if user and user.get('active', True):
+    if user:
+        # التحقق من حالة الحساب
+        status = user.get('status', 'approved')
+        
+        if status == 'pending':
+            flash('حسابك بانتظار موافقة المسؤول. سيتم إشعارك عند الموافقة.', 'warning')
+            return redirect(url_for('login'))
+        elif status == 'rejected':
+            flash('تم رفض طلب تسجيلك. تواصل مع المسؤول للمزيد من المعلومات.', 'error')
+            return redirect(url_for('login'))
+        elif not user.get('active', True):
+            flash('حسابك معطل حالياً. تواصل مع المسؤول.', 'error')
+            return redirect(url_for('login'))
+        
         # التحقق من كلمة المرور
         if user.get('password') == password:
             session['user_id'] = user['id']
@@ -308,7 +378,8 @@ def login_password():
         else:
             flash('كلمة المرور غير صحيحة', 'error')
     else:
-        flash('البريد الإلكتروني غير مسجل في النظام', 'error')
+        # مستخدم غير موجود - توجيهه لتسجيل الدخول بـ Google
+        flash('هذا البريد غير مسجل. سجّل دخولك بحساب Google للتسجيل التلقائي.', 'info')
     
     return redirect(url_for('login'))
 
@@ -662,6 +733,50 @@ def admin_delete_user(user_id):
     save_users(users)
     
     flash('تم حذف المستخدم بنجاح', 'success')
+    return redirect(url_for('admin_dashboard'))
+
+
+@app.route('/admin/users/approve/<user_id>', methods=['POST'])
+@login_required
+def admin_approve_user(user_id):
+    """الموافقة على مستخدم منتظر"""
+    if not is_admin():
+        return redirect(url_for('access_denied'))
+    
+    default_tenant = request.form.get('default_tenant', '')
+    tenants = request.form.getlist('tenants')
+    role = request.form.get('role', 'client')
+    
+    users = load_users()
+    for user in users:
+        if user['id'] == user_id:
+            user['status'] = 'approved'
+            user['role'] = role
+            user['tenant_access'] = tenants if tenants else []
+            user['default_tenant'] = default_tenant
+            user['approved_at'] = __import__('datetime').datetime.now().isoformat()
+            flash(f'تمت الموافقة على {user["name"]}', 'success')
+            break
+    
+    save_users(users)
+    return redirect(url_for('admin_dashboard'))
+
+
+@app.route('/admin/users/reject/<user_id>', methods=['POST'])
+@login_required
+def admin_reject_user(user_id):
+    """رفض طلب مستخدم"""
+    if not is_admin():
+        return redirect(url_for('access_denied'))
+    
+    users = load_users()
+    for user in users:
+        if user['id'] == user_id:
+            user['status'] = 'rejected'
+            flash(f'تم رفض طلب {user["name"]}', 'info')
+            break
+    
+    save_users(users)
     return redirect(url_for('admin_dashboard'))
 
 

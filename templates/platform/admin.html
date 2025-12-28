@@ -35,6 +35,151 @@
             min-height: 100vh;
         }
         
+        
+        /* Pending Section Styles */
+        .pending-section {
+            border: 2px solid var(--warning);
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes glow {
+            from { box-shadow: 0 0 5px rgba(255, 165, 2, 0.2); }
+            to { box-shadow: 0 0 20px rgba(255, 165, 2, 0.3); }
+        }
+        
+        .section-note.warning {
+            background: rgba(255, 165, 2, 0.15);
+            border-color: var(--warning);
+            color: var(--warning);
+        }
+        
+        .count-badge {
+            background: var(--warning);
+            color: var(--black);
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-right: 0.5rem;
+        }
+        
+        .pending-cards {
+            display: grid;
+            gap: 1rem;
+        }
+        
+        .pending-card {
+            background: var(--black-light);
+            border-radius: 10px;
+            padding: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .pending-user-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .pending-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: 2px solid var(--warning);
+        }
+        
+        .pending-avatar-placeholder {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--green), var(--green-dark));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .pending-details h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.25rem;
+        }
+        
+        .pending-details p {
+            color: var(--gray);
+            font-size: 0.9rem;
+            margin-bottom: 0.25rem;
+        }
+        
+        .pending-details small {
+            color: var(--gray-dark);
+            font-size: 0.8rem;
+        }
+        
+        .approve-form .form-row {
+            margin-bottom: 1rem;
+        }
+        
+        .approve-form label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--gray-light);
+        }
+        
+        .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            font-weight: 400;
+        }
+        
+        .checkbox-label input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            accent-color: var(--green);
+        }
+        
+        .approve-form select {
+            width: 100%;
+            padding: 0.75rem;
+            background: var(--black-card);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: var(--white);
+            font-family: inherit;
+        }
+        
+        .pending-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .pending-actions .btn {
+            flex: 1;
+            justify-content: center;
+        }
+        
+        .btn-success {
+            background: var(--green) !important;
+            color: var(--black) !important;
+        }
+        
+        .btn-success:hover {
+            background: var(--green-dark) !important;
+        }
+        
+        
         /* Header */
         .admin-header {
             background: linear-gradient(180deg, var(--black-light) 0%, var(--black) 100%);
@@ -755,6 +900,134 @@
             </div>
         </div>
         
+        
+        <!-- Pending Requests Section -->
+        {% set pending_users = users|selectattr('status', 'equalto', 'pending')|list %}
+        {% if pending_users %}
+        <div class="section-card pending-section">
+            <div class="section-header">
+                <i class="fas fa-user-clock"></i>
+                <h2>طلبات بانتظار الموافقة <span class="count-badge">{{ pending_users|length }}</span></h2>
+            </div>
+            <div class="section-note warning">
+                <i class="fas fa-bell"></i>
+                <span>هناك {{ pending_users|length }} طلب جديد بانتظار موافقتك</span>
+            </div>
+            <div class="pending-cards">
+                {% for user in pending_users %}
+                <div class="pending-card">
+                    <div class="pending-user-info">
+                        {% if user.picture %}
+                        <img src="{{ user.picture }}" alt="{{ user.name }}" class="pending-avatar">
+                        {% else %}
+                        <div class="pending-avatar-placeholder">{{ user.name[0] }}</div>
+                        {% endif %}
+                        <div class="pending-details">
+                            <h4>{{ user.name }}</h4>
+                            <p>{{ user.email }}</p>
+                            <small>تاريخ التسجيل: {{ user.registered_at[:10] if user.registered_at else 'غير محدد' }}</small>
+                        </div>
+                    </div>
+                    <form action="/admin/users/approve/{{ user.id }}" method="POST" class="approve-form">
+                        <div class="form-row">
+                            <label>الصلاحيات:</label>
+                            <div class="checkbox-group">
+                                {% for tenant in tenants %}
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="tenants" value="{{ tenant.slug }}">
+                                    {{ tenant.name }}
+                                </label>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <label>العميل الافتراضي:</label>
+                            <select name="default_tenant">
+                                <option value="">-- اختر --</option>
+                                {% for tenant in tenants %}
+                                <option value="{{ tenant.slug }}">{{ tenant.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="pending-actions">
+                            <button type="submit" class="btn btn-success">
+                                <i class="fas fa-check"></i> موافقة
+                            </button>
+                            <button type="button" class="btn btn-danger" onclick="rejectUser('{{ user.id }}')">
+                                <i class="fas fa-times"></i> رفض
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+        
+        
+        <!-- Pending Requests Section -->
+        {% set pending_users = users|selectattr('status', 'equalto', 'pending')|list %}
+        {% if pending_users %}
+        <div class="section-card pending-section">
+            <div class="section-header">
+                <i class="fas fa-user-clock"></i>
+                <h2>طلبات بانتظار الموافقة <span class="count-badge">{{ pending_users|length }}</span></h2>
+            </div>
+            <div class="section-note warning">
+                <i class="fas fa-bell"></i>
+                <span>هناك {{ pending_users|length }} طلب جديد بانتظار موافقتك</span>
+            </div>
+            <div class="pending-cards">
+                {% for user in pending_users %}
+                <div class="pending-card">
+                    <div class="pending-user-info">
+                        {% if user.picture %}
+                        <img src="{{ user.picture }}" alt="{{ user.name }}" class="pending-avatar">
+                        {% else %}
+                        <div class="pending-avatar-placeholder">{{ user.name[0] }}</div>
+                        {% endif %}
+                        <div class="pending-details">
+                            <h4>{{ user.name }}</h4>
+                            <p>{{ user.email }}</p>
+                            <small>تاريخ التسجيل: {{ user.registered_at[:10] if user.registered_at else 'غير محدد' }}</small>
+                        </div>
+                    </div>
+                    <form action="/admin/users/approve/{{ user.id }}" method="POST" class="approve-form">
+                        <div class="form-row">
+                            <label>الصلاحيات:</label>
+                            <div class="checkbox-group">
+                                {% for tenant in tenants %}
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="tenants" value="{{ tenant.slug }}">
+                                    {{ tenant.name }}
+                                </label>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <label>العميل الافتراضي:</label>
+                            <select name="default_tenant">
+                                <option value="">-- اختر --</option>
+                                {% for tenant in tenants %}
+                                <option value="{{ tenant.slug }}">{{ tenant.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="pending-actions">
+                            <button type="submit" class="btn btn-success">
+                                <i class="fas fa-check"></i> موافقة
+                            </button>
+                            <button type="button" class="btn btn-danger" onclick="rejectUser('{{ user.id }}')">
+                                <i class="fas fa-times"></i> رفض
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+        
         <!-- Users Section -->
         <div class="section-card">
             <div class="section-header">
@@ -884,7 +1157,18 @@
     </div>
     
     <script>
-        function editUser(id, name, email, tenants, defaultTenant) {
+        
+    function rejectUser(userId) {
+        if (confirm('هل أنت متأكد من رفض هذا الطلب؟')) {
+            const form = document.createElement('form');
+            form.method = 'POST';
+            form.action = '/admin/users/reject/' + userId;
+            document.body.appendChild(form);
+            form.submit();
+        }
+    }
+
+    function editUser(id, name, email, tenants, defaultTenant) {
             document.getElementById('edit_user_id').value = id;
             document.getElementById('edit_name').value = name;
             document.getElementById('edit_email').value = email;
