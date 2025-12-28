@@ -13745,8 +13745,12 @@
 <!-- كود للتحقق من رمز الوصول وإظهار المحتوى مباشرة -->
 <script>
 (function() {
+    // على المنصة 24-45، المصادقة تتم عبر Flask session
+    // نتجاوز فحص Firebase ونعرض المحتوى مباشرة
+    var isPlatform = window.location.hostname.includes('24-45.com') || window.location.pathname.includes('/nobles/');
     var bypassCode = new URLSearchParams(window.location.search).get('access');
-    if (bypassCode === 'nobles2025') {
+    
+    if (isPlatform || bypassCode === 'nobles2025') {
         document.addEventListener('DOMContentLoaded', function() {
             var authLoading = document.getElementById('authLoading');
             var pageContent = document.getElementById('pageContent');
