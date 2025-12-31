@@ -1,0 +1,284 @@
+{
+    "campaign_schema": {
+        "version": "2.0",
+        "description": "هيكل بيانات الحملة الاتصالية المتكاملة",
+        "structure": {
+            "id": "string - معرف فريد",
+            "tenant_id": "string - معرف العميل",
+            "status": "draft|pending_client|client_responded|in_progress|review|completed",
+            "workflow_stage": "info_gathering|client_brief|analysis|planning|execution|monitoring",
+            "created_at": "datetime",
+            "updated_at": "datetime",
+            "created_by": "user_id",
+            
+            "basic_info": {
+                "name": "string",
+                "name_en": "string",
+                "campaign_type": "launch|awareness|crisis|compound|internal|event",
+                "sub_types": ["array - for compound campaigns"],
+                "description": "string",
+                "start_date": "date",
+                "end_date": "date",
+                "budget": {
+                    "total": "number",
+                    "currency": "SAR|USD|EUR",
+                    "allocated": "number",
+                    "spent": "number"
+                }
+            },
+            
+            "client_info": {
+                "company_name": "string",
+                "company_name_en": "string",
+                "company_description": "string",
+                "company_vision": "string",
+                "company_mission": "string",
+                "company_values": ["array"],
+                "industry": "string",
+                "logo": "file_path",
+                "brand_colors": ["array"],
+                "contacts": [
+                    {
+                        "name": "string",
+                        "role": "string",
+                        "email": "string",
+                        "phone": "string",
+                        "is_decision_maker": "boolean"
+                    }
+                ]
+            },
+            
+            "project_info": {
+                "project_name": "string",
+                "project_name_en": "string",
+                "project_tagline": "string",
+                "project_description": "string",
+                "project_type": "string",
+                "project_location": "string",
+                "unique_selling_points": ["array"],
+                "features": ["array"],
+                "images": ["array of file_paths"]
+            },
+            
+            "client_brief": {
+                "status": "pending|sent|responded|approved",
+                "sent_at": "datetime",
+                "responded_at": "datetime",
+                "approved_at": "datetime",
+                "link_active": "boolean",
+                "link_token": "string",
+                "questionnaire_id": "string",
+                "responses": {
+                    "_comment": "Responses to creative brief questionnaire"
+                },
+                "admin_notes": "string"
+            },
+            
+            "analysis": {
+                "framework_used": "swot|pestel|swot_pestel",
+                "swot": {
+                    "strengths": ["array"],
+                    "weaknesses": ["array"],
+                    "opportunities": ["array"],
+                    "threats": ["array"]
+                },
+                "pestel": {
+                    "political": ["array"],
+                    "economic": ["array"],
+                    "social": ["array"],
+                    "technological": ["array"],
+                    "environmental": ["array"],
+                    "legal": ["array"]
+                },
+                "communication_gaps": [
+                    {
+                        "gap": "string",
+                        "source": "weakness|threat",
+                        "opportunity": "string",
+                        "priority": "high|medium|low",
+                        "recommended_action": "string"
+                    }
+                ],
+                "ai_insights": {
+                    "generated_at": "datetime",
+                    "suggestions": ["array"]
+                }
+            },
+            
+            "communication_direction": {
+                "main_objective": "string",
+                "key_message": "string",
+                "supporting_messages": ["array"],
+                "tone_of_voice": ["array"],
+                "call_to_action": "string",
+                "target_audiences": [
+                    {
+                        "id": "string",
+                        "name": "string",
+                        "description": "string",
+                        "demographics": "object",
+                        "pain_points": ["array"],
+                        "channels": ["array"],
+                        "priority": "primary|secondary"
+                    }
+                ]
+            },
+            
+            "methodology": {
+                "approach": "integrated|digital_first|pr_led|influencer_driven|event_based|content_marketing",
+                "rationale": "string",
+                "key_channels": ["array"]
+            },
+            
+            "phases": [
+                {
+                    "id": "string",
+                    "name": "string",
+                    "name_en": "string",
+                    "order": "number",
+                    "start_date": "date",
+                    "end_date": "date",
+                    "duration_days": "number",
+                    "objective": "string",
+                    "strategic_goal": "string",
+                    "status": "pending|in_progress|completed",
+                    "progress": "0-100",
+                    "budget_allocated": "number",
+                    "budget_spent": "number"
+                }
+            ],
+            
+            "media_tools": {
+                "selected_categories": ["array of category ids"],
+                "selections": {
+                    "newspapers": {
+                        "local": ["array of newspaper ids"],
+                        "regional": [],
+                        "international": []
+                    },
+                    "influencers": {
+                        "local": [],
+                        "regional": [],
+                        "international": []
+                    },
+                    "tv_channels": [],
+                    "radio_stations": [],
+                    "digital_platforms": [],
+                    "pr_services": []
+                },
+                "ai_recommendations": [
+                    {
+                        "type": "string",
+                        "entity_id": "string",
+                        "reason": "string",
+                        "relevance_score": "0-100"
+                    }
+                ],
+                "custom_additions": ["array - user added entries"]
+            },
+            
+            "promotion_strategy": {
+                "total_budget": "number",
+                "platforms": [
+                    {
+                        "platform": "google|meta|linkedin|twitter|tiktok|programmatic",
+                        "budget": "number",
+                        "objective": "awareness|traffic|conversions|engagement",
+                        "target_audience": "string",
+                        "expected_reach": "number",
+                        "expected_impressions": "number"
+                    }
+                ],
+                "schedule": {
+                    "start_date": "date",
+                    "end_date": "date",
+                    "phases": ["array - tied to campaign phases"]
+                }
+            },
+            
+            "products": [
+                {
+                    "id": "string",
+                    "phase_id": "string",
+                    "type": "press_release|social_post|video|infographic|...",
+                    "name": "string",
+                    "name_en": "string",
+                    "description": "string",
+                    "communication_objective": "string",
+                    "target_audience": "string",
+                    "key_message": "string",
+                    "platform": "string",
+                    "publish_date": "date",
+                    "status": "planned|in_progress|review|approved|published",
+                    "content": {
+                        "body": "string",
+                        "attachments": ["array of file_paths"],
+                        "hashtags": ["array"],
+                        "mentions": ["array"]
+                    },
+                    "metadata": {
+                        "author": "string",
+                        "expected_reach": "number",
+                        "budget": "number",
+                        "kpis": "object"
+                    },
+                    "approvals": [
+                        {
+                            "user_id": "string",
+                            "status": "pending|approved|rejected",
+                            "comment": "string",
+                            "timestamp": "datetime"
+                        }
+                    ]
+                }
+            ],
+            
+            "timeline": {
+                "auto_generated": "boolean",
+                "milestones": [
+                    {
+                        "id": "string",
+                        "name": "string",
+                        "date": "date",
+                        "type": "start|end|milestone|deadline",
+                        "linked_to": "phase_id or product_id"
+                    }
+                ],
+                "gantt_data": "object - for visualization"
+            },
+            
+            "progress": {
+                "overall": "0-100",
+                "by_phase": {
+                    "phase_id": "0-100"
+                },
+                "completed_products": "number",
+                "total_products": "number",
+                "budget_utilization": "percentage"
+            },
+            
+            "approvals": {
+                "workflow": [
+                    {
+                        "stage": "string",
+                        "approver_type": "team|client",
+                        "status": "pending|approved|rejected|revision_requested",
+                        "approver_id": "string",
+                        "timestamp": "datetime",
+                        "comments": "string"
+                    }
+                ]
+            },
+            
+            "activity_log": [
+                {
+                    "timestamp": "datetime",
+                    "user_id": "string",
+                    "action": "string",
+                    "details": "object",
+                    "ip_address": "string"
+                }
+            ]
+        }
+    }
+}

@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الموجز الإبداعي | {{ campaign.basic_info.name }} | 24°45°</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --dark: #0D0D0D;
+            --dark-light: #141414;
+            --dark-lighter: #1A1A1A;
+            --primary: #00D46A;
+            --primary-dark: #00B85C;
+            --text: #FFFFFF;
+            --text-muted: #888888;
+            --border: rgba(255, 255, 255, 0.08);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background: var(--dark);
+            color: var(--text);
+            line-height: 1.8;
+            min-height: 100vh;
+        }
+        
+        /* Header */
+        .brief-header {
+            background: linear-gradient(135deg, var(--dark-light) 0%, var(--dark) 100%);
+            padding: 40px 0;
+            border-bottom: 1px solid var(--border);
+            text-align: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 30px;
+        }
+        
+        .logo-num {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary);
+        }
+        
+        .logo-text {
+            font-size: 1rem;
+            color: var(--text-muted);
+        }
+        
+        .brief-title {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+        
+        .brief-subtitle {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+        
+        .campaign-badge {
+            display: inline-block;
+            background: rgba(0, 212, 106, 0.1);
+            color: var(--primary);
+            padding: 8px 20px;
+            border-radius: 30px;
+            margin-top: 20px;
+            font-weight: 600;
+        }
+        
+        /* Progress Bar */
+        .progress-container {
+            background: var(--dark-light);
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .progress-inner {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .progress-bar-bg {
+            height: 8px;
+            background: var(--dark-lighter);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 15px;
+        }
+        
+        .progress-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), #00F080);
+            border-radius: 4px;
+            transition: width 0.5s ease;
+        }
+        
+        .progress-steps {
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .progress-step {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .progress-step.active {
+            color: var(--primary);
+        }
+        
+        .progress-step.completed {
+            color: var(--primary);
+        }
+        
+        .step-dot {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: var(--dark-lighter);
+            border: 2px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            font-weight: 700;
+        }
+        
+        .progress-step.active .step-dot {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: var(--dark);
+        }
+        
+        .progress-step.completed .step-dot {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: var(--dark);
+        }
+        
+        /* Main Content */
+        .brief-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        /* Section */
+        .brief-section {
+            display: none;
+            animation: fadeIn 0.4s ease;
+        }
+        
+        .brief-section.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .section-header {
+            margin-bottom: 35px;
+            text-align: center;
+        }
+        
+        .section-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: rgba(0, 212, 106, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 1.8rem;
+            color: var(--primary);
+        }
+        
+        .section-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        .section-desc {
+            color: var(--text-muted);
+        }
+        
+        /* Questions */
+        .question-card {
+            background: var(--dark-light);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 25px;
+            margin-bottom: 20px;
+        }
+        
+        .question-label {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .question-label .required {
+            color: #EF4444;
+        }
+        
+        .question-hint {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-bottom: 15px;
+        }
+        
+        /* Form Controls */
+        .form-control {
+            width: 100%;
+            padding: 15px 18px;
+            background: var(--dark-lighter);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            color: var(--text);
+            font-size: 1rem;
+            font-family: 'Tajawal', sans-serif;
+            transition: all 0.3s ease;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(0, 212, 106, 0.1);
+        }
+        
+        .form-control::placeholder {
+            color: var(--text-muted);
+        }
+        
+        textarea.form-control {
+            min-height: 140px;
+            resize: vertical;
+        }
+        
+        /* Select */
+        select.form-control {
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23888' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: left 15px center;
+        }
+        
+        /* Checkbox & Radio Grid */
+        .options-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 12px;
+        }
+        
+        .option-item {
+            background: var(--dark-lighter);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .option-item:hover {
+            border-color: var(--primary);
+        }
+        
+        .option-item.selected {
+            background: rgba(0, 212, 106, 0.1);
+            border-color: var(--primary);
+        }
+        
+        .option-check {
+            width: 22px;
+            height: 22px;
+            border-radius: 6px;
+            border: 2px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+        
+        .option-item.selected .option-check {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: var(--dark);
+        }
+        
+        .option-text {
+            font-size: 0.95rem;
+        }
+        
+        /* List Input */
+        .list-items {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .list-item {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .list-item input {
+            flex: 1;
+        }
+        
+        .btn-remove {
+            width: 48px;
+            height: 48px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            background: transparent;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .btn-remove:hover {
+            border-color: #EF4444;
+            color: #EF4444;
+        }
+        
+        .btn-add {
+            padding: 12px 20px;
+            background: rgba(0, 212, 106, 0.1);
+            border: 1px dashed var(--primary);
+            border-radius: 10px;
+            color: var(--primary);
+            cursor: pointer;
+            font-family: 'Tajawal', sans-serif;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-add:hover {
+            background: rgba(0, 212, 106, 0.15);
+        }
+        
+        /* Tags Input */
+        .tags-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 15px;
+            background: var(--dark-lighter);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            min-height: 60px;
+        }
+        
+        .tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(0, 212, 106, 0.1);
+            color: var(--primary);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+        
+        .tag-remove {
+            cursor: pointer;
+            opacity: 0.7;
+            transition: opacity 0.3s;
+        }
+        
+        .tag-remove:hover {
+            opacity: 1;
+        }
+        
+        .tag-input {
+            flex: 1;
+            min-width: 150px;
+            background: transparent;
+            border: none;
+            color: var(--text);
+            font-size: 0.95rem;
+            font-family: 'Tajawal', sans-serif;
+        }
+        
+        .tag-input:focus {
+            outline: none;
+        }
+        
+        /* Navigation */
+        .brief-nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 30px 0;
+            margin-top: 30px;
+            border-top: 1px solid var(--border);
+        }
+        
+        .btn {
+            padding: 15px 35px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Tajawal', sans-serif;
+            border: none;
+        }
+        
+        .btn-secondary {
+            background: var(--dark-lighter);
+            border: 1px solid var(--border);
+            color: var(--text-muted);
+        }
+        
+        .btn-secondary:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+        
+        .btn-primary {
+            background: var(--primary);
+            color: var(--dark);
+        }
+        
+        .btn-primary:hover {
+            background: var(--primary-dark);
+        }
+        
+        .btn-primary:disabled {
+            background: var(--dark-lighter);
+            color: var(--text-muted);
+            cursor: not-allowed;
+        }
+        
+        /* Success Screen */
+        .success-screen {
+            text-align: center;
+            padding: 60px 20px;
+        }
+        
+        .success-icon {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: rgba(0, 212, 106, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            font-size: 3rem;
+            color: var(--primary);
+        }
+        
+        .success-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+        
+        .success-desc {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .progress-steps {
+                display: none;
+            }
+            
+            .brief-title {
+                font-size: 1.5rem;
+            }
+            
+            .options-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .brief-nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="brief-header">
+        <div class="logo">
+            <span class="logo-num">24°</span>
+            <span class="logo-num">45°</span>
+            <span class="logo-text">منصة</span>
+        </div>
+        <h1 class="brief-title">الموجز الإبداعي</h1>
+        <p class="brief-subtitle">أجب على الأسئلة التالية لمساعدتنا في بناء حملتك الاتصالية</p>
+        <div class="campaign-badge">
+            <i class="fas fa-bullhorn"></i>
+            {{ campaign.basic_info.name }}
+        </div>
+    </header>
+    
+    <!-- Progress -->
+    <div class="progress-container">
+        <div class="progress-inner">
+            <div class="progress-bar-bg">
+                <div class="progress-bar-fill" id="progressBar" style="width: 12.5%;"></div>
+            </div>
+            <div class="progress-steps">
+                {% for section in questionnaire.sections %}
+                <div class="progress-step {{ 'active' if loop.first else '' }}" data-section="{{ section.id }}">
+                    <span class="step-dot">{{ loop.index }}</span>
+                    <span class="step-text">{{ section.title }}</span>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    
+    <!-- Content -->
+    <main class="brief-content">
+        <form id="briefForm">
+            {% for section in questionnaire.sections %}
+            <div class="brief-section {{ 'active' if loop.first else '' }}" data-section="{{ section.id }}">
+                <div class="section-header">
+                    <div class="section-icon">
+                        {% if section.id == 'company_info' %}<i class="fas fa-building"></i>
+                        {% elif section.id == 'project_info' %}<i class="fas fa-project-diagram"></i>
+                        {% elif section.id == 'target_audience' %}<i class="fas fa-users"></i>
+                        {% elif section.id == 'campaign_objectives' %}<i class="fas fa-bullseye"></i>
+                        {% elif section.id == 'brand_voice' %}<i class="fas fa-comment-alt"></i>
+                        {% elif section.id == 'competitors' %}<i class="fas fa-chess"></i>
+                        {% elif section.id == 'budget_timeline' %}<i class="fas fa-clock"></i>
+                        {% elif section.id == 'existing_assets' %}<i class="fas fa-folder-open"></i>
+                        {% else %}<i class="fas fa-clipboard-list"></i>{% endif %}
+                    </div>
+                    <h2 class="section-title">{{ section.title }}</h2>
+                    <p class="section-desc">{{ section.description if section.description else 'أجب على الأسئلة التالية' }}</p>
+                </div>
+                
+                {% for question in section.questions %}
+                <div class="question-card" data-question="{{ question.id }}">
+                    <label class="question-label">
+                        {{ question.question }}
+                        {% if question.required %}<span class="required">*</span>{% endif %}
+                    </label>
+                    
+                    {% if question.placeholder %}
+                    <p class="question-hint">{{ question.placeholder }}</p>
+                    {% endif %}
+                    
+                    {% if question.type == 'text' %}
+                    <input type="text" class="form-control" name="{{ question.id }}" 
+                           {{ 'required' if question.required else '' }}>
+                    
+                    {% elif question.type == 'textarea' %}
+                    <textarea class="form-control" name="{{ question.id }}" 
+                              {{ 'required' if question.required else '' }}></textarea>
+                    
+                    {% elif question.type == 'select' %}
+                    <select class="form-control" name="{{ question.id }}" {{ 'required' if question.required else '' }}>
+                        <option value="">اختر...</option>
+                        {% for option in question.options %}
+                        <option value="{{ option }}">{{ option }}</option>
+                        {% endfor %}
+                    </select>
+                    
+                    {% elif question.type == 'checkbox' %}
+                    <div class="options-grid">
+                        {% for option in question.options %}
+                        <div class="option-item" data-value="{{ option }}">
+                            <div class="option-check"><i class="fas fa-check"></i></div>
+                            <span class="option-text">{{ option }}</span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <input type="hidden" name="{{ question.id }}" class="checkbox-value">
+                    
+                    {% elif question.type == 'list' %}
+                    <div class="list-items" data-name="{{ question.id }}">
+                        <div class="list-item">
+                            <input type="text" class="form-control" placeholder="أدخل عنصراً...">
+                            <button type="button" class="btn-remove" onclick="removeListItem(this)">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <button type="button" class="btn-add" onclick="addListItem(this)">
+                        <i class="fas fa-plus"></i>
+                        إضافة عنصر
+                    </button>
+                    <input type="hidden" name="{{ question.id }}" class="list-value">
+                    
+                    {% elif question.type == 'tags' %}
+                    <div class="tags-container" data-name="{{ question.id }}">
+                        <input type="text" class="tag-input" placeholder="اكتب واضغط Enter...">
+                    </div>
+                    <input type="hidden" name="{{ question.id }}" class="tags-value">
+                    
+                    {% endif %}
+                </div>
+                {% endfor %}
+            </div>
+            {% endfor %}
+            
+            <!-- Success Screen -->
+            <div class="brief-section" data-section="success">
+                <div class="success-screen">
+                    <div class="success-icon">
+                        <i class="fas fa-check"></i>
+                    </div>
+                    <h2 class="success-title">شكراً لك!</h2>
+                    <p class="success-desc">تم إرسال الموجز الإبداعي بنجاح. سيقوم فريقنا بمراجعة المعلومات والتواصل معك قريباً.</p>
+                </div>
+            </div>
+        </form>
+        
+        <!-- Navigation -->
+        <div class="brief-nav" id="briefNav">
+            <button type="button" class="btn btn-secondary" id="prevBtn" onclick="changeSection(-1)" style="visibility: hidden;">
+                <i class="fas fa-arrow-right"></i>
+                السابق
+            </button>
+            <button type="button" class="btn btn-primary" id="nextBtn" onclick="changeSection(1)">
+                التالي
+                <i class="fas fa-arrow-left"></i>
+            </button>
+        </div>
+    </main>
+    
+    <script>
+        const sections = {{ questionnaire.sections | tojson | safe }};
+        const campaignId = "{{ campaign.id }}";
+        let currentSection = 0;
+        const totalSections = sections.length;
+        let formData = {};
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            // Checkbox options
+            document.querySelectorAll('.option-item').forEach(item => {
+                item.addEventListener('click', function() {
+                    this.classList.toggle('selected');
+                    updateCheckboxValue(this.closest('.question-card'));
+                });
+            });
+            
+            // Tags input
+            document.querySelectorAll('.tag-input').forEach(input => {
+                input.addEventListener('keydown', function(e) {
+                    if (e.key === 'Enter') {
+                        e.preventDefault();
+                        addTag(this);
+                    }
+                });
+            });
+        });
+        
+        function changeSection(direction) {
+            // Save current section data
+            saveCurrentSection();
+            
+            const newSection = currentSection + direction;
+            
+            // Check if submitting
+            if (newSection >= totalSections) {
+                submitBrief();
+                return;
+            }
+            
+            if (newSection < 0) return;
+            
+            // Update UI
+            document.querySelectorAll('.brief-section').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('.progress-step').forEach(s => {
+                s.classList.remove('active');
+                if (sections.findIndex(sec => sec.id === s.dataset.section) < newSection) {
+                    s.classList.add('completed');
+                }
+            });
+            
+            currentSection = newSection;
+            
+            const currentSectionId = sections[currentSection].id;
+            document.querySelector(`.brief-section[data-section="${currentSectionId}"]`).classList.add('active');
+            document.querySelector(`.progress-step[data-section="${currentSectionId}"]`).classList.add('active');
+            
+            // Update progress bar
+            const progress = ((currentSection + 1) / totalSections) * 100;
+            document.getElementById('progressBar').style.width = progress + '%';
+            
+            // Update buttons
+            document.getElementById('prevBtn').style.visibility = currentSection === 0 ? 'hidden' : 'visible';
+            
+            if (currentSection === totalSections - 1) {
+                document.getElementById('nextBtn').innerHTML = '<i class="fas fa-check"></i> إرسال';
+            } else {
+                document.getElementById('nextBtn').innerHTML = 'التالي <i class="fas fa-arrow-left"></i>';
+            }
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        
+        function saveCurrentSection() {
+            const section = document.querySelector('.brief-section.active');
+            if (!section || section.dataset.section === 'success') return;
+            
+            section.querySelectorAll('.question-card').forEach(card => {
+                const questionId = card.dataset.question;
+                const input = card.querySelector('input:not([type="hidden"]), textarea, select');
+                
+                if (card.querySelector('.checkbox-value')) {
+                    // Checkbox
+                    const selected = [];
+                    card.querySelectorAll('.option-item.selected').forEach(item => {
+                        selected.push(item.dataset.value);
+                    });
+                    formData[questionId] = selected;
+                } else if (card.querySelector('.list-value')) {
+                    // List
+                    const items = [];
+                    card.querySelectorAll('.list-item input').forEach(inp => {
+                        if (inp.value.trim()) items.push(inp.value.trim());
+                    });
+                    formData[questionId] = items;
+                } else if (card.querySelector('.tags-value')) {
+                    // Tags
+                    const tags = [];
+                    card.querySelectorAll('.tag').forEach(tag => {
+                        tags.push(tag.textContent.trim().replace('×', '').trim());
+                    });
+                    formData[questionId] = tags;
+                } else if (input) {
+                    formData[questionId] = input.value;
+                }
+            });
+        }
+        
+        function updateCheckboxValue(card) {
+            const selected = [];
+            card.querySelectorAll('.option-item.selected').forEach(item => {
+                selected.push(item.dataset.value);
+            });
+            card.querySelector('.checkbox-value').value = JSON.stringify(selected);
+        }
+        
+        function addListItem(btn) {
+            const container = btn.previousElementSibling;
+            const newItem = document.createElement('div');
+            newItem.className = 'list-item';
+            newItem.innerHTML = `
+                <input type="text" class="form-control" placeholder="أدخل عنصراً...">
+                <button type="button" class="btn-remove" onclick="removeListItem(this)">
+                    <i class="fas fa-times"></i>
+                </button>
+            `;
+            container.appendChild(newItem);
+            newItem.querySelector('input').focus();
+        }
+        
+        function removeListItem(btn) {
+            const container = btn.closest('.list-items');
+            if (container.children.length > 1) {
+                btn.closest('.list-item').remove();
+            }
+        }
+        
+        function addTag(input) {
+            const value = input.value.trim();
+            if (!value) return;
+            
+            const container = input.closest('.tags-container');
+            const tag = document.createElement('span');
+            tag.className = 'tag';
+            tag.innerHTML = `${value} <span class="tag-remove" onclick="removeTag(this)">×</span>`;
+            container.insertBefore(tag, input);
+            input.value = '';
+        }
+        
+        function removeTag(span) {
+            span.closest('.tag').remove();
+        }
+        
+        function submitBrief() {
+            saveCurrentSection();
+            
+            // Show loading
+            document.getElementById('nextBtn').innerHTML = '<i class="fas fa-spinner fa-spin"></i> جاري الإرسال...';
+            document.getElementById('nextBtn').disabled = true;
+            
+            // Submit to server
+            fetch(`/api/brief/${campaignId}/submit`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    responses: formData,
+                    submitted_at: new Date().toISOString()
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    // Show success screen
+                    document.querySelectorAll('.brief-section').forEach(s => s.classList.remove('active'));
+                    document.querySelector('.brief-section[data-section="success"]').classList.add('active');
+                    document.getElementById('briefNav').style.display = 'none';
+                    document.getElementById('progressBar').style.width = '100%';
+                } else {
+                    alert('حدث خطأ: ' + data.error);
+                    document.getElementById('nextBtn').innerHTML = '<i class="fas fa-check"></i> إرسال';
+                    document.getElementById('nextBtn').disabled = false;
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('حدث خطأ أثناء الإرسال');
+                document.getElementById('nextBtn').innerHTML = '<i class="fas fa-check"></i> إرسال';
+                document.getElementById('nextBtn').disabled = false;
+            });
+        }
+    </script>
+</body>
+</html>

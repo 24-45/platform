@@ -1,0 +1,703 @@
+{% extends 'platform/base.html' %}
+
+{% block title %}تحرير: {{ campaign.basic_info.name }} - منصة 24°45'{% endblock %}
+
+{% block extra_css %}
+<style>
+    .edit-container {
+        display: grid;
+        grid-template-columns: 280px 1fr;
+        gap: 30px;
+        min-height: calc(100vh - 200px);
+    }
+    
+    @media (max-width: 992px) {
+        .edit-container {
+            grid-template-columns: 1fr;
+        }
+    }
+    
+    /* Sidebar */
+    .edit-sidebar {
+        background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+        border-radius: 16px;
+        padding: 25px;
+        border: 1px solid rgba(255,255,255,0.1);
+        position: sticky;
+        top: 100px;
+        height: fit-content;
+    }
+    
+    .campaign-info {
+        text-align: center;
+        padding-bottom: 20px;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+        margin-bottom: 20px;
+    }
+    
+    .campaign-info h2 {
+        color: #fff;
+        font-size: 1.2rem;
+        font-weight: 700;
+        margin: 0 0 10px 0;
+    }
+    
+    .campaign-info .tenant-name {
+        color: rgba(255,255,255,0.6);
+        font-size: 0.9rem;
+    }
+    
+    .progress-circle {
+        width: 100px;
+        height: 100px;
+        margin: 20px auto;
+        position: relative;
+    }
+    
+    .progress-circle svg {
+        transform: rotate(-90deg);
+    }
+    
+    .progress-circle .bg {
+        fill: none;
+        stroke: rgba(255,255,255,0.1);
+        stroke-width: 8;
+    }
+    
+    .progress-circle .progress {
+        fill: none;
+        stroke: #10b981;
+        stroke-width: 8;
+        stroke-linecap: round;
+        stroke-dasharray: 283;
+        stroke-dashoffset: calc(283 - (283 * var(--progress)) / 100);
+        transition: stroke-dashoffset 0.5s ease;
+    }
+    
+    .progress-value {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: #fff;
+        font-size: 1.5rem;
+        font-weight: 700;
+    }
+    
+    /* Section Navigation */
+    .section-nav {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    
+    .section-nav li {
+        margin-bottom: 5px;
+    }
+    
+    .section-nav a {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 12px 15px;
+        color: rgba(255,255,255,0.7);
+        text-decoration: none;
+        border-radius: 10px;
+        transition: all 0.3s ease;
+    }
+    
+    .section-nav a:hover {
+        background: rgba(255,255,255,0.05);
+        color: #fff;
+    }
+    
+    .section-nav a.active {
+        background: rgba(0, 212, 106, 0.15);
+        color: #00d46a;
+    }
+    
+    .section-nav a i {
+        width: 20px;
+        text-align: center;
+    }
+    
+    .section-status {
+        margin-right: auto;
+        font-size: 0.75rem;
+        padding: 2px 8px;
+        border-radius: 4px;
+    }
+    
+    .status-empty {
+        background: rgba(239, 68, 68, 0.2);
+        color: #ef4444;
+    }
+    
+    .status-partial {
+        background: rgba(245, 158, 11, 0.2);
+        color: #f59e0b;
+    }
+    
+    .status-complete {
+        background: rgba(16, 185, 129, 0.2);
+        color: #10b981;
+    }
+    
+    /* Main Content */
+    .edit-main {
+        background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+        border-radius: 16px;
+        padding: 30px;
+        border: 1px solid rgba(255,255,255,0.1);
+    }
+    
+    .section-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 30px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    
+    .section-header h2 {
+        color: #fff;
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin: 0;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+    
+    .section-header h2 i {
+        width: 50px;
+        height: 50px;
+        background: rgba(0, 212, 106, 0.15);
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #00d46a;
+    }
+    
+    /* Form Styles */
+    .form-group {
+        margin-bottom: 25px;
+    }
+    
+    .form-group label {
+        display: block;
+        color: rgba(255,255,255,0.8);
+        font-weight: 600;
+        margin-bottom: 10px;
+    }
+    
+    .form-control {
+        width: 100%;
+        padding: 14px 18px;
+        background: rgba(0,0,0,0.3);
+        border: 1px solid rgba(255,255,255,0.15);
+        border-radius: 10px;
+        color: #fff;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+    }
+    
+    .form-control:focus {
+        outline: none;
+        border-color: #00d46a;
+        box-shadow: 0 0 0 3px rgba(0, 212, 106, 0.1);
+    }
+    
+    textarea.form-control {
+        min-height: 120px;
+        resize: vertical;
+    }
+    
+    .form-row {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+    
+    /* Tags Input */
+    .tags-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        padding: 10px;
+        background: rgba(0,0,0,0.3);
+        border: 1px solid rgba(255,255,255,0.15);
+        border-radius: 10px;
+        min-height: 50px;
+    }
+    
+    .tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 6px 12px;
+        background: rgba(0, 212, 106, 0.2);
+        color: #00d46a;
+        border-radius: 20px;
+        font-size: 0.9rem;
+    }
+    
+    .tag button {
+        background: none;
+        border: none;
+        color: inherit;
+        cursor: pointer;
+        padding: 0;
+        font-size: 0.8rem;
+    }
+    
+    /* List Items */
+    .list-items {
+        background: rgba(0,0,0,0.2);
+        border-radius: 10px;
+        padding: 15px;
+    }
+    
+    .list-item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 12px;
+        background: rgba(255,255,255,0.05);
+        border-radius: 8px;
+        margin-bottom: 10px;
+    }
+    
+    .list-item:last-child {
+        margin-bottom: 0;
+    }
+    
+    .list-item i {
+        color: #00d46a;
+    }
+    
+    .list-item span {
+        flex: 1;
+        color: rgba(255,255,255,0.9);
+    }
+    
+    .list-item button {
+        background: none;
+        border: none;
+        color: rgba(255,255,255,0.4);
+        cursor: pointer;
+        padding: 5px;
+        transition: color 0.3s;
+    }
+    
+    .list-item button:hover {
+        color: #ef4444;
+    }
+    
+    /* Actions */
+    .form-actions {
+        display: flex;
+        gap: 15px;
+        justify-content: flex-end;
+        margin-top: 30px;
+        padding-top: 20px;
+        border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    
+    .btn-save {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 12px 25px;
+        background: linear-gradient(135deg, #00d46a, #10b981);
+        color: #fff;
+        border: none;
+        border-radius: 10px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+    
+    .btn-save:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 20px rgba(0, 212, 106, 0.3);
+    }
+    
+    .btn-preview {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 12px 25px;
+        background: rgba(59, 130, 246, 0.2);
+        color: #60a5fa;
+        border: none;
+        border-radius: 10px;
+        font-weight: 600;
+        cursor: pointer;
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+    
+    .btn-preview:hover {
+        background: rgba(59, 130, 246, 0.3);
+    }
+    
+    /* Empty Section */
+    .empty-section {
+        text-align: center;
+        padding: 50px 20px;
+        color: rgba(255,255,255,0.5);
+    }
+    
+    .empty-section i {
+        font-size: 3rem;
+        margin-bottom: 20px;
+        opacity: 0.5;
+    }
+    
+    .empty-section h4 {
+        color: #fff;
+        margin-bottom: 10px;
+    }
+    
+    .btn-add-content {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 12px 25px;
+        background: rgba(0, 212, 106, 0.15);
+        color: #00d46a;
+        border: 2px dashed rgba(0, 212, 106, 0.3);
+        border-radius: 10px;
+        font-weight: 600;
+        cursor: pointer;
+        margin-top: 20px;
+        transition: all 0.3s ease;
+    }
+    
+    .btn-add-content:hover {
+        background: rgba(0, 212, 106, 0.2);
+        border-color: #00d46a;
+    }
+    
+    /* Success Message */
+    .save-success {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        padding: 15px 25px;
+        background: linear-gradient(135deg, #10b981, #059669);
+        color: #fff;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        box-shadow: 0 10px 40px rgba(16, 185, 129, 0.3);
+        transform: translateY(100px);
+        opacity: 0;
+        transition: all 0.3s ease;
+        z-index: 1000;
+    }
+    
+    .save-success.show {
+        transform: translateY(0);
+        opacity: 1;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="edit-container">
+        <!-- Sidebar -->
+        <div class="edit-sidebar">
+            <div class="campaign-info">
+                <h2>{{ campaign.basic_info.name }}</h2>
+                <p class="tenant-name">
+                    <i class="fas fa-building"></i>
+                    {% for tenant in tenants %}
+                        {% if tenant.slug == campaign.tenant_id %}
+                            {{ tenant.name }}
+                        {% endif %}
+                    {% endfor %}
+                </p>
+                
+                <div class="progress-circle" style="--progress: {{ campaign.progress.overall_percentage }}">
+                    <svg width="100" height="100" viewBox="0 0 100 100">
+                        <circle class="bg" cx="50" cy="50" r="45"/>
+                        <circle class="progress" cx="50" cy="50" r="45"/>
+                    </svg>
+                    <span class="progress-value">{{ campaign.progress.overall_percentage }}%</span>
+                </div>
+            </div>
+            
+            <ul class="section-nav">
+                <li>
+                    <a href="#basic" class="active" data-section="basic">
+                        <i class="fas fa-info-circle"></i>
+                        معلومات أساسية
+                        <span class="section-status status-complete">✓</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#client" data-section="client">
+                        <i class="fas fa-building"></i>
+                        معلومات العميل
+                        {% if campaign.client_info %}
+                        <span class="section-status status-complete">✓</span>
+                        {% else %}
+                        <span class="section-status status-empty">فارغ</span>
+                        {% endif %}
+                    </a>
+                </li>
+                <li>
+                    <a href="#objectives" data-section="objectives">
+                        <i class="fas fa-bullseye"></i>
+                        أهداف الحملة
+                        {% if campaign.campaign_objectives %}
+                        <span class="section-status status-complete">✓</span>
+                        {% else %}
+                        <span class="section-status status-empty">فارغ</span>
+                        {% endif %}
+                    </a>
+                </li>
+                <li>
+                    <a href="#audience" data-section="audience">
+                        <i class="fas fa-users"></i>
+                        الجمهور المستهدف
+                        {% if campaign.target_audience %}
+                        <span class="section-status status-complete">✓</span>
+                        {% else %}
+                        <span class="section-status status-empty">فارغ</span>
+                        {% endif %}
+                    </a>
+                </li>
+                <li>
+                    <a href="#questionnaire" data-section="questionnaire">
+                        <i class="fas fa-clipboard-list"></i>
+                        الاستبيان
+                        {% if campaign.questionnaire %}
+                        <span class="section-status status-complete">✓</span>
+                        {% else %}
+                        <span class="section-status status-empty">فارغ</span>
+                        {% endif %}
+                    </a>
+                </li>
+                <li>
+                    <a href="#products" data-section="products">
+                        <i class="fas fa-box"></i>
+                        المنتجات الاتصالية
+                        {% if campaign.communication_products %}
+                        <span class="section-status status-partial">{{ campaign.communication_products|length }}</span>
+                        {% else %}
+                        <span class="section-status status-empty">0</span>
+                        {% endif %}
+                    </a>
+                </li>
+                <li>
+                    <a href="#timeline" data-section="timeline">
+                        <i class="fas fa-calendar-alt"></i>
+                        الجدول الزمني
+                        {% if campaign.timeline.phases %}
+                        <span class="section-status status-complete">✓</span>
+                        {% else %}
+                        <span class="section-status status-empty">فارغ</span>
+                        {% endif %}
+                    </a>
+                </li>
+                <li>
+                    <a href="#budget" data-section="budget">
+                        <i class="fas fa-dollar-sign"></i>
+                        الميزانية
+                        <span class="section-status status-complete">✓</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="edit-main">
+            <!-- Basic Info Section -->
+            <div id="section-basic" class="section-content active">
+                <div class="section-header">
+                    <h2>
+                        <i class="fas fa-info-circle"></i>
+                        المعلومات الأساسية
+                    </h2>
+                </div>
+                
+                <form id="form-basic">
+                    <div class="form-group">
+                        <label>اسم الحملة</label>
+                        <input type="text" class="form-control" name="name" value="{{ campaign.basic_info.name }}">
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>مدة الحملة (بالأيام)</label>
+                            <input type="number" class="form-control" name="duration_days" value="{{ campaign.basic_info.duration_days }}">
+                        </div>
+                        <div class="form-group">
+                            <label>الميزانية ($)</label>
+                            <input type="number" class="form-control" name="budget" value="{{ campaign.basic_info.budget }}">
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>تاريخ البدء</label>
+                            <input type="date" class="form-control" name="start_date" value="{{ campaign.basic_info.start_date }}">
+                        </div>
+                        <div class="form-group">
+                            <label>تاريخ الانتهاء</label>
+                            <input type="date" class="form-control" name="end_date" value="{{ campaign.basic_info.end_date }}">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>وصف مختصر</label>
+                        <textarea class="form-control" name="tagline">{{ campaign.basic_info.tagline }}</textarea>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <a href="{{ url_for('tenant_project_report', tenant_slug=campaign.tenant_id, project_slug=campaign.id) }}" class="btn-preview" target="_blank">
+                            <i class="fas fa-eye"></i>
+                            معاينة
+                        </a>
+                        <button type="submit" class="btn-save">
+                            <i class="fas fa-save"></i>
+                            حفظ التغييرات
+                        </button>
+                    </div>
+                </form>
+            </div>
+            
+            <!-- Client Info Section -->
+            <div id="section-client" class="section-content" style="display: none;">
+                <div class="section-header">
+                    <h2>
+                        <i class="fas fa-building"></i>
+                        معلومات العميل
+                    </h2>
+                </div>
+                
+                {% if campaign.client_info %}
+                <form id="form-client">
+                    <div class="form-group">
+                        <label>اسم الشركة</label>
+                        <input type="text" class="form-control" name="company_name" value="{{ campaign.client_info.company_name }}">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>الاسم بالإنجليزية</label>
+                        <input type="text" class="form-control" name="company_name_en" value="{{ campaign.client_info.company_name_en }}">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>نبذة عن الشركة</label>
+                        <textarea class="form-control" name="company_description">{{ campaign.client_info.company_description }}</textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>رؤية الشركة</label>
+                        <textarea class="form-control" name="company_vision">{{ campaign.client_info.company_vision }}</textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>رسالة الشركة</label>
+                        <textarea class="form-control" name="company_mission">{{ campaign.client_info.company_mission }}</textarea>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="submit" class="btn-save">
+                            <i class="fas fa-save"></i>
+                            حفظ التغييرات
+                        </button>
+                    </div>
+                </form>
+                {% else %}
+                <div class="empty-section">
+                    <i class="fas fa-building"></i>
+                    <h4>لم يتم إضافة معلومات العميل بعد</h4>
+                    <p>أضف معلومات العميل لتظهر في التقرير</p>
+                    <button class="btn-add-content" onclick="showClientForm()">
+                        <i class="fas fa-plus"></i>
+                        إضافة معلومات العميل
+                    </button>
+                </div>
+                {% endif %}
+            </div>
+            
+            <!-- Add more sections similarly... -->
+            
+        </div>
+    </div>
+</div>
+
+<!-- Success Message -->
+<div class="save-success" id="saveSuccess">
+    <i class="fas fa-check-circle"></i>
+    تم الحفظ بنجاح
+</div>
+
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // Section Navigation
+    document.querySelectorAll('.section-nav a').forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Update active state
+            document.querySelectorAll('.section-nav a').forEach(l => l.classList.remove('active'));
+            this.classList.add('active');
+            
+            // Show corresponding section
+            const sectionId = this.dataset.section;
+            document.querySelectorAll('.section-content').forEach(s => s.style.display = 'none');
+            document.getElementById('section-' + sectionId).style.display = 'block';
+        });
+    });
+    
+    // Form Submission
+    document.querySelectorAll('form').forEach(form => {
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const data = {};
+            formData.forEach((value, key) => data[key] = value);
+            
+            const section = this.id.replace('form-', '');
+            
+            try {
+                const response = await fetch('{{ url_for("admin_update_campaign", campaign_id=campaign.id) }}', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        section: section === 'basic' ? 'basic_info' : section + '_info',
+                        data: data
+                    })
+                });
+                
+                if (response.ok) {
+                    showSaveSuccess();
+                }
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        });
+    });
+    
+    function showSaveSuccess() {
+        const msg = document.getElementById('saveSuccess');
+        msg.classList.add('show');
+        setTimeout(() => msg.classList.remove('show'), 3000);
+    }
+</script>
+{% endblock %}

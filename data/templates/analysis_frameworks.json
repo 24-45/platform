@@ -1,0 +1,259 @@
+{
+    "analysis_frameworks": [
+        {
+            "id": "swot",
+            "name": "تحليل SWOT",
+            "name_en": "SWOT Analysis",
+            "description": "تحليل نقاط القوة والضعف والفرص والتهديدات",
+            "icon": "fa-th-large",
+            "sections": [
+                {
+                    "id": "strengths",
+                    "name": "نقاط القوة",
+                    "name_en": "Strengths",
+                    "color": "#10B981",
+                    "icon": "fa-plus-circle",
+                    "prompt": "ما نقاط القوة الداخلية للمشروع/الشركة؟",
+                    "ai_suggestions": true
+                },
+                {
+                    "id": "weaknesses",
+                    "name": "نقاط الضعف",
+                    "name_en": "Weaknesses",
+                    "color": "#EF4444",
+                    "icon": "fa-minus-circle",
+                    "prompt": "ما نقاط الضعف الداخلية التي يجب معالجتها؟",
+                    "ai_suggestions": true
+                },
+                {
+                    "id": "opportunities",
+                    "name": "الفرص",
+                    "name_en": "Opportunities",
+                    "color": "#3B82F6",
+                    "icon": "fa-arrow-up",
+                    "prompt": "ما الفرص الخارجية المتاحة؟",
+                    "ai_suggestions": true
+                },
+                {
+                    "id": "threats",
+                    "name": "التهديدات",
+                    "name_en": "Threats",
+                    "color": "#F59E0B",
+                    "icon": "fa-exclamation-triangle",
+                    "prompt": "ما التهديدات الخارجية المحتملة؟",
+                    "ai_suggestions": true
+                }
+            ],
+            "output": {
+                "communication_gaps": {
+                    "name": "الفجوات الاتصالية",
+                    "description": "تُستخرج تلقائياً من تقاطع نقاط الضعف مع الفرص",
+                    "ai_generated": true
+                }
+            }
+        },
+        {
+            "id": "pestel",
+            "name": "تحليل PESTEL",
+            "name_en": "PESTEL Analysis",
+            "description": "تحليل العوامل السياسية والاقتصادية والاجتماعية والتقنية والبيئية والقانونية",
+            "icon": "fa-globe",
+            "sections": [
+                {
+                    "id": "political",
+                    "name": "سياسي",
+                    "name_en": "Political",
+                    "color": "#6366F1",
+                    "prompt": "ما العوامل السياسية المؤثرة؟"
+                },
+                {
+                    "id": "economic",
+                    "name": "اقتصادي",
+                    "name_en": "Economic",
+                    "color": "#10B981",
+                    "prompt": "ما العوامل الاقتصادية المؤثرة؟"
+                },
+                {
+                    "id": "social",
+                    "name": "اجتماعي",
+                    "name_en": "Social",
+                    "color": "#F59E0B",
+                    "prompt": "ما العوامل الاجتماعية والثقافية المؤثرة؟"
+                },
+                {
+                    "id": "technological",
+                    "name": "تقني",
+                    "name_en": "Technological",
+                    "color": "#3B82F6",
+                    "prompt": "ما العوامل التقنية المؤثرة؟"
+                },
+                {
+                    "id": "environmental",
+                    "name": "بيئي",
+                    "name_en": "Environmental",
+                    "color": "#22C55E",
+                    "prompt": "ما العوامل البيئية المؤثرة؟"
+                },
+                {
+                    "id": "legal",
+                    "name": "قانوني",
+                    "name_en": "Legal",
+                    "color": "#EF4444",
+                    "prompt": "ما العوامل القانونية والتنظيمية المؤثرة؟"
+                }
+            ]
+        },
+        {
+            "id": "swot_pestel",
+            "name": "SWOT + PESTEL",
+            "name_en": "Combined Analysis",
+            "description": "تحليل شامل يجمع SWOT مع PESTEL",
+            "icon": "fa-layer-group",
+            "includes": ["swot", "pestel"]
+        }
+    ],
+    "communication_direction": {
+        "name": "التوجه الاتصالي",
+        "name_en": "Communication Direction",
+        "questions": [
+            {
+                "id": "comm_objective",
+                "question": "الهدف الاتصالي الرئيسي",
+                "type": "select",
+                "options": [
+                    "بناء الوعي",
+                    "تغيير الموقف",
+                    "تحفيز السلوك",
+                    "بناء العلاقات",
+                    "إدارة السمعة"
+                ],
+                "ai_help": true
+            },
+            {
+                "id": "key_message",
+                "question": "الرسالة الرئيسية",
+                "type": "textarea",
+                "placeholder": "ما الرسالة الواحدة التي تريد أن يتذكرها الجمهور؟",
+                "ai_help": true
+            },
+            {
+                "id": "supporting_messages",
+                "question": "الرسائل الداعمة",
+                "type": "list",
+                "placeholder": "رسائل ثانوية تدعم الرسالة الرئيسية",
+                "ai_help": true
+            },
+            {
+                "id": "tone_of_voice",
+                "question": "نبرة الصوت",
+                "type": "checkbox",
+                "options": [
+                    {"id": "professional", "name": "مهني", "icon": "fa-briefcase"},
+                    {"id": "friendly", "name": "ودود", "icon": "fa-smile"},
+                    {"id": "inspiring", "name": "ملهم", "icon": "fa-star"},
+                    {"id": "authoritative", "name": "موثوق", "icon": "fa-shield-alt"},
+                    {"id": "innovative", "name": "مبتكر", "icon": "fa-lightbulb"},
+                    {"id": "urgent", "name": "عاجل", "icon": "fa-bolt"}
+                ]
+            },
+            {
+                "id": "call_to_action",
+                "question": "الدعوة للفعل (CTA)",
+                "type": "text",
+                "placeholder": "ماذا تريد من الجمهور أن يفعل؟",
+                "ai_help": true
+            }
+        ]
+    },
+    "campaign_methodology": {
+        "name": "منهجية الحملة",
+        "name_en": "Campaign Methodology",
+        "approaches": [
+            {
+                "id": "integrated",
+                "name": "الاتصال المتكامل",
+                "description": "نهج شامل يدمج جميع القنوات الاتصالية",
+                "icon": "fa-network-wired"
+            },
+            {
+                "id": "digital_first",
+                "name": "الرقمي أولاً",
+                "description": "التركيز على القنوات الرقمية والسوشيال ميديا",
+                "icon": "fa-mobile-alt"
+            },
+            {
+                "id": "pr_led",
+                "name": "العلاقات العامة أولاً",
+                "description": "التركيز على التغطية الإعلامية والعلاقات",
+                "icon": "fa-newspaper"
+            },
+            {
+                "id": "influencer_driven",
+                "name": "المؤثرون أولاً",
+                "description": "الاعتماد على المؤثرين كقناة رئيسية",
+                "icon": "fa-users"
+            },
+            {
+                "id": "event_based",
+                "name": "الفعاليات",
+                "description": "بناء الحملة حول فعالية أو حدث رئيسي",
+                "icon": "fa-calendar-check"
+            },
+            {
+                "id": "content_marketing",
+                "name": "التسويق بالمحتوى",
+                "description": "إنتاج محتوى قيّم لجذب الجمهور",
+                "icon": "fa-pen-fancy"
+            }
+        ]
+    },
+    "ai_assistance": {
+        "capabilities": [
+            {
+                "id": "swot_suggestions",
+                "name": "اقتراحات SWOT",
+                "description": "اقتراح نقاط بناءً على معلومات المشروع والقطاع"
+            },
+            {
+                "id": "gap_analysis",
+                "name": "تحليل الفجوات",
+                "description": "استخراج الفجوات الاتصالية من التحليل"
+            },
+            {
+                "id": "message_crafting",
+                "name": "صياغة الرسائل",
+                "description": "اقتراح رسائل رئيسية وداعمة"
+            },
+            {
+                "id": "audience_insights",
+                "name": "رؤى الجمهور",
+                "description": "تحليل وفهم الجمهور المستهدف"
+            },
+            {
+                "id": "media_recommendations",
+                "name": "توصيات إعلامية",
+                "description": "اقتراح القنوات والأدوات المناسبة"
+            },
+            {
+                "id": "budget_optimization",
+                "name": "تحسين الميزانية",
+                "description": "توزيع الميزانية على القنوات بكفاءة"
+            },
+            {
+                "id": "timeline_generation",
+                "name": "إنشاء الجدول الزمني",
+                "description": "اقتراح توقيت المنتجات والمراحل"
+            },
+            {
+                "id": "content_generation",
+                "name": "إنشاء المحتوى",
+                "description": "كتابة مسودات للمنتجات الاتصالية"
+            }
+        ],
+        "prompts": {
+            "swot_strengths": "بناءً على المعلومات التالية عن {company_name} في قطاع {industry}، اقترح 5 نقاط قوة اتصالية...",
+            "gap_analysis": "بناءً على تحليل SWOT التالي، حدد الفجوات الاتصالية الرئيسية...",
+            "key_message": "اكتب رسالة رئيسية قوية لحملة {campaign_type} تستهدف {target_audience}..."
+        }
+    }
+}

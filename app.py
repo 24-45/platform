@@ -66,6 +66,14 @@ def login_required(f):
     """ديكوريتور للتحقق من تسجيل الدخول"""
     @wraps(f)
     def decorated_function(*args, **kwargs):
+        # تجاوز تسجيل الدخول في وضع التطوير
+        if app.debug and 'user_id' not in session:
+            session['user_id'] = 'dev-admin'
+            session['user_email'] = 'admin@24-45.com'
+            session['user_name'] = 'مطور'
+            session['role'] = 'admin'
+            session['tenant_access'] = ['nobles', 'zakah', 'waqf']
+            session['default_tenant'] = 'nobles'
         if 'user_id' not in session:
             return redirect(url_for('login'))
         return f(*args, **kwargs)
@@ -209,6 +217,20 @@ def favicon():
     """تقديم الأيقونة الافتراضية"""
     static_path = Path(app.root_path) / 'static'
     return send_from_directory(static_path, 'images/favicon.svg', mimetype='image/svg+xml')
+
+
+# ==================== تسجيل دخول تلقائي للتطوير ====================
+
+@app.route('/dev-login')
+def dev_login():
+    """تسجيل دخول تلقائي للتطوير - احذف هذا في الإنتاج!"""
+    session['user_id'] = 'dev-admin'
+    session['user_email'] = 'admin@24-45.com'
+    session['user_name'] = 'مطور'
+    session['role'] = 'admin'
+    session['tenant_access'] = ['nobles', 'zakah', 'waqf']
+    session['default_tenant'] = 'nobles'
+    return redirect(url_for('admin_campaigns'))
 
 
 # ==================== الصفحة الرئيسية للمنصة ====================
@@ -542,8 +564,15 @@ def tenant_project_report(tenant_slug, project_slug):
     if not tenant:
         return render_template('404.html'), 404
     
+    # البحث أولاً في projects.json
     project = get_tenant_project_by_slug(tenant_slug, project_slug)
+    
+    # إذا لم يوجد، البحث في campaigns.json
     if not project:
+        campaign = get_campaign_by_id(project_slug)
+        if campaign:
+            # توجيه للراوت الجديد للحملات
+            return redirect(url_for('campaign_report', campaign_id=project_slug))
         return render_template('404.html'), 404
     
     template = get_tenant_template(tenant_slug, 'project_report.html')
@@ -607,6 +636,125 @@ def api_tenant_project(tenant_slug, project_slug):
     if not project:
         return jsonify({"error": "المشروع غير موجود"}), 404
     return jsonify(project)
+
+
+# ==================== API للأدوات الإعلامية ====================
+
+def load_media_tools():
+    """تحميل قاعدة بيانات الأدوات الإعلامية"""
+    media_file = DATA_PATH / 'media_database' / 'media_tools.json'
+    if media_file.exists():
+        with open(media_file, 'r', encoding='utf-8') as f:
+            return json.load(f)
+    return {"influencers": [], "newspapers": [], "news_accounts": [], "statistics": {}}
+
+
+@app.route('/api/media-tools')
+@login_required
+def api_media_tools():
+    """API: جلب جميع الأدوات الإعلامية"""
+    data = load_media_tools()
+    return jsonify({"success": True, "data": data})
+
+
+@app.route('/api/media-tools/influencers')
+@login_required
+def api_media_influencers():
+    """API: جلب المؤثرين"""
+    data = load_media_tools()
+    
+    # فلترة حسب المعايير
+    tier = request.args.get('tier')
+    city = request.args.get('city')
+    specialization = request.args.get('specialization')
+    search = request.args.get('search', '').lower()
+    
+    influencers = data.get('influencers', [])
+    
+    if tier:
+        influencers = [i for i in influencers if i.get('category_tier') == tier]
+    if city:
+        influencers = [i for i in influencers if i.get('city') == city]
+    if specialization:
+        influencers = [i for i in influencers if specialization in i.get('specializations', [])]
+    if search:
+        influencers = [i for i in influencers if search in i.get('name', '').lower() or search in i.get('description', '').lower()]
+    
+    # ترتيب حسب المتابعين
+    influencers = sorted(influencers, key=lambda x: x.get('total_followers', 0), reverse=True)
+    
+    return jsonify({"success": True, "data": influencers, "total": len(influencers)})
+
+
+@app.route('/api/media-tools/newspapers')
+@login_required
+def api_media_newspapers():
+    """API: جلب الصحف"""
+    data = load_media_tools()
+    
+    city = request.args.get('city')
+    search = request.args.get('search', '').lower()
+    
+    newspapers = data.get('newspapers', [])
+    
+    if city:
+        newspapers = [n for n in newspapers if n.get('city') == city]
+    if search:
+        newspapers = [n for n in newspapers if search in n.get('name', '').lower()]
+    
+    return jsonify({"success": True, "data": newspapers, "total": len(newspapers)})
+
+
+@app.route('/api/media-tools/news-accounts')
+@login_required
+def api_media_news_accounts():
+    """API: جلب الحسابات الإخبارية"""
+    data = load_media_tools()
+    return jsonify({"success": True, "data": data.get('news_accounts', [])})
+
+
+@app.route('/api/media-tools/statistics')
+@login_required
+def api_media_statistics():
+    """API: إحصائيات الأدوات الإعلامية"""
+    data = load_media_tools()
+    return jsonify({"success": True, "data": data.get('statistics', {})})
+
+
+@app.route('/api/media-tools/search')
+@login_required
+def api_media_search():
+    """API: بحث في الأدوات الإعلامية"""
+    data = load_media_tools()
+    query = request.args.get('q', '').lower()
+    
+    if not query:
+        return jsonify({"success": True, "results": [], "total": 0})
+    
+    results = []
+    
+    # البحث في المؤثرين
+    for item in data.get('influencers', []):
+        if query in item.get('name', '').lower() or query in item.get('description', '').lower():
+            item['type'] = 'influencer'
+            results.append(item)
+    
+    # البحث في الصحف
+    for item in data.get('newspapers', []):
+        if query in item.get('name', '').lower() or query in item.get('description', '').lower():
+            item['type'] = 'newspaper'
+            results.append(item)
+    
+    # البحث في الحسابات الإخبارية
+    for item in data.get('news_accounts', []):
+        if query in item.get('name', '').lower() or query in item.get('description', '').lower():
+            item['type'] = 'news_account'
+            results.append(item)
+    
+    # ترتيب النتائج حسب المتابعين
+    results = sorted(results, key=lambda x: x.get('total_followers', 0), reverse=True)
+    
+    return jsonify({"success": True, "results": results, "total": len(results)})
 
 
 # ==================== معالجة الأخطاء ====================
@@ -687,6 +835,7 @@ def admin_edit_user():
     email = request.form.get('email', '').strip().lower()
     default_tenant = request.form.get('default_tenant', '')
     tenants = request.form.getlist('tenants')
+    role = request.form.get('role', 'client')  # الدور الجديد
     
     users = load_users()
     for user in users:
@@ -695,6 +844,7 @@ def admin_edit_user():
             user['email'] = email
             user['default_tenant'] = default_tenant
             user['tenant_access'] = tenants
+            user['role'] = role  # تحديث الدور
             break
     
     save_users(users)
@@ -778,6 +928,652 @@ def admin_reject_user(user_id):
     
     save_users(users)
     return redirect(url_for('admin_dashboard'))
+
+
+# ==================== نظام الحملات الإعلامية ====================
+
+CAMPAIGNS_PATH = DATA_PATH / 'campaigns'
+TEMPLATES_DATA_PATH = DATA_PATH / 'templates'
+
+
+def load_campaigns():
+    """تحميل جميع الحملات"""
+    campaigns_file = CAMPAIGNS_PATH / 'campaigns.json'
+    if campaigns_file.exists():
+        with open(campaigns_file, 'r', encoding='utf-8') as f:
+            return json.load(f)
+    return {"campaigns": []}
+
+
+def save_campaigns(data):
+    """حفظ الحملات"""
+    campaigns_file = CAMPAIGNS_PATH / 'campaigns.json'
+    with open(campaigns_file, 'w', encoding='utf-8') as f:
+        json.dump(data, f, ensure_ascii=False, indent=4)
+
+
+def get_campaign_by_id(campaign_id):
+    """جلب حملة بواسطة الـ ID"""
+    data = load_campaigns()
+    for campaign in data.get('campaigns', []):
+        if campaign.get('id') == campaign_id:
+            return campaign
+    return None
+
+
+def load_campaign_template():
+    """تحميل قالب الحملة"""
+    template_file = TEMPLATES_DATA_PATH / 'campaign_template.json'
+    if template_file.exists():
+        with open(template_file, 'r', encoding='utf-8') as f:
+            return json.load(f)
+    return {}
+
+
+@app.route('/campaign/<campaign_id>')
+@login_required
+def campaign_report(campaign_id):
+    """عرض تقرير الحملة"""
+    campaign = get_campaign_by_id(campaign_id)
+    if not campaign:
+        return render_template('404.html'), 404
+    
+    tenant_slug = campaign.get('tenant_id', 'nobles')
+    tenant = get_tenant_by_slug(tenant_slug)
+    
+    # استخدام قالب الحملات الجديد
+    return render_template('tenant/nobles/campaign_report.html', 
+                         tenant=tenant,
+                         campaign=campaign)
+
+
+@app.route('/admin/campaigns')
+def admin_campaigns():
+    """إدارة الحملات - لوحة التحكم"""
+    # مؤقتاً للتطوير - تسجيل دخول تلقائي
+    if 'user_id' not in session:
+        session['user_id'] = 'dev-admin'
+        session['user_email'] = 'admin@24-45.com'
+        session['user_name'] = 'مطور'
+        session['role'] = 'admin'
+        session['tenant_access'] = ['nobles', 'zakah', 'waqf']
+        session['default_tenant'] = 'nobles'
+    
+    data = load_campaigns()
+    tenants = get_all_tenants()
+    template = load_campaign_template()
+    
+    return render_template('tenant/nobles/admin/campaigns.html',
+                         campaigns=data.get('campaigns', []),
+                         campaigns_count=len(data.get('campaigns', [])),
+                         tenants=tenants,
+                         template=template)
+
+
+def load_campaign_types():
+    """تحميل أنواع الحملات"""
+    types_file = DATA_PATH / 'templates' / 'campaign_types.json'
+    if types_file.exists():
+        with open(types_file, 'r', encoding='utf-8') as f:
+            return json.load(f).get('campaign_types', [])
+    return []
+
+
+@app.route('/admin/campaigns/new', methods=['GET', 'POST'])
+def admin_new_campaign():
+    """إنشاء حملة جديدة - الـ Wizard"""
+    # مؤقتاً للتطوير - تسجيل دخول تلقائي
+    if 'user_id' not in session:
+        session['user_id'] = 'dev-admin'
+        session['user_email'] = 'admin@24-45.com'
+        session['user_name'] = 'مطور'
+        session['role'] = 'admin'
+        session['tenant_access'] = ['nobles', 'zakah', 'waqf']
+        session['default_tenant'] = 'nobles'
+    
+    # GET - عرض الـ Wizard الجديد
+    campaign_types = load_campaign_types()
+    tenants = get_all_tenants()
+    
+    return render_template('tenant/nobles/admin/campaign_wizard.html',
+                         campaign_types=campaign_types,
+                         tenants=tenants)
+
+
+@app.route('/api/campaigns/create', methods=['POST'])
+def api_create_campaign():
+    """API - إنشاء حملة جديدة من الـ Wizard"""
+    # مؤقتاً للتطوير - تسجيل دخول تلقائي
+    if 'user_id' not in session:
+        session['user_id'] = 'dev-admin'
+        session['role'] = 'admin'
+    
+    from datetime import datetime
+    
+    data = request.get_json()
+    
+    # إنشاء slug من الاسم
+    campaign_name = data.get('basic_info', {}).get('name', 'حملة جديدة')
+    campaign_slug = campaign_name.lower().replace(' ', '-').replace('/', '-')
+    campaign_slug = ''.join(c for c in campaign_slug if c.isalnum() or c == '-')
+    
+    # التأكد من عدم تكرار الـ ID
+    existing = get_campaign_by_id(campaign_slug)
+    if existing:
+        campaign_slug = f"{campaign_slug}-{datetime.now().strftime('%Y%m%d%H%M%S')}"
+    
+    # حساب المدة الإجمالية من المراحل
+    phases = data.get('phases', [])
+    total_duration = sum(p.get('duration_days', 0) for p in phases)
+    
+    # إنشاء الحملة الجديدة
+    new_campaign = {
+        "id": campaign_slug,
+        "campaign_type": data.get('campaign_type', 'awareness'),
+        "tenant_id": "nobles",
+        "status": "draft",
+        "created_at": datetime.now().isoformat(),
+        "updated_at": datetime.now().isoformat(),
+        "created_by": session.get('user_id'),
+        
+        "basic_info": {
+            "name": data.get('basic_info', {}).get('name', ''),
+            "name_en": data.get('basic_info', {}).get('name_en', ''),
+            "description": data.get('basic_info', {}).get('description', ''),
+            "tagline": "",
+            "duration_days": total_duration,
+            "total_products": 0,
+            "budget": data.get('basic_info', {}).get('budget', 0),
+            "currency": data.get('basic_info', {}).get('currency', 'SAR'),
+            "start_date": data.get('basic_info', {}).get('start_date', ''),
+            "end_date": data.get('basic_info', {}).get('end_date', '')
+        },
+        
+        "client_info": {
+            "company_name": data.get('client_info', {}).get('company_name', ''),
+            "company_name_en": data.get('client_info', {}).get('company_name_en', ''),
+            "company_description": data.get('client_info', {}).get('company_description', ''),
+            "industry": data.get('client_info', {}).get('industry', ''),
+            "location": data.get('client_info', {}).get('location', '')
+        },
+        
+        "project_info": {
+            "project_name": data.get('project_info', {}).get('project_name', ''),
+            "project_tagline": data.get('project_info', {}).get('project_tagline', ''),
+            "project_description": data.get('project_info', {}).get('project_description', '')
+        },
+        
+        "phases": phases,
+        
+        "client_brief": {
+            "status": "pending",
+            "submitted_at": None,
+            "responses": {}
+        },
+        
+        "analysis": {
+            "swot": {"strengths": [], "weaknesses": [], "opportunities": [], "threats": []},
+            "pestel": {},
+            "communication_gaps": []
+        },
+        
+        "products": [],
+        "timeline": {"phases": phases, "milestones": []},
+        
+        "progress": {
+            "overall_percentage": 0,
+            "completed_products": 0,
+            "in_progress_products": 0,
+            "pending_products": 0,
+            "days_remaining": total_duration
+        },
+        
+        "activity_log": [{
+            "action": "created",
+            "timestamp": datetime.now().isoformat(),
+            "user_id": session.get('user_id'),
+            "details": "تم إنشاء الحملة"
+        }]
+    }
+    
+    # حفظ الحملة
+    campaigns_data = load_campaigns()
+    campaigns_data['campaigns'].append(new_campaign)
+    save_campaigns(campaigns_data)
+    
+    return jsonify({
+        'success': True,
+        'campaign_id': campaign_slug,
+        'message': 'تم إنشاء الحملة بنجاح'
+    })
+
+
+@app.route('/admin/campaigns/<campaign_id>')
+def admin_edit_campaign(campaign_id):
+    """تحرير حملة"""
+    # مؤقتاً للتطوير - تسجيل دخول تلقائي
+    if 'user_id' not in session:
+        session['user_id'] = 'dev-admin'
+        session['user_email'] = 'admin@24-45.com'
+        session['user_name'] = 'مطور'
+        session['role'] = 'admin'
+        session['tenant_access'] = ['nobles', 'zakah', 'waqf']
+        session['default_tenant'] = 'nobles'
+    
+    campaign = get_campaign_by_id(campaign_id)
+    if not campaign:
+        flash('الحملة غير موجودة', 'error')
+        return redirect(url_for('admin_campaigns'))
+    
+    campaign_types = load_campaign_types()
+    tenants = get_all_tenants()
+    
+    return render_template('tenant/nobles/admin/campaign_editor.html',
+                         campaign=campaign,
+                         campaign_types=campaign_types,
+                         tenants=tenants)
+
+
+@app.route('/admin/campaigns/<campaign_id>/update', methods=['POST'])
+def admin_update_campaign(campaign_id):
+    """تحديث بيانات حملة"""
+    # مؤقتاً للتطوير
+    if 'role' not in session:
+        session['role'] = 'admin'
+    
+    data = load_campaigns()
+    campaign_index = None
+    
+    for i, c in enumerate(data.get('campaigns', [])):
+        if c.get('id') == campaign_id:
+            campaign_index = i
+            break
+    
+    if campaign_index is None:
+        return jsonify({'error': 'الحملة غير موجودة'}), 404
+    
+    # تحديث البيانات
+    update_data = request.get_json()
+    section = update_data.get('section')
+    section_data = update_data.get('data', {})
+    
+    if section:
+        # معالجة خاصة لقسم analysis (تحديث جزئي)
+        if section == 'analysis' and 'swot' in section_data:
+            if 'analysis' not in data['campaigns'][campaign_index]:
+                data['campaigns'][campaign_index]['analysis'] = {}
+            data['campaigns'][campaign_index]['analysis']['swot'] = section_data['swot']
+        else:
+            data['campaigns'][campaign_index][section] = section_data
+        
+        data['campaigns'][campaign_index]['updated_at'] = __import__('datetime').datetime.now().isoformat()
+        save_campaigns(data)
+        return jsonify({'success': True, 'message': 'تم الحفظ بنجاح'})
+    
+    return jsonify({'error': 'لم يتم تحديد القسم'}), 400
+
+
+@app.route('/admin/campaigns/<campaign_id>/delete', methods=['POST'])
+def admin_delete_campaign(campaign_id):
+    """حذف حملة"""
+    if not is_admin():
+        return redirect(url_for('access_denied'))
+    
+    data = load_campaigns()
+    data['campaigns'] = [c for c in data.get('campaigns', []) if c.get('id') != campaign_id]
+    save_campaigns(data)
+    
+    flash('تم حذف الحملة بنجاح', 'success')
+    return redirect(url_for('admin_campaigns'))
+
+
+# ==================== API للحملات ====================
+
+@app.route('/api/campaigns/<campaign_id>')
+@login_required
+def api_get_campaign(campaign_id):
+    """API - جلب بيانات حملة"""
+    campaign = get_campaign_by_id(campaign_id)
+    if campaign:
+        return jsonify(campaign)
+    return jsonify({'error': 'الحملة غير موجودة'}), 404
+
+
+@app.route('/api/campaigns/<campaign_id>/section/<section>', methods=['GET', 'POST'])
+@login_required
+def api_campaign_section(campaign_id, section):
+    """API - جلب أو تحديث قسم من الحملة"""
+    campaign = get_campaign_by_id(campaign_id)
+    if not campaign:
+        return jsonify({'error': 'الحملة غير موجودة'}), 404
+    
+    if request.method == 'GET':
+        return jsonify(campaign.get(section, {}))
+    
+    # POST - تحديث القسم
+    if not is_admin():
+        return jsonify({'error': 'غير مصرح'}), 403
+    
+    data = load_campaigns()
+    for c in data.get('campaigns', []):
+        if c.get('id') == campaign_id:
+            c[section] = request.get_json()
+            c['updated_at'] = __import__('datetime').datetime.now().isoformat()
+            break
+    
+    save_campaigns(data)
+    return jsonify({'success': True})
+
+
+# ==================== نظام الاستبانة (Creative Brief) ====================
+
+def load_questionnaire_template():
+    """تحميل قالب الاستبانة"""
+    template_file = DATA_PATH / 'templates' / 'questionnaire_templates.json'
+    if template_file.exists():
+        with open(template_file, 'r', encoding='utf-8') as f:
+            data = json.load(f)
+            # استخراج القالب الأول (creative_brief)
+            templates = data.get('questionnaire_templates', [])
+            if templates:
+                return templates[0]  # يحتوي على sections
+    return {"sections": []}
+
+
+@app.route('/brief/<campaign_id>')
+def client_brief(campaign_id):
+    """صفحة الاستبانة للعميل - رابط عام بدون تسجيل دخول"""
+    campaign = get_campaign_by_id(campaign_id)
+    if not campaign:
+        return render_template('tenant/nobles/404.html'), 404
+    
+    # التحقق إذا كانت الاستبانة مرسلة مسبقاً
+    client_brief_data = campaign.get('client_brief', {})
+    if client_brief_data.get('status') == 'submitted':
+        return render_template('tenant/nobles/brief_submitted.html', campaign=campaign)
+    
+    # استخدام الأسئلة المخصصة إن وجدت، وإلا القالب الافتراضي
+    custom_questions = campaign.get('custom_questions')
+    if custom_questions:
+        # تحويل الأسئلة المخصصة إلى تنسيق sections
+        questionnaire = {
+            'sections': [{
+                'id': 'custom',
+                'title': 'الموجز الإبداعي',
+                'questions': custom_questions
+            }]
+        }
+    else:
+        questionnaire = load_questionnaire_template()
+    
+    return render_template('tenant/nobles/client_brief.html',
+                         campaign=campaign,
+                         questionnaire=questionnaire)
+
+
+@app.route('/api/brief/<campaign_id>/submit', methods=['POST'])
+def api_submit_brief(campaign_id):
+    """API - استلام إجابات الاستبانة من العميل"""
+    from datetime import datetime
+    
+    campaign = get_campaign_by_id(campaign_id)
+    if not campaign:
+        return jsonify({'success': False, 'error': 'الحملة غير موجودة'}), 404
+    
+    data = request.get_json()
+    responses = data.get('responses', {})
+    
+    # تحديث بيانات الحملة
+    campaigns_data = load_campaigns()
+    for c in campaigns_data.get('campaigns', []):
+        if c.get('id') == campaign_id:
+            c['client_brief'] = {
+                'status': 'submitted',
+                'submitted_at': datetime.now().isoformat(),
+                'responses': responses
+            }
+            c['updated_at'] = datetime.now().isoformat()
+            
+            # إضافة للسجل
+            if 'activity_log' not in c:
+                c['activity_log'] = []
+            c['activity_log'].append({
+                'action': 'brief_submitted',
+                'timestamp': datetime.now().isoformat(),
+                'user_id': 'client',
+                'details': 'تم إرسال الموجز الإبداعي من العميل'
+            })
+            break
+    
+    save_campaigns(campaigns_data)
+    
+    return jsonify({
+        'success': True,
+        'message': 'تم إرسال الموجز الإبداعي بنجاح'
+    })
+
+
+@app.route('/admin/campaigns/<campaign_id>/brief')
+def admin_view_brief(campaign_id):
+    """عرض الموجز الإبداعي للفريق"""
+    # مؤقتاً للتطوير
+    if 'user_id' not in session:
+        session['user_id'] = 'dev-admin'
+        session['role'] = 'admin'
+    
+    campaign = get_campaign_by_id(campaign_id)
+    if not campaign:
+        flash('الحملة غير موجودة', 'error')
+        return redirect(url_for('admin_campaigns'))
+    
+    questionnaire = load_questionnaire_template()
+    
+    return render_template('tenant/nobles/admin/brief_view.html',
+                         campaign=campaign,
+                         questionnaire=questionnaire)
+
+
+@app.route('/admin/campaigns/<campaign_id>/copy-brief-link')
+def get_brief_link(campaign_id):
+    """الحصول على رابط الاستبانة"""
+    campaign = get_campaign_by_id(campaign_id)
+    if not campaign:
+        return jsonify({'error': 'الحملة غير موجودة'}), 404
+    
+    brief_link = url_for('client_brief', campaign_id=campaign_id, _external=True)
+    return jsonify({
+        'success': True,
+        'link': brief_link,
+        'campaign_name': campaign.get('basic_info', {}).get('name', '')
+    })
+
+
+# ==================== API لإدارة أسئلة الاستبانة ====================
+
+@app.route('/api/questionnaire/template')
+def api_questionnaire_template():
+    """جلب قالب الاستبانة الافتراضي"""
+    template = load_questionnaire_template()
+    return jsonify(template)
+
+
+@app.route('/api/campaigns/<campaign_id>/questions', methods=['GET', 'POST'])
+def api_campaign_questions(campaign_id):
+    """جلب أو حفظ أسئلة مخصصة للحملة"""
+    campaign = get_campaign_by_id(campaign_id)
+    if not campaign:
+        return jsonify({'error': 'الحملة غير موجودة'}), 404
+    
+    if request.method == 'GET':
+        # جلب الأسئلة المخصصة للحملة أو الافتراضية
+        custom_questions = campaign.get('custom_questions', None)
+        if custom_questions:
+            return jsonify({'questions': custom_questions})
+        else:
+            # إرجاع الأسئلة من القالب الافتراضي
+            template = load_questionnaire_template()
+            questions = []
+            for section in template.get('sections', []):
+                for q in section.get('questions', []):
+                    questions.append({
+                        **q,
+                        'section_id': section.get('id'),
+                        'section_title': section.get('title')
+                    })
+            return jsonify({'questions': questions})
+    
+    # POST - حفظ الأسئلة المخصصة
+    data = request.get_json()
+    questions = data.get('questions', [])
+    
+    campaigns_data = load_campaigns()
+    for c in campaigns_data.get('campaigns', []):
+        if c.get('id') == campaign_id:
+            c['custom_questions'] = questions
+            c['updated_at'] = __import__('datetime').datetime.now().isoformat()
+            break
+    
+    save_campaigns(campaigns_data)
+    
+    return jsonify({
+        'success': True,
+        'message': 'تم حفظ الأسئلة بنجاح'
+    })
+
+
+# ==================== نظام العروض المالية ====================
+
+@app.route('/admin/quotations')
+@login_required
+def admin_quotations():
+    """صفحة جميع العروض المالية - للأدمن فقط"""
+    if not is_admin():
+        flash('ليس لديك صلاحية للوصول لهذه الصفحة', 'error')
+        return redirect(url_for('admin_campaigns'))
+    
+    # جلب جميع الحملات
+    data = load_campaigns()
+    campaigns = data.get('campaigns', [])
+    
+    # تصفية الحملات التي لديها عروض مالية أو منتجات
+    quotations_list = []
+    for campaign in campaigns:
+        quotation_data = {
+            'campaign_id': campaign.get('id'),
+            'campaign_name': campaign.get('basic_info', {}).get('name', 'حملة بدون اسم'),
+            'client_name': campaign.get('basic_info', {}).get('client', 'عميل غير محدد'),
+            'status': campaign.get('status', 'draft'),
+            'has_quotation': bool(campaign.get('quotation')),
+            'total': 0,
+            'currency': 'USD',
+            'updated_at': None
+        }
+        
+        # إذا كان هناك عرض مالي محفوظ
+        if campaign.get('quotation'):
+            q = campaign['quotation']
+            quotation_data['total'] = q.get('grand_total', 0)
+            quotation_data['currency'] = q.get('currency', 'USD')
+            quotation_data['updated_at'] = q.get('updated_at')
+        
+        quotations_list.append(quotation_data)
+    
+    return render_template('tenant/nobles/admin/quotations.html',
+                         quotations=quotations_list,
+                         campaigns_count=len(campaigns))
+
+
+@app.route('/admin/campaigns/<campaign_id>/quotation')
+@login_required
+def admin_campaign_quotation(campaign_id):
+    """صفحة العرض المالي للحملة - للأدمن فقط"""
+    if not is_admin():
+        flash('ليس لديك صلاحية للوصول لهذه الصفحة', 'error')
+        return redirect(url_for('admin_campaigns'))
+    
+    campaign = get_campaign_by_id(campaign_id)
+    if not campaign:
+        flash('الحملة غير موجودة', 'error')
+        return redirect(url_for('admin_campaigns'))
+    
+    tenant_slug = campaign.get('tenant_id', 'nobles')
+    tenant = get_tenant_by_slug(tenant_slug)
+    
+    return render_template('tenant/nobles/admin/quotation.html',
+                         campaign=campaign,
+                         tenant=tenant)
+
+
+@app.route('/admin/campaigns/<campaign_id>/quotation-v2')
+@login_required
+def admin_campaign_quotation_v2(campaign_id):
+    """صفحة العرض المالي النسخة الثانية - هيكل جديد"""
+    if not is_admin():
+        flash('ليس لديك صلاحية للوصول لهذه الصفحة', 'error')
+        return redirect(url_for('admin_campaigns'))
+    
+    campaign = get_campaign_by_id(campaign_id)
+    if not campaign:
+        flash('الحملة غير موجودة', 'error')
+        return redirect(url_for('admin_campaigns'))
+    
+    tenant_slug = campaign.get('tenant_id', 'nobles')
+    tenant = get_tenant_by_slug(tenant_slug)
+    
+    return render_template('tenant/nobles/admin/quotation_v2.html',
+                         campaign=campaign,
+                         tenant=tenant)
+
+
+@app.route('/admin/campaigns/<campaign_id>/quotation/save', methods=['POST'])
+@login_required
+def admin_save_quotation(campaign_id):
+    """حفظ بيانات العرض المالي"""
+    if not is_admin():
+        return jsonify({'error': 'غير مصرح'}), 403
+    
+    campaign = get_campaign_by_id(campaign_id)
+    if not campaign:
+        return jsonify({'error': 'الحملة غير موجودة'}), 404
+    
+    data = request.get_json()
+    quotation_data = data.get('quotation', {})
+    
+    # تحديث بيانات العرض المالي في الحملة
+    campaigns_data = load_campaigns()
+    for c in campaigns_data.get('campaigns', []):
+        if c.get('id') == campaign_id:
+            c['quotation'] = quotation_data
+            c['updated_at'] = __import__('datetime').datetime.now().isoformat()
+            break
+    
+    save_campaigns(campaigns_data)
+    
+    return jsonify({
+        'success': True,
+        'message': 'تم حفظ العرض المالي بنجاح'
+    })
+
+
+@app.route('/admin/campaigns/<campaign_id>/quotation/pdf')
+@login_required  
+def admin_quotation_pdf(campaign_id):
+    """توليد PDF للعرض المالي"""
+    if not is_admin():
+        flash('ليس لديك صلاحية للوصول لهذه الصفحة', 'error')
+        return redirect(url_for('admin_campaigns'))
+    
+    campaign = get_campaign_by_id(campaign_id)
+    if not campaign:
+        flash('الحملة غير موجودة', 'error')
+        return redirect(url_for('admin_campaigns'))
+    
+    tenant_slug = campaign.get('tenant_id', 'nobles')
+    tenant = get_tenant_by_slug(tenant_slug)
+    
+    return render_template('tenant/nobles/admin/quotation_pdf.html',
+                         campaign=campaign,
+                         tenant=tenant)
 
 
 # ==================== تشغيل التطبيق ====================

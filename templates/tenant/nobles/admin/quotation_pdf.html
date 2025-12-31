@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عرض مالي - {{ campaign.basic_info.name }}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        @page { size: A4; margin: 12mm 15mm; }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Tajawal', sans-serif; }
+        
+        body { background: #fff; color: #1a1a1a; font-size: 10px; line-height: 1.4; }
+        
+        .page { max-width: 210mm; margin: 0 auto; padding: 20px; }
+        
+        /* Header - Compact */
+        .header { display: flex; justify-content: space-between; align-items: center; padding-bottom: 12px; border-bottom: 3px solid #00D46A; margin-bottom: 15px; }
+        .logo-section img { height: 45px; }
+        .logo-section h1 { font-size: 16px; font-weight: 800; margin-top: 3px; }
+        .logo-section p { font-size: 9px; color: #666; }
+        .quote-info { text-align: left; }
+        .quote-title { font-size: 22px; font-weight: 800; color: #00D46A; margin-bottom: 5px; }
+        .quote-meta { font-size: 9px; color: #666; }
+        .quote-meta div { margin-bottom: 2px; }
+        .quote-meta strong { color: #1a1a1a; }
+        
+        /* Client Box - Compact */
+        .client-box { background: #f8f9fa; border-radius: 6px; padding: 10px 12px; margin-bottom: 12px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+        .client-item { font-size: 9px; }
+        .client-item label { color: #888; display: block; margin-bottom: 1px; }
+        .client-item span { font-weight: 600; color: #1a1a1a; }
+        
+        /* Section Title */
+        .section-title { font-size: 11px; font-weight: 700; color: #00D46A; margin-bottom: 6px; padding-bottom: 4px; border-bottom: 1px solid #e0e0e0; display: flex; align-items: center; gap: 6px; }
+        
+        /* Compact Table */
+        .compact-table { width: 100%; border-collapse: collapse; font-size: 8.5px; margin-bottom: 12px; }
+        .compact-table th { background: #00D46A; color: #fff; padding: 5px 6px; text-align: right; font-weight: 600; font-size: 8.5px; }
+        .compact-table th:last-child { text-align: left; }
+        .compact-table td { padding: 4px 6px; border-bottom: 1px solid #eee; vertical-align: middle; }
+        .compact-table td:last-child { text-align: left; font-weight: 600; }
+        .compact-table tr:nth-child(even) { background: #fafafa; }
+        .compact-table .subtotal-row { background: #f0f9f4; font-weight: 600; }
+        .compact-table .subtotal-row td { border-top: 2px solid #00D46A; padding: 6px; }
+        
+        /* Phase Badge - Smaller */
+        .phase { display: inline-block; padding: 1px 5px; border-radius: 8px; font-size: 7px; font-weight: 600; }
+        .phase-1 { background: #fff3cd; color: #856404; }
+        .phase-2 { background: #d4edda; color: #155724; }
+        .phase-3 { background: #e2d9f3; color: #6f42c1; }
+        
+        /* Summary Box - Compact */
+        .summary-box { background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%); border: 2px solid #00D46A; border-radius: 8px; padding: 12px; margin-bottom: 12px; }
+        .summary-row { display: flex; justify-content: space-between; padding: 4px 0; font-size: 10px; }
+        .summary-row:not(:last-child) { border-bottom: 1px dashed #c3e6cb; }
+        .summary-row.total { margin-top: 8px; padding-top: 8px; border-top: 2px solid #00D46A; font-size: 14px; font-weight: 800; color: #00D46A; }
+        .summary-label { color: #555; }
+        .summary-value { font-weight: 700; color: #1a1a1a; }
+        .discount { color: #dc3545; }
+        
+        /* Terms - Two Columns */
+        .terms-box { background: #f8f9fa; border-radius: 6px; padding: 10px 12px; margin-bottom: 12px; }
+        .terms-list { list-style: none; columns: 2; column-gap: 15px; }
+        .terms-list li { font-size: 8px; padding: 2px 0; padding-right: 12px; position: relative; color: #555; break-inside: avoid; }
+        .terms-list li::before { content: '✓'; position: absolute; right: 0; color: #00D46A; font-weight: bold; font-size: 8px; }
+        
+        /* Signature - Compact */
+        .signature-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin: 15px 0; }
+        .signature-box { text-align: center; }
+        .signature-line { border-bottom: 1px solid #ccc; height: 30px; margin-bottom: 4px; }
+        .signature-label { font-size: 9px; color: #666; }
+        
+        /* Footer - Compact */
+        .footer { text-align: center; padding-top: 10px; border-top: 1px solid #e0e0e0; font-size: 9px; color: #666; }
+        .footer-thanks { font-weight: 600; color: #1a1a1a; margin-bottom: 5px; }
+        .footer-contact { display: flex; justify-content: center; gap: 20px; }
+        .footer-contact span { display: flex; align-items: center; gap: 4px; }
+        
+        /* Print Actions */
+        .print-actions { position: fixed; top: 15px; left: 15px; display: flex; gap: 8px; z-index: 1000; }
+        .btn { padding: 10px 18px; border: none; border-radius: 6px; font-family: 'Tajawal', sans-serif; font-weight: 600; font-size: 12px; cursor: pointer; display: flex; align-items: center; gap: 6px; text-decoration: none; transition: all 0.2s; }
+        .btn-print { background: #00D46A; color: #fff; }
+        .btn-print:hover { background: #00b858; }
+        .btn-back { background: #6c757d; color: #fff; }
+        .btn-back:hover { background: #5a6268; }
+        
+        /* Print Styles */
+        @media print {
+            .print-actions { display: none !important; }
+            body { padding: 0; font-size: 9px; }
+            .page { padding: 0; max-width: 100%; }
+            .compact-table { font-size: 8px; }
+            .compact-table th, .compact-table td { padding: 3px 5px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="print-actions">
+        <a href="{{ url_for('admin_campaign_quotation_v2', campaign_id=campaign.id) }}" class="btn btn-back">
+            <i class="fas fa-arrow-right"></i> رجوع
+        </a>
+        <button class="btn btn-print" onclick="window.print()">
+            <i class="fas fa-print"></i> طباعة PDF
+        </button>
+    </div>
+
+    <div class="page">
+        <!-- Header -->
+        <div class="header">
+            <div class="logo-section">
+                <img src="{{ url_for('static', filename='images/tenants/nobles/Logo-Turjuman1.png') }}" alt="ترجمان" onerror="this.style.display='none'">
+                <h1>شركة ترجمان</h1>
+                <p>للعلاقات العامة والاستشارات الاتصالية</p>
+            </div>
+            <div class="quote-info">
+                <div class="quote-title">عرض مالي</div>
+                <div class="quote-meta">
+                    <div>رقم العرض: <strong>QT-{{ campaign.id[:8].upper() }}</strong></div>
+                    <div>التاريخ: <strong>{{ now().strftime('%Y-%m-%d') if now is defined else '2025-12-31' }}</strong></div>
+                    <div>الصلاحية: <strong>30 يوم</strong></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Client Info -->
+        <div class="client-box">
+            <div class="client-item"><label>العميل</label><span>{{ campaign.client_info.company_name if campaign.client_info else 'نوبلز العقارية' }}</span></div>
+            <div class="client-item"><label>المشروع</label><span>{{ campaign.project_info.project_name if campaign.project_info else campaign.basic_info.name }}</span></div>
+            <div class="client-item"><label>المدة</label><span>{{ campaign.basic_info.duration_days }} يوم</span></div>
+            <div class="client-item"><label>الفترة</label><span>{{ campaign.basic_info.start_date }} - {{ campaign.basic_info.end_date }}</span></div>
+        </div>
+
+        {% set currency = campaign.quotation.currency if campaign.quotation and campaign.quotation.currency else campaign.basic_info.currency %}
+        {% set products_total = namespace(value=0) %}
+        {% set paid_media_total = namespace(value=0) %}
+        {% set earned_media_total = namespace(value=0) %}
+
+        <!-- Section 1: Creative Outputs -->
+        <div class="section-title"><i class="fas fa-paint-brush"></i> المخرجات الإبداعية</div>
+        <table class="compact-table">
+            <thead>
+                <tr>
+                    <th style="width:4%">#</th>
+                    <th style="width:38%">المنتج</th>
+                    <th style="width:14%">النوع</th>
+                    <th style="width:10%">المرحلة</th>
+                    <th style="width:8%">الكمية</th>
+                    <th style="width:12%">السعر</th>
+                    <th style="width:14%">الإجمالي</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if campaign.quotation and campaign.quotation.products_list %}
+                    {% for product in campaign.quotation.products_list %}
+                    {% set item_total = (product.quantity|default(1)) * (product.unit_price|default(0)) %}
+                    {% set products_total.value = products_total.value + item_total %}
+                    <tr>
+                        <td>{{ loop.index }}</td>
+                        <td>{{ product.name[:45] }}{% if product.name|length > 45 %}...{% endif %}</td>
+                        <td>{{ product.type if product.type else '-' }}</td>
+                        <td>
+                            {% set pv = product.phase|default('teasing') %}
+                            <span class="phase {% if pv == 'launch' %}phase-2{% elif pv == 'momentum' %}phase-3{% else %}phase-1{% endif %}">
+                                {% if pv == 'launch' %}إطلاق{% elif pv == 'momentum' %}ترسيخ{% else %}تهيئة{% endif %}
+                            </span>
+                        </td>
+                        <td>{{ product.quantity|default(1) }}</td>
+                        <td>{{ '{:,}'.format(product.unit_price|default(0)|int) }}</td>
+                        <td>{{ '{:,}'.format(item_total|int) }}</td>
+                    </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr><td colspan="7" style="text-align:center;color:#888;">لا توجد منتجات</td></tr>
+                {% endif %}
+                <tr class="subtotal-row">
+                    <td colspan="6" style="text-align:left;font-weight:700;">إجمالي المخرجات الإبداعية</td>
+                    <td style="font-weight:700;color:#00D46A;">{{ '{:,}'.format(products_total.value|int) }} {{ currency }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Section 2: Paid Media -->
+        <div class="section-title"><i class="fas fa-bullhorn"></i> ميزانية الترويج المدفوع</div>
+        <table class="compact-table">
+            <thead>
+                <tr>
+                    <th style="width:4%">#</th>
+                    <th style="width:48%">البند</th>
+                    <th style="width:20%">النوع</th>
+                    <th style="width:12%">المرحلة</th>
+                    <th style="width:16%">التكلفة</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if campaign.quotation and campaign.quotation.paid_media_list %}
+                    {% for item in campaign.quotation.paid_media_list %}
+                    {% set paid_media_total.value = paid_media_total.value + (item.cost|default(0)) %}
+                    <tr>
+                        <td>{{ loop.index }}</td>
+                        <td>{{ item.name }}</td>
+                        <td>{{ item.type }}</td>
+                        <td>
+                            <span class="phase {% if item.phase_id == 'launch' %}phase-2{% elif item.phase_id == 'momentum' %}phase-3{% else %}phase-1{% endif %}">
+                                {% if item.phase_id == 'launch' %}إطلاق{% elif item.phase_id == 'momentum' %}ترسيخ{% else %}تهيئة{% endif %}
+                            </span>
+                        </td>
+                        <td>{{ '{:,}'.format(item.cost|default(0)|int) }}</td>
+                    </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr><td colspan="5" style="text-align:center;color:#888;">لا توجد بنود</td></tr>
+                {% endif %}
+                <tr class="subtotal-row">
+                    <td colspan="4" style="text-align:left;font-weight:700;">إجمالي الترويج المدفوع</td>
+                    <td style="font-weight:700;color:#00D46A;">{{ '{:,}'.format(paid_media_total.value|int) }} {{ currency }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Section 3: Earned Media - Start on Page 2 -->
+        <div style="page-break-before: always;"></div>
+        <div class="section-title"><i class="fas fa-newspaper"></i> الإعلام الموازي</div>
+        <table class="compact-table">
+            <thead>
+                <tr>
+                    <th style="width:4%">#</th>
+                    <th style="width:38%">الوسيلة</th>
+                    <th style="width:14%">النوع</th>
+                    <th style="width:10%">المرحلة</th>
+                    <th style="width:8%">العدد</th>
+                    <th style="width:12%">السعر</th>
+                    <th style="width:14%">الإجمالي</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if campaign.quotation and campaign.quotation.earned_media_list %}
+                    {% for item in campaign.quotation.earned_media_list %}
+                    {% set item_total = (item.quantity|default(1)) * (item.unit_price|default(0)) %}
+                    {% set earned_media_total.value = earned_media_total.value + item_total %}
+                    <tr>
+                        <td>{{ loop.index }}</td>
+                        <td>{{ item.name }}</td>
+                        <td>{{ item.type }}</td>
+                        <td>
+                            <span class="phase {% if item.phase_id == 'launch' %}phase-2{% elif item.phase_id == 'momentum' %}phase-3{% else %}phase-1{% endif %}">
+                                {% if item.phase_id == 'launch' %}إطلاق{% elif item.phase_id == 'momentum' %}ترسيخ{% else %}تهيئة{% endif %}
+                            </span>
+                        </td>
+                        <td>{{ item.quantity|default(1) }}</td>
+                        <td>{{ '{:,}'.format(item.unit_price|default(0)|int) }}</td>
+                        <td>{{ '{:,}'.format(item_total|int) }}</td>
+                    </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr><td colspan="7" style="text-align:center;color:#888;">لا توجد بنود</td></tr>
+                {% endif %}
+                <tr class="subtotal-row">
+                    <td colspan="6" style="text-align:left;font-weight:700;">إجمالي الإعلام الموازي</td>
+                    <td style="font-weight:700;color:#3b82f6;">{{ '{:,}'.format(earned_media_total.value|int) }} {{ currency }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Summary -->
+        {% set subtotal = products_total.value + paid_media_total.value + earned_media_total.value %}
+        {% set discount = campaign.quotation.discount_amount|default(0) if campaign.quotation else 0 %}
+        {% set grand_total = subtotal - discount %}
+        
+        <div class="summary-box">
+            <div class="section-title" style="border:none;margin-bottom:8px;"><i class="fas fa-calculator"></i> ملخص العرض المالي</div>
+            <div class="summary-row">
+                <span class="summary-label">إجمالي المخرجات الإبداعية</span>
+                <span class="summary-value">{{ '{:,}'.format(products_total.value|int) }} {{ currency }}</span>
+            </div>
+            <div class="summary-row">
+                <span class="summary-label">إجمالي الترويج المدفوع</span>
+                <span class="summary-value">{{ '{:,}'.format(paid_media_total.value|int) }} {{ currency }}</span>
+            </div>
+            <div class="summary-row">
+                <span class="summary-label">إجمالي الإعلام الموازي</span>
+                <span class="summary-value" style="color:#3b82f6;">{{ '{:,}'.format(earned_media_total.value|int) }} {{ currency }}</span>
+            </div>
+            {% if discount > 0 %}
+            <div class="summary-row">
+                <span class="summary-label">الخصم</span>
+                <span class="summary-value discount">- {{ '{:,}'.format(discount|int) }} {{ currency }}</span>
+            </div>
+            {% endif %}
+            <div class="summary-row total">
+                <span class="summary-label">الإجمالي النهائي</span>
+                <span class="summary-value">{{ '{:,}'.format(grand_total|int) }} {{ currency }}</span>
+            </div>
+        </div>
+
+        <!-- Terms -->
+        <div class="terms-box">
+            <div class="section-title" style="border:none;margin-bottom:6px;"><i class="fas fa-file-contract"></i> الشروط والأحكام</div>
+            <ul class="terms-list">
+                {% if campaign.quotation and campaign.quotation.terms %}
+                    {% for term in campaign.quotation.terms %}
+                    <li>{{ term }}</li>
+                    {% endfor %}
+                {% else %}
+                    <li>صلاحية العرض: 30 يوم من تاريخ الإصدار</li>
+                    <li>الدفع: 50% مقدم، 50% عند التسليم</li>
+                    <li>مدة التنفيذ: حسب الجدول الزمني المتفق عليه</li>
+                    <li>التعديلات: يشمل العرض تعديلين مجانيين لكل منتج</li>
+                    <li>الأسعار لا تشمل ضريبة القيمة المضافة</li>
+                    <li>يبدأ العمل بعد توقيع العقد واستلام الدفعة الأولى</li>
+                {% endif %}
+            </ul>
+        </div>
+
+        <!-- Signature -->
+        <div class="signature-grid">
+            <div class="signature-box">
+                <div class="signature-line"></div>
+                <div class="signature-label">توقيع العميل</div>
+            </div>
+            <div class="signature-box">
+                <div class="signature-line"></div>
+                <div class="signature-label">توقيع شركة ترجمان</div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <div class="footer-thanks">شكراً لثقتكم بنا • نتطلع للعمل معكم</div>
+            <div class="footer-contact">
+                <span><i class="fas fa-phone"></i> +962 6 000 0000</span>
+                <span><i class="fas fa-envelope"></i> info@turjuman.jo</span>
+                <span><i class="fas fa-globe"></i> www.turjuman.jo</span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,658 @@
+{% extends 'tenant/nobles/base.html' %}
+
+{% block title %}{{ campaign.basic_info.name or 'تقرير الحملة' }} - منصة 24°45°{% endblock %}
+
+{% block extra_css %}
+<style>
+:root {
+    --primary: #00D46A;
+    --primary-dark: #00b858;
+    --dark: #0a0a0a;
+    --dark-light: #1a1a1a;
+    --text: #ffffff;
+    --text-muted: #888888;
+}
+
+/* Hero Section */
+.campaign-hero {
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
+    padding: 80px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.campaign-hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 80%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(0, 212, 106, 0.08) 0%, transparent 70%);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+}
+
+.campaign-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(0, 212, 106, 0.1);
+    border: 1px solid rgba(0, 212, 106, 0.3);
+    color: var(--primary);
+    padding: 8px 16px;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    margin-bottom: 20px;
+}
+
+.campaign-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--text);
+    margin-bottom: 15px;
+}
+
+.campaign-subtitle {
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    margin-bottom: 30px;
+}
+
+.campaign-meta {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.meta-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--text-muted);
+}
+
+.meta-item i {
+    color: var(--primary);
+}
+
+/* Stats Grid */
+.stats-section {
+    padding: 60px 0;
+    background: var(--dark);
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.stat-card {
+    background: var(--dark-light);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 16px;
+    padding: 25px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+    border-color: var(--primary);
+    transform: translateY(-5px);
+}
+
+.stat-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    background: rgba(0, 212, 106, 0.15);
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    margin: 0 auto 15px;
+}
+
+.stat-value {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--text);
+    margin-bottom: 5px;
+}
+
+.stat-label {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+/* Tabs */
+.campaign-tabs {
+    background: var(--dark);
+    padding: 40px 0 60px;
+}
+
+.tabs-nav {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+    overflow-x: auto;
+    padding-bottom: 10px;
+}
+
+.tab-btn {
+    padding: 12px 24px;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.1);
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+}
+
+.tab-btn:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+.tab-btn.active {
+    background: var(--primary);
+    color: var(--dark);
+    border-color: var(--primary);
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* Content Cards */
+.content-card {
+    background: var(--dark-light);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 16px;
+    padding: 30px;
+    margin-bottom: 25px;
+}
+
+.content-card h3 {
+    color: var(--text);
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.content-card h3 i {
+    color: var(--primary);
+    margin-left: 10px;
+}
+
+/* Info Grid */
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.info-item {
+    background: rgba(255,255,255,0.03);
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.info-label {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    margin-bottom: 5px;
+}
+
+.info-value {
+    color: var(--text);
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+/* Objectives List */
+.objectives-list {
+    list-style: none;
+    padding: 0;
+}
+
+.objectives-list li {
+    padding: 15px;
+    background: rgba(0, 212, 106, 0.05);
+    border-right: 3px solid var(--primary);
+    margin-bottom: 10px;
+    border-radius: 0 10px 10px 0;
+    color: var(--text);
+}
+
+/* Progress Section */
+.progress-section {
+    margin-top: 20px;
+}
+
+.progress-item {
+    margin-bottom: 20px;
+}
+
+.progress-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.progress-label {
+    color: var(--text);
+    font-weight: 500;
+}
+
+.progress-value {
+    color: var(--primary);
+    font-weight: 700;
+}
+
+.progress-bar {
+    height: 10px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+    border-radius: 5px;
+    transition: width 0.5s ease;
+}
+
+/* Products Grid */
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.product-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    padding: 20px;
+    transition: all 0.3s ease;
+}
+
+.product-card:hover {
+    border-color: var(--primary);
+}
+
+.product-name {
+    color: var(--text);
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.product-status {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.status-completed {
+    background: rgba(16, 185, 129, 0.2);
+    color: #10b981;
+}
+
+.status-pending {
+    background: rgba(245, 158, 11, 0.2);
+    color: #f59e0b;
+}
+
+.status-in-progress {
+    background: rgba(59, 130, 246, 0.2);
+    color: #3b82f6;
+}
+
+/* Empty State */
+.empty-state {
+    text-align: center;
+    padding: 40px;
+    color: var(--text-muted);
+}
+
+.empty-state i {
+    font-size: 3rem;
+    margin-bottom: 15px;
+    opacity: 0.5;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .campaign-title {
+        font-size: 1.8rem;
+    }
+    
+    .campaign-meta {
+        flex-direction: column;
+        gap: 15px;
+    }
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="campaign-hero">
+    <div class="container">
+        <div class="hero-content">
+            <div class="campaign-badge">
+                <i class="fas fa-bullhorn"></i>
+                حملة اتصالية
+            </div>
+            
+            <h1 class="campaign-title">{{ campaign.basic_info.name or 'حملة جديدة' }}</h1>
+            <p class="campaign-subtitle">{{ campaign.project_info.project_tagline or campaign.basic_info.tagline or 'تقرير متابعة الحملة' }}</p>
+            
+            <div class="campaign-meta">
+                <div class="meta-item">
+                    <i class="fas fa-building"></i>
+                    <span>{{ campaign.client_info.company_name or 'العميل' }}</span>
+                </div>
+                <div class="meta-item">
+                    <i class="fas fa-calendar"></i>
+                    <span>{{ campaign.basic_info.start_date or 'غير محدد' }}</span>
+                </div>
+                <div class="meta-item">
+                    <i class="fas fa-clock"></i>
+                    <span>{{ campaign.basic_info.duration_days or 30 }} يوم</span>
+                </div>
+                <div class="meta-item">
+                    <i class="fas fa-circle {% if campaign.status == 'active' %}text-success{% else %}text-warning{% endif %}"></i>
+                    <span>{% if campaign.status == 'active' %}نشطة{% elif campaign.status == 'draft' %}مسودة{% else %}{{ campaign.status }}{% endif %}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Stats Section -->
+<section class="stats-section">
+    <div class="container">
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <div class="stat-value">{{ campaign.progress.overall or 0 }}%</div>
+                <div class="stat-label">التقدم الإجمالي</div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-box"></i>
+                </div>
+                <div class="stat-value">{{ campaign.communication_products|length if campaign.communication_products else 0 }}</div>
+                <div class="stat-label">منتج اتصالي</div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-wallet"></i>
+                </div>
+                <div class="stat-value">{{ "{:,.0f}".format(campaign.basic_info.budget or 0) }}</div>
+                <div class="stat-label">الميزانية ({{ campaign.basic_info.currency or 'USD' }})</div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-tasks"></i>
+                </div>
+                <div class="stat-value">{{ campaign.progress.completed_products or 0 }}</div>
+                <div class="stat-label">منتج مكتمل</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Tabs Section -->
+<section class="campaign-tabs">
+    <div class="container">
+        <!-- Navigation -->
+        <div class="tabs-nav">
+            <button class="tab-btn active" data-tab="overview">
+                <i class="fas fa-info-circle"></i> نظرة عامة
+            </button>
+            <button class="tab-btn" data-tab="objectives">
+                <i class="fas fa-bullseye"></i> الأهداف
+            </button>
+            <button class="tab-btn" data-tab="products">
+                <i class="fas fa-box"></i> المنتجات
+            </button>
+            <button class="tab-btn" data-tab="progress">
+                <i class="fas fa-chart-bar"></i> التقدم
+            </button>
+        </div>
+        
+        <!-- Overview Tab -->
+        <div class="tab-content active" id="tab-overview">
+            <div class="content-card">
+                <h3><i class="fas fa-building"></i> معلومات العميل</h3>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <div class="info-label">اسم الشركة</div>
+                        <div class="info-value">{{ campaign.client_info.company_name or 'غير محدد' }}</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">وصف الشركة</div>
+                        <div class="info-value">{{ campaign.client_info.company_description[:100] if campaign.client_info.company_description else 'غير محدد' }}...</div>
+                    </div>
+                    {% if campaign.client_info.company_vision %}
+                    <div class="info-item">
+                        <div class="info-label">الرؤية</div>
+                        <div class="info-value">{{ campaign.client_info.company_vision }}</div>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+            
+            {% if campaign.project_info %}
+            <div class="content-card">
+                <h3><i class="fas fa-project-diagram"></i> معلومات المشروع</h3>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <div class="info-label">اسم المشروع</div>
+                        <div class="info-value">{{ campaign.project_info.project_name or 'غير محدد' }}</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">نوع المشروع</div>
+                        <div class="info-value">{{ campaign.project_info.project_type or 'غير محدد' }}</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">الموقع</div>
+                        <div class="info-value">{{ campaign.project_info.project_location or 'غير محدد' }}</div>
+                    </div>
+                    {% if campaign.project_info.total_area %}
+                    <div class="info-item">
+                        <div class="info-label">المساحة الإجمالية</div>
+                        <div class="info-value">{{ campaign.project_info.total_area }}</div>
+                    </div>
+                    {% endif %}
+                </div>
+                {% if campaign.project_info.project_description %}
+                <p style="margin-top: 20px; color: var(--text-muted); line-height: 1.8;">
+                    {{ campaign.project_info.project_description }}
+                </p>
+                {% endif %}
+            </div>
+            {% endif %}
+        </div>
+        
+        <!-- Objectives Tab -->
+        <div class="tab-content" id="tab-objectives">
+            <div class="content-card">
+                <h3><i class="fas fa-bullseye"></i> أهداف الحملة</h3>
+                
+                {% if campaign.campaign_objectives %}
+                    {% if campaign.campaign_objectives.main_objective %}
+                    <div style="background: rgba(0, 212, 106, 0.1); padding: 20px; border-radius: 12px; margin-bottom: 25px;">
+                        <strong style="color: var(--primary);">الهدف الرئيسي:</strong>
+                        <p style="color: var(--text); margin: 10px 0 0;">{{ campaign.campaign_objectives.main_objective }}</p>
+                    </div>
+                    {% endif %}
+                    
+                    {% if campaign.campaign_objectives.specific_objectives %}
+                    <h4 style="color: var(--text); margin-bottom: 15px;">الأهداف التفصيلية:</h4>
+                    <ul class="objectives-list">
+                        {% for obj in campaign.campaign_objectives.specific_objectives %}
+                        <li>{{ obj }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                    
+                    {% if campaign.campaign_objectives.main_objectives %}
+                    <h4 style="color: var(--text); margin-bottom: 15px;">الأهداف الرئيسية:</h4>
+                    <ul class="objectives-list">
+                        {% for obj in campaign.campaign_objectives.main_objectives %}
+                        <li>{{ obj }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                {% else %}
+                <div class="empty-state">
+                    <i class="fas fa-bullseye"></i>
+                    <p>لم يتم تحديد أهداف بعد</p>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        
+        <!-- Products Tab -->
+        <div class="tab-content" id="tab-products">
+            <div class="content-card">
+                <h3><i class="fas fa-box"></i> المنتجات الاتصالية</h3>
+                
+                {% if campaign.communication_products %}
+                <div class="products-grid">
+                    {% for product in campaign.communication_products %}
+                    <div class="product-card">
+                        <div class="product-name">{{ product.name or product }}</div>
+                        {% if product.status %}
+                        <span class="product-status {% if product.status == 'completed' %}status-completed{% elif product.status == 'in_progress' %}status-in-progress{% else %}status-pending{% endif %}">
+                            {% if product.status == 'completed' %}مكتمل
+                            {% elif product.status == 'in_progress' %}قيد التنفيذ
+                            {% else %}معلق{% endif %}
+                        </span>
+                        {% endif %}
+                        {% if product.description %}
+                        <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 10px;">{{ product.description }}</p>
+                        {% endif %}
+                    </div>
+                    {% endfor %}
+                </div>
+                {% else %}
+                <div class="empty-state">
+                    <i class="fas fa-box-open"></i>
+                    <p>لم يتم إضافة منتجات بعد</p>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        
+        <!-- Progress Tab -->
+        <div class="tab-content" id="tab-progress">
+            <div class="content-card">
+                <h3><i class="fas fa-chart-bar"></i> تقدم الحملة</h3>
+                
+                <div class="progress-section">
+                    <div class="progress-item">
+                        <div class="progress-header">
+                            <span class="progress-label">التقدم الإجمالي</span>
+                            <span class="progress-value">{{ campaign.progress.overall or 0 }}%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: {{ campaign.progress.overall or 0 }}%"></div>
+                        </div>
+                    </div>
+                    
+                    {% if campaign.progress.planning %}
+                    <div class="progress-item">
+                        <div class="progress-header">
+                            <span class="progress-label">التخطيط</span>
+                            <span class="progress-value">{{ campaign.progress.planning }}%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: {{ campaign.progress.planning }}%"></div>
+                        </div>
+                    </div>
+                    {% endif %}
+                    
+                    {% if campaign.progress.content %}
+                    <div class="progress-item">
+                        <div class="progress-header">
+                            <span class="progress-label">المحتوى</span>
+                            <span class="progress-value">{{ campaign.progress.content }}%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: {{ campaign.progress.content }}%"></div>
+                        </div>
+                    </div>
+                    {% endif %}
+                    
+                    {% if campaign.progress.design %}
+                    <div class="progress-item">
+                        <div class="progress-header">
+                            <span class="progress-label">التصميم</span>
+                            <span class="progress-value">{{ campaign.progress.design }}%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: {{ campaign.progress.design }}%"></div>
+                        </div>
+                    </div>
+                    {% endif %}
+                    
+                    {% if campaign.progress.execution %}
+                    <div class="progress-item">
+                        <div class="progress-header">
+                            <span class="progress-label">التنفيذ</span>
+                            <span class="progress-value">{{ campaign.progress.execution }}%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: {{ campaign.progress.execution }}%"></div>
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+// Tab Navigation
+document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+        // Remove active from all
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+        
+        // Add active to clicked
+        this.classList.add('active');
+        const tabId = 'tab-' + this.dataset.tab;
+        document.getElementById(tabId).classList.add('active');
+    });
+});
+</script>
+{% endblock %}

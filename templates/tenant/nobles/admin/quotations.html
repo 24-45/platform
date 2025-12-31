@@ -1,0 +1,391 @@
+{% extends 'tenant/nobles/admin/base.html' %}
+
+{% block title %}العروض المالية | 24°45°{% endblock %}
+
+{% block page_title %}العروض المالية{% endblock %}
+{% block page_subtitle %}إدارة جميع العروض المالية للحملات{% endblock %}
+
+{% block extra_css %}
+<style>
+/* Quotations Page Styles */
+.quotations-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.quotations-stats {
+    display: flex;
+    gap: 20px;
+}
+
+.stat-card {
+    background: var(--dark-light);
+    border-radius: 12px;
+    padding: 20px 25px;
+    border: 1px solid var(--border);
+    min-width: 150px;
+}
+
+.stat-card .stat-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.stat-card .stat-label {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+}
+
+/* Search and Filter */
+.filters-bar {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+}
+
+.search-box {
+    flex: 1;
+    min-width: 250px;
+    position: relative;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 12px 15px 12px 45px;
+    background: var(--dark-light);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    color: var(--text);
+    font-size: 0.95rem;
+}
+
+.search-box input:focus {
+    outline: none;
+    border-color: var(--primary);
+}
+
+.search-box i {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-muted);
+}
+
+.filter-select {
+    padding: 12px 15px;
+    background: var(--dark-light);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    color: var(--text);
+    min-width: 150px;
+}
+
+/* Quotations Table */
+.quotations-table-container {
+    background: var(--dark-light);
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+}
+
+.quotations-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.quotations-table th {
+    background: rgba(0, 212, 106, 0.1);
+    color: var(--primary);
+    padding: 15px 20px;
+    text-align: right;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.quotations-table td {
+    padding: 18px 20px;
+    border-bottom: 1px solid var(--border);
+    color: var(--text);
+}
+
+.quotations-table tr:last-child td {
+    border-bottom: none;
+}
+
+.quotations-table tr:hover {
+    background: rgba(255, 255, 255, 0.02);
+}
+
+/* Campaign Name */
+.campaign-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.campaign-name {
+    font-weight: 600;
+    color: var(--text);
+}
+
+.client-name {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+}
+
+/* Status Badges */
+.status-badge {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    display: inline-block;
+}
+
+.status-badge.has-quotation {
+    background: rgba(0, 212, 106, 0.15);
+    color: #00d46a;
+}
+
+.status-badge.no-quotation {
+    background: rgba(255, 193, 7, 0.15);
+    color: #ffc107;
+}
+
+.status-badge.draft {
+    background: rgba(108, 117, 125, 0.15);
+    color: #6c757d;
+}
+
+.status-badge.active {
+    background: rgba(0, 212, 106, 0.15);
+    color: #00d46a;
+}
+
+/* Amount */
+.amount {
+    font-weight: 700;
+    color: var(--primary);
+    font-size: 1.1rem;
+}
+
+.amount.zero {
+    color: var(--text-muted);
+}
+
+/* Actions */
+.actions-cell {
+    display: flex;
+    gap: 8px;
+}
+
+.action-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+}
+
+.action-btn:hover {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: var(--dark);
+}
+
+.action-btn.view:hover {
+    background: #3b82f6;
+    border-color: #3b82f6;
+    color: white;
+}
+
+.action-btn.pdf:hover {
+    background: #ef4444;
+    border-color: #ef4444;
+    color: white;
+}
+
+/* Empty State */
+.empty-state {
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.empty-state i {
+    font-size: 4rem;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+    opacity: 0.5;
+}
+
+.empty-state h3 {
+    color: var(--text);
+    margin-bottom: 10px;
+}
+
+.empty-state p {
+    color: var(--text-muted);
+    margin-bottom: 25px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .quotations-stats {
+        width: 100%;
+        justify-content: space-between;
+    }
+    
+    .stat-card {
+        flex: 1;
+        min-width: unset;
+    }
+    
+    .quotations-table {
+        display: block;
+        overflow-x: auto;
+    }
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="quotations-page">
+    <!-- Header Stats -->
+    <div class="quotations-header">
+        <div class="quotations-stats">
+            <div class="stat-card">
+                <div class="stat-value">{{ quotations|length }}</div>
+                <div class="stat-label">إجمالي الحملات</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">{{ quotations|selectattr('has_quotation')|list|length }}</div>
+                <div class="stat-label">عروض مكتملة</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">{{ quotations|rejectattr('has_quotation')|list|length }}</div>
+                <div class="stat-label">بانتظار العرض</div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Filters -->
+    <div class="filters-bar">
+        <div class="search-box">
+            <input type="text" id="search-input" placeholder="ابحث عن حملة أو عميل..." onkeyup="filterQuotations()">
+            <i class="fas fa-search"></i>
+        </div>
+        <select class="filter-select" id="status-filter" onchange="filterQuotations()">
+            <option value="all">جميع الحالات</option>
+            <option value="has-quotation">لديها عرض</option>
+            <option value="no-quotation">بدون عرض</option>
+        </select>
+    </div>
+    
+    <!-- Quotations Table -->
+    <div class="quotations-table-container">
+        {% if quotations %}
+        <table class="quotations-table" id="quotations-table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>الحملة / العميل</th>
+                    <th>الحالة</th>
+                    <th>القيمة الإجمالية</th>
+                    <th>آخر تحديث</th>
+                    <th>الإجراءات</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for q in quotations %}
+                <tr data-campaign="{{ q.campaign_name|lower }}" data-client="{{ q.client_name|lower }}" data-status="{{ 'has-quotation' if q.has_quotation else 'no-quotation' }}">
+                    <td>{{ loop.index }}</td>
+                    <td>
+                        <div class="campaign-info">
+                            <span class="campaign-name">{{ q.campaign_name }}</span>
+                            <span class="client-name"><i class="fas fa-building" style="margin-left: 5px;"></i>{{ q.client_name }}</span>
+                        </div>
+                    </td>
+                    <td>
+                        {% if q.has_quotation %}
+                        <span class="status-badge has-quotation"><i class="fas fa-check-circle" style="margin-left: 5px;"></i>تم إعداد العرض</span>
+                        {% else %}
+                        <span class="status-badge no-quotation"><i class="fas fa-clock" style="margin-left: 5px;"></i>بانتظار الإعداد</span>
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if q.total > 0 %}
+                        <span class="amount">{{ "{:,.0f}".format(q.total) }} {{ q.currency }}</span>
+                        {% else %}
+                        <span class="amount zero">-</span>
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if q.updated_at %}
+                        <span style="color: var(--text-muted); font-size: 0.85rem;">{{ q.updated_at[:10] if q.updated_at else '-' }}</span>
+                        {% else %}
+                        <span style="color: var(--text-muted);">-</span>
+                        {% endif %}
+                    </td>
+                    <td>
+                        <div class="actions-cell">
+                            <a href="{{ url_for('admin_campaign_quotation_v2', campaign_id=q.campaign_id) }}" class="action-btn" title="تعديل العرض">
+                                <i class="fas fa-edit"></i>
+                            </a>
+                            {% if q.has_quotation %}
+                            <a href="{{ url_for('admin_quotation_pdf', campaign_id=q.campaign_id) }}" class="action-btn pdf" title="تصدير PDF" target="_blank">
+                                <i class="fas fa-file-pdf"></i>
+                            </a>
+                            {% endif %}
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <div class="empty-state">
+            <i class="fas fa-file-invoice-dollar"></i>
+            <h3>لا توجد حملات</h3>
+            <p>قم بإنشاء حملة جديدة لإعداد عرض مالي لها</p>
+            <a href="{{ url_for('admin_new_campaign') }}" class="btn btn-primary">
+                <i class="fas fa-plus"></i> إنشاء حملة جديدة
+            </a>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+function filterQuotations() {
+    const searchTerm = document.getElementById('search-input').value.toLowerCase();
+    const statusFilter = document.getElementById('status-filter').value;
+    const rows = document.querySelectorAll('#quotations-table tbody tr');
+    
+    rows.forEach(row => {
+        const campaign = row.dataset.campaign || '';
+        const client = row.dataset.client || '';
+        const status = row.dataset.status || '';
+        
+        const matchesSearch = campaign.includes(searchTerm) || client.includes(searchTerm);
+        const matchesStatus = statusFilter === 'all' || status === statusFilter;
+        
+        row.style.display = (matchesSearch && matchesStatus) ? '' : 'none';
+    });
+}
+</script>
+{% endblock %}

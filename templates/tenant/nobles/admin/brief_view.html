@@ -1,0 +1,435 @@
+{% extends "tenant/nobles/admin/base.html" %}
+
+{% block title %}عرض الموجز الإبداعي | {{ campaign.basic_info.name }}{% endblock %}
+
+{% block content %}
+<div class="brief-viewer">
+    <!-- Header -->
+    <div class="viewer-header">
+        <div class="header-content">
+            <a href="{{ url_for('admin_edit_campaign', campaign_id=campaign.id) }}" class="back-btn">
+                <i class="fas fa-arrow-right"></i>
+                العودة للحملة
+            </a>
+            <div class="header-info">
+                <h1 class="page-title">الموجز الإبداعي</h1>
+                <span class="campaign-badge">{{ campaign.basic_info.name }}</span>
+            </div>
+        </div>
+        
+        <div class="header-actions">
+            {% if campaign.client_brief and campaign.client_brief.status == 'submitted' %}
+            <span class="status-badge status-success">
+                <i class="fas fa-check-circle"></i>
+                تم الاستلام
+            </span>
+            <span class="submitted-date">
+                {{ campaign.client_brief.submitted_at[:10] if campaign.client_brief.submitted_at else '' }}
+            </span>
+            {% else %}
+            <span class="status-badge status-pending">
+                <i class="fas fa-clock"></i>
+                في انتظار العميل
+            </span>
+            <button class="btn btn-primary" onclick="copyBriefLink()">
+                <i class="fas fa-link"></i>
+                نسخ رابط الاستبانة
+            </button>
+            {% endif %}
+        </div>
+    </div>
+    
+    {% if campaign.client_brief and campaign.client_brief.status == 'submitted' %}
+    <!-- Brief Content -->
+    <div class="brief-content">
+        {% for section in questionnaire.sections %}
+        <div class="brief-section">
+            <div class="section-header">
+                <div class="section-icon">
+                    {% if section.id == 'company_info' %}<i class="fas fa-building"></i>
+                    {% elif section.id == 'project_info' %}<i class="fas fa-project-diagram"></i>
+                    {% elif section.id == 'target_audience' %}<i class="fas fa-users"></i>
+                    {% elif section.id == 'campaign_objectives' %}<i class="fas fa-bullseye"></i>
+                    {% elif section.id == 'brand_voice' %}<i class="fas fa-comment-alt"></i>
+                    {% elif section.id == 'competitors' %}<i class="fas fa-chess"></i>
+                    {% elif section.id == 'budget_timeline' %}<i class="fas fa-clock"></i>
+                    {% elif section.id == 'existing_assets' %}<i class="fas fa-folder-open"></i>
+                    {% else %}<i class="fas fa-clipboard-list"></i>{% endif %}
+                </div>
+                <h2 class="section-title">{{ section.title }}</h2>
+            </div>
+            
+            <div class="questions-grid">
+                {% for question in section.questions %}
+                {% set response = campaign.client_brief.responses.get(question.id, '') %}
+                <div class="question-item">
+                    <div class="question-label">{{ question.question }}</div>
+                    <div class="question-answer">
+                        {% if response %}
+                            {% if response is iterable and response is not string %}
+                                {% if response | length > 0 %}
+                                <div class="tags-answer">
+                                    {% for item in response %}
+                                    <span class="tag">{{ item }}</span>
+                                    {% endfor %}
+                                </div>
+                                {% else %}
+                                <span class="empty-answer">لم يتم الإجابة</span>
+                                {% endif %}
+                            {% else %}
+                            <p>{{ response }}</p>
+                            {% endif %}
+                        {% else %}
+                        <span class="empty-answer">لم يتم الإجابة</span>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    
+    <!-- Actions -->
+    <div class="brief-actions">
+        <button class="btn btn-secondary" onclick="exportBrief()">
+            <i class="fas fa-download"></i>
+            تصدير PDF
+        </button>
+        <a href="{{ url_for('admin_edit_campaign', campaign_id=campaign.id) }}" class="btn btn-primary">
+            <i class="fas fa-edit"></i>
+            استخدام في بناء الحملة
+        </a>
+    </div>
+    
+    {% else %}
+    <!-- Waiting State -->
+    <div class="waiting-state">
+        <div class="waiting-icon">
+            <i class="fas fa-hourglass-half"></i>
+        </div>
+        <h2>في انتظار رد العميل</h2>
+        <p>أرسل رابط الاستبانة للعميل ليقوم بتعبئة الموجز الإبداعي</p>
+        
+        <div class="brief-link-box">
+            <input type="text" id="briefLink" readonly value="" class="link-input">
+            <button class="btn btn-primary" onclick="copyBriefLink()">
+                <i class="fas fa-copy"></i>
+                نسخ الرابط
+            </button>
+        </div>
+    </div>
+    {% endif %}
+</div>
+
+<style>
+    .brief-viewer {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+    
+    .viewer-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 20px;
+        margin-bottom: 30px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid var(--border);
+    }
+    
+    .back-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        color: var(--text-muted);
+        text-decoration: none;
+        font-size: 0.9rem;
+        margin-bottom: 10px;
+        transition: color 0.3s;
+    }
+    
+    .back-btn:hover {
+        color: var(--primary);
+    }
+    
+    .page-title {
+        font-size: 1.8rem;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+    
+    .campaign-badge {
+        display: inline-block;
+        background: rgba(0, 212, 106, 0.1);
+        color: var(--primary);
+        padding: 6px 15px;
+        border-radius: 20px;
+        font-size: 0.9rem;
+    }
+    
+    .header-actions {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+    
+    .status-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 16px;
+        border-radius: 8px;
+        font-size: 0.9rem;
+        font-weight: 600;
+    }
+    
+    .status-success {
+        background: rgba(0, 212, 106, 0.1);
+        color: #00D46A;
+    }
+    
+    .status-pending {
+        background: rgba(234, 179, 8, 0.1);
+        color: #EAB308;
+    }
+    
+    .submitted-date {
+        color: var(--text-muted);
+        font-size: 0.85rem;
+    }
+    
+    /* Brief Content */
+    .brief-section {
+        background: var(--dark-light);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        margin-bottom: 20px;
+        overflow: hidden;
+    }
+    
+    .section-header {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        padding: 20px;
+        background: var(--dark-lighter);
+        border-bottom: 1px solid var(--border);
+    }
+    
+    .section-icon {
+        width: 45px;
+        height: 45px;
+        border-radius: 10px;
+        background: rgba(0, 212, 106, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--primary);
+        font-size: 1.2rem;
+    }
+    
+    .section-title {
+        font-size: 1.2rem;
+        font-weight: 600;
+    }
+    
+    .questions-grid {
+        padding: 20px;
+        display: grid;
+        gap: 20px;
+    }
+    
+    .question-item {
+        padding: 15px;
+        background: var(--dark-lighter);
+        border-radius: 10px;
+    }
+    
+    .question-label {
+        font-size: 0.85rem;
+        color: var(--text-muted);
+        margin-bottom: 8px;
+        font-weight: 500;
+    }
+    
+    .question-answer {
+        font-size: 1rem;
+        line-height: 1.7;
+    }
+    
+    .question-answer p {
+        white-space: pre-wrap;
+    }
+    
+    .tags-answer {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+    
+    .tag {
+        background: rgba(0, 212, 106, 0.1);
+        color: var(--primary);
+        padding: 6px 14px;
+        border-radius: 20px;
+        font-size: 0.85rem;
+    }
+    
+    .empty-answer {
+        color: var(--text-muted);
+        font-style: italic;
+    }
+    
+    /* Actions */
+    .brief-actions {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        padding: 30px 0;
+    }
+    
+    /* Waiting State */
+    .waiting-state {
+        text-align: center;
+        padding: 80px 20px;
+        background: var(--dark-light);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+    }
+    
+    .waiting-icon {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        background: rgba(234, 179, 8, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 30px;
+        font-size: 2.5rem;
+        color: #EAB308;
+    }
+    
+    .waiting-state h2 {
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+    }
+    
+    .waiting-state p {
+        color: var(--text-muted);
+        margin-bottom: 30px;
+    }
+    
+    .brief-link-box {
+        display: flex;
+        max-width: 600px;
+        margin: 0 auto;
+        gap: 10px;
+    }
+    
+    .link-input {
+        flex: 1;
+        padding: 15px;
+        background: var(--dark-lighter);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        color: var(--text);
+        font-size: 0.9rem;
+    }
+    
+    /* Buttons */
+    .btn {
+        padding: 12px 25px;
+        border-radius: 10px;
+        font-weight: 600;
+        font-size: 0.95rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-family: 'Tajawal', sans-serif;
+        border: none;
+        text-decoration: none;
+    }
+    
+    .btn-primary {
+        background: var(--primary);
+        color: var(--dark);
+    }
+    
+    .btn-primary:hover {
+        background: #00B85C;
+    }
+    
+    .btn-secondary {
+        background: var(--dark-lighter);
+        border: 1px solid var(--border);
+        color: var(--text);
+    }
+    
+    .btn-secondary:hover {
+        border-color: var(--primary);
+        color: var(--primary);
+    }
+    
+    @media (max-width: 768px) {
+        .viewer-header {
+            flex-direction: column;
+        }
+        
+        .header-actions {
+            width: 100%;
+            justify-content: flex-start;
+        }
+        
+        .brief-link-box {
+            flex-direction: column;
+        }
+    }
+</style>
+
+<script>
+    const campaignId = "{{ campaign.id }}";
+    
+    // تحميل رابط الاستبانة
+    document.addEventListener('DOMContentLoaded', function() {
+        const linkInput = document.getElementById('briefLink');
+        if (linkInput) {
+            linkInput.value = window.location.origin + '/brief/' + campaignId;
+        }
+    });
+    
+    function copyBriefLink() {
+        const link = window.location.origin + '/brief/' + campaignId;
+        navigator.clipboard.writeText(link).then(() => {
+            // إظهار رسالة نجاح
+            const toast = document.createElement('div');
+            toast.className = 'toast-success';
+            toast.innerHTML = '<i class="fas fa-check"></i> تم نسخ الرابط';
+            toast.style.cssText = `
+                position: fixed;
+                bottom: 30px;
+                left: 50%;
+                transform: translateX(-50%);
+                background: var(--primary);
+                color: var(--dark);
+                padding: 15px 30px;
+                border-radius: 10px;
+                font-weight: 600;
+                z-index: 9999;
+                animation: fadeInUp 0.3s ease;
+            `;
+            document.body.appendChild(toast);
+            setTimeout(() => toast.remove(), 3000);
+        });
+    }
+    
+    function exportBrief() {
+        // يمكن إضافة تصدير PDF لاحقاً
+        alert('سيتم إضافة هذه الميزة قريباً');
+    }
+</script>
+{% endblock %}

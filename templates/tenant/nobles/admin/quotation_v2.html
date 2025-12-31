@@ -1,0 +1,1826 @@
+{% extends 'tenant/nobles/admin/base.html' %}
+
+{% block title %}العرض المالي - {{ campaign.basic_info.name }} | 24°45°{% endblock %}
+
+{% block page_title %}العرض المالي{% endblock %}
+{% block page_subtitle %}{{ campaign.basic_info.name }}{% endblock %}
+
+{% block extra_css %}
+<style>
+/* Quotation Page Styles */
+.quotation-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.quotation-header {
+    background: linear-gradient(135deg, var(--dark-light), var(--dark-lighter));
+    border-radius: 20px;
+    padding: 30px;
+    margin-bottom: 30px;
+    border: 1px solid var(--border);
+}
+
+.quotation-header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.quotation-info h2 {
+    color: var(--text);
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0 0 10px 0;
+}
+
+.quotation-info p {
+    color: var(--text-muted);
+    margin: 0;
+}
+
+.quotation-actions {
+    display: flex;
+    gap: 12px;
+}
+
+.quotation-card {
+    background: var(--dark-light);
+    border-radius: 16px;
+    padding: 25px;
+    margin-bottom: 25px;
+    border: 1px solid var(--border);
+}
+
+.quotation-card h3 {
+    color: var(--primary);
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin: 0 0 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Products Table */
+.products-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.products-table th {
+    background: rgba(0, 212, 106, 0.1);
+    color: var(--primary);
+    padding: 15px;
+    text-align: right;
+    font-weight: 600;
+    border-bottom: 2px solid var(--border);
+}
+
+.products-table td {
+    padding: 15px;
+    border-bottom: 1px solid var(--border);
+    color: var(--text);
+}
+
+.products-table tr:hover {
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.products-table input[type="number"] {
+    width: 80px;
+    padding: 8px 12px;
+    background: var(--dark-lighter);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text);
+    text-align: center;
+}
+
+.products-table input[type="number"]:focus {
+    outline: none;
+    border-color: var(--primary);
+}
+
+.price-input {
+    width: 120px !important;
+}
+
+.product-category {
+    background: rgba(0, 212, 106, 0.15);
+    color: var(--primary);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    display: inline-block;
+}
+
+.phase-badge {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    display: inline-block;
+    white-space: nowrap;
+}
+
+.type-badge {
+    background: rgba(59, 130, 246, 0.2);
+    color: #60a5fa;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    display: inline-block;
+}
+
+.phase-badge.phase-1 {
+    background: rgba(251, 191, 36, 0.2);
+    color: #fbbf24;
+}
+
+.phase-badge.phase-2 {
+    background: rgba(34, 197, 94, 0.2);
+    color: #22c55e;
+}
+
+.phase-badge.phase-3 {
+    background: rgba(139, 92, 246, 0.2);
+    color: #a78bfa;
+}
+
+/* Phase Cards Summary */
+.phases-summary {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.phase-summary-card {
+    background: linear-gradient(135deg, var(--dark-light) 0%, var(--dark-lighter) 100%);
+    border-radius: 16px;
+    padding: 20px 25px;
+    border-right: 4px solid;
+    position: relative;
+    overflow: hidden;
+}
+
+.phase-summary-card.phase-1-card {
+    border-right-color: #fbbf24;
+    background: linear-gradient(135deg, rgba(251, 191, 36, 0.1) 0%, var(--dark-light) 100%);
+}
+
+.phase-summary-card.phase-2-card {
+    border-right-color: #22c55e;
+    background: linear-gradient(135deg, rgba(34, 197, 94, 0.1) 0%, var(--dark-light) 100%);
+}
+
+.phase-summary-card.phase-3-card {
+    border-right-color: #a78bfa;
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.1) 0%, var(--dark-light) 100%);
+}
+
+.phase-summary-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 15px;
+}
+
+.phase-summary-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text);
+    margin: 0;
+}
+
+.phase-summary-card.phase-1-card .phase-summary-title { color: #fbbf24; }
+.phase-summary-card.phase-2-card .phase-summary-title { color: #22c55e; }
+.phase-summary-card.phase-3-card .phase-summary-title { color: #a78bfa; }
+
+.phase-summary-meta {
+    text-align: left;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+}
+
+.phase-summary-meta .date {
+    display: block;
+    margin-bottom: 4px;
+}
+
+.phase-summary-meta .count {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.phase-number {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: white;
+}
+
+.phase-1-card .phase-number { background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%); }
+.phase-2-card .phase-number { background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%); }
+.phase-3-card .phase-number { background: linear-gradient(135deg, #a78bfa 0%, #8b5cf6 100%); }
+
+.phase-summary-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.phase-tag {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.phase-tag i {
+    font-size: 0.75rem;
+    opacity: 0.8;
+}
+
+.phase-tag.paid {
+    background: rgba(0, 212, 106, 0.2);
+    color: #00D46A;
+}
+
+/* Paid/Earned Badges */
+.paid-badge {
+    background: rgba(0, 212, 106, 0.2);
+    color: #00D46A;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.earned-badge {
+    background: rgba(59, 130, 246, 0.2);
+    color: #60a5fa;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.paid-row {
+    background: rgba(0, 212, 106, 0.05);
+}
+
+.earned-row {
+    background: rgba(59, 130, 246, 0.05);
+}
+
+/* Delete Button */
+.delete-btn {
+    background: rgba(220, 53, 69, 0.1);
+    border: none;
+    color: #dc3545;
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.delete-btn:hover {
+    background: rgba(220, 53, 69, 0.3);
+    color: #ff4d5a;
+}
+
+.delete-btn i {
+    font-size: 0.9rem;
+}
+
+/* Media Tools Section */
+.media-tools-section {
+    margin-top: 30px;
+}
+
+.media-tool-row {
+    display: grid;
+    grid-template-columns: 3fr 1fr 1fr 1fr;
+    gap: 15px;
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
+    margin-bottom: 10px;
+    align-items: center;
+}
+
+.media-tool-info h4 {
+    color: var(--text);
+    font-size: 1rem;
+    margin: 0 0 5px 0;
+}
+
+.media-tool-info p {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    margin: 0;
+}
+
+/* Summary Section */
+.quotation-summary {
+    background: linear-gradient(135deg, rgba(0, 212, 106, 0.1), rgba(0, 180, 88, 0.05));
+    border-radius: 16px;
+    padding: 30px;
+    margin-top: 30px;
+    border: 1px solid rgba(0, 212, 106, 0.3);
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.summary-row:last-child {
+    border-bottom: none;
+}
+
+.summary-row.total {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--primary);
+    padding-top: 20px;
+    margin-top: 10px;
+    border-top: 2px solid var(--primary);
+}
+
+.summary-label {
+    color: var(--text-muted);
+}
+
+.summary-value {
+    color: var(--text);
+    font-weight: 600;
+}
+
+/* Notes Section */
+.quotation-notes {
+    margin-top: 25px;
+}
+
+.quotation-notes textarea {
+    width: 100%;
+    min-height: 120px;
+    padding: 15px;
+    background: var(--dark-lighter);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    color: var(--text);
+    resize: vertical;
+}
+
+.quotation-notes textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+}
+
+/* Client Info Card */
+.client-info-card {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.client-info-item {
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
+}
+
+.client-info-item label {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.client-info-item span {
+    color: var(--text);
+    font-weight: 600;
+}
+
+/* Buttons */
+.btn-primary {
+    background: var(--primary);
+    color: var(--dark);
+    border: none;
+    padding: 12px 25px;
+    border-radius: 10px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+}
+
+.btn-outline {
+    background: transparent;
+    color: var(--text);
+    border: 1px solid var(--border);
+    padding: 12px 25px;
+    border-radius: 10px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+}
+
+.btn-outline:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+/* Validity & Terms */
+.terms-section {
+    margin-top: 25px;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
+}
+
+.terms-section h4 {
+    color: var(--text);
+    font-size: 1rem;
+    margin: 0 0 15px 0;
+}
+
+.terms-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.terms-list li {
+    color: var(--text-muted);
+    padding: 8px 0;
+    padding-right: 25px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.terms-list li::before {
+    content: '✓';
+    position: absolute;
+    right: 0;
+    color: var(--primary);
+}
+
+.term-input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid transparent;
+    color: var(--text-muted);
+    padding: 5px 0;
+    font-size: 0.9rem;
+    transition: border-color 0.3s;
+}
+
+.term-input:hover,
+.term-input:focus {
+    border-bottom-color: var(--border);
+    outline: none;
+}
+
+.term-delete-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 4px;
+    opacity: 0;
+    transition: all 0.2s;
+}
+
+.terms-list li:hover .term-delete-btn {
+    opacity: 1;
+}
+
+.term-delete-btn:hover {
+    color: #ef4444;
+    background: rgba(239, 68, 68, 0.1);
+}
+
+/* Toast Notifications */
+.toast-container {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 9999;
+}
+
+.toast {
+    background: var(--dark-light);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+    animation: slideIn 0.3s ease;
+}
+
+.toast.success {
+    border-color: var(--primary);
+}
+
+.toast.error {
+    border-color: #ef4444;
+}
+
+@keyframes slideIn {
+    from { transform: translateX(-100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+/* Add Item Button */
+.add-item-btn {
+    background: rgba(0, 212, 106, 0.1);
+    border: 2px dashed rgba(0, 212, 106, 0.3);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    color: var(--primary);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 15px;
+}
+
+.add-item-btn:hover {
+    background: rgba(0, 212, 106, 0.15);
+    border-color: var(--primary);
+}
+
+/* Discount Section */
+.discount-section {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    background: rgba(251, 191, 36, 0.1);
+    border-radius: 12px;
+    margin-top: 20px;
+}
+
+.discount-section label {
+    color: #fbbf24;
+    font-weight: 600;
+}
+
+.discount-section input {
+    width: 100px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .quotation-header-content {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .quotation-actions {
+        justify-content: center;
+    }
+    
+    .media-tool-row {
+        grid-template-columns: 1fr;
+    }
+    
+    .products-table {
+        display: block;
+        overflow-x: auto;
+    }
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="quotation-container">
+    <!-- Header -->
+    <div class="quotation-header">
+        <div class="quotation-header-content">
+            <div class="quotation-info">
+                <h2><i class="fas fa-file-invoice-dollar" style="color: var(--primary); margin-left: 10px;"></i> العرض المالي</h2>
+                <p>{{ campaign.basic_info.name }} | {{ campaign.client_info.company_name if campaign.client_info else 'العميل' }}</p>
+            </div>
+            <div class="quotation-actions">
+                <button class="btn-outline" onclick="window.history.back()">
+                    <i class="fas fa-arrow-right"></i>
+                    رجوع
+                </button>
+                <button class="btn-outline" onclick="saveQuotation()">
+                    <i class="fas fa-save"></i>
+                    حفظ
+                </button>
+                <a href="{{ url_for('admin_quotation_pdf', campaign_id=campaign.id) }}" target="_blank" class="btn-primary">
+                    <i class="fas fa-file-pdf"></i>
+                    تصدير PDF
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Client Info -->
+    <div class="quotation-card">
+        <h3><i class="fas fa-building"></i> معلومات العميل</h3>
+        <div class="client-info-card">
+            <div class="client-info-item">
+                <label>اسم الشركة</label>
+                <span>{{ campaign.client_info.company_name if campaign.client_info else 'نوبلز العقارية' }}</span>
+            </div>
+            <div class="client-info-item">
+                <label>المشروع</label>
+                <span>{{ campaign.project_info.project_name if campaign.project_info else campaign.basic_info.name }}</span>
+            </div>
+            <div class="client-info-item">
+                <label>مدة الحملة</label>
+                <span>{{ campaign.basic_info.duration_days }} يوم</span>
+            </div>
+            <div class="client-info-item">
+                <label>تاريخ العرض</label>
+                <span id="quotation-date">{{ now().strftime('%Y-%m-%d') if now is defined else '2025-12-30' }}</span>
+            </div>
+            <div class="client-info-item">
+                <label>عملة العرض</label>
+                <select id="currency-select" onchange="changeCurrency(this.value)" style="background: var(--dark-lighter); border: 1px solid var(--border); border-radius: 8px; padding: 10px 15px; color: var(--text); font-size: 1rem; cursor: pointer;">
+                    <option value="USD" {{ 'selected' if campaign.basic_info.currency == 'USD' else '' }}>🇺🇸 دولار أمريكي (USD)</option>
+                    <option value="SAR" {{ 'selected' if campaign.basic_info.currency == 'SAR' else '' }}>🇸🇦 ريال سعودي (SAR)</option>
+                    <option value="JOD" {{ 'selected' if campaign.basic_info.currency == 'JOD' else '' }}>🇯🇴 دينار أردني (JOD)</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <!-- Communication Products -->
+    <div class="quotation-card">
+        <h3><i class="fas fa-palette"></i> المخرجات الإبداعية</h3>
+        <p style="color: var(--text-muted); margin-bottom: 20px;">
+            <i class="fas fa-info-circle"></i> المحتوى والتصميم والإنتاج - ما نصنعه ونسلمه للعميل
+        </p>
+        
+        <table class="products-table" id="products-table">
+            <thead>
+                <tr>
+                    <th style="width: 32%;">المخرج</th>
+                    <th style="width: 12%;">النوع</th>
+                    <th style="width: 14%;">المرحلة</th>
+                    <th style="width: 8%;">الكمية</th>
+                    <th style="width: 12%;">سعر الوحدة</th>
+                    <th style="width: 12%;">الإجمالي</th>
+                    <th style="width: 10%;">إجراءات</th>
+                </tr>
+            </thead>
+            <tbody id="products-body">
+                <!-- Products will be loaded here -->
+            </tbody>
+        </table>
+        <div class="add-item-btn" onclick="addProduct()">
+            <i class="fas fa-plus"></i> إضافة مخرج جديد
+        </div>
+    </div>
+
+    <!-- Paid Media Budget -->
+    <div class="quotation-card" style="border-right: 4px solid #00D46A;">
+        <h3><i class="fas fa-ad"></i> ميزانية الترويج المدفوع</h3>
+        <p style="color: var(--text-muted); margin-bottom: 20px;">
+            <i class="fas fa-info-circle"></i> الإعلانات والمؤثرين والنشر المدفوع - تكاليف خارجية
+        </p>
+        <table class="products-table" id="paid-media-table">
+            <thead>
+                <tr>
+                    <th style="width: 35%;">البند</th>
+                    <th style="width: 15%;">النوع</th>
+                    <th style="width: 15%;">المرحلة</th>
+                    <th style="width: 15%;">التكلفة</th>
+                    <th style="width: 10%;">إجراءات</th>
+                </tr>
+            </thead>
+            <tbody id="paid-media-body">
+                <!-- Paid media will be loaded here -->
+            </tbody>
+        </table>
+        <div class="add-item-btn" onclick="addPaidMedia()">
+            <i class="fas fa-plus"></i> إضافة بند ترويج مدفوع
+        </div>
+    </div>
+
+    <!-- Earned Media (الإعلام الموازي) -->
+    <div class="quotation-card" style="border-right: 4px solid #60a5fa;">
+        <h3><i class="fas fa-newspaper"></i> الإعلام الموازي</h3>
+        <p style="color: var(--text-muted); margin-bottom: 20px;">
+            <i class="fas fa-info-circle"></i> النشر المدفوع غير المباشر (صحف، مؤثرين، مقالات رأي)
+        </p>
+        <table class="products-table" id="earned-media-table">
+            <thead>
+                <tr>
+                    <th style="width: 30%;">الوسيلة الإعلامية</th>
+                    <th style="width: 15%;">النوع</th>
+                    <th style="width: 15%;">المرحلة</th>
+                    <th style="width: 10%;">الكمية</th>
+                    <th style="width: 15%;">سعر الوحدة</th>
+                    <th style="width: 10%;">الإجمالي</th>
+                    <th style="width: 5%;">إجراءات</th>
+                </tr>
+            </thead>
+            <tbody id="earned-media-body">
+                <!-- Earned media will be loaded here -->
+            </tbody>
+        </table>
+        <div class="add-item-btn" onclick="addEarnedMedia()">
+            <i class="fas fa-plus"></i> إضافة وسيلة إعلامية
+        </div>
+    </div>
+
+    <!-- Discount -->
+    <div class="quotation-card">
+        <h3><i class="fas fa-percentage"></i> الخصم</h3>
+        <div class="discount-section">
+            <label>نسبة الخصم:</label>
+            <input type="number" id="discount-percent" value="0" min="0" max="100" onchange="calculateTotal()">
+            <span style="color: var(--text-muted);">%</span>
+            <span style="margin-right: 30px; color: var(--text-muted);">أو</span>
+            <label>مبلغ الخصم:</label>
+            <input type="number" id="discount-amount" value="0" min="0" onchange="calculateTotal()" class="price-input">
+            <span style="color: var(--text-muted);">{{ campaign.basic_info.currency if campaign.basic_info else 'USD' }}</span>
+        </div>
+    </div>
+
+    <!-- Summary -->
+    <div class="quotation-summary">
+        <h3 style="color: var(--primary); margin: 0 0 20px 0;"><i class="fas fa-calculator"></i> ملخص العرض المالي</h3>
+        <div class="summary-row">
+            <span class="summary-label"><i class="fas fa-palette" style="margin-left: 8px; color: var(--primary);"></i> إجمالي المخرجات الإبداعية</span>
+            <span class="summary-value" id="products-total">0 {{ campaign.basic_info.currency if campaign.basic_info else 'USD' }}</span>
+        </div>
+        <div class="summary-row">
+            <span class="summary-label"><i class="fas fa-ad" style="margin-left: 8px; color: #00D46A;"></i> إجمالي الترويج المدفوع</span>
+            <span class="summary-value" id="paid-media-total">0 {{ campaign.basic_info.currency if campaign.basic_info else 'USD' }}</span>
+        </div>
+        <div class="summary-row">
+            <span class="summary-label"><i class="fas fa-newspaper" style="margin-left: 8px; color: #60a5fa;"></i> إجمالي الإعلام الموازي</span>
+            <span class="summary-value" id="earned-media-total" style="color: #60a5fa;">0 {{ campaign.basic_info.currency if campaign.basic_info else 'USD' }}</span>
+        </div>
+        <div class="summary-row">
+            <span class="summary-label">الإجمالي الفرعي</span>
+            <span class="summary-value" id="subtotal">0 {{ campaign.basic_info.currency if campaign.basic_info else 'USD' }}</span>
+        </div>
+        <div class="summary-row">
+            <span class="summary-label">الخصم</span>
+            <span class="summary-value" id="discount-value" style="color: #ef4444;">- 0 {{ campaign.basic_info.currency if campaign.basic_info else 'USD' }}</span>
+        </div>
+        <div class="summary-row total">
+            <span class="summary-label">الإجمالي النهائي</span>
+            <span class="summary-value" id="grand-total">0 {{ campaign.basic_info.currency if campaign.basic_info else 'USD' }}</span>
+        </div>
+    </div>
+
+    <!-- Notes -->
+    <div class="quotation-card quotation-notes">
+        <h3><i class="fas fa-sticky-note"></i> ملاحظات إضافية</h3>
+        <textarea id="quotation-notes" placeholder="أضف ملاحظات للعميل...">{{ campaign.quotation.notes if campaign.quotation else '' }}</textarea>
+    </div>
+
+    <!-- Terms -->
+    <div class="quotation-card terms-section">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+            <h4 style="margin: 0;"><i class="fas fa-file-contract" style="color: var(--primary); margin-left: 8px;"></i> الشروط والأحكام</h4>
+            <button class="btn btn-secondary btn-sm" onclick="addTerm()">
+                <i class="fas fa-plus"></i> إضافة شرط
+            </button>
+        </div>
+        <ul class="terms-list" id="terms-list">
+            <!-- Terms will be loaded by JavaScript -->
+        </ul>
+    </div>
+</div>
+
+<!-- Toast Container -->
+<div class="toast-container" id="toast-container"></div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+const CAMPAIGN_ID = '{{ campaign.id }}';
+let CURRENCY = '{{ campaign.basic_info.currency if campaign.basic_info else "USD" }}';
+
+// Currency mapping
+const CURRENCIES = {
+    'USD': { symbol: '$', name: 'دولار أمريكي', code: 'USD' },
+    'SAR': { symbol: 'ر.س', name: 'ريال سعودي', code: 'SAR' },
+    'JOD': { symbol: 'د.أ', name: 'دينار أردني', code: 'JOD' }
+};
+
+// Default products from campaign
+let productsData = {{ campaign.products | tojson if campaign.products else '[]' | safe }};
+let communicationProducts = {{ campaign.communication_products | tojson if campaign.communication_products else '[]' | safe }};
+let mediaToolsData = {{ campaign.media_tools | tojson if campaign.media_tools else '[]' | safe }};
+
+// Saved quotation data
+let savedQuotation = {{ campaign.quotation | tojson if campaign.quotation else '{}' | safe }};
+
+// Phase mapping - ALIC Campaign Phases
+const PHASES = {
+    'teasing': { name: 'المرحلة الأولى: التهيئة والتشويق', class: 'phase-1' },
+    'launch': { name: 'المرحلة الثانية: الإطلاق الاستراتيجي', class: 'phase-2' },
+    'momentum': { name: 'المرحلة الثالثة: ترسيخ الريادة', class: 'phase-3' },
+    1: { name: 'المرحلة الأولى: التهيئة والتشويق', class: 'phase-1' },
+    2: { name: 'المرحلة الثانية: الإطلاق الاستراتيجي', class: 'phase-2' },
+    3: { name: 'المرحلة الثالثة: ترسيخ الريادة', class: 'phase-3' }
+};
+
+// Change currency function
+function changeCurrency(newCurrency) {
+    CURRENCY = newCurrency;
+    savedQuotation.currency = newCurrency;
+    calculateTotal();
+    showToast(`تم تغيير العملة إلى ${CURRENCIES[newCurrency].name}`, 'success');
+}
+
+// Initialize
+document.addEventListener('DOMContentLoaded', function() {
+    // Set saved currency if exists
+    if (savedQuotation.currency) {
+        document.getElementById('currency-select').value = savedQuotation.currency;
+        CURRENCY = savedQuotation.currency;
+    }
+    loadProducts();
+    loadPaidMedia();
+    loadEarnedMedia();
+    loadTerms();
+    loadSavedQuotation();
+    calculateTotal();
+});
+
+// Default terms
+const DEFAULT_TERMS = [
+    'صلاحية العرض: 30 يوم من تاريخ الإصدار',
+    'الدفع: 50% مقدم، 50% عند التسليم',
+    'مدة التنفيذ: حسب الجدول الزمني المتفق عليه',
+    'التعديلات: يشمل العرض تعديلين مجانيين لكل منتج',
+    'الأسعار لا تشمل ضريبة القيمة المضافة'
+];
+
+function loadTerms() {
+    const termsList = document.getElementById('terms-list');
+    termsList.innerHTML = '';
+    
+    // Use saved terms or default
+    const terms = savedQuotation.terms || DEFAULT_TERMS;
+    
+    terms.forEach((term, index) => {
+        termsList.innerHTML += `
+            <li data-term-index="${index}">
+                <input type="text" class="term-input" value="${term}" 
+                       onchange="updateTerm(${index}, this.value)">
+                <button class="term-delete-btn" onclick="deleteTerm(${index})" title="حذف">
+                    <i class="fas fa-times"></i>
+                </button>
+            </li>
+        `;
+    });
+}
+
+function addTerm() {
+    if (!savedQuotation.terms) {
+        savedQuotation.terms = [...DEFAULT_TERMS];
+    }
+    savedQuotation.terms.push('شرط جديد');
+    loadTerms();
+    
+    // Focus on the new term input
+    setTimeout(() => {
+        const inputs = document.querySelectorAll('.term-input');
+        const lastInput = inputs[inputs.length - 1];
+        if (lastInput) {
+            lastInput.focus();
+            lastInput.select();
+        }
+    }, 100);
+}
+
+function updateTerm(index, value) {
+    if (!savedQuotation.terms) {
+        savedQuotation.terms = [...DEFAULT_TERMS];
+    }
+    savedQuotation.terms[index] = value;
+}
+
+function deleteTerm(index) {
+    if (!savedQuotation.terms) {
+        savedQuotation.terms = [...DEFAULT_TERMS];
+    }
+    if (savedQuotation.terms.length > 1) {
+        savedQuotation.terms.splice(index, 1);
+        loadTerms();
+        showToast('تم حذف الشرط', 'success');
+    } else {
+        showToast('يجب أن يوجد شرط واحد على الأقل', 'error');
+    }
+}
+
+function loadProducts() {
+    const tbody = document.getElementById('products-body');
+    tbody.innerHTML = '';
+    
+    // Merge products from different sources
+    let allProducts = [];
+    
+    // First priority: Load from saved quotation products_list
+    if (savedQuotation.products_list && savedQuotation.products_list.length > 0) {
+        allProducts = savedQuotation.products_list.map(p => ({
+            id: p.id,
+            name: p.name,
+            type: p.type || '',
+            date: p.date || '',
+            phase: p.phase || 'teasing',
+            quantity: p.quantity || 1,
+            unit_price: p.unit_price || 0
+        }));
+    }
+    // Second priority: From products array
+    else if (productsData && productsData.length > 0) {
+        productsData.forEach((p, i) => {
+            allProducts.push({
+                id: p.id || `prod_${i}`,
+                name: p.name,
+                type: p.type || p.category || '',
+                date: p.date || '',
+                phase: p.phase_id || p.phase || 'teasing',
+                quantity: savedQuotation.products?.[p.id]?.quantity || p.quantity || 1,
+                unit_price: savedQuotation.products?.[p.id]?.unit_price || p.cost || 0
+            });
+        });
+    }
+    // Third priority: From communication_products
+    else if (communicationProducts && communicationProducts.length > 0) {
+        communicationProducts.forEach((p, i) => {
+            if (!allProducts.find(ap => ap.name === p.name)) {
+                allProducts.push({
+                    id: p.id || `comm_${i}`,
+                    name: p.name,
+                    type: p.type || p.category || '',
+                    date: p.date || '',
+                    phase: p.phase_id || p.phase || 'teasing',
+                    quantity: savedQuotation.products?.[p.id]?.quantity || p.quantity || 1,
+                    unit_price: savedQuotation.products?.[p.id]?.unit_price || p.cost || 0
+                });
+            }
+        });
+    }
+    
+    // Add default products if empty - ALIC Campaign Products from جدول المنتجات التفصيلي
+    // التواريخ: 5-31 يناير 2026
+    // المرحلة الأولى (التهيئة): 5-12 يناير
+    // المرحلة الثانية (الإطلاق): 13-22 يناير
+    // المرحلة الثالثة (الترسيخ): 23-31 يناير
+    // أسعار السوق الأردني بالدينار
+    if (allProducts.length === 0) {
+        allProducts = [
+            // المرحلة الأولى: التهيئة والتشويق (5 منتجات) - 5-12 يناير
+            { id: 'p1', name: 'منشور LinkedIn: إعلان تشويقي للقطاع الصناعي', phase: 'teasing', type: 'كتابة محتوى', date: '5 يناير 2026', quantity: 1, unit_price: 150 },
+            { id: 'p2', name: 'بيان صحفي: بناء الوعي عبر الإعلام الاقتصادي', phase: 'teasing', type: 'بيان صحفي', date: '5-8 يناير 2026', quantity: 1, unit_price: 350 },
+            { id: 'p3', name: 'رسالة SMS/Email: التواصل المباشر مع القطاع الصناعي', phase: 'teasing', type: 'كتابة محتوى', date: '7 يناير 2026', quantity: 1, unit_price: 200 },
+            { id: 'p4', name: 'فيديو تشويقي: بناء الوعي لدى المستثمرين الإقليميين', phase: 'teasing', type: 'فيديو برومو', date: '8-10 يناير 2026', quantity: 1, unit_price: 2500 },
+            { id: 'p5', name: 'دعوات VIP لحفل الإطلاق', phase: 'teasing', type: 'تصميم طباعي', date: '10-12 يناير 2026', quantity: 1, unit_price: 800 },
+            
+            // المرحلة الثانية: الإطلاق الاستراتيجي (10 منتجات) - 13-22 يناير
+            { id: 'p6', name: 'حفل الإطلاق الرسمي VIP', phase: 'launch', type: 'حدث', date: '13 يناير 2026', quantity: 1, unit_price: 8500 },
+            { id: 'p7', name: 'المؤتمر الصحفي للإطلاق', phase: 'launch', type: 'مؤتمر صحفي', date: '13 يناير 2026', quantity: 1, unit_price: 3500 },
+            { id: 'p8', name: 'التغطية التلفزيونية الشاملة', phase: 'launch', type: 'تغطية إعلامية', date: '13-14 يناير 2026', quantity: 1, unit_price: 2000 },
+            { id: 'p9', name: 'حملة الإعلانات المدفوعة', phase: 'launch', type: 'حملة إعلانية', date: '13-18 يناير 2026', quantity: 1, unit_price: 1500 },
+            { id: 'p10', name: 'حملة LinkedIn الاستراتيجية (10 منشورات)', phase: 'launch', type: 'كتابة محتوى', date: '13-22 يناير 2026', quantity: 10, unit_price: 150 },
+            { id: 'p11', name: 'حملة المؤثرين (5 مؤثرين)', phase: 'launch', type: 'حملة مؤثرين', date: '14-20 يناير 2026', quantity: 5, unit_price: 400 },
+            { id: 'p12', name: 'بودكاست مع عمر عايش', phase: 'launch', type: 'بودكاست', date: '16-18 يناير 2026', quantity: 1, unit_price: 1200 },
+            { id: 'p13', name: 'مقالات الرأي (5 مقالات)', phase: 'launch', type: 'مقال', date: '16-20 يناير 2026', quantity: 5, unit_price: 300 },
+            { id: 'p14', name: 'الجولة الإعلامية VIP للموقع', phase: 'launch', type: 'جولة إعلامية', date: '19 يناير 2026', quantity: 1, unit_price: 2500 },
+            { id: 'p15', name: 'البيان الصحفي الرسمي (50+ وسيلة)', phase: 'launch', type: 'بيان صحفي', date: '13 يناير 2026', quantity: 1, unit_price: 500 },
+            
+            // المرحلة الثالثة: ترسيخ الريادة (5 منتجات) - 23-31 يناير
+            { id: 'p16', name: 'ظهور إذاعي: عمر عايش في إذاعة حسنى FM', phase: 'momentum', type: 'إعلان إذاعي', date: '23 يناير 2026', quantity: 1, unit_price: 600 },
+            { id: 'p17', name: 'جولة إذاعية في الإذاعات الأردنية', phase: 'momentum', type: 'تغطية إعلامية', date: '24-27 يناير 2026', quantity: 1, unit_price: 1500 },
+            { id: 'p18', name: 'حلقة تحليلية: المخبر الاقتصادي', phase: 'momentum', type: 'فيديو سينمائي', date: '28 يناير 2026', quantity: 1, unit_price: 3500 },
+            { id: 'p19', name: 'تقرير تلفزيوني: برنامج مال وأعمال', phase: 'momentum', type: 'تغطية إعلامية', date: '29 يناير 2026', quantity: 1, unit_price: 2000 },
+            { id: 'p20', name: 'حملة شهادات الشركاء والخبراء', phase: 'momentum', type: 'فيديو تصوير', date: '23-31 يناير 2026', quantity: 1, unit_price: 4000 }
+        ];
+    }
+    
+    allProducts.forEach((product, index) => {
+        const phase = PHASES[product.phase] || PHASES['teasing'];
+        const total = product.quantity * product.unit_price;
+        const productType = product.type || '';
+        const productDate = product.date || '';
+        
+        tbody.innerHTML += `
+            <tr data-product-id="${product.id}" data-phase="${product.phase}" data-type="${productType}">
+                <td>
+                    <input type="text" value="${product.name}" class="product-name" 
+                           style="background: transparent; border: none; color: var(--text); width: 100%;"
+                           onchange="updateProduct('${product.id}', 'name', this.value)">
+                </td>
+                <td>
+                    <select class="type-select" style="background: var(--dark-lighter); border: 1px solid var(--border); border-radius: 8px; padding: 6px; color: var(--text); font-size: 0.75rem; max-width: 120px;"
+                            onchange="updateProduct('${product.id}', 'type', this.value); this.closest('tr').dataset.type = this.value;">
+                        <optgroup label="المحتوى المكتوب">
+                            <option value="وثيقة" ${productType === 'وثيقة' ? 'selected' : ''}>وثيقة</option>
+                            <option value="كتابة محتوى" ${productType === 'كتابة محتوى' ? 'selected' : ''}>كتابة محتوى</option>
+                            <option value="سيناريو" ${productType === 'سيناريو' ? 'selected' : ''}>سيناريو</option>
+                            <option value="بيان صحفي" ${productType === 'بيان صحفي' ? 'selected' : ''}>بيان صحفي</option>
+                            <option value="مقال" ${productType === 'مقال' ? 'selected' : ''}>مقال</option>
+                            <option value="نص إعلاني" ${productType === 'نص إعلاني' ? 'selected' : ''}>نص إعلاني</option>
+                        </optgroup>
+                        <optgroup label="التصميم">
+                            <option value="تصميم" ${productType === 'تصميم' ? 'selected' : ''}>تصميم</option>
+                            <option value="تصميم سوشيال" ${productType === 'تصميم سوشيال' ? 'selected' : ''}>تصميم سوشيال</option>
+                            <option value="تصميم طباعي" ${productType === 'تصميم طباعي' ? 'selected' : ''}>تصميم طباعي</option>
+                            <option value="هوية بصرية" ${productType === 'هوية بصرية' ? 'selected' : ''}>هوية بصرية</option>
+                            <option value="انفوجرافيك" ${productType === 'انفوجرافيك' ? 'selected' : ''}>انفوجرافيك</option>
+                            <option value="عرض تقديمي" ${productType === 'عرض تقديمي' ? 'selected' : ''}>عرض تقديمي</option>
+                        </optgroup>
+                        <optgroup label="الفيديو">
+                            <option value="فيديو جرافيك" ${productType === 'فيديو جرافيك' ? 'selected' : ''}>فيديو جرافيك</option>
+                            <option value="فيديو أنميشن" ${productType === 'فيديو أنميشن' ? 'selected' : ''}>فيديو أنميشن</option>
+                            <option value="فيديو برومو" ${productType === 'فيديو برومو' ? 'selected' : ''}>فيديو برومو</option>
+                            <option value="فيديو سينمائي" ${productType === 'فيديو سينمائي' ? 'selected' : ''}>فيديو سينمائي</option>
+                            <option value="فيديو تصوير" ${productType === 'فيديو تصوير' ? 'selected' : ''}>فيديو تصوير</option>
+                            <option value="ريلز" ${productType === 'ريلز' ? 'selected' : ''}>ريلز</option>
+                        </optgroup>
+                        <optgroup label="الصوتيات">
+                            <option value="تعليق صوتي" ${productType === 'تعليق صوتي' ? 'selected' : ''}>تعليق صوتي</option>
+                            <option value="بودكاست" ${productType === 'بودكاست' ? 'selected' : ''}>بودكاست</option>
+                            <option value="إعلان إذاعي" ${productType === 'إعلان إذاعي' ? 'selected' : ''}>إعلان إذاعي</option>
+                        </optgroup>
+                        <optgroup label="الإعلام والعلاقات العامة">
+                            <option value="حدث" ${productType === 'حدث' ? 'selected' : ''}>حدث</option>
+                            <option value="مؤتمر صحفي" ${productType === 'مؤتمر صحفي' ? 'selected' : ''}>مؤتمر صحفي</option>
+                            <option value="جولة إعلامية" ${productType === 'جولة إعلامية' ? 'selected' : ''}>جولة إعلامية</option>
+                            <option value="تغطية إعلامية" ${productType === 'تغطية إعلامية' ? 'selected' : ''}>تغطية إعلامية</option>
+                        </optgroup>
+                        <optgroup label="التسويق الرقمي">
+                            <option value="حملة إعلانية" ${productType === 'حملة إعلانية' ? 'selected' : ''}>حملة إعلانية</option>
+                            <option value="إدارة حساب" ${productType === 'إدارة حساب' ? 'selected' : ''}>إدارة حساب</option>
+                            <option value="حملة مؤثرين" ${productType === 'حملة مؤثرين' ? 'selected' : ''}>حملة مؤثرين</option>
+                        </optgroup>
+                        <optgroup label="أخرى">
+                            <option value="استشارة" ${productType === 'استشارة' ? 'selected' : ''}>استشارة</option>
+                            <option value="تدريب" ${productType === 'تدريب' ? 'selected' : ''}>تدريب</option>
+                            <option value="آخر" ${productType === 'آخر' || !['وثيقة','كتابة محتوى','سيناريو','بيان صحفي','مقال','نص إعلاني','تصميم','تصميم سوشيال','تصميم طباعي','هوية بصرية','انفوجرافيك','عرض تقديمي','فيديو جرافيك','فيديو أنميشن','فيديو برومو','فيديو سينمائي','فيديو تصوير','ريلز','تعليق صوتي','بودكاست','إعلان إذاعي','حدث','مؤتمر صحفي','جولة إعلامية','تغطية إعلامية','حملة إعلانية','إدارة حساب','حملة مؤثرين','استشارة','تدريب'].includes(productType) ? 'selected' : ''}>آخر</option>
+                        </optgroup>
+                    </select>
+                </td>
+                <td><span class="phase-badge ${phase.class}">${phase.name}</span></td>
+                <td style="color: var(--text-muted); font-size: 0.85em;" data-date="${productDate}">${productDate}</td>
+                <td>
+                    <input type="number" value="${product.quantity}" min="1" 
+                           onchange="updateProduct('${product.id}', 'quantity', this.value); calculateTotal()">
+                </td>
+                <td>
+                    <input type="number" value="${product.unit_price}" min="0" class="price-input"
+                           onchange="updateProduct('${product.id}', 'unit_price', this.value); calculateTotal()">
+                </td>
+                <td class="product-total">${total.toLocaleString()} ${CURRENCY}</td>
+                <td>
+                    <button class="delete-btn" onclick="deleteProduct('${product.id}')" title="حذف">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </td>
+            </tr>
+        `;
+    });
+}
+
+function deleteProduct(productId) {
+    if (confirm('هل أنت متأكد من حذف هذا المخرج؟')) {
+        const row = document.querySelector(`tr[data-product-id="${productId}"]`);
+        if (row) {
+            row.remove();
+            // Mark as deleted in savedQuotation
+            if (!savedQuotation.deleted_products) savedQuotation.deleted_products = [];
+            savedQuotation.deleted_products.push(productId);
+            calculateTotal();
+            showToast('تم حذف المخرج بنجاح', 'success');
+            // Auto save after delete
+            saveQuotation();
+        }
+    }
+}
+
+// ========== الترويج المدفوع ==========
+function loadPaidMedia() {
+    const tbody = document.getElementById('paid-media-body');
+    tbody.innerHTML = '';
+    
+    let paidItems = [];
+    
+    // Load from saved quotation
+    if (savedQuotation.paid_media_list && savedQuotation.paid_media_list.length > 0) {
+        paidItems = savedQuotation.paid_media_list;
+    }
+    // Or from media tools (filter paid only)
+    else if (mediaToolsData && mediaToolsData.length > 0) {
+        paidItems = mediaToolsData.filter(t => t.is_paid === true).map(t => ({
+            id: t.id,
+            name: t.name,
+            type: t.type || 'إعلان رقمي',
+            phase_id: t.phase_id || 'teasing',
+            cost: t.cost || 0
+        }));
+    }
+    
+    // Default paid media items - أسعار السوق الأردني بالدينار
+    if (paidItems.length === 0) {
+        paidItems = [
+            // المرحلة الأولى - التهيئة
+            { id: 'paid1', name: 'حملة SMS + Email (5000 رسالة)', type: 'تواصل مباشر', phase_id: 'teasing', cost: 750 },
+            { id: 'paid2', name: 'إعلانات LinkedIn (مرحلة التهيئة)', type: 'إعلان رقمي', phase_id: 'teasing', cost: 1500 },
+            
+            // المرحلة الثانية - الإطلاق
+            { id: 'paid3', name: 'إعلانات LinkedIn (مرحلة الإطلاق)', type: 'إعلان رقمي', phase_id: 'launch', cost: 3000 },
+            { id: 'paid4', name: 'إعلانات Google Display', type: 'إعلان رقمي', phase_id: 'launch', cost: 2500 },
+            { id: 'paid5', name: 'إعلانات Meta (Facebook/Instagram)', type: 'إعلان رقمي', phase_id: 'launch', cost: 2000 },
+            { id: 'paid6', name: 'نشر PR Newswire (50+ صحيفة دولية)', type: 'صحافة دولية', phase_id: 'launch', cost: 1800 },
+            { id: 'paid7', name: 'وسائل إعلام دولية (4 وسائل)', type: 'إعلام دولي', phase_id: 'launch', cost: 2800 },
+            { id: 'paid8', name: 'إعلانات YouTube Pre-roll', type: 'إعلان رقمي', phase_id: 'launch', cost: 1500 },
+            
+            // المرحلة الثالثة - الترسيخ
+            { id: 'paid9', name: 'إعلانات LinkedIn (مرحلة الترسيخ)', type: 'إعلان رقمي', phase_id: 'momentum', cost: 2000 },
+            { id: 'paid10', name: 'وسائل إعلام دولية (ترسيخ)', type: 'إعلام دولي', phase_id: 'momentum', cost: 1400 },
+            { id: 'paid11', name: 'إعلانات إعادة الاستهداف (Retargeting)', type: 'إعلان رقمي', phase_id: 'momentum', cost: 1200 }
+        ];
+    }
+    
+    paidItems.forEach(item => {
+        const phase = PHASES[item.phase_id] || PHASES['teasing'];
+        
+        tbody.innerHTML += `
+            <tr data-paid-id="${item.id}" data-phase="${item.phase_id}">
+                <td>
+                    <input type="text" value="${item.name}" class="item-name"
+                           style="background: transparent; border: none; color: var(--text); width: 100%;"
+                           onchange="updatePaidMedia('${item.id}', 'name', this.value)">
+                </td>
+                <td>
+                    <select style="background: var(--dark-lighter); border: 1px solid var(--border); border-radius: 8px; padding: 6px; color: var(--text); font-size: 0.8rem;"
+                            onchange="updatePaidMedia('${item.id}', 'type', this.value)">
+                        <option value="إعلان رقمي" ${item.type === 'إعلان رقمي' ? 'selected' : ''}>إعلان رقمي</option>
+                        <option value="مؤثرين" ${item.type === 'مؤثرين' ? 'selected' : ''}>مؤثرين</option>
+                        <option value="صحافة دولية" ${item.type === 'صحافة دولية' ? 'selected' : ''}>صحافة دولية</option>
+                        <option value="إعلام دولي" ${item.type === 'إعلام دولي' ? 'selected' : ''}>إعلام دولي</option>
+                        <option value="تواصل مباشر" ${item.type === 'تواصل مباشر' ? 'selected' : ''}>تواصل مباشر</option>
+                        <option value="رعاية" ${item.type === 'رعاية' ? 'selected' : ''}>رعاية</option>
+                    </select>
+                </td>
+                <td><span class="phase-badge ${phase.class}">${phase.name}</span></td>
+                <td>
+                    <input type="number" value="${item.cost}" min="0" class="price-input"
+                           onchange="updatePaidMedia('${item.id}', 'cost', this.value); calculateTotal()">
+                </td>
+                <td>
+                    <button class="delete-btn" onclick="deletePaidMedia('${item.id}')" title="حذف">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </td>
+            </tr>
+        `;
+    });
+    
+    calculateTotal();
+}
+
+function updatePaidMedia(id, field, value) {
+    if (!savedQuotation.paid_media) savedQuotation.paid_media = {};
+    if (!savedQuotation.paid_media[id]) savedQuotation.paid_media[id] = {};
+    savedQuotation.paid_media[id][field] = field === 'cost' ? parseFloat(value) : value;
+}
+
+function deletePaidMedia(id) {
+    if (confirm('هل أنت متأكد من حذف هذا البند؟')) {
+        const row = document.querySelector(`tr[data-paid-id="${id}"]`);
+        if (row) {
+            row.remove();
+            calculateTotal();
+            showToast('تم حذف البند بنجاح', 'success');
+            saveQuotation();
+        }
+    }
+}
+
+function addPaidMedia() {
+    const id = 'paid_' + Date.now();
+    const tbody = document.getElementById('paid-media-body');
+    
+    tbody.innerHTML += `
+        <tr data-paid-id="${id}">
+            <td>
+                <input type="text" value="بند ترويج جديد" class="item-name"
+                       style="background: transparent; border: none; color: var(--text); width: 100%;"
+                       onchange="updatePaidMedia('${id}', 'name', this.value)">
+            </td>
+            <td>
+                <select style="background: var(--dark-lighter); border: 1px solid var(--border); border-radius: 8px; padding: 6px; color: var(--text); font-size: 0.8rem;"
+                        onchange="updatePaidMedia('${id}', 'type', this.value)">
+                    <option value="إعلان رقمي">إعلان رقمي</option>
+                    <option value="مؤثرين">مؤثرين</option>
+                    <option value="صحافة دولية">صحافة دولية</option>
+                    <option value="إعلام دولي">إعلام دولي</option>
+                    <option value="تواصل مباشر">تواصل مباشر</option>
+                    <option value="رعاية">رعاية</option>
+                </select>
+            </td>
+            <td>
+                <select style="background: var(--dark-lighter); border: 1px solid var(--border); border-radius: 8px; padding: 6px; color: var(--text); font-size: 0.75rem;"
+                        onchange="updatePaidMedia('${id}', 'phase_id', this.value)">
+                    <option value="teasing">المرحلة الأولى</option>
+                    <option value="launch">المرحلة الثانية</option>
+                    <option value="momentum">المرحلة الثالثة</option>
+                </select>
+            </td>
+            <td>
+                <input type="number" value="0" min="0" class="price-input"
+                       onchange="updatePaidMedia('${id}', 'cost', this.value); calculateTotal()">
+            </td>
+            <td>
+                <button class="delete-btn" onclick="deletePaidMedia('${id}')" title="حذف">
+                    <i class="fas fa-trash"></i>
+                </button>
+            </td>
+        </tr>
+    `;
+    
+    calculateTotal();
+    saveQuotation();
+}
+
+// ========== الإعلام الموازي (مدفوع غير مباشر) ==========
+function loadEarnedMedia() {
+    const tbody = document.getElementById('earned-media-body');
+    tbody.innerHTML = '';
+    
+    let earnedItems = [];
+    
+    // Load from saved quotation
+    if (savedQuotation.earned_media_list && savedQuotation.earned_media_list.length > 0) {
+        earnedItems = savedQuotation.earned_media_list;
+    }
+    // Or from media tools (filter earned only)
+    else if (mediaToolsData && mediaToolsData.length > 0) {
+        earnedItems = mediaToolsData.filter(t => t.is_paid === false).map(t => ({
+            id: t.id,
+            name: t.name,
+            type: t.type || 'صحافة',
+            phase_id: t.phase_id || 'teasing',
+            quantity: t.quantity || 1,
+            unit_price: t.unit_price || 0
+        }));
+    }
+    
+    // Default earned media items with realistic pricing (JOD - Jordanian Market)
+    if (earnedItems.length === 0) {
+        earnedItems = [
+            // المرحلة الأولى - التهيئة
+            { id: 'earned1', name: 'مقالات صحفية - صحف محلية (الرأي، الغد، الدستور)', type: 'صحافة', phase_id: 'teasing', quantity: 5, unit_price: 750 },
+            { id: 'earned2', name: 'مقالات في مواقع إخبارية إلكترونية (عمون، رؤيا نيوز)', type: 'مواقع إخبارية', phase_id: 'teasing', quantity: 10, unit_price: 350 },
+            
+            // المرحلة الثانية - الإطلاق
+            { id: 'earned3', name: 'تغطية تلفزيونية - قنوات محلية (رؤيا، المملكة)', type: 'تلفزيون', phase_id: 'launch', quantity: 3, unit_price: 3500 },
+            { id: 'earned4', name: 'مقابلات إذاعية (هلا FM، روتانا)', type: 'راديو', phase_id: 'launch', quantity: 5, unit_price: 500 },
+            { id: 'earned5', name: 'نشر عبر مؤثرين (Micro 10K-50K)', type: 'مؤثرين', phase_id: 'launch', quantity: 15, unit_price: 250 },
+            { id: 'earned6', name: 'نشر عبر مؤثرين (Mid 50K-200K)', type: 'مؤثرين', phase_id: 'launch', quantity: 5, unit_price: 800 },
+            
+            // المرحلة الثالثة - الترسيخ
+            { id: 'earned7', name: 'مقالات رأي وتحليلية', type: 'صحافة', phase_id: 'momentum', quantity: 5, unit_price: 1200 },
+            { id: 'earned8', name: 'بودكاست - حلقات مدفوعة', type: 'بودكاست', phase_id: 'momentum', quantity: 3, unit_price: 700 },
+            { id: 'earned9', name: 'نشر عبر مؤثرين (Macro 200K+)', type: 'مؤثرين', phase_id: 'momentum', quantity: 2, unit_price: 3000 }
+        ];
+    }
+    
+    earnedItems.forEach(item => {
+        const phase = PHASES[item.phase_id] || PHASES['teasing'];
+        const total = (item.quantity || 1) * (item.unit_price || 0);
+        
+        tbody.innerHTML += `
+            <tr data-earned-id="${item.id}" data-phase="${item.phase_id}" class="earned-row">
+                <td>
+                    <input type="text" value="${item.name}" class="item-name"
+                           style="background: transparent; border: none; color: var(--text); width: 100%;"
+                           onchange="updateEarnedMedia('${item.id}', 'name', this.value)">
+                </td>
+                <td>
+                    <select style="background: var(--dark-lighter); border: 1px solid var(--border); border-radius: 8px; padding: 6px; color: var(--text); font-size: 0.8rem;"
+                            onchange="updateEarnedMedia('${item.id}', 'type', this.value)">
+                        <option value="صحافة" ${item.type === 'صحافة' ? 'selected' : ''}>صحافة</option>
+                        <option value="تلفزيون" ${item.type === 'تلفزيون' ? 'selected' : ''}>تلفزيون</option>
+                        <option value="راديو" ${item.type === 'راديو' ? 'selected' : ''}>راديو</option>
+                        <option value="مواقع إخبارية" ${item.type === 'مواقع إخبارية' ? 'selected' : ''}>مواقع إخبارية</option>
+                        <option value="بودكاست" ${item.type === 'بودكاست' ? 'selected' : ''}>بودكاست</option>
+                        <option value="مؤثرين" ${item.type === 'مؤثرين' ? 'selected' : ''}>مؤثرين</option>
+                    </select>
+                </td>
+                <td><span class="phase-badge ${phase.class}">${phase.name}</span></td>
+                <td>
+                    <input type="number" value="${item.quantity || 1}" min="1" 
+                           style="width: 60px; background: var(--dark-lighter); border: 1px solid var(--border); border-radius: 8px; padding: 6px; color: var(--text); text-align: center;"
+                           onchange="updateEarnedMedia('${item.id}', 'quantity', this.value); calculateTotal()">
+                </td>
+                <td>
+                    <input type="number" value="${item.unit_price || 0}" min="0" class="price-input"
+                           style="width: 100px; background: var(--dark-lighter); border: 1px solid var(--border); border-radius: 8px; padding: 6px; color: var(--text); text-align: center;"
+                           onchange="updateEarnedMedia('${item.id}', 'unit_price', this.value); calculateTotal()">
+                </td>
+                <td class="earned-total" style="color: #60a5fa; font-weight: 600;">${total.toLocaleString()} ${CURRENCY}</td>
+                <td>
+                    <button class="delete-btn" onclick="deleteEarnedMedia('${item.id}')" title="حذف">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </td>
+            </tr>
+        `;
+    });
+    
+    calculateTotal();
+}
+
+function updateEarnedMedia(id, field, value) {
+    if (!savedQuotation.earned_media) savedQuotation.earned_media = {};
+    if (!savedQuotation.earned_media[id]) savedQuotation.earned_media[id] = {};
+    savedQuotation.earned_media[id][field] = value;
+}
+
+function deleteEarnedMedia(id) {
+    if (confirm('هل أنت متأكد من حذف هذه الوسيلة؟')) {
+        const row = document.querySelector(`tr[data-earned-id="${id}"]`);
+        if (row) {
+            row.remove();
+            calculateTotal();
+            showToast('تم حذف الوسيلة بنجاح', 'success');
+            saveQuotation();
+        }
+    }
+}
+
+function addEarnedMedia() {
+    const id = 'earned_' + Date.now();
+    const tbody = document.getElementById('earned-media-body');
+    
+    tbody.innerHTML += `
+        <tr data-earned-id="${id}" class="earned-row">
+            <td>
+                <input type="text" value="وسيلة إعلامية جديدة" class="item-name"
+                       style="background: transparent; border: none; color: var(--text); width: 100%;"
+                       onchange="updateEarnedMedia('${id}', 'name', this.value)">
+            </td>
+            <td>
+                <select style="background: var(--dark-lighter); border: 1px solid var(--border); border-radius: 8px; padding: 6px; color: var(--text); font-size: 0.8rem;"
+                        onchange="updateEarnedMedia('${id}', 'type', this.value)">
+                    <option value="صحافة">صحافة</option>
+                    <option value="تلفزيون">تلفزيون</option>
+                    <option value="راديو">راديو</option>
+                    <option value="مواقع إخبارية">مواقع إخبارية</option>
+                    <option value="بودكاست">بودكاست</option>
+                    <option value="مؤثرين">مؤثرين</option>
+                </select>
+            </td>
+            <td>
+                <select style="background: var(--dark-lighter); border: 1px solid var(--border); border-radius: 8px; padding: 6px; color: var(--text); font-size: 0.75rem;"
+                        onchange="updateEarnedMedia('${id}', 'phase_id', this.value)">
+                    <option value="teasing">المرحلة الأولى</option>
+                    <option value="launch">المرحلة الثانية</option>
+                    <option value="momentum">المرحلة الثالثة</option>
+                </select>
+            </td>
+            <td>
+                <input type="number" value="1" min="1" 
+                       style="width: 60px; background: var(--dark-lighter); border: 1px solid var(--border); border-radius: 8px; padding: 6px; color: var(--text); text-align: center;"
+                       onchange="updateEarnedMedia('${id}', 'quantity', this.value); calculateTotal()">
+            </td>
+            <td>
+                <input type="number" value="0" min="0" class="price-input"
+                       style="width: 100px; background: var(--dark-lighter); border: 1px solid var(--border); border-radius: 8px; padding: 6px; color: var(--text); text-align: center;"
+                       onchange="updateEarnedMedia('${id}', 'unit_price', this.value); calculateTotal()">
+            </td>
+            <td class="earned-total" style="color: #60a5fa; font-weight: 600;">0 ${CURRENCY}</td>
+            <td>
+                <button class="delete-btn" onclick="deleteEarnedMedia('${id}')" title="حذف">
+                    <i class="fas fa-trash"></i>
+                </button>
+            </td>
+        </tr>
+    `;
+    
+    saveQuotation();
+}
+
+function loadSavedQuotation() {
+    if (savedQuotation.discount_percent) {
+        document.getElementById('discount-percent').value = savedQuotation.discount_percent;
+    }
+    if (savedQuotation.discount_amount) {
+        document.getElementById('discount-amount').value = savedQuotation.discount_amount;
+    }
+    if (savedQuotation.notes) {
+        document.getElementById('quotation-notes').value = savedQuotation.notes;
+    }
+}
+
+function updateProduct(id, field, value) {
+    // Store in memory for saving
+    if (!savedQuotation.products) savedQuotation.products = {};
+    if (!savedQuotation.products[id]) savedQuotation.products[id] = {};
+    savedQuotation.products[id][field] = field === 'quantity' || field === 'unit_price' ? parseFloat(value) : value;
+    
+    // Auto save on type change
+    if (field === 'type') {
+        saveQuotation();
+    }
+}
+
+function updateMediaTool(id, field, value) {
+    if (!savedQuotation.media_tools) savedQuotation.media_tools = {};
+    if (!savedQuotation.media_tools[id]) savedQuotation.media_tools[id] = {};
+    savedQuotation.media_tools[id][field] = field === 'cost' ? parseFloat(value) : value;
+    
+    // Auto save on type change
+    if (field === 'type' || field === 'is_paid') {
+        saveQuotation();
+    }
+}
+
+function calculateTotal() {
+    // Calculate products total (المخرجات الإبداعية)
+    let productsTotal = 0;
+    document.querySelectorAll('#products-body tr').forEach(row => {
+        const quantity = parseFloat(row.querySelector('input[type="number"]:first-of-type').value) || 0;
+        const unitPrice = parseFloat(row.querySelector('.price-input').value) || 0;
+        const total = quantity * unitPrice;
+        row.querySelector('.product-total').textContent = `${total.toLocaleString()} ${CURRENCY}`;
+        productsTotal += total;
+    });
+    
+    // Calculate paid media total (الترويج المدفوع)
+    let paidMediaTotal = 0;
+    document.querySelectorAll('#paid-media-body tr').forEach(row => {
+        const cost = parseFloat(row.querySelector('.price-input').value) || 0;
+        paidMediaTotal += cost;
+    });
+    
+    // Calculate earned media total (الإعلام الموازي - مدفوع غير مباشر)
+    let earnedMediaTotal = 0;
+    document.querySelectorAll('#earned-media-body tr').forEach(row => {
+        const inputs = row.querySelectorAll('input[type="number"]');
+        const quantity = parseFloat(inputs[0]?.value) || 1;
+        const unitPrice = parseFloat(inputs[1]?.value) || 0;
+        const total = quantity * unitPrice;
+        const totalCell = row.querySelector('.earned-total');
+        if (totalCell) {
+            totalCell.textContent = `${total.toLocaleString()} ${CURRENCY}`;
+        }
+        earnedMediaTotal += total;
+    });
+    
+    // Subtotal (المخرجات + الترويج المدفوع + الإعلام الموازي)
+    const subtotal = productsTotal + paidMediaTotal + earnedMediaTotal;
+    
+    // Discount
+    let discountPercent = parseFloat(document.getElementById('discount-percent').value) || 0;
+    let discountAmount = parseFloat(document.getElementById('discount-amount').value) || 0;
+    
+    if (discountPercent > 0) {
+        discountAmount = subtotal * (discountPercent / 100);
+    }
+    
+    // Grand total
+    const grandTotal = subtotal - discountAmount;
+    
+    // Update UI
+    document.getElementById('products-total').textContent = `${productsTotal.toLocaleString()} ${CURRENCY}`;
+    document.getElementById('paid-media-total').textContent = `${paidMediaTotal.toLocaleString()} ${CURRENCY}`;
+    document.getElementById('earned-media-total').textContent = `${earnedMediaTotal.toLocaleString()} ${CURRENCY}`;
+    document.getElementById('subtotal').textContent = `${subtotal.toLocaleString()} ${CURRENCY}`;
+    document.getElementById('discount-value').textContent = `- ${discountAmount.toLocaleString()} ${CURRENCY}`;
+    document.getElementById('grand-total').textContent = `${grandTotal.toLocaleString()} ${CURRENCY}`;
+    
+    // Store totals
+    savedQuotation.products_total = productsTotal;
+    savedQuotation.paid_media_total = paidMediaTotal;
+    savedQuotation.earned_media_total = earnedMediaTotal;
+    savedQuotation.subtotal = subtotal;
+    savedQuotation.discount_amount = discountAmount;
+    savedQuotation.discount_percent = discountPercent;
+    savedQuotation.grand_total = grandTotal;
+}
+
+function addProduct() {
+    const id = 'new_' + Date.now();
+    const tbody = document.getElementById('products-body');
+    
+    tbody.innerHTML += `
+        <tr data-product-id="${id}">
+            <td>
+                <input type="text" value="منتج جديد" class="product-name" 
+                       style="background: transparent; border: none; color: var(--text); width: 100%;"
+                       onchange="updateProduct('${id}', 'name', this.value)">
+            </td>
+            <td>
+                <select class="type-select" style="background: var(--dark-lighter); border: 1px solid var(--border); border-radius: 8px; padding: 6px; color: var(--text); font-size: 0.8rem;"
+                        onchange="updateProduct('${id}', 'type', this.value)">
+                    <optgroup label="المحتوى المكتوب">
+                        <option value="وثيقة">وثيقة</option>
+                        <option value="كتابة محتوى">كتابة محتوى</option>
+                        <option value="سيناريو">سيناريو</option>
+                        <option value="بيان صحفي">بيان صحفي</option>
+                        <option value="مقال">مقال</option>
+                        <option value="نص إعلاني">نص إعلاني</option>
+                    </optgroup>
+                    <optgroup label="التصميم">
+                        <option value="تصميم">تصميم</option>
+                        <option value="تصميم سوشيال">تصميم سوشيال</option>
+                        <option value="تصميم طباعي">تصميم طباعي</option>
+                        <option value="هوية بصرية">هوية بصرية</option>
+                        <option value="انفوجرافيك">انفوجرافيك</option>
+                        <option value="عرض تقديمي">عرض تقديمي</option>
+                    </optgroup>
+                    <optgroup label="الفيديو">
+                        <option value="فيديو جرافيك">فيديو جرافيك</option>
+                        <option value="فيديو أنميشن">فيديو أنميشن</option>
+                        <option value="فيديو برومو">فيديو برومو</option>
+                        <option value="فيديو سينمائي">فيديو سينمائي</option>
+                        <option value="فيديو تصوير">فيديو تصوير</option>
+                        <option value="ريلز">ريلز</option>
+                    </optgroup>
+                    <optgroup label="الصوتيات">
+                        <option value="تعليق صوتي">تعليق صوتي</option>
+                        <option value="بودكاست">بودكاست</option>
+                        <option value="إعلان إذاعي">إعلان إذاعي</option>
+                    </optgroup>
+                    <optgroup label="الإعلام والعلاقات العامة">
+                        <option value="حدث">حدث</option>
+                        <option value="مؤتمر صحفي">مؤتمر صحفي</option>
+                        <option value="جولة إعلامية">جولة إعلامية</option>
+                        <option value="تغطية إعلامية">تغطية إعلامية</option>
+                    </optgroup>
+                    <optgroup label="التسويق الرقمي">
+                        <option value="حملة إعلانية">حملة إعلانية</option>
+                        <option value="إدارة حساب">إدارة حساب</option>
+                        <option value="حملة مؤثرين">حملة مؤثرين</option>
+                    </optgroup>
+                    <optgroup label="أخرى">
+                        <option value="استشارة">استشارة</option>
+                        <option value="تدريب">تدريب</option>
+                        <option value="آخر">آخر</option>
+                    </optgroup>
+                </select>
+            </td>
+            <td>
+                <select class="phase-select" style="background: var(--dark-lighter); border: 1px solid var(--border); border-radius: 8px; padding: 6px; color: var(--text); font-size: 0.75rem;"
+                        onchange="updateProduct('${id}', 'phase', this.value)">
+                    <option value="teasing">المرحلة الأولى: التهيئة</option>
+                    <option value="launch">المرحلة الثانية: الإطلاق</option>
+                    <option value="momentum">المرحلة الثالثة: الترسيخ</option>
+                </select>
+            </td>
+            <td>
+                <input type="text" value="" placeholder="التاريخ" 
+                       style="background: var(--dark-lighter); border: 1px solid var(--border); border-radius: 8px; padding: 6px; color: var(--text-muted); width: 100%; font-size: 0.8rem;"
+                       onchange="updateProduct('${id}', 'date', this.value)">
+            </td>
+            <td>
+                <input type="number" value="1" min="1" 
+                       onchange="updateProduct('${id}', 'quantity', this.value); calculateTotal()">
+            </td>
+            <td>
+                <input type="number" value="0" min="0" class="price-input"
+                       onchange="updateProduct('${id}', 'unit_price', this.value); calculateTotal()">
+            </td>
+            <td class="product-total">0 ${CURRENCY}</td>
+            <td>
+                <button class="delete-btn" onclick="deleteProduct('${id}')" title="حذف">
+                    <i class="fas fa-trash"></i>
+                </button>
+            </td>
+        </tr>
+    `;
+    
+    calculateTotal();
+    // Auto save after add
+    saveQuotation();
+}
+
+function addMediaTool() {
+    const id = 'new_tool_' + Date.now();
+    const tbody = document.getElementById('media-tools-body');
+    
+    tbody.innerHTML += `
+        <tr data-tool-id="${id}" class="paid-row">
+            <td>
+                <input type="text" value="أداة إعلامية جديدة" class="tool-name"
+                       style="background: transparent; border: none; color: var(--text); width: 100%;"
+                       onchange="updateMediaTool('${id}', 'name', this.value)">
+            </td>
+            <td>
+                <select style="background: var(--dark-lighter); border: 1px solid var(--border); border-radius: 8px; padding: 6px; color: var(--text); font-size: 0.8rem;"
+                        onchange="updateMediaTool('${id}', 'type', this.value)">
+                    <option value="إعلان رقمي">إعلان رقمي</option>
+                    <option value="مؤثرين">مؤثرين</option>
+                    <option value="صحافة">صحافة</option>
+                    <option value="صحافة دولية">صحافة دولية</option>
+                    <option value="تلفزيون">تلفزيون</option>
+                    <option value="راديو">راديو</option>
+                    <option value="إعلام دولي">إعلام دولي</option>
+                    <option value="تواصل مباشر">تواصل مباشر</option>
+                </select>
+            </td>
+            <td>
+                <select style="background: var(--dark-lighter); border: 1px solid var(--border); border-radius: 8px; padding: 6px; color: var(--text); font-size: 0.75rem;"
+                        onchange="updateMediaTool('${id}', 'phase_id', this.value)">
+                    <option value="teasing">المرحلة الأولى: التهيئة</option>
+                    <option value="launch">المرحلة الثانية: الإطلاق</option>
+                    <option value="momentum">المرحلة الثالثة: الترسيخ</option>
+                </select>
+            </td>
+            <td>
+                <select style="background: var(--dark-lighter); border: 1px solid var(--border); border-radius: 8px; padding: 6px; color: var(--text); font-size: 0.8rem;"
+                        onchange="updateMediaTool('${id}', 'is_paid', this.value === 'true')">
+                    <option value="true">مدفوع</option>
+                    <option value="false">موازي</option>
+                </select>
+            </td>
+            <td>
+                <input type="number" value="0" min="0" class="price-input"
+                       onchange="updateMediaTool('${id}', 'cost', this.value); calculateTotal()">
+            </td>
+            <td>
+                <button class="delete-btn" onclick="deleteMediaTool('${id}')" title="حذف">
+                    <i class="fas fa-trash"></i>
+                </button>
+            </td>
+        </tr>
+    `;
+    
+    calculateTotal();
+    // Auto save after add
+    saveQuotation();
+}
+
+async function saveQuotation() {
+    // Collect all data
+    savedQuotation.notes = document.getElementById('quotation-notes').value;
+    savedQuotation.updated_at = new Date().toISOString();
+    savedQuotation.currency = CURRENCY;
+    
+    // Collect products data
+    savedQuotation.products_list = [];
+    document.querySelectorAll('#products-body tr').forEach(row => {
+        const id = row.dataset.productId;
+        const typeSelect = row.querySelector('.type-select, select[onchange*="type"]');
+        const phaseSelect = row.querySelector('.phase-select, select[onchange*="phase"]');
+        const dateInput = row.querySelector('input[placeholder="التاريخ"], td:nth-child(4) input[type="text"]');
+        
+        // Get phase from select if exists, otherwise from data attribute
+        let phaseValue = 'teasing';
+        if (phaseSelect) {
+            phaseValue = phaseSelect.value;
+        } else if (row.dataset.phase) {
+            phaseValue = row.dataset.phase;
+        }
+        
+        // Get type from select if exists, otherwise from data attribute or badge
+        let typeValue = '';
+        if (typeSelect) {
+            typeValue = typeSelect.value;
+        } else {
+            const typeBadge = row.querySelector('.type-badge');
+            typeValue = typeBadge ? (typeBadge.dataset.type || typeBadge.textContent) : '';
+        }
+        
+        // Get date from input if exists, otherwise from data attribute
+        let dateValue = '';
+        if (dateInput) {
+            dateValue = dateInput.value;
+        } else {
+            const dateCell = row.querySelector('td:nth-child(4)');
+            dateValue = dateCell ? (dateCell.dataset.date || dateCell.textContent?.trim()) : '';
+        }
+        
+        savedQuotation.products_list.push({
+            id: id,
+            name: row.querySelector('.product-name').value,
+            type: typeValue,
+            phase: phaseValue,
+            date: dateValue,
+            quantity: parseFloat(row.querySelector('input[type="number"]').value) || 1,
+            unit_price: parseFloat(row.querySelector('.price-input').value) || 0
+        });
+    });
+    
+    // Collect paid media data (الترويج المدفوع)
+    savedQuotation.paid_media_list = [];
+    document.querySelectorAll('#paid-media-body tr').forEach(row => {
+        const id = row.dataset.paidId;
+        const selects = row.querySelectorAll('select');
+        
+        savedQuotation.paid_media_list.push({
+            id: id,
+            name: row.querySelector('.item-name').value,
+            type: selects[0] ? selects[0].value : '',
+            phase_id: row.dataset.phase || 'teasing',
+            cost: parseFloat(row.querySelector('.price-input').value) || 0
+        });
+    });
+    
+    // Collect earned media data (الإعلام الموازي - مدفوع غير مباشر)
+    savedQuotation.earned_media_list = [];
+    document.querySelectorAll('#earned-media-body tr').forEach(row => {
+        const id = row.dataset.earnedId;
+        const selects = row.querySelectorAll('select');
+        const inputs = row.querySelectorAll('input[type="number"]');
+        
+        savedQuotation.earned_media_list.push({
+            id: id,
+            name: row.querySelector('.item-name').value,
+            type: selects[0] ? selects[0].value : '',
+            phase_id: row.dataset.phase || 'teasing',
+            quantity: parseFloat(inputs[0]?.value) || 1,
+            unit_price: parseFloat(inputs[1]?.value) || 0
+        });
+    });
+    
+    // Collect terms data
+    savedQuotation.terms = [];
+    document.querySelectorAll('#terms-list .term-input').forEach(input => {
+        if (input.value.trim()) {
+            savedQuotation.terms.push(input.value.trim());
+        }
+    });
+    
+    try {
+        const response = await fetch(`/admin/campaigns/${CAMPAIGN_ID}/quotation/save`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ quotation: savedQuotation })
+        });
+        
+        const result = await response.json();
+        
+        if (result.success) {
+            showToast('تم حفظ العرض المالي بنجاح', 'success');
+        } else {
+            showToast(result.error || 'حدث خطأ أثناء الحفظ', 'error');
+        }
+    } catch (error) {
+        console.error('Error saving quotation:', error);
+        showToast('حدث خطأ أثناء الحفظ', 'error');
+    }
+}
+
+function showToast(message, type = 'success') {
+    const container = document.getElementById('toast-container');
+    const toast = document.createElement('div');
+    toast.className = `toast ${type}`;
+    toast.innerHTML = `
+        <i class="fas ${type === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle'}" 
+           style="color: ${type === 'success' ? 'var(--primary)' : '#ef4444'}"></i>
+        <span>${message}</span>
+    `;
+    container.appendChild(toast);
+    
+    setTimeout(() => {
+        toast.remove();
+    }, 3000);
+}
+</script>
+{% endblock %}

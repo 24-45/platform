@@ -1,0 +1,373 @@
+{
+    "questionnaire_templates": [
+        {
+            "id": "creative_brief",
+            "name": "استبانة الموجز الإبداعي",
+            "name_en": "Creative Brief Questionnaire",
+            "description": "استبانة شاملة لفهم احتياجات العميل وأهداف المشروع",
+            "sections": [
+                {
+                    "id": "company_info",
+                    "title": "معلومات الشركة",
+                    "title_en": "Company Information",
+                    "order": 1,
+                    "questions": [
+                        {
+                            "id": "company_background",
+                            "question": "نبذة عن الشركة وتاريخها",
+                            "type": "textarea",
+                            "required": true,
+                            "placeholder": "اذكر نبذة مختصرة عن الشركة، متى تأسست، وما هي مجالات عملها الرئيسية"
+                        },
+                        {
+                            "id": "company_vision",
+                            "question": "رؤية الشركة",
+                            "type": "textarea",
+                            "required": true,
+                            "placeholder": "ما هي الرؤية المستقبلية للشركة؟"
+                        },
+                        {
+                            "id": "company_mission",
+                            "question": "رسالة الشركة",
+                            "type": "textarea",
+                            "required": true,
+                            "placeholder": "ما هي رسالة الشركة وقيمها الأساسية؟"
+                        },
+                        {
+                            "id": "company_values",
+                            "question": "القيم الأساسية",
+                            "type": "tags",
+                            "required": false,
+                            "placeholder": "أدخل القيم الأساسية للشركة"
+                        }
+                    ]
+                },
+                {
+                    "id": "project_info",
+                    "title": "معلومات المشروع/المنتج",
+                    "title_en": "Project/Product Information",
+                    "order": 2,
+                    "questions": [
+                        {
+                            "id": "project_name",
+                            "question": "اسم المشروع أو المنتج",
+                            "type": "text",
+                            "required": true
+                        },
+                        {
+                            "id": "project_description",
+                            "question": "وصف تفصيلي للمشروع",
+                            "type": "textarea",
+                            "required": true,
+                            "placeholder": "اشرح المشروع بالتفصيل: ما هو؟ ماذا يقدم؟ ما الذي يميزه؟"
+                        },
+                        {
+                            "id": "unique_selling_points",
+                            "question": "نقاط البيع الفريدة (USPs)",
+                            "type": "list",
+                            "required": true,
+                            "placeholder": "ما الذي يميز منتجك/مشروعك عن المنافسين؟"
+                        },
+                        {
+                            "id": "project_stage",
+                            "question": "مرحلة المشروع الحالية",
+                            "type": "select",
+                            "required": true,
+                            "options": [
+                                "فكرة",
+                                "تخطيط",
+                                "تطوير",
+                                "جاهز للإطلاق",
+                                "مطلق حديثاً",
+                                "راسخ في السوق"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "target_audience",
+                    "title": "الجمهور المستهدف",
+                    "title_en": "Target Audience",
+                    "order": 3,
+                    "questions": [
+                        {
+                            "id": "primary_audience",
+                            "question": "الجمهور الرئيسي",
+                            "type": "textarea",
+                            "required": true,
+                            "placeholder": "من هو جمهورك الرئيسي؟ (العمر، الجنس، الموقع، المهنة)"
+                        },
+                        {
+                            "id": "secondary_audience",
+                            "question": "الجمهور الثانوي",
+                            "type": "textarea",
+                            "required": false,
+                            "placeholder": "هل هناك شرائح أخرى تريد الوصول إليها؟"
+                        },
+                        {
+                            "id": "audience_pain_points",
+                            "question": "مشاكل الجمهور التي تحلها",
+                            "type": "list",
+                            "required": true,
+                            "placeholder": "ما المشاكل أو الاحتياجات التي يعالجها منتجك/خدمتك؟"
+                        },
+                        {
+                            "id": "audience_behavior",
+                            "question": "سلوك الجمهور الرقمي",
+                            "type": "checkbox",
+                            "required": false,
+                            "options": [
+                                "يستخدم LinkedIn بكثرة",
+                                "نشط على Twitter",
+                                "يتابع المؤثرين",
+                                "يقرأ الصحف الرقمية",
+                                "يشاهد التلفزيون",
+                                "يستمع للبودكاست",
+                                "يستخدم TikTok"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "campaign_objectives",
+                    "title": "أهداف الحملة",
+                    "title_en": "Campaign Objectives",
+                    "order": 4,
+                    "questions": [
+                        {
+                            "id": "main_objective",
+                            "question": "الهدف الرئيسي من الحملة",
+                            "type": "select",
+                            "required": true,
+                            "options": [
+                                "رفع الوعي بالعلامة التجارية",
+                                "إطلاق منتج/خدمة جديدة",
+                                "زيادة المبيعات",
+                                "بناء السمعة",
+                                "إدارة أزمة",
+                                "التوسع في سوق جديد",
+                                "جذب المستثمرين",
+                                "أخرى"
+                            ]
+                        },
+                        {
+                            "id": "specific_objectives",
+                            "question": "الأهداف التفصيلية",
+                            "type": "list",
+                            "required": true,
+                            "placeholder": "اذكر 3-5 أهداف محددة وقابلة للقياس"
+                        },
+                        {
+                            "id": "success_metrics",
+                            "question": "كيف ستقيس نجاح الحملة؟",
+                            "type": "checkbox",
+                            "required": true,
+                            "options": [
+                                "عدد المشاهدات/الوصول",
+                                "التفاعل (إعجابات، تعليقات، مشاركات)",
+                                "زيارات الموقع",
+                                "تحويلات/مبيعات",
+                                "استفسارات العملاء",
+                                "تغطية إعلامية",
+                                "تحسن في استطلاعات الرأي"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "brand_voice",
+                    "title": "صوت العلامة التجارية",
+                    "title_en": "Brand Voice",
+                    "order": 5,
+                    "questions": [
+                        {
+                            "id": "tone",
+                            "question": "نبرة التواصل المفضلة",
+                            "type": "checkbox",
+                            "required": true,
+                            "options": [
+                                "رسمي ومهني",
+                                "ودود وقريب",
+                                "ملهم وطموح",
+                                "تعليمي ومعلوماتي",
+                                "مبتكر وعصري",
+                                "تقليدي ومحافظ"
+                            ]
+                        },
+                        {
+                            "id": "key_messages",
+                            "question": "الرسائل الرئيسية التي تريد إيصالها",
+                            "type": "list",
+                            "required": true,
+                            "placeholder": "ما أهم 3 رسائل تريد أن يتذكرها الجمهور؟"
+                        },
+                        {
+                            "id": "words_to_use",
+                            "question": "كلمات أو عبارات تريد استخدامها",
+                            "type": "tags",
+                            "required": false
+                        },
+                        {
+                            "id": "words_to_avoid",
+                            "question": "كلمات أو عبارات تريد تجنبها",
+                            "type": "tags",
+                            "required": false
+                        }
+                    ]
+                },
+                {
+                    "id": "competitors",
+                    "title": "المنافسون",
+                    "title_en": "Competitors",
+                    "order": 6,
+                    "questions": [
+                        {
+                            "id": "main_competitors",
+                            "question": "المنافسون الرئيسيون",
+                            "type": "list",
+                            "required": true,
+                            "placeholder": "اذكر أهم 3-5 منافسين لك في السوق"
+                        },
+                        {
+                            "id": "competitor_strengths",
+                            "question": "ما الذي يتفوق به المنافسون؟",
+                            "type": "textarea",
+                            "required": false
+                        },
+                        {
+                            "id": "your_advantage",
+                            "question": "ما ميزتك التنافسية عليهم؟",
+                            "type": "textarea",
+                            "required": true
+                        }
+                    ]
+                },
+                {
+                    "id": "budget_timeline",
+                    "title": "الميزانية والجدول الزمني",
+                    "title_en": "Budget & Timeline",
+                    "order": 7,
+                    "questions": [
+                        {
+                            "id": "budget_range",
+                            "question": "نطاق الميزانية المتوقع",
+                            "type": "select",
+                            "required": true,
+                            "options": [
+                                "أقل من 50,000 ريال",
+                                "50,000 - 100,000 ريال",
+                                "100,000 - 250,000 ريال",
+                                "250,000 - 500,000 ريال",
+                                "500,000 - 1,000,000 ريال",
+                                "أكثر من 1,000,000 ريال"
+                            ]
+                        },
+                        {
+                            "id": "launch_date",
+                            "question": "تاريخ الإطلاق المستهدف",
+                            "type": "date",
+                            "required": true
+                        },
+                        {
+                            "id": "campaign_duration",
+                            "question": "مدة الحملة المتوقعة",
+                            "type": "select",
+                            "required": true,
+                            "options": [
+                                "أسبوع واحد",
+                                "أسبوعين",
+                                "شهر",
+                                "شهرين",
+                                "3 أشهر",
+                                "6 أشهر",
+                                "سنة",
+                                "مستمرة"
+                            ]
+                        },
+                        {
+                            "id": "important_dates",
+                            "question": "تواريخ مهمة يجب مراعاتها",
+                            "type": "list",
+                            "required": false,
+                            "placeholder": "مثال: معارض، مناسبات، إجازات..."
+                        }
+                    ]
+                },
+                {
+                    "id": "existing_assets",
+                    "title": "الموارد المتاحة",
+                    "title_en": "Existing Assets",
+                    "order": 8,
+                    "questions": [
+                        {
+                            "id": "available_content",
+                            "question": "ما المحتوى المتاح لديكم؟",
+                            "type": "checkbox",
+                            "required": false,
+                            "options": [
+                                "شعار وهوية بصرية",
+                                "صور احترافية",
+                                "فيديوهات",
+                                "بيانات صحفية سابقة",
+                                "دراسات حالة",
+                                "شهادات عملاء",
+                                "إحصائيات وأرقام"
+                            ]
+                        },
+                        {
+                            "id": "spokespersons",
+                            "question": "المتحدثون الرسميون",
+                            "type": "list",
+                            "required": false,
+                            "placeholder": "من يمكنه التحدث باسم الشركة للإعلام؟"
+                        },
+                        {
+                            "id": "past_campaigns",
+                            "question": "حملات سابقة ناجحة",
+                            "type": "textarea",
+                            "required": false,
+                            "placeholder": "هل لديكم تجارب سابقة ناجحة؟ ما الذي نجح؟"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "question_types": {
+        "text": {
+            "description": "حقل نصي قصير",
+            "max_length": 200
+        },
+        "textarea": {
+            "description": "حقل نصي طويل",
+            "max_length": 2000
+        },
+        "select": {
+            "description": "اختيار واحد من قائمة"
+        },
+        "checkbox": {
+            "description": "اختيار متعدد"
+        },
+        "radio": {
+            "description": "اختيار واحد فقط"
+        },
+        "date": {
+            "description": "حقل تاريخ"
+        },
+        "number": {
+            "description": "حقل رقمي"
+        },
+        "file": {
+            "description": "رفع ملف"
+        },
+        "list": {
+            "description": "قائمة عناصر"
+        },
+        "tags": {
+            "description": "وسوم/كلمات مفتاحية"
+        },
+        "rating": {
+            "description": "تقييم من 1-5"
+        }
+    }
+}

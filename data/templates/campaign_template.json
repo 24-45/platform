@@ -1,0 +1,127 @@
+{
+    "template_info": {
+        "id": "campaign-template",
+        "name": "قالب الحملة الإعلامية",
+        "name_en": "Advertising Campaign Template",
+        "description": "قالب متكامل لإدارة الحملات الإعلامية والاتصالية",
+        "version": "1.0",
+        "created_from": "ALIC Project",
+        "tabs": [
+            {
+                "id": "overview",
+                "name": "نظرة عامة",
+                "name_en": "Overview",
+                "icon": "fa-eye",
+                "required": true,
+                "sections": [
+                    "client_info",
+                    "campaign_objectives",
+                    "target_audience",
+                    "questionnaire"
+                ]
+            },
+            {
+                "id": "benchmarks",
+                "name": "المقارنات المعيارية",
+                "name_en": "Benchmarks",
+                "icon": "fa-chart-bar",
+                "required": false,
+                "sections": [
+                    "global_benchmarks",
+                    "local_benchmarks",
+                    "competitor_analysis"
+                ]
+            },
+            {
+                "id": "marketing",
+                "name": "خطة الاتصال",
+                "name_en": "Communication Plan",
+                "icon": "fa-bullhorn",
+                "required": false,
+                "sections": [
+                    "communication_products",
+                    "timeline",
+                    "budget",
+                    "channels"
+                ]
+            },
+            {
+                "id": "monitoring",
+                "name": "المتابعة والمراقبة",
+                "name_en": "Monitoring",
+                "icon": "fa-tasks",
+                "required": true,
+                "sections": [
+                    "tasks",
+                    "approvals",
+                    "messages",
+                    "progress"
+                ]
+            }
+        ]
+    },
+    "sections_schema": {
+        "client_info": {
+            "name": "معلومات العميل",
+            "fields": [
+                {"id": "company_name", "label": "اسم الشركة", "type": "text", "required": true},
+                {"id": "company_name_en", "label": "الاسم بالإنجليزية", "type": "text", "required": false},
+                {"id": "company_description", "label": "نبذة عن الشركة", "type": "textarea", "required": true},
+                {"id": "company_logo", "label": "شعار الشركة", "type": "image", "required": true},
+                {"id": "brand_colors", "label": "ألوان الهوية", "type": "colors", "required": false},
+                {"id": "company_vision", "label": "رؤية الشركة", "type": "textarea", "required": false},
+                {"id": "company_mission", "label": "رسالة الشركة", "type": "textarea", "required": false}
+            ]
+        },
+        "campaign_objectives": {
+            "name": "أهداف الحملة",
+            "fields": [
+                {"id": "main_objective", "label": "الهدف الرئيسي", "type": "textarea", "required": true},
+                {"id": "specific_objectives", "label": "الأهداف التفصيلية", "type": "list", "required": true},
+                {"id": "kpis", "label": "مؤشرات الأداء", "type": "list", "required": false},
+                {"id": "success_criteria", "label": "معايير النجاح", "type": "list", "required": false}
+            ]
+        },
+        "target_audience": {
+            "name": "الجمهور المستهدف",
+            "fields": [
+                {"id": "primary_audience", "label": "الجمهور الأساسي", "type": "textarea", "required": true},
+                {"id": "secondary_audience", "label": "الجمهور الثانوي", "type": "textarea", "required": false},
+                {"id": "demographics", "label": "الخصائص الديموغرافية", "type": "tags", "required": false},
+                {"id": "psychographics", "label": "الخصائص النفسية", "type": "tags", "required": false},
+                {"id": "target_sectors", "label": "القطاعات المستهدفة", "type": "tags", "required": false}
+            ]
+        },
+        "questionnaire": {
+            "name": "استبيان الحملة",
+            "fields": [
+                {"id": "core_message", "label": "الرسالة المركزية", "type": "textarea", "required": true},
+                {"id": "brand_identity", "label": "الهوية المطلوبة", "type": "tags", "required": false},
+                {"id": "competitive_advantages", "label": "المزايا التنافسية", "type": "list", "required": false},
+                {"id": "value_proposition", "label": "القيمة المقدمة", "type": "textarea", "required": false},
+                {"id": "key_messages", "label": "الرسائل الأولية", "type": "list", "required": false},
+                {"id": "competitors", "label": "المنافسون", "type": "list", "required": false}
+            ]
+        },
+        "communication_products": {
+            "name": "المنتجات الاتصالية",
+            "fields": [
+                {"id": "products", "label": "قائمة المنتجات", "type": "products_table", "required": true}
+            ]
+        },
+        "timeline": {
+            "name": "الجدول الزمني",
+            "fields": [
+                {"id": "phases", "label": "مراحل الحملة", "type": "phases", "required": true},
+                {"id": "milestones", "label": "المحطات الرئيسية", "type": "list", "required": false}
+            ]
+        },
+        "budget": {
+            "name": "الميزانية",
+            "fields": [
+                {"id": "total_budget", "label": "الميزانية الإجمالية", "type": "currency", "required": true},
+                {"id": "budget_breakdown", "label": "توزيع الميزانية", "type": "budget_table", "required": false}
+            ]
+        }
+    }
+}

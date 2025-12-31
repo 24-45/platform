@@ -1,0 +1,356 @@
+{
+    "campaign_types": [
+        {
+            "id": "launch",
+            "name": "حملة إطلاق وتدشين",
+            "name_en": "Launch Campaign",
+            "description": "حملة متكاملة لإطلاق منتج أو مشروع أو خدمة جديدة",
+            "icon": "fa-rocket",
+            "color": "#00D46A",
+            "default_phases": [
+                {
+                    "id": "teasing",
+                    "name": "التهيئة والتشويق",
+                    "name_en": "Teasing & Anticipation",
+                    "duration_days": 14,
+                    "objective": "بناء حالة من الترقب والفضول",
+                    "suggested_products": ["teaser_video", "social_posts", "press_release"]
+                },
+                {
+                    "id": "launch",
+                    "name": "الإطلاق الرسمي",
+                    "name_en": "Official Launch",
+                    "duration_days": 7,
+                    "objective": "الكشف الرسمي وبناء الزخم",
+                    "suggested_products": ["launch_event", "media_coverage", "influencer_campaign"]
+                },
+                {
+                    "id": "momentum",
+                    "name": "ترسيخ الريادة وإظهار الأثر",
+                    "name_en": "Establishing Leadership",
+                    "duration_days": 14,
+                    "objective": "تعزيز المكانة وقياس الأثر",
+                    "suggested_products": ["opinion_articles", "case_studies", "testimonials"]
+                }
+            ]
+        },
+        {
+            "id": "awareness",
+            "name": "حملة رفع وعي",
+            "name_en": "Awareness Campaign",
+            "description": "حملة لزيادة الوعي بقضية أو علامة تجارية أو خدمة",
+            "icon": "fa-bullhorn",
+            "color": "#3B82F6",
+            "default_phases": [
+                {
+                    "id": "foundation",
+                    "name": "بناء الأساس",
+                    "name_en": "Building Foundation",
+                    "duration_days": 14,
+                    "objective": "تأسيس الرسالة الأساسية والهوية",
+                    "suggested_products": ["brand_guidelines", "key_messages", "content_pillars"]
+                },
+                {
+                    "id": "expansion",
+                    "name": "التوسع والانتشار",
+                    "name_en": "Expansion & Reach",
+                    "duration_days": 21,
+                    "objective": "الوصول لأكبر شريحة من الجمهور",
+                    "suggested_products": ["paid_ads", "influencer_partnerships", "media_features"]
+                },
+                {
+                    "id": "sustain",
+                    "name": "التعزيز والاستدامة",
+                    "name_en": "Reinforcement & Sustainability",
+                    "duration_days": 14,
+                    "objective": "الحفاظ على الزخم وقياس التأثير",
+                    "suggested_products": ["engagement_content", "community_building", "impact_report"]
+                }
+            ]
+        },
+        {
+            "id": "crisis",
+            "name": "إدارة أزمات إعلامية",
+            "name_en": "Crisis Management",
+            "description": "خطة للتعامل مع الأزمات الإعلامية وحماية السمعة",
+            "icon": "fa-shield-alt",
+            "color": "#EF4444",
+            "default_phases": [
+                {
+                    "id": "response",
+                    "name": "الاستجابة السريعة",
+                    "name_en": "Rapid Response",
+                    "duration_days": 3,
+                    "objective": "السيطرة على الرواية والرد الفوري",
+                    "suggested_products": ["official_statement", "media_briefing", "social_response"]
+                },
+                {
+                    "id": "containment",
+                    "name": "السيطرة والاحتواء",
+                    "name_en": "Containment",
+                    "duration_days": 7,
+                    "objective": "منع التصعيد واحتواء الأضرار",
+                    "suggested_products": ["stakeholder_communication", "faq_document", "media_monitoring"]
+                },
+                {
+                    "id": "recovery",
+                    "name": "إعادة بناء السمعة",
+                    "name_en": "Reputation Recovery",
+                    "duration_days": 30,
+                    "objective": "استعادة الثقة وتحسين الصورة",
+                    "suggested_products": ["positive_stories", "csr_initiatives", "thought_leadership"]
+                }
+            ]
+        },
+        {
+            "id": "compound",
+            "name": "حملة مركبة",
+            "name_en": "Compound Campaign",
+            "description": "حملة كبيرة تجمع عدة أنواع من الحملات",
+            "icon": "fa-layer-group",
+            "color": "#8B5CF6",
+            "default_phases": [
+                {
+                    "id": "custom",
+                    "name": "مرحلة مخصصة",
+                    "name_en": "Custom Phase",
+                    "duration_days": 14,
+                    "objective": "يتم تحديده حسب المشروع",
+                    "suggested_products": []
+                }
+            ],
+            "allow_multiple_types": true,
+            "sub_campaigns": ["launch", "awareness", "crisis"]
+        },
+        {
+            "id": "internal",
+            "name": "حملة اتصال داخلي",
+            "name_en": "Internal Communication",
+            "description": "حملة موجهة للموظفين والأطراف الداخلية",
+            "icon": "fa-users",
+            "color": "#F59E0B",
+            "default_phases": [
+                {
+                    "id": "preparation",
+                    "name": "التحضير والتخطيط",
+                    "name_en": "Preparation",
+                    "duration_days": 7,
+                    "objective": "إعداد المحتوى والقنوات",
+                    "suggested_products": ["internal_memo", "presentation", "faq"]
+                },
+                {
+                    "id": "rollout",
+                    "name": "الإطلاق الداخلي",
+                    "name_en": "Internal Rollout",
+                    "duration_days": 7,
+                    "objective": "نشر الرسالة للجميع",
+                    "suggested_products": ["town_hall", "email_campaign", "intranet_update"]
+                },
+                {
+                    "id": "feedback",
+                    "name": "المتابعة والتغذية الراجعة",
+                    "name_en": "Feedback & Follow-up",
+                    "duration_days": 14,
+                    "objective": "قياس الفهم والاستجابة",
+                    "suggested_products": ["survey", "feedback_sessions", "success_stories"]
+                }
+            ]
+        },
+        {
+            "id": "event",
+            "name": "حملة فعالية أو مؤتمر",
+            "name_en": "Event Campaign",
+            "description": "حملة تسويقية لفعالية أو مؤتمر أو معرض",
+            "icon": "fa-calendar-alt",
+            "color": "#EC4899",
+            "default_phases": [
+                {
+                    "id": "pre_event",
+                    "name": "ما قبل الفعالية",
+                    "name_en": "Pre-Event",
+                    "duration_days": 30,
+                    "objective": "بناء الترقب وجذب الحضور",
+                    "suggested_products": ["save_the_date", "registration_campaign", "speaker_promos"]
+                },
+                {
+                    "id": "during_event",
+                    "name": "أثناء الفعالية",
+                    "name_en": "During Event",
+                    "duration_days": 3,
+                    "objective": "تغطية حية وتفاعل",
+                    "suggested_products": ["live_coverage", "social_updates", "media_interviews"]
+                },
+                {
+                    "id": "post_event",
+                    "name": "ما بعد الفعالية",
+                    "name_en": "Post-Event",
+                    "duration_days": 14,
+                    "objective": "إبراز النجاح والمتابعة",
+                    "suggested_products": ["highlights_video", "press_release", "thank_you_campaign"]
+                }
+            ]
+        }
+    ],
+    "media_tools": {
+        "categories": [
+            {
+                "id": "newspapers",
+                "name": "صحف",
+                "name_en": "Newspapers",
+                "icon": "fa-newspaper",
+                "subcategories": [
+                    {"id": "local", "name": "صحف محلية"},
+                    {"id": "regional", "name": "صحف إقليمية"},
+                    {"id": "international", "name": "صحف دولية"}
+                ]
+            },
+            {
+                "id": "opinion_writers",
+                "name": "كتّاب الرأي",
+                "name_en": "Opinion Writers",
+                "icon": "fa-pen-fancy",
+                "subcategories": [
+                    {"id": "local", "name": "كتّاب محليون"},
+                    {"id": "regional", "name": "كتّاب إقليميون"}
+                ]
+            },
+            {
+                "id": "influencers",
+                "name": "المؤثرون",
+                "name_en": "Influencers",
+                "icon": "fa-star",
+                "subcategories": [
+                    {"id": "local", "name": "مؤثرون محليون"},
+                    {"id": "regional", "name": "مؤثرون إقليميون"},
+                    {"id": "international", "name": "مؤثرون دوليون"}
+                ]
+            },
+            {
+                "id": "tv",
+                "name": "قنوات تلفزيونية",
+                "name_en": "TV Channels",
+                "icon": "fa-tv",
+                "subcategories": [
+                    {"id": "local", "name": "قنوات محلية"},
+                    {"id": "regional", "name": "قنوات إقليمية"},
+                    {"id": "international", "name": "قنوات دولية"}
+                ]
+            },
+            {
+                "id": "radio",
+                "name": "إذاعات",
+                "name_en": "Radio Stations",
+                "icon": "fa-broadcast-tower",
+                "subcategories": [
+                    {"id": "local", "name": "إذاعات محلية"},
+                    {"id": "regional", "name": "إذاعات إقليمية"}
+                ]
+            },
+            {
+                "id": "digital",
+                "name": "منصات رقمية",
+                "name_en": "Digital Platforms",
+                "icon": "fa-globe",
+                "subcategories": [
+                    {"id": "news_sites", "name": "مواقع إخبارية"},
+                    {"id": "blogs", "name": "مدونات متخصصة"},
+                    {"id": "podcasts", "name": "بودكاست"}
+                ]
+            },
+            {
+                "id": "pr_newswire",
+                "name": "خدمات توزيع الأخبار",
+                "name_en": "PR Newswire Services",
+                "icon": "fa-share-alt",
+                "subcategories": [
+                    {"id": "local", "name": "محلي"},
+                    {"id": "regional", "name": "إقليمي"},
+                    {"id": "international", "name": "دولي"}
+                ]
+            }
+        ]
+    },
+    "product_types": [
+        {
+            "id": "press_release",
+            "name": "بيان صحفي",
+            "name_en": "Press Release",
+            "icon": "fa-file-alt",
+            "category": "content"
+        },
+        {
+            "id": "social_post",
+            "name": "منشور سوشيال ميديا",
+            "name_en": "Social Media Post",
+            "icon": "fa-share-square",
+            "category": "social",
+            "platforms": ["linkedin", "twitter", "instagram", "facebook", "tiktok"]
+        },
+        {
+            "id": "video",
+            "name": "فيديو",
+            "name_en": "Video",
+            "icon": "fa-video",
+            "category": "multimedia",
+            "types": ["teaser", "explainer", "testimonial", "event_coverage"]
+        },
+        {
+            "id": "infographic",
+            "name": "إنفوجرافيك",
+            "name_en": "Infographic",
+            "icon": "fa-chart-pie",
+            "category": "visual"
+        },
+        {
+            "id": "opinion_article",
+            "name": "مقال رأي",
+            "name_en": "Opinion Article",
+            "icon": "fa-pen-nib",
+            "category": "content"
+        },
+        {
+            "id": "interview",
+            "name": "مقابلة إعلامية",
+            "name_en": "Media Interview",
+            "icon": "fa-microphone",
+            "category": "media"
+        },
+        {
+            "id": "sms_campaign",
+            "name": "حملة SMS",
+            "name_en": "SMS Campaign",
+            "icon": "fa-sms",
+            "category": "direct"
+        },
+        {
+            "id": "email_campaign",
+            "name": "حملة إيميل",
+            "name_en": "Email Campaign",
+            "icon": "fa-envelope",
+            "category": "direct"
+        },
+        {
+            "id": "paid_ad",
+            "name": "إعلان مدفوع",
+            "name_en": "Paid Advertisement",
+            "icon": "fa-ad",
+            "category": "paid",
+            "platforms": ["google", "meta", "linkedin", "twitter", "tiktok"]
+        },
+        {
+            "id": "influencer_post",
+            "name": "منشور مؤثر",
+            "name_en": "Influencer Post",
+            "icon": "fa-user-star",
+            "category": "influencer"
+        },
+        {
+            "id": "event",
+            "name": "فعالية",
+            "name_en": "Event",
+            "icon": "fa-calendar-check",
+            "category": "events",
+            "types": ["launch", "press_conference", "roundtable", "webinar"]
+        }
+    ]
+}

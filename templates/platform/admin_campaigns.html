@@ -1,0 +1,287 @@
+{% extends 'platform/base.html' %}
+
+{% block title %}إدارة الحملات - منصة 24°45'{% endblock %}
+
+{% block extra_css %}
+<style>
+    .campaigns-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 30px;
+    }
+    
+    .campaigns-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        gap: 20px;
+    }
+    
+    .campaign-card {
+        background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+        border-radius: 16px;
+        padding: 25px;
+        border: 1px solid rgba(255,255,255,0.1);
+        transition: all 0.3s ease;
+    }
+    
+    .campaign-card:hover {
+        transform: translateY(-5px);
+        border-color: rgba(0, 212, 106, 0.3);
+        box-shadow: 0 10px 40px rgba(0, 212, 106, 0.1);
+    }
+    
+    .campaign-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 20px;
+    }
+    
+    .campaign-title {
+        color: #fff;
+        font-size: 1.25rem;
+        font-weight: 700;
+        margin: 0 0 5px 0;
+    }
+    
+    .campaign-tenant {
+        color: rgba(255,255,255,0.6);
+        font-size: 0.9rem;
+    }
+    
+    .campaign-status {
+        padding: 5px 12px;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 600;
+    }
+    
+    .status-active {
+        background: rgba(16, 185, 129, 0.2);
+        color: #10b981;
+    }
+    
+    .status-draft {
+        background: rgba(245, 158, 11, 0.2);
+        color: #f59e0b;
+    }
+    
+    .status-completed {
+        background: rgba(59, 130, 246, 0.2);
+        color: #3b82f6;
+    }
+    
+    .campaign-progress {
+        margin: 20px 0;
+    }
+    
+    .progress-bar-bg {
+        height: 8px;
+        background: rgba(255,255,255,0.1);
+        border-radius: 4px;
+        overflow: hidden;
+    }
+    
+    .progress-bar-fill {
+        height: 100%;
+        background: linear-gradient(90deg, #10b981, #00d46a);
+        border-radius: 4px;
+        transition: width 0.5s ease;
+    }
+    
+    .progress-text {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 8px;
+        font-size: 0.85rem;
+        color: rgba(255,255,255,0.6);
+    }
+    
+    .campaign-stats {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+        margin: 20px 0;
+        padding: 15px;
+        background: rgba(0,0,0,0.2);
+        border-radius: 12px;
+    }
+    
+    .stat-item {
+        text-align: center;
+    }
+    
+    .stat-value {
+        color: #fff;
+        font-size: 1.5rem;
+        font-weight: 700;
+    }
+    
+    .stat-label {
+        color: rgba(255,255,255,0.5);
+        font-size: 0.75rem;
+    }
+    
+    .campaign-actions {
+        display: flex;
+        gap: 10px;
+        margin-top: 20px;
+    }
+    
+    .campaign-actions a,
+    .campaign-actions button {
+        flex: 1;
+        padding: 10px;
+        border-radius: 8px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        text-align: center;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        border: none;
+        cursor: pointer;
+    }
+    
+    .btn-edit {
+        background: rgba(59, 130, 246, 0.2);
+        color: #60a5fa;
+    }
+    
+    .btn-edit:hover {
+        background: rgba(59, 130, 246, 0.3);
+    }
+    
+    .btn-view {
+        background: rgba(16, 185, 129, 0.2);
+        color: #10b981;
+    }
+    
+    .btn-view:hover {
+        background: rgba(16, 185, 129, 0.3);
+    }
+    
+    .btn-new-campaign {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 12px 24px;
+        background: linear-gradient(135deg, #00d46a, #10b981);
+        color: #fff;
+        border-radius: 10px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+    
+    .btn-new-campaign:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 20px rgba(0, 212, 106, 0.3);
+    }
+    
+    .empty-state {
+        text-align: center;
+        padding: 60px 20px;
+        color: rgba(255,255,255,0.6);
+    }
+    
+    .empty-state i {
+        font-size: 4rem;
+        margin-bottom: 20px;
+        opacity: 0.5;
+    }
+    
+    .empty-state h3 {
+        color: #fff;
+        margin-bottom: 10px;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="campaigns-header">
+        <div>
+            <h1 style="color: #fff; font-weight: 700; margin: 0;">إدارة الحملات</h1>
+            <p style="color: rgba(255,255,255,0.6); margin: 5px 0 0 0;">إدارة وإنشاء الحملات الإعلامية</p>
+        </div>
+        <a href="{{ url_for('admin_new_campaign') }}" class="btn-new-campaign">
+            <i class="fas fa-plus"></i>
+            حملة جديدة
+        </a>
+    </div>
+    
+    {% if campaigns %}
+    <div class="campaigns-grid">
+        {% for campaign in campaigns %}
+        <div class="campaign-card">
+            <div class="campaign-header">
+                <div>
+                    <h3 class="campaign-title">{{ campaign.basic_info.name }}</h3>
+                    <p class="campaign-tenant">
+                        <i class="fas fa-building"></i>
+                        {% for tenant in tenants %}
+                            {% if tenant.slug == campaign.tenant_id %}
+                                {{ tenant.name }}
+                            {% endif %}
+                        {% endfor %}
+                    </p>
+                </div>
+                <span class="campaign-status status-{{ campaign.status }}">
+                    {% if campaign.status == 'active' %}نشط
+                    {% elif campaign.status == 'draft' %}مسودة
+                    {% elif campaign.status == 'completed' %}مكتمل
+                    {% else %}{{ campaign.status }}
+                    {% endif %}
+                </span>
+            </div>
+            
+            <div class="campaign-progress">
+                <div class="progress-bar-bg">
+                    <div class="progress-bar-fill" style="width: {{ campaign.progress.overall_percentage }}%;"></div>
+                </div>
+                <div class="progress-text">
+                    <span>التقدم</span>
+                    <span>{{ campaign.progress.overall_percentage }}%</span>
+                </div>
+            </div>
+            
+            <div class="campaign-stats">
+                <div class="stat-item">
+                    <div class="stat-value">{{ campaign.basic_info.duration_days }}</div>
+                    <div class="stat-label">يوم</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">{{ campaign.basic_info.total_products }}</div>
+                    <div class="stat-label">منتج</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">${{ "{:,.0f}".format(campaign.basic_info.budget) }}</div>
+                    <div class="stat-label">ميزانية</div>
+                </div>
+            </div>
+            
+            <div class="campaign-actions">
+                <a href="{{ url_for('admin_edit_campaign', campaign_id=campaign.id) }}" class="btn-edit">
+                    <i class="fas fa-edit"></i> تحرير
+                </a>
+                <a href="{{ url_for('tenant_project_report', tenant_slug=campaign.tenant_id, project_slug=campaign.id) }}" class="btn-view" target="_blank">
+                    <i class="fas fa-eye"></i> معاينة
+                </a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="empty-state">
+        <i class="fas fa-bullhorn"></i>
+        <h3>لا توجد حملات بعد</h3>
+        <p>ابدأ بإنشاء أول حملة إعلامية</p>
+        <a href="{{ url_for('admin_new_campaign') }}" class="btn-new-campaign" style="margin-top: 20px;">
+            <i class="fas fa-plus"></i>
+            إنشاء حملة جديدة
+        </a>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

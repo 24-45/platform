@@ -1,0 +1,1335 @@
+{
+  "campaigns": [
+    {
+      "id": "alic-almuwaqqar",
+      "template_id": "campaign-template",
+      "tenant_id": "nobles",
+      "status": "active",
+      "created_at": "2025-01-01",
+      "updated_at": "2025-12-31T09:04:50.360206",
+      "basic_info": {
+        "name": "حملة ALIC الإعلامية",
+        "name_en": "ALIC Advertising Campaign",
+        "tagline": "متابعة تنفيذ حملة ALIC الإعلامية",
+        "duration_days": 27,
+        "total_products": 20,
+        "budget": 10000,
+        "currency": "USD",
+        "start_date": "2026-01-05",
+        "end_date": "2026-01-31"
+      },
+      "client_info": {
+        "company_name": "نوبلز العقارية",
+        "company_name_en": "Nobles Properties",
+        "company_description": "شركة تطوير عقاري عالمية تأسست في دبي عام 2008. نمتلك ونقوم بتطوير وإدارة العقارات السكنية والتجارية.",
+        "company_logo": "logo.svg",
+        "brand_colors": [
+          "#DC1F27",
+          "#1E3A5F",
+          "#F5F5F5"
+        ],
+        "company_vision": "الشركة الأولى إقليمياً وعالمياً في تطوير أسلوب حياة فريد",
+        "company_mission": "نبتكر مفاهيم غير مسبوقة في صناعة العقار، ونرسم آفاقاً جديدة للأداء المتميز"
+      },
+      "project_info": {
+        "project_name": "مدينة عمّان اللوجستية والصناعية",
+        "project_name_en": "ALIC - Amman Logistics & Industrial City",
+        "project_tagline": "حيث الموقع الاستثنائي ..والاستثمار الأمثل",
+        "project_headline": "الأقرب إلى كل ما يهم عملك",
+        "project_type": "صناعي ولوجستي",
+        "project_location": "جنوب عمّان، طريق عمان التنموي",
+        "project_description": "من قلب الأردن، تُطل مدينة عمان اللوجستية والصناعية لتجسّد رؤية حديثة للاستثمار والتنمية الصناعية في المنطقة.",
+        "total_area": "525,000 م²",
+        "leasable_area": "400,000 م²"
+      },
+      "campaign_objectives": {
+        "main_objective": "تعزيز الوعي بمدينة عمان اللوجستية والصناعية ALIC كوجهة استثمارية رائدة في المنطقة",
+        "specific_objectives": [
+          "زيادة الوعي بالمشروع بنسبة 40% خلال الحملة",
+          "الوصول إلى 500,000 مشاهدة عبر القنوات الرقمية",
+          "توليد 200 استفسار مؤهل من المستثمرين المحتملين",
+          "تغطية إعلامية في 10 منصات إخبارية رئيسية"
+        ],
+        "kpis": [
+          "عدد المشاهدات",
+          "معدل التفاعل",
+          "عدد الاستفسارات",
+          "التغطية الإعلامية"
+        ]
+      },
+      "target_audience": {
+        "primary_audience": "المستثمرون الصناعيون واللوجستيون في الأردن والمنطقة",
+        "secondary_audience": "رجال الأعمال وأصحاب المصانع والمستودعات",
+        "demographics": [
+          "رجال أعمال",
+          "مستثمرون",
+          "أصحاب شركات",
+          "مدراء تنفيذيون"
+        ],
+        "target_sectors": [
+          "مستودعات",
+          "منطقة لوجستية",
+          "صناعات متوسطة",
+          "تجاري",
+          "صناعات خفيفة"
+        ]
+      },
+      "questionnaire": {
+        "core_message": "ALIC.. هنا يبدأ مستقبل الاستثمار الصناعي في الأردن",
+        "brand_identity": [
+          "موثوقية",
+          "ريادة",
+          "استراتيجي",
+          "متكامل",
+          "مستقبلي"
+        ],
+        "competitive_advantages": [
+          "موقع استراتيجي يربطك بمطار الملكة علياء والمناطق الصناعية",
+          "سند ملكية مستقل لكل قطعة أرض",
+          "إدارة تشغيلية محترفة وخدمات أمنية على مدار الساعة",
+          "خيارات تمويل وتأجير ميسرة - أقساط حتى 36 شهراً بدون فوائد",
+          "تخفيض 50% من ضريبة الدخل لمدة 5-10 سنوات"
+        ],
+        "value_proposition": "هنا تتحوّل المسافات إلى فرص، وتتقاطع البنية التحتية المتقدمة مع الخبرة المحلية والشراكات العالمية، في مشروع صمم ليفتح الطريق نحو مستقبل صناعي مزدهر من عمان إلى العالم.",
+        "key_messages": [
+          "الموقع الاستثنائي والاستثمار الأمثل",
+          "البنية التحتية المتكاملة",
+          "الحوافز الاستثمارية المميزة",
+          "الإدارة المحترفة"
+        ]
+      },
+      "communication_products": [
+        {
+          "id": "p1",
+          "category": "LinkedIn",
+          "name": "منشور LinkedIn: إعلان تشويقي للقطاع الصناعي",
+          "type": "كتابة محتوى",
+          "phase_id": "teasing",
+          "date": "5 يناير 2026",
+          "description": "منشور تشويقي لجذب انتباه القطاع الصناعي",
+          "status": "pending",
+          "cost": 0
+        },
+        {
+          "id": "p2",
+          "category": "علاقات عامة",
+          "name": "بيان صحفي: بناء الوعي عبر الإعلام الاقتصادي",
+          "type": "بيان صحفي",
+          "phase_id": "teasing",
+          "date": "5-8 يناير 2026",
+          "description": "بيان صحفي للإعلام الاقتصادي",
+          "status": "pending",
+          "cost": 0
+        },
+        {
+          "id": "p3",
+          "category": "تواصل مباشر",
+          "name": "رسالة SMS/Email: التواصل المباشر مع القطاع الصناعي",
+          "type": "كتابة محتوى",
+          "phase_id": "teasing",
+          "date": "7 يناير 2026",
+          "description": "رسائل مباشرة للمستثمرين",
+          "status": "pending",
+          "cost": 0
+        },
+        {
+          "id": "p4",
+          "category": "فيديو",
+          "name": "فيديو تشويقي: بناء الوعي لدى المستثمرين الإقليميين",
+          "type": "فيديو برومو",
+          "phase_id": "teasing",
+          "date": "8-10 يناير 2026",
+          "description": "فيديو تشويقي للمستثمرين",
+          "status": "pending",
+          "cost": 0
+        },
+        {
+          "id": "p5",
+          "category": "فعاليات",
+          "name": "دعوات VIP لحفل الإطلاق",
+          "type": "تصميم طباعي",
+          "phase_id": "teasing",
+          "date": "10-12 يناير 2026",
+          "description": "دعوات لكبار المستثمرين",
+          "status": "pending",
+          "cost": 0
+        },
+        {
+          "id": "p6",
+          "category": "فعاليات",
+          "name": "حفل الإطلاق الرسمي VIP",
+          "type": "حدث",
+          "phase_id": "launch",
+          "date": "13 يناير 2026",
+          "description": "حفل الإطلاق الرسمي",
+          "status": "pending",
+          "cost": 0
+        },
+        {
+          "id": "p7",
+          "category": "علاقات عامة",
+          "name": "المؤتمر الصحفي للإطلاق",
+          "type": "مؤتمر صحفي",
+          "phase_id": "launch",
+          "date": "13 يناير 2026",
+          "description": "مؤتمر صحفي رسمي",
+          "status": "pending",
+          "cost": 0
+        },
+        {
+          "id": "p8",
+          "category": "تلفزيون",
+          "name": "التغطية التلفزيونية الشاملة",
+          "type": "تغطية إعلامية",
+          "phase_id": "launch",
+          "date": "13-14 يناير 2026",
+          "description": "تغطية تلفزيونية",
+          "status": "pending",
+          "cost": 0
+        },
+        {
+          "id": "p9",
+          "category": "إعلانات",
+          "name": "حملة الإعلانات المدفوعة",
+          "type": "حملة إعلانية",
+          "phase_id": "launch",
+          "date": "13-18 يناير 2026",
+          "description": "إعلانات مدفوعة",
+          "status": "pending",
+          "cost": 0
+        },
+        {
+          "id": "p10",
+          "category": "LinkedIn",
+          "name": "حملة LinkedIn الاستراتيجية (10 منشورات)",
+          "type": "كتابة محتوى",
+          "phase_id": "launch",
+          "date": "13-22 يناير 2026",
+          "description": "10 منشورات استراتيجية",
+          "status": "pending",
+          "cost": 0,
+          "quantity": 10
+        },
+        {
+          "id": "p11",
+          "category": "مؤثرين",
+          "name": "حملة المؤثرين (5 مؤثرين)",
+          "type": "حملة مؤثرين",
+          "phase_id": "launch",
+          "date": "14-20 يناير 2026",
+          "description": "5 مؤثرين",
+          "status": "pending",
+          "cost": 0,
+          "quantity": 5
+        },
+        {
+          "id": "p12",
+          "category": "بودكاست",
+          "name": "بودكاست مع عمر عايش",
+          "type": "بودكاست",
+          "phase_id": "launch",
+          "date": "18-20 يناير 2026",
+          "description": "حلقة بودكاست",
+          "status": "pending",
+          "cost": 0
+        },
+        {
+          "id": "p13",
+          "category": "مقالات",
+          "name": "مقالات الرأي (5 مقالات)",
+          "type": "كتابة محتوى",
+          "phase_id": "launch",
+          "date": "16-20 يناير 2026",
+          "description": "5 مقالات رأي",
+          "status": "pending",
+          "cost": 0,
+          "quantity": 5
+        },
+        {
+          "id": "p14",
+          "category": "جولة إعلامية",
+          "name": "الجولة الإعلامية VIP للموقع",
+          "type": "جولة إعلامية",
+          "phase_id": "launch",
+          "date": "20 يناير 2026",
+          "description": "جولة إعلامية في الموقع",
+          "status": "pending",
+          "cost": 0
+        },
+        {
+          "id": "p15",
+          "category": "بيان صحفي",
+          "name": "البيان الصحفي الرسمي (50+ وسيلة)",
+          "type": "بيان صحفي",
+          "phase_id": "launch",
+          "date": "15 يناير 2026",
+          "description": "توزيع على 50+ وسيلة إعلامية",
+          "status": "pending",
+          "cost": 0
+        },
+        {
+          "id": "p16",
+          "category": "راديو",
+          "name": "ظهور إذاعي: عمر عايش في إذاعة حسنى FM",
+          "type": "مقابلة",
+          "phase_id": "momentum",
+          "date": "23 يناير 2026",
+          "description": "مقابلة إذاعية",
+          "status": "pending",
+          "cost": 0
+        },
+        {
+          "id": "p17",
+          "category": "راديو",
+          "name": "جولة إذاعية في الإذاعات الأردنية",
+          "type": "جولة إعلامية",
+          "phase_id": "momentum",
+          "date": "24-27 يناير 2026",
+          "description": "جولة في الإذاعات",
+          "status": "pending",
+          "cost": 0
+        },
+        {
+          "id": "p18",
+          "category": "يوتيوب",
+          "name": "حلقة تحليلية: المخبر الاقتصادي",
+          "type": "فيديو برومو",
+          "phase_id": "momentum",
+          "date": "28 يناير 2026",
+          "description": "حلقة تحليلية",
+          "status": "pending",
+          "cost": 0
+        },
+        {
+          "id": "p19",
+          "category": "تلفزيون",
+          "name": "تقرير تلفزيوني: برنامج مال وأعمال",
+          "type": "تغطية إعلامية",
+          "phase_id": "momentum",
+          "date": "29 يناير 2026",
+          "description": "تقرير تلفزيوني",
+          "status": "pending",
+          "cost": 0
+        },
+        {
+          "id": "p20",
+          "category": "شهادات",
+          "name": "حملة شهادات الشركاء والخبراء",
+          "type": "كتابة محتوى",
+          "phase_id": "momentum",
+          "date": "23-31 يناير 2026",
+          "description": "شهادات من الشركاء",
+          "status": "pending",
+          "cost": 0
+        }
+      ],
+      "media_tools": [
+        {
+          "id": "m1",
+          "name": "نشر في 5 صحف محلية",
+          "type": "صحافة",
+          "phase_id": "teasing",
+          "is_paid": false,
+          "cost": 0,
+          "notes": "إعلام موازي - المرحلة الأولى"
+        },
+        {
+          "id": "m2",
+          "name": "3 مؤثرين (تشويق)",
+          "type": "مؤثرين",
+          "phase_id": "teasing",
+          "is_paid": true,
+          "cost": 500,
+          "notes": "مدفوع - المرحلة الأولى"
+        },
+        {
+          "id": "m3",
+          "name": "حملة SMS + Email",
+          "type": "تواصل مباشر",
+          "phase_id": "teasing",
+          "is_paid": true,
+          "cost": 1000,
+          "notes": "مدفوع - المرحلة الأولى"
+        },
+        {
+          "id": "m4",
+          "name": "50+ صحيفة عبر PR Newswire",
+          "type": "صحافة دولية",
+          "phase_id": "launch",
+          "is_paid": true,
+          "cost": 2000,
+          "notes": "مدفوع - المرحلة الثانية"
+        },
+        {
+          "id": "m5",
+          "name": "5 قنوات تلفزيونية",
+          "type": "تلفزيون",
+          "phase_id": "launch",
+          "is_paid": false,
+          "cost": 0,
+          "notes": "إعلام موازي - المرحلة الثانية"
+        },
+        {
+          "id": "m6",
+          "name": "5 إذاعات",
+          "type": "راديو",
+          "phase_id": "launch",
+          "is_paid": false,
+          "cost": 0,
+          "notes": "إعلام موازي - المرحلة الثانية"
+        },
+        {
+          "id": "m7",
+          "name": "25 صحفي ومؤثر",
+          "type": "مؤثرين",
+          "phase_id": "launch",
+          "is_paid": true,
+          "cost": 2500,
+          "notes": "مدفوع - المرحلة الثانية"
+        },
+        {
+          "id": "m8",
+          "name": "4 وسائل إعلام دولية",
+          "type": "إعلام دولي",
+          "phase_id": "launch",
+          "is_paid": true,
+          "cost": 1000,
+          "notes": "مدفوع - المرحلة الثانية"
+        },
+        {
+          "id": "m9",
+          "name": "5 صحف (مقالات رأي)",
+          "type": "صحافة",
+          "phase_id": "momentum",
+          "is_paid": false,
+          "cost": 0,
+          "notes": "إعلام موازي - المرحلة الثالثة"
+        },
+        {
+          "id": "m10",
+          "name": "5 إذاعات",
+          "type": "راديو",
+          "phase_id": "momentum",
+          "is_paid": false,
+          "cost": 0,
+          "notes": "إعلام موازي - المرحلة الثالثة"
+        },
+        {
+          "id": "m11",
+          "name": "5 مؤثرين",
+          "type": "مؤثرين",
+          "phase_id": "momentum",
+          "is_paid": true,
+          "cost": 2000,
+          "notes": "مدفوع - المرحلة الثالثة"
+        },
+        {
+          "id": "m12",
+          "name": "1 وسيلة إعلام دولية",
+          "type": "إعلام دولي",
+          "phase_id": "momentum",
+          "is_paid": true,
+          "cost": 1000,
+          "notes": "مدفوع - المرحلة الثالثة"
+        }
+      ],
+      "timeline": {
+        "phases": [
+          {
+            "id": 1,
+            "name": "التهيئة",
+            "name_en": "Preparation",
+            "start_date": "2025-01-01",
+            "end_date": "2025-01-14",
+            "color": "#10b981",
+            "tasks": [
+              "تطوير الهوية البصرية",
+              "إعداد المحتوى",
+              "تجهيز القنوات"
+            ]
+          },
+          {
+            "id": 2,
+            "name": "الإطلاق",
+            "name_en": "Launch",
+            "start_date": "2025-01-15",
+            "end_date": "2025-01-20",
+            "color": "#3b82f6",
+            "tasks": [
+              "إطلاق الحملة الرقمية",
+              "نشر البيان الصحفي",
+              "التفعيل على السوشيال ميديا"
+            ]
+          },
+          {
+            "id": 3,
+            "name": "الترسيخ",
+            "name_en": "Reinforcement",
+            "start_date": "2025-01-21",
+            "end_date": "2025-01-31",
+            "color": "#f59e0b",
+            "tasks": [
+              "متابعة الأداء",
+              "تحسين الحملات",
+              "إعداد التقارير"
+            ]
+          }
+        ]
+      },
+      "budget": {
+        "total": 10000,
+        "currency": "USD",
+        "breakdown": [
+          {
+            "category": "إنتاج محتوى",
+            "amount": 3000,
+            "percentage": 30
+          },
+          {
+            "category": "إعلانات رقمية",
+            "amount": 4000,
+            "percentage": 40
+          },
+          {
+            "category": "علاقات عامة",
+            "amount": 1500,
+            "percentage": 15
+          },
+          {
+            "category": "تصميم",
+            "amount": 1000,
+            "percentage": 10
+          },
+          {
+            "category": "طوارئ",
+            "amount": 500,
+            "percentage": 5
+          }
+        ]
+      },
+      "progress": {
+        "overall_percentage": 0,
+        "completed_products": 0,
+        "in_progress_products": 0,
+        "pending_products": 20,
+        "days_remaining": 24
+      },
+      "enabled_tabs": [
+        "overview",
+        "benchmarks",
+        "marketing",
+        "monitoring"
+      ],
+      "client_brief": {
+        "status": "submitted",
+        "submitted_at": "2025-12-28T22:10:48.814923",
+        "responses": {
+          "company_background": "fghjk",
+          "company_vision": "ghjk",
+          "company_mission": "fghj",
+          "company_values": [
+            "uuu",
+            "kkk",
+            "kkk"
+          ],
+          "project_name": "dfgtyuio",
+          "project_description": "rtyuio",
+          "unique_selling_points": [
+            "hji",
+            "jhg"
+          ],
+          "project_stage": "تخطيط",
+          "primary_audience": "dftyuio",
+          "secondary_audience": "fghuio",
+          "audience_pain_points": [
+            "tyuio"
+          ],
+          "audience_behavior": [
+            "يستخدم LinkedIn بكثرة",
+            "نشط على Twitter",
+            "يشاهد التلفزيون"
+          ],
+          "main_objective": "رفع الوعي بالعلامة التجارية",
+          "specific_objectives": [
+            "jkl"
+          ],
+          "success_metrics": [
+            "عدد المشاهدات/الوصول",
+            "التفاعل (إعجابات، تعليقات، مشاركات)",
+            "استفسارات العملاء"
+          ],
+          "tone": [
+            "رسمي ومهني",
+            "ودود وقريب",
+            "مبتكر وعصري"
+          ],
+          "key_messages": [
+            "gyuiop",
+            "ghyuio"
+          ],
+          "words_to_use": [
+            "ghyuio",
+            "tyuio"
+          ],
+          "words_to_avoid": [
+            "tyui",
+            "fghj"
+          ],
+          "main_competitors": [
+            "ujio",
+            "fghyuji",
+            "rtyu"
+          ],
+          "competitor_strengths": "fgvbyuijok",
+          "your_advantage": "yguhijo",
+          "budget_range": "أقل من 50,000 ريال",
+          "campaign_duration": "شهر",
+          "important_dates": [
+            "ghjui"
+          ],
+          "available_content": [
+            "شعار وهوية بصرية",
+            "صور احترافية",
+            "فيديوهات",
+            "بيانات صحفية سابقة",
+            "دراسات حالة",
+            "شهادات عملاء",
+            "إحصائيات وأرقام"
+          ],
+          "spokespersons": [
+            "yuio"
+          ],
+          "past_campaigns": "tyui"
+        }
+      },
+      "activity_log": [
+        {
+          "action": "brief_submitted",
+          "timestamp": "2025-12-28T22:10:48.814955",
+          "user_id": "client",
+          "details": "تم إرسال الموجز الإبداعي من العميل"
+        }
+      ],
+      "quotation": {
+        "currency": "JOD",
+        "deleted_products": [
+          "new_1767135004905",
+          "p20",
+          "p19",
+          "p18",
+          "p17",
+          "p16",
+          "p15",
+          "p14",
+          "p13",
+          "p12",
+          "p11",
+          "p10",
+          "p9",
+          "p8",
+          "p7",
+          "p6",
+          "p5",
+          "p4",
+          "p3",
+          "p2"
+        ],
+        "deleted_tools": [
+          "m1",
+          "m2",
+          "m3",
+          "m4",
+          "m5",
+          "m6",
+          "m7",
+          "m8",
+          "m9",
+          "m10",
+          "m11"
+        ],
+        "discount_amount": 0,
+        "discount_percent": 0,
+        "grand_total": 10100,
+        "media_tools_list": [
+          {
+            "id": "m1",
+            "name": "نشر في 5 صحف محلية",
+            "type": "صحافة",
+            "phase_id": "teasing",
+            "is_paid": false,
+            "cost": 0
+          },
+          {
+            "id": "m2",
+            "name": "3 مؤثرين (تشويق)",
+            "type": "مؤثرين",
+            "phase_id": "teasing",
+            "is_paid": true,
+            "cost": 500
+          },
+          {
+            "id": "m3",
+            "name": "حملة SMS + Email",
+            "type": "تواصل مباشر",
+            "phase_id": "teasing",
+            "is_paid": true,
+            "cost": 1000
+          },
+          {
+            "id": "m4",
+            "name": "50+ صحيفة عبر PR Newswire",
+            "type": "صحافة دولية",
+            "phase_id": "launch",
+            "is_paid": true,
+            "cost": 2000
+          },
+          {
+            "id": "m5",
+            "name": "5 قنوات تلفزيونية",
+            "type": "تلفزيون",
+            "phase_id": "launch",
+            "is_paid": false,
+            "cost": 0
+          },
+          {
+            "id": "m6",
+            "name": "5 إذاعات",
+            "type": "راديو",
+            "phase_id": "launch",
+            "is_paid": false,
+            "cost": 0
+          },
+          {
+            "id": "m7",
+            "name": "25 صحفي ومؤثر",
+            "type": "مؤثرين",
+            "phase_id": "launch",
+            "is_paid": true,
+            "cost": 2500
+          },
+          {
+            "id": "m8",
+            "name": "4 وسائل إعلام دولية",
+            "type": "إعلام دولي",
+            "phase_id": "launch",
+            "is_paid": true,
+            "cost": 1000
+          },
+          {
+            "id": "m9",
+            "name": "5 صحف (مقالات رأي)",
+            "type": "صحافة",
+            "phase_id": "momentum",
+            "is_paid": false,
+            "cost": 0
+          },
+          {
+            "id": "m10",
+            "name": "5 إذاعات",
+            "type": "راديو",
+            "phase_id": "momentum",
+            "is_paid": false,
+            "cost": 0
+          },
+          {
+            "id": "m11",
+            "name": "5 مؤثرين",
+            "type": "مؤثرين",
+            "phase_id": "momentum",
+            "is_paid": true,
+            "cost": 2000
+          },
+          {
+            "id": "m12",
+            "name": "1 وسيلة إعلام دولية",
+            "type": "إعلام دولي",
+            "phase_id": "momentum",
+            "is_paid": true,
+            "cost": 1000
+          }
+        ],
+        "media_total": 10000,
+        "notes": "",
+        "products": {
+          "new_1767162759304": {
+            "name": "كتابة محتوى البيان الصحفي : الإعلان عن ALIC",
+            "type": "كتابة محتوى",
+            "unit_price": 150
+          },
+          "p1": {
+            "name": "تصميم منشور LinkedIn: إعلان تشويقي للقطاع الصناعي",
+            "type": "تصميم سوشيال",
+            "unit_price": 100
+          },
+          "p2": {
+            "type": "كتابة محتوى"
+          },
+          "p3": {
+            "type": "كتابة محتوى"
+          },
+          "p4": {
+            "type": "فيديو برومو"
+          },
+          "p5": {
+            "type": "تصميم طباعي"
+          },
+          "p6": {
+            "type": "حدث"
+          },
+          "p7": {
+            "type": "مؤتمر صحفي"
+          },
+          "p8": {
+            "type": "تغطية إعلامية"
+          }
+        },
+        "products_list": [
+          {
+            "id": "p1",
+            "name": "منشور LinkedIn: إعلان تشويقي للقطاع الصناعي",
+            "type": "تصميم سوشيال",
+            "phase": "teasing",
+            "date": "5 يناير 2026",
+            "quantity": 1,
+            "unit_price": 100
+          },
+          {
+            "id": "p2",
+            "name": "بيان صحفي: بناء الوعي عبر الإعلام الاقتصادي",
+            "type": "كتابة محتوى",
+            "phase": "teasing",
+            "date": "5-8 يناير 2026",
+            "quantity": 1,
+            "unit_price": 150
+          },
+          {
+            "id": "p3",
+            "name": "رسالة SMS/Email: التواصل المباشر مع القطاع الصناعي",
+            "type": "كتابة محتوى",
+            "phase": "teasing",
+            "date": "7 يناير 2026",
+            "quantity": 1,
+            "unit_price": 150
+          },
+          {
+            "id": "p4",
+            "name": "فيديو تشويقي: بناء الوعي لدى المستثمرين الإقليميين",
+            "type": "فيديو برومو",
+            "phase": "teasing",
+            "date": "8-10 يناير 2026",
+            "quantity": 1,
+            "unit_price": 2500
+          },
+          {
+            "id": "p5",
+            "name": "دعوات VIP لحفل الإطلاق",
+            "type": "تصميم طباعي",
+            "phase": "teasing",
+            "date": "10-12 يناير 2026",
+            "quantity": 1,
+            "unit_price": 800
+          },
+          {
+            "id": "p6",
+            "name": "حفل الإطلاق الرسمي VIP",
+            "type": "حدث",
+            "phase": "launch",
+            "date": "13 يناير 2026",
+            "quantity": 1,
+            "unit_price": 8500
+          },
+          {
+            "id": "p7",
+            "name": "المؤتمر الصحفي للإطلاق",
+            "type": "مؤتمر صحفي",
+            "phase": "launch",
+            "date": "13 يناير 2026",
+            "quantity": 1,
+            "unit_price": 3500
+          },
+          {
+            "id": "p8",
+            "name": "التغطية التلفزيونية الشاملة",
+            "type": "تغطية إعلامية",
+            "phase": "launch",
+            "date": "13-14 يناير 2026",
+            "quantity": 1,
+            "unit_price": 2000
+          },
+          {
+            "id": "p9",
+            "name": "حملة الإعلانات المدفوعة",
+            "type": "حملة إعلانية",
+            "phase": "launch",
+            "date": "13-18 يناير 2026",
+            "quantity": 1,
+            "unit_price": 1500
+          },
+          {
+            "id": "p10",
+            "name": "حملة LinkedIn الاستراتيجية (10 منشورات)",
+            "type": "كتابة محتوى",
+            "phase": "launch",
+            "date": "13-22 يناير 2026",
+            "quantity": 10,
+            "unit_price": 150
+          },
+          {
+            "id": "p11",
+            "name": "حملة المؤثرين (5 مؤثرين)",
+            "type": "حملة مؤثرين",
+            "phase": "launch",
+            "date": "14-20 يناير 2026",
+            "quantity": 5,
+            "unit_price": 400
+          },
+          {
+            "id": "p12",
+            "name": "بودكاست مع عمر عايش",
+            "type": "بودكاست",
+            "phase": "launch",
+            "date": "16-18 يناير 2026",
+            "quantity": 1,
+            "unit_price": 1200
+          },
+          {
+            "id": "p13",
+            "name": "مقالات الرأي (5 مقالات)",
+            "type": "مقال",
+            "phase": "launch",
+            "date": "16-20 يناير 2026",
+            "quantity": 5,
+            "unit_price": 300
+          },
+          {
+            "id": "p14",
+            "name": "الجولة الإعلامية VIP للموقع",
+            "type": "جولة إعلامية",
+            "phase": "launch",
+            "date": "19 يناير 2026",
+            "quantity": 1,
+            "unit_price": 2500
+          },
+          {
+            "id": "p15",
+            "name": "البيان الصحفي الرسمي (50+ وسيلة)",
+            "type": "بيان صحفي",
+            "phase": "launch",
+            "date": "13 يناير 2026",
+            "quantity": 1,
+            "unit_price": 400
+          },
+          {
+            "id": "p16",
+            "name": "ظهور إذاعي: عمر عايش في إذاعة حسنى FM",
+            "type": "إعلان إذاعي",
+            "phase": "momentum",
+            "date": "23 يناير 2026",
+            "quantity": 1,
+            "unit_price": 600
+          },
+          {
+            "id": "p17",
+            "name": "جولة إذاعية في الإذاعات الأردنية",
+            "type": "تغطية إعلامية",
+            "phase": "momentum",
+            "date": "24-27 يناير 2026",
+            "quantity": 1,
+            "unit_price": 2000
+          },
+          {
+            "id": "p18",
+            "name": "حلقة تحليلية: المخبر الاقتصادي",
+            "type": "فيديو سينمائي",
+            "phase": "momentum",
+            "date": "28 يناير 2026",
+            "quantity": 1,
+            "unit_price": 3500
+          },
+          {
+            "id": "p19",
+            "name": "تقرير تلفزيوني: برنامج مال وأعمال",
+            "type": "تغطية إعلامية",
+            "phase": "momentum",
+            "date": "29 يناير 2026",
+            "quantity": 1,
+            "unit_price": 2000
+          },
+          {
+            "id": "p20",
+            "name": "حملة شهادات الشركاء والخبراء",
+            "type": "فيديو تصوير",
+            "phase": "momentum",
+            "date": "23-31 يناير 2026",
+            "quantity": 1,
+            "unit_price": 4000
+          }
+        ],
+        "products_total": 100,
+        "subtotal": 10100,
+        "terms": [
+          "صلاحية العرض: 30 يوم من تاريخ الإصدار",
+          "الدفع: 50% مقدم، 50% عند التسليم",
+          "مدة التنفيذ: حسب الجدول الزمني المتفق عليه",
+          "التعديلات: يشمل العرض تعديلين مجانيين لكل منتج",
+          "الأسعار لا تشمل ضريبة القيمة المضافة"
+        ],
+        "updated_at": "2025-12-31T07:04:50.355Z",
+        "earned_media_list": [
+          {
+            "id": "earned1",
+            "name": "مقالات صحفية - صحف محلية (الرأي، الغد، الدستور)",
+            "type": "صحافة",
+            "phase_id": "teasing",
+            "quantity": 5,
+            "unit_price": 750
+          },
+          {
+            "id": "earned2",
+            "name": "مقالات في مواقع إخبارية إلكترونية (عمون، رؤيا نيوز)",
+            "type": "مواقع إخبارية",
+            "phase_id": "teasing",
+            "quantity": 10,
+            "unit_price": 350
+          },
+          {
+            "id": "earned3",
+            "name": "تغطية تلفزيونية - قنوات محلية (رؤيا، المملكة)",
+            "type": "تلفزيون",
+            "phase_id": "launch",
+            "quantity": 3,
+            "unit_price": 3500
+          },
+          {
+            "id": "earned4",
+            "name": "مقابلات إذاعية (هلا FM، روتانا)",
+            "type": "راديو",
+            "phase_id": "launch",
+            "quantity": 5,
+            "unit_price": 500
+          },
+          {
+            "id": "earned5",
+            "name": "نشر عبر مؤثرين (Micro 10K-50K)",
+            "type": "مؤثرين",
+            "phase_id": "launch",
+            "quantity": 15,
+            "unit_price": 250
+          },
+          {
+            "id": "earned6",
+            "name": "نشر عبر مؤثرين (Mid 50K-200K)",
+            "type": "مؤثرين",
+            "phase_id": "launch",
+            "quantity": 5,
+            "unit_price": 800
+          },
+          {
+            "id": "earned7",
+            "name": "مقالات رأي وتحليلية",
+            "type": "صحافة",
+            "phase_id": "momentum",
+            "quantity": 5,
+            "unit_price": 1200
+          },
+          {
+            "id": "earned8",
+            "name": "بودكاست - حلقات مدفوعة",
+            "type": "بودكاست",
+            "phase_id": "momentum",
+            "quantity": 3,
+            "unit_price": 700
+          },
+          {
+            "id": "earned9",
+            "name": "نشر عبر مؤثرين (Macro 200K+)",
+            "type": "مؤثرين",
+            "phase_id": "momentum",
+            "quantity": 2,
+            "unit_price": 3000
+          }
+        ],
+        "paid_media_list": [
+          {
+            "id": "paid1",
+            "name": "حملة SMS + Email (5000 رسالة)",
+            "type": "تواصل مباشر",
+            "phase_id": "teasing",
+            "cost": 750
+          },
+          {
+            "id": "paid2",
+            "name": "إعلانات LinkedIn (مرحلة التهيئة)",
+            "type": "إعلان رقمي",
+            "phase_id": "teasing",
+            "cost": 1500
+          },
+          {
+            "id": "paid3",
+            "name": "إعلانات LinkedIn (مرحلة الإطلاق)",
+            "type": "إعلان رقمي",
+            "phase_id": "launch",
+            "cost": 3000
+          },
+          {
+            "id": "paid4",
+            "name": "إعلانات Google Display",
+            "type": "إعلان رقمي",
+            "phase_id": "launch",
+            "cost": 2500
+          },
+          {
+            "id": "paid5",
+            "name": "إعلانات Meta (Facebook/Instagram)",
+            "type": "إعلان رقمي",
+            "phase_id": "launch",
+            "cost": 2000
+          },
+          {
+            "id": "paid6",
+            "name": "نشر PR Newswire (50+ صحيفة دولية)",
+            "type": "صحافة دولية",
+            "phase_id": "launch",
+            "cost": 1800
+          },
+          {
+            "id": "paid7",
+            "name": "وسائل إعلام دولية (4 وسائل)",
+            "type": "إعلام دولي",
+            "phase_id": "launch",
+            "cost": 2800
+          },
+          {
+            "id": "paid8",
+            "name": "إعلانات YouTube Pre-roll",
+            "type": "إعلان رقمي",
+            "phase_id": "launch",
+            "cost": 1500
+          },
+          {
+            "id": "paid9",
+            "name": "إعلانات LinkedIn (مرحلة الترسيخ)",
+            "type": "إعلان رقمي",
+            "phase_id": "momentum",
+            "cost": 2000
+          },
+          {
+            "id": "paid10",
+            "name": "وسائل إعلام دولية (ترسيخ)",
+            "type": "إعلام دولي",
+            "phase_id": "momentum",
+            "cost": 1400
+          },
+          {
+            "id": "paid11",
+            "name": "إعلانات إعادة الاستهداف (Retargeting)",
+            "type": "إعلان رقمي",
+            "phase_id": "momentum",
+            "cost": 1200
+          }
+        ]
+      }
+    },
+    {
+      "id": "مشروع-مدينة-السيارات",
+      "template_id": "campaign-template",
+      "tenant_id": "nobles",
+      "status": "draft",
+      "created_at": "2025-12-28T20:17:22.689260",
+      "updated_at": "2025-12-28T20:17:22.689265",
+      "basic_info": {
+        "name": "مشروع مدينة السيارات",
+        "name_en": "",
+        "tagline": "",
+        "duration_days": 30,
+        "total_products": 0,
+        "budget": 10000.0,
+        "currency": "USD",
+        "start_date": "",
+        "end_date": ""
+      },
+      "client_info": {},
+      "project_info": {},
+      "campaign_objectives": {},
+      "target_audience": {},
+      "questionnaire": {},
+      "communication_products": [],
+      "timeline": {
+        "phases": []
+      },
+      "budget": {
+        "total": 10000.0,
+        "currency": "USD",
+        "breakdown": []
+      },
+      "progress": {
+        "overall_percentage": 0,
+        "completed_products": 0,
+        "in_progress_products": 0,
+        "pending_products": 0,
+        "days_remaining": 30
+      },
+      "enabled_tabs": [
+        "overview",
+        "benchmarks",
+        "marketing",
+        "monitoring"
+      ]
+    },
+    {
+      "id": "مشروع-مدينة-السيارات-",
+      "campaign_type": "launch",
+      "tenant_id": "nobles",
+      "status": "draft",
+      "created_at": "2025-12-28T21:42:44.232249",
+      "updated_at": "2025-12-29T05:14:26.894773",
+      "created_by": "dev-admin",
+      "basic_info": {
+        "name": "مشروع مدينة السيارات ",
+        "name_en": "",
+        "description": "بلا بلا بلا ",
+        "tagline": "",
+        "duration_days": 35,
+        "total_products": 0,
+        "budget": 10000,
+        "currency": "USD",
+        "start_date": "2026-01-01",
+        "end_date": "2026-01-31"
+      },
+      "client_info": {
+        "company_name": "نوبلز العقارية ",
+        "company_name_en": "",
+        "company_description": "سيسيسي",
+        "industry": "real_estate",
+        "location": "عمان، الأردن"
+      },
+      "project_info": {
+        "project_name": "سيسي",
+        "project_tagline": "سيسيسي",
+        "project_description": "سيسيسي"
+      },
+      "phases": [
+        {
+          "duration_days": 14,
+          "id": "teasing",
+          "name": "التهيئة والتشويق",
+          "name_en": "Teasing & Anticipation",
+          "objective": "بناء حالة من الترقب والفضول",
+          "suggested_products": [
+            "teaser_video",
+            "social_posts",
+            "press_release"
+          ]
+        },
+        {
+          "duration_days": 7,
+          "id": "launch",
+          "name": "الإطلاق الرسمي",
+          "name_en": "Official Launch",
+          "objective": "الكشف الرسمي وبناء الزخم",
+          "suggested_products": [
+            "launch_event",
+            "media_coverage",
+            "influencer_campaign"
+          ]
+        },
+        {
+          "duration_days": 14,
+          "id": "momentum",
+          "name": "ترسيخ الريادة وإظهار الأثر",
+          "name_en": "Establishing Leadership",
+          "objective": "تعزيز المكانة وقياس الأثر",
+          "suggested_products": [
+            "opinion_articles",
+            "case_studies",
+            "testimonials"
+          ]
+        }
+      ],
+      "client_brief": {
+        "status": "pending",
+        "submitted_at": null,
+        "responses": {}
+      },
+      "analysis": {
+        "swot": {
+          "strengths": [],
+          "weaknesses": [],
+          "opportunities": [],
+          "threats": []
+        },
+        "pestel": {},
+        "communication_gaps": []
+      },
+      "products": [
+        {
+          "id": "product_1766967367684",
+          "name": "سيبلاتن",
+          "phase_id": "teasing",
+          "phase": "التهيئة والتشويق",
+          "type": "social",
+          "quantity": 3,
+          "status": "pending",
+          "description": ""
+        }
+      ],
+      "timeline": {
+        "phases": [
+          {
+            "duration_days": 14,
+            "id": "teasing",
+            "name": "التهيئة والتشويق",
+            "name_en": "Teasing & Anticipation",
+            "objective": "بناء حالة من الترقب والفضول",
+            "suggested_products": [
+              "teaser_video",
+              "social_posts",
+              "press_release"
+            ]
+          },
+          {
+            "duration_days": 7,
+            "id": "launch",
+            "name": "الإطلاق الرسمي",
+            "name_en": "Official Launch",
+            "objective": "الكشف الرسمي وبناء الزخم",
+            "suggested_products": [
+              "launch_event",
+              "media_coverage",
+              "influencer_campaign"
+            ]
+          },
+          {
+            "duration_days": 14,
+            "id": "momentum",
+            "name": "ترسيخ الريادة وإظهار الأثر",
+            "name_en": "Establishing Leadership",
+            "objective": "تعزيز المكانة وقياس الأثر",
+            "suggested_products": [
+              "opinion_articles",
+              "case_studies",
+              "testimonials"
+            ]
+          }
+        ],
+        "milestones": []
+      },
+      "progress": {
+        "overall_percentage": 0,
+        "completed_products": 0,
+        "in_progress_products": 0,
+        "pending_products": 0,
+        "days_remaining": 35
+      },
+      "activity_log": [
+        {
+          "action": "created",
+          "timestamp": "2025-12-28T21:42:44.232293",
+          "user_id": "dev-admin",
+          "details": "تم إنشاء الحملة"
+        }
+      ],
+      "media_tools": []
+    }
+  ]
+}

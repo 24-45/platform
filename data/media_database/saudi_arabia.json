@@ -1,0 +1,175 @@
+{
+    "database_info": {
+        "name": "قاعدة البيانات الإعلامية - السعودية",
+        "version": "1.0",
+        "last_updated": "2025-12-28",
+        "country": "SA",
+        "country_name": "المملكة العربية السعودية"
+    },
+    "newspapers": {
+        "local": [],
+        "regional": [],
+        "international": []
+    },
+    "opinion_writers": {
+        "local": [],
+        "regional": []
+    },
+    "influencers": {
+        "local": [],
+        "regional": [],
+        "international": []
+    },
+    "tv_channels": {
+        "local": [],
+        "regional": [],
+        "international": []
+    },
+    "radio_stations": {
+        "local": [],
+        "regional": []
+    },
+    "digital_platforms": {
+        "news_sites": [],
+        "blogs": [],
+        "podcasts": []
+    },
+    "pr_services": {
+        "local": [],
+        "regional": [],
+        "international": []
+    },
+    "_schema": {
+        "newspaper": {
+            "id": "string",
+            "name": "string",
+            "name_en": "string",
+            "type": "daily|weekly|monthly",
+            "circulation": "number",
+            "audience": "string",
+            "specialization": ["general", "business", "sports", "lifestyle"],
+            "website": "string",
+            "contact": {
+                "email": "string",
+                "phone": "string",
+                "editor_name": "string"
+            },
+            "pricing": {
+                "front_page": "number",
+                "full_page": "number",
+                "half_page": "number",
+                "quarter_page": "number",
+                "article": "number"
+            },
+            "notes": "string"
+        },
+        "opinion_writer": {
+            "id": "string",
+            "name": "string",
+            "name_en": "string",
+            "newspapers": ["array of newspaper ids"],
+            "specializations": ["politics", "economy", "society", "technology"],
+            "followers": "number",
+            "influence_score": "1-10",
+            "contact": {
+                "email": "string",
+                "twitter": "string",
+                "linkedin": "string"
+            },
+            "pricing": {
+                "article": "number",
+                "series": "number"
+            },
+            "notes": "string"
+        },
+        "influencer": {
+            "id": "string",
+            "name": "string",
+            "name_en": "string",
+            "handle": "string",
+            "platforms": {
+                "instagram": {"followers": "number", "engagement": "percentage"},
+                "twitter": {"followers": "number", "engagement": "percentage"},
+                "youtube": {"subscribers": "number", "avg_views": "number"},
+                "tiktok": {"followers": "number", "avg_views": "number"},
+                "snapchat": {"followers": "number"},
+                "linkedin": {"followers": "number"}
+            },
+            "specializations": ["lifestyle", "tech", "business", "fashion", "food", "travel"],
+            "audience_demographics": {
+                "age_range": "string",
+                "gender_split": {"male": "percentage", "female": "percentage"},
+                "location": "string"
+            },
+            "pricing": {
+                "post": "number",
+                "story": "number",
+                "reel": "number",
+                "video": "number",
+                "campaign": "number"
+            },
+            "contact": {
+                "email": "string",
+                "phone": "string",
+                "agency": "string"
+            },
+            "past_collaborations": ["array of brand names"],
+            "notes": "string"
+        },
+        "tv_channel": {
+            "id": "string",
+            "name": "string",
+            "name_en": "string",
+            "type": "news|entertainment|sports|business",
+            "coverage": "local|regional|international",
+            "viewership": "number",
+            "programs": [
+                {
+                    "name": "string",
+                    "type": "news|talk_show|documentary",
+                    "timing": "string",
+                    "host": "string",
+                    "viewership": "number"
+                }
+            ],
+            "contact": {
+                "email": "string",
+                "phone": "string",
+                "pr_contact": "string"
+            },
+            "pricing": {
+                "interview": "number",
+                "segment": "number",
+                "sponsorship": "number"
+            },
+            "notes": "string"
+        },
+        "radio_station": {
+            "id": "string",
+            "name": "string",
+            "name_en": "string",
+            "frequency": "string",
+            "type": "news|music|talk|mixed",
+            "coverage_area": "string",
+            "listenership": "number",
+            "programs": [
+                {
+                    "name": "string",
+                    "type": "morning_show|news|talk",
+                    "timing": "string",
+                    "host": "string"
+                }
+            ],
+            "contact": {
+                "email": "string",
+                "phone": "string"
+            },
+            "pricing": {
+                "interview": "number",
+                "spot": "number",
+                "sponsorship": "number"
+            },
+            "notes": "string"
+        }
+    }
+}

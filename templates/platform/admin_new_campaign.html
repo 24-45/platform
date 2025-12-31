@@ -1,0 +1,323 @@
+{% extends 'platform/base.html' %}
+
+{% block title %}إنشاء حملة جديدة - منصة 24°45'{% endblock %}
+
+{% block extra_css %}
+<style>
+    .new-campaign-container {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+    
+    .page-header {
+        margin-bottom: 40px;
+    }
+    
+    .page-header h1 {
+        color: #fff;
+        font-weight: 700;
+        margin: 0 0 10px 0;
+    }
+    
+    .page-header p {
+        color: rgba(255,255,255,0.6);
+        margin: 0;
+    }
+    
+    .form-section {
+        background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+        border-radius: 16px;
+        padding: 30px;
+        margin-bottom: 25px;
+        border: 1px solid rgba(255,255,255,0.1);
+    }
+    
+    .section-title {
+        color: #fff;
+        font-size: 1.2rem;
+        font-weight: 700;
+        margin-bottom: 25px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+    
+    .section-title i {
+        width: 40px;
+        height: 40px;
+        background: rgba(0, 212, 106, 0.15);
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #00d46a;
+    }
+    
+    .form-group {
+        margin-bottom: 20px;
+    }
+    
+    .form-group label {
+        display: block;
+        color: rgba(255,255,255,0.8);
+        font-weight: 600;
+        margin-bottom: 8px;
+    }
+    
+    .form-group label .required {
+        color: #ef4444;
+    }
+    
+    .form-control {
+        width: 100%;
+        padding: 12px 16px;
+        background: rgba(0,0,0,0.3);
+        border: 1px solid rgba(255,255,255,0.15);
+        border-radius: 10px;
+        color: #fff;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+    }
+    
+    .form-control:focus {
+        outline: none;
+        border-color: #00d46a;
+        box-shadow: 0 0 0 3px rgba(0, 212, 106, 0.1);
+    }
+    
+    .form-control::placeholder {
+        color: rgba(255,255,255,0.4);
+    }
+    
+    select.form-control {
+        cursor: pointer;
+    }
+    
+    .form-row {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+    
+    @media (max-width: 768px) {
+        .form-row {
+            grid-template-columns: 1fr;
+        }
+    }
+    
+    /* Tabs Selection */
+    .tabs-selection {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+    
+    .tab-checkbox {
+        display: none;
+    }
+    
+    .tab-label {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        padding: 15px 20px;
+        background: rgba(0,0,0,0.2);
+        border: 2px solid rgba(255,255,255,0.1);
+        border-radius: 12px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+    
+    .tab-label:hover {
+        border-color: rgba(255,255,255,0.2);
+    }
+    
+    .tab-checkbox:checked + .tab-label {
+        border-color: #00d46a;
+        background: rgba(0, 212, 106, 0.1);
+    }
+    
+    .tab-icon {
+        width: 45px;
+        height: 45px;
+        background: rgba(255,255,255,0.1);
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
+        color: rgba(255,255,255,0.7);
+    }
+    
+    .tab-checkbox:checked + .tab-label .tab-icon {
+        background: rgba(0, 212, 106, 0.2);
+        color: #00d46a;
+    }
+    
+    .tab-info h4 {
+        color: #fff;
+        font-size: 1rem;
+        font-weight: 600;
+        margin: 0 0 5px 0;
+    }
+    
+    .tab-info p {
+        color: rgba(255,255,255,0.5);
+        font-size: 0.85rem;
+        margin: 0;
+    }
+    
+    .tab-required {
+        font-size: 0.7rem;
+        padding: 3px 8px;
+        background: rgba(245, 158, 11, 0.2);
+        color: #f59e0b;
+        border-radius: 4px;
+        margin-right: auto;
+    }
+    
+    /* Submit Button */
+    .form-actions {
+        display: flex;
+        gap: 15px;
+        justify-content: flex-end;
+        margin-top: 30px;
+    }
+    
+    .btn-submit {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 14px 30px;
+        background: linear-gradient(135deg, #00d46a, #10b981);
+        color: #fff;
+        border: none;
+        border-radius: 10px;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+    
+    .btn-submit:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 20px rgba(0, 212, 106, 0.3);
+    }
+    
+    .btn-cancel {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 14px 30px;
+        background: rgba(255,255,255,0.1);
+        color: #fff;
+        border: none;
+        border-radius: 10px;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+    
+    .btn-cancel:hover {
+        background: rgba(255,255,255,0.15);
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="new-campaign-container">
+        <div class="page-header">
+            <h1><i class="fas fa-plus-circle" style="color: #00d46a; margin-left: 15px;"></i> إنشاء حملة جديدة</h1>
+            <p>أنشئ حملة إعلامية جديدة باستخدام قالب الحملة الإعلامية</p>
+        </div>
+        
+        <form action="{{ url_for('admin_new_campaign') }}" method="POST">
+            <!-- المعلومات الأساسية -->
+            <div class="form-section">
+                <h3 class="section-title">
+                    <i class="fas fa-info-circle"></i>
+                    المعلومات الأساسية
+                </h3>
+                
+                <div class="form-group">
+                    <label>اسم الحملة <span class="required">*</span></label>
+                    <input type="text" name="name" class="form-control" placeholder="مثال: حملة إطلاق مشروع ABC" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>العميل <span class="required">*</span></label>
+                    <select name="tenant_id" class="form-control" required>
+                        <option value="">اختر العميل...</option>
+                        {% for tenant in tenants %}
+                        <option value="{{ tenant.slug }}">{{ tenant.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>مدة الحملة (بالأيام)</label>
+                        <input type="number" name="duration" class="form-control" value="30" min="1">
+                    </div>
+                    <div class="form-group">
+                        <label>الميزانية (بالدولار)</label>
+                        <input type="number" name="budget" class="form-control" value="10000" min="0" step="100">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>تاريخ البدء</label>
+                    <input type="date" name="start_date" class="form-control" value="{{ now().strftime('%Y-%m-%d') if now else '' }}">
+                </div>
+            </div>
+            
+            <!-- أقسام التقرير -->
+            <div class="form-section">
+                <h3 class="section-title">
+                    <i class="fas fa-layer-group"></i>
+                    أقسام التقرير
+                </h3>
+                
+                <div class="tabs-selection">
+                    {% for tab in template.template_info.tabs %}
+                    <div>
+                        <input type="checkbox" name="tabs" value="{{ tab.id }}" id="tab-{{ tab.id }}" class="tab-checkbox"
+                            {% if tab.required %}checked disabled{% endif %}>
+                        {% if tab.required %}
+                        <input type="hidden" name="tabs" value="{{ tab.id }}">
+                        {% endif %}
+                        <label for="tab-{{ tab.id }}" class="tab-label">
+                            <div class="tab-icon">
+                                <i class="fas {{ tab.icon }}"></i>
+                            </div>
+                            <div class="tab-info">
+                                <h4>{{ tab.name }}</h4>
+                                <p>{{ tab.name_en }}</p>
+                            </div>
+                            {% if tab.required %}
+                            <span class="tab-required">إلزامي</span>
+                            {% endif %}
+                        </label>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            
+            <!-- أزرار الإجراءات -->
+            <div class="form-actions">
+                <a href="{{ url_for('admin_campaigns') }}" class="btn-cancel">
+                    <i class="fas fa-times"></i>
+                    إلغاء
+                </a>
+                <button type="submit" class="btn-submit">
+                    <i class="fas fa-check"></i>
+                    إنشاء الحملة
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
