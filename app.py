@@ -302,7 +302,10 @@ def login():
 def google_login():
     """بدء عملية تسجيل الدخول بجوجل"""
     # استخدام الرابط مباشرة لتجنب مشاكل redirect_uri_mismatch
-    if request.host.endswith('pythonanywhere.com'):
+    host = request.host
+    if '24-45.com' in host:
+        redirect_uri = 'https://www.24-45.com/auth/google/callback'
+    elif 'pythonanywhere.com' in host:
         redirect_uri = 'https://24-45.pythonanywhere.com/auth/google/callback'
     else:
         redirect_uri = url_for('google_callback', _external=True)
