@@ -14160,8 +14160,9 @@
                     </div>
                 </div>
 
+                {% if project.slug == 'automotive-city' %}
                 <!-- ═══════════════════════════════════════════════════════════════════════════════ -->
-                <!-- قسم لوحة البيانات التحليلية - Analytics Dashboard -->
+                <!-- قسم لوحة البيانات التحليلية - Analytics Dashboard - Motor City Only -->
                 <!-- ═══════════════════════════════════════════════════════════════════════════════ -->
                 <div class="executive-summary-epic" style="margin-bottom: 30px;">
                     <div class="summary-body" style="padding: 0;">
@@ -14356,6 +14357,7 @@
                         </div>
                     </div>
                 </div>
+                {% endif %}
 
                 {% if project.project_vision or project.project_mission %}
                 <!-- ═══════════════════════════════════════════════════════════════════════════════ -->
@@ -15155,7 +15157,7 @@
                             </div>
                             <div class="toggle-btn-text">
                                 <h3><i class="fas fa-bullseye" style="margin-left: 10px;"></i> استبانة الاتصال الاستراتيجي</h3>
-                                <p>أسئلة موجّهة لاستكمال المعلومات الناقصة وبناء استراتيجية اتصالية متكاملة للمشروع</p>
+                                <p>أسئلة موجّهة لبناء استراتيجية اتصالية فعّالة للمشروع - تُستكمل بالتنسيق مع العميل</p>
                             </div>
                             <div class="toggle-btn-arrow">
                                 <i class="fas fa-chevron-down" id="questionnaireArrow"></i>
@@ -15165,28 +15167,12 @@
                             <div class="mini-progress-bar">
                                 <div class="mini-progress-fill" id="miniProgressFill" style="width: 0%"></div>
                             </div>
-                            <span class="mini-progress-text" id="miniProgressText">0/18 سؤال</span>
+                            <span class="mini-progress-text" id="miniProgressText">0/22 سؤال</span>
                         </div>
                     </button>
                     
                     <!-- محتوى الاستبانة القابل للطي -->
                     <div class="questionnaire-collapsible-content" id="questionnaireContent" style="display: none;">
-                    
-                    <!-- ملخص المعلومات المتوفرة -->
-                    <div class="available-info-summary" style="background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(16, 185, 129, 0.05)); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 12px; padding: 20px; margin-bottom: 25px;">
-                        <h5 style="color: #059669; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
-                            <i class="fas fa-check-circle"></i>
-                            المعلومات المتوفرة من الملفات المرفقة
-                        </h5>
-                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 10px; font-size: 0.9rem; color: #374151;">
-                            <div><i class="fas fa-check" style="color: #059669; margin-left: 5px;"></i> الموقع والمساحة: 914 دونم، الماضونة</div>
-                            <div><i class="fas fa-check" style="color: #059669; margin-left: 5px;"></i> عدد القطع: 757 معرض</div>
-                            <div><i class="fas fa-check" style="color: #059669; margin-left: 5px;"></i> الشركاء: نوبلز، AVID، أمانة عمان</div>
-                            <div><i class="fas fa-check" style="color: #059669; margin-left: 5px;"></i> القطاعات المستهدفة: وكالات، معارض، خدمات</div>
-                            <div><i class="fas fa-check" style="color: #059669; margin-left: 5px;"></i> المزايا التنافسية: 7 مزايا رئيسية</div>
-                            <div><i class="fas fa-check" style="color: #059669; margin-left: 5px;"></i> نموذج العمل: تأجير فقط</div>
-                        </div>
-                    </div>
                     
                     <!-- Progress Bar -->
                     <div class="questionnaire-progress">
@@ -15194,17 +15180,17 @@
                         <div class="progress-bar-custom">
                             <div class="progress-fill" style="width: 0%"></div>
                         </div>
-                        <span class="progress-count">0/18 سؤال</span>
+                        <span class="progress-count">0/22 سؤال</span>
                     </div>
 
                     <div class="questionnaire-accordion" id="questionnaireAccordion">
                         
-                        <!-- القسم الأول: أولويات الحملة الاتصالية -->
+                        <!-- القسم الأول: الأهداف الاتصالية -->
                         <div class="accordion-section mb-3">
                             <button class="questionnaire-header" type="button" data-toggle="collapse" data-target="#section1" aria-expanded="true">
                                 <span>
                                     <span class="section-number">القسم 1</span>
-                                    أولويات الحملة الاتصالية
+                                    الأهداف الاتصالية
                                 </span>
                                 <i class="fas fa-chevron-up toggle-icon"></i>
                             </button>
@@ -15212,12 +15198,9 @@
                                 <div class="question-item">
                                     <div class="question-text">
                                         <span class="question-number">1</span>
-                                        ما الأولوية القصوى للأشهر الثلاثة القادمة من الحملة الاتصالية؟
+                                        ما الهدف الرئيسي من الحملة الاتصالية للمشروع خلال الـ 12 شهراً القادمة؟
                                     </div>
-                                    <div class="question-hint">
-                                        <strong>السياق:</strong> المشروع في مرحلة التطوير ولم يبدأ البيع/التأجير بعد<br>
-                                        اختر واحدة: إطلاق موقع إلكتروني / حملة توعوية / حضور معرض السيارات / التواصل المباشر مع الوكالات
-                                    </div>
+                                    <div class="question-hint">اختر هدفاً واحداً: بناء الوعي بالمشروع / جذب مستأجرين محتملين / تعزيز السمعة المؤسسية / الإعلان عن مرحلة جديدة</div>
                                     <div class="question-answer">
                                         <textarea placeholder="أدخل الإجابة هنا..."></textarea>
                                     </div>
@@ -15225,12 +15208,9 @@
                                 <div class="question-item">
                                     <div class="question-text">
                                         <span class="question-number">2</span>
-                                        ما مؤشر النجاح الأهم الذي تودّ تحقيقه من الحملة الاتصالية؟
+                                        ما مؤشر النجاح الأهم الذي تودّ تحقيقه من الجهود الاتصالية؟
                                     </div>
-                                    <div class="question-hint">
-                                        <strong>السياق:</strong> لديكم 757 قطعة معرض للتأجير<br>
-                                        أمثلة: عدد طلبات الحجز المبدئي / عدد الاستفسارات من الوكالات / نسبة التغطية الإعلامية / عدد زيارات الموقع الإلكتروني
-                                    </div>
+                                    <div class="question-hint">مثال: عدد الاستفسارات الواردة، نسبة التغطية الإعلامية، عدد العقود الموقّعة، نسبة الإشغال</div>
                                     <div class="question-answer">
                                         <textarea placeholder="أدخل الإجابة هنا..."></textarea>
                                     </div>
@@ -15238,12 +15218,9 @@
                                 <div class="question-item">
                                     <div class="question-text">
                                         <span class="question-number">3</span>
-                                        ما الانطباع الذي تريد أن يتركه موتور سيتي لدى الوكالات والمعارض؟
+                                        ما الانطباع الذي تريد أن يتركه المشروع لدى الجمهور المستهدف؟
                                     </div>
-                                    <div class="question-hint">
-                                        <strong>السياق:</strong> أنتم أول مدينة سيارات متكاملة في الأردن<br>
-                                        صِف بثلاث كلمات مثل: منظّم، مستقبلي، موثوق / حديث، متكامل، حكومي
-                                    </div>
+                                    <div class="question-hint">صِف بثلاث كلمات: مثال: موثوق، مبتكر، متكامل</div>
                                     <div class="question-answer">
                                         <textarea placeholder="أدخل الإجابة هنا..."></textarea>
                                     </div>
@@ -15251,12 +15228,12 @@
                             </div>
                         </div>
 
-                        <!-- القسم الثاني: الجمهور المستهدف وصنّاع القرار -->
+                        <!-- القسم الثاني: فهم الجمهور المستهدف -->
                         <div class="accordion-section mb-3">
                             <button class="questionnaire-header collapsed" type="button" data-toggle="collapse" data-target="#section2" aria-expanded="false">
                                 <span>
                                     <span class="section-number">القسم 2</span>
-                                    الجمهور المستهدف وصنّاع القرار
+                                    فهم الجمهور المستهدف
                                 </span>
                                 <i class="fas fa-chevron-up toggle-icon"></i>
                             </button>
@@ -15264,12 +15241,9 @@
                                 <div class="question-item">
                                     <div class="question-text">
                                         <span class="question-number">4</span>
-                                        مَن صانع القرار الرئيسي في وكالات ومعارض السيارات الذي يجب استهدافه؟
+                                        مَن صانع القرار الرئيسي في الشركات التي تستهدفها؟
                                     </div>
-                                    <div class="question-hint">
-                                        <strong>السياق:</strong> أكثر من 350 معرض نشط في عمان و60% أبدوا استعدادهم للانتقال<br>
-                                        المسمى الوظيفي: مالك المعرض / مدير العمليات / مدير التطوير / مدير المشتريات
-                                    </div>
+                                    <div class="question-hint">المسمى الوظيفي: مدير عمليات، مدير سلسلة إمداد، مالك الشركة، مدير مشتريات، إلخ</div>
                                     <div class="question-answer">
                                         <textarea placeholder="أدخل الإجابة هنا..."></textarea>
                                     </div>
@@ -15277,12 +15251,9 @@
                                 <div class="question-item">
                                     <div class="question-text">
                                         <span class="question-number">5</span>
-                                        ما أكبر مخاوف أصحاب المعارض الحاليين من الانتقال لموقع جديد؟
+                                        ما التحدي الأكبر الذي يواجهه عملاؤك المحتملون حالياً؟
                                     </div>
-                                    <div class="question-hint">
-                                        <strong>السياق:</strong> دراسة نماء أظهرت تحديات: مواقف محدودة، إيجارات مرتفعة، غياب التنظيم<br>
-                                        ما المخاوف الأخرى: فقدان العملاء؟ تكاليف النقل؟ عدم الثقة بالموقع الجديد؟
-                                    </div>
+                                    <div class="question-hint">مثال: ارتفاع تكاليف التخزين، صعوبة الوصول للأسواق، نقص المساحات المناسبة</div>
                                     <div class="question-answer">
                                         <textarea placeholder="أدخل الإجابة هنا..."></textarea>
                                     </div>
@@ -15290,12 +15261,9 @@
                                 <div class="question-item">
                                     <div class="question-text">
                                         <span class="question-number">6</span>
-                                        ما الوكالات أو المعارض الكبرى التي تودّون استقطابها أولاً؟
+                                        ما العامل المهم الذي يدفع الشركات للبحث عن موقع في مدينة صناعية أو لوجستية؟
                                     </div>
-                                    <div class="question-hint">
-                                        <strong>السياق:</strong> استقطاب وكالة كبرى سيشجع الآخرين على الانضمام<br>
-                                        اذكر 3-5 أسماء: وكالات معتمدة (تويوتا، مرسيدس، BMW) أو مجموعات معارض كبيرة
-                                    </div>
+                                    <div class="question-hint">القرب من المطار أو الميناء / توفر العمالة / انخفاض التكاليف التشغيلية / الحوافز الحكومية / سهولة الوصول للأسواق</div>
                                     <div class="question-answer">
                                         <textarea placeholder="أدخل الإجابة هنا..."></textarea>
                                     </div>
@@ -15303,12 +15271,12 @@
                             </div>
                         </div>
 
-                        <!-- القسم الثالث: الرسائل الاتصالية الرئيسية -->
+                        <!-- القسم الثالث: الرسائل والمحتوى -->
                         <div class="accordion-section mb-3">
                             <button class="questionnaire-header collapsed" type="button" data-toggle="collapse" data-target="#section3" aria-expanded="false">
                                 <span>
                                     <span class="section-number">القسم 3</span>
-                                    الرسائل الاتصالية الرئيسية
+                                    الرسائل والمحتوى
                                 </span>
                                 <i class="fas fa-chevron-up toggle-icon"></i>
                             </button>
@@ -15316,38 +15284,29 @@
                                 <div class="question-item">
                                     <div class="question-text">
                                         <span class="question-number">7</span>
-                                        ما الرسالة الرئيسية الواحدة التي يجب أن يتذكرها كل من يسمع عن موتور سيتي؟
+                                        ما الرسالة الرئيسية الواحدة التي يجب أن يتذكرها كل من يسمع عن المشروع؟
                                     </div>
-                                    <div class="question-hint">
-                                        <strong>المتوفر:</strong> "أول مدينة سيارات متكاملة في الأردن والمشرق العربي"<br>
-                                        هل هذه الرسالة مناسبة أم تفضّلون رسالة مختلفة؟ (جملة واحدة 10-15 كلمة)
-                                    </div>
+                                    <div class="question-hint">جملة واحدة قصيرة ومؤثرة (10-15 كلمة كحد أقصى)</div>
                                     <div class="question-answer">
-                                        <textarea placeholder="أدخل الإجابة هنا أو اكتب 'موافق' إذا كانت الرسالة الحالية مناسبة..."></textarea>
+                                        <textarea placeholder="أدخل الإجابة هنا..."></textarea>
                                     </div>
                                 </div>
                                 <div class="question-item">
                                     <div class="question-text">
                                         <span class="question-number">8</span>
-                                        من بين المزايا التنافسية، ما الميزة الأهم التي يجب إبرازها في كل التواصل؟
+                                        ما الميزة التي تودّ إبرازها أكثر من غيرها في جميع المواد الاتصالية؟
                                     </div>
-                                    <div class="question-hint">
-                                        <strong>المزايا المتوفرة:</strong><br>
-                                        1. موقع استراتيجي مجاور للجمارك | 2. أول مدينة سيارات متكاملة | 3. لا منافس مباشر<br>
-                                        4. دمج المنطقة الحرة والسوق المحلي | 5. شراكة حكومية | 6. دعم نقل المعارض | 7. بنية تحتية جاهزة
-                                    </div>
+                                    <div class="question-hint">اختر ميزة واحدة فقط من مزايا المشروع المتعددة</div>
                                     <div class="question-answer">
-                                        <textarea placeholder="اختر رقم الميزة (1-7) أو اكتب ميزة أخرى..."></textarea>
+                                        <textarea placeholder="أدخل الإجابة هنا..."></textarea>
                                     </div>
                                 </div>
                                 <div class="question-item">
                                     <div class="question-text">
                                         <span class="question-number">9</span>
-                                        هل هناك معلومات حساسة يجب تجنّب ذكرها في التواصل الخارجي؟
+                                        هل هناك معلومات أو رسائل يجب تجنّب ذكرها في التواصل الخارجي؟
                                     </div>
-                                    <div class="question-hint">
-                                        <strong>أمثلة:</strong> أسعار التأجير قبل الإعلان الرسمي / تفاصيل العقود مع الشركاء / معلومات مالية / مقارنات مع مشاريع معينة
-                                    </div>
+                                    <div class="question-hint">مواضيع حساسة، معلومات سرية، مقارنات غير مرغوبة، إلخ</div>
                                     <div class="question-answer">
                                         <textarea placeholder="أدخل الإجابة هنا..."></textarea>
                                     </div>
@@ -15355,12 +15314,12 @@
                             </div>
                         </div>
 
-                        <!-- القسم الرابع: القنوات والمنصات -->
+                        <!-- القسم الرابع: القنوات والأدوات -->
                         <div class="accordion-section mb-3">
                             <button class="questionnaire-header collapsed" type="button" data-toggle="collapse" data-target="#section4" aria-expanded="false">
                                 <span>
                                     <span class="section-number">القسم 4</span>
-                                    القنوات والمنصات
+                                    القنوات والأدوات
                                 </span>
                                 <i class="fas fa-chevron-up toggle-icon"></i>
                             </button>
@@ -15368,11 +15327,9 @@
                                 <div class="question-item">
                                     <div class="question-text">
                                         <span class="question-number">10</span>
-                                        أين يتواجد أصحاب وكالات ومعارض السيارات للحصول على معلوماتهم؟
+                                        أين يتواجد جمهورك المستهدف بشكل أساسي للحصول على المعلومات؟
                                     </div>
-                                    <div class="question-hint">
-                                        رتّب حسب الأهمية: LinkedIn / معارض السيارات / الصحف الاقتصادية / WhatsApp Groups / غرفة تجارة وصناعة عمان / جمعية وكلاء السيارات / التوصيات المباشرة
-                                    </div>
+                                    <div class="question-hint">LinkedIn / المعارض المتخصصة / الصحف الاقتصادية / المواقع المهنية / التوصيات المباشرة / قواعد بيانات غرفة تجارة وصناعة عمان</div>
                                     <div class="question-answer">
                                         <textarea placeholder="أدخل الإجابة هنا..."></textarea>
                                     </div>
@@ -15380,12 +15337,19 @@
                                 <div class="question-item">
                                     <div class="question-text">
                                         <span class="question-number">11</span>
-                                        ما المعارض أو الفعاليات المتخصصة التي تخططون للمشاركة فيها في 2026؟
+                                        ما المنصة الرقمية الأكثر فاعلية للوصول إلى عملائك المحتملين؟
                                     </div>
-                                    <div class="question-hint">
-                                        <strong>أمثلة:</strong> معرض عمان الدولي للسيارات / معرض أوتوميكانيكا / فعاليات غرفة التجارة<br>
-                                        اذكر: اسم الفعالية، التاريخ المتوقع، طبيعة المشاركة (عارض، راعٍ، متحدث)
+                                    <div class="question-hint">LinkedIn / الموقع الإلكتروني / البريد المباشر / WhatsApp Business / منصات القطاع العقاري المتخصصة</div>
+                                    <div class="question-answer">
+                                        <textarea placeholder="أدخل الإجابة هنا..."></textarea>
                                     </div>
+                                </div>
+                                <div class="question-item">
+                                    <div class="question-text">
+                                        <span class="question-number">12</span>
+                                        ما المعارض أو الفعاليات المتخصصة التي تخططون للمشاركة فيها؟
+                                    </div>
+                                    <div class="question-hint">اسم الفعالية، التاريخ، طبيعة المشاركة (عارض، راعٍ، متحدث)</div>
                                     <div class="question-answer">
                                         <textarea placeholder="أدخل الإجابة هنا..."></textarea>
                                     </div>
@@ -15393,38 +15357,22 @@
                             </div>
                         </div>
 
-                        <!-- القسم الخامس: التسعير والعروض -->
+                        <!-- القسم الخامس: المنافسة والتموضع -->
                         <div class="accordion-section mb-3">
                             <button class="questionnaire-header collapsed" type="button" data-toggle="collapse" data-target="#section5" aria-expanded="false">
                                 <span>
                                     <span class="section-number">القسم 5</span>
-                                    التسعير والعروض التجارية
+                                    المنافسة والتموضع
                                 </span>
                                 <i class="fas fa-chevron-up toggle-icon"></i>
                             </button>
                             <div class="questionnaire-body collapse" id="section5">
                                 <div class="question-item">
                                     <div class="question-text">
-                                        <span class="question-number">12</span>
-                                        ما نطاق أسعار التأجير السنوي للمتر المربع لكل فئة من القطع؟
-                                    </div>
-                                    <div class="question-hint">
-                                        <strong>الفئات المتوفرة:</strong><br>
-                                        A+ (2,000+ م²) | A (1,100-1,300 م²) | B (700-900 م²) | C (600-750 م²) | D (490-630 م²) | E (375-490 م²)<br>
-                                        مثال: A+: 80-100 دينار/م² | A: 70-85 دينار/م² ...
-                                    </div>
-                                    <div class="question-answer">
-                                        <textarea placeholder="أدخل أسعار التأجير لكل فئة..."></textarea>
-                                    </div>
-                                </div>
-                                <div class="question-item">
-                                    <div class="question-text">
                                         <span class="question-number">13</span>
-                                        هل هناك عروض خاصة للحجز المبكر أو للوكالات الكبرى؟
+                                        اذكر أهم مشروع منافس في السوق المحلي والسوق الإقليمي والسوق الدولي؟
                                     </div>
-                                    <div class="question-hint">
-                                        <strong>أمثلة:</strong> خصم 15% لأول 50 حجز / سنة مجانية للوكالات المعتمدة / مرونة في شروط الدفع / تجهيزات مجانية
-                                    </div>
+                                    <div class="question-hint">اسم مشروع واحد لكل سوق</div>
                                     <div class="question-answer">
                                         <textarea placeholder="أدخل الإجابة هنا..."></textarea>
                                     </div>
@@ -15432,38 +15380,19 @@
                                 <div class="question-item">
                                     <div class="question-text">
                                         <span class="question-number">14</span>
-                                        ما رسوم الصيانة والإدارة السنوية المتوقعة؟
+                                        ما النقطة التي تتفوق فيها على أقرب منافس لك؟
                                     </div>
-                                    <div class="question-hint">
-                                        <strong>السياق:</strong> من مصادر الإيرادات المذكورة "رسوم الصيانة والإدارة السنوية"<br>
-                                        ما النسبة أو المبلغ الثابت؟
-                                    </div>
+                                    <div class="question-hint">ميزة واحدة واضحة وقابلة للإثبات</div>
                                     <div class="question-answer">
                                         <textarea placeholder="أدخل الإجابة هنا..."></textarea>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-
-                        <!-- القسم السادس: الشراكات والمتحدث الرسمي -->
-                        <div class="accordion-section mb-3">
-                            <button class="questionnaire-header collapsed" type="button" data-toggle="collapse" data-target="#section6" aria-expanded="false">
-                                <span>
-                                    <span class="section-number">القسم 6</span>
-                                    الشراكات والمتحدث الرسمي
-                                </span>
-                                <i class="fas fa-chevron-up toggle-icon"></i>
-                            </button>
-                            <div class="questionnaire-body collapse" id="section6">
                                 <div class="question-item">
                                     <div class="question-text">
                                         <span class="question-number">15</span>
-                                        من الشخص المخوّل بالتصريح للإعلام نيابة عن موتور سيتي؟
+                                        كيف تريد أن يُصنَّف مشروعك في السوق؟
                                     </div>
-                                    <div class="question-hint">
-                                        <strong>الشركاء:</strong> نوبلز، AVID، أمانة عمان<br>
-                                        اذكر: الاسم، المنصب، الجهة، معلومات التواصل
-                                    </div>
+                                    <div class="question-hint">الخيار الأفضل سعراً / الأعلى جودة / الأقرب للمطار والخدمات اللوجستية / الأكثر تكاملاً</div>
                                     <div class="question-answer">
                                         <textarea placeholder="أدخل الإجابة هنا..."></textarea>
                                     </div>
@@ -15471,12 +15400,19 @@
                                 <div class="question-item">
                                     <div class="question-text">
                                         <span class="question-number">16</span>
-                                        هل هناك شراكات جديدة يمكن الإعلان عنها قريباً؟
+                                        ما هي الخدمات والمساحات التي سيتم بيعها للعملاء؟
                                     </div>
-                                    <div class="question-hint">
-                                        <strong>الشراكات الحالية:</strong> نوبلز، AVID، أمانة عمان الكبرى<br>
-                                        شراكات محتملة: بنوك للتمويل / شركات تأمين / وكالات سيارات كبرى / جهات حكومية أخرى
+                                    <div class="question-hint">مثال: مستودعات، مكاتب، أراضٍ صناعية، خدمات لوجستية</div>
+                                    <div class="question-answer">
+                                        <textarea placeholder="أدخل الإجابة هنا..."></textarea>
                                     </div>
+                                </div>
+                                <div class="question-item">
+                                    <div class="question-text">
+                                        <span class="question-number">17</span>
+                                        بالنسبة للـ Warehouse ما هي أهم مواصفاتها؟
+                                    </div>
+                                    <div class="question-hint">المساحات، الارتفاعات، التجهيزات، معايير الجودة</div>
                                     <div class="question-answer">
                                         <textarea placeholder="أدخل الإجابة هنا..."></textarea>
                                     </div>
@@ -15484,37 +15420,75 @@
                             </div>
                         </div>
 
-                        <!-- القسم السابع: الجدول الزمني والميزانية -->
+                        <!-- القسم السادس: الشراكات والعلاقات -->
+                        <div class="accordion-section mb-3">
+                            <button class="questionnaire-header collapsed" type="button" data-toggle="collapse" data-target="#section6" aria-expanded="false">
+                                <span>
+                                    <span class="section-number">القسم 6</span>
+                                    الشراكات والعلاقات
+                                </span>
+                                <i class="fas fa-chevron-up toggle-icon"></i>
+                            </button>
+                            <div class="questionnaire-body collapse" id="section6">
+                                <div class="question-item">
+                                    <div class="question-text">
+                                        <span class="question-number">18</span>
+                                        هل هناك شراكات قائمة في مشروع المدينة الصناعية يمكن الإعلان عنها أو توظيفها إعلامياً؟
+                                    </div>
+                                    <div class="question-hint">شراكات حكومية، مؤسسية، أو مع علامات تجارية معروفة</div>
+                                    <div class="question-answer">
+                                        <textarea placeholder="أدخل الإجابة هنا..."></textarea>
+                                    </div>
+                                </div>
+                                <div class="question-item">
+                                    <div class="question-text">
+                                        <span class="question-number">19</span>
+                                        من الشخص المخوّل بالتصريح للإعلام نيابة عن المشروع؟
+                                    </div>
+                                    <div class="question-hint">الاسم، المنصب، معلومات التواصل</div>
+                                    <div class="question-answer">
+                                        <textarea placeholder="أدخل الإجابة هنا..."></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- القسم السابع: التوقيت والأولويات -->
                         <div class="accordion-section mb-3">
                             <button class="questionnaire-header collapsed" type="button" data-toggle="collapse" data-target="#section7" aria-expanded="false">
                                 <span>
                                     <span class="section-number">القسم 7</span>
-                                    الجدول الزمني والميزانية
+                                    التوقيت والأولويات
                                 </span>
                                 <i class="fas fa-chevron-up toggle-icon"></i>
                             </button>
                             <div class="questionnaire-body collapse" id="section7">
                                 <div class="question-item">
                                     <div class="question-text">
-                                        <span class="question-number">17</span>
-                                        ما أقرب حدث أو إنجاز يمكن ربطه بالحملة الإعلامية؟
+                                        <span class="question-number">20</span>
+                                        ما هو أقرب حدث أو إنجاز خاص بشركة نوبلز يمكن ربطه إعلامياً بإطلاق المدينة الصناعية؟
                                     </div>
-                                    <div class="question-hint">
-                                        <strong>المراحل:</strong> المرحلة الأولى (150 قطعة)، المرحلة الثانية (308 قطعة)، المرحلة الثالثة (266 قطعة)<br>
-                                        أمثلة: توقيع عقد مع وكالة كبرى / وضع حجر الأساس / زيارة رسمية / إطلاق الموقع الإلكتروني
-                                    </div>
+                                    <div class="question-hint">افتتاح، توقيع عقد، إنجاز مرحلة، زيارة رسمية، إلخ - مع التاريخ المتوقع</div>
                                     <div class="question-answer">
-                                        <textarea placeholder="أدخل الإجابة مع التاريخ المتوقع..."></textarea>
+                                        <textarea placeholder="أدخل الإجابة هنا..."></textarea>
                                     </div>
                                 </div>
                                 <div class="question-item">
                                     <div class="question-text">
-                                        <span class="question-number">18</span>
-                                        ما الميزانية التقريبية المخصصة للأنشطة الاتصالية والتسويقية لموتور سيتي سنوياً؟
+                                        <span class="question-number">21</span>
+                                        ما الأولوية القصوى للأشهر الثلاثة القادمة؟
                                     </div>
-                                    <div class="question-hint">
-                                        نطاق تقريبي: أقل من 50 ألف / 50-100 ألف / 100-250 ألف / 250-500 ألف / أكثر من 500 ألف دينار
+                                    <div class="question-hint">إجراء واحد محدد: إطلاق موقع إلكتروني / حملة إعلامية / حضور معرض / التواصل مع عملاء محددين</div>
+                                    <div class="question-answer">
+                                        <textarea placeholder="أدخل الإجابة هنا..."></textarea>
                                     </div>
+                                </div>
+                                <div class="question-item">
+                                    <div class="question-text">
+                                        <span class="question-number">22</span>
+                                        ما الميزانية التقريبية المخصصة للأنشطة الاتصالية والتسويقية سنوياً؟
+                                    </div>
+                                    <div class="question-hint">نطاق تقريبي: أقل من 50 ألف / 50-100 ألف / 100-250 ألف / أكثر من 250 ألف دينار</div>
                                     <div class="question-answer">
                                         <textarea placeholder="أدخل الإجابة هنا..."></textarea>
                                     </div>
@@ -29053,6 +29027,99 @@ async function loadQuestionnaireData() {
             console.error('خطأ في تحميل البيانات:', e);
         }
     }
+    
+    // Load ALIC data into textareas if this is ALIC project
+    {% if project.slug == 'alic-almuwaqqar' %}
+    loadAlicDataIntoForm();
+    {% endif %}
+}
+
+// دالة تحميل بيانات ALIC في الاستبانة
+function loadAlicDataIntoForm() {
+    const alicResponses = {
+        q1: `الأهداف بالترتيب:
+1. بناء الوعي بالمشروع والوصول بنسبة 100% للقطاع الصناعي/الصناعيين
+2. تعزيز السمعة المؤسسية
+3. جذب عملاء محتملين`,
+        q2: `• الوصول بنسبة 100% للقطاع الصناعي الأردني / الصناعيين
+• تحقيق نسبة مبيعات لا تقل عن 50% من المدينة خلال السنة الأولى`,
+        q3: `1. المدينة الأحدث
+2. المدينة المتكاملة والذكية
+3. المدينة اللوجستية الأقرب للمدينة ولمراكز الشحن والحدود
+4. الموقع الأفضل من بين المدن المحيطة
+5. سهولة التملك والاستثمار فيها (من خلال إتاحة نظام التقسيط)
+6. تتمتع المنطقة التي تقع فيها المدينة الصناعية بحوافز للقطاع الصناعي`,
+        q4: `مالك الشركة، الرئيس التنفيذي، أو المدير العام، وبالأخص في شركات الخدمات اللوجستية والصناعية، مع دور داعم لمديري العمليات وسلسلة التوريد.`,
+        q5: `يواجه المستثمرون نقصاً في الحلول المتكاملة الجاهزة للتشغيل، وهو ما تعالجه ALIC عبر توفير منظومة صناعية ولوجستية متكاملة في موقع استراتيجي تقلل التعقيد وتسرّع التشغيل.
+
+ويواجه المستثمرون نقصاً في حلول التمويل لشراء المستودعات والمصانع وقطع الأراضي الصناعية وهذا ما توفره ALIC.`,
+        q6: `توفر موقع استراتيجي وبنية تحتية جاهزة ضمن منظومة متكاملة تقلل التعقيد التشغيلي وتسرّع بدء الأعمال.`,
+        q7: `ALIC هي مدينة صناعية ولوجستية متكاملة وجاهزة للمستقبل، تُمكّن الشركات من الانطلاق والتوسع بكفاءة وسرعة من موقع استراتيجي واحد.`,
+        q8: `كون ALIC مدينة صناعية ولوجستية متكاملة وجاهزة للتشغيل، تجمع بين الموقع الاستراتيجي، البنية التحتية المؤهلة، والخدمات الداعمة في مكان واحد وحلول التمويل.`,
+        q9: `الأسعار التفصيلية
+الجداول الزمنية التفصيلية
+أسماء العملاء قبل الإعلان الرسمي
+المناطق الصناعية الأقل حظاً
+أي معلومات غير معتمدة رسمياً`,
+        q10: `LinkedIn
+الإعلام الاقتصادي المتخصص
+المعارض الصناعية واللوجستية
+غرف الصناعة والتجارة
+جمعيات رجال الأعمال
+التواصل المباشر`,
+        q11: `LinkedIn
+البريد المباشر
+الاتصال المباشر
+منصات القطاع الصناعي المتخصصة`,
+        q12: ``, // سؤال 12 - إذا كان موجود
+        q13: `منطقة القسطل الصناعية
+منطقة الرجم الشامي الصناعية
+مدينة سحاب الصناعية
+مدينة الموقر الصناعية
+مدينة التجمعات الصناعية`,
+        q14: `الموقع الاستراتيجي المتميز
+نظام التقسيط المرن
+مطور يتيح خيار البناء بنظام الأقساط`,
+        q15: `الأفضل في الموقع والأعلى جودة ومدينة آمنة يتم إدارتها من خلال مطور رئيسي متميز`,
+        q16: `مستودعات
+أراضٍ صناعية
+مصانع`,
+        q17: `يتم تطبيق أعلى المعايير من حيث:
+• تطبيق أنظمة العزل والحماية
+• أنظمة إطفاء الحريق المتطورة
+• بناء أنظمة تخزين بمعدات متطورة`,
+        q18: `1. اتفاقية بناء وبيع أكبر مستودع لوجستي في عمان ومساحته (30,000م²) على قطعة أرض بمساحة (60,000م²) مع شركة محامص الشعب، حيث قامت نوبلز ببناء المستودع بأعلى المواصفات الهندسية وتجهيزه كمركز لوجستي بمعدات متطورة.
+
+2. اتفاقية بيع قطعة أرض صناعية بمساحة (11,000م²) لشركة مخابز قبلان لبناء مصنع رئيسي لتزويد فروعهم بكافة أنواع المخبوزات والتصدير للسعودية.
+
+3. مصنع تغليف وتعبئة لمواد تجميلية ومكياج بمساحة 2,000م² على قطعة أرض بمساحة 4,000م².`,
+        q19: `رشيد جعارة - المدير التنفيذي
+عمر العايش - رئيس مجلس الإدارة
+أحمد المعري - الرئيس التنفيذي لمجموعة نوبلز`,
+        q20: `إطلاق المدينة خلال النصف الأول من شهر يناير 2026
+يتخلل الإطلاق توقيع اتفاقيات مستودعات الشعب وقبلان ومصنع المكياج`,
+        q21: `حملة إعلامية شاملة وواسعة`,
+        q22: `يتم مناقشتها وفقاً لتوصياتكم`
+    };
+    
+    const textareas = document.querySelectorAll('.questionnaire-section textarea');
+    textareas.forEach(textarea => {
+        const questionItem = textarea.closest('.question-item');
+        if (questionItem) {
+            const questionNumEl = questionItem.querySelector('.question-number');
+            if (questionNumEl) {
+                const questionNum = questionNumEl.textContent.trim();
+                const key = `q${questionNum}`;
+                if (alicResponses[key]) {
+                    textarea.value = alicResponses[key];
+                }
+            }
+        }
+    });
+    
+    // تحديث شريط التقدم
+    updateProgress();
+    console.log('✅ تم تحميل إجابات ALIC');
 }
 
 // Load data when page is ready
