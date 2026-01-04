@@ -358,6 +358,7 @@ def google_callback():
                     session['role'] = user['role']
                     session['tenant_access'] = user.get('tenant_access', [])
                     session['default_tenant'] = user.get('default_tenant')
+                    session['can_access_projects'] = user.get('can_access_projects', False)
                     
                     # توجيه حسب الصلاحية
                     if user['role'] == 'admin':
@@ -442,6 +443,7 @@ def login_password():
             session['role'] = user['role']
             session['tenant_access'] = user.get('tenant_access', [])
             session['default_tenant'] = user.get('default_tenant')
+            session['can_access_projects'] = user.get('can_access_projects', False)
             
             if user['role'] == 'admin':
                 return redirect(url_for('admin_dashboard'))
@@ -494,6 +496,11 @@ def client_projects():
         # استبعاد المشاريع المخفية
         accessible_tenants = [t for t in all_tenants if t.get('active', True) and not t.get('hidden', False)]
     else:
+        # التحقق من صلاحية الوصول لصفحة المشاريع
+        if not session.get('can_access_projects', False):
+            flash('ليس لديك صلاحية الوصول لهذه الصفحة', 'error')
+            return redirect(url_for('access_denied'))
+        
         # عرض المشاريع التي يملك المستخدم صلاحية الوصول إليها
         user_tenants = session.get('tenant_access', [])
         accessible_tenants = [t for t in all_tenants if t.get('active', True) and t.get('id') in user_tenants and not t.get('hidden', False)]
@@ -907,6 +914,7 @@ def admin_edit_user():
     default_tenant = request.form.get('default_tenant', '')
     tenants = request.form.getlist('tenants')
     role = request.form.get('role', 'client')  # الدور الجديد
+    can_access_projects = request.form.get('can_access_projects') == '1'  # صلاحية صفحة المشاريع
     
     users = load_users()
     for user in users:
@@ -916,6 +924,7 @@ def admin_edit_user():
             user['default_tenant'] = default_tenant
             user['tenant_access'] = tenants
             user['role'] = role  # تحديث الدور
+            user['can_access_projects'] = can_access_projects  # حفظ صلاحية المشاريع
             break
     
     save_users(users)
