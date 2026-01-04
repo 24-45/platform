@@ -1003,11 +1003,55 @@
                     <span class="section-label">المشاريع</span>
                     <h2 class="section-title">مشاريعنا</h2>
                 </div>
-                <span class="projects-count">{{ tenants|length }} مشروع متاح</span>
+                <span class="projects-count">{{ tenants|length }}{% if can_access_alic_report %} + 1{% endif %} مشروع متاح</span>
             </div>
 
-            {% if tenants %}
+            {% if tenants or can_access_alic_report %}
             <div class="projects-grid">
+                <!-- بطاقة تقرير ALIC #01 الخاصة -->
+                {% if can_access_alic_report %}
+                <article class="project-card" style="border: 2px solid var(--green);">
+                    <div class="card-accent"></div>
+                    <div class="card-header">
+                        <div class="card-icon" style="background: linear-gradient(135deg, var(--green), #00a854);">
+                            <i class="fas fa-file-alt"></i>
+                        </div>
+                        <div class="card-info">
+                            <span class="card-type">
+                                <i class="fas fa-star" style="color: var(--green);"></i>
+                                تقرير خاص
+                            </span>
+                            <h3 class="card-name">تقرير ALIC - النسخة المبسطة</h3>
+                            <p class="card-name-en">ALIC Report - Simplified Version #01</p>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-description">
+                            نسخة مبسطة من تقرير مدينة عمان اللوجستية والصناعية - للعرض والمشاركة
+                        </p>
+                        <div class="card-features">
+                            <span class="feature-tag">
+                                <i class="fas fa-check"></i>
+                                عرض مبسط
+                            </span>
+                            <span class="feature-tag">
+                                <i class="fas fa-check"></i>
+                                للمشاركة
+                            </span>
+                            <span class="feature-tag">
+                                <i class="fas fa-check"></i>
+                                بدون قوائم
+                            </span>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <a href="/nobles/report/alic-almuwaqqar#01" class="btn-view" style="background: linear-gradient(135deg, var(--green), #00a854);">
+                            <span>استعراض التقرير</span>
+                            <i class="fas fa-arrow-left"></i>
+                        </a>
+                    </div>
+                </article>
+                {% endif %}
                 {% for tenant in tenants %}
                 <article class="project-card">
                     <div class="card-accent"></div>

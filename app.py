@@ -359,6 +359,7 @@ def google_callback():
                     session['tenant_access'] = user.get('tenant_access', [])
                     session['default_tenant'] = user.get('default_tenant')
                     session['can_access_projects'] = user.get('can_access_projects', False)
+                    session['can_access_alic_report'] = user.get('can_access_alic_report', False)
                     
                     # توجيه حسب الصلاحية
                     if user['role'] == 'admin':
@@ -444,6 +445,7 @@ def login_password():
             session['tenant_access'] = user.get('tenant_access', [])
             session['default_tenant'] = user.get('default_tenant')
             session['can_access_projects'] = user.get('can_access_projects', False)
+            session['can_access_alic_report'] = user.get('can_access_alic_report', False)
             
             if user['role'] == 'admin':
                 return redirect(url_for('admin_dashboard'))
@@ -505,7 +507,12 @@ def client_projects():
         user_tenants = session.get('tenant_access', [])
         accessible_tenants = [t for t in all_tenants if t.get('active', True) and t.get('id') in user_tenants and not t.get('hidden', False)]
     
-    return render_template('platform/client_dashboard.html', tenants=accessible_tenants)
+    # إضافة تقرير ALIC #01 إذا كان المستخدم يملك الصلاحية
+    can_access_alic_report = session.get('can_access_alic_report', False) or user_role == 'admin'
+    
+    return render_template('platform/client_dashboard.html', 
+                         tenants=accessible_tenants,
+                         can_access_alic_report=can_access_alic_report)
 
 
 @app.route('/about')
@@ -915,6 +922,7 @@ def admin_edit_user():
     tenants = request.form.getlist('tenants')
     role = request.form.get('role', 'client')  # الدور الجديد
     can_access_projects = request.form.get('can_access_projects') == '1'  # صلاحية صفحة المشاريع
+    can_access_alic_report = request.form.get('can_access_alic_report') == '1'  # صلاحية تقرير ALIC #01
     
     users = load_users()
     for user in users:
@@ -925,6 +933,7 @@ def admin_edit_user():
             user['tenant_access'] = tenants
             user['role'] = role  # تحديث الدور
             user['can_access_projects'] = can_access_projects  # حفظ صلاحية المشاريع
+            user['can_access_alic_report'] = can_access_alic_report  # حفظ صلاحية تقرير ALIC
             break
     
     save_users(users)

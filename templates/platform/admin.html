@@ -1128,7 +1128,7 @@
                                         <i class="fas fa-trash"></i>
                                     </button>
                                 </form>
-                                <button type="button" class="btn btn-sm btn-info" onclick="editUser('{{ user.id }}', '{{ user.name }}', '{{ user.email }}', '{{ user.tenant_access|join(',') }}', '{{ user.default_tenant }}', '{{ user.role }}', {{ user.can_access_projects|default(false)|tojson }})" title="تعديل">
+                                <button type="button" class="btn btn-sm btn-info" onclick="editUser('{{ user.id }}', '{{ user.name }}', '{{ user.email }}', '{{ user.tenant_access|join(',') }}', '{{ user.default_tenant }}', '{{ user.role }}', {{ user.can_access_projects|default(false)|tojson }}, {{ user.can_access_alic_report|default(false)|tojson }})" title="تعديل">
                                     <i class="fas fa-edit"></i>
                                 </button>
                                 <form action="/admin/users/toggle/{{ user.id }}" method="POST" style="display: inline;">
@@ -1210,6 +1210,11 @@
                             <i class="fas fa-folder-open" style="color: var(--green);"></i>
                             الوصول لصفحة المشاريع (/Project)
                         </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="can_access_alic_report" id="edit_can_access_alic_report" value="1">
+                            <i class="fas fa-file-alt" style="color: var(--green);"></i>
+                            الوصول لتقرير ALIC (#01)
+                        </label>
                     </div>
                 </div>
                 <button type="submit" class="btn btn-primary">
@@ -1232,13 +1237,14 @@
         }
     }
 
-    function editUser(id, name, email, tenants, defaultTenant, role, canAccessProjects) {
+    function editUser(id, name, email, tenants, defaultTenant, role, canAccessProjects, canAccessAlicReport) {
             document.getElementById('edit_user_id').value = id;
             document.getElementById('edit_name').value = name;
             document.getElementById('edit_email').value = email;
             document.getElementById('edit_default_tenant').value = defaultTenant || '';
             document.getElementById('edit_role').value = role || 'client';
             document.getElementById('edit_can_access_projects').checked = canAccessProjects === true || canAccessProjects === 'true';
+            document.getElementById('edit_can_access_alic_report').checked = canAccessAlicReport === true || canAccessAlicReport === 'true';
             
             document.querySelectorAll('.edit-tenant-checkbox').forEach(cb => cb.checked = false);
             
