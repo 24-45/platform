@@ -364,7 +364,7 @@ def google_callback():
                         return redirect(url_for('admin_dashboard'))
                     else:
                         # توجيه للـ Dashboard لعرض المشاريع المتاحة
-                        return redirect(url_for('client_dashboard'))
+                        return redirect(url_for('client_projects'))
             else:
                 # مستخدم جديد - إنشاء حساب بانتظار الموافقة
                 import uuid
@@ -447,7 +447,7 @@ def login_password():
                 return redirect(url_for('admin_dashboard'))
             else:
                 # توجيه للـ Dashboard لعرض المشاريع المتاحة
-                return redirect(url_for('client_dashboard'))
+                return redirect(url_for('client_projects'))
         else:
             flash('كلمة المرور غير صحيحة', 'error')
     else:
