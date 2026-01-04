@@ -874,6 +874,36 @@
                 <i class="fas fa-building"></i>
                 <h2>العملاء</h2>
             </div>
+            
+            <!-- رابط بوابة المشاريع -->
+            <div style="margin-bottom: 1.5rem; padding: 1rem; background: rgba(0, 212, 106, 0.1); border: 1px solid rgba(0, 212, 106, 0.3); border-radius: 12px;">
+                <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
+                    <div>
+                        <h4 style="color: var(--green); margin-bottom: 0.5rem;">
+                            <i class="fas fa-link"></i> بوابة المشاريع للعملاء
+                        </h4>
+                        <p style="color: var(--gray-light); font-size: 0.9rem; margin: 0;">شارك هذا الرابط مع عملائك للوصول المباشر لصفحة المشاريع</p>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                        <code style="background: var(--black); padding: 0.5rem 1rem; border-radius: 8px; font-size: 0.85rem;" id="projectUrl">/Project</code>
+                        <button onclick="copyProjectUrl()" class="btn btn-sm btn-primary" style="white-space: nowrap;">
+                            <i class="fas fa-copy"></i> نسخ
+                        </button>
+                        <a href="/Project" target="_blank" class="btn btn-sm btn-primary" style="white-space: nowrap;">
+                            <i class="fas fa-external-link-alt"></i> فتح
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <script>
+                function copyProjectUrl() {
+                    const url = window.location.origin + '/Project';
+                    navigator.clipboard.writeText(url).then(() => {
+                        alert('تم نسخ الرابط: ' + url);
+                    });
+                }
+            </script>
+            
             <div class="table-container">
                 <table>
                     <thead>

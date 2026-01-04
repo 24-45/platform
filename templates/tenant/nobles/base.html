@@ -244,6 +244,10 @@
                         <small>منصة | نضبط إحداثياتك</small>
                     </div>
                     <p class="footer-desc">منصة متكاملة لخدمات التسويق والاتصال الاستراتيجي للشركات والمؤسسات.</p>
+                    <div style="margin-top: 15px;">
+                        <img src="{{ url_for('static', filename='images/tenants/nobles/logo.svg') }}" alt="نوبلز العقارية" style="height: 35px; filter: brightness(0.8);">
+                        <span style="color: #666; font-size: 0.8rem; margin-right: 10px;">شريك استراتيجي</span>
+                    </div>
                 </div>
                 <div class="col-lg-2 col-md-4 mb-4">
                     <h5>روابط سريعة</h5>
@@ -258,20 +262,22 @@
                     <ul class="footer-links">
                         <li><a href="{{ url_for('tenant_home', tenant_slug='nobles') }}">الرئيسية</a></li>
                         <li><a href="{{ url_for('tenant_projects', tenant_slug='nobles') }}">المشاريع</a></li>
+                        <li><a href="{{ url_for('tenant_about', tenant_slug='nobles') }}">عن الشركة</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-3 col-md-4 mb-4">
                     <h5>تواصل معنا</h5>
                     <ul class="footer-links footer-contact">
-                        <li><i class="fas fa-envelope"></i> info@24-45.com</li>
-                        <li><i class="fas fa-headset"></i> support@24-45.com</li>
+                        <li><i class="fas fa-phone"></i> +962 (06) 5546161</li>
+                        <li><i class="fas fa-envelope"></i> info@noblesproperties.com</li>
+                        <li><i class="fas fa-globe"></i> <a href="https://noblesproperties.com" target="_blank" style="color: inherit;">noblesproperties.com</a></li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
                 <p>© 2025 منصة 24°45° - جميع الحقوق محفوظة</p>
                 <div class="portal-info">
-                    بوابة: <span>نوبلز العقارية</span>
+                    بوابة: <span>نوبلز العقارية</span> | تأسست <span>2008</span> - دبي، الإمارات
                 </div>
             </div>
         </div>

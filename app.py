@@ -72,7 +72,7 @@ def login_required(f):
             session['user_email'] = 'admin@24-45.com'
             session['user_name'] = 'مطور'
             session['role'] = 'admin'
-            session['tenant_access'] = ['nobles', 'zakah', 'waqf']
+            session['tenant_access'] = ['nobles', 'zakah', 'waqf', 'alic']
             session['default_tenant'] = 'nobles'
         if 'user_id' not in session:
             return redirect(url_for('login'))
@@ -86,6 +86,10 @@ def tenant_access_required(f):
     def decorated_function(*args, **kwargs):
         if 'user_id' not in session:
             return redirect(url_for('login'))
+        
+        # Admin يمكنه الوصول لكل العملاء
+        if session.get('role') == 'admin':
+            return f(*args, **kwargs)
         
         tenant_slug = kwargs.get('tenant_slug')
         user_tenants = session.get('tenant_access', [])
@@ -233,6 +237,45 @@ def dev_login():
     return redirect(url_for('admin_campaigns'))
 
 
+@app.route('/dev-login-alic')
+def dev_login_alic():
+    """تسجيل دخول تلقائي كعميل ALIC للتطوير"""
+    session['user_id'] = 'user4'
+    session['user_email'] = 'alic@24-45.com'
+    session['user_name'] = 'عميل ALIC'
+    session['role'] = 'client'
+    session['tenant_access'] = ['alic', 'zakah', 'waqf']
+    return redirect(url_for('client_projects'))
+
+
+
+# ==================== صفحة ZATCA - الهيئة العامة للزكاة والضريبة والجمارك ====================
+
+@app.route('/zatca')
+def zatca_page():
+    """صفحة الهيئة العامة للزكاة والضريبة والجمارك - بدون تسجيل دخول"""
+    tenant = get_tenant_by_slug('zakah')
+    return render_template('tenant/zakah/index.html', tenant=tenant)
+
+
+# ==================== صفحة WAQF - الهيئة العامة للأوقاف ====================
+
+@app.route('/waqf')
+def waqf_page():
+    """صفحة الهيئة العامة للأوقاف - بدون تسجيل دخول"""
+    tenant = get_tenant_by_slug('waqf')
+    return render_template('tenant/waqf/index.html', tenant=tenant)
+
+
+# ==================== صفحة ALIC - شركة أليك للتطوير ====================
+
+@app.route('/alic')
+def alic_page():
+    """صفحة شركة أليك للتطوير - قيد الإنشاء"""
+    tenant = get_tenant_by_slug('alic')
+    return render_template('platform/coming_soon.html', tenant=tenant, project_name='شركة أليك للتطوير')
+
+
 # ==================== الصفحة الرئيسية للمنصة ====================
 
 @app.route('/')
@@ -309,10 +352,9 @@ def google_callback():
                     # توجيه حسب الصلاحية
                     if user['role'] == 'admin':
                         return redirect(url_for('admin_dashboard'))
-                    elif user.get('default_tenant'):
-                        return redirect(url_for('tenant_home', tenant_slug=user['default_tenant']))
                     else:
-                        return redirect(url_for('platform_home'))
+                        # توجيه للـ Dashboard لعرض المشاريع المتاحة
+                        return redirect(url_for('client_dashboard'))
             else:
                 # مستخدم جديد - إنشاء حساب بانتظار الموافقة
                 import uuid
@@ -393,10 +435,9 @@ def login_password():
             
             if user['role'] == 'admin':
                 return redirect(url_for('admin_dashboard'))
-            elif user.get('default_tenant'):
-                return redirect(url_for('tenant_home', tenant_slug=user['default_tenant']))
             else:
-                return redirect(url_for('platform_home'))
+                # توجيه للـ Dashboard لعرض المشاريع المتاحة
+                return redirect(url_for('client_dashboard'))
         else:
             flash('كلمة المرور غير صحيحة', 'error')
     else:
@@ -429,6 +470,25 @@ def admin_dashboard():
     tenants = get_all_tenants()
     users = load_users()
     return render_template('platform/admin.html', tenants=tenants, users=users)
+
+
+@app.route('/Project')
+@login_required
+def client_projects():
+    """صفحة المشاريع للعميل - عرض جميع المشاريع"""
+    all_tenants = get_all_tenants()
+    
+    # إذا كان المستخدم admin يرى جميع المشاريع
+    user_role = session.get('role', 'client')
+    if user_role == 'admin':
+        # استبعاد المشاريع المخفية
+        accessible_tenants = [t for t in all_tenants if t.get('active', True) and not t.get('hidden', False)]
+    else:
+        # عرض المشاريع التي يملك المستخدم صلاحية الوصول إليها
+        user_tenants = session.get('tenant_access', [])
+        accessible_tenants = [t for t in all_tenants if t.get('active', True) and t.get('id') in user_tenants and not t.get('hidden', False)]
+    
+    return render_template('platform/client_dashboard.html', tenants=accessible_tenants)
 
 
 @app.route('/about')
@@ -556,6 +616,7 @@ def tenant_reports(tenant_slug):
 
 
 @app.route('/<tenant_slug>/report/<project_slug>')
+@app.route('/<tenant_slug>/project-report/<project_slug>')
 @login_required
 @tenant_access_required
 def tenant_project_report(tenant_slug, project_slug):
@@ -1386,6 +1447,67 @@ def get_brief_link(campaign_id):
         'link': brief_link,
         'campaign_name': campaign.get('basic_info', {}).get('name', '')
     })
+
+
+# ==================== API لحفظ واسترجاع إجابات الاستبانة ====================
+
+QUESTIONNAIRE_RESPONSES_PATH = DATA_PATH / 'questionnaire_responses'
+
+def ensure_questionnaire_dir():
+    """التأكد من وجود مجلد إجابات الاستبانة"""
+    if not QUESTIONNAIRE_RESPONSES_PATH.exists():
+        QUESTIONNAIRE_RESPONSES_PATH.mkdir(parents=True)
+
+@app.route('/api/questionnaire/<project_id>/save', methods=['POST'])
+def api_save_questionnaire(project_id):
+    """حفظ إجابات الاستبانة للمشروع"""
+    ensure_questionnaire_dir()
+    
+    data = request.get_json()
+    if not data:
+        return jsonify({'success': False, 'error': 'لا توجد بيانات'}), 400
+    
+    # إضافة معلومات الحفظ
+    data['savedAt'] = json.dumps({"$date": {"$numberLong": str(int(__import__('time').time() * 1000))}})
+    data['updatedAt'] = __import__('datetime').datetime.now().isoformat()
+    
+    # حفظ في ملف JSON
+    response_file = QUESTIONNAIRE_RESPONSES_PATH / f'{project_id}.json'
+    try:
+        with open(response_file, 'w', encoding='utf-8') as f:
+            json.dump(data, f, ensure_ascii=False, indent=2)
+        
+        return jsonify({
+            'success': True,
+            'message': 'تم الحفظ بنجاح',
+            'savedAt': data['updatedAt']
+        })
+    except Exception as e:
+        return jsonify({'success': False, 'error': str(e)}), 500
+
+@app.route('/api/questionnaire/<project_id>/load', methods=['GET'])
+def api_load_questionnaire(project_id):
+    """تحميل إجابات الاستبانة المحفوظة للمشروع"""
+    ensure_questionnaire_dir()
+    
+    response_file = QUESTIONNAIRE_RESPONSES_PATH / f'{project_id}.json'
+    
+    if response_file.exists():
+        try:
+            with open(response_file, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+            return jsonify({
+                'success': True,
+                'data': data
+            })
+        except Exception as e:
+            return jsonify({'success': False, 'error': str(e)}), 500
+    else:
+        return jsonify({
+            'success': True,
+            'data': None,
+            'message': 'لا توجد إجابات محفوظة'
+        })
 
 
 # ==================== API لإدارة أسئلة الاستبانة ====================

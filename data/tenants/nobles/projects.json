@@ -151,7 +151,7 @@
             }
         },
         {
-            "id": 2,
+            "id": 3,
             "name": "مرتفعات الدانة",
             "name_en": "Dana Heights",
             "slug": "dana-heights",
@@ -202,53 +202,246 @@
             }
         },
         {
-            "id": 3,
-            "name": "مدينة السيارات",
-            "name_en": "Automotive City",
+            "id": 2,
+            "name": "موتور سيتي",
+            "name_en": "Motor City",
+            "tagline": "أول مدينة سيارات متكاملة في الأردن والمشرق العربي",
+            "headline": "وجهتك الشاملة لعالم السيارات",
             "slug": "automotive-city",
-            "type": "صناعي",
-            "type_en": "Industrial",
-            "location": "عمان، الأردن",
-            "location_en": "Amman, Jordan",
-            "address": "منطقة الماضونة الصناعية، الطريق الدائري الشرقي، عمان",
-            "status": "قريباً",
-            "status_en": "Coming Soon",
-            "active": false,
-            "featured": false,
-            "completion_percentage": 24,
-            "total_units": 140,
-            "sold_units": 18,
-            "available_units": 122,
-            "total_area": "210,000 م²",
-            "unit_sizes": "600-2,400 م²",
-            "start_date": "2023-11-01",
-            "expected_completion": "2026-08-15",
-            "description": "مدينة السيارات تشكّل منطقة صناعية متخصصة في خدمات المركبات والتخزين اللوجستي، مع بنية تحتية مهيأة للورش والمعارض ومراكز الصيانة.",
+            "type": "تجاري وخدمي ولوجستي",
+            "type_en": "Commercial, Services & Logistics",
+            "location": "الماضونة، عمان - مجاور لمركز جمارك عمان الجديد",
+            "location_en": "Al-Madounah, Amman - Adjacent to new Amman Customs Center",
+            "address": "منطقة أحد، شرق عمان، بالقرب من مركز جمارك عمان",
+            "status": "قيد التطوير",
+            "status_en": "Under Development",
+            "active": true,
+            "featured": true,
+            "completion_percentage": 0,
+            "total_units": 757,
+            "sold_units": 0,
+            "available_units": 757,
+            "total_area": "914,000 م²",
+            "total_area_dunums": "914 دونم",
+            "leasable_area": "508,000 م²",
+            "business_model": "تأجير فقط - لا يوجد بيع",
+            "business_model_en": "Leasing-based only - No Sales",
+            "land_distribution": {
+                "showrooms_with_roads": "508 دونم",
+                "showrooms_without_roads": "344 دونم",
+                "roads_within_showrooms": "164 دونم (32%)",
+                "free_zone": "278.5 دونم",
+                "service_area": "127.5 دونم"
+            },
+            "plot_types": {
+                "A_plus": {"name": "Showroom A+", "count": 37},
+                "A": {"name": "Showroom A", "count": 105},
+                "B": {"name": "Showroom B", "count": 78},
+                "C": {"name": "Showroom C", "count": 119},
+                "D": {"name": "Showroom D", "count": 141},
+                "E": {"name": "Showroom E", "count": 277}
+            },
+            "unit_sizes": "قطع A+: 2,000+ م² | قطع A: 1,100-1,300 م² | قطع B: 700-900 م² | قطع C: 600-750 م² | قطع D: 490-630 م² | قطع E: 375-490 م²",
+            "start_date": "2025-01-01",
+            "expected_completion": "2027-12-31",
+            "masterplan_status": "معتمد نهائياً (REV-10)",
+            "masterplan_status_en": "Final and Approved (REV-10)",
+            "description": "موتور سيتي هي أول مدينة سيارات متكاملة في الأردن والمشرق العربي. تقع في الماضونة، عمان، مجاور لمركز جمارك عمان الجديد، وتمتد على مساحة 914 دونم. تهدف إلى تجميع جميع معارض السيارات والوكالات المعتمدة والخدمات ذات الصلة في وجهة واحدة مصممة خصيصاً، مما يخلق منظومة سيارات حديثة وفعالة ومتمحورة حول العميل.",
+            "description_en": "Motor City is Jordan's and the Levant's first fully integrated automotive city. Located in Al-Madounah, Amman, adjacent to the new Amman Customs Center, the project spans 914 dunums. It aims to centralize all automobile showrooms, authorized agencies, and related services in one purpose-built destination, creating a modern, efficient, and customer-centric automotive ecosystem.",
+            "project_vision": "بناء مدينة سيارات عالمية المستوى، منظمة ومستدامة، تضع معياراً جديداً للأردن والمشرق العربي",
+            "project_vision_en": "To build a world-class, highly organized, and sustainable automotive city setting a new benchmark for Jordan and the Levant",
+            "project_mission": "تحويل تجربة شراء السيارات وامتلاكها وصيانتها للعملاء والمستثمرين من خلال دمج جميع الوظائف المتعلقة بالسيارات والخدمات الحكومية في وجهة متكاملة واحدة تعزز الكفاءة والامتثال والابتكار",
+            "project_mission_en": "To transform the car-buying, ownership, and servicing experience for customers and investors by consolidating all automotive functions and government services into one integrated destination",
+            "investment_environment": "يمثل موتور سيتي أهمية وطنية وإقليمية كبيرة، حيث يعمل كمحرك رئيسي لاستراتيجية التحول الاقتصادي في الأردن من خلال تنظيم قطاع السيارات وتقليل الازدحام وتحفيز الاستثمار",
+            "infrastructure_title": "بنية تحتية متطورة جاهزة لخدمة قطاع السيارات",
+            "zoning_title": "ثلاث مناطق رئيسية متخصصة",
+            "partners": [
+                "مجموعة نوبلز (Nobles Group)",
+                "عمان فيجن للاستثمار (AVID)",
+                "أمانة عمان الكبرى (GAM)"
+            ],
+            "partners_en": [
+                "Nobles Group",
+                "Amman Vision Investment and Development (AVID)",
+                "Greater Amman Municipality (GAM)"
+            ],
+            "core_components": [
+                {
+                    "name": "منطقة المعارض والوكالات",
+                    "name_en": "Automobile Showrooms District",
+                    "area": "508 دونم",
+                    "description": "مجموعات للوكالات المعتمدة ومعارض متعددة العلامات التجارية ومعارض السيارات الكهربائية"
+                },
+                {
+                    "name": "المنطقة الحرة",
+                    "name_en": "Free Zone",
+                    "area": "278.5 دونم",
+                    "description": "منطقة جمركية مؤمنة للاستيراد والتصدير والتخزين وعمليات البيع بالجملة"
+                },
+                {
+                    "name": "منطقة الخدمات",
+                    "name_en": "Service Zone",
+                    "area": "127.5 دونم",
+                    "description": "ورش صيانة ومراكز فحص وقطع غيار وخدمات دعم"
+                }
+            ],
+            "target_sectors": [
+                "الوكالات المعتمدة والمعارض",
+                "معارض السيارات المستعملة",
+                "محلات قطع الغيار والإكسسوارات",
+                "مراكز الصيانة والفحص",
+                "مكاتب التأمين والتمويل والتسجيل",
+                "فروع الخدمات الحكومية (جمارك، ترخيص، مرور)"
+            ],
+            "target_sectors_en": [
+                "Authorized agencies and dealerships",
+                "Used car showrooms",
+                "Spare parts and accessories retailers",
+                "Maintenance and inspection centers",
+                "Insurance, financing, and registration offices",
+                "Government service branches (Customs, Licensing, Traffic)"
+            ],
+            "competitive_advantages": [
+                "موقع استراتيجي مجاور لمركز جمارك عمان الجديد",
+                "أول مدينة سيارات متكاملة في الأردن والمشرق",
+                "لا يوجد منافس مباشر في الأردن",
+                "دمج المنطقة الحرة والسوق المحلي ومنطقة الخدمات",
+                "شراكة حكومية مع أمانة عمان الكبرى",
+                "دعم خطة نقل المعارض من داخل عمان",
+                "بنية تحتية جاهزة ومتكاملة"
+            ],
+            "competitive_advantages_en": [
+                "Strategic location adjacent to new Amman Customs Center",
+                "First integrated automotive city in Jordan and Levant",
+                "No direct competitor in Jordan",
+                "Combines free zone, local market, and service cluster",
+                "Government partnership with Greater Amman Municipality",
+                "Supports showroom relocation plan from Amman",
+                "Ready and integrated infrastructure"
+            ],
+            "market_analysis": {
+                "study_by": "Namaa Consulting",
+                "study_date": "مارس 2025",
+                "total_dealerships_surveyed": 363,
+                "key_findings": [
+                    "أكثر من 350 معرض نشط حالياً في مناطق متفرقة من عمان",
+                    "غالبية المواقع تواجه تحديات: مواقف محدودة، إيجارات مرتفعة، غياب التنظيم",
+                    "50% من المستطلعين يتوقعون نمواً في مبيعات السيارات الكهربائية خلال 5 سنوات",
+                    "أكثر من 60% أبدوا استعدادهم للانتقال لمدينة سيارات موحدة"
+                ],
+                "key_findings_en": [
+                    "Over 350 active dealerships currently operate across scattered areas in Amman",
+                    "Majority of locations face challenges: limited parking, high rents, lack of regulation",
+                    "50% of surveyed dealers expect growth in EV sales within five years",
+                    "More than 60% expressed willingness to relocate to a unified automotive city"
+                ]
+            },
             "features": [
-                "مستودعات جاهزة بمواصفات صناعية",
-                "شبكة طرق داخلية لاستيعاب الشاحنات الثقيلة",
-                "مركز تسجيل وترخيص مركبات داخل المشروع"
+                "757 قطعة معرض بتصنيفات متنوعة (A+ إلى E)",
+                "منطقة حرة جمركية للاستيراد والتصدير",
+                "منطقة خدمات متكاملة للصيانة والفحص",
+                "مرافق تجارية وعامة (بنوك، تأمين، مطاعم، مسجد)",
+                "بنية تحتية ذكية متكاملة",
+                "منطقة شاحنات ثقيلة",
+                "منطقة لعب أطفال ونوافير مياه ومناطق جلوس"
+            ],
+            "features_en": [
+                "757 showroom plots with varied classifications (A+ to E)",
+                "Customs-bonded free zone for import/export",
+                "Integrated service zone for maintenance and inspection",
+                "Commercial & public facilities (banks, insurance, restaurants, mosque)",
+                "Integrated smart infrastructure",
+                "Heavy trucks area",
+                "Kids area, water fountains, and sitting areas"
             ],
             "amenities": [
-                "محطات وقود وشحن كهربائي",
-                "منطقة مطاعم ومقاهٍ للعاملين",
-                "خدمات أمن صناعي على مدار الساعة"
+                "محطات وقود",
+                "بنية تحتية لشحن السيارات الكهربائية",
+                "مسجد",
+                "مطاعم ومقاهي",
+                "بنوك ومكاتب تأمين",
+                "مكاتب حكومية (جمارك، ترخيص، مرور)",
+                "منطقة لعب أطفال",
+                "نوافير مياه ومناطق جلوس"
+            ],
+            "infrastructure": {
+                "roads": "شبكة طرق داخلية بعرض 22-30 متراً",
+                "roads_en": "Internal road network 22-30m wide",
+                "electricity": "أنظمة الطاقة والمياه والاتصالات",
+                "water": "شبكة مياه متكاملة ونظام صرف مياه أمطار",
+                "sewage": "نظام صرف صحي حديث",
+                "telecom": "أنظمة الاتصالات والتقنية الذكية",
+                "security": "شبكة أمن وكاميرات مراقبة CCTV ونظام تحكم بالدخول",
+                "lighting": "إضاءة ذكية"
+            },
+            "investment_incentives": {
+                "business_model": "نظام تأجير طويل الأمد فقط - لا يوجد بيع",
+                "revenue_streams": [
+                    "تأجير قطع المعارض (A+, A, B, C, D, E)",
+                    "تأجير ساحات المنطقة الحرة للاستيراد والتصدير والتخزين",
+                    "تأجير قطع الخدمات للورش والمطاعم",
+                    "رسوم الصيانة والإدارة السنوية"
+                ]
+            },
+            "nearby_landmarks": [
+                "مركز جمارك عمان الجديد",
+                "ممر عمان التنموي",
+                "تقاطع الماضونة",
+                "محطة شرق عمان للطاقة",
+                "AM Solar"
+            ],
+            "nearby_landmarks_en": [
+                "New Amman Customs Center",
+                "Amman Development Corridor",
+                "Madouna Interchange",
+                "Amman East Power Plant",
+                "AM Solar"
             ],
             "images": {
-                "main": "Car City.png",
+                "main": "Motor City.png",
                 "gallery": []
             },
+            "monthly_progress": [],
+            "phases": [
+                {
+                    "name": "المرحلة الأولى",
+                    "name_en": "Phase 1",
+                    "status": "مخطط",
+                    "completion_percentage": 0,
+                    "plots": "150 قطعة"
+                },
+                {
+                    "name": "المرحلة الثانية",
+                    "name_en": "Phase 2",
+                    "status": "مخطط",
+                    "completion_percentage": 0,
+                    "plots": "308 قطعة"
+                },
+                {
+                    "name": "المرحلة الثالثة",
+                    "name_en": "Phase 3",
+                    "status": "مخطط",
+                    "completion_percentage": 0,
+                    "plots": "266 قطعة"
+                }
+            ],
             "financial_data": {
-                "total_investment": 196000000,
-                "land_cost": 41000000,
-                "construction_cost": 128000000,
-                "marketing_cost": 6000000,
-                "other_costs": 21000000
+                "note": "سيتم تطويرها بشكل منفصل - تشمل CAPEX و OPEX وتوقعات التدفق النقدي وإيرادات التأجير وتحليل العائد على الاستثمار"
             },
             "sales_data": {
-                "total_revenue": 0,
-                "units_sold_value": 26500000,
-                "average_price_per_unit": 1470000
+                "note": "نموذج العمل قائم على التأجير فقط - لا يوجد بيع"
+            },
+            "risks_and_mitigation": {
+                "regulatory_delays": "التنسيق الوثيق مع أمانة عمان وAVID للحفاظ على الجداول الزمنية",
+                "market_volatility": "أسعار تأجير مرنة وطرح مرحلي",
+                "infrastructure_cost": "هندسة القيمة وعقود موردين طويلة الأمد",
+                "economic_conditions": "مزيج متنوع من المستأجرين (تجزئة، خدمات، منطقة حرة)",
+                "ev_transition": "دمج شواحن السيارات الكهربائية والطاقة الخضراء مبكراً"
+            },
+            "contact": {
+                "phone": "+962 (06) 5546161",
+                "email": "info@noblesproperties.com",
+                "sales_email": "motorcity@noblesproperties.com"
             }
         },
         {

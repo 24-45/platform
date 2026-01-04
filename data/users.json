@@ -6,7 +6,7 @@
             "password": "admin123",
             "name": "طاهر إرشيد",
             "role": "admin",
-            "tenant_access": ["nobles", "zakah", "waqf"],
+            "tenant_access": ["alic", "nobles", "zakah", "waqf"],
             "active": true
         },
         {
@@ -28,6 +28,16 @@
             "tenant_access": ["nobles"],
             "default_tenant": "nobles",
             "active": true
+        },
+        {
+            "id": "user4",
+            "email": "alic@24-45.com",
+            "password": "alic2025",
+            "name": "عميل ALIC",
+            "role": "client",
+            "tenant_access": ["alic", "zakah", "waqf", "nobles"],
+            "active": true,
+            "status": "approved"
         }
     ]
 }
