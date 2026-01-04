@@ -95,7 +95,13 @@ def tenant_access_required(f):
             return f(*args, **kwargs)
         
         tenant_slug = kwargs.get('tenant_slug')
+        project_slug = kwargs.get('project_slug', '')
         user_tenants = session.get('tenant_access', [])
+        
+        # السماح بالوصول لتقرير ALIC #01 إذا كان لديه الصلاحية
+        if tenant_slug == 'nobles' and project_slug == 'alic-almuwaqqar':
+            if session.get('can_access_alic_report', False):
+                return f(*args, **kwargs)
         
         if tenant_slug and tenant_slug not in user_tenants:
             flash('ليس لديك صلاحية للوصول لهذا العميل', 'error')
