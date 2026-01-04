@@ -128,6 +128,55 @@
 /* إظهار المحتوى مباشرة إذا كان رمز الوصول صحيح */
 .page-content.bypass-auth { display: block !important; }
 
+/* ═══════════════════════════════════════════════════════════════════════════════
+   وضع الضيف (Guest Mode) - عند فتح الرابط بـ #01
+   ═══════════════════════════════════════════════════════════════════════════════ */
+body.guest-mode .navbar,
+body.guest-mode .platform-header,
+body.guest-mode .platform-footer,
+body.guest-mode footer {
+    display: none !important;
+}
+
+body.guest-mode .page-content {
+    padding-top: 0 !important;
+}
+
+/* زر العودة للمشاريع في وضع الضيف */
+.guest-back-button {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 10000;
+    background: linear-gradient(135deg, #00d46a 0%, #00a854 100%);
+    color: #fff;
+    padding: 12px 24px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    display: none;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 4px 20px rgba(0, 212, 106, 0.4);
+    transition: all 0.3s ease;
+}
+
+body.guest-mode .guest-back-button {
+    display: flex;
+}
+
+.guest-back-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(0, 212, 106, 0.5);
+    color: #fff;
+    text-decoration: none;
+}
+
+.guest-back-button i {
+    font-size: 1.1rem;
+}
+
 /* منصة 45°24° - غلاف المنصة */
 .platform-cover {
     position: relative;
@@ -13833,9 +13882,29 @@
 {% endblock %}
 
 {% block content %}
+<!-- زر العودة للمشاريع (يظهر فقط في وضع الضيف) -->
+<a href="https://www.24-45.com/Project" class="guest-back-button" id="guestBackButton">
+    <i class="fas fa-arrow-right"></i>
+    العودة للمشاريع
+</a>
+
 <!-- كود للتحقق من رمز الوصول وإظهار المحتوى مباشرة -->
 <script>
 (function() {
+    // التحقق من وضع الضيف (#01)
+    if (window.location.hash === '#01') {
+        document.body.classList.add('guest-mode');
+    }
+    
+    // الاستماع لتغيير الـ hash
+    window.addEventListener('hashchange', function() {
+        if (window.location.hash === '#01') {
+            document.body.classList.add('guest-mode');
+        } else {
+            document.body.classList.remove('guest-mode');
+        }
+    });
+    
     // على المنصة 24-45، المصادقة تتم عبر Flask session
     // نتجاوز فحص Firebase ونعرض المحتوى مباشرة
     var isPlatform = window.location.hostname.includes('24-45.com') || window.location.pathname.includes('/nobles/');
