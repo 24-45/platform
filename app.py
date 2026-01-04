@@ -301,7 +301,11 @@ def login():
 @app.route('/auth/google')
 def google_login():
     """بدء عملية تسجيل الدخول بجوجل"""
-    redirect_uri = url_for('google_callback', _external=True, _scheme='https')
+    # استخدام الرابط مباشرة لتجنب مشاكل redirect_uri_mismatch
+    if request.host.endswith('pythonanywhere.com'):
+        redirect_uri = 'https://24-45.pythonanywhere.com/auth/google/callback'
+    else:
+        redirect_uri = url_for('google_callback', _external=True)
     return google.authorize_redirect(redirect_uri)
 
 
