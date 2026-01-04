@@ -17,6 +17,9 @@ app.config['TEMPLATES_AUTO_RELOAD'] = True
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'platform-24-45-secret-key-2025')
 app.jinja_env.auto_reload = True
 
+# إعداد HTTPS للإنتاج (PythonAnywhere)
+app.config['PREFERRED_URL_SCHEME'] = 'https'
+
 # إعداد Google OAuth
 oauth = OAuth(app)
 google = oauth.register(
@@ -298,7 +301,7 @@ def login():
 @app.route('/auth/google')
 def google_login():
     """بدء عملية تسجيل الدخول بجوجل"""
-    redirect_uri = url_for('google_callback', _external=True)
+    redirect_uri = url_for('google_callback', _external=True, _scheme='https')
     return google.authorize_redirect(redirect_uri)
 
 
