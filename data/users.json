@@ -38,6 +38,18 @@
             "tenant_access": ["alic", "zakah", "waqf", "nobles"],
             "active": true,
             "status": "approved"
+        },
+        {
+            "id": "user5",
+            "email": "taher5irshaid@gmail.com",
+            "password": "user123",
+            "name": "Taher Irshaid",
+            "role": "client",
+            "tenant_access": ["waqf", "zakah"],
+            "default_tenant": "waqf",
+            "active": true,
+            "can_access_projects": true,
+            "can_access_alic_report": true
         }
     ]
 }
