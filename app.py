@@ -57,6 +57,22 @@ def get_user_by_email(email):
     return None
 
 
+def get_current_user_permissions():
+    """قراءة صلاحيات المستخدم الحالي من الملف مباشرة (لتحديث فوري)"""
+    user_email = session.get('user_email')
+    if not user_email:
+        return {}
+    user = get_user_by_email(user_email)
+    if not user:
+        return {}
+    return {
+        'can_access_projects': user.get('can_access_projects', False),
+        'can_access_alic_report': user.get('can_access_alic_report', False),
+        'tenant_access': user.get('tenant_access', []),
+        'role': user.get('role', 'client')
+    }
+
+
 def authenticate_user(email, password):
     """التحقق من بيانات المستخدم"""
     user = get_user_by_email(email)
@@ -96,11 +112,14 @@ def tenant_access_required(f):
         
         tenant_slug = kwargs.get('tenant_slug')
         project_slug = kwargs.get('project_slug', '')
-        user_tenants = session.get('tenant_access', [])
+        
+        # قراءة الصلاحيات من الملف مباشرة (لتحديث فوري بدون إعادة تسجيل الدخول)
+        permissions = get_current_user_permissions()
+        user_tenants = permissions.get('tenant_access', [])
         
         # السماح بالوصول لتقرير ALIC #01 إذا كان لديه الصلاحية
         if tenant_slug == 'nobles' and project_slug == 'alic-almuwaqqar':
-            if session.get('can_access_alic_report', False):
+            if permissions.get('can_access_alic_report', False):
                 return f(*args, **kwargs)
         
         if tenant_slug and tenant_slug not in user_tenants:
@@ -498,23 +517,26 @@ def client_projects():
     """صفحة المشاريع للعميل - عرض جميع المشاريع"""
     all_tenants = get_all_tenants()
     
+    # قراءة الصلاحيات من الملف مباشرة (لتحديث فوري)
+    permissions = get_current_user_permissions()
+    user_role = permissions.get('role', session.get('role', 'client'))
+    
     # إذا كان المستخدم admin يرى جميع المشاريع
-    user_role = session.get('role', 'client')
     if user_role == 'admin':
         # استبعاد المشاريع المخفية
         accessible_tenants = [t for t in all_tenants if t.get('active', True) and not t.get('hidden', False)]
     else:
         # التحقق من صلاحية الوصول لصفحة المشاريع
-        if not session.get('can_access_projects', False):
+        if not permissions.get('can_access_projects', False):
             flash('ليس لديك صلاحية الوصول لهذه الصفحة', 'error')
             return redirect(url_for('access_denied'))
         
         # عرض المشاريع التي يملك المستخدم صلاحية الوصول إليها
-        user_tenants = session.get('tenant_access', [])
+        user_tenants = permissions.get('tenant_access', [])
         accessible_tenants = [t for t in all_tenants if t.get('active', True) and t.get('id') in user_tenants and not t.get('hidden', False)]
     
-    # إضافة تقرير ALIC #01 إذا كان المستخدم يملك الصلاحية
-    can_access_alic_report = session.get('can_access_alic_report', False) or user_role == 'admin'
+    # إضافة تقرير ALIC #01 إذا كان المستخدم يملك الصلاحية (من الملف مباشرة)
+    can_access_alic_report = permissions.get('can_access_alic_report', False) or user_role == 'admin'
     
     return render_template('platform/client_dashboard.html', 
                          tenants=accessible_tenants,
