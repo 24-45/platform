@@ -688,7 +688,15 @@ def tenant_project_report(tenant_slug, project_slug):
             return redirect(url_for('campaign_report', campaign_id=project_slug))
         return render_template('404.html'), 404
     
-    template = get_tenant_template(tenant_slug, 'project_report.html')
+    # اختيار القالب المناسب حسب المشروع - فصل كامل بين المشاريع
+    if project_slug == 'automotive-city':
+        template_name = 'project_report_motor_city.html'
+    elif project_slug == 'alic-almuwaqqar':
+        template_name = 'project_report_alic.html'
+    else:
+        template_name = 'project_report.html'
+    
+    template = get_tenant_template(tenant_slug, template_name)
     return render_template(template, 
                          tenant=tenant,
                          project=project)
