@@ -10,6 +10,12 @@ from functools import wraps
 from authlib.integrations.flask_client import OAuth
 import json
 import os
+import logging
+import traceback
+
+# إعداد logging
+logging.basicConfig(level=logging.DEBUG)
+logger = logging.getLogger(__name__)
 
 app = Flask(__name__)
 app.config['JSON_AS_ASCII'] = False
@@ -673,33 +679,45 @@ def tenant_reports(tenant_slug):
 @tenant_access_required
 def tenant_project_report(tenant_slug, project_slug):
     """صفحة تقرير مشروع العميل"""
-    tenant = get_tenant_by_slug(tenant_slug)
-    if not tenant:
-        return render_template('404.html'), 404
-    
-    # البحث أولاً في projects.json
-    project = get_tenant_project_by_slug(tenant_slug, project_slug)
-    
-    # إذا لم يوجد، البحث في campaigns.json
-    if not project:
-        campaign = get_campaign_by_id(project_slug)
-        if campaign:
-            # توجيه للراوت الجديد للحملات
-            return redirect(url_for('campaign_report', campaign_id=project_slug))
-        return render_template('404.html'), 404
-    
-    # اختيار القالب المناسب حسب المشروع - فصل كامل بين المشاريع
-    if project_slug == 'automotive-city':
-        template_name = 'project_report_motor_city.html'
-    elif project_slug == 'alic-almuwaqqar':
-        template_name = 'project_report_alic.html'
-    else:
-        template_name = 'project_report.html'
-    
-    template = get_tenant_template(tenant_slug, template_name)
-    return render_template(template, 
-                         tenant=tenant,
-                         project=project)
+    try:
+        logger.info(f"Loading project report: tenant={tenant_slug}, project={project_slug}")
+        
+        tenant = get_tenant_by_slug(tenant_slug)
+        if not tenant:
+            logger.error(f"Tenant not found: {tenant_slug}")
+            return render_template('404.html'), 404
+        
+        # البحث أولاً في projects.json
+        project = get_tenant_project_by_slug(tenant_slug, project_slug)
+        logger.info(f"Project found: {project is not None}")
+        
+        # إذا لم يوجد، البحث في campaigns.json
+        if not project:
+            campaign = get_campaign_by_id(project_slug)
+            if campaign:
+                logger.info(f"Redirecting to campaign report: {project_slug}")
+                return redirect(url_for('campaign_report', campaign_id=project_slug))
+            logger.error(f"Project not found: {project_slug}")
+            return render_template('404.html'), 404
+        
+        # اختيار القالب المناسب حسب المشروع - فصل كامل بين المشاريع
+        if project_slug == 'automotive-city':
+            template_name = 'project_report_motor_city.html'
+        elif project_slug == 'alic-almuwaqqar':
+            template_name = 'project_report_alic.html'
+        else:
+            template_name = 'project_report.html'
+        
+        template = get_tenant_template(tenant_slug, template_name)
+        logger.info(f"Using template: {template}")
+        
+        return render_template(template, 
+                             tenant=tenant,
+                             project=project)
+    except Exception as e:
+        logger.error(f"Error in tenant_project_report: {str(e)}")
+        logger.error(traceback.format_exc())
+        raise
 
 
 @app.route('/<tenant_slug>/about')
