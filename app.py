@@ -72,21 +72,18 @@ def get_current_user_permissions():
     if not user:
         return {}
     
-    # الحصول على tenant_access
     tenant_access = user.get('tenant_access', [])
+    role = user.get('role', 'client')
     
-    # ✅ إصلاح: إذا كان لديه tenant_access، يُفترض أنه يستطيع الوصول للمشاريع
-    # إلا إذا تم تعطيله صراحة (can_access_projects = false)
-    can_access_projects = user.get('can_access_projects')
-    if can_access_projects is None:
-        # إذا لم يتم تحديد الصلاحية، يُسمح له إذا كان لديه أي tenant_access
-        can_access_projects = len(tenant_access) > 0
+    # ✅ تبسيط الصلاحيات:
+    # - Admin لديه كل الصلاحيات
+    # - أي مستخدم لديه tenant_access يمكنه الوصول للمشاريع
+    # - صلاحية ALIC تُعطى لمن لديه nobles أو can_access_alic_report
     
     return {
-        'can_access_projects': can_access_projects,
-        'can_access_alic_report': user.get('can_access_alic_report', False),
         'tenant_access': tenant_access,
-        'role': user.get('role', 'client')
+        'role': role,
+        'can_access_alic_report': user.get('can_access_alic_report', False) or 'nobles' in tenant_access,
     }
 
 
@@ -539,23 +536,22 @@ def client_projects():
     # قراءة الصلاحيات من الملف مباشرة (لتحديث فوري)
     permissions = get_current_user_permissions()
     user_role = permissions.get('role', session.get('role', 'client'))
+    user_tenants = permissions.get('tenant_access', [])
     
     # إذا كان المستخدم admin يرى جميع المشاريع
     if user_role == 'admin':
-        # استبعاد المشاريع المخفية
         accessible_tenants = [t for t in all_tenants if t.get('active', True) and not t.get('hidden', False)]
     else:
-        # التحقق من صلاحية الوصول لصفحة المشاريع
-        if not permissions.get('can_access_projects', False):
+        # ✅ تبسيط: إذا كان لديه أي tenant_access يمكنه الوصول
+        if not user_tenants:
             flash('ليس لديك صلاحية الوصول لهذه الصفحة', 'error')
             return redirect(url_for('access_denied'))
         
         # عرض المشاريع التي يملك المستخدم صلاحية الوصول إليها
-        user_tenants = permissions.get('tenant_access', [])
         accessible_tenants = [t for t in all_tenants if t.get('active', True) and t.get('id') in user_tenants and not t.get('hidden', False)]
     
-    # إضافة تقرير ALIC #01 إذا كان المستخدم يملك الصلاحية (من الملف مباشرة)
-    can_access_alic_report = permissions.get('can_access_alic_report', False) or user_role == 'admin'
+    # إضافة تقرير ALIC #01 إذا كان المستخدم يملك الصلاحية
+    can_access_alic_report = permissions.get('can_access_alic_report', False) or user_role == 'admin' or 'nobles' in user_tenants
     
     return render_template('platform/client_dashboard.html', 
                          tenants=accessible_tenants,
