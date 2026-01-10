@@ -1021,7 +1021,6 @@
                             <th>الإيميل</th>
                             <th>الدور</th>
                             <th>صلاحيات العملاء</th>
-                            <th>المشاريع</th>
                             <th>الحالة</th>
                             <th>إجراءات</th>
                         </tr>
@@ -1042,12 +1041,8 @@
                                 {% for tenant in user.tenant_access %}
                                 <span class="tenant-tag">{{ tenant }}</span>
                                 {% endfor %}
-                            </td>
-                            <td>
-                                {% if user.can_access_projects %}
-                                <span class="badge badge-success" title="يمكنه الوصول لصفحة المشاريع"><i class="fas fa-folder-open"></i></span>
-                                {% else %}
-                                <span class="badge badge-danger" title="لا يمكنه الوصول لصفحة المشاريع"><i class="fas fa-folder"></i></span>
+                                {% if not user.tenant_access %}
+                                <span class="badge badge-danger">لا صلاحيات</span>
                                 {% endif %}
                             </td>
                             <td>
@@ -1064,7 +1059,7 @@
                                         <i class="fas fa-trash"></i>
                                     </button>
                                 </form>
-                                <button type="button" class="btn btn-sm btn-info" onclick="editUser('{{ user.id }}', '{{ user.name }}', '{{ user.email }}', '{{ user.tenant_access|join(',') }}', '{{ user.default_tenant }}', '{{ user.role }}', {{ user.can_access_projects|default(false)|tojson }}, {{ user.can_access_alic_report|default(false)|tojson }})" title="تعديل">
+                <button type="button" class="btn btn-sm btn-info" onclick="editUser('{{ user.id }}', '{{ user.name }}', '{{ user.email }}', '{{ user.tenant_access|join(',') }}', '{{ user.default_tenant }}', '{{ user.role }}')" title="تعديل">
                                     <i class="fas fa-edit"></i>
                                 </button>
                                 <form action="/admin/users/toggle/{{ user.id }}" method="POST" style="display: inline;">
@@ -1137,21 +1132,10 @@
                         </label>
                         {% endfor %}
                     </div>
-                </div>
-                <div class="form-group">
-                    <label class="form-label">صلاحيات إضافية</label>
-                    <div class="checkbox-group">
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="can_access_projects" id="edit_can_access_projects" value="1">
-                            <i class="fas fa-folder-open" style="color: var(--green);"></i>
-                            الوصول لصفحة المشاريع (/Project)
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="can_access_alic_report" id="edit_can_access_alic_report" value="1">
-                            <i class="fas fa-industry" style="color: var(--green);"></i>
-                            مدينة عمّان اللوجستية والصناعية (#01)
-                        </label>
-                    </div>
+                    <small style="color: var(--gray); display: block; margin-top: 0.5rem;">
+                        <i class="fas fa-info-circle"></i>
+                        المستخدم يستطيع الوصول لجميع مشاريع العملاء المحددين
+                    </small>
                 </div>
                 <button type="submit" class="btn btn-primary">
                     <i class="fas fa-save"></i>
@@ -1173,17 +1157,17 @@
         }
     }
 
-    function editUser(id, name, email, tenants, defaultTenant, role, canAccessProjects, canAccessAlicReport) {
+    function editUser(id, name, email, tenants, defaultTenant, role) {
             document.getElementById('edit_user_id').value = id;
             document.getElementById('edit_name').value = name;
             document.getElementById('edit_email').value = email;
             document.getElementById('edit_default_tenant').value = defaultTenant || '';
             document.getElementById('edit_role').value = role || 'client';
-            document.getElementById('edit_can_access_projects').checked = canAccessProjects === true || canAccessProjects === 'true';
-            document.getElementById('edit_can_access_alic_report').checked = canAccessAlicReport === true || canAccessAlicReport === 'true';
             
+            // إعادة تعيين جميع الـ checkboxes
             document.querySelectorAll('.edit-tenant-checkbox').forEach(cb => cb.checked = false);
             
+            // تحديد العملاء المحددين
             if (tenants) {
                 tenants.split(',').forEach(tenant => {
                     const checkbox = document.querySelector(`.edit-tenant-checkbox[value="${tenant}"]`);

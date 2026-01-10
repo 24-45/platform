@@ -982,9 +982,7 @@ def admin_edit_user():
     email = request.form.get('email', '').strip().lower()
     default_tenant = request.form.get('default_tenant', '')
     tenants = request.form.getlist('tenants')
-    role = request.form.get('role', 'client')  # الدور الجديد
-    can_access_projects = request.form.get('can_access_projects') == '1'  # صلاحية صفحة المشاريع
-    can_access_alic_report = request.form.get('can_access_alic_report') == '1'  # صلاحية تقرير ALIC #01
+    role = request.form.get('role', 'client')
     
     users = load_users()
     for user in users:
@@ -993,9 +991,7 @@ def admin_edit_user():
             user['email'] = email
             user['default_tenant'] = default_tenant
             user['tenant_access'] = tenants
-            user['role'] = role  # تحديث الدور
-            user['can_access_projects'] = can_access_projects  # حفظ صلاحية المشاريع
-            user['can_access_alic_report'] = can_access_alic_report  # حفظ صلاحية تقرير ALIC
+            user['role'] = role
             break
     
     save_users(users)
