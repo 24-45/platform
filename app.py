@@ -71,10 +71,21 @@ def get_current_user_permissions():
     user = get_user_by_email(user_email)
     if not user:
         return {}
+    
+    # الحصول على tenant_access
+    tenant_access = user.get('tenant_access', [])
+    
+    # ✅ إصلاح: إذا كان لديه tenant_access، يُفترض أنه يستطيع الوصول للمشاريع
+    # إلا إذا تم تعطيله صراحة (can_access_projects = false)
+    can_access_projects = user.get('can_access_projects')
+    if can_access_projects is None:
+        # إذا لم يتم تحديد الصلاحية، يُسمح له إذا كان لديه أي tenant_access
+        can_access_projects = len(tenant_access) > 0
+    
     return {
-        'can_access_projects': user.get('can_access_projects', False),
+        'can_access_projects': can_access_projects,
         'can_access_alic_report': user.get('can_access_alic_report', False),
-        'tenant_access': user.get('tenant_access', []),
+        'tenant_access': tenant_access,
         'role': user.get('role', 'client')
     }
 
@@ -91,14 +102,8 @@ def login_required(f):
     """ديكوريتور للتحقق من تسجيل الدخول"""
     @wraps(f)
     def decorated_function(*args, **kwargs):
-        # تجاوز تسجيل الدخول في وضع التطوير
-        if app.debug and 'user_id' not in session:
-            session['user_id'] = 'dev-admin'
-            session['user_email'] = 'admin@24-45.com'
-            session['user_name'] = 'مطور'
-            session['role'] = 'admin'
-            session['tenant_access'] = ['nobles', 'zakah', 'waqf', 'alic']
-            session['default_tenant'] = 'nobles'
+        # ⚠️ تم إلغاء التجاوز التلقائي للأمان
+        # استخدم /dev-login للدخول في وضع التطوير
         if 'user_id' not in session:
             return redirect(url_for('login'))
         return f(*args, **kwargs)
@@ -261,7 +266,11 @@ def favicon():
 
 @app.route('/dev-login')
 def dev_login():
-    """تسجيل دخول تلقائي للتطوير - احذف هذا في الإنتاج!"""
+    """تسجيل دخول تلقائي للتطوير - يعمل فقط في البيئة المحلية"""
+    # ⚠️ حماية: يعمل فقط في وضع التطوير المحلي
+    if not app.debug or request.remote_addr not in ['127.0.0.1', 'localhost', '::1']:
+        return render_template('404.html'), 404
+    
     session['user_id'] = 'dev-admin'
     session['user_email'] = 'admin@24-45.com'
     session['user_name'] = 'مطور'
@@ -273,7 +282,11 @@ def dev_login():
 
 @app.route('/dev-login-alic')
 def dev_login_alic():
-    """تسجيل دخول تلقائي كعميل ALIC للتطوير"""
+    """تسجيل دخول تلقائي كعميل ALIC للتطوير - يعمل فقط في البيئة المحلية"""
+    # ⚠️ حماية: يعمل فقط في وضع التطوير المحلي
+    if not app.debug or request.remote_addr not in ['127.0.0.1', 'localhost', '::1']:
+        return render_template('404.html'), 404
+    
     session['user_id'] = 'user4'
     session['user_email'] = 'alic@24-45.com'
     session['user_name'] = 'عميل ALIC'
