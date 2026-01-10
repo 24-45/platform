@@ -288,7 +288,7 @@ def dev_login_alic():
     session['user_email'] = 'alic@24-45.com'
     session['user_name'] = 'عميل ALIC'
     session['role'] = 'client'
-    session['tenant_access'] = ['alic', 'zakah', 'waqf']
+    session['tenant_access'] = ['nobles']  # ALIC هو مشروع تحت nobles
     return redirect(url_for('client_projects'))
 
 
@@ -311,13 +311,12 @@ def waqf_page():
     return render_template('tenant/waqf/index.html', tenant=tenant)
 
 
-# ==================== صفحة ALIC - شركة أليك للتطوير ====================
+# ==================== صفحة ALIC - توجيه لتقرير المشروع ====================
 
 @app.route('/alic')
 def alic_page():
-    """صفحة شركة أليك للتطوير - قيد الإنشاء"""
-    tenant = get_tenant_by_slug('alic')
-    return render_template('platform/coming_soon.html', tenant=tenant, project_name='شركة أليك للتطوير')
+    """توجيه لتقرير مشروع ALIC تحت نوبلز"""
+    return redirect(url_for('tenant_project_report', tenant_slug='nobles', project_slug='alic-almuwaqqar'))
 
 
 # ==================== الصفحة الرئيسية للمنصة ====================

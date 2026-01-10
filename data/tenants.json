@@ -14,24 +14,8 @@
             "description": "شركة تطوير عقاري عالمية - مشاريع ALIC وغيرها",
             "website": "/nobles",
             "active": true,
-            "featured": false,
-            "hidden": true
-        },
-        {
-            "id": "alic",
-            "name": "مدينة عمّان اللوجستية والصناعية",
-            "name_en": "ALIC Logistic & Industrial City",
-            "slug": "alic",
-            "logo": "alic-logo.png",
-            "primary_color": "#1a365d",
-            "secondary_color": "#ffffff",
-            "accent_color": "#2c5282",
-            "type": "صناعي ولوجستي",
-            "type_en": "Industrial & Logistics",
-            "description": "مدينة عمّان اللوجستية والصناعية - حيث الموقع الاستثنائي والاستثمار الأمثل",
-            "website": "/nobles/report/alic-almuwaqqar#01",
-            "active": true,
-            "featured": true
+            "featured": true,
+            "hidden": false
         },
         {
             "id": "zakah",
