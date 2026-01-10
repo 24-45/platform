@@ -1135,16 +1135,11 @@ def campaign_report(campaign_id):
 
 
 @app.route('/admin/campaigns')
+@login_required
 def admin_campaigns():
     """إدارة الحملات - لوحة التحكم"""
-    # مؤقتاً للتطوير - تسجيل دخول تلقائي
-    if 'user_id' not in session:
-        session['user_id'] = 'dev-admin'
-        session['user_email'] = 'admin@24-45.com'
-        session['user_name'] = 'مطور'
-        session['role'] = 'admin'
-        session['tenant_access'] = ['nobles', 'zakah', 'waqf']
-        session['default_tenant'] = 'nobles'
+    if not is_admin():
+        return redirect(url_for('access_denied'))
     
     data = load_campaigns()
     tenants = get_all_tenants()
@@ -1167,16 +1162,11 @@ def load_campaign_types():
 
 
 @app.route('/admin/campaigns/new', methods=['GET', 'POST'])
+@login_required
 def admin_new_campaign():
     """إنشاء حملة جديدة - الـ Wizard"""
-    # مؤقتاً للتطوير - تسجيل دخول تلقائي
-    if 'user_id' not in session:
-        session['user_id'] = 'dev-admin'
-        session['user_email'] = 'admin@24-45.com'
-        session['user_name'] = 'مطور'
-        session['role'] = 'admin'
-        session['tenant_access'] = ['nobles', 'zakah', 'waqf']
-        session['default_tenant'] = 'nobles'
+    if not is_admin():
+        return redirect(url_for('access_denied'))
     
     # GET - عرض الـ Wizard الجديد
     campaign_types = load_campaign_types()
@@ -1188,12 +1178,11 @@ def admin_new_campaign():
 
 
 @app.route('/api/campaigns/create', methods=['POST'])
+@login_required
 def api_create_campaign():
     """API - إنشاء حملة جديدة من الـ Wizard"""
-    # مؤقتاً للتطوير - تسجيل دخول تلقائي
-    if 'user_id' not in session:
-        session['user_id'] = 'dev-admin'
-        session['role'] = 'admin'
+    if not is_admin():
+        return jsonify({'error': 'غير مصرح'}), 403
     
     from datetime import datetime
     
@@ -1296,16 +1285,11 @@ def api_create_campaign():
 
 
 @app.route('/admin/campaigns/<campaign_id>')
+@login_required
 def admin_edit_campaign(campaign_id):
     """تحرير حملة"""
-    # مؤقتاً للتطوير - تسجيل دخول تلقائي
-    if 'user_id' not in session:
-        session['user_id'] = 'dev-admin'
-        session['user_email'] = 'admin@24-45.com'
-        session['user_name'] = 'مطور'
-        session['role'] = 'admin'
-        session['tenant_access'] = ['nobles', 'zakah', 'waqf']
-        session['default_tenant'] = 'nobles'
+    if not is_admin():
+        return redirect(url_for('access_denied'))
     
     campaign = get_campaign_by_id(campaign_id)
     if not campaign:
@@ -1322,11 +1306,11 @@ def admin_edit_campaign(campaign_id):
 
 
 @app.route('/admin/campaigns/<campaign_id>/update', methods=['POST'])
+@login_required
 def admin_update_campaign(campaign_id):
     """تحديث بيانات حملة"""
-    # مؤقتاً للتطوير
-    if 'role' not in session:
-        session['role'] = 'admin'
+    if not is_admin():
+        return jsonify({'error': 'غير مصرح'}), 403
     
     data = load_campaigns()
     campaign_index = None
@@ -1501,12 +1485,11 @@ def api_submit_brief(campaign_id):
 
 
 @app.route('/admin/campaigns/<campaign_id>/brief')
+@login_required
 def admin_view_brief(campaign_id):
     """عرض الموجز الإبداعي للفريق"""
-    # مؤقتاً للتطوير
-    if 'user_id' not in session:
-        session['user_id'] = 'dev-admin'
-        session['role'] = 'admin'
+    if not is_admin():
+        return redirect(url_for('access_denied'))
     
     campaign = get_campaign_by_id(campaign_id)
     if not campaign:
