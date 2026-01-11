@@ -102,6 +102,8 @@ def login_required(f):
         # ⚠️ تم إلغاء التجاوز التلقائي للأمان
         # استخدم /dev-login للدخول في وضع التطوير
         if 'user_id' not in session:
+            # ✅ حفظ الرابط الأصلي للتوجيه بعد تسجيل الدخول
+            session['next_url'] = request.url
             return redirect(url_for('login'))
         return f(*args, **kwargs)
     return decorated_function
@@ -112,6 +114,8 @@ def tenant_access_required(f):
     @wraps(f)
     def decorated_function(*args, **kwargs):
         if 'user_id' not in session:
+            # ✅ حفظ الرابط الأصلي للتوجيه بعد تسجيل الدخول
+            session['next_url'] = request.url
             return redirect(url_for('login'))
         
         # Admin يمكنه الوصول لكل العملاء
@@ -446,6 +450,11 @@ def google_callback():
                     session['default_tenant'] = user.get('default_tenant')
                     session['can_access_projects'] = user.get('can_access_projects', False)
                     session['can_access_alic_report'] = user.get('can_access_alic_report', False)
+                    
+                    # ✅ التوجيه للرابط الأصلي إذا كان موجوداً
+                    next_url = session.pop('next_url', None)
+                    if next_url:
+                        return redirect(next_url)
                     
                     # توجيه حسب الصلاحية
                     if user['role'] == 'admin':
