@@ -102,9 +102,8 @@ def login_required(f):
         # ⚠️ تم إلغاء التجاوز التلقائي للأمان
         # استخدم /dev-login للدخول في وضع التطوير
         if 'user_id' not in session:
-            # ✅ حفظ الرابط الأصلي للتوجيه بعد تسجيل الدخول
-            session['next_url'] = request.url
-            return redirect(url_for('login'))
+            # ✅ حفظ الرابط الأصلي كـ query parameter
+            return redirect(url_for('login', next=request.url))
         return f(*args, **kwargs)
     return decorated_function
 
@@ -114,9 +113,8 @@ def tenant_access_required(f):
     @wraps(f)
     def decorated_function(*args, **kwargs):
         if 'user_id' not in session:
-            # ✅ حفظ الرابط الأصلي للتوجيه بعد تسجيل الدخول
-            session['next_url'] = request.url
-            return redirect(url_for('login'))
+            # ✅ حفظ الرابط الأصلي كـ query parameter
+            return redirect(url_for('login', next=request.url))
         
         # Admin يمكنه الوصول لكل العملاء
         if session.get('role') == 'admin':
@@ -383,6 +381,10 @@ def platform_home():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     """صفحة تسجيل الدخول"""
+    # ✅ حفظ الرابط الأصلي في session قبل OAuth
+    next_url = request.args.get('next')
+    if next_url:
+        session['next_url'] = next_url
     # عرض صفحة تسجيل الدخول للجميع
     # إذا المستخدم مسجل دخول، يمكنه تسجيل الخروج أو الاستمرار
     return render_template('platform/login.html')
