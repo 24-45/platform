@@ -45,7 +45,7 @@
             "password": "user123",
             "name": "Taher Irshaid",
             "role": "client",
-            "tenant_access": ["waqf", "zakah"],
+            "tenant_access": ["waqf", "zakah", "nobles"],
             "default_tenant": "waqf",
             "active": true,
             "can_access_projects": true,
