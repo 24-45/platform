@@ -311,12 +311,58 @@ def waqf_page():
     return render_template('tenant/waqf/index.html', tenant=tenant)
 
 
-# ==================== صفحة ALIC - توجيه لتقرير المشروع ====================
+# ==================== صفحة نوبلز للمعاينة (بدون تسجيل دخول - للتطوير فقط) ====================
+
+@app.route('/nobles-preview')
+def nobles_preview():
+    """صفحة نوبلز للمعاينة - بدون تسجيل دخول (للتطوير المحلي فقط)"""
+    if not app.debug:
+        return redirect(url_for('login'))
+    
+    tenant = get_tenant_by_slug('nobles')
+    data = load_tenant_projects('nobles')
+    config = load_tenant_config('nobles')
+    if not config and 'company' in data:
+        config = data
+    
+    return render_template('tenant/nobles/index.html', 
+                         tenant=tenant,
+                         config=config,
+                         projects=data.get('projects', []))
+
+
+# ==================== روابط مباشرة للمشاريع ====================
 
 @app.route('/alic')
 def alic_page():
     """توجيه لتقرير مشروع ALIC تحت نوبلز"""
     return redirect(url_for('tenant_project_report', tenant_slug='nobles', project_slug='alic-almuwaqqar'))
+
+
+@app.route('/motor-city')
+def motor_city_page():
+    """توجيه لتقرير مشروع Motor City تحت نوبلز"""
+    return redirect(url_for('tenant_project_report', tenant_slug='nobles', project_slug='automotive-city'))
+
+
+# ==================== صفحة ALIC للمعاينة (بدون تسجيل دخول - للتطوير فقط) ====================
+
+@app.route('/alic-preview')
+def alic_preview():
+    """صفحة تقرير ALIC للمعاينة - بدون تسجيل دخول (للتطوير المحلي فقط)"""
+    if not app.debug:
+        return redirect(url_for('login'))
+    
+    tenant = get_tenant_by_slug('nobles')
+    if not tenant:
+        return render_template('404.html'), 404
+    
+    project = get_tenant_project_by_slug('nobles', 'alic-almuwaqqar')
+    if not project:
+        return render_template('404.html'), 404
+    
+    template = get_tenant_template('nobles', 'project_report_alic.html')
+    return render_template(template, tenant=tenant, project=project)
 
 
 # ==================== الصفحة الرئيسية للمنصة ====================
@@ -548,6 +594,11 @@ def client_projects():
         
         # عرض المشاريع التي يملك المستخدم صلاحية الوصول إليها
         accessible_tenants = [t for t in all_tenants if t.get('active', True) and t.get('id') in user_tenants and not t.get('hidden', False)]
+    
+    # ✅ إذا كان المستخدم لديه مشروع واحد فقط، حوّله مباشرة
+    if len(accessible_tenants) == 1 and user_role != 'admin':
+        single_tenant = accessible_tenants[0]
+        return redirect(url_for('tenant_home', tenant_slug=single_tenant.get('id')))
     
     # إضافة تقرير ALIC #01 إذا كان المستخدم يملك الصلاحية
     can_access_alic_report = permissions.get('can_access_alic_report', False) or user_role == 'admin' or 'nobles' in user_tenants
