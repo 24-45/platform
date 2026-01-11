@@ -130,27 +130,18 @@
         @keyframes expandH { to { width: 100%; } }
         @keyframes expandV { to { height: 100%; } }
         .coord-labels {
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            z-index: 3;
-            pointer-events: none;
-        }
-        .coord-label {
-            position: absolute;
-            color: var(--green);
-            font-size: 1rem;
-            font-weight: 700;
-            opacity: 0;
-            animation: fadeIn 0.5s ease-out forwards;
+            display: none;
         }
         .label-24 {
-            top: 49%;
-            left: 3%;
+            top: 8%;
+            left: 50%;
+            transform: translateX(-50%);
             animation-delay: 2s;
         }
         .label-45 {
-            top: 49%;
-            right: 3%;
+            top: 50%;
+            right: 5%;
+            transform: translateY(-50%);
             animation-delay: 2.2s;
         }
         @keyframes fadeIn { to { opacity: 1; } }
@@ -215,7 +206,12 @@
             animation: fadeInUp 0.8s ease-out 1.7s forwards;
             text-shadow: 0 0 60px rgba(0, 212, 106, 0.3);
         }
-        .hero-title span { color: var(--green); }
+        .hero-title span { 
+            color: var(--green); 
+            direction: ltr;
+            display: inline-block;
+            unicode-bidi: embed;
+        }
         .hero-slogan {
             font-size: 2.2rem;
             color: var(--green);
@@ -286,6 +282,43 @@
             top: 0; left: 0; right: 0;
             height: 1px;
             background: linear-gradient(90deg, transparent, var(--green), transparent);
+        }
+        .automation::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--green), transparent);
+        }
+        .section-divider {
+            width: 100%;
+            height: 80px;
+            background: linear-gradient(180deg, transparent 0%, rgba(0, 212, 106, 0.03) 50%, transparent 100%);
+            position: relative;
+        }
+        .section-divider::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            border: 2px solid rgba(0, 212, 106, 0.2);
+            border-radius: 50%;
+            background: var(--black);
+        }
+        .section-divider::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 12px;
+            height: 12px;
+            background: var(--green);
+            border-radius: 50%;
+            box-shadow: 0 0 20px var(--green);
         }
         .automation-content {
             max-width: 1200px;
@@ -372,6 +405,21 @@
         .services {
             padding: 8rem 2rem;
             background: var(--black);
+            position: relative;
+        }
+        .services::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--green), transparent);
+        }
+        .services::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--green), transparent);
         }
         .section-header {
             text-align: center;
@@ -444,46 +492,81 @@
         .how-we-work {
             padding: 8rem 2rem;
             background: linear-gradient(180deg, var(--black) 0%, #050505 100%);
+            position: relative;
+        }
+        .how-we-work::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--green), transparent);
         }
         .steps-container {
-            max-width: 900px;
+            max-width: 1200px;
             margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            position: relative;
+        }
+        .steps-container::before {
+            content: '';
+            position: absolute;
+            top: 45px;
+            left: 10%;
+            right: 10%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--green), rgba(0, 212, 106, 0.3));
+            z-index: 0;
         }
         .step {
             display: flex;
-            align-items: flex-start;
-            gap: 2rem;
-            margin-bottom: 2.5rem;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
             position: relative;
+            z-index: 1;
         }
-        .step::before {
-            content: '';
-            position: absolute;
-            top: 60px;
-            right: 29px;
-            width: 2px;
-            height: calc(100% + 1rem);
-            background: linear-gradient(180deg, var(--green), transparent);
-        }
-        .step:last-child::before { display: none; }
         .step-number {
-            width: 60px; height: 60px;
+            width: 70px; height: 70px;
             background: var(--green);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             font-weight: 900;
             color: var(--black);
             flex-shrink: 0;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 0 30px rgba(0, 212, 106, 0.4);
+            border: 4px solid var(--black);
+            transition: all 0.3s ease;
+        }
+        .step:hover .step-number {
+            transform: scale(1.1);
+            box-shadow: 0 0 50px rgba(0, 212, 106, 0.6);
+        }
+        .step-content {
+            background: rgba(0, 212, 106, 0.05);
+            border: 1px solid rgba(0, 212, 106, 0.1);
+            border-radius: 16px;
+            padding: 1.5rem;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+        .step:hover .step-content {
+            background: rgba(0, 212, 106, 0.1);
+            border-color: var(--green);
+            transform: translateY(-5px);
         }
         .step-content h3 {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             font-weight: 700;
             margin-bottom: 0.5rem;
+            color: var(--white);
         }
-        .step-content p { color: var(--gray); }
+        .step-content p { color: var(--gray); font-size: 0.95rem; }
         .footer {
             background: #050505;
             padding: 4rem 2rem 2rem;
@@ -586,6 +669,8 @@
             .automation-content { grid-template-columns: 1fr; text-align: center; }
             .automation-visual { order: -1; margin-bottom: 2rem; }
             .footer-content { grid-template-columns: 1fr; text-align: center; }
+            .steps-container { grid-template-columns: repeat(2, 1fr); }
+            .steps-container::before { display: none; }
         }
         @media (max-width: 768px) {
             .nav-links { display: none; }
@@ -596,6 +681,8 @@
             .btn { width: 100%; max-width: 280px; justify-content: center; }
             .services-grid { grid-template-columns: 1fr; }
             .saudi-map-container { width: 90%; opacity: 0.15; }
+            .steps-container { grid-template-columns: 1fr; max-width: 400px; }
+            .section-divider { height: 50px; }
         }
     </style>
 </head>
@@ -621,8 +708,14 @@
             <div class="grid-line grid-v"></div>
         </div>
         <div class="coord-labels">
-            <span class="coord-label label-24">24°</span>
-            <span class="coord-label label-45">45°</span>
+            <span class="coord-label label-24">
+                <span class="degree">25°</span>
+                <span class="direction">شمال N</span>
+            </span>
+            <span class="coord-label label-45">
+                <span class="degree">45°</span>
+                <span class="direction">شرق E</span>
+            </span>
         </div>
         <div class="intersection-marker">
             <div class="marker-ring"></div>
@@ -633,11 +726,11 @@
         <div class="hero-content">
             <div class="hero-badge">
                 <i class="fas fa-map-marker-alt"></i>
-                إحداثيات المملكة العربية السعودية
+                25°N 45°E • قلب المملكة العربية السعودية
             </div>
             <h1 class="hero-title">منصة <span>24°45°</span></h1>
             <p class="hero-slogan">نضبط إحداثياتك</p>
-            <p class="hero-desc">منصة إدارة العمليات الاتصالية مؤتمتة بدون ملفات - من الفكرة إلى التنفيذ في مكان واحد</p>
+            <p class="hero-desc">منصة إدارة العمليات الاتصالية المُؤتمتة بدون ملفات - من الفكرة إلى التنفيذ في مكان واحد</p>
             <div class="hero-buttons">
                 <a href="/login" class="btn btn-primary"><i class="fas fa-rocket"></i> ابدأ الآن</a>
                 <a href="#services" class="btn btn-outline"><i class="fas fa-compass"></i> اكتشف خدماتنا</a>
@@ -669,6 +762,8 @@
         </div>
     </section>
 
+    <div class="section-divider"></div>
+
     <section class="services" id="services">
         <div class="section-header">
             <h2>خدماتنا <span>المتكاملة</span></h2>
@@ -686,13 +781,42 @@
         </div>
     </section>
 
+    <div class="section-divider"></div>
+
     <section class="how-we-work" id="how">
-        <div class="section-header"><h2>كيف <span>نعمل</span></h2><p>رحلة سلسة من الفكرة إلى النتائج</p></div>
+        <div class="section-header">
+            <h2>كيف <span>نعمل</span></h2>
+            <p>رحلة سلسة من الفكرة إلى النتائج</p>
+        </div>
         <div class="steps-container">
-            <div class="step"><div class="step-number">1</div><div class="step-content"><h3>التحليل والفهم</h3><p>نفهم احتياجاتك بدقة</p></div></div>
-            <div class="step"><div class="step-number">2</div><div class="step-content"><h3>ضبط الإحداثيات</h3><p>نحدد الاستراتيجية المثلى</p></div></div>
-            <div class="step"><div class="step-number">3</div><div class="step-content"><h3>التنفيذ والأتمتة</h3><p>ننفذ مع أتمتة كاملة</p></div></div>
-            <div class="step"><div class="step-number">4</div><div class="step-content"><h3>المتابعة والتقييم</h3><p>تقارير وتحسين مستمر</p></div></div>
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h3>التحليل والفهم</h3>
+                    <p>نفهم احتياجاتك ونحلل وضعك الحالي بدقة</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h3>ضبط الإحداثيات</h3>
+                    <p>نحدد الاستراتيجية والأهداف المثلى لك</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h3>التنفيذ والأتمتة</h3>
+                    <p>ننفذ الخطة مع أتمتة كاملة للعمليات</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                    <h3>المتابعة والتقييم</h3>
+                    <p>تقارير دورية وتحسين مستمر للأداء</p>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -700,7 +824,7 @@
         <div class="footer-content">
             <div class="footer-brand">
                 <img src="/static/images/24.png" alt="24°45°">
-                <p>منصة إدارة العمليات الاتصالية مؤتمتة</p>
+                <p>منصة إدارة العمليات الاتصالية المُؤتمتة</p>
                 <p><i class="fas fa-map-marker-alt" style="color: var(--green);"></i> المملكة العربية السعودية</p>
             </div>
             <div class="footer-links">
