@@ -9,6 +9,7 @@
     "projects": [
         {
             "id": 1,
+            "order": 1,
             "name": "مدينة عمّان اللوجستية والصناعية",
             "name_en": "ALIC Logistic & Industrial City - Al Muwaqqar",
             "tagline": "حيث الموقع الاستثنائي ..والاستثمار الأمثل",
@@ -152,6 +153,7 @@
         },
         {
             "id": 3,
+            "order": 3,
             "name": "مرتفعات الدانة",
             "name_en": "Dana Heights",
             "slug": "dana-heights",
@@ -203,6 +205,7 @@
         },
         {
             "id": 2,
+            "order": 2,
             "name": "موتور سيتي",
             "name_en": "Motor City",
             "tagline": "أول مدينة سيارات متكاملة في الأردن والمشرق العربي",
@@ -446,6 +449,7 @@
         },
         {
             "id": 7,
+            "order": 4,
             "name": "JoLIC جوليك - مدينة الأردن اللوجستية والصناعية",
             "name_en": "JoLIC Logistic & Industrial City",
             "slug": "jolic-mafraq",
@@ -514,6 +518,7 @@
         },
         {
             "id": 4,
+            "order": 5,
             "name": "لؤلؤة عبدون",
             "name_en": "Abdoun Pearl",
             "slug": "abdoun-pearl",
@@ -564,6 +569,7 @@
         },
         {
             "id": 5,
+            "order": 6,
             "name": "نوبلز هايتس السكني",
             "name_en": "Nobles Heights Residential",
             "slug": "nobles-heights",
@@ -614,6 +620,7 @@
         },
         {
             "id": 6,
+            "order": 7,
             "name": "أبو علاندا",
             "name_en": "Abu Alanda",
             "slug": "abu-alanda",

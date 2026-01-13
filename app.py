@@ -230,7 +230,11 @@ def load_tenant_projects(tenant_slug):
     tenant_file = TENANTS_PATH / tenant_slug / 'projects.json'
     if tenant_file.exists():
         with open(tenant_file, 'r', encoding='utf-8') as f:
-            return json.load(f)
+            data = json.load(f)
+            # ترتيب المشاريع حسب حقل order إن وجد
+            if 'projects' in data:
+                data['projects'] = sorted(data['projects'], key=lambda x: x.get('order', x.get('id', 999)))
+            return data
     return {"projects": []}
 
 
