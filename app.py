@@ -337,6 +337,26 @@ def nobles_preview():
                          projects=data.get('projects', []))
 
 
+# ==================== صفحة الأوقاف للمعاينة (بدون تسجيل دخول - للتطوير فقط) ====================
+
+@app.route('/waqf-preview')
+def waqf_preview():
+    """صفحة الأوقاف للمعاينة - بدون تسجيل دخول (للتطوير المحلي فقط)"""
+    if not app.debug:
+        return redirect(url_for('login'))
+    
+    tenant = get_tenant_by_slug('waqf')
+    data = load_tenant_projects('waqf')
+    config = load_tenant_config('waqf')
+    if not config and 'company' in data:
+        config = data
+    
+    return render_template('tenant/waqf/index.html', 
+                         tenant=tenant,
+                         config=config,
+                         projects=data.get('projects', []))
+
+
 # ==================== روابط مباشرة للمشاريع ====================
 
 @app.route('/alic')
