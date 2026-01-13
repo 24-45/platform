@@ -14118,7 +14118,7 @@ body.guest-mode .guest-back-button {
     
     // على المنصة 24-45، المصادقة تتم عبر Flask session
     // نتجاوز فحص Firebase ونعرض المحتوى مباشرة
-    var isPlatform = window.location.hostname.includes('24-45.com') || window.location.pathname.includes('/nobles/');
+    var isPlatform = window.location.hostname.includes('24-45.com') || window.location.pathname.includes('/nobles/') || window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
     var bypassCode = new URLSearchParams(window.location.search).get('access');
     
     if (isPlatform || bypassCode === 'nobles2025') {
@@ -14322,14 +14322,118 @@ body.guest-mode .guest-back-button {
                                 {% endif %}
                             </div>
                         </div>
-                        
-                        <!-- تفاصيل إضافية - تصميم Premium -->
-                        <div class="scope-panel" style="margin-top: 30px;">
+                    </div>
+                </div>
+
+                <!-- ═══════════════════════════════════════════════════════════════════════════════ -->
+                <!-- قسم وصف المشروع - Premium Design -->
+                <!-- ═══════════════════════════════════════════════════════════════════════════════ -->
+                <div class="executive-summary-epic" style="margin-bottom: 30px;">
+                    <div class="summary-body" style="padding: 0;">
+                        <div class="scope-panel" style="margin-bottom: 0;">
+                            <!-- Header -->
                             <div class="scope-header">
-                                <div class="scope-icon"><i class="fas fa-clipboard-list"></i></div>
+                                <div class="scope-icon" style="width: 60px; height: 60px; background: linear-gradient(135deg, #10b981, #059669); border-radius: 16px; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);">
+                                    <i class="fas fa-file-alt" style="color: #fff; font-size: 1.5rem;"></i>
+                                </div>
                                 <div class="scope-text">
-                                    <h4>التفاصيل الأساسية</h4>
-                                    <span>Basic Details</span>
+                                    <h4 style="color: #fff; font-weight: 700; margin: 0; font-size: 1.4rem;">وصف المشروع</h4>
+                                    <span style="color: rgba(255,255,255,0.6); font-size: 0.9rem;">Project Description</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Content -->
+                            <div style="padding: 35px; position: relative; overflow: hidden;">
+                                <div style="position: absolute; top: 20px; left: 20px; width: 150px; height: 150px; background: rgba(16, 185, 129, 0.05); border-radius: 50%;"></div>
+                                <div style="position: relative; z-index: 1;">
+                                    <div style="display: flex; align-items: flex-start; gap: 20px;">
+                                        <div style="width: 50px; height: 50px; background: rgba(16, 185, 129, 0.15); border-radius: 14px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 5px;">
+                                            <i class="fas fa-quote-right" style="color: #34d399; font-size: 1.2rem;"></i>
+                                        </div>
+                                        <p style="color: rgba(255,255,255,0.85); margin: 0; font-size: 1.05rem; line-height: 2; flex: 1;">{{ project.description }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {% if project.project_vision or project.project_mission %}
+                <!-- ═══════════════════════════════════════════════════════════════════════════════ -->
+                <!-- قسم الرؤية والرسالة - Premium Design -->
+                <!-- ═══════════════════════════════════════════════════════════════════════════════ -->
+                <div class="executive-summary-epic" style="margin-bottom: 30px;">
+                    <div class="summary-body" style="padding: 0;">
+                        <div class="scope-panel" style="margin-bottom: 0;">
+                            <!-- Header -->
+                            <div class="scope-header">
+                                <div class="scope-icon" style="width: 60px; height: 60px; background: linear-gradient(135deg, #dc1f27, #b81920); border-radius: 16px; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 30px rgba(220, 31, 39, 0.3);">
+                                    <i class="fas fa-eye" style="color: #fff; font-size: 1.5rem;"></i>
+                                </div>
+                                <div class="scope-text">
+                                    <h4 style="color: #fff; font-weight: 700; margin: 0; font-size: 1.4rem;">الرؤية والرسالة</h4>
+                                    <span style="color: rgba(255,255,255,0.6); font-size: 0.9rem;">Vision & Mission</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Content Grid -->
+                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 0;">
+                                {% if project.project_vision %}
+                                <!-- الرؤية -->
+                                <div style="padding: 30px; border-bottom: 1px solid rgba(255,255,255,0.08); border-left: 1px solid rgba(255,255,255,0.08); position: relative; overflow: hidden;">
+                                    <div style="position: absolute; top: -30px; right: -30px; width: 100px; height: 100px; background: rgba(220, 31, 39, 0.1); border-radius: 50%;"></div>
+                                    <div style="display: flex; align-items: flex-start; gap: 20px; position: relative; z-index: 1;">
+                                        <div style="width: 55px; height: 55px; background: rgba(220, 31, 39, 0.15); border-radius: 14px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                                            <i class="fas fa-bullseye" style="color: #f87171; font-size: 1.4rem;"></i>
+                                        </div>
+                                        <div style="flex: 1;">
+                                            <h5 style="color: #fff; font-weight: 700; margin: 0 0 8px 0; font-size: 1.15rem; display: flex; align-items: center; gap: 10px;">
+                                                الرؤية
+                                                <span style="background: rgba(220, 31, 39, 0.2); color: #f87171; padding: 3px 12px; border-radius: 20px; font-size: 0.7rem; font-weight: 600;">Vision</span>
+                                            </h5>
+                                            <p style="color: rgba(255,255,255,0.8); margin: 0; font-size: 1rem; line-height: 1.8;">{{ project.project_vision }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endif %}
+                                
+                                {% if project.project_mission %}
+                                <!-- الرسالة -->
+                                <div style="padding: 30px; border-bottom: 1px solid rgba(255,255,255,0.08); position: relative; overflow: hidden;">
+                                    <div style="position: absolute; bottom: -30px; left: -30px; width: 100px; height: 100px; background: rgba(59, 130, 246, 0.1); border-radius: 50%;"></div>
+                                    <div style="display: flex; align-items: flex-start; gap: 20px; position: relative; z-index: 1;">
+                                        <div style="width: 55px; height: 55px; background: rgba(59, 130, 246, 0.15); border-radius: 14px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                                            <i class="fas fa-rocket" style="color: #60a5fa; font-size: 1.4rem;"></i>
+                                        </div>
+                                        <div style="flex: 1;">
+                                            <h5 style="color: #fff; font-weight: 700; margin: 0 0 8px 0; font-size: 1.15rem; display: flex; align-items: center; gap: 10px;">
+                                                الرسالة
+                                                <span style="background: rgba(59, 130, 246, 0.2); color: #60a5fa; padding: 3px 12px; border-radius: 20px; font-size: 0.7rem; font-weight: 600;">Mission</span>
+                                            </h5>
+                                            <p style="color: rgba(255,255,255,0.8); margin: 0; font-size: 1rem; line-height: 1.8;">{{ project.project_mission }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+
+                <!-- ═══════════════════════════════════════════════════════════════════════════════ -->
+                <!-- قسم التفاصيل الأساسية - Premium Design -->
+                <!-- ═══════════════════════════════════════════════════════════════════════════════ -->
+                <div class="executive-summary-epic" style="margin-bottom: 30px;">
+                    <div class="summary-body" style="padding: 0;">
+                        <div class="scope-panel" style="margin-bottom: 0;">
+                            <div class="scope-header">
+                                <div class="scope-icon" style="width: 60px; height: 60px; background: linear-gradient(135deg, #6366f1, #4f46e5); border-radius: 16px; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);">
+                                    <i class="fas fa-clipboard-list" style="color: #fff; font-size: 1.5rem;"></i>
+                                </div>
+                                <div class="scope-text">
+                                    <h4 style="color: #fff; font-weight: 700; margin: 0; font-size: 1.4rem;">التفاصيل الأساسية</h4>
+                                    <span style="color: rgba(255,255,255,0.6); font-size: 0.9rem;">Basic Details</span>
                                 </div>
                             </div>
                             
@@ -14428,462 +14532,6 @@ body.guest-mode .guest-back-button {
                                 </div>
                             </div>
                             {% endif %}
-                        </div>
-                    </div>
-                </div>
-
-                <!-- قسم موتور سيتي -->
-                <!-- ═══════════════════════════════════════════════════════════════════════════════ -->
-                <!-- قسم لوحة البيانات التحليلية - Analytics Dashboard - Motor City Only -->
-                <!-- ═══════════════════════════════════════════════════════════════════════════════ -->
-                <div class="executive-summary-epic" style="margin-bottom: 30px;">
-                    <div class="summary-body" style="padding: 0;">
-                        <div class="scope-panel" style="margin-bottom: 0;">
-                            <!-- Header -->
-                            <div class="scope-header">
-                                <div class="scope-icon" style="width: 60px; height: 60px; background: linear-gradient(135deg, #10b981, #059669); border-radius: 16px; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);">
-                                    <i class="fas fa-chart-pie" style="color: #fff; font-size: 1.5rem;"></i>
-                                </div>
-                                <div class="scope-text">
-                                    <h4 style="color: #fff; font-weight: 700; margin: 0; font-size: 1.4rem;">لوحة البيانات التحليلية</h4>
-                                    <span style="color: rgba(255,255,255,0.6); font-size: 0.9rem;">Analytics Dashboard - نوبلز العقارية</span>
-                                </div>
-                                <div style="margin-right: auto; background: rgba(16, 185, 129, 0.2); padding: 8px 20px; border-radius: 30px;">
-                                    <span style="color: #34d399; font-weight: 600; font-size: 0.9rem;"><i class="fas fa-building" style="margin-left: 8px;"></i>7 مشاريع</span>
-                                </div>
-                            </div>
-                            
-                            <!-- الإحصائيات الرئيسية -->
-                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 0;">
-                                <!-- إجمالي المساحات -->
-                                <div style="padding: 25px; border-bottom: 1px solid rgba(255,255,255,0.08); border-left: 1px solid rgba(255,255,255,0.08); text-align: center; position: relative; overflow: hidden;">
-                                    <div style="position: absolute; top: -20px; right: -20px; width: 60px; height: 60px; background: rgba(59, 130, 246, 0.1); border-radius: 50%;"></div>
-                                    <div style="width: 55px; height: 55px; background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(59, 130, 246, 0.1)); border-radius: 14px; display: flex; align-items: center; justify-content: center; margin: 0 auto 12px; position: relative; z-index: 1;">
-                                        <i class="fas fa-expand" style="color: #60a5fa; font-size: 1.3rem;"></i>
-                                    </div>
-                                    <span style="color: #60a5fa; font-size: 1.8rem; font-weight: 800; display: block; margin-bottom: 5px;">2.66</span>
-                                    <span style="color: rgba(255,255,255,0.6); font-size: 0.8rem;">مليون م² إجمالي</span>
-                                </div>
-                                
-                                <!-- إجمالي الوحدات -->
-                                <div style="padding: 25px; border-bottom: 1px solid rgba(255,255,255,0.08); border-left: 1px solid rgba(255,255,255,0.08); text-align: center; position: relative; overflow: hidden;">
-                                    <div style="position: absolute; top: -20px; right: -20px; width: 60px; height: 60px; background: rgba(168, 85, 247, 0.1); border-radius: 50%;"></div>
-                                    <div style="width: 55px; height: 55px; background: linear-gradient(135deg, rgba(168, 85, 247, 0.2), rgba(168, 85, 247, 0.1)); border-radius: 14px; display: flex; align-items: center; justify-content: center; margin: 0 auto 12px; position: relative; z-index: 1;">
-                                        <i class="fas fa-building" style="color: #a78bfa; font-size: 1.3rem;"></i>
-                                    </div>
-                                    <span style="color: #a78bfa; font-size: 1.8rem; font-weight: 800; display: block; margin-bottom: 5px;">1,225</span>
-                                    <span style="color: rgba(255,255,255,0.6); font-size: 0.8rem;">وحدة إجمالية</span>
-                                </div>
-                                
-                                <!-- الوحدات المباعة -->
-                                <div style="padding: 25px; border-bottom: 1px solid rgba(255,255,255,0.08); border-left: 1px solid rgba(255,255,255,0.08); text-align: center; position: relative; overflow: hidden;">
-                                    <div style="position: absolute; top: -20px; right: -20px; width: 60px; height: 60px; background: rgba(34, 197, 94, 0.1); border-radius: 50%;"></div>
-                                    <div style="width: 55px; height: 55px; background: linear-gradient(135deg, rgba(34, 197, 94, 0.2), rgba(34, 197, 94, 0.1)); border-radius: 14px; display: flex; align-items: center; justify-content: center; margin: 0 auto 12px; position: relative; z-index: 1;">
-                                        <i class="fas fa-check-circle" style="color: #22c55e; font-size: 1.3rem;"></i>
-                                    </div>
-                                    <span style="color: #22c55e; font-size: 1.8rem; font-weight: 800; display: block; margin-bottom: 5px;">131</span>
-                                    <span style="color: rgba(255,255,255,0.6); font-size: 0.8rem;">وحدة مباعة</span>
-                                </div>
-                                
-                                <!-- نسبة المبيعات -->
-                                <div style="padding: 25px; border-bottom: 1px solid rgba(255,255,255,0.08); border-left: 1px solid rgba(255,255,255,0.08); text-align: center; position: relative; overflow: hidden;">
-                                    <div style="position: absolute; top: -20px; right: -20px; width: 60px; height: 60px; background: rgba(251, 191, 36, 0.1); border-radius: 50%;"></div>
-                                    <div style="width: 55px; height: 55px; background: linear-gradient(135deg, rgba(251, 191, 36, 0.2), rgba(251, 191, 36, 0.1)); border-radius: 14px; display: flex; align-items: center; justify-content: center; margin: 0 auto 12px; position: relative; z-index: 1;">
-                                        <i class="fas fa-percentage" style="color: #fbbf24; font-size: 1.3rem;"></i>
-                                    </div>
-                                    <span style="color: #fbbf24; font-size: 1.8rem; font-weight: 800; display: block; margin-bottom: 5px;">10.7%</span>
-                                    <span style="color: rgba(255,255,255,0.6); font-size: 0.8rem;">نسبة المبيعات</span>
-                                </div>
-                                
-                                <!-- إجمالي الاستثمارات -->
-                                <div style="padding: 25px; border-bottom: 1px solid rgba(255,255,255,0.08); border-left: 1px solid rgba(255,255,255,0.08); text-align: center; position: relative; overflow: hidden;">
-                                    <div style="position: absolute; top: -20px; right: -20px; width: 60px; height: 60px; background: rgba(220, 31, 39, 0.1); border-radius: 50%;"></div>
-                                    <div style="width: 55px; height: 55px; background: linear-gradient(135deg, rgba(220, 31, 39, 0.2), rgba(220, 31, 39, 0.1)); border-radius: 14px; display: flex; align-items: center; justify-content: center; margin: 0 auto 12px; position: relative; z-index: 1;">
-                                        <i class="fas fa-coins" style="color: #f87171; font-size: 1.3rem;"></i>
-                                    </div>
-                                    <span style="color: #f87171; font-size: 1.6rem; font-weight: 800; display: block; margin-bottom: 5px;">729</span>
-                                    <span style="color: rgba(255,255,255,0.6); font-size: 0.8rem;">مليون د.أ استثمار</span>
-                                </div>
-                                
-                                <!-- قيمة المبيعات -->
-                                <div style="padding: 25px; border-bottom: 1px solid rgba(255,255,255,0.08); text-align: center; position: relative; overflow: hidden;">
-                                    <div style="position: absolute; top: -20px; right: -20px; width: 60px; height: 60px; background: rgba(6, 182, 212, 0.1); border-radius: 50%;"></div>
-                                    <div style="width: 55px; height: 55px; background: linear-gradient(135deg, rgba(6, 182, 212, 0.2), rgba(6, 182, 212, 0.1)); border-radius: 14px; display: flex; align-items: center; justify-content: center; margin: 0 auto 12px; position: relative; z-index: 1;">
-                                        <i class="fas fa-hand-holding-usd" style="color: #22d3ee; font-size: 1.3rem;"></i>
-                                    </div>
-                                    <span style="color: #22d3ee; font-size: 1.6rem; font-weight: 800; display: block; margin-bottom: 5px;">86.8</span>
-                                    <span style="color: rgba(255,255,255,0.6); font-size: 0.8rem;">مليون د.أ مبيعات</span>
-                                </div>
-                            </div>
-                            
-                            <!-- تفاصيل المشاريع -->
-                            <div style="padding: 30px; border-top: 1px solid rgba(255,255,255,0.08);">
-                                <h5 style="color: #fff; font-weight: 700; margin: 0 0 20px 0; font-size: 1.1rem; display: flex; align-items: center; gap: 10px;">
-                                    <i class="fas fa-th-list" style="color: #10b981;"></i>
-                                    محفظة المشاريع
-                                </h5>
-                                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px;">
-                                    <!-- مشروع ALIC -->
-                                    <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; padding: 18px; display: flex; justify-content: space-between; align-items: center;">
-                                        <div>
-                                            <span style="color: #fbbf24; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px;">صناعي ولوجستي</span>
-                                            <h6 style="color: #fff; font-weight: 700; margin: 5px 0; font-size: 0.95rem;">مدينة عمّان اللوجستية (ALIC)</h6>
-                                            <span style="color: rgba(255,255,255,0.5); font-size: 0.8rem;">525,000 م² • قيد التطوير</span>
-                                        </div>
-                                        <div style="text-align: center;">
-                                            <span style="color: #10b981; font-size: 1.5rem; font-weight: 800;">5%</span>
-                                            <span style="display: block; color: rgba(255,255,255,0.5); font-size: 0.7rem;">الإنجاز</span>
-                                        </div>
-                                    </div>
-                                    <!-- مشروع مدينة السيارات -->
-                                    <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; padding: 18px; display: flex; justify-content: space-between; align-items: center;">
-                                        <div>
-                                            <span style="color: #60a5fa; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px;">صناعي وتجاري</span>
-                                            <h6 style="color: #fff; font-weight: 700; margin: 5px 0; font-size: 0.95rem;">مدينة السيارات</h6>
-                                            <span style="color: rgba(255,255,255,0.5); font-size: 0.8rem;">210,000 م² • قيد التطوير</span>
-                                        </div>
-                                        <div style="text-align: center;">
-                                            <span style="color: #10b981; font-size: 1.5rem; font-weight: 800;">24%</span>
-                                            <span style="display: block; color: rgba(255,255,255,0.5); font-size: 0.7rem;">الإنجاز</span>
-                                        </div>
-                                    </div>
-                                    <!-- مشروع JoLIC -->
-                                    <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; padding: 18px; display: flex; justify-content: space-between; align-items: center;">
-                                        <div>
-                                            <span style="color: #a78bfa; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px;">صناعي</span>
-                                            <h6 style="color: #fff; font-weight: 700; margin: 5px 0; font-size: 0.95rem;">JoLIC جوليك - المفرق</h6>
-                                            <span style="color: rgba(255,255,255,0.5); font-size: 0.8rem;">1,700,000 م² • قريباً</span>
-                                        </div>
-                                        <div style="text-align: center;">
-                                            <span style="color: #f59e0b; font-size: 1.5rem; font-weight: 800;">0%</span>
-                                            <span style="display: block; color: rgba(255,255,255,0.5); font-size: 0.7rem;">الإنجاز</span>
-                                        </div>
-                                    </div>
-                                    <!-- مشروع مرتفعات الدانة -->
-                                    <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; padding: 18px; display: flex; justify-content: space-between; align-items: center;">
-                                        <div>
-                                            <span style="color: #22d3ee; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px;">سكني متعدد الاستخدامات</span>
-                                            <h6 style="color: #fff; font-weight: 700; margin: 5px 0; font-size: 0.95rem;">مرتفعات الدانة</h6>
-                                            <span style="color: rgba(255,255,255,0.5); font-size: 0.8rem;">83,840 م² • 431 وحدة</span>
-                                        </div>
-                                        <div style="text-align: center;">
-                                            <span style="color: #10b981; font-size: 1.5rem; font-weight: 800;">12%</span>
-                                            <span style="display: block; color: rgba(255,255,255,0.5); font-size: 0.7rem;">الإنجاز</span>
-                                        </div>
-                                    </div>
-                                    <!-- مشروع لؤلؤة عبدون -->
-                                    <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; padding: 18px; display: flex; justify-content: space-between; align-items: center;">
-                                        <div>
-                                            <span style="color: #f87171; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px;">سكني</span>
-                                            <h6 style="color: #fff; font-weight: 700; margin: 5px 0; font-size: 0.95rem;">لؤلؤة عبدون</h6>
-                                            <span style="color: rgba(255,255,255,0.5); font-size: 0.8rem;">22,500 م² • 64 وحدة</span>
-                                        </div>
-                                        <div style="text-align: center;">
-                                            <span style="color: #10b981; font-size: 1.5rem; font-weight: 800;">18%</span>
-                                            <span style="display: block; color: rgba(255,255,255,0.5); font-size: 0.7rem;">الإنجاز</span>
-                                        </div>
-                                    </div>
-                                    <!-- مشروع نوبلز هايتس -->
-                                    <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; padding: 18px; display: flex; justify-content: space-between; align-items: center;">
-                                        <div>
-                                            <span style="color: #22c55e; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px;">سكني</span>
-                                            <h6 style="color: #fff; font-weight: 700; margin: 5px 0; font-size: 0.95rem;">نوبلز هايتس السكني</h6>
-                                            <span style="color: rgba(255,255,255,0.5); font-size: 0.8rem;">72,000 م² • 320 وحدة</span>
-                                        </div>
-                                        <div style="text-align: center;">
-                                            <span style="color: #10b981; font-size: 1.5rem; font-weight: 800;">10%</span>
-                                            <span style="display: block; color: rgba(255,255,255,0.5); font-size: 0.7rem;">الإنجاز</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <!-- معلومات الشركة -->
-                            <div style="padding: 25px 30px; background: linear-gradient(135deg, rgba(220, 31, 39, 0.1), rgba(220, 31, 39, 0.05)); border-top: 1px solid rgba(220, 31, 39, 0.2);">
-                                <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px;">
-                                    <div style="display: flex; align-items: center; gap: 15px;">
-                                        <div style="width: 50px; height: 50px; background: rgba(220, 31, 39, 0.2); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
-                                            <i class="fas fa-award" style="color: #f87171; font-size: 1.3rem;"></i>
-                                        </div>
-                                        <div>
-                                            <h6 style="color: #fff; font-weight: 700; margin: 0 0 5px 0; font-size: 1rem;">نوبلز العقارية</h6>
-                                            <span style="color: rgba(255,255,255,0.6); font-size: 0.85rem;">شركة تطوير عقاري عالمية تأسست في دبي عام 2008</span>
-                                        </div>
-                                    </div>
-                                    <div style="display: flex; gap: 25px; flex-wrap: wrap;">
-                                        <div style="text-align: center;">
-                                            <span style="color: #f87171; font-size: 1.3rem; font-weight: 800; display: block;">+17</span>
-                                            <span style="color: rgba(255,255,255,0.5); font-size: 0.75rem;">سنة خبرة</span>
-                                        </div>
-                                        <div style="text-align: center;">
-                                            <span style="color: #60a5fa; font-size: 1.3rem; font-weight: 800; display: block;">دبي</span>
-                                            <span style="color: rgba(255,255,255,0.5); font-size: 0.75rem;">المقر الرئيسي</span>
-                                        </div>
-                                        <div style="text-align: center;">
-                                            <span style="color: #22c55e; font-size: 1.3rem; font-weight: 800; display: block;">الأردن</span>
-                                            <span style="color: rgba(255,255,255,0.5); font-size: 0.75rem;">سوق التوسع</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                {% if project.project_vision or project.project_mission %}
-                <!-- ═══════════════════════════════════════════════════════════════════════════════ -->
-                <!-- قسم الرؤية والرسالة - Premium Design -->
-                <!-- ═══════════════════════════════════════════════════════════════════════════════ -->
-                <div class="executive-summary-epic" style="margin-bottom: 30px;">
-                    <div class="summary-body" style="padding: 0;">
-                        <div class="scope-panel" style="margin-bottom: 0;">
-                            <!-- Header -->
-                            <div class="scope-header">
-                                <div class="scope-icon" style="width: 60px; height: 60px; background: linear-gradient(135deg, #dc1f27, #b81920); border-radius: 16px; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 30px rgba(220, 31, 39, 0.3);">
-                                    <i class="fas fa-eye" style="color: #fff; font-size: 1.5rem;"></i>
-                                </div>
-                                <div class="scope-text">
-                                    <h4 style="color: #fff; font-weight: 700; margin: 0; font-size: 1.4rem;">الرؤية والرسالة</h4>
-                                    <span style="color: rgba(255,255,255,0.6); font-size: 0.9rem;">Vision & Mission</span>
-                                </div>
-                            </div>
-                            
-                            <!-- Content Grid -->
-                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 0;">
-                                {% if project.project_vision %}
-                                <!-- الرؤية -->
-                                <div style="padding: 30px; border-bottom: 1px solid rgba(255,255,255,0.08); border-left: 1px solid rgba(255,255,255,0.08); position: relative; overflow: hidden;">
-                                    <div style="position: absolute; top: -30px; right: -30px; width: 100px; height: 100px; background: rgba(220, 31, 39, 0.1); border-radius: 50%;"></div>
-                                    <div style="display: flex; align-items: flex-start; gap: 20px; position: relative; z-index: 1;">
-                                        <div style="width: 55px; height: 55px; background: rgba(220, 31, 39, 0.15); border-radius: 14px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                                            <i class="fas fa-bullseye" style="color: #f87171; font-size: 1.4rem;"></i>
-                                        </div>
-                                        <div style="flex: 1;">
-                                            <h5 style="color: #fff; font-weight: 700; margin: 0 0 8px 0; font-size: 1.15rem; display: flex; align-items: center; gap: 10px;">
-                                                الرؤية
-                                                <span style="background: rgba(220, 31, 39, 0.2); color: #f87171; padding: 3px 12px; border-radius: 20px; font-size: 0.7rem; font-weight: 600;">Vision</span>
-                                            </h5>
-                                            <p style="color: rgba(255,255,255,0.8); margin: 0; font-size: 1rem; line-height: 1.8;">{{ project.project_vision }}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                {% endif %}
-                                
-                                {% if project.project_mission %}
-                                <!-- الرسالة -->
-                                <div style="padding: 30px; border-bottom: 1px solid rgba(255,255,255,0.08); position: relative; overflow: hidden;">
-                                    <div style="position: absolute; bottom: -30px; left: -30px; width: 100px; height: 100px; background: rgba(59, 130, 246, 0.1); border-radius: 50%;"></div>
-                                    <div style="display: flex; align-items: flex-start; gap: 20px; position: relative; z-index: 1;">
-                                        <div style="width: 55px; height: 55px; background: rgba(59, 130, 246, 0.15); border-radius: 14px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                                            <i class="fas fa-rocket" style="color: #60a5fa; font-size: 1.4rem;"></i>
-                                        </div>
-                                        <div style="flex: 1;">
-                                            <h5 style="color: #fff; font-weight: 700; margin: 0 0 8px 0; font-size: 1.15rem; display: flex; align-items: center; gap: 10px;">
-                                                الرسالة
-                                                <span style="background: rgba(59, 130, 246, 0.2); color: #60a5fa; padding: 3px 12px; border-radius: 20px; font-size: 0.7rem; font-weight: 600;">Mission</span>
-                                            </h5>
-                                            <p style="color: rgba(255,255,255,0.8); margin: 0; font-size: 1rem; line-height: 1.8;">{{ project.project_mission }}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                {% endif %}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                {% endif %}
-
-                <!-- ═══════════════════════════════════════════════════════════════════════════════ -->
-                <!-- قسم وصف المشروع - Premium Design -->
-                <!-- ═══════════════════════════════════════════════════════════════════════════════ -->
-                <div class="executive-summary-epic" style="margin-bottom: 30px;">
-                    <div class="summary-body" style="padding: 0;">
-                        <div class="scope-panel" style="margin-bottom: 0;">
-                            <!-- Header -->
-                            <div class="scope-header">
-                                <div class="scope-icon" style="width: 60px; height: 60px; background: linear-gradient(135deg, #10b981, #059669); border-radius: 16px; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);">
-                                    <i class="fas fa-file-alt" style="color: #fff; font-size: 1.5rem;"></i>
-                                </div>
-                                <div class="scope-text">
-                                    <h4 style="color: #fff; font-weight: 700; margin: 0; font-size: 1.4rem;">وصف المشروع</h4>
-                                    <span style="color: rgba(255,255,255,0.6); font-size: 0.9rem;">Project Description</span>
-                                </div>
-                            </div>
-                            
-                            <!-- Content -->
-                            <div style="padding: 35px; position: relative; overflow: hidden;">
-                                <div style="position: absolute; top: 20px; left: 20px; width: 150px; height: 150px; background: rgba(16, 185, 129, 0.05); border-radius: 50%;"></div>
-                                <div style="position: relative; z-index: 1;">
-                                    <div style="display: flex; align-items: flex-start; gap: 20px;">
-                                        <div style="width: 50px; height: 50px; background: rgba(16, 185, 129, 0.15); border-radius: 14px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 5px;">
-                                            <i class="fas fa-quote-right" style="color: #34d399; font-size: 1.2rem;"></i>
-                                        </div>
-                                        <p style="color: rgba(255,255,255,0.85); margin: 0; font-size: 1.05rem; line-height: 2; flex: 1;">{{ project.description }}</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- قسم موتور سيتي -->
-                <!-- ═══════════════════════════════════════════════════════════════════════════════ -->
-                <!-- قسم معرض الصور والخرائط - Motor City Gallery -->
-                <!-- ═══════════════════════════════════════════════════════════════════════════════ -->
-                <div class="executive-summary-epic" style="margin-bottom: 30px;">
-                    <div class="summary-body" style="padding: 0;">
-                        <div class="scope-panel" style="margin-bottom: 0;">
-                            <!-- Header -->
-                            <div class="scope-header">
-                                <div class="scope-icon" style="width: 60px; height: 60px; background: linear-gradient(135deg, #ec4899, #db2777); border-radius: 16px; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 30px rgba(236, 72, 153, 0.3);">
-                                    <i class="fas fa-images" style="color: #fff; font-size: 1.5rem;"></i>
-                                </div>
-                                <div class="scope-text">
-                                    <h4 style="color: #fff; font-weight: 700; margin: 0; font-size: 1.4rem;">معرض الصور والخرائط</h4>
-                                    <span style="color: rgba(255,255,255,0.6); font-size: 0.9rem;">Gallery & Maps</span>
-                                </div>
-                            </div>
-                            
-                            <!-- خريطة الموقع -->
-                            <div style="padding: 30px; border-bottom: 1px solid rgba(255,255,255,0.08);">
-                                <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;">
-                                    <div style="width: 45px; height: 45px; background: rgba(59, 130, 246, 0.15); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
-                                        <i class="fas fa-map-marked-alt" style="color: #60a5fa; font-size: 1.2rem;"></i>
-                                    </div>
-                                    <div>
-                                        <h5 style="color: #fff; font-weight: 700; margin: 0; font-size: 1.1rem;">خريطة الموقع</h5>
-                                        <span style="color: rgba(255,255,255,0.5); font-size: 0.85rem;">Location Map - منطقة أحد، شرق عمان</span>
-                                    </div>
-                                </div>
-                                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 20px;">
-                                    <div class="gallery-card" onclick="openImageModal(this.querySelector('img').src, 'خريطة الموقع في الأردن')">
-                                        <div style="overflow: hidden; position: relative;">
-                                            <img src="{{ url_for('static', filename='images/tenants/nobles/projects/motor-city/location-map-jordan.jpeg') }}" alt="خريطة الموقع في الأردن" style="width: 100%; height: 250px; object-fit: cover;">
-                                            <div class="card-overlay">
-                                                <i class="fas fa-expand"></i>
-                                                عرض التفاصيل
-                                            </div>
-                                        </div>
-                                        <div class="card-label">
-                                            <span>موقع المشروع في عمان</span>
-                                        </div>
-                                    </div>
-                                    <div class="gallery-card" onclick="openImageModal(this.querySelector('img').src, 'تحليل الموقع التفصيلي')">
-                                        <div style="overflow: hidden; position: relative;">
-                                            <img src="{{ url_for('static', filename='images/tenants/nobles/projects/motor-city/location-map-site.jpeg') }}" alt="تحليل الموقع" style="width: 100%; height: 250px; object-fit: cover;">
-                                            <div class="card-overlay">
-                                                <i class="fas fa-expand"></i>
-                                                عرض التفاصيل
-                                            </div>
-                                        </div>
-                                        <div class="card-label">
-                                            <span>تحليل الموقع والمحيط</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <!-- المخطط الرئيسي -->
-                            <div style="padding: 30px; border-bottom: 1px solid rgba(255,255,255,0.08);">
-                                <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;">
-                                    <div style="width: 45px; height: 45px; background: rgba(16, 185, 129, 0.15); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
-                                        <i class="fas fa-drafting-compass" style="color: #34d399; font-size: 1.2rem;"></i>
-                                    </div>
-                                    <div>
-                                        <h5 style="color: #fff; font-weight: 700; margin: 0; font-size: 1.1rem;">المخطط الرئيسي</h5>
-                                        <span style="color: rgba(255,255,255,0.5); font-size: 0.85rem;">Master Plan - REV-10 معتمد نهائياً</span>
-                                    </div>
-                                </div>
-                                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
-                                    <div class="gallery-card" onclick="openImageModal(this.querySelector('img').src, 'المخطط الرئيسي ثلاثي الأبعاد')">
-                                        <div style="overflow: hidden; position: relative;">
-                                            <img src="{{ url_for('static', filename='images/tenants/nobles/projects/motor-city/masterplan-3d.png') }}" alt="المخطط 3D" style="width: 100%; height: 200px; object-fit: cover;">
-                                            <div class="card-overlay">
-                                                <i class="fas fa-expand"></i>
-                                                عرض التفاصيل
-                                            </div>
-                                        </div>
-                                        <div class="card-label">
-                                            <span>المخطط ثلاثي الأبعاد</span>
-                                        </div>
-                                    </div>
-                                    <div class="gallery-card" onclick="openImageModal(this.querySelector('img').src, 'المخطط الجوي')">
-                                        <div style="overflow: hidden; position: relative;">
-                                            <img src="{{ url_for('static', filename='images/tenants/nobles/projects/motor-city/masterplan-aerial.png') }}" alt="المخطط الجوي" style="width: 100%; height: 200px; object-fit: cover;">
-                                            <div class="card-overlay">
-                                                <i class="fas fa-expand"></i>
-                                                عرض التفاصيل
-                                            </div>
-                                        </div>
-                                        <div class="card-label">
-                                            <span>المنظور الجوي</span>
-                                        </div>
-                                    </div>
-                                    <div class="gallery-card" onclick="openImageModal(this.querySelector('img').src, 'مخطط توزيع المناطق')">
-                                        <div style="overflow: hidden; position: relative;">
-                                            <img src="{{ url_for('static', filename='images/tenants/nobles/projects/motor-city/masterplan-zones.png') }}" alt="توزيع المناطق" style="width: 100%; height: 200px; object-fit: cover;">
-                                            <div class="card-overlay">
-                                                <i class="fas fa-expand"></i>
-                                                عرض التفاصيل
-                                            </div>
-                                        </div>
-                                        <div class="card-label">
-                                            <span>توزيع المناطق</span>
-                                        </div>
-                                    </div>
-                                    <div class="gallery-card" onclick="openImageModal(this.querySelector('img').src, 'توزيع استخدامات الأراضي')">
-                                        <div style="overflow: hidden; position: relative;">
-                                            <img src="{{ url_for('static', filename='images/tenants/nobles/projects/motor-city/land-distribution.png') }}" alt="توزيع الأراضي" style="width: 100%; height: 200px; object-fit: cover;">
-                                            <div class="card-overlay">
-                                                <i class="fas fa-expand"></i>
-                                                عرض التفاصيل
-                                            </div>
-                                        </div>
-                                        <div class="card-label">
-                                            <span>توزيع الأراضي</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <!-- تصاميم المعارض -->
-                            <div style="padding: 30px;">
-                                <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;">
-                                    <div style="width: 45px; height: 45px; background: rgba(251, 191, 36, 0.15); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
-                                        <i class="fas fa-store" style="color: #fbbf24; font-size: 1.2rem;"></i>
-                                    </div>
-                                    <div>
-                                        <h5 style="color: #fff; font-weight: 700; margin: 0; font-size: 1.1rem;">تصاميم المعارض</h5>
-                                        <span style="color: rgba(255,255,255,0.5); font-size: 0.85rem;">Showroom Renders - 757 قطعة معرض</span>
-                                    </div>
-                                </div>
-                                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 20px;">
-                                    <div class="gallery-card" onclick="openImageModal(this.querySelector('img').src, 'تصميم المعارض - منظور 1')">
-                                        <div style="overflow: hidden; position: relative;">
-                                            <img src="{{ url_for('static', filename='images/tenants/nobles/projects/motor-city/showroom-render-1.png') }}" alt="تصميم المعارض 1" style="width: 100%; height: 280px; object-fit: cover;">
-                                            <div class="card-overlay">
-                                                <i class="fas fa-expand"></i>
-                                                عرض التفاصيل
-                                            </div>
-                                        </div>
-                                        <div class="card-label">
-                                            <span>منظور معماري للمعارض</span>
-                                        </div>
-                                    </div>
-                                    <div class="gallery-card" onclick="openImageModal(this.querySelector('img').src, 'تصميم المعارض - منظور 2')">
-                                        <div style="overflow: hidden; position: relative;">
-                                            <img src="{{ url_for('static', filename='images/tenants/nobles/projects/motor-city/showroom-render-2.png') }}" alt="تصميم المعارض 2" style="width: 100%; height: 280px; object-fit: cover;">
-                                            <div class="card-overlay">
-                                                <i class="fas fa-expand"></i>
-                                                عرض التفاصيل
-                                            </div>
-                                        </div>
-                                        <div class="card-label">
-                                            <span>التصميم العام للمنطقة التجارية</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -15417,367 +15065,168 @@ body.guest-mode .guest-back-button {
                     </div>
                 </div>
 
-                <!-- استبانة الاتصال الاستراتيجي - قابل للطي -->
-                <div class="section-card questionnaire-section">
-                    <!-- زر فتح/إغلاق الاستبانة -->
-                    <button class="questionnaire-toggle-btn" type="button" onclick="toggleQuestionnaire()" id="questionnaireToggleBtn">
-                        <div class="toggle-btn-content">
-                            <div class="toggle-btn-icon">
-                                <i class="fas fa-clipboard-list"></i>
+                <!-- قسم موتور سيتي -->
+                <!-- ═══════════════════════════════════════════════════════════════════════════════ -->
+                <!-- قسم معرض الصور والخرائط - Motor City Gallery -->
+                <!-- ═══════════════════════════════════════════════════════════════════════════════ -->
+                <div class="executive-summary-epic" style="margin-bottom: 30px;">
+                    <div class="summary-body" style="padding: 0;">
+                        <div class="scope-panel" style="margin-bottom: 0;">
+                            <!-- Header -->
+                            <div class="scope-header">
+                                <div class="scope-icon" style="width: 60px; height: 60px; background: linear-gradient(135deg, #ec4899, #db2777); border-radius: 16px; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 30px rgba(236, 72, 153, 0.3);">
+                                    <i class="fas fa-images" style="color: #fff; font-size: 1.5rem;"></i>
+                                </div>
+                                <div class="scope-text">
+                                    <h4 style="color: #fff; font-weight: 700; margin: 0; font-size: 1.4rem;">معرض الصور والخرائط</h4>
+                                    <span style="color: rgba(255,255,255,0.6); font-size: 0.9rem;">Gallery & Maps</span>
+                                </div>
                             </div>
-                            <div class="toggle-btn-text">
-                                <h3><i class="fas fa-bullseye" style="margin-left: 10px;"></i> استبانة الاتصال الاستراتيجي</h3>
-                                <p>أسئلة موجّهة لبناء استراتيجية اتصالية فعّالة للمشروع - تُستكمل بالتنسيق مع العميل</p>
-                            </div>
-                            <div class="toggle-btn-arrow">
-                                <i class="fas fa-chevron-down" id="questionnaireArrow"></i>
-                            </div>
-                        </div>
-                        <div class="toggle-btn-progress">
-                            <div class="mini-progress-bar">
-                                <div class="mini-progress-fill" id="miniProgressFill" style="width: 0%"></div>
-                            </div>
-                            <span class="mini-progress-text" id="miniProgressText">0/22 سؤال</span>
-                        </div>
-                    </button>
-                    
-                    <!-- محتوى الاستبانة القابل للطي -->
-                    <div class="questionnaire-collapsible-content" id="questionnaireContent" style="display: none;">
-                    
-                    <!-- Progress Bar -->
-                    <div class="questionnaire-progress">
-                        <span class="progress-text">نسبة الإنجاز</span>
-                        <div class="progress-bar-custom">
-                            <div class="progress-fill" style="width: 0%"></div>
-                        </div>
-                        <span class="progress-count">0/22 سؤال</span>
-                    </div>
-
-                    <div class="questionnaire-accordion" id="questionnaireAccordion">
-                        
-                        <!-- القسم الأول: الأهداف الاتصالية -->
-                        <div class="accordion-section mb-3">
-                            <button class="questionnaire-header" type="button" data-toggle="collapse" data-target="#section1" aria-expanded="true">
-                                <span>
-                                    <span class="section-number">القسم 1</span>
-                                    الأهداف الاتصالية
-                                </span>
-                                <i class="fas fa-chevron-up toggle-icon"></i>
-                            </button>
-                            <div class="questionnaire-body collapse show" id="section1">
-                                <div class="question-item">
-                                    <div class="question-text">
-                                        <span class="question-number">1</span>
-                                        ما الهدف الرئيسي من الحملة الاتصالية للمشروع خلال الـ 12 شهراً القادمة؟
+                            
+                            <!-- خريطة الموقع -->
+                            <div style="padding: 30px; border-bottom: 1px solid rgba(255,255,255,0.08);">
+                                <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;">
+                                    <div style="width: 45px; height: 45px; background: rgba(59, 130, 246, 0.15); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+                                        <i class="fas fa-map-marked-alt" style="color: #60a5fa; font-size: 1.2rem;"></i>
                                     </div>
-                                    <div class="question-hint">اختر هدفاً واحداً: بناء الوعي بالمشروع / جذب مستأجرين محتملين / تعزيز السمعة المؤسسية / الإعلان عن مرحلة جديدة</div>
-                                    <div class="question-answer">
-                                        <textarea placeholder="أدخل الإجابة هنا..."></textarea>
+                                    <div>
+                                        <h5 style="color: #fff; font-weight: 700; margin: 0; font-size: 1.1rem;">خريطة الموقع</h5>
+                                        <span style="color: rgba(255,255,255,0.5); font-size: 0.85rem;">Location Map - منطقة أحد، شرق عمان</span>
                                     </div>
                                 </div>
-                                <div class="question-item">
-                                    <div class="question-text">
-                                        <span class="question-number">2</span>
-                                        ما مؤشر النجاح الأهم الذي تودّ تحقيقه من الجهود الاتصالية؟
+                                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 20px;">
+                                    <div class="gallery-card" onclick="openImageModal(this.querySelector('img').src, 'خريطة الموقع في الأردن')">
+                                        <div style="overflow: hidden; position: relative;">
+                                            <img src="{{ url_for('static', filename='images/tenants/nobles/projects/motor-city/location-map-jordan.jpeg') }}" alt="خريطة الموقع في الأردن" style="width: 100%; height: 250px; object-fit: cover;">
+                                            <div class="card-overlay">
+                                                <i class="fas fa-expand"></i>
+                                                عرض التفاصيل
+                                            </div>
+                                        </div>
+                                        <div class="card-label">
+                                            <span>موقع المشروع في عمان</span>
+                                        </div>
                                     </div>
-                                    <div class="question-hint">مثال: عدد الاستفسارات الواردة، نسبة التغطية الإعلامية، عدد العقود الموقّعة، نسبة الإشغال</div>
-                                    <div class="question-answer">
-                                        <textarea placeholder="أدخل الإجابة هنا..."></textarea>
-                                    </div>
-                                </div>
-                                <div class="question-item">
-                                    <div class="question-text">
-                                        <span class="question-number">3</span>
-                                        ما الانطباع الذي تريد أن يتركه المشروع لدى الجمهور المستهدف؟
-                                    </div>
-                                    <div class="question-hint">صِف بثلاث كلمات: مثال: موثوق، مبتكر، متكامل</div>
-                                    <div class="question-answer">
-                                        <textarea placeholder="أدخل الإجابة هنا..."></textarea>
+                                    <div class="gallery-card" onclick="openImageModal(this.querySelector('img').src, 'تحليل الموقع التفصيلي')">
+                                        <div style="overflow: hidden; position: relative;">
+                                            <img src="{{ url_for('static', filename='images/tenants/nobles/projects/motor-city/location-map-site.jpeg') }}" alt="تحليل الموقع" style="width: 100%; height: 250px; object-fit: cover;">
+                                            <div class="card-overlay">
+                                                <i class="fas fa-expand"></i>
+                                                عرض التفاصيل
+                                            </div>
+                                        </div>
+                                        <div class="card-label">
+                                            <span>تحليل الموقع والمحيط</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-
-                        <!-- القسم الثاني: فهم الجمهور المستهدف -->
-                        <div class="accordion-section mb-3">
-                            <button class="questionnaire-header collapsed" type="button" data-toggle="collapse" data-target="#section2" aria-expanded="false">
-                                <span>
-                                    <span class="section-number">القسم 2</span>
-                                    فهم الجمهور المستهدف
-                                </span>
-                                <i class="fas fa-chevron-up toggle-icon"></i>
-                            </button>
-                            <div class="questionnaire-body collapse" id="section2">
-                                <div class="question-item">
-                                    <div class="question-text">
-                                        <span class="question-number">4</span>
-                                        مَن صانع القرار الرئيسي في الشركات التي تستهدفها؟
+                            
+                            <!-- المخطط الرئيسي -->
+                            <div style="padding: 30px; border-bottom: 1px solid rgba(255,255,255,0.08);">
+                                <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;">
+                                    <div style="width: 45px; height: 45px; background: rgba(16, 185, 129, 0.15); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+                                        <i class="fas fa-drafting-compass" style="color: #34d399; font-size: 1.2rem;"></i>
                                     </div>
-                                    <div class="question-hint">المسمى الوظيفي: مدير عمليات، مدير سلسلة إمداد، مالك الشركة، مدير مشتريات، إلخ</div>
-                                    <div class="question-answer">
-                                        <textarea placeholder="أدخل الإجابة هنا..."></textarea>
+                                    <div>
+                                        <h5 style="color: #fff; font-weight: 700; margin: 0; font-size: 1.1rem;">المخطط الرئيسي</h5>
+                                        <span style="color: rgba(255,255,255,0.5); font-size: 0.85rem;">Master Plan - REV-10 معتمد نهائياً</span>
                                     </div>
                                 </div>
-                                <div class="question-item">
-                                    <div class="question-text">
-                                        <span class="question-number">5</span>
-                                        ما التحدي الأكبر الذي يواجهه عملاؤك المحتملون حالياً؟
+                                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+                                    <div class="gallery-card" onclick="openImageModal(this.querySelector('img').src, 'المخطط الرئيسي ثلاثي الأبعاد')">
+                                        <div style="overflow: hidden; position: relative;">
+                                            <img src="{{ url_for('static', filename='images/tenants/nobles/projects/motor-city/masterplan-3d.png') }}" alt="المخطط 3D" style="width: 100%; height: 200px; object-fit: cover;">
+                                            <div class="card-overlay">
+                                                <i class="fas fa-expand"></i>
+                                                عرض التفاصيل
+                                            </div>
+                                        </div>
+                                        <div class="card-label">
+                                            <span>المخطط ثلاثي الأبعاد</span>
+                                        </div>
                                     </div>
-                                    <div class="question-hint">مثال: ارتفاع تكاليف التخزين، صعوبة الوصول للأسواق، نقص المساحات المناسبة</div>
-                                    <div class="question-answer">
-                                        <textarea placeholder="أدخل الإجابة هنا..."></textarea>
+                                    <div class="gallery-card" onclick="openImageModal(this.querySelector('img').src, 'المخطط الجوي')">
+                                        <div style="overflow: hidden; position: relative;">
+                                            <img src="{{ url_for('static', filename='images/tenants/nobles/projects/motor-city/masterplan-aerial.png') }}" alt="المخطط الجوي" style="width: 100%; height: 200px; object-fit: cover;">
+                                            <div class="card-overlay">
+                                                <i class="fas fa-expand"></i>
+                                                عرض التفاصيل
+                                            </div>
+                                        </div>
+                                        <div class="card-label">
+                                            <span>المنظور الجوي</span>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="question-item">
-                                    <div class="question-text">
-                                        <span class="question-number">6</span>
-                                        ما العامل المهم الذي يدفع الشركات للبحث عن موقع في مدينة صناعية أو لوجستية؟
+                                    <div class="gallery-card" onclick="openImageModal(this.querySelector('img').src, 'مخطط توزيع المناطق')">
+                                        <div style="overflow: hidden; position: relative;">
+                                            <img src="{{ url_for('static', filename='images/tenants/nobles/projects/motor-city/masterplan-zones.png') }}" alt="توزيع المناطق" style="width: 100%; height: 200px; object-fit: cover;">
+                                            <div class="card-overlay">
+                                                <i class="fas fa-expand"></i>
+                                                عرض التفاصيل
+                                            </div>
+                                        </div>
+                                        <div class="card-label">
+                                            <span>توزيع المناطق</span>
+                                        </div>
                                     </div>
-                                    <div class="question-hint">القرب من المطار أو الميناء / توفر العمالة / انخفاض التكاليف التشغيلية / الحوافز الحكومية / سهولة الوصول للأسواق</div>
-                                    <div class="question-answer">
-                                        <textarea placeholder="أدخل الإجابة هنا..."></textarea>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- القسم الثالث: الرسائل والمحتوى -->
-                        <div class="accordion-section mb-3">
-                            <button class="questionnaire-header collapsed" type="button" data-toggle="collapse" data-target="#section3" aria-expanded="false">
-                                <span>
-                                    <span class="section-number">القسم 3</span>
-                                    الرسائل والمحتوى
-                                </span>
-                                <i class="fas fa-chevron-up toggle-icon"></i>
-                            </button>
-                            <div class="questionnaire-body collapse" id="section3">
-                                <div class="question-item">
-                                    <div class="question-text">
-                                        <span class="question-number">7</span>
-                                        ما الرسالة الرئيسية الواحدة التي يجب أن يتذكرها كل من يسمع عن المشروع؟
-                                    </div>
-                                    <div class="question-hint">جملة واحدة قصيرة ومؤثرة (10-15 كلمة كحد أقصى)</div>
-                                    <div class="question-answer">
-                                        <textarea placeholder="أدخل الإجابة هنا..."></textarea>
-                                    </div>
-                                </div>
-                                <div class="question-item">
-                                    <div class="question-text">
-                                        <span class="question-number">8</span>
-                                        ما الميزة التي تودّ إبرازها أكثر من غيرها في جميع المواد الاتصالية؟
-                                    </div>
-                                    <div class="question-hint">اختر ميزة واحدة فقط من مزايا المشروع المتعددة</div>
-                                    <div class="question-answer">
-                                        <textarea placeholder="أدخل الإجابة هنا..."></textarea>
-                                    </div>
-                                </div>
-                                <div class="question-item">
-                                    <div class="question-text">
-                                        <span class="question-number">9</span>
-                                        هل هناك معلومات أو رسائل يجب تجنّب ذكرها في التواصل الخارجي؟
-                                    </div>
-                                    <div class="question-hint">مواضيع حساسة، معلومات سرية، مقارنات غير مرغوبة، إلخ</div>
-                                    <div class="question-answer">
-                                        <textarea placeholder="أدخل الإجابة هنا..."></textarea>
+                                    <div class="gallery-card" onclick="openImageModal(this.querySelector('img').src, 'توزيع استخدامات الأراضي')">
+                                        <div style="overflow: hidden; position: relative;">
+                                            <img src="{{ url_for('static', filename='images/tenants/nobles/projects/motor-city/land-distribution.png') }}" alt="توزيع الأراضي" style="width: 100%; height: 200px; object-fit: cover;">
+                                            <div class="card-overlay">
+                                                <i class="fas fa-expand"></i>
+                                                عرض التفاصيل
+                                            </div>
+                                        </div>
+                                        <div class="card-label">
+                                            <span>توزيع الأراضي</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-
-                        <!-- القسم الرابع: القنوات والأدوات -->
-                        <div class="accordion-section mb-3">
-                            <button class="questionnaire-header collapsed" type="button" data-toggle="collapse" data-target="#section4" aria-expanded="false">
-                                <span>
-                                    <span class="section-number">القسم 4</span>
-                                    القنوات والأدوات
-                                </span>
-                                <i class="fas fa-chevron-up toggle-icon"></i>
-                            </button>
-                            <div class="questionnaire-body collapse" id="section4">
-                                <div class="question-item">
-                                    <div class="question-text">
-                                        <span class="question-number">10</span>
-                                        أين يتواجد جمهورك المستهدف بشكل أساسي للحصول على المعلومات؟
+                            
+                            <!-- تصاميم المعارض -->
+                            <div style="padding: 30px;">
+                                <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;">
+                                    <div style="width: 45px; height: 45px; background: rgba(251, 191, 36, 0.15); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+                                        <i class="fas fa-store" style="color: #fbbf24; font-size: 1.2rem;"></i>
                                     </div>
-                                    <div class="question-hint">LinkedIn / المعارض المتخصصة / الصحف الاقتصادية / المواقع المهنية / التوصيات المباشرة / قواعد بيانات غرفة تجارة وصناعة عمان</div>
-                                    <div class="question-answer">
-                                        <textarea placeholder="أدخل الإجابة هنا..."></textarea>
+                                    <div>
+                                        <h5 style="color: #fff; font-weight: 700; margin: 0; font-size: 1.1rem;">تصاميم المعارض</h5>
+                                        <span style="color: rgba(255,255,255,0.5); font-size: 0.85rem;">Showroom Renders - 757 قطعة معرض</span>
                                     </div>
                                 </div>
-                                <div class="question-item">
-                                    <div class="question-text">
-                                        <span class="question-number">11</span>
-                                        ما المنصة الرقمية الأكثر فاعلية للوصول إلى عملائك المحتملين؟
+                                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 20px;">
+                                    <div class="gallery-card" onclick="openImageModal(this.querySelector('img').src, 'تصميم المعارض - منظور 1')">
+                                        <div style="overflow: hidden; position: relative;">
+                                            <img src="{{ url_for('static', filename='images/tenants/nobles/projects/motor-city/showroom-render-1.png') }}" alt="تصميم المعارض 1" style="width: 100%; height: 280px; object-fit: cover;">
+                                            <div class="card-overlay">
+                                                <i class="fas fa-expand"></i>
+                                                عرض التفاصيل
+                                            </div>
+                                        </div>
+                                        <div class="card-label">
+                                            <span>منظور معماري للمعارض</span>
+                                        </div>
                                     </div>
-                                    <div class="question-hint">LinkedIn / الموقع الإلكتروني / البريد المباشر / WhatsApp Business / منصات القطاع العقاري المتخصصة</div>
-                                    <div class="question-answer">
-                                        <textarea placeholder="أدخل الإجابة هنا..."></textarea>
-                                    </div>
-                                </div>
-                                <div class="question-item">
-                                    <div class="question-text">
-                                        <span class="question-number">12</span>
-                                        ما المعارض أو الفعاليات المتخصصة التي تخططون للمشاركة فيها؟
-                                    </div>
-                                    <div class="question-hint">اسم الفعالية، التاريخ، طبيعة المشاركة (عارض، راعٍ، متحدث)</div>
-                                    <div class="question-answer">
-                                        <textarea placeholder="أدخل الإجابة هنا..."></textarea>
+                                    <div class="gallery-card" onclick="openImageModal(this.querySelector('img').src, 'تصميم المعارض - منظور 2')">
+                                        <div style="overflow: hidden; position: relative;">
+                                            <img src="{{ url_for('static', filename='images/tenants/nobles/projects/motor-city/showroom-render-2.png') }}" alt="تصميم المعارض 2" style="width: 100%; height: 280px; object-fit: cover;">
+                                            <div class="card-overlay">
+                                                <i class="fas fa-expand"></i>
+                                                عرض التفاصيل
+                                            </div>
+                                        </div>
+                                        <div class="card-label">
+                                            <span>التصميم العام للمنطقة التجارية</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-
-                        <!-- القسم الخامس: المنافسة والتموضع -->
-                        <div class="accordion-section mb-3">
-                            <button class="questionnaire-header collapsed" type="button" data-toggle="collapse" data-target="#section5" aria-expanded="false">
-                                <span>
-                                    <span class="section-number">القسم 5</span>
-                                    المنافسة والتموضع
-                                </span>
-                                <i class="fas fa-chevron-up toggle-icon"></i>
-                            </button>
-                            <div class="questionnaire-body collapse" id="section5">
-                                <div class="question-item">
-                                    <div class="question-text">
-                                        <span class="question-number">13</span>
-                                        اذكر أهم مشروع منافس في السوق المحلي والسوق الإقليمي والسوق الدولي؟
-                                    </div>
-                                    <div class="question-hint">اسم مشروع واحد لكل سوق</div>
-                                    <div class="question-answer">
-                                        <textarea placeholder="أدخل الإجابة هنا..."></textarea>
-                                    </div>
-                                </div>
-                                <div class="question-item">
-                                    <div class="question-text">
-                                        <span class="question-number">14</span>
-                                        ما النقطة التي تتفوق فيها على أقرب منافس لك؟
-                                    </div>
-                                    <div class="question-hint">ميزة واحدة واضحة وقابلة للإثبات</div>
-                                    <div class="question-answer">
-                                        <textarea placeholder="أدخل الإجابة هنا..."></textarea>
-                                    </div>
-                                </div>
-                                <div class="question-item">
-                                    <div class="question-text">
-                                        <span class="question-number">15</span>
-                                        كيف تريد أن يُصنَّف مشروعك في السوق؟
-                                    </div>
-                                    <div class="question-hint">الخيار الأفضل سعراً / الأعلى جودة / الأقرب للمطار والخدمات اللوجستية / الأكثر تكاملاً</div>
-                                    <div class="question-answer">
-                                        <textarea placeholder="أدخل الإجابة هنا..."></textarea>
-                                    </div>
-                                </div>
-                                <div class="question-item">
-                                    <div class="question-text">
-                                        <span class="question-number">16</span>
-                                        ما هي الخدمات والمساحات التي سيتم بيعها للعملاء؟
-                                    </div>
-                                    <div class="question-hint">مثال: مستودعات، مكاتب، أراضٍ صناعية، خدمات لوجستية</div>
-                                    <div class="question-answer">
-                                        <textarea placeholder="أدخل الإجابة هنا..."></textarea>
-                                    </div>
-                                </div>
-                                <div class="question-item">
-                                    <div class="question-text">
-                                        <span class="question-number">17</span>
-                                        بالنسبة للـ Warehouse ما هي أهم مواصفاتها؟
-                                    </div>
-                                    <div class="question-hint">المساحات، الارتفاعات، التجهيزات، معايير الجودة</div>
-                                    <div class="question-answer">
-                                        <textarea placeholder="أدخل الإجابة هنا..."></textarea>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- القسم السادس: الشراكات والعلاقات -->
-                        <div class="accordion-section mb-3">
-                            <button class="questionnaire-header collapsed" type="button" data-toggle="collapse" data-target="#section6" aria-expanded="false">
-                                <span>
-                                    <span class="section-number">القسم 6</span>
-                                    الشراكات والعلاقات
-                                </span>
-                                <i class="fas fa-chevron-up toggle-icon"></i>
-                            </button>
-                            <div class="questionnaire-body collapse" id="section6">
-                                <div class="question-item">
-                                    <div class="question-text">
-                                        <span class="question-number">18</span>
-                                        هل هناك شراكات قائمة في مشروع المدينة الصناعية يمكن الإعلان عنها أو توظيفها إعلامياً؟
-                                    </div>
-                                    <div class="question-hint">شراكات حكومية، مؤسسية، أو مع علامات تجارية معروفة</div>
-                                    <div class="question-answer">
-                                        <textarea placeholder="أدخل الإجابة هنا..."></textarea>
-                                    </div>
-                                </div>
-                                <div class="question-item">
-                                    <div class="question-text">
-                                        <span class="question-number">19</span>
-                                        من الشخص المخوّل بالتصريح للإعلام نيابة عن المشروع؟
-                                    </div>
-                                    <div class="question-hint">الاسم، المنصب، معلومات التواصل</div>
-                                    <div class="question-answer">
-                                        <textarea placeholder="أدخل الإجابة هنا..."></textarea>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- القسم السابع: التوقيت والأولويات -->
-                        <div class="accordion-section mb-3">
-                            <button class="questionnaire-header collapsed" type="button" data-toggle="collapse" data-target="#section7" aria-expanded="false">
-                                <span>
-                                    <span class="section-number">القسم 7</span>
-                                    التوقيت والأولويات
-                                </span>
-                                <i class="fas fa-chevron-up toggle-icon"></i>
-                            </button>
-                            <div class="questionnaire-body collapse" id="section7">
-                                <div class="question-item">
-                                    <div class="question-text">
-                                        <span class="question-number">20</span>
-                                        ما هو أقرب حدث أو إنجاز خاص بشركة نوبلز يمكن ربطه إعلامياً بإطلاق المدينة الصناعية؟
-                                    </div>
-                                    <div class="question-hint">افتتاح، توقيع عقد، إنجاز مرحلة، زيارة رسمية، إلخ - مع التاريخ المتوقع</div>
-                                    <div class="question-answer">
-                                        <textarea placeholder="أدخل الإجابة هنا..."></textarea>
-                                    </div>
-                                </div>
-                                <div class="question-item">
-                                    <div class="question-text">
-                                        <span class="question-number">21</span>
-                                        ما الأولوية القصوى للأشهر الثلاثة القادمة؟
-                                    </div>
-                                    <div class="question-hint">إجراء واحد محدد: إطلاق موقع إلكتروني / حملة إعلامية / حضور معرض / التواصل مع عملاء محددين</div>
-                                    <div class="question-answer">
-                                        <textarea placeholder="أدخل الإجابة هنا..."></textarea>
-                                    </div>
-                                </div>
-                                <div class="question-item">
-                                    <div class="question-text">
-                                        <span class="question-number">22</span>
-                                        ما الميزانية التقريبية المخصصة للأنشطة الاتصالية والتسويقية سنوياً؟
-                                    </div>
-                                    <div class="question-hint">نطاق تقريبي: أقل من 50 ألف / 50-100 ألف / 100-250 ألف / أكثر من 250 ألف دينار</div>
-                                    <div class="question-answer">
-                                        <textarea placeholder="أدخل الإجابة هنا..."></textarea>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <!-- Auto-save Status -->
-                    <div class="text-center mt-4">
-                        <div id="autoSaveStatus" class="d-inline-flex align-items-center px-4 py-2" style="background: #f8f9fa; border-radius: 30px; color: #666;">
-                            <i class="fas fa-cloud-upload-alt me-2"></i>
-                            <span>الحفظ التلقائي مفعّل</span>
                         </div>
                     </div>
-                    
-                    </div><!-- نهاية questionnaire-collapsible-content -->
                 </div>
+
             </div>
 
             <!-- قسم موتور سيتي -->
@@ -16064,18 +15513,18 @@ body.guest-mode .guest-back-button {
                             <div class="cs-stat-card card-green">
                                 <div class="cs-stat-card-header">
                                     <div class="cs-stat-card-icon"><i class="fas fa-car-side"></i></div>
-                                    <h3>السيارات الجديدة vs المستعملة</h3>
+                                    <h3>التركيز على السيارات المستعملة</h3>
                                 </div>
                                 <div class="cs-stat-card-value"><span class="cs-animated-number" data-target="25.3" data-suffix="%">0</span></div>
-                                <div class="cs-stat-card-label">يبيعون 5% أو أقل سيارات جديدة</div>
+                                <div class="cs-stat-card-label">من المعارض تبيع سيارات مستعملة بنسبة 95% أو أكثر</div>
                             </div>
                             <div class="cs-stat-card card-blue">
                                 <div class="cs-stat-card-header">
                                     <div class="cs-stat-card-icon"><i class="fas fa-charging-station"></i></div>
-                                    <h3>السيارات الكهربائية</h3>
+                                    <h3>انتشار السيارات الكهربائية</h3>
                                 </div>
                                 <div class="cs-stat-card-value"><span class="cs-animated-number" data-target="49.7" data-suffix="%">0</span></div>
-                                <div class="cs-stat-card-label">نسبة الكهربائية 5% أو أقل من مبيعاتهم</div>
+                                <div class="cs-stat-card-label">من المعارض تبيع سيارات كهربائية بنسبة 5% أو أقل</div>
                             </div>
                         </div>
                     </div>
@@ -16801,151 +16250,204 @@ body.guest-mode .guest-back-button {
                                         </p>
                                     </div>
                                     
-                                    <!-- Comparison Table -->
-                                    <div style="padding: 20px 15px;">
-                                        <table style="width: 100%; border-collapse: collapse; font-size: 0.8rem; table-layout: fixed;">
+                                    <!-- Comparison Table - Communication & PR Pillars -->
+                                    <div style="padding: 20px 15px; overflow-x: auto;">
+                                        <table style="width: 100%; border-collapse: collapse; font-size: 0.8rem; min-width: 900px;">
                                             <thead>
                                                 <tr style="background: linear-gradient(135deg, rgba(139, 92, 246, 0.3), rgba(139, 92, 246, 0.1));">
-                                                    <th style="padding: 12px 8px; text-align: right; color: #a78bfa; font-weight: 700; border-bottom: 2px solid rgba(139, 92, 246, 0.3); width: 13%;">الكيان</th>
-                                                    <th style="padding: 12px 8px; text-align: right; color: #a78bfa; font-weight: 700; border-bottom: 2px solid rgba(139, 92, 246, 0.3); width: 22%;">القيمة المقترحة</th>
-                                                    <th style="padding: 12px 8px; text-align: right; color: #a78bfa; font-weight: 700; border-bottom: 2px solid rgba(139, 92, 246, 0.3); width: 17%;">الشعار</th>
-                                                    <th style="padding: 12px 8px; text-align: center; color: #a78bfa; font-weight: 700; border-bottom: 2px solid rgba(139, 92, 246, 0.3); width: 12%;">الاستدامة</th>
-                                                    <th style="padding: 12px 8px; text-align: center; color: #a78bfa; font-weight: 700; border-bottom: 2px solid rgba(139, 92, 246, 0.3); width: 12%;">التكنولوجيا</th>
-                                                    <th style="padding: 12px 8px; text-align: right; color: #a78bfa; font-weight: 700; border-bottom: 2px solid rgba(139, 92, 246, 0.3); width: 24%;">الجمهور المستهدف</th>
+                                                    <th style="padding: 14px 10px; text-align: right; color: #a78bfa; font-weight: 700; border-bottom: 2px solid rgba(139, 92, 246, 0.3); width: 12%;">الكيان</th>
+                                                    <th style="padding: 14px 10px; text-align: right; color: #a78bfa; font-weight: 700; border-bottom: 2px solid rgba(139, 92, 246, 0.3); width: 20%;">الرسالة الاتصالية الرئيسية</th>
+                                                    <th style="padding: 14px 10px; text-align: right; color: #a78bfa; font-weight: 700; border-bottom: 2px solid rgba(139, 92, 246, 0.3); width: 18%;">قنوات الاتصال</th>
+                                                    <th style="padding: 14px 10px; text-align: right; color: #a78bfa; font-weight: 700; border-bottom: 2px solid rgba(139, 92, 246, 0.3); width: 18%;">الوعد الأساسي</th>
+                                                    <th style="padding: 14px 10px; text-align: right; color: #a78bfa; font-weight: 700; border-bottom: 2px solid rgba(139, 92, 246, 0.3); width: 16%;">أهم عامل نجاح</th>
+                                                    <th style="padding: 14px 10px; text-align: right; color: #a78bfa; font-weight: 700; border-bottom: 2px solid rgba(139, 92, 246, 0.3); width: 16%;">الدرس لموتور سيتي</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <!-- Autostadt -->
                                                 <tr style="background: rgba(59, 130, 246, 0.05); border-bottom: 1px solid rgba(255,255,255,0.05);">
-                                                    <td style="padding: 12px 8px; color: #fff; font-weight: 600;">
+                                                    <td style="padding: 14px 10px; color: #fff; font-weight: 600;">
                                                         <div style="display: flex; align-items: center; gap: 6px;">
                                                             <img src="https://flagsapi.com/DE/flat/24.png" alt="Germany" style="width: 18px; height: 18px; border-radius: 3px; flex-shrink: 0;">
                                                             <span style="font-size: 0.75rem;">Autostadt</span>
                                                         </div>
+                                                        <div style="color: rgba(255,255,255,0.5); font-size: 0.65rem; margin-top: 4px;">ألمانيا</div>
                                                     </td>
-                                                    <td style="padding: 12px 8px; color: rgba(255,255,255,0.7); font-size: 0.75rem; line-height: 1.4;">تجربة عالمية فريدة تجمع السيارات والثقافة والترفيه</td>
-                                                    <td style="padding: 12px 8px; color: #60a5fa; font-style: italic; font-size: 0.75rem;">"عالم من التنقل"</td>
-                                                    <td style="padding: 12px 8px; text-align: center;">
-                                                        <span style="background: rgba(16, 185, 129, 0.2); color: #34d399; padding: 3px 8px; border-radius: 20px; font-size: 0.7rem; white-space: nowrap;">متقدمة</span>
+                                                    <td style="padding: 14px 10px; color: #60a5fa; font-size: 0.8rem; line-height: 1.5; font-style: italic;">
+                                                        "السيارة ليست مجرد منتج، بل تجربة حياة"
                                                     </td>
-                                                    <td style="padding: 12px 8px; text-align: center;">
-                                                        <span style="background: rgba(16, 185, 129, 0.2); color: #34d399; padding: 3px 8px; border-radius: 20px; font-size: 0.7rem; white-space: nowrap;">رائدة</span>
+                                                    <td style="padding: 14px 10px; color: rgba(255,255,255,0.7); font-size: 0.75rem; line-height: 1.6;">
+                                                        <div style="display: flex; flex-wrap: wrap; gap: 4px;">
+                                                            <span style="background: rgba(96, 165, 250, 0.15); padding: 2px 6px; border-radius: 4px; font-size: 0.65rem;">سياحة تجريبية</span>
+                                                            <span style="background: rgba(96, 165, 250, 0.15); padding: 2px 6px; border-radius: 4px; font-size: 0.65rem;">فعاليات</span>
+                                                            <span style="background: rgba(96, 165, 250, 0.15); padding: 2px 6px; border-radius: 4px; font-size: 0.65rem;">شراكات إعلامية</span>
+                                                        </div>
                                                     </td>
-                                                    <td style="padding: 12px 8px; color: rgba(255,255,255,0.7); font-size: 0.75rem;">العائلات، عشاق السيارات، السياح</td>
+                                                    <td style="padding: 14px 10px; color: rgba(255,255,255,0.7); font-size: 0.75rem; line-height: 1.5;">
+                                                        تسليم السيارة كحدث لا يُنسى + تجربة ترفيهية تعليمية للعائلة
+                                                    </td>
+                                                    <td style="padding: 14px 10px; color: #34d399; font-size: 0.75rem; line-height: 1.5;">
+                                                        <i class="fas fa-star" style="font-size: 0.6rem; margin-left: 4px;"></i>
+                                                        رؤية واضحة + هوية معمارية مميزة
+                                                    </td>
+                                                    <td style="padding: 14px 10px; color: #f87171; font-size: 0.75rem; line-height: 1.5;">
+                                                        <i class="fas fa-lightbulb" style="font-size: 0.6rem; margin-left: 4px;"></i>
+                                                        بناء هوية بصرية قوية تصبح وجهة بحد ذاتها
+                                                    </td>
                                                 </tr>
                                                 
                                                 <!-- Autopia Istanbul -->
                                                 <tr style="background: rgba(59, 130, 246, 0.02); border-bottom: 1px solid rgba(255,255,255,0.05);">
-                                                    <td style="padding: 12px 8px; color: #fff; font-weight: 600;">
+                                                    <td style="padding: 14px 10px; color: #fff; font-weight: 600;">
                                                         <div style="display: flex; align-items: center; gap: 6px;">
                                                             <img src="https://flagsapi.com/TR/flat/24.png" alt="Turkey" style="width: 18px; height: 18px; border-radius: 3px; flex-shrink: 0;">
                                                             <span style="font-size: 0.75rem;">Autopia</span>
                                                         </div>
+                                                        <div style="color: rgba(255,255,255,0.5); font-size: 0.65rem; margin-top: 4px;">تركيا</div>
                                                     </td>
-                                                    <td style="padding: 12px 8px; color: rgba(255,255,255,0.7); font-size: 0.75rem; line-height: 1.4;">مركز تسوق متكامل للسيارات تحت سقف واحد</td>
-                                                    <td style="padding: 12px 8px; color: #60a5fa; font-style: italic; font-size: 0.75rem;">"كل السيارات في مكان واحد"</td>
-                                                    <td style="padding: 12px 8px; text-align: center;">
-                                                        <span style="background: rgba(245, 158, 11, 0.2); color: #fbbf24; padding: 3px 8px; border-radius: 20px; font-size: 0.7rem; white-space: nowrap;">متوسطة</span>
+                                                    <td style="padding: 14px 10px; color: #60a5fa; font-size: 0.8rem; line-height: 1.5; font-style: italic;">
+                                                        "كل ما تحتاجه للسيارات تحت سقف واحد"
                                                     </td>
-                                                    <td style="padding: 12px 8px; text-align: center;">
-                                                        <span style="background: rgba(245, 158, 11, 0.2); color: #fbbf24; padding: 3px 8px; border-radius: 20px; font-size: 0.7rem; white-space: nowrap;">جيدة</span>
+                                                    <td style="padding: 14px 10px; color: rgba(255,255,255,0.7); font-size: 0.75rem; line-height: 1.6;">
+                                                        <div style="display: flex; flex-wrap: wrap; gap: 4px;">
+                                                            <span style="background: rgba(96, 165, 250, 0.15); padding: 2px 6px; border-radius: 4px; font-size: 0.65rem;">إعلانات تلفزيونية</span>
+                                                            <span style="background: rgba(96, 165, 250, 0.15); padding: 2px 6px; border-radius: 4px; font-size: 0.65rem;">رقمي</span>
+                                                            <span style="background: rgba(96, 165, 250, 0.15); padding: 2px 6px; border-radius: 4px; font-size: 0.65rem;">فعاليات</span>
+                                                        </div>
                                                     </td>
-                                                    <td style="padding: 12px 8px; color: rgba(255,255,255,0.7); font-size: 0.75rem;">مشترو السيارات، التجار، المستثمرون</td>
+                                                    <td style="padding: 14px 10px; color: rgba(255,255,255,0.7); font-size: 0.75rem; line-height: 1.5;">
+                                                        توفير الوقت والجهد + مقارنة 200+ معرض بزيارة واحدة
+                                                    </td>
+                                                    <td style="padding: 14px 10px; color: #34d399; font-size: 0.75rem; line-height: 1.5;">
+                                                        <i class="fas fa-star" style="font-size: 0.6rem; margin-left: 4px;"></i>
+                                                        التكامل الخدمي الشامل
+                                                    </td>
+                                                    <td style="padding: 14px 10px; color: #f87171; font-size: 0.75rem; line-height: 1.5;">
+                                                        <i class="fas fa-lightbulb" style="font-size: 0.6rem; margin-left: 4px;"></i>
+                                                        دمج خدمات ما بعد البيع والتمويل والتأمين
+                                                    </td>
                                                 </tr>
                                                 
                                                 <!-- Motor World Abu Dhabi -->
                                                 <tr style="background: rgba(16, 185, 129, 0.05); border-bottom: 1px solid rgba(255,255,255,0.05);">
-                                                    <td style="padding: 12px 8px; color: #fff; font-weight: 600;">
+                                                    <td style="padding: 14px 10px; color: #fff; font-weight: 600;">
                                                         <div style="display: flex; align-items: center; gap: 6px;">
                                                             <img src="https://flagsapi.com/AE/flat/24.png" alt="UAE" style="width: 18px; height: 18px; border-radius: 3px; flex-shrink: 0;">
                                                             <span style="font-size: 0.75rem;">Motor World</span>
                                                         </div>
+                                                        <div style="color: rgba(255,255,255,0.5); font-size: 0.65rem; margin-top: 4px;">أبوظبي</div>
                                                     </td>
-                                                    <td style="padding: 12px 8px; color: rgba(255,255,255,0.7); font-size: 0.75rem; line-height: 1.4;">أكبر صالة عرض سيارات في العالم</td>
-                                                    <td style="padding: 12px 8px; color: #34d399; font-style: italic; font-size: 0.75rem;">"وجهة السيارات الأولى"</td>
-                                                    <td style="padding: 12px 8px; text-align: center;">
-                                                        <span style="background: rgba(16, 185, 129, 0.2); color: #34d399; padding: 3px 8px; border-radius: 20px; font-size: 0.7rem; white-space: nowrap;">عالية</span>
+                                                    <td style="padding: 14px 10px; color: #34d399; font-size: 0.8rem; line-height: 1.5; font-style: italic;">
+                                                        "أكبر وجهة للسيارات الفاخرة في العالم"
                                                     </td>
-                                                    <td style="padding: 12px 8px; text-align: center;">
-                                                        <span style="background: rgba(16, 185, 129, 0.2); color: #34d399; padding: 3px 8px; border-radius: 20px; font-size: 0.7rem; white-space: nowrap;">متقدمة</span>
+                                                    <td style="padding: 14px 10px; color: rgba(255,255,255,0.7); font-size: 0.75rem; line-height: 1.6;">
+                                                        <div style="display: flex; flex-wrap: wrap; gap: 4px;">
+                                                            <span style="background: rgba(52, 211, 153, 0.15); padding: 2px 6px; border-radius: 4px; font-size: 0.65rem;">علاقات عامة</span>
+                                                            <span style="background: rgba(52, 211, 153, 0.15); padding: 2px 6px; border-radius: 4px; font-size: 0.65rem;">مؤثرون</span>
+                                                            <span style="background: rgba(52, 211, 153, 0.15); padding: 2px 6px; border-radius: 4px; font-size: 0.65rem;">فعاليات VIP</span>
+                                                        </div>
                                                     </td>
-                                                    <td style="padding: 12px 8px; color: rgba(255,255,255,0.7); font-size: 0.75rem;">الأثرياء، المقيمون، السياح</td>
+                                                    <td style="padding: 14px 10px; color: rgba(255,255,255,0.7); font-size: 0.75rem; line-height: 1.5;">
+                                                        تجربة فاخرة لشراء السيارات + خدمات حصرية للعملاء المميزين
+                                                    </td>
+                                                    <td style="padding: 14px 10px; color: #34d399; font-size: 0.75rem; line-height: 1.5;">
+                                                        <i class="fas fa-star" style="font-size: 0.6rem; margin-left: 4px;"></i>
+                                                        التموضع الفاخر + الدعم الحكومي
+                                                    </td>
+                                                    <td style="padding: 14px 10px; color: #f87171; font-size: 0.75rem; line-height: 1.5;">
+                                                        <i class="fas fa-lightbulb" style="font-size: 0.6rem; margin-left: 4px;"></i>
+                                                        بناء شراكات استراتيجية مع الجهات الحكومية
+                                                    </td>
                                                 </tr>
                                                 
                                                 <!-- Dubai Auto Zone -->
                                                 <tr style="background: rgba(16, 185, 129, 0.02); border-bottom: 1px solid rgba(255,255,255,0.05);">
-                                                    <td style="padding: 12px 8px; color: #fff; font-weight: 600;">
+                                                    <td style="padding: 14px 10px; color: #fff; font-weight: 600;">
                                                         <div style="display: flex; align-items: center; gap: 6px;">
                                                             <img src="https://flagsapi.com/AE/flat/24.png" alt="UAE" style="width: 18px; height: 18px; border-radius: 3px; flex-shrink: 0;">
                                                             <span style="font-size: 0.75rem;">Dubai Auto Zone</span>
                                                         </div>
+                                                        <div style="color: rgba(255,255,255,0.5); font-size: 0.65rem; margin-top: 4px;">دبي</div>
                                                     </td>
-                                                    <td style="padding: 12px 8px; color: rgba(255,255,255,0.7); font-size: 0.75rem; line-height: 1.4;">منطقة حرة متخصصة لتجارة السيارات</td>
-                                                    <td style="padding: 12px 8px; color: #34d399; font-style: italic; font-size: 0.75rem;">"بوابة تجارة السيارات"</td>
-                                                    <td style="padding: 12px 8px; text-align: center;">
-                                                        <span style="background: rgba(245, 158, 11, 0.2); color: #fbbf24; padding: 3px 8px; border-radius: 20px; font-size: 0.7rem; white-space: nowrap;">متوسطة</span>
+                                                    <td style="padding: 14px 10px; color: #fbbf24; font-size: 0.8rem; line-height: 1.5; font-style: italic;">
+                                                        "بوابتك لتجارة السيارات العالمية"
                                                     </td>
-                                                    <td style="padding: 12px 8px; text-align: center;">
-                                                        <span style="background: rgba(16, 185, 129, 0.2); color: #34d399; padding: 3px 8px; border-radius: 20px; font-size: 0.7rem; white-space: nowrap;">جيدة</span>
+                                                    <td style="padding: 14px 10px; color: rgba(255,255,255,0.7); font-size: 0.75rem; line-height: 1.6;">
+                                                        <div style="display: flex; flex-wrap: wrap; gap: 4px;">
+                                                            <span style="background: rgba(251, 191, 36, 0.15); padding: 2px 6px; border-radius: 4px; font-size: 0.65rem;">معارض B2B</span>
+                                                            <span style="background: rgba(251, 191, 36, 0.15); padding: 2px 6px; border-radius: 4px; font-size: 0.65rem;">بعثات دولية</span>
+                                                            <span style="background: rgba(251, 191, 36, 0.15); padding: 2px 6px; border-radius: 4px; font-size: 0.65rem;">غرف تجارية</span>
+                                                        </div>
                                                     </td>
-                                                    <td style="padding: 12px 8px; color: rgba(255,255,255,0.7); font-size: 0.75rem;">التجار، المستوردون، المصدرون</td>
+                                                    <td style="padding: 14px 10px; color: rgba(255,255,255,0.7); font-size: 0.75rem; line-height: 1.5;">
+                                                        صفر ضرائب + ملكية أجنبية كاملة + إجراءات مبسطة
+                                                    </td>
+                                                    <td style="padding: 14px 10px; color: #34d399; font-size: 0.75rem; line-height: 1.5;">
+                                                        <i class="fas fa-star" style="font-size: 0.6rem; margin-left: 4px;"></i>
+                                                        الموقع الاستراتيجي + البيئة التنظيمية
+                                                    </td>
+                                                    <td style="padding: 14px 10px; color: #f87171; font-size: 0.75rem; line-height: 1.5;">
+                                                        <i class="fas fa-lightbulb" style="font-size: 0.6rem; margin-left: 4px;"></i>
+                                                        توفير نافذة واحدة لكل الخدمات الحكومية
+                                                    </td>
                                                 </tr>
                                                 
                                                 <!-- معارض القادسية -->
-                                                <tr style="background: rgba(16, 185, 129, 0.05); border-bottom: 1px solid rgba(255,255,255,0.05);">
-                                                    <td style="padding: 12px 8px; color: #fff; font-weight: 600;">
+                                                <tr style="background: rgba(239, 68, 68, 0.05);">
+                                                    <td style="padding: 14px 10px; color: #fff; font-weight: 600;">
                                                         <div style="display: flex; align-items: center; gap: 6px;">
                                                             <img src="https://flagsapi.com/SA/flat/24.png" alt="Saudi Arabia" style="width: 18px; height: 18px; border-radius: 3px; flex-shrink: 0;">
                                                             <span style="font-size: 0.75rem;">القادسية</span>
                                                         </div>
+                                                        <div style="color: rgba(255,255,255,0.5); font-size: 0.65rem; margin-top: 4px;">الرياض</div>
                                                     </td>
-                                                    <td style="padding: 12px 8px; color: rgba(255,255,255,0.7); font-size: 0.75rem; line-height: 1.4;">تجمع تقليدي عشوائي لمعارض السيارات</td>
-                                                    <td style="padding: 12px 8px; color: rgba(255,255,255,0.5); font-style: italic; font-size: 0.75rem;">غير محدد</td>
-                                                    <td style="padding: 12px 8px; text-align: center;">
-                                                        <span style="background: rgba(239, 68, 68, 0.2); color: #f87171; padding: 3px 8px; border-radius: 20px; font-size: 0.7rem; white-space: nowrap;">محدودة</span>
+                                                    <td style="padding: 14px 10px; color: rgba(255,255,255,0.5); font-size: 0.8rem; line-height: 1.5; font-style: italic;">
+                                                        غير موحدة - كل معرض مستقل
                                                     </td>
-                                                    <td style="padding: 12px 8px; text-align: center;">
-                                                        <span style="background: rgba(239, 68, 68, 0.2); color: #f87171; padding: 3px 8px; border-radius: 20px; font-size: 0.7rem; white-space: nowrap;">تقليدية</span>
-                                                    </td>
-                                                    <td style="padding: 12px 8px; color: rgba(255,255,255,0.7); font-size: 0.75rem;">المشترون المحليون</td>
-                                                </tr>
-                                                
-                                                <!-- المنطقة الحرة - الزرقاء -->
-                                                <tr style="background: rgba(220, 31, 39, 0.05);">
-                                                    <td style="padding: 12px 8px; color: #fff; font-weight: 600;">
-                                                        <div style="display: flex; align-items: center; gap: 6px;">
-                                                            <img src="https://flagsapi.com/JO/flat/24.png" alt="Jordan" style="width: 18px; height: 18px; border-radius: 3px; flex-shrink: 0;">
-                                                            <span style="font-size: 0.75rem;">الزرقاء</span>
+                                                    <td style="padding: 14px 10px; color: rgba(255,255,255,0.7); font-size: 0.75rem; line-height: 1.6;">
+                                                        <div style="display: flex; flex-wrap: wrap; gap: 4px;">
+                                                            <span style="background: rgba(239, 68, 68, 0.15); padding: 2px 6px; border-radius: 4px; font-size: 0.65rem;">تقليدية</span>
+                                                            <span style="background: rgba(239, 68, 68, 0.15); padding: 2px 6px; border-radius: 4px; font-size: 0.65rem;">كلمة الفم</span>
+                                                            <span style="background: rgba(239, 68, 68, 0.15); padding: 2px 6px; border-radius: 4px; font-size: 0.65rem;">إعلانات فردية</span>
                                                         </div>
                                                     </td>
-                                                    <td style="padding: 12px 8px; color: rgba(255,255,255,0.7); font-size: 0.75rem; line-height: 1.4;">منطقة حرة متعددة الأغراض مع قسم سيارات</td>
-                                                    <td style="padding: 12px 8px; color: #f87171; font-style: italic; font-size: 0.75rem;">"بوابة الأردن للتجارة"</td>
-                                                    <td style="padding: 12px 8px; text-align: center;">
-                                                        <span style="background: rgba(245, 158, 11, 0.2); color: #fbbf24; padding: 3px 8px; border-radius: 20px; font-size: 0.7rem; white-space: nowrap;">متوسطة</span>
+                                                    <td style="padding: 14px 10px; color: rgba(255,255,255,0.7); font-size: 0.75rem; line-height: 1.5;">
+                                                        أسعار تنافسية + تنوع الخيارات (عشوائي)
                                                     </td>
-                                                    <td style="padding: 12px 8px; text-align: center;">
-                                                        <span style="background: rgba(245, 158, 11, 0.2); color: #fbbf24; padding: 3px 8px; border-radius: 20px; font-size: 0.7rem; white-space: nowrap;">متوسطة</span>
+                                                    <td style="padding: 14px 10px; color: #f87171; font-size: 0.75rem; line-height: 1.5;">
+                                                        <i class="fas fa-exclamation-triangle" style="font-size: 0.6rem; margin-left: 4px;"></i>
+                                                        السمعة التاريخية (تتراجع)
                                                     </td>
-                                                    <td style="padding: 12px 8px; color: rgba(255,255,255,0.7); font-size: 0.75rem;">التجار، المستوردون الأردنيون</td>
+                                                    <td style="padding: 14px 10px; color: #f87171; font-size: 0.75rem; line-height: 1.5;">
+                                                        <i class="fas fa-lightbulb" style="font-size: 0.6rem; margin-left: 4px;"></i>
+                                                        تجنب العشوائية والتنظيم من البداية
+                                                    </td>
                                                 </tr>
                                             </tbody>
                                         </table>
                                     </div>
                                     
-                                    <!-- Legend -->
-                                    <div style="padding: 20px 30px; background: rgba(0,0,0,0.2); border-top: 1px solid rgba(255,255,255,0.1);">
-                                        <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;">
-                                            <div style="display: flex; align-items: center; gap: 8px;">
-                                                <span style="background: rgba(16, 185, 129, 0.2); color: #34d399; padding: 4px 12px; border-radius: 20px; font-size: 0.75rem;">متقدمة/رائدة</span>
-                                                <span style="color: rgba(255,255,255,0.5); font-size: 0.75rem;">أداء ممتاز</span>
+                                    <!-- Key Insights -->
+                                    <div style="padding: 25px 30px; background: rgba(0,0,0,0.2); border-top: 1px solid rgba(255,255,255,0.1);">
+                                        <h4 style="color: #a78bfa; font-size: 1rem; font-weight: 700; margin-bottom: 15px; text-align: center;">
+                                            <i class="fas fa-key" style="margin-left: 8px;"></i>
+                                            الخلاصات الرئيسية للركائز الاتصالية
+                                        </h4>
+                                        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px;">
+                                            <div style="background: rgba(96, 165, 250, 0.1); border: 1px solid rgba(96, 165, 250, 0.2); border-radius: 10px; padding: 15px; text-align: center;">
+                                                <i class="fas fa-bullhorn" style="color: #60a5fa; font-size: 1.2rem; margin-bottom: 8px; display: block;"></i>
+                                                <div style="color: #fff; font-size: 0.85rem; font-weight: 600;">الرسالة الموحدة</div>
+                                                <div style="color: rgba(255,255,255,0.6); font-size: 0.75rem; margin-top: 5px;">كل كيان ناجح له رسالة واضحة ومميزة</div>
                                             </div>
-                                            <div style="display: flex; align-items: center; gap: 8px;">
-                                                <span style="background: rgba(245, 158, 11, 0.2); color: #fbbf24; padding: 4px 12px; border-radius: 20px; font-size: 0.75rem;">متوسطة/جيدة</span>
-                                                <span style="color: rgba(255,255,255,0.5); font-size: 0.75rem;">أداء مقبول</span>
+                                            <div style="background: rgba(52, 211, 153, 0.1); border: 1px solid rgba(52, 211, 153, 0.2); border-radius: 10px; padding: 15px; text-align: center;">
+                                                <i class="fas fa-handshake" style="color: #34d399; font-size: 1.2rem; margin-bottom: 8px; display: block;"></i>
+                                                <div style="color: #fff; font-size: 0.85rem; font-weight: 600;">الوعود الملموسة</div>
+                                                <div style="color: rgba(255,255,255,0.6); font-size: 0.75rem; margin-top: 5px;">وعود واضحة وقابلة للقياس لكل فئة</div>
                                             </div>
-                                            <div style="display: flex; align-items: center; gap: 8px;">
-                                                <span style="background: rgba(239, 68, 68, 0.2); color: #f87171; padding: 4px 12px; border-radius: 20px; font-size: 0.75rem;">محدودة/تقليدية</span>
-                                                <span style="color: rgba(255,255,255,0.5); font-size: 0.75rem;">يحتاج تطوير</span>
+                                            <div style="background: rgba(248, 113, 113, 0.1); border: 1px solid rgba(248, 113, 113, 0.2); border-radius: 10px; padding: 15px; text-align: center;">
+                                                <i class="fas fa-graduation-cap" style="color: #f87171; font-size: 1.2rem; margin-bottom: 8px; display: block;"></i>
+                                                <div style="color: #fff; font-size: 0.85rem; font-weight: 600;">التعلم من الآخرين</div>
+                                                <div style="color: rgba(255,255,255,0.6); font-size: 0.75rem; margin-top: 5px;">دمج أفضل الممارسات من كل نموذج</div>
                                             </div>
                                         </div>
                                     </div>
@@ -18050,14 +17552,14 @@ body.guest-mode .guest-back-button {
                                                     <tbody>
                                                         <tr style="border-bottom: 1px solid rgba(245, 158, 11, 0.1);">
                                                             <td style="padding: 18px 20px; color: #fff; font-weight: 600; font-size: 0.95rem;">
-                                                                <i class="fas fa-store" style="color: #fbbf24; margin-left: 8px;"></i>
-                                                                الوكلاء المحليون
+                                                                <i class="fas fa-car" style="color: #fbbf24; margin-left: 8px;"></i>
+                                                                وكلاء فولكس واجن
                                                             </td>
                                                             <td style="padding: 18px 20px; color: rgba(255,255,255,0.65); font-size: 0.9rem;">
-                                                                خوف من تراجع المبيعات المباشرة وفقدان العملاء
+                                                                خوف من فقدان تجربة التسليم وتراجع العلاقة المباشرة مع العميل
                                                             </td>
                                                             <td style="padding: 18px 20px; color: rgba(255,255,255,0.65); font-size: 0.9rem;">
-                                                                إشراكهم كشركاء في برنامج التسليم مع عمولات محفزة
+                                                                إشراكهم في برنامج الإحالة مع عمولات على كل عميل يستلم من Autostadt
                                                             </td>
                                                         </tr>
                                                         <tr style="border-bottom: 1px solid rgba(245, 158, 11, 0.1);">
@@ -21517,12 +21019,12 @@ body.guest-mode .guest-back-button {
                                     
                                     <!-- Phase 1 -->
                                     <div style="background: rgba(0,0,0,0.2); border-radius: 16px; padding: 20px; text-align: center; position: relative;">
-                                        <div style="position: absolute; top: -10px; right: 50%; transform: translateX(50%); background: linear-gradient(135deg, #ef4444, #dc2626); color: #fff; padding: 5px 15px; border-radius: 15px; font-weight: 700; font-size: 0.75rem;">قبل 3 أشهر</div>
+                                        <div style="position: absolute; top: -10px; right: 50%; transform: translateX(50%); background: linear-gradient(135deg, #ef4444, #dc2626); color: #fff; padding: 5px 15px; border-radius: 15px; font-weight: 700; font-size: 0.75rem;">قبل الإعلان</div>
                                         <div style="width: 50px; height: 50px; background: rgba(239, 68, 68, 0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 25px auto 15px;">
-                                            <i class="fas fa-users" style="color: #f87171; font-size: 1.2rem;"></i>
+                                            <i class="fas fa-users-cog" style="color: #f87171; font-size: 1.2rem;"></i>
                                         </div>
                                         <h6 style="color: #f87171; font-size: 0.9rem; font-weight: 700; margin: 0 0 10px 0;">التهيئة المسبقة</h6>
-                                        <p style="color: #94a3b8; font-size: 0.75rem; line-height: 1.5; margin: 0;">لقاءات سرية مع كبار التجار + تشكيل "لجنة تأسيسية"</p>
+                                        <p style="color: #94a3b8; font-size: 0.75rem; line-height: 1.5; margin: 0;">لقاءات مع كبار التجار + تشكيل "لجنة تأسيسية" للمشاركة في التخطيط</p>
                                     </div>
                                     
                                     <!-- Phase 2 -->
@@ -21532,27 +21034,27 @@ body.guest-mode .guest-back-button {
                                             <i class="fas fa-bullhorn" style="color: #fbbf24; font-size: 1.2rem;"></i>
                                         </div>
                                         <h6 style="color: #fbbf24; font-size: 0.9rem; font-weight: 700; margin: 0 0 10px 0;">الإعلان المنسق</h6>
-                                        <p style="color: #94a3b8; font-size: 0.75rem; line-height: 1.5; margin: 0;">أمانة عمان + رؤية عمان + نوبلز = رسالة موحدة</p>
+                                        <p style="color: #94a3b8; font-size: 0.75rem; line-height: 1.5; margin: 0;">أمانة عمان + رؤية عمان + نوبلز = رسالة موحدة ومتزامنة</p>
                                     </div>
                                     
                                     <!-- Phase 3 -->
                                     <div style="background: rgba(0,0,0,0.2); border-radius: 16px; padding: 20px; text-align: center; position: relative;">
-                                        <div style="position: absolute; top: -10px; right: 50%; transform: translateX(50%); background: linear-gradient(135deg, #10b981, #059669); color: #fff; padding: 5px 15px; border-radius: 15px; font-weight: 700; font-size: 0.75rem;">أول أسبوعين</div>
+                                        <div style="position: absolute; top: -10px; right: 50%; transform: translateX(50%); background: linear-gradient(135deg, #10b981, #059669); color: #fff; padding: 5px 15px; border-radius: 15px; font-weight: 700; font-size: 0.75rem;">بعد الإعلان</div>
                                         <div style="width: 50px; height: 50px; background: rgba(16, 185, 129, 0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 25px auto 15px;">
-                                            <i class="fas fa-gift" style="color: #34d399; font-size: 1.2rem;"></i>
+                                            <i class="fas fa-comments" style="color: #34d399; font-size: 1.2rem;"></i>
                                         </div>
-                                        <h6 style="color: #34d399; font-size: 0.9rem; font-weight: 700; margin: 0 0 10px 0;">الحوافز الفورية</h6>
-                                        <p style="color: #94a3b8; font-size: 0.75rem; line-height: 1.5; margin: 0;">خصم 50% للحجز المبكر + أقساط 36 شهر بدون فوائد</p>
+                                        <h6 style="color: #34d399; font-size: 0.9rem; font-weight: 700; margin: 0 0 10px 0;">الحوار والتوضيح</h6>
+                                        <p style="color: #94a3b8; font-size: 0.75rem; line-height: 1.5; margin: 0;">جلسات حوار مع التجار + الرد على الاستفسارات والمخاوف</p>
                                     </div>
                                     
                                     <!-- Phase 4 -->
                                     <div style="background: rgba(0,0,0,0.2); border-radius: 16px; padding: 20px; text-align: center; position: relative;">
-                                        <div style="position: absolute; top: -10px; right: 50%; transform: translateX(50%); background: linear-gradient(135deg, #3b82f6, #2563eb); color: #fff; padding: 5px 15px; border-radius: 15px; font-weight: 700; font-size: 0.75rem;">الشهر الأول</div>
+                                        <div style="position: absolute; top: -10px; right: 50%; transform: translateX(50%); background: linear-gradient(135deg, #3b82f6, #2563eb); color: #fff; padding: 5px 15px; border-radius: 15px; font-weight: 700; font-size: 0.75rem;">إدارة الأزمات</div>
                                         <div style="width: 50px; height: 50px; background: rgba(59, 130, 246, 0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 25px auto 15px;">
-                                            <i class="fas fa-headset" style="color: #60a5fa; font-size: 1.2rem;"></i>
+                                            <i class="fas fa-shield-alt" style="color: #60a5fa; font-size: 1.2rem;"></i>
                                         </div>
-                                        <h6 style="color: #60a5fa; font-size: 0.9rem; font-weight: 700; margin: 0 0 10px 0;">الاستجابة السريعة</h6>
-                                        <p style="color: #94a3b8; font-size: 0.75rem; line-height: 1.5; margin: 0;">فريق أزمات 24/7 + جلسات حوار يومية مع التجار</p>
+                                        <h6 style="color: #60a5fa; font-size: 0.9rem; font-weight: 700; margin: 0 0 10px 0;">الاحتواء الاستباقي</h6>
+                                        <p style="color: #94a3b8; font-size: 0.75rem; line-height: 1.5; margin: 0;">رصد ردود الفعل + معالجة الشائعات + تصحيح المفاهيم الخاطئة</p>
                                     </div>
                                     
                                 </div>
@@ -21889,11 +21391,11 @@ body.guest-mode .guest-back-button {
                                         <div style="position: absolute; top: -12px; right: 20px; background: linear-gradient(135deg, #3b82f6, #2563eb); color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.9rem;">2</div>
                                         <div style="text-align: center; margin-bottom: 15px;">
                                             <div style="width: 60px; height: 60px; background: rgba(59, 130, 246, 0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto;">
-                                                <i class="fas fa-eye" style="color: #60a5fa; font-size: 1.5rem;"></i>
+                                                <i class="fas fa-city" style="color: #60a5fa; font-size: 1.5rem;"></i>
                                             </div>
                                         </div>
-                                        <h5 style="color: #60a5fa; font-size: 1rem; font-weight: 700; margin: 0 0 10px 0; text-align: center;">رؤية عمان</h5>
-                                        <p style="color: #bfdbfe; font-size: 0.85rem; line-height: 1.7; margin: 0; text-align: center;">إعلان مشروع موتور سيتي كحل استراتيجي ووجهة متكاملة لقطاع السيارات</p>
+                                        <h5 style="color: #60a5fa; font-size: 1rem; font-weight: 700; margin: 0 0 10px 0; text-align: center;">رؤية عمّان</h5>
+                                        <p style="color: #bfdbfe; font-size: 0.85rem; line-height: 1.7; margin: 0; text-align: center;">ذراع الاستثمار والتطوير - تطرح موتور سيتي كفرصة استثمارية</p>
                                         <div style="background: rgba(0,0,0,0.3); border-radius: 8px; padding: 8px; margin-top: 12px; text-align: center;">
                                             <span style="color: #94a3b8; font-size: 0.75rem;"><i class="fas fa-lightbulb" style="color: #fbbf24; margin-left: 5px;"></i> الحل البديل</span>
                                         </div>
@@ -22575,11 +22077,11 @@ body.guest-mode .guest-back-button {
                                                 </div>
                                                 <div style="flex: 1;">
                                                     <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
-                                                        <h5 style="color: #f87171; font-size: 1.15rem; font-weight: 700; margin: 0;">أمانة عمان الكبرى</h5>
-                                                        <span style="background: rgba(239, 68, 68, 0.2); color: #fca5a5; padding: 4px 12px; border-radius: 15px; font-size: 0.75rem;">الشريك الاستراتيجي</span>
+                                                        <h5 style="color: #f87171; font-size: 1.15rem; font-weight: 700; margin: 0;">أمانة عمان الكبرى ورؤية عمان</h5>
+                                                        <span style="background: rgba(239, 68, 68, 0.2); color: #fca5a5; padding: 4px 12px; border-radius: 15px; font-size: 0.75rem;">الشريك الحكومي والاستراتيجي</span>
                                                     </div>
                                                     <p style="color: #94a3b8; font-size: 0.85rem; margin: 0 0 15px 0; line-height: 1.6;">
-                                                        الجهة الرسمية صاحبة القرار والمسؤولة عن تنظيم قطاع السيارات في العاصمة - الشريك الأساسي في إعلان المشروع
+                                                        أمانة عمان: الجهة الرسمية صاحبة القرار التنظيمي • رؤية عمان: الذراع الاستثماري والتطويري - شركاء الإعلان عن المشروع
                                                     </p>
                                                     
                                                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
@@ -22592,7 +22094,7 @@ body.guest-mode .guest-back-button {
                                                                 <li>نقل سلس دون أزمات أو احتجاجات</li>
                                                                 <li>إبراز دور الأمانة في التطوير</li>
                                                                 <li>التزام بالجداول الزمنية المعلنة</li>
-                                                                <li>تحقيق أهداف رؤية عمان 2025</li>
+                                                                <li>تحقيق أهداف "نطوّر عمّان معاً"</li>
                                                             </ul>
                                                         </div>
                                                         <div style="background: rgba(16, 185, 129, 0.08); border-radius: 12px; padding: 15px; border-right: 3px solid #10b981;">
@@ -22968,7 +22470,7 @@ body.guest-mode .guest-back-button {
                                                     </h6>
                                                     <div style="background: rgba(245, 158, 11, 0.08); border-radius: 12px; padding: 15px; border-right: 3px solid #f59e0b;">
                                                         <p style="color: #fde68a; font-size: 0.9rem; line-height: 1.8; margin: 0; font-style: italic;">
-                                                            "موتور سيتي هو الوجهة الأولى للسيارات في الأردن، ووجودكم فيه يعني ريادة السوق. صالات عرض بمعايير عالمية، وحركة زبائن لا تتوقف، وشراكة استراتيجية مع رؤية عمان 2025."
+                                                            "موتور سيتي هو الوجهة الأولى للسيارات في الأردن، ووجودكم فيه يعني ريادة السوق. صالات عرض بمعايير عالمية، وحركة زبائن لا تتوقف، وشراكة استراتيجية مع رؤية عمّان للاستثمار والتطوير."
                                                         </p>
                                                     </div>
                                                 </div>
@@ -23047,6 +22549,57 @@ body.guest-mode .guest-back-button {
                                                         <span style="background: rgba(139, 92, 246, 0.15); color: #c4b5fd; padding: 5px 10px; border-radius: 6px; font-size: 0.75rem;">🏛️ رسمية</span>
                                                         <span style="background: rgba(139, 92, 246, 0.15); color: #c4b5fd; padding: 5px 10px; border-radius: 6px; font-size: 0.75rem;">✨ تقديرية</span>
                                                         <span style="background: rgba(139, 92, 246, 0.15); color: #c4b5fd; padding: 5px 10px; border-radius: 6px; font-size: 0.75rem;">📊 موثقة</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Message 3.5: رؤية عمان -->
+                                        <div style="background: rgba(0,0,0,0.3); border-radius: 16px; overflow: hidden; border: 1px solid rgba(59, 130, 246, 0.12);">
+                                            <div style="background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(59, 130, 246, 0.08)); padding: 18px 25px; display: flex; align-items: center; gap: 15px; border-bottom: 1px solid rgba(59, 130, 246, 0.1);">
+                                                <div style="width: 50px; height: 50px; background: rgba(59, 130, 246, 0.25); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+                                                    <i class="fas fa-city" style="color: #60a5fa; font-size: 1.3rem;"></i>
+                                                </div>
+                                                <div>
+                                                    <h5 style="color: #60a5fa; font-size: 1.1rem; font-weight: 700; margin: 0;">رؤية عمّان للاستثمار والتطوير</h5>
+                                                    <span style="color: #94a3b8; font-size: 0.8rem;">ذراع الاستثمار والتطوير لأمانة عمّان • تأسست 2018</span>
+                                                </div>
+                                            </div>
+                                            <div style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 0;">
+                                                <div style="padding: 20px 25px; border-left: 1px solid rgba(255,255,255,0.05);">
+                                                    <h6 style="color: #fbbf24; font-size: 0.85rem; font-weight: 700; margin: 0 0 12px 0; display: flex; align-items: center; gap: 8px;">
+                                                        <i class="fas fa-quote-right"></i> الرسالة المخصصة
+                                                    </h6>
+                                                    <div style="background: rgba(245, 158, 11, 0.08); border-radius: 12px; padding: 15px; border-right: 3px solid #f59e0b;">
+                                                        <p style="color: #fde68a; font-size: 0.9rem; line-height: 1.8; margin: 0; font-style: italic;">
+                                                            "موتور سيتي فرصة استثمارية نوعية تجسد شعارنا 'نطوّر عمّان معاً'. شراكة حقيقية بين القطاعين العام والخاص لتحقيق عوائد مستدامة تواكب مشهد الأردن الحضاري الحديث."
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <div style="padding: 20px; background: rgba(0,0,0,0.1); border-left: 1px solid rgba(255,255,255,0.05);">
+                                                    <h6 style="color: #60a5fa; font-size: 0.85rem; font-weight: 700; margin: 0 0 12px 0; display: flex; align-items: center; gap: 8px;">
+                                                        <i class="fas fa-broadcast-tower"></i> القنوات
+                                                    </h6>
+                                                    <div style="display: flex; flex-direction: column; gap: 8px;">
+                                                        <span style="background: rgba(59, 130, 246, 0.15); color: #93c5fd; padding: 6px 12px; border-radius: 8px; font-size: 0.75rem; display: flex; align-items: center; gap: 6px;">
+                                                            <i class="fas fa-file-contract"></i> عقود الشراكة PPP
+                                                        </span>
+                                                        <span style="background: rgba(59, 130, 246, 0.15); color: #93c5fd; padding: 6px 12px; border-radius: 8px; font-size: 0.75rem; display: flex; align-items: center; gap: 6px;">
+                                                            <i class="fas fa-chart-line"></i> عروض للمستثمرين
+                                                        </span>
+                                                        <span style="background: rgba(59, 130, 246, 0.15); color: #93c5fd; padding: 6px 12px; border-radius: 8px; font-size: 0.75rem; display: flex; align-items: center; gap: 6px;">
+                                                            <i class="fas fa-bullhorn"></i> إعلانات مشتركة
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <div style="padding: 20px;">
+                                                    <h6 style="color: #a78bfa; font-size: 0.85rem; font-weight: 700; margin: 0 0 12px 0; display: flex; align-items: center; gap: 8px;">
+                                                        <i class="fas fa-microphone"></i> النبرة
+                                                    </h6>
+                                                    <div style="display: flex; flex-direction: column; gap: 6px;">
+                                                        <span style="background: rgba(139, 92, 246, 0.15); color: #c4b5fd; padding: 5px 10px; border-radius: 6px; font-size: 0.75rem;">🤝 شراكة PPP</span>
+                                                        <span style="background: rgba(139, 92, 246, 0.15); color: #c4b5fd; padding: 5px 10px; border-radius: 6px; font-size: 0.75rem;">💼 استثمارية</span>
+                                                        <span style="background: rgba(139, 92, 246, 0.15); color: #c4b5fd; padding: 5px 10px; border-radius: 6px; font-size: 0.75rem;">🏗️ تطويرية</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -23233,11 +22786,11 @@ body.guest-mode .guest-back-button {
                                             <div style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 0;">
                                                 <div style="padding: 20px 25px; border-left: 1px solid rgba(255,255,255,0.05);">
                                                     <h6 style="color: #fbbf24; font-size: 0.85rem; font-weight: 700; margin: 0 0 12px 0; display: flex; align-items: center; gap: 8px;">
-                                                        <i class="fas fa-quote-right"></i> الرسالة المخصصة
+                                                        <i class="fas fa-quote-right"></i> ما سيقوله المؤثر لجمهوره
                                                     </h6>
                                                     <div style="background: rgba(245, 158, 11, 0.08); border-radius: 12px; padding: 15px; border-right: 3px solid #f59e0b;">
                                                         <p style="color: #fde68a; font-size: 0.9rem; line-height: 1.8; margin: 0; font-style: italic;">
-                                                            "محتوى حصري ينتظرك! كن أول من يستكشف موتور سيتي ويشارك متابعيه هذه التجربة الفريدة. تعاون مميز، وصول VIP، وقصص لا تُنسى."
+                                                            "الأردن على موعد مع أكبر مشروع متكامل للسيارات في المنطقة! موتور سيتي - شراكة بين أمانة عمان والقطاع الخاص لتنظيم سوق السيارات بمعايير عالمية. خطوة كبيرة للاقتصاد الأردني!"
                                                         </p>
                                                     </div>
                                                 </div>
@@ -23247,13 +22800,13 @@ body.guest-mode .guest-back-button {
                                                     </h6>
                                                     <div style="display: flex; flex-direction: column; gap: 8px;">
                                                         <span style="background: rgba(59, 130, 246, 0.15); color: #93c5fd; padding: 6px 12px; border-radius: 8px; font-size: 0.75rem; display: flex; align-items: center; gap: 6px;">
-                                                            <i class="fas fa-envelope-open-text"></i> دعوات شخصية
+                                                            <i class="fab fa-youtube"></i> فيديوهات يوتيوب
                                                         </span>
                                                         <span style="background: rgba(59, 130, 246, 0.15); color: #93c5fd; padding: 6px 12px; border-radius: 8px; font-size: 0.75rem; display: flex; align-items: center; gap: 6px;">
-                                                            <i class="fab fa-instagram"></i> رسائل مباشرة
+                                                            <i class="fab fa-instagram"></i> ريلز وستوري
                                                         </span>
                                                         <span style="background: rgba(59, 130, 246, 0.15); color: #93c5fd; padding: 6px 12px; border-radius: 8px; font-size: 0.75rem; display: flex; align-items: center; gap: 6px;">
-                                                            <i class="fas fa-gift"></i> باقات تعاون
+                                                            <i class="fab fa-tiktok"></i> تيك توك
                                                         </span>
                                                     </div>
                                                 </div>
@@ -23262,9 +22815,9 @@ body.guest-mode .guest-back-button {
                                                         <i class="fas fa-microphone"></i> النبرة
                                                     </h6>
                                                     <div style="display: flex; flex-direction: column; gap: 6px;">
-                                                        <span style="background: rgba(139, 92, 246, 0.15); color: #c4b5fd; padding: 5px 10px; border-radius: 6px; font-size: 0.75rem;">🔥 عصرية</span>
-                                                        <span style="background: rgba(139, 92, 246, 0.15); color: #c4b5fd; padding: 5px 10px; border-radius: 6px; font-size: 0.75rem;">🤩 مثيرة</span>
-                                                        <span style="background: rgba(139, 92, 246, 0.15); color: #c4b5fd; padding: 5px 10px; border-radius: 6px; font-size: 0.75rem;">💎 حصرية</span>
+                                                        <span style="background: rgba(139, 92, 246, 0.15); color: #c4b5fd; padding: 5px 10px; border-radius: 6px; font-size: 0.75rem;">🇯🇴 وطنية</span>
+                                                        <span style="background: rgba(139, 92, 246, 0.15); color: #c4b5fd; padding: 5px 10px; border-radius: 6px; font-size: 0.75rem;">📈 تفاؤلية</span>
+                                                        <span style="background: rgba(139, 92, 246, 0.15); color: #c4b5fd; padding: 5px 10px; border-radius: 6px; font-size: 0.75rem;">💡 توعوية</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -23410,8 +22963,8 @@ body.guest-mode .guest-back-button {
                                                     <div style="position: absolute; top: -8px; right: -8px; width: 30px; height: 30px; background: #f59e0b; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: 700; color: #fff;">2</div>
                                                     <i class="fas fa-city" style="color: #fbbf24; font-size: 2.5rem;"></i>
                                                 </div>
-                                                <h4 style="color: #fbbf24; font-size: 1.1rem; font-weight: 700; margin: 0 0 8px 0;">رؤية عمان</h4>
-                                                <span style="color: #fde68a; font-size: 0.85rem; font-weight: 600;">Amman Vision</span>
+                                                <h4 style="color: #fbbf24; font-size: 1.1rem; font-weight: 700; margin: 0 0 8px 0;">رؤية عمّان</h4>
+                                                <span style="color: #fde68a; font-size: 0.85rem; font-weight: 600;">ذراع الاستثمار والتطوير</span>
                                                 
                                                 <div style="background: rgba(0,0,0,0.3); border-radius: 14px; padding: 18px; margin-top: 20px; text-align: right; border: 1px solid rgba(245, 158, 11, 0.15);">
                                                     <p style="color: #fde68a; font-size: 0.8rem; font-weight: 600; margin: 0 0 10px 0;">
@@ -23687,8 +23240,8 @@ body.guest-mode .guest-back-button {
                                             <div style="width: 70px; height: 70px; background: rgba(255,255,255,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; border: 3px solid rgba(255,255,255,0.3);">
                                                 <i class="fas fa-city" style="color: white; font-size: 1.8rem;"></i>
                                             </div>
-                                            <h4 style="color: white; font-size: 1.2rem; font-weight: 700; margin: 0;">رؤية عمان</h4>
-                                            <span style="color: rgba(255,255,255,0.8); font-size: 0.8rem;">Amman Vision 2025</span>
+                                            <h4 style="color: white; font-size: 1.2rem; font-weight: 700; margin: 0;">رؤية عمّان للاستثمار والتطوير</h4>
+                                            <span style="color: rgba(255,255,255,0.8); font-size: 0.8rem;">ذراع الاستثمار لأمانة عمّان • تأسست 2018</span>
                                         </div>
                                         
                                         <!-- Content -->
@@ -23914,12 +23467,12 @@ body.guest-mode .guest-back-button {
                                     
                                     <!-- Main Slogan -->
                                     <h2 style="color: #ffffff; font-size: 2.5rem; font-weight: 800; margin: 0 0 15px 0; text-shadow: 0 0 40px rgba(6, 182, 212, 0.5); line-height: 1.4;">
-                                        "عمّان تقرر... ومستقبل السيارات يبدأ من هنا"
+                                        "نطوّر عمّان معاً... ومستقبل السيارات يبدأ من هنا"
                                     </h2>
                                     
                                     <!-- English Version -->
                                     <p style="color: #67e8f9; font-size: 1.1rem; font-style: italic; margin: 0 0 25px 0;">
-                                        "Amman Decides... The Future of Automotive Starts Here"
+                                        "Developing Amman Together... The Future of Automotive Starts Here"
                                     </p>
                                     
                                     <!-- Slogan Rationale -->
@@ -23928,7 +23481,7 @@ body.guest-mode .guest-back-button {
                                             <i class="fas fa-lightbulb" style="color: #fbbf24; margin-left: 8px;"></i> لماذا هذا الشعار؟
                                         </p>
                                         <ul style="margin: 0; padding: 0 15px; color: #cbd5e1; font-size: 0.85rem; line-height: 1.9;">
-                                            <li><strong>"عمّان تقرر":</strong> يُبرز دور أمانة عمان كصاحبة القرار ويُظهر الإرادة المؤسسية</li>
+                                            <li><strong>"نطوّر عمّان معاً":</strong> شعار رؤية عمّان الرسمي - يعكس الشراكة والتعاون بدل القرار الفوقي</li>
                                             <li><strong>"مستقبل السيارات":</strong> يربط المشروع برؤية مستقبلية وليس مجرد نقل جغرافي</li>
                                             <li><strong>"يبدأ من هنا":</strong> يُعطي إحساساً بالبداية الجديدة والفرصة التاريخية</li>
                                         </ul>
@@ -23954,7 +23507,7 @@ body.guest-mode .guest-back-button {
                                         <div style="padding: 25px;">
                                             <div style="background: rgba(59, 130, 246, 0.1); border-radius: 12px; padding: 18px; border-right: 4px solid #3b82f6; margin-bottom: 15px;">
                                                 <p style="color: #e0f2fe; font-size: 1rem; line-height: 1.8; margin: 0; font-weight: 500;">
-                                                    "موتور سيتي خطوة استراتيجية ضمن رؤية عمان 2025 لتحديث البنية التحتية وتنظيم القطاعات التجارية بما يليق بمكانة العاصمة"
+                                                    "موتور سيتي خطوة استراتيجية تجسد شعار 'نطوّر عمّان معاً' لتحديث البنية التحتية وتنظيم القطاعات التجارية بما يليق بمكانة العاصمة"
                                                 </p>
                                             </div>
                                             <div style="display: flex; flex-wrap: wrap; gap: 8px;">
@@ -24190,7 +23743,7 @@ body.guest-mode .guest-back-button {
                                         </div>
                                         <div style="padding: 25px;">
                                             <p style="color: #e2e8f0; font-size: 0.9rem; line-height: 1.8; margin: 0 0 15px 0;">
-                                                تشكيل لجنة تنسيقية مشتركة تضم ممثلين عن أمانة عمان، نقابة تجار السيارات، ونوبلز. هذه اللجنة تضمن توحيد الرسائل ومنع التضارب.
+                                                تشكيل لجنة تنسيقية مشتركة تضم ممثلين عن أمانة عمان، رؤية عمّان للاستثمار والتطوير، نقابة تجار السيارات، ونوبلز. هذه اللجنة تضمن توحيد الرسائل ومنع التضارب.
                                             </p>
                                             <div style="display: flex; flex-wrap: wrap; gap: 10px;">
                                                 <span style="background: rgba(245, 158, 11, 0.15); color: #fde68a; padding: 6px 14px; border-radius: 8px; font-size: 0.75rem; display: flex; align-items: center; gap: 6px;">
@@ -24982,6 +24535,20 @@ body.guest-mode .guest-back-button {
                                 <i id="prToolsIcon" class="fas fa-chevron-down" style="color: #a855f7; font-size: 1.2rem; transition: transform 0.3s ease;"></i>
                             </div>
                         </button>
+                        
+                        <!-- PR_TOOLS_CONTENT_PLACEHOLDER - المحتوى سينتقل هنا تلقائياً -->
+                        <div id="prTools-placeholder"></div>
+                        <script>
+                        // نقل محتوى PR Tools إلى المكان الصحيح
+                        document.addEventListener('DOMContentLoaded', function() {
+                            const prToolsContent = document.getElementById('prTools-content');
+                            const placeholder = document.getElementById('prTools-placeholder');
+                            if (prToolsContent && placeholder) {
+                                placeholder.parentNode.insertBefore(prToolsContent, placeholder);
+                                placeholder.remove();
+                            }
+                        });
+                        </script>
                     </div>
                     
                     <!-- ============================================ -->
@@ -28880,7 +28447,8 @@ body.guest-mode .guest-back-button {
                     function togglePRTools() {
                         const content = document.getElementById('prTools-content');
                         const icon = document.getElementById('prToolsIcon');
-                        if (content.style.display === 'none') {
+                        const computedStyle = window.getComputedStyle(content);
+                        if (computedStyle.display === 'none' || content.style.display === 'none') {
                             content.style.display = 'block';
                             icon.style.transform = 'rotate(180deg)';
                         } else {
@@ -28892,7 +28460,8 @@ body.guest-mode .guest-back-button {
                     function togglePromotionStrategy() {
                         const content = document.getElementById('promotionStrategy-content');
                         const icon = document.getElementById('promotionStrategyIcon');
-                        if (content.style.display === 'none') {
+                        const computedStyle = window.getComputedStyle(content);
+                        if (computedStyle.display === 'none' || content.style.display === 'none') {
                             content.style.display = 'block';
                             icon.style.transform = 'rotate(180deg)';
                         } else {
@@ -28904,7 +28473,8 @@ body.guest-mode .guest-back-button {
                     function toggleCrisisManagement() {
                         const content = document.getElementById('crisisManagement-content');
                         const icon = document.getElementById('crisisManagementIcon');
-                        if (content.style.display === 'none') {
+                        const computedStyle = window.getComputedStyle(content);
+                        if (computedStyle.display === 'none' || content.style.display === 'none') {
                             content.style.display = 'block';
                             icon.style.transform = 'rotate(180deg)';
                         } else {
@@ -28916,7 +28486,8 @@ body.guest-mode .guest-back-button {
                     function toggleCampaignProducts() {
                         const content = document.getElementById('campaignProducts-content');
                         const icon = document.getElementById('campaignProductsIcon');
-                        if (content.style.display === 'none') {
+                        const computedStyle = window.getComputedStyle(content);
+                        if (computedStyle.display === 'none' || content.style.display === 'none') {
                             content.style.display = 'block';
                             icon.style.transform = 'rotate(180deg)';
                         } else {
@@ -28928,7 +28499,8 @@ body.guest-mode .guest-back-button {
                     function togglePhase1Products() {
                         const content = document.getElementById('phase1Products-content');
                         const icon = document.getElementById('phase1ProductsIcon');
-                        if (content.style.display === 'none') {
+                        const computedStyle = window.getComputedStyle(content);
+                        if (computedStyle.display === 'none' || content.style.display === 'none') {
                             content.style.display = 'block';
                             icon.style.transform = 'rotate(180deg)';
                         } else {
@@ -28940,7 +28512,8 @@ body.guest-mode .guest-back-button {
                     function togglePhase2Products() {
                         const content = document.getElementById('phase2Products-content');
                         const icon = document.getElementById('phase2ProductsIcon');
-                        if (content.style.display === 'none') {
+                        const computedStyle = window.getComputedStyle(content);
+                        if (computedStyle.display === 'none' || content.style.display === 'none') {
                             content.style.display = 'block';
                             icon.style.transform = 'rotate(180deg)';
                         } else {
@@ -28952,7 +28525,8 @@ body.guest-mode .guest-back-button {
                     function togglePhase3Products() {
                         const content = document.getElementById('phase3Products-content');
                         const arrow = document.getElementById('phase3-arrow');
-                        if (content.style.display === 'none') {
+                        const computedStyle = window.getComputedStyle(content);
+                        if (computedStyle.display === 'none' || content.style.display === 'none') {
                             content.style.display = 'block';
                             arrow.style.transform = 'rotate(180deg)';
                         } else {
@@ -32878,7 +32452,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // التحقق من تسجيل الدخول والموافقة
 const bypassCode = new URLSearchParams(window.location.search).get('access');
-const isPlatform = window.location.hostname.includes('24-45.com') || window.location.pathname.includes('/nobles/');
+const isPlatform = window.location.hostname.includes('24-45.com') || window.location.pathname.includes('/nobles/') || window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
 
 if (bypassCode === 'nobles2025' || isPlatform) {
     document.getElementById('authLoading').style.display = 'none';
@@ -33013,7 +32587,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // تهيئة تلقائية إذا كان الـ hash يشير لـ monitoring أو على منصة 24-45
-    const isPlatform = window.location.hostname.includes('24-45.com') || window.location.pathname.includes('/nobles/');
+    const isPlatform = window.location.hostname.includes('24-45.com') || window.location.pathname.includes('/nobles/') || window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
     const isMonitoringTab = window.location.hash === '#monitoring' || document.getElementById('monitoring')?.classList.contains('active');
     
     if (isPlatform || isMonitoringTab) {

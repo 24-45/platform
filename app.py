@@ -367,6 +367,24 @@ def alic_preview():
     return render_template(template, tenant=tenant, project=project)
 
 
+@app.route('/motor-city-preview')
+def motor_city_preview():
+    """صفحة تقرير Motor City للمعاينة - بدون تسجيل دخول (للتطوير المحلي فقط)"""
+    if not app.debug:
+        return redirect(url_for('login'))
+    
+    tenant = get_tenant_by_slug('nobles')
+    if not tenant:
+        return render_template('404.html'), 404
+    
+    project = get_tenant_project_by_slug('nobles', 'automotive-city')
+    if not project:
+        return render_template('404.html'), 404
+    
+    template = get_tenant_template('nobles', 'project_report_motor_city.html')
+    return render_template(template, tenant=tenant, project=project)
+
+
 # ==================== الصفحة الرئيسية للمنصة ====================
 
 @app.route('/')
