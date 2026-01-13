@@ -23961,8 +23961,9 @@ body.guest-mode .guest-back-button {
                     function toggleCampaignMethodology() {
                         const content = document.getElementById('campaignMethodology-content');
                         const icon = document.getElementById('campaignMethodology-icon');
+                        const computedStyle = window.getComputedStyle(content);
                         
-                        if (content.style.display === 'none') {
+                        if (computedStyle.display === 'none' || content.style.display === 'none') {
                             content.style.display = 'block';
                             icon.style.transform = 'rotate(180deg)';
                         } else {
@@ -24211,10 +24212,8 @@ body.guest-mode .guest-back-button {
                             
                         </div>
                         
-                    </div>
-                    
-                    <!-- ============================================ -->
-                    <!-- مصفوفة صلاحيات الظهور الإعلامي -->
+                        <!-- ============================================ -->
+                        <!-- مصفوفة صلاحيات الظهور الإعلامي -->
                     <!-- Media Appearance Authorization Matrix -->
                     <!-- ============================================ -->
                     <div style="padding: 50px; border-top: 1px solid rgba(6, 182, 212, 0.15);">
@@ -24514,6 +24513,9 @@ body.guest-mode .guest-back-button {
                         </div>
                         
                     </div>
+                    
+                    </div>
+                    <!-- END: campaignMethodology-content -->
                     
                     <!-- ============================================ -->
                     <!-- زر مطوي: أدوات الاتصال والعلاقات العامة -->
