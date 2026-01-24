@@ -1,0 +1,333 @@
+{
+    "analysis_date": "2026-01-22 15:54:40",
+    "sample_size": 41578,
+    "1_success_context_analysis": {
+        "description": "تحليل سياق النجاح في الفعاليات الكبرى",
+        "events_volume": 26848,
+        "top_organization_phrases": [],
+        "top_bigrams": [
+            {
+                "phrase": "كأس العرب",
+                "count": 22466
+            },
+            {
+                "phrase": "بطولة كأس",
+                "count": 7119
+            },
+            {
+                "phrase": "العرب 2025",
+                "count": 6947
+            },
+            {
+                "phrase": " استاد",
+                "count": 5875
+            },
+            {
+                "phrase": "قطر 2025",
+                "count": 4430
+            },
+            {
+                "phrase": "استاد البيت",
+                "count": 4309
+            },
+            {
+                "phrase": "نهائي كأس",
+                "count": 4051
+            },
+            {
+                "phrase": "السعودية ",
+                "count": 4019
+            },
+            {
+                "phrase": "مساء ",
+                "count": 3940
+            },
+            {
+                "phrase": "في كأس",
+                "count": 3796
+            }
+        ],
+        "top_trigrams": [
+            {
+                "phrase": "كأس العرب 2025",
+                "count": 6867
+            },
+            {
+                "phrase": "بطولة كأس العرب",
+                "count": 6821
+            },
+            {
+                "phrase": "نهائي كأس العرب",
+                "count": 3584
+            },
+            {
+                "phrase": "في كأس العرب",
+                "count": 3424
+            },
+            {
+                "phrase": "FIFA قطر 2025",
+                "count": 2703
+            },
+            {
+                "phrase": "كأس العرب FIFA",
+                "count": 2690
+            },
+            {
+                "phrase": " السعودية ",
+                "count": 2680
+            },
+            {
+                "phrase": "العرب FIFA قطر",
+                "count": 2459
+            },
+            {
+                "phrase": "  استاد",
+                "count": 2396
+            },
+            {
+                "phrase": "مساء  استاد",
+                "count": 2031
+            }
+        ]
+    },
+    "2_leadership_analysis": {
+        "description": "تحليل محاور القيادة في مسار الوزارة",
+        "ministry_volume": 627,
+        "leadership_phrases": [
+            {
+                "phrase": "تمكين الشباب",
+                "count": 61
+            },
+            {
+                "phrase": "بالتعاون مع",
+                "count": 47
+            },
+            {
+                "phrase": "وفق قرار",
+                "count": 38
+            },
+            {
+                "phrase": "قرار معالي",
+                "count": 37
+            },
+            {
+                "phrase": "إلى تمكين",
+                "count": 28
+            },
+            {
+                "phrase": "والشباب بالتعاون",
+                "count": 25
+            },
+            {
+                "phrase": "تطوير القطاع",
+                "count": 23
+            },
+            {
+                "phrase": "رؤية قطر",
+                "count": 20
+            },
+            {
+                "phrase": "في تطوير",
+                "count": 19
+            },
+            {
+                "phrase": "مع رؤية",
+                "count": 16
+            },
+            {
+                "phrase": "إلى تطوير",
+                "count": 16
+            },
+            {
+                "phrase": "استراتيجية مع",
+                "count": 14
+            },
+            {
+                "phrase": "إدارة الشؤون",
+                "count": 14
+            },
+            {
+                "phrase": "استراتيجية البيانات",
+                "count": 14
+            },
+            {
+                "phrase": "خلال إدارة",
+                "count": 14
+            }
+        ]
+    },
+    "3_content_classification": {
+        "description": "تصنيف الردود والتفاعلات",
+        "categories": {
+            "state_praise": 13723,
+            "ministry_praise": 468,
+            "sports_content": 17414,
+            "organization_quality": 2761,
+            "other": 7212
+        },
+        "percentages": {
+            "sports_content": 41.88,
+            "state_praise": 33.01,
+            "other": 17.35,
+            "organization_quality": 6.64,
+            "ministry_praise": 1.13
+        }
+    },
+    "4_temporal_correlation": {
+        "description": "الربط الزمني بين تصريحات الوزير ونبرة الثقة",
+        "weekly_data": [
+            {
+                "week": "2025-10-20/2025-10-26",
+                "minister_statements": 7,
+                "avg_confidence": 0.089,
+                "volume": 192
+            },
+            {
+                "week": "2025-10-27/2025-11-02",
+                "minister_statements": 48,
+                "avg_confidence": 0.106,
+                "volume": 1144
+            },
+            {
+                "week": "2025-11-03/2025-11-09",
+                "minister_statements": 34,
+                "avg_confidence": 0.064,
+                "volume": 1003
+            },
+            {
+                "week": "2025-11-10/2025-11-16",
+                "minister_statements": 35,
+                "avg_confidence": 0.1,
+                "volume": 1496
+            },
+            {
+                "week": "2025-11-17/2025-11-23",
+                "minister_statements": 30,
+                "avg_confidence": 0.098,
+                "volume": 1599
+            },
+            {
+                "week": "2025-11-24/2025-11-30",
+                "minister_statements": 121,
+                "avg_confidence": 0.086,
+                "volume": 5044
+            },
+            {
+                "week": "2025-12-01/2025-12-07",
+                "minister_statements": 169,
+                "avg_confidence": 0.099,
+                "volume": 9861
+            },
+            {
+                "week": "2025-12-08/2025-12-14",
+                "minister_statements": 104,
+                "avg_confidence": 0.088,
+                "volume": 8335
+            },
+            {
+                "week": "2025-12-15/2025-12-21",
+                "minister_statements": 237,
+                "avg_confidence": 0.422,
+                "volume": 9551
+            },
+            {
+                "week": "2025-12-22/2025-12-28",
+                "minister_statements": 32,
+                "avg_confidence": 0.209,
+                "volume": 976
+            },
+            {
+                "week": "2025-12-29/2026-01-04",
+                "minister_statements": 16,
+                "avg_confidence": 0.05,
+                "volume": 1460
+            },
+            {
+                "week": "2026-01-05/2026-01-11",
+                "minister_statements": 16,
+                "avg_confidence": 0.128,
+                "volume": 274
+            },
+            {
+                "week": "2026-01-12/2026-01-18",
+                "minister_statements": 19,
+                "avg_confidence": 0.134,
+                "volume": 358
+            },
+            {
+                "week": "2026-01-19/2026-01-25",
+                "minister_statements": 15,
+                "avg_confidence": 0.07,
+                "volume": 285
+            }
+        ],
+        "total_minister_statements": 883,
+        "avg_confidence_overall": 0.17
+    },
+    "5_media_features": {
+        "traditional_media": {
+            "total": 21005,
+            "focus_analysis": {
+                "sports_content": {
+                    "count": 9639,
+                    "percentage": 45.89
+                },
+                "state_praise": {
+                    "count": 6604,
+                    "percentage": 31.44
+                },
+                "other": {
+                    "count": 3251,
+                    "percentage": 15.48
+                },
+                "organization_quality": {
+                    "count": 1224,
+                    "percentage": 5.83
+                },
+                "ministry_praise": {
+                    "count": 287,
+                    "percentage": 1.37
+                }
+            },
+            "insight": "الإعلام التقليدي يركز أكثر على التغطية الرسمية والأحداث"
+        },
+        "social_media": {
+            "total": 20573,
+            "focus_analysis": {
+                "sports_content": {
+                    "count": 7775,
+                    "percentage": 37.79
+                },
+                "state_praise": {
+                    "count": 7119,
+                    "percentage": 34.6
+                },
+                "other": {
+                    "count": 3961,
+                    "percentage": 19.25
+                },
+                "organization_quality": {
+                    "count": 1537,
+                    "percentage": 7.47
+                },
+                "ministry_praise": {
+                    "count": 181,
+                    "percentage": 0.88
+                }
+            },
+            "insight": "منصات التواصل تعكس التفاعل العفوي والآراء الشخصية"
+        }
+    },
+    "6_strategic_narrative": {
+        "ministry_image": {
+            "visibility": 627,
+            "positive_mentions": 468,
+            "assessment": "صورة الوزارة كجهة راعية ومنظمة"
+        },
+        "state_reputation": {
+            "global_events_coverage": 26848,
+            "state_praise_mentions": 13723,
+            "assessment": "تأثير الفعاليات على سمعة الدولة"
+        }
+    }
+}

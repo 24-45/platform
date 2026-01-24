@@ -1,0 +1,49 @@
+{
+    "analysis_date": "2026-01-22 15:51:28",
+    "reference_data": {
+        "total_events_volume": 82800,
+        "total_ministry_volume": 1630,
+        "grand_total_volume": 84430
+    },
+    "sample_data": {
+        "events_sample_size": 40000,
+        "ministry_sample_size": 1607,
+        "total_sample_size": 41607
+    },
+    "sentiment_ratios_from_sample": {
+        "positive_ratio": 0.2698,
+        "neutral_ratio": 0.6787,
+        "negative_ratio": 0.0477
+    },
+    "source_ratios_from_sample": {
+        "traditional_ratio": 0.5055,
+        "social_ratio": 0.4945
+    },
+    "extrapolated_totals": {
+        "estimated_positive": 22782,
+        "estimated_neutral": 57301,
+        "estimated_negative": 4025,
+        "estimated_traditional": 42676,
+        "estimated_social": 41753
+    },
+    "by_track": {
+        "global_events": {
+            "total_volume": 82800,
+            "estimated_positive": 21834,
+            "estimated_neutral": 56581,
+            "estimated_negative": 4059,
+            "estimated_traditional": 41400,
+            "estimated_social": 41400,
+            "share_percentage": 98.07
+        },
+        "ministry": {
+            "total_volume": 1630,
+            "estimated_positive": 688,
+            "estimated_neutral": 916,
+            "estimated_negative": 23,
+            "estimated_traditional": 1045,
+            "estimated_social": 584,
+            "share_percentage": 1.93
+        }
+    }
+}

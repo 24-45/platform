@@ -1,0 +1,73 @@
+{
+  "report_date": "2026-01-22",
+  "period": "نوفمبر 2025 - يناير 2026 (90 يوم)",
+  "total_mentions": 150838,
+  "traditional_media": 46003,
+  "social_media": 104835,
+  "events_covered": 7,
+  "overall_sentiment": {
+    "إيجابي": "28.0%",
+    "سلبي": "5.8%",
+    "محايد": "66.1%"
+  },
+  "sentiment_counts": {
+    "positive": 42275,
+    "negative": 8811,
+    "neutral": 99752
+  },
+  "key_metrics": {
+    "total_materials": 150838,
+    "traditional_percentage": 30.5,
+    "social_percentage": 69.5,
+    "positive_percentage": 28.0,
+    "negative_percentage": 5.8,
+    "reach_total": 134472690524,
+    "engagement_total": 6982717
+  },
+  "top_events_by_volume": [
+    {
+      "event": "كأس العرب 2025 (FIFA Arab Cup)",
+      "volume": 30974
+    },
+    {
+      "event": "كأس القارات FIFA",
+      "volume": 29566
+    },
+    {
+      "event": "كأس العالم تحت 17 سنة (FIFA U-17 World Cup)",
+      "volume": 28568
+    },
+    {
+      "event": " جائزة قطر الكبرى - فورمولا 1 (Qatar Grand Prix)",
+      "volume": 26647
+    },
+    {
+      "event": "UFC قطر (UFC Qatar:Doha)",
+      "volume": 23993
+    }
+  ],
+  "top_events_by_reach": [
+    {
+      "event": "UFC قطر (UFC Qatar:Doha)",
+      "reach": 41668381561
+    },
+    {
+      "event": "كأس القارات FIFA",
+      "reach": 31489782494
+    },
+    {
+      "event": " جائزة قطر الكبرى - فورمولا 1 (Qatar Grand Prix)",
+      "reach": 28666934314
+    },
+    {
+      "event": "كأس العالم تحت 17 سنة (FIFA U-17 World Cup)",
+      "reach": 16454675523
+    },
+    {
+      "event": "كأس العرب 2025 (FIFA Arab Cup)",
+      "reach": 14332214832
+    }
+  ],
+  "reach_total": 134472690524,
+  "engagement_total": 6982717
+}

@@ -1,0 +1,632 @@
+{% extends "tenant/mys_qatar/base.html" %}
+
+{% block content %}
+<!-- =====================================================
+     الشريحة 1: الغلاف الرئيسي
+     تقرير الرصد والتحليل الإعلامي الاستراتيجي
+     وزارة الرياضة والشباب - دولة قطر
+     ===================================================== -->
+<section class="slide slide--cover-v2" id="slide-1">
+    
+    <!-- العناصر الزخرفية SVG - الزاوية العلوية اليمنى -->
+    <svg class="cover-decor-svg cover-decor-svg--top-right" viewBox="0 0 280 280" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M280 0H0C0 154.64 125.36 280 280 280V0Z" fill="#8A1538" fill-opacity="0.04"/>
+        <path d="M280 0H70C70 116.04 164.36 210 280 210V0Z" fill="#8A1538" fill-opacity="0.03"/>
+        <path d="M280 0H140C140 77.32 203.32 140 280 140V0Z" fill="#8A1538" fill-opacity="0.02"/>
+        <circle cx="250" cy="30" r="4" fill="#D4AF37"/>
+        <circle cx="220" cy="60" r="3" fill="#D4AF37" fill-opacity="0.6"/>
+        <circle cx="190" cy="90" r="2" fill="#D4AF37" fill-opacity="0.4"/>
+        <line x1="280" y1="0" x2="200" y2="80" stroke="#8A1538" stroke-width="0.5" stroke-opacity="0.15"/>
+        <line x1="280" y1="40" x2="220" y2="100" stroke="#8A1538" stroke-width="0.5" stroke-opacity="0.1"/>
+    </svg>
+    
+    <!-- العناصر الزخرفية SVG - الزاوية السفلية اليسرى -->
+    <svg class="cover-decor-svg cover-decor-svg--bottom-left" viewBox="0 0 220 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M220 0H0C0 121.5 98.5 220 220 220V0Z" fill="#8A1538" fill-opacity="0.03"/>
+        <path d="M220 0H55C55 91.12 129.12 165 220 165V0Z" fill="#D4AF37" fill-opacity="0.04"/>
+        <circle cx="200" cy="20" r="3" fill="#D4AF37"/>
+        <circle cx="175" cy="45" r="2" fill="#D4AF37" fill-opacity="0.5"/>
+    </svg>
+    
+    <!-- ترويسة الغلاف - الشعارات -->
+    <header class="cover-header-v2">
+        <!-- شعار وزارة الرياضة والشباب -->
+        <div class="cover-logo-v2">
+            <img src="{{ url_for('static', filename='images/tenants/qatar_sports/ministry_logo.svg') }}" 
+                 alt="وزارة الرياضة والشباب" 
+                 class="cover-logo-v2__image">
+            <div class="cover-logo-v2__text">
+                <span class="cover-logo-v2__title">وزارة الرياضة والشباب</span>
+                <span class="cover-logo-v2__subtitle">دولة قطر</span>
+            </div>
+        </div>
+        
+        <!-- شعار رؤية قطر 2030 -->
+        <div class="cover-logo-v2">
+            <div class="cover-logo-v2__text" style="text-align: left;">
+                <span class="cover-logo-v2__title">رؤية قطر الوطنية</span>
+                <span class="cover-logo-v2__subtitle">Qatar National Vision</span>
+            </div>
+            <img src="{{ url_for('static', filename='images/tenants/qatar_sports/QNV2030-logo.png') }}" 
+                 alt="رؤية قطر الوطنية 2030" 
+                 class="cover-logo-v2__image cover-logo-v2__image--qnv">
+        </div>
+    </header>
+    
+    <!-- محتوى الغلاف الرئيسي -->
+    <div class="cover-body-v2">
+        <!-- العنوان الرئيسي -->
+        <h1 class="cover-title-v2">
+            تقرير الرصد والتحليل الإعلامي الاستراتيجي
+        </h1>
+        
+        <!-- العنوان الفرعي -->
+        <p class="cover-subtitle-v2">
+            قياس كفاءة الأداء الإعلامي وتعزيز السمعة المؤسسية
+        </p>
+        
+        <!-- الخط الفاصل الذهبي -->
+        <div class="cover-divider-v2"></div>
+        
+        <!-- صندوق فترة الرصد -->
+        <div class="cover-period-v2">
+            <i class="fas fa-calendar-alt cover-period-v2__icon"></i>
+            <div class="cover-period-v2__content">
+                <span class="cover-period-v2__label">فترة الرصد</span>
+                <span class="cover-period-v2__dates">21 أكتوبر 2025 – 19 يناير 2026</span>
+            </div>
+        </div>
+    </div>
+    
+    <!-- تذييل الغلاف -->
+    <footer class="cover-footer-v2">
+        <div class="cover-footer-v2__prepared">
+            <i class="fas fa-file-alt" style="margin-left: 8px; opacity: 0.7;"></i>
+            إعداد: <strong>وحدة الرصد والتحليل الإعلامي</strong>
+        </div>
+        <div class="cover-footer-v2__badge">
+            <i class="fas fa-lock"></i>
+            <span>سري وخاص - للاستخدام الداخلي</span>
+        </div>
+    </footer>
+    
+    <!-- رقم الشريحة -->
+    <span class="slide__number">01</span>
+    
+    <!-- شعار المنصة -->
+    <div class="slide__platform-logo">
+        <span>24°45°</span> Platform
+    </div>
+</section>
+
+<!-- =====================================================
+     الشريحة 2: السياق الاستراتيجي
+     Strategic Context - Dark Luxury Theme
+     ===================================================== -->
+<section class="slide slide--dark" id="slide-2">
+    <!-- العناصر الزخرفية الخلفية -->
+    <div class="dark-decor">
+        <div class="dark-decor__circle dark-decor__circle--1"></div>
+        <div class="dark-decor__circle dark-decor__circle--2"></div>
+        <div class="dark-decor__glow"></div>
+    </div>
+    
+    <!-- ترويسة الشريحة الداكنة -->
+    <header class="dark-header">
+        <div class="dark-header__badge">
+            <i class="fas fa-lightbulb"></i>
+            <span>السياق الاستراتيجي</span>
+        </div>
+        <img src="{{ url_for('static', filename='images/tenants/qatar_sports/ministry_logo.svg') }}" 
+             alt="الشعار" class="dark-header__logo">
+    </header>
+    
+    <!-- محتوى الشريحة - تخطيط غير متماثل -->
+    <div class="dark-content dark-content--asymmetric">
+        <!-- الجانب الأيمن - النصوص -->
+        <div class="dark-content__text">
+            <!-- العنوان الذهبي -->
+            <h2 class="dark-title">
+                <span class="dark-title__gold">ما وراء الأرقام:</span>
+                <span class="dark-title__white">من الرصد الكمي إلى الأثر الاستراتيجي</span>
+            </h2>
+            
+            <!-- الفقرة التحليلية -->
+            <p class="dark-paragraph">
+                لا يكتفي هذا التقرير بحصر الـ <strong class="text-gold">73,893</strong> إشارة إعلامية التي رصدناها، 
+                بل يغوص في تحليل كيف تحولت هذه الإشارات إلى <em class="text-gold">"قوة ناعمة"</em> 
+                عززت الصورة الذهنية لدولة قطر. نحن نقيس هنا مدى ملامسة هذه الفعاليات لركائز 
+                <strong>رؤية قطر الوطنية 2030</strong>، وتحديداً في بناء مجتمع حيوي وممكّن.
+            </p>
+            
+            <!-- بطاقة الإحصائية الزجاجية -->
+            <div class="glass-stat-card">
+                <div class="glass-stat-card__icon">
+                    <i class="fas fa-globe-africa"></i>
+                </div>
+                <div class="glass-stat-card__content">
+                    <span class="glass-stat-card__number">53.7 مليار</span>
+                    <span class="glass-stat-card__label">إجمالي الوصول المحتمل (Potential Reach)</span>
+                    <p class="glass-stat-card__desc">
+                        مما يعكس نجاحاً استثنائياً في اختراق الإعلام الدولي عبر الفعاليات الكبرى.
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- الجانب الأيسر - التصور البصري -->
+        <div class="dark-content__visual">
+            <div class="visual-orb">
+                <div class="visual-orb__ring visual-orb__ring--1"></div>
+                <div class="visual-orb__ring visual-orb__ring--2"></div>
+                <div class="visual-orb__ring visual-orb__ring--3"></div>
+                <div class="visual-orb__center">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <!-- نقاط البيانات المتحركة -->
+                <div class="visual-orb__dot visual-orb__dot--1"></div>
+                <div class="visual-orb__dot visual-orb__dot--2"></div>
+                <div class="visual-orb__dot visual-orb__dot--3"></div>
+                <div class="visual-orb__dot visual-orb__dot--4"></div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- رقم الشريحة -->
+    <span class="slide__number slide__number--gold">02</span>
+    <div class="slide__platform-logo slide__platform-logo--dark"><span>24°45°</span> Platform</div>
+</section>
+
+<!-- =====================================================
+     شريحة فاصلة: الهندسة التحليلية
+     Section Divider - Dark Luxury
+     ===================================================== -->
+<section class="slide slide--section-dark" id="section-methodology">
+    <!-- الرقم المفرغ الضخم -->
+    <div class="section-dark__outlined-number">01</div>
+    
+    <!-- خطوط زخرفية -->
+    <div class="section-dark__lines">
+        <div class="section-dark__line section-dark__line--1"></div>
+        <div class="section-dark__line section-dark__line--2"></div>
+        <div class="section-dark__line section-dark__line--3"></div>
+    </div>
+    
+    <!-- محتوى الفاصل -->
+    <div class="section-dark__content">
+        <span class="section-dark__eyebrow">القسم الأول</span>
+        <h2 class="section-dark__title">الهندسة التحليلية للتقرير</h2>
+        <div class="section-dark__divider"></div>
+        <p class="section-dark__subtitle">
+            كيف قمنا بتحويل البيانات الخام إلى رؤى تدعم اتخاذ القرار؟
+        </p>
+    </div>
+    
+    <!-- رقم الشريحة -->
+    <span class="slide__number slide__number--gold">03</span>
+    <div class="slide__platform-logo slide__platform-logo--dark"><span>24°45°</span> Platform</div>
+</section>
+
+<!-- =====================================================
+     الشريحة 3: رحلة البيانات
+     Data Journey - Dark Luxury Theme
+     ===================================================== -->
+<section class="slide slide--dark" id="slide-3">
+    <!-- العناصر الزخرفية -->
+    <div class="dark-decor">
+        <div class="dark-decor__gradient"></div>
+    </div>
+    
+    <!-- ترويسة الشريحة -->
+    <header class="dark-header">
+        <div class="dark-header__badge">
+            <i class="fas fa-route"></i>
+            <span>المنهجية</span>
+        </div>
+        <img src="{{ url_for('static', filename='images/tenants/qatar_sports/ministry_logo.svg') }}" 
+             alt="الشعار" class="dark-header__logo">
+    </header>
+    
+    <!-- عنوان الشريحة -->
+    <div class="dark-slide-title">
+        <h2>منهجية الفلترة والتحليل الدقيق</h2>
+    </div>
+    
+    <!-- البطاقات الثلاث الرأسية -->
+    <div class="journey-flow">
+        <!-- البطاقة 1: الرصد والوصول -->
+        <div class="journey-card">
+            <div class="journey-card__glow"></div>
+            <div class="journey-card__header">
+                <div class="journey-card__icon">
+                    <i class="fas fa-satellite-dish"></i>
+                </div>
+                <span class="journey-card__step">01</span>
+            </div>
+            <h3 class="journey-card__title">الرصد والوصول</h3>
+            <p class="journey-card__text">
+                تحليل شامل لـ <strong class="text-gold">59,802</strong> مادة إعلامية مختارة، 
+                حققت وصولاً تراكمياً تجاوز <strong class="text-gold">1.9 مليار</strong> مشاهدة عالمية، 
+                مع التركيز على المصادر المؤثرة.
+            </p>
+            <div class="journey-card__metric">
+                <span class="journey-card__metric-icon"><i class="fas fa-eye"></i></span>
+                <span class="journey-card__metric-text">1.9B+ وصول</span>
+            </div>
+        </div>
+        
+        <!-- السهم الرابط -->
+        <div class="journey-arrow">
+            <svg viewBox="0 0 60 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0 12H55M55 12L45 2M55 12L45 22" stroke="#D4AF37" stroke-width="2"/>
+            </svg>
+        </div>
+        
+        <!-- البطاقة 2: معايير الجودة والعزل -->
+        <div class="journey-card">
+            <div class="journey-card__glow"></div>
+            <div class="journey-card__header">
+                <div class="journey-card__icon">
+                    <i class="fas fa-filter"></i>
+                </div>
+                <span class="journey-card__step">02</span>
+            </div>
+            <h3 class="journey-card__title">معايير الجودة والعزل</h3>
+            <p class="journey-card__text">
+                تطبيق فلاتر سياقية <strong>(Contextual Filters)</strong> لاستبعاد "النتائج الفنية للمباريات"، 
+                وحصر التحليل في قضايا: <strong class="text-gold">التنظيم، الهوية، والسياسات العامة</strong>.
+            </p>
+            <div class="journey-card__metric">
+                <span class="journey-card__metric-icon"><i class="fas fa-check-double"></i></span>
+                <span class="journey-card__metric-text">تنقية سياقية</span>
+            </div>
+        </div>
+        
+        <!-- السهم الرابط -->
+        <div class="journey-arrow">
+            <svg viewBox="0 0 60 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0 12H55M55 12L45 2M55 12L45 22" stroke="#D4AF37" stroke-width="2"/>
+            </svg>
+        </div>
+        
+        <!-- البطاقة 3: نموذج الأبعاد الثلاثة -->
+        <div class="journey-card journey-card--highlight">
+            <div class="journey-card__glow journey-card__glow--gold"></div>
+            <div class="journey-card__header">
+                <div class="journey-card__icon journey-card__icon--gold">
+                    <i class="fas fa-microscope"></i>
+                </div>
+                <span class="journey-card__step">03</span>
+            </div>
+            <h3 class="journey-card__title">نموذج الأبعاد الثلاثة</h3>
+            <p class="journey-card__text">
+                قياس دقيق للمضمون عبر <strong class="text-gold">3 مؤشرات أداء (KPIs)</strong> مستخرجة من البيانات:
+            </p>
+            <div class="journey-card__lenses">
+                <span class="lens-tag"><i class="fas fa-chess-king"></i> البعد الاستراتيجي</span>
+                <span class="lens-tag"><i class="fas fa-heart"></i> البعد القيمي والهوية</span>
+                <span class="lens-tag"><i class="fas fa-chart-line"></i> بعد الأثر والمشاركة</span>
+            </div>
+        </div>
+    </div>
+    
+    <!-- رقم الشريحة -->
+    <span class="slide__number slide__number--gold">04</span>
+    <div class="slide__platform-logo slide__platform-logo--dark"><span>24°45°</span> Platform</div>
+</section>
+
+<!-- =====================================================
+     الشريحة 5: أهداف التقرير والتساؤلات البحثية
+     Research Objectives - Dark Luxury Theme
+     ===================================================== -->
+<section class="slide slide--dark" id="slide-5">
+    <!-- العناصر الزخرفية -->
+    <div class="dark-decor">
+        <div class="dark-decor__circle dark-decor__circle--1"></div>
+        <div class="dark-decor__glow"></div>
+    </div>
+    
+    <!-- ترويسة الشريحة -->
+    <header class="dark-header">
+        <div class="dark-header__badge">
+            <i class="fas fa-bullseye"></i>
+            <span>الأهداف البحثية</span>
+        </div>
+        <img src="{{ url_for('static', filename='images/tenants/qatar_sports/ministry_logo.svg') }}" 
+             alt="الشعار" class="dark-header__logo">
+    </header>
+    
+    <!-- عنوان الشريحة -->
+    <div class="dark-slide-title">
+        <h2>خارطة الطريق: أهداف الرصد والتساؤلات البحثية</h2>
+    </div>
+    
+    <!-- محتوى مقسم -->
+    <div class="objectives-split">
+        <!-- القسم الأيمن: الإعلام التقليدي -->
+        <div class="objectives-column">
+            <div class="objectives-column__header">
+                <div class="objectives-column__icon">
+                    <i class="fas fa-newspaper"></i>
+                </div>
+                <div class="objectives-column__titles">
+                    <h3 class="objectives-column__title">محور الإعلام التقليدي</h3>
+                    <span class="objectives-column__subtitle">Traditional Media Scope</span>
+                </div>
+            </div>
+            
+            <div class="objectives-list">
+                <div class="objective-item">
+                    <div class="objective-item__number">01</div>
+                    <div class="objective-item__content">
+                        <span class="objective-item__tag">Volume</span>
+                        <h4 class="objective-item__title">قياس الحضور</h4>
+                        <p class="objective-item__text">ما هو حجم التغطية الإعلامية لكل مسار مقارنة بالآخر؟</p>
+                    </div>
+                </div>
+                
+                <div class="objective-item">
+                    <div class="objective-item__number">02</div>
+                    <div class="objective-item__content">
+                        <span class="objective-item__tag">Timeline</span>
+                        <h4 class="objective-item__title">التحليل الزمني</h4>
+                        <p class="objective-item__text">هل ارتبطت ذروة التغطية بأحداث استراتيجية أم جاءت عشوائية؟</p>
+                    </div>
+                </div>
+                
+                <div class="objective-item">
+                    <div class="objective-item__number">03</div>
+                    <div class="objective-item__content">
+                        <span class="objective-item__tag">Sentiment</span>
+                        <h4 class="objective-item__title">تحليل النبرة</h4>
+                        <p class="objective-item__text">هل نجحت الوزارة في تصدير رسائل إيجابية تعزز السمعة المؤسسية؟</p>
+                    </div>
+                </div>
+                
+                <div class="objective-item">
+                    <div class="objective-item__number">04</div>
+                    <div class="objective-item__content">
+                        <span class="objective-item__tag">Topics</span>
+                        <h4 class="objective-item__title">عمق المضمون</h4>
+                        <p class="objective-item__text">ما هي القضايا الفرعية التي سيطرت على المشهد (تنظيم، هوية، أم خدمات)؟</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- الخط الفاصل -->
+        <div class="objectives-divider"></div>
+        
+        <!-- القسم الأيسر: الإعلام الجديد -->
+        <div class="objectives-column">
+            <div class="objectives-column__header">
+                <div class="objectives-column__icon objectives-column__icon--gold">
+                    <i class="fas fa-hashtag"></i>
+                </div>
+                <div class="objectives-column__titles">
+                    <h3 class="objectives-column__title">محور الإعلام الجديد</h3>
+                    <span class="objectives-column__subtitle">Digital Impact Scope</span>
+                </div>
+            </div>
+            
+            <div class="objectives-list">
+                <div class="objective-item">
+                    <div class="objective-item__number">01</div>
+                    <div class="objective-item__content">
+                        <span class="objective-item__tag">Reach</span>
+                        <h4 class="objective-item__title">قوة الوصول</h4>
+                        <p class="objective-item__text">هل تجاوزت الفعاليات الجمهور المحلي لتصل إلى العالمية؟</p>
+                    </div>
+                </div>
+                
+                <div class="objective-item">
+                    <div class="objective-item__number">02</div>
+                    <div class="objective-item__content">
+                        <span class="objective-item__tag">Influencers</span>
+                        <h4 class="objective-item__title">قادة الرأي</h4>
+                        <p class="objective-item__text">من هم المؤثرون (Key Opinion Leaders) الذين شكلوا القناعات؟</p>
+                    </div>
+                </div>
+                
+                <div class="objective-item">
+                    <div class="objective-item__number">03</div>
+                    <div class="objective-item__content">
+                        <span class="objective-item__tag">Engagement</span>
+                        <h4 class="objective-item__title">جودة التفاعل</h4>
+                        <p class="objective-item__text">هل كان التفاعل عاطفياً (فخر/انتماء) أم خدمياً (استفسارات)؟</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- رقم الشريحة -->
+    <span class="slide__number slide__number--gold">05</span>
+    <div class="slide__platform-logo slide__platform-logo--dark"><span>24°45°</span> Platform</div>
+</section>
+
+<!-- =====================================================
+     الشريحة 6: إطار تحليل المضمون
+     Content Analysis Framework - Grid Layout
+     ===================================================== -->
+<section class="slide slide--framework" id="slide-6">
+    <!-- العناصر الزخرفية -->
+    <div class="framework-bg">
+        <div class="framework-bg__gradient"></div>
+    </div>
+    
+    <!-- منطقة الترويسة -->
+    <header class="framework-header">
+        <div class="framework-header__badge">
+            <i class="fas fa-layer-group"></i>
+            <span>إطار التحليل</span>
+        </div>
+        <h2 class="framework-header__title">منهجية التكويد: عدسات التحليل الثلاثية</h2>
+        <img src="{{ url_for('static', filename='images/tenants/qatar_sports/ministry_logo.svg') }}" 
+             alt="الشعار" class="framework-header__logo">
+    </header>
+    
+    <!-- منطقة المحتوى - المصفوفة -->
+    <main class="framework-main">
+        <div class="lens-matrix">
+            <!-- العدسة الاستراتيجية -->
+            <article class="lens-card lens-card--strategic">
+                <div class="lens-card__border"></div>
+                <div class="lens-card__icon">
+                    <i class="fas fa-chess-queen"></i>
+                </div>
+                <h3 class="lens-card__title">العدسة الاستراتيجية</h3>
+                <span class="lens-card__subtitle">Strategic Value</span>
+                <p class="lens-card__desc">
+                    رصد الرسائل المتعلقة بكفاءة التنظيم والقرارات السيادية.
+                </p>
+            </article>
+            
+            <!-- العدسة القيمية -->
+            <article class="lens-card lens-card--cultural">
+                <div class="lens-card__border"></div>
+                <div class="lens-card__icon">
+                    <i class="fas fa-dove"></i>
+                </div>
+                <h3 class="lens-card__title">العدسة القيمية</h3>
+                <span class="lens-card__subtitle">Cultural Value</span>
+                <p class="lens-card__desc">
+                    رصد رسائل الهوية الوطنية، الموروث الشعبي، والفخر.
+                </p>
+            </article>
+            
+            <!-- عدسة الأثر -->
+            <article class="lens-card lens-card--impact">
+                <div class="lens-card__border"></div>
+                <div class="lens-card__icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <h3 class="lens-card__title">عدسة الأثر</h3>
+                <span class="lens-card__subtitle">Impact Value</span>
+                <p class="lens-card__desc">
+                    رصد المشاركة المجتمعية وتغيير السلوك الصحي.
+                </p>
+            </article>
+        </div>
+    </main>
+    
+    <!-- منطقة التذييل -->
+    <footer class="framework-footer">
+        <span class="slide__number slide__number--gold">06</span>
+        <div class="slide__platform-logo slide__platform-logo--dark"><span>24°45°</span> Platform</div>
+    </footer>
+</section>
+
+<!-- =====================================================
+     الشريحة 7: الركائز الأربعة للتحليل
+     Strategic Pillars - Dark Luxury Theme
+     ===================================================== -->
+<section class="slide slide--dark" id="slide-7">
+    <!-- العناصر الزخرفية -->
+    <div class="dark-decor">
+        <div class="dark-decor__mesh"></div>
+    </div>
+    
+    <!-- ترويسة الشريحة -->
+    <header class="dark-header">
+        <div class="dark-header__badge">
+            <i class="fas fa-th-large"></i>
+            <span>إطار العمل</span>
+        </div>
+        <img src="{{ url_for('static', filename='images/tenants/qatar_sports/ministry_logo.svg') }}" 
+             alt="الشعار" class="dark-header__logo">
+    </header>
+    
+    <!-- عنوان الشريحة -->
+    <div class="dark-slide-title">
+        <h2>منظومة المسارات التحليلية</h2>
+    </div>
+    
+    <!-- شبكة المسارات الأربعة -->
+    <div class="pillars-grid">
+        <!-- المسار 1: السيادي -->
+        <div class="pillar-card">
+            <div class="pillar-card__border"></div>
+            <div class="pillar-card__header">
+                <div class="pillar-card__icon">
+                    <i class="fas fa-landmark"></i>
+                </div>
+                <span class="pillar-card__number">01</span>
+            </div>
+            <h3 class="pillar-card__title">المسار السيادي</h3>
+            <span class="pillar-card__subtitle">الوزارة والسياسات: المظلة الاستراتيجية للإنجاز</span>
+            <p class="pillar-card__desc">
+                تحليل مدى نجاح الوزارة في ربط هويتها المؤسسية بالإنجازات الكبرى (مثل كأس العرب FIFA U-17) التي شهدتها الدولة، وهل ظهرت إعلامياً كـ "المحرك الاستراتيجي" لهذه الفعاليات أم اكتفت بالدور التشغيلي؟
+            </p>
+            <div class="pillar-card__stat">
+                <span class="pillar-card__stat-number">1,660</span>
+                <span class="pillar-card__stat-label">إشارة</span>
+            </div>
+        </div>
+        
+        <!-- المسار 2: العالمي -->
+        <div class="pillar-card">
+            <div class="pillar-card__border"></div>
+            <div class="pillar-card__header">
+                <div class="pillar-card__icon">
+                    <i class="fas fa-trophy"></i>
+                </div>
+                <span class="pillar-card__number">02</span>
+            </div>
+            <h3 class="pillar-card__title">المسار العالمي</h3>
+            <span class="pillar-card__subtitle">السمعة الدولية</span>
+            <p class="pillar-card__desc">
+                رصد صدى "كفاءة التنظيم القطرية" في الإعلام الغربي (F1 وكأس العرب كنموذج).
+            </p>
+            <div class="pillar-card__stat">
+                <span class="pillar-card__stat-number">60,000</span>
+                <span class="pillar-card__stat-label">إشارة</span>
+            </div>
+        </div>
+        
+        <!-- المسار 3: الهوياتي -->
+        <div class="pillar-card">
+            <div class="pillar-card__border"></div>
+            <div class="pillar-card__header">
+                <div class="pillar-card__icon">
+                    <i class="fas fa-feather-alt"></i>
+                </div>
+                <span class="pillar-card__number">03</span>
+            </div>
+            <h3 class="pillar-card__title">المسار الهوياتي</h3>
+            <span class="pillar-card__subtitle">التراث والانتماء</span>
+            <p class="pillar-card__desc">
+                قياس عمق الانتماء الوطني والتفاعل الشعبي مع فعاليات مرمي وسيلين.
+            </p>
+            <div class="pillar-card__stat">
+                <span class="pillar-card__stat-number">10,517</span>
+                <span class="pillar-card__stat-label">إشارة</span>
+            </div>
+        </div>
+        
+        <!-- المسار 4: المجتمعي -->
+        <div class="pillar-card">
+            <div class="pillar-card__border"></div>
+            <div class="pillar-card__header">
+                <div class="pillar-card__icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <span class="pillar-card__number">04</span>
+            </div>
+            <h3 class="pillar-card__title">المسار المجتمعي</h3>
+            <span class="pillar-card__subtitle">الرياضة أسلوب حياة</span>
+            <p class="pillar-card__desc">
+                تحليل مدى استجابة المجتمع المحلي لنداءات "الرياضة أسلوب حياة" والمشاركة الفعلية.
+            </p>
+            <div class="pillar-card__stat">
+                <span class="pillar-card__stat-number">998</span>
+                <span class="pillar-card__stat-label">إشارة</span>
+            </div>
+        </div>
+    </div>
+    
+    <!-- رقم الشريحة -->
+    <span class="slide__number slide__number--gold">07</span>
+    <div class="slide__platform-logo slide__platform-logo--dark"><span>24°45°</span> Platform</div>
+</section>
+{% endblock %}

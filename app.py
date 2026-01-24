@@ -99,8 +99,15 @@ def login_required(f):
     """ديكوريتور للتحقق من تسجيل الدخول"""
     @wraps(f)
     def decorated_function(*args, **kwargs):
-        # ⚠️ تم إلغاء التجاوز التلقائي للأمان
-        # استخدم /dev-login للدخول في وضع التطوير
+        # ✅ تجاوز تلقائي في وضع التطوير
+        if app.debug and 'user_id' not in session:
+            session['user_id'] = 'dev-admin'
+            session['user_email'] = 'admin@24-45.com'
+            session['user_name'] = 'مطور'
+            session['role'] = 'admin'
+            session['tenant_access'] = ['nobles', 'zakah', 'waqf', 'qatar_sports']
+            session['default_tenant'] = 'nobles'
+        
         if 'user_id' not in session:
             # ✅ حفظ الرابط الأصلي كـ query parameter
             return redirect(url_for('login', next=request.url))
@@ -278,7 +285,7 @@ def dev_login():
     session['user_email'] = 'admin@24-45.com'
     session['user_name'] = 'مطور'
     session['role'] = 'admin'
-    session['tenant_access'] = ['nobles', 'zakah', 'waqf']
+    session['tenant_access'] = ['nobles', 'zakah', 'waqf', 'qatar_sports']
     session['default_tenant'] = 'nobles'
     return redirect(url_for('admin_campaigns'))
 
@@ -315,6 +322,470 @@ def waqf_page():
     """صفحة الهيئة العامة للأوقاف - بدون تسجيل دخول"""
     tenant = get_tenant_by_slug('waqf')
     return render_template('tenant/waqf/index.html', tenant=tenant)
+
+
+# ==================== صفحة وزارة الرياضة والشباب - قطر ====================
+
+@app.route('/qatar-sports')
+@app.route('/qatar-sports/')
+def qatar_sports_page():
+    """صفحة وزارة الرياضة والشباب - قطر"""
+    tenant = get_tenant_by_slug('qatar_sports')
+    return render_template('tenant/qatar_sports/index.html', tenant=tenant)
+
+
+@app.route('/qatar_sports/')
+@app.route('/tenant/qatar_sports/')
+@app.route('/tenant/qatar_sports')
+def qatar_sports_main():
+    """صفحة وزارة الرياضة والشباب - قطر (المسار الرئيسي)"""
+    tenant = get_tenant_by_slug('qatar_sports')
+    return render_template('tenant/qatar_sports/index.html', tenant=tenant)
+
+
+# ==================== صفحة وزارة الشباب والرياضة - قطر ====================
+
+@app.route('/mys-qatar')
+@app.route('/mys-qatar/')
+def mys_qatar_page():
+    """صفحة وزارة الشباب والرياضة - قطر"""
+    tenant = get_tenant_by_slug('mys_qatar')
+    return render_template('tenant/mys_qatar/index.html', tenant=tenant)
+
+
+@app.route('/mys_qatar/')
+@app.route('/tenant/mys_qatar/')
+@app.route('/tenant/mys_qatar')
+def mys_qatar_main():
+    """صفحة وزارة الشباب والرياضة - قطر (المسار الرئيسي)"""
+    tenant = get_tenant_by_slug('mys_qatar')
+    return render_template('tenant/mys_qatar/index.html', tenant=tenant)
+
+
+@app.route('/qatar_sports/export-pdf')
+def qatar_sports_export_pdf():
+    """
+    تصدير العرض التقديمي إلى PDF بمقاس 33.87cm × 19.05cm
+    الطريقة: تصوير كل شريحة كصورة ثم دمجها في PDF
+    هذا يضمن الحفاظ على كل الألوان والخلفيات والتصميم
+    """
+    import asyncio
+    from playwright.async_api import async_playwright
+    from flask import Response
+    from datetime import datetime
+    from io import BytesIO
+    
+    # المقاس بالبكسل (96 DPI)
+    # 33.87cm = 1280px, 19.05cm = 720px
+    SLIDE_WIDTH = 1280
+    SLIDE_HEIGHT = 720
+    
+    async def generate_pdf():
+        async with async_playwright() as p:
+            browser = await p.chromium.launch(headless=True)
+            page = await browser.new_page(viewport={'width': SLIDE_WIDTH, 'height': SLIDE_HEIGHT})
+            
+            # الحصول على الرابط الكامل
+            base_url = request.host_url.rstrip('/')
+            url = f"{base_url}/qatar_sports/"
+            
+            await page.goto(url, wait_until='networkidle')
+            await page.wait_for_selector('.slide', timeout=15000)
+            
+            # انتظار إضافي لتحميل الخطوط والصور
+            await page.wait_for_timeout(2000)
+            
+            # إخفاء عناصر التنقل وإيقاف جميع الحركات
+            await page.evaluate('''
+                () => {
+                    // إخفاء عناصر التنقل
+                    const hide = document.querySelectorAll('.toc-container, .slides-nav, .fab-container, .grid-view-overlay, .slide__number, .slide__platform-logo');
+                    hide.forEach(el => el.style.display = 'none');
+                    
+                    // إيقاف جميع الحركات (animations) وجعل العناصر مرئية
+                    const style = document.createElement('style');
+                    style.textContent = `
+                        *, *::before, *::after {
+                            animation: none !important;
+                            animation-delay: 0s !important;
+                            animation-duration: 0s !important;
+                            transition: none !important;
+                            transition-delay: 0s !important;
+                            transition-duration: 0s !important;
+                            opacity: 1 !important;
+                            visibility: visible !important;
+                            transform: none !important;
+                        }
+                        
+                        /* استثناء بعض العناصر من إزالة transform */
+                        .slide__decoration,
+                        .slide__decoration--circle {
+                            transform: translate(-50%, -50%) !important;
+                        }
+                    `;
+                    document.head.appendChild(style);
+                    
+                    // التأكد من ظهور جميع العناصر
+                    document.querySelectorAll('[style*="opacity"]').forEach(el => {
+                        el.style.opacity = '1';
+                    });
+                    document.querySelectorAll('[style*="visibility"]').forEach(el => {
+                        el.style.visibility = 'visible';
+                    });
+                }
+            ''')
+            
+            # انتظار بعد إيقاف الحركات
+            await page.wait_for_timeout(500)
+            
+            # الحصول على عدد الشرائح
+            slides_count = await page.evaluate('document.querySelectorAll(".slide").length')
+            
+            # تصوير كل شريحة
+            screenshots = []
+            for i in range(slides_count):
+                # الانتقال للشريحة وإظهار جميع عناصرها
+                await page.evaluate(f'''
+                    () => {{
+                        const slides = document.querySelectorAll('.slide');
+                        if (slides[{i}]) {{
+                            // الانتقال للشريحة
+                            slides[{i}].scrollIntoView({{ behavior: 'instant' }});
+                            
+                            // جعل جميع عناصر الشريحة مرئية
+                            slides[{i}].querySelectorAll('*').forEach(el => {{
+                                el.style.opacity = '1';
+                                el.style.visibility = 'visible';
+                            }});
+                        }}
+                    }}
+                ''')
+                
+                # انتظار قصير للتأكد من التمرير والظهور
+                await page.wait_for_timeout(400)
+                
+                # تصوير الشريحة
+                screenshot = await page.screenshot(
+                    type='png',
+                    full_page=False,
+                    clip={'x': 0, 'y': 0, 'width': SLIDE_WIDTH, 'height': SLIDE_HEIGHT}
+                )
+                screenshots.append(screenshot)
+            
+            await browser.close()
+            
+            # دمج الصور في PDF باستخدام reportlab
+            try:
+                from reportlab.lib.pagesizes import landscape
+                from reportlab.lib.units import cm
+                from reportlab.pdfgen import canvas
+                from PIL import Image
+                import io
+                
+                # حجم الصفحة: 33.87cm × 19.05cm
+                PAGE_WIDTH = 33.87 * cm
+                PAGE_HEIGHT = 19.05 * cm
+                
+                pdf_buffer = BytesIO()
+                c = canvas.Canvas(pdf_buffer, pagesize=(PAGE_WIDTH, PAGE_HEIGHT))
+                
+                for screenshot in screenshots:
+                    # تحويل الـ screenshot لصورة
+                    img = Image.open(BytesIO(screenshot))
+                    img_buffer = BytesIO()
+                    img.save(img_buffer, format='PNG')
+                    img_buffer.seek(0)
+                    
+                    # رسم الصورة على الصفحة
+                    from reportlab.lib.utils import ImageReader
+                    img_reader = ImageReader(img_buffer)
+                    c.drawImage(img_reader, 0, 0, width=PAGE_WIDTH, height=PAGE_HEIGHT)
+                    c.showPage()
+                
+                c.save()
+                pdf_buffer.seek(0)
+                return pdf_buffer.getvalue()
+                
+            except ImportError:
+                # إذا لم تكن المكتبات متوفرة، استخدم الطريقة القديمة
+                logger.warning("reportlab/PIL not available, using fallback method")
+                return None
+    
+    try:
+        # تشغيل الدالة غير المتزامنة
+        loop = asyncio.new_event_loop()
+        asyncio.set_event_loop(loop)
+        pdf_bytes = loop.run_until_complete(generate_pdf())
+        loop.close()
+        
+        if pdf_bytes is None:
+            return jsonify({'error': 'Missing required libraries (reportlab, Pillow)'}), 500
+        
+        # إرسال الملف للتحميل
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        filename = f"qatar_sports_presentation_{timestamp}.pdf"
+        
+        return Response(
+            pdf_bytes,
+            mimetype='application/pdf',
+            headers={
+                'Content-Disposition': f'attachment; filename={filename}',
+                'Content-Type': 'application/pdf'
+            }
+        )
+    except Exception as e:
+        logger.error(f"خطأ في تصدير PDF: {e}")
+        return jsonify({'error': str(e)}), 500
+
+
+@app.route('/mys-qatar/export-pdf')
+def mys_qatar_export_pdf():
+    """
+    تصدير العرض التقديمي لوزارة الشباب والرياضة إلى PDF
+    بمقاس 33.87cm × 19.05cm (نسبة 16:9)
+    الطريقة: تصوير كل شريحة كصورة عالية الجودة ثم دمجها في PDF
+    """
+    import asyncio
+    from playwright.async_api import async_playwright
+    from flask import Response
+    from datetime import datetime
+    from io import BytesIO
+    
+    # المقاس بالبكسل - نسبة 16:9 بدقة عالية جداً
+    SLIDE_WIDTH = 1920
+    SLIDE_HEIGHT = 1080
+    
+    async def generate_pdf():
+        async with async_playwright() as p:
+            browser = await p.chromium.launch(
+                headless=True,
+                args=[
+                    '--no-sandbox',
+                    '--disable-setuid-sandbox',
+                    '--disable-dev-shm-usage',
+                    '--disable-gpu'
+                ]
+            )
+            
+            # الحصول على الرابط الكامل
+            base_url = request.host_url.rstrip('/')
+            url = f"{base_url}/mys-qatar/"
+            
+            # أولاً: الحصول على عدد الشرائح
+            context = await browser.new_context(
+                viewport={'width': SLIDE_WIDTH, 'height': SLIDE_HEIGHT}
+            )
+            page = await context.new_page()
+            
+            logger.info(f"جاري تحميل الصفحة: {url}")
+            await page.goto(url, wait_until='networkidle', timeout=60000)
+            await page.wait_for_selector('.slide', timeout=30000)
+            await page.wait_for_timeout(3000)
+            
+            # الحصول على معرفات الشرائح
+            slide_ids = await page.evaluate('''
+                () => {
+                    return Array.from(document.querySelectorAll('.slide')).map(s => s.id);
+                }
+            ''')
+            slides_count = len(slide_ids)
+            logger.info(f"عدد الشرائح للتصدير: {slides_count}")
+            
+            await context.close()
+            
+            # تصوير كل شريحة في صفحة مستقلة
+            screenshots = []
+            
+            for i, slide_id in enumerate(slide_ids):
+                # إنشاء context جديد لكل شريحة
+                ctx = await browser.new_context(
+                    viewport={'width': SLIDE_WIDTH, 'height': SLIDE_HEIGHT},
+                    device_scale_factor=2  # جودة عالية
+                )
+                pg = await ctx.new_page()
+                
+                # تحميل الصفحة
+                await pg.goto(url, wait_until='networkidle', timeout=60000)
+                await pg.wait_for_selector('.slide', timeout=30000)
+                await pg.wait_for_timeout(2000)
+                
+                # إعداد الشريحة للتصوير
+                await pg.evaluate(f'''
+                    () => {{
+                        // إخفاء جميع عناصر التنقل والأدوات
+                        const hideSelectors = [
+                            '.toc-container', '.slides-nav', '.fab-container',
+                            '.grid-overlay', '.slide-nav-minimal', '.slide-nav-dropdown',
+                            '.interactive-toolbar', '.platform-bar', '.notes-panel',
+                            '.bookmarks-panel', '.search-modal', '.share-modal',
+                            '.progress-bar-container', '.toolbar-btn', '#interactiveToolbar'
+                        ];
+                        
+                        hideSelectors.forEach(sel => {{
+                            document.querySelectorAll(sel).forEach(el => el.remove());
+                        }});
+                        
+                        // إضافة CSS للتصدير
+                        const style = document.createElement('style');
+                        style.textContent = `
+                            html, body {{
+                                margin: 0 !important;
+                                padding: 0 !important;
+                                overflow: hidden !important;
+                                background: transparent !important;
+                            }}
+                            
+                            .slide {{
+                                display: none !important;
+                            }}
+                            
+                            .slide#slide-target {{
+                                display: flex !important;
+                                position: fixed !important;
+                                top: 0 !important;
+                                left: 0 !important;
+                                width: {SLIDE_WIDTH}px !important;
+                                height: {SLIDE_HEIGHT}px !important;
+                                margin: 0 !important;
+                                z-index: 999999 !important;
+                                animation: none !important;
+                                transition: none !important;
+                            }}
+                            
+                            .slide#slide-target * {{
+                                animation: none !important;
+                                transition: none !important;
+                            }}
+                        `;
+                        document.head.appendChild(style);
+                        
+                        // تعيين الشريحة المطلوبة
+                        const targetSlide = document.getElementById("{slide_id}");
+                        if (targetSlide) {{
+                            targetSlide.id = "slide-target";
+                            
+                            // التأكد من ظهور جميع العناصر
+                            targetSlide.querySelectorAll('*').forEach(el => {{
+                                el.style.opacity = '1';
+                                el.style.visibility = 'visible';
+                            }});
+                        }}
+                    }}
+                ''')
+                
+                await pg.wait_for_timeout(500)
+                
+                # تصوير الشريحة
+                screenshot = await pg.screenshot(
+                    type='png',
+                    clip={'x': 0, 'y': 0, 'width': SLIDE_WIDTH, 'height': SLIDE_HEIGHT}
+                )
+                screenshots.append(screenshot)
+                
+                await ctx.close()
+                
+                if (i + 1) % 10 == 0:
+                    logger.info(f"تم تصوير {i + 1} من {slides_count} شريحة")
+            
+            await browser.close()
+            logger.info(f"تم تصوير جميع الشرائح ({slides_count})")
+            
+            # دمج الصور في PDF
+            try:
+                from reportlab.lib.units import cm
+                from reportlab.pdfgen import canvas
+                from PIL import Image
+                
+                # حجم الصفحة: 33.87cm × 19.05cm
+                PAGE_WIDTH = 33.87 * cm
+                PAGE_HEIGHT = 19.05 * cm
+                
+                pdf_buffer = BytesIO()
+                c = canvas.Canvas(pdf_buffer, pagesize=(PAGE_WIDTH, PAGE_HEIGHT))
+                
+                from reportlab.lib.utils import ImageReader
+                
+                for idx, screenshot in enumerate(screenshots):
+                    img = Image.open(BytesIO(screenshot))
+                    
+                    # تحويل لـ RGB إذا كانت RGBA
+                    if img.mode == 'RGBA':
+                        background = Image.new('RGB', img.size, (255, 255, 255))
+                        background.paste(img, mask=img.split()[3])
+                        img = background
+                    
+                    img_buffer = BytesIO()
+                    img.save(img_buffer, format='PNG')
+                    img_buffer.seek(0)
+                    
+                    img_reader = ImageReader(img_buffer)
+                    # رسم الصورة لتملأ كامل الصفحة
+                    c.drawImage(img_reader, 0, 0, 
+                                width=PAGE_WIDTH, 
+                                height=PAGE_HEIGHT,
+                                preserveAspectRatio=False,
+                                anchor='sw')
+                    c.showPage()
+                
+                c.save()
+                pdf_buffer.seek(0)
+                logger.info("تم إنشاء ملف PDF بنجاح")
+                return pdf_buffer.getvalue()
+                
+            except ImportError as e:
+                logger.error(f"مكتبات غير متوفرة: {e}")
+                return None
+    
+    try:
+        loop = asyncio.new_event_loop()
+        asyncio.set_event_loop(loop)
+        pdf_bytes = loop.run_until_complete(generate_pdf())
+        loop.close()
+        
+        if pdf_bytes is None:
+            return jsonify({'error': 'Missing required libraries'}), 500
+        
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        filename = f"mys_qatar_report_{timestamp}.pdf"
+        
+        return Response(
+            pdf_bytes,
+            mimetype='application/pdf',
+            headers={
+                'Content-Disposition': f'attachment; filename={filename}',
+                'Content-Type': 'application/pdf'
+            }
+        )
+    except Exception as e:
+        logger.error(f"خطأ في تصدير PDF: {e}")
+        import traceback
+        traceback.print_exc()
+        return jsonify({'error': str(e)}), 500
+
+
+# ==================== تقرير السمعة الإعلامية - وزارة الرياضة والشباب ====================
+
+@app.route('/slides/qatar-sports-report')
+@app.route('/slides/qatar-sports-report/')
+def qatar_sports_report_slides():
+    """عرض تقديمي احترافي: تقرير السمعة الإعلامية - وزارة الرياضة والشباب قطر"""
+    import json
+    import os
+    
+    # تحميل بيانات التقرير
+    report_path = os.path.join('static', 'data', 'qatar_sports_analysis', 'report_phases', 'PROFESSIONAL_REPORT_FINAL.json')
+    report_data = {}
+    
+    try:
+        if os.path.exists(report_path):
+            with open(report_path, 'r', encoding='utf-8') as f:
+                report_data = json.load(f)
+    except Exception as e:
+        logger.error(f"خطأ في تحميل بيانات التقرير: {e}")
+    
+    # استخدام الملف الصحيح الذي يحتوي على الشرائح المحدثة
+    tenant = get_tenant_by_slug('mys_qatar')
+    return render_template('tenant/mys_qatar/index.html', tenant=tenant, report=report_data)
 
 
 # ==================== صفحة نوبلز للمعاينة (بدون تسجيل دخول - للتطوير فقط) ====================

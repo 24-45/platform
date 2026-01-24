@@ -1,0 +1,451 @@
+{
+  "extraction_date": "2026-01-24T15:36:50.070407",
+  "statistics": {
+    "positive_count": 20,
+    "negative_count": 20
+  },
+  "positive_tweets": [
+    {
+      "url": "https://twitter.com/a_albander/statuses/1995524043618078906",
+      "text": "... حفل افتتاح كأس العرب مُبهر العرض كان أنيق، هادئ، وممتلئ بالمعنى العربي الأصيل، يعكس رقي الشعوب العربية، قائم على بساطة الفكرة وجمال التن ...",
+      "author": "مستخدم",
+      "handle": "",
+      "date": "2025-12-01",
+      "reach": 473530,
+      "retweets": 0,
+      "sentiment": "positive",
+      "engagement_score": 4735.3
+    },
+    {
+      "url": "https://twitter.com/iMiaSanMia/statuses/1987796156861079954",
+      "text": "Mike on the U17 World Cup and his role in the team: \"I want to finish the tournament in the best possible way with the team. Ideally, of cou ...",
+      "author": "مستخدم",
+      "handle": "",
+      "date": "2025-11-10",
+      "reach": 468534,
+      "retweets": 0,
+      "sentiment": "neutral",
+      "engagement_score": 4685.34
+    },
+    {
+      "url": "https://twitter.com/AmrFahmy2007/statuses/2001660336437399884",
+      "text": "QT @bt3: وحش اعلامي جديد في المنطقة العربية @Shasha_Sports https://t.co/vB0Mxh1Q4D ; قبل ختام أحداث كأس العرب أود أن أُهنّئ إعلاميًا المنصة ...",
+      "author": "مستخدم",
+      "handle": "",
+      "date": "2025-12-18",
+      "reach": 466595,
+      "retweets": 0,
+      "sentiment": "positive",
+      "engagement_score": 4665.95
+    },
+    {
+      "url": "https://twitter.com/AmrFahmy2007/statuses/2000712951968268593",
+      "text": "QT @Shasha_Sports: من يتوج باللقب المغرب الأردن https://t.co/lwIpyPiHYN ; وصلنا للمحطة الأخيرة 🔚 من ينجح في التتويج بـ لقب كأس العرب 🤔🏆 يمكن ...",
+      "author": "مستخدم",
+      "handle": "",
+      "date": "2025-12-16",
+      "reach": 466546,
+      "retweets": 0,
+      "sentiment": "positive",
+      "engagement_score": 4665.46
+    },
+    {
+      "url": "https://twitter.com/AmrFahmy2007/statuses/2000649354843939268",
+      "text": "QT @Shasha_Sports: تحية كبيرة لمنتخب الأردن على الأداء الكبير في كأس العرب يستحقون 👏 https://t.co/8QlulMHRou ; جوووووووووووووووووووووووووووو ...",
+      "author": "مستخدم",
+      "handle": "",
+      "date": "2025-12-15",
+      "reach": 466511,
+      "retweets": 0,
+      "sentiment": "positive",
+      "engagement_score": 4665.11
+    },
+    {
+      "url": "https://twitter.com/shabiba/statuses/1984195368012193914",
+      "text": "... كأس العالم تحت 17 سنة FIFA 2025 تلقي الضوء على المنشآت الرياضية عالمية المستوى في دولة قطر أجواء احتفالية ومهرجان كروي نابض بالحياة للمش ...",
+      "author": "مستخدم",
+      "handle": "",
+      "date": "2025-10-31",
+      "reach": 433298,
+      "retweets": 0,
+      "sentiment": "positive",
+      "engagement_score": 4332.98
+    },
+    {
+      "url": "https://twitter.com/saudistuff/statuses/2002074486611570827",
+      "text": "خادم الحرمين الشريفين وولي العهد يهنئان أمير دولة قطر بمناسبة نجاح بلاده في تنظيم بطولة كأس العرب فيفا قطر 2025. https://t.co/eJ8CsSOIGB",
+      "author": "مستخدم",
+      "handle": "",
+      "date": "2025-12-19",
+      "reach": 421192,
+      "retweets": 0,
+      "sentiment": "positive",
+      "engagement_score": 4211.92
+    },
+    {
+      "url": "https://twitter.com/khalafmelfi/statuses/1993786622970876163",
+      "text": "khalidjassem74 ليس أعلى ولا أفخم من هذه الشهادة. تنظيم عالمي غير مسبوق، والقادم أفضل بتوفيق الله. النجاحات الفاخرة تتواصل في الدوحة بكأس الع ...",
+      "author": "مستخدم",
+      "handle": "",
+      "date": "2025-11-26",
+      "reach": 410041,
+      "retweets": 0,
+      "sentiment": "positive",
+      "engagement_score": 4100.41
+    },
+    {
+      "url": "https://twitter.com/QatarTelevision/statuses/1985460501015380008",
+      "text": "وزير الرياضة والشباب: استضافة مونديال الناشئين لكرة القدم تؤكد مكانة قطر الرائدة كوجهة عالمية للرياضة #تلفزيون_قطر | #مركز_الأخبار https://t ...",
+      "author": "مستخدم",
+      "handle": "",
+      "date": "2025-11-04",
+      "reach": 409497,
+      "retweets": 0,
+      "sentiment": "positive",
+      "engagement_score": 4094.97
+    },
+    {
+      "url": "https://twitter.com/QatarTelevision/statuses/1997679218772115534",
+      "text": "الكابتن أيوب أبو حطب: بطولة كأس العرب أثبتت نجاحها منذ يومها الأول، وقطر رفعت سقف التطلعات أمام أي دولة ستتولى تنظيم البطولات مستقبلاً #تلفز ...",
+      "author": "مستخدم",
+      "handle": "",
+      "date": "2025-12-07",
+      "reach": 408863,
+      "retweets": 0,
+      "sentiment": "neutral",
+      "engagement_score": 4088.63
+    },
+    {
+      "url": "https://twitter.com/QatarTelevision/statuses/1996958220162605311",
+      "text": "الأجواء تشبه أجواء كأس العالم.. مشجعون من الكويت يشكرون قطر على تنظيم #كأس_العرب 2025 #تلفزيون_قطر | #دوحة_الجميع https://t.co/bWtRosvBej",
+      "author": "مستخدم",
+      "handle": "",
+      "date": "2025-12-05",
+      "reach": 408856,
+      "retweets": 0,
+      "sentiment": "positive",
+      "engagement_score": 4088.56
+    },
+    {
+      "url": "https://twitter.com/alekhbariyaBRK/statuses/2002072053449675071",
+      "text": "خادم الحرمين الشريفين وولي العهد يهنئان أمير قطر بمناسبة نجاح بلاده في تنظيم بطولة كأس العرب فيفا قطر 2025",
+      "author": "مستخدم",
+      "handle": "",
+      "date": "2025-12-19",
+      "reach": 408161,
+      "retweets": 0,
+      "sentiment": "positive",
+      "engagement_score": 4081.61
+    },
+    {
+      "url": "https://twitter.com/QatarTelevision/statuses/1995373743187869799",
+      "text": "تقرير | قطر تستعد لافتتاح فصل جديد من بطولة كأس العرب 2025، في إطار تنظيم رياضي متميز #تلفزيون_قطر | #في_الضحى https://t.co/TgLnH0jOSH",
+      "author": "مستخدم",
+      "handle": "",
+      "date": "2025-12-01",
+      "reach": 406826,
+      "retweets": 0,
+      "sentiment": "neutral",
+      "engagement_score": 4068.26
+    },
+    {
+      "url": "https://twitter.com/QatarTelevision/statuses/1995488009983037488",
+      "text": "طارق العلايمي: بطولة كأس العرب FIFA قطر 2025 هي شهادة ثقة في قدرة قطر على نجاح التنظيم، وهو ما تأكّد في بطولة 2021، فاليوم توجد بنية تحتية م ...",
+      "author": "مستخدم",
+      "handle": "",
+      "date": "2025-12-01",
+      "reach": 406734,
+      "retweets": 0,
+      "sentiment": "positive",
+      "engagement_score": 4067.34
+    },
+    {
+      "url": "https://twitter.com/IttiStudio/statuses/1985468662707535923",
+      "text": "QT @IttiStudio: 🚨🚨🚨 الرياضية : إذا أُعتمدت الفكـرة رسـمياً، سـتشهد البطولة مُـشاركة نادي سـعودي إلى جانب عدد من الفرق العالمية، تواصل إدارة ...",
+      "author": "مستخدم",
+      "handle": "",
+      "date": "2025-11-04",
+      "reach": 405600,
+      "retweets": 0,
+      "sentiment": "neutral",
+      "engagement_score": 4056.0
+    },
+    {
+      "url": "https://twitter.com/Riy_Local/statuses/2001770722197135398",
+      "text": "... وزير الرياضة عبدالعزيز الفيصل: خالص الشكر لأمير #قطر الشيخ تميم بن حمد على الرعاية الكريمة لبطولة #كأس_العرب2025، كما أهنئ السيد جياني إ ...",
+      "author": "مستخدم",
+      "handle": "",
+      "date": "2025-12-19",
+      "reach": 399572,
+      "retweets": 0,
+      "sentiment": "positive",
+      "engagement_score": 3995.72
+    },
+    {
+      "url": "https://twitter.com/ZaidBenjamin5/statuses/1998415083945230420",
+      "text": "... قطر في كامل الجاهزية لاستضافة كأس القارات للأندية FIFA قطر 2025™️ أعلنت اللجنة المحلية المنظمة لكأس القارات للأنديةFIFA قطر 2025™️ في ...",
+      "author": "مستخدم",
+      "handle": "",
+      "date": "2025-12-09",
+      "reach": 399052,
+      "retweets": 0,
+      "sentiment": "positive",
+      "engagement_score": 3990.52
+    },
+    {
+      "url": "https://twitter.com/ZaidBenjamin5/statuses/2001775278058590404",
+      "text": "... بحضور صاحب السمو الشيخ تميم بن حمد آل ثاني أمير البلاد المفدى، أسدل الستار على كأس العرب FIFA قطر 2025™ بفوز المنتخب المغربي بلقب البطول ...",
+      "author": "مستخدم",
+      "handle": "",
+      "date": "2025-12-19",
+      "reach": 398907,
+      "retweets": 0,
+      "sentiment": "positive",
+      "engagement_score": 3989.07
+    },
+    {
+      "url": "https://twitter.com/ZaidBenjamin5/statuses/2000906602371498164",
+      "text": "... تستعد دولة قطر لدخول سجل التاريخ كأول دولة في العالم تستضيف نهائيين كبيرين تابعين للاتحاد الدولي لكرة القدم (FIFA) خلال يومين متتاليين، ...",
+      "author": "مستخدم",
+      "handle": "",
+      "date": "2025-12-16",
+      "reach": 398894,
+      "retweets": 0,
+      "sentiment": "positive",
+      "engagement_score": 3988.94
+    },
+    {
+      "url": "https://twitter.com/ZaidBenjamin5/statuses/2001674552481345630",
+      "text": "... أعلنت اللجنة المحلية المنظمة لأحداث كرة القدم أن استاد لوسيل الأيقوني سيستضيف كأس فيناليسيما 2026 في 27 مارس 2026، في المواجهة التي تجمع ...",
+      "author": "مستخدم",
+      "handle": "",
+      "date": "2025-12-18",
+      "reach": 398875,
+      "retweets": 0,
+      "sentiment": "positive",
+      "engagement_score": 3988.75
+    }
+  ],
+  "negative_tweets": [
+    {
+      "url": "https://twitter.com/kataraqatar/statuses/1995486182113759236",
+      "text": "... نقل مباشر للمباريات – في #كورنيش_كتارا و #ساحة_الحكمة، عيشوا أجواء البطولة من خلال شاشات عملاقة تتيح متابعة المباريات لحظة بلحظة، ضمن فع ...",
+      "author": "مستخدم",
+      "handle": "",
+      "date": "2025-12-01",
+      "reach": 391913,
+      "retweets": 0,
+      "sentiment": "neutral",
+      "engagement_score": 3919.13
+    },
+    {
+      "url": "https://twitter.com/kataraqatar/statuses/2000223390607532429",
+      "text": "... تجربة ثقافية متكاملة بانتظاركم في كتارا، عبر مجموعة من المعارض المصاحبة لفعاليات #كأس_العرب 2025: • معرض الدلة – مبنى 47 • معرض هندام – ...",
+      "author": "مستخدم",
+      "handle": "",
+      "date": "2025-12-14",
+      "reach": 388921,
+      "retweets": 0,
+      "sentiment": "neutral",
+      "engagement_score": 3889.21
+    },
+    {
+      "url": "https://twitter.com/assabahnews/statuses/1995479441233895860",
+      "text": "... الهيئة العامة للشباب تعلن مشاركتها بـ 18 متطوعًا في تنظيم النسخة الـ 11 من بطولة كأس العرب لكرة القدم (فيفا قطر 2025) التي تنطلق اليوم ف ...",
+      "author": "مستخدم",
+      "handle": "",
+      "date": "2025-12-01",
+      "reach": 338887,
+      "retweets": 0,
+      "sentiment": "negative",
+      "engagement_score": 3388.87
+    },
+    {
+      "url": "https://twitter.com/alraya_n/statuses/1986775753162383486",
+      "text": "دخول لاعبي إنجلترا وهايتي مع الطاقم التحكيم القطري ضمن مباريات كأس العالم تحت 17 عاماً قطر 2025 #U17WC #كأس_العالم_تحت_17_سنة #جريدة_الراية ...",
+      "author": "مستخدم",
+      "handle": "",
+      "date": "2025-11-07",
+      "reach": 330612,
+      "retweets": 0,
+      "sentiment": "neutral",
+      "engagement_score": 3306.12
+    },
+    {
+      "url": "https://twitter.com/alraya_n/statuses/1992915014836158906",
+      "text": "📌بمناسبة استضافة كأس العرب وكأس العالم للناشئين.. إدارة التحكيم تشارك في فعالية مركز الشفلح الرياضية 💠 الحكام أداروا مباريات الأطفال في أجوا ...",
+      "author": "مستخدم",
+      "handle": "",
+      "date": "2025-11-24",
+      "reach": 329945,
+      "retweets": 0,
+      "sentiment": "neutral",
+      "engagement_score": 3299.45
+    },
+    {
+      "url": "https://twitter.com/Ali_nori2000/statuses/1997071311810560234",
+      "text": "حكيم سباع يكشف معلومة خطيرة : محمد خلف لا يريد تأهل العراق لانه ممنوع من دخول امريكا 🔥🔥💣💣 #العراق #قطر #كأس_العرب #كأس_العرب_2025 #كاس_العرب ...",
+      "author": "مستخدم",
+      "handle": "",
+      "date": "2025-12-06",
+      "reach": 311318,
+      "retweets": 0,
+      "sentiment": "negative",
+      "engagement_score": 3113.18
+    },
+    {
+      "url": "https://twitter.com/misbarfc/statuses/1995456539100950836",
+      "text": "قرار تحكيمي جديد من الفيفا في كأس العرب 2025 ⚽🇶🇦 أعلن رئيس لجنة الحكام بالفيفا، بييرلويجي كولينا، اعتماد آلية جديدة ستُطبّق تجريبيًا في كأس ...",
+      "author": "مستخدم",
+      "handle": "",
+      "date": "2025-12-01",
+      "reach": 293002,
+      "retweets": 0,
+      "sentiment": "neutral",
+      "engagement_score": 2930.02
+    },
+    {
+      "url": "https://twitter.com/LeoMessiMedia/statuses/1994109480238489972",
+      "text": "QT @brfootball: Current Portuguese kids being the first to bring the World Cup to a country that has a certain name at an airport even when ...",
+      "author": "مستخدم",
+      "handle": "",
+      "date": "2025-11-27",
+      "reach": 219349,
+      "retweets": 0,
+      "sentiment": "negative",
+      "engagement_score": 2193.49
+    },
+    {
+      "url": "https://twitter.com/BanterSteiner/statuses/1994826646319501839",
+      "text": "A DRS zone that's much too short is like a 2m. parking space for a 5m. long car. It doesn't fucking work! #QatarGP 🇶🇦 #F1 https://t.co/TDRaA ...",
+      "author": "مستخدم",
+      "handle": "",
+      "date": "2025-11-29",
+      "reach": 184976,
+      "retweets": 0,
+      "sentiment": "negative",
+      "engagement_score": 1849.76
+    },
+    {
+      "url": "https://twitter.com/_90TM/statuses/1994236357149958526",
+      "text": "🎟️ أسعار تذاكر مباريات كأس العرب 2025 في قطر 📍 التذاكر متاحة عبر الموقع: https://t.co/yA0buo2BTu https://t.co/kEOBjbe5v4",
+      "author": "مستخدم",
+      "handle": "",
+      "date": "2025-11-28",
+      "reach": 161652,
+      "retweets": 0,
+      "sentiment": "neutral",
+      "engagement_score": 1616.52
+    },
+    {
+      "url": "https://twitter.com/_90TM/statuses/1982230862918725849",
+      "text": "♦️أسعار تذاكر كأس العرب FIFA قطر 2025، التي تستضيفها الدوحة خلال الفترة من 1 إلى 18 ديسمبر المقبل .. 🎫 https://t.co/uTvpJOpUwt",
+      "author": "مستخدم",
+      "handle": "",
+      "date": "2025-10-26",
+      "reach": 146417,
+      "retweets": 0,
+      "sentiment": "neutral",
+      "engagement_score": 1464.17
+    },
+    {
+      "url": "https://twitter.com/_90TM/statuses/1981284264000848235",
+      "text": "أسعار تذاكر كأس العرب FIFA قطر 2025، التي تستضيفها الدوحة خلال الفترة من 1 إلى 18 ديسمبر المقبل. #قطر #كأس_العرب_2025 : ❤️ https://t.co/cJdb ...",
+      "author": "مستخدم",
+      "handle": "",
+      "date": "2025-10-23",
+      "reach": 145817,
+      "retweets": 0,
+      "sentiment": "neutral",
+      "engagement_score": 1458.17
+    },
+    {
+      "url": "https://twitter.com/3zozing/statuses/1991961538987721153",
+      "text": "QT @3zozing: بعدين لحد يقول نبغي تذاكر مباراة قطر التذاكر متوفرة الآن وبأسعار رمزية جداً https://t.co/tGhdG0DBgi ; 🎟️ نزلت دفعة جديدة من تذا ...",
+      "author": "مستخدم",
+      "handle": "",
+      "date": "2025-11-21",
+      "reach": 138109,
+      "retweets": 0,
+      "sentiment": "neutral",
+      "engagement_score": 1381.09
+    },
+    {
+      "url": "https://twitter.com/pukerrainbrow/statuses/1992353705581330913",
+      "text": "ufc @VisitQatar @QatarCalendar Doha put on a show, but let’s be real, some fights were way too short to call it success.",
+      "author": "مستخدم",
+      "handle": "",
+      "date": "2025-11-23",
+      "reach": 79580,
+      "retweets": 0,
+      "sentiment": "negative",
+      "engagement_score": 795.8
+    },
+    {
+      "url": "https://twitter.com/majed9_999/statuses/2001026528361222435",
+      "text": "... الاتحاد الدولي لكرة القدم الفيفا يقوم بتكليف الحكم الدولي السعودي عبدالله الشهري ضمن طاقم حكام المباراة النهائية لبطولة كأس العرب فيفا ق ...",
+      "author": "مستخدم",
+      "handle": "",
+      "date": "2025-12-16",
+      "reach": 78989,
+      "retweets": 0,
+      "sentiment": "neutral",
+      "engagement_score": 789.89
+    },
+    {
+      "url": "https://twitter.com/mouradaly/statuses/1999669415009485217",
+      "text": "... @AJArabic https://t.co/Pvvl9bDL9Z ; QT @mouradaly: هشام طلعت مصطفى نموذج صارخ لرجل الأعمال في هذا العصر المأزوم؛ يرتكب كل الموبقات، ثم ك ...",
+      "author": "مستخدم",
+      "handle": "",
+      "date": "2025-12-13",
+      "reach": 76149,
+      "retweets": 0,
+      "sentiment": "negative",
+      "engagement_score": 761.49
+    },
+    {
+      "url": "https://twitter.com/mouradaly/statuses/1999663762794782979",
+      "text": "... @Celebs__Arabic https://t.co/Pvvl9bDL9Z ; QT @mouradaly: هشام طلعت مصطفى نموذج صارخ لرجل الأعمال في هذا العصر المأزوم؛ يرتكب كل الموبقات ...",
+      "author": "مستخدم",
+      "handle": "",
+      "date": "2025-12-13",
+      "reach": 76146,
+      "retweets": 0,
+      "sentiment": "negative",
+      "engagement_score": 761.46
+    },
+    {
+      "url": "https://twitter.com/mouradaly/statuses/1997949195848917220",
+      "text": "... @AlArabiya https://t.co/gfTn9PgBBY ; QT @mouradaly: حين يستقر الإيمان في القلب، تتضاءل خسائر الدنيا كلها، وتبدو عقوبات الطغاة أهون من عق ...",
+      "author": "مستخدم",
+      "handle": "",
+      "date": "2025-12-08",
+      "reach": 76012,
+      "retweets": 0,
+      "sentiment": "negative",
+      "engagement_score": 760.12
+    },
+    {
+      "url": "https://twitter.com/mouradaly/statuses/1997948545651925095",
+      "text": "... @AJArabic https://t.co/gfTn9Pg3Mq ; QT @mouradaly: حين يستقر الإيمان في القلب، تتضاءل خسائر الدنيا كلها، وتبدو عقوبات الطغاة أهون من عقو ...",
+      "author": "مستخدم",
+      "handle": "",
+      "date": "2025-12-08",
+      "reach": 76012,
+      "retweets": 0,
+      "sentiment": "negative",
+      "engagement_score": 760.12
+    },
+    {
+      "url": "https://twitter.com/fe_riel79/statuses/2006947853172879830",
+      "text": "حرب نفسية يعيشها الجمهور الجزائري ولاعبي الفريق الوطني.. وصمة عار ع المغاربة و إعلامهم الذين تكالبوا ع الجزائريين و هم ضيوف عندهم .. هذا و ا ...",
+      "author": "مستخدم",
+      "handle": "",
+      "date": "2026-01-02",
+      "reach": 72514,
+      "retweets": 0,
+      "sentiment": "negative",
+      "engagement_score": 725.14
+    }
+  ]
+}

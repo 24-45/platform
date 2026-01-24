@@ -1,0 +1,978 @@
+{
+  "ministry": [
+    {
+      "author": "أحمد حافظ",
+      "total_reach": 18466284,
+      "posts_count": 2,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "آيات الحبال",
+      "total_reach": 6523438,
+      "posts_count": 2,
+      "dominant_sentiment": "positive"
+    },
+    {
+      "author": "البيان",
+      "total_reach": 2887980,
+      "posts_count": 3,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "عبد الإله الرضواني",
+      "total_reach": 1852772,
+      "posts_count": 1,
+      "dominant_sentiment": "negative"
+    },
+    {
+      "author": "التاريخ",
+      "total_reach": 1830407,
+      "posts_count": 15,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "هدى حسنى",
+      "total_reach": 1150121,
+      "posts_count": 5,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "إسلام لطفي",
+      "total_reach": 1132864,
+      "posts_count": 1,
+      "dominant_sentiment": "positive"
+    },
+    {
+      "author": "نها رضوان",
+      "total_reach": 970661,
+      "posts_count": 2,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "عبدالله المدني",
+      "total_reach": 962660,
+      "posts_count": 1,
+      "dominant_sentiment": "positive"
+    },
+    {
+      "author": "فيتو",
+      "total_reach": 961397,
+      "posts_count": 1,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "وام",
+      "total_reach": 862098,
+      "posts_count": 3,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "عبير عقيقي",
+      "total_reach": 748650,
+      "posts_count": 1,
+      "dominant_sentiment": "positive"
+    },
+    {
+      "author": "عبد الناصر حرب",
+      "total_reach": 653166,
+      "posts_count": 1,
+      "dominant_sentiment": "positive"
+    },
+    {
+      "author": "عمرو محمد",
+      "total_reach": 649002,
+      "posts_count": 2,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "دينا أشرف",
+      "total_reach": 637198,
+      "posts_count": 2,
+      "dominant_sentiment": "positive"
+    },
+    {
+      "author": "حنان الصاوي",
+      "total_reach": 609264,
+      "posts_count": 2,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "شيماء الهوارى",
+      "total_reach": 589555,
+      "posts_count": 1,
+      "dominant_sentiment": "positive"
+    },
+    {
+      "author": "أحمد صابر",
+      "total_reach": 589555,
+      "posts_count": 1,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "يوسف كريم",
+      "total_reach": 589555,
+      "posts_count": 1,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "إبراهيم يوسف",
+      "total_reach": 573331,
+      "posts_count": 1,
+      "dominant_sentiment": "neutral"
+    }
+  ],
+  "كأس القارات FIFA": [
+    {
+      "author": "Grok",
+      "total_reach": 2770117609,
+      "posts_count": 403,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "beIN SPORTS",
+      "total_reach": 410853457,
+      "posts_count": 58,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "قنوات الكاس",
+      "total_reach": 137930633,
+      "posts_count": 86,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "beIN SPORTS الإخبارية",
+      "total_reach": 97222546,
+      "posts_count": 10,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "Paris Saint-Germain",
+      "total_reach": 90033898,
+      "posts_count": 27,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "C. Mervyn Graham ™®",
+      "total_reach": 67906640,
+      "posts_count": 214,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "Reuters",
+      "total_reach": 49299309,
+      "posts_count": 2,
+      "dominant_sentiment": "negative"
+    },
+    {
+      "author": "عمرو",
+      "total_reach": 37396583,
+      "posts_count": 28,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "التلفزيون العربي",
+      "total_reach": 28331076,
+      "posts_count": 3,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "باريس سان جيرمان",
+      "total_reach": 27697096,
+      "posts_count": 12,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "العربية رياضة",
+      "total_reach": 24423676,
+      "posts_count": 7,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "اللجنة العليا للمشاريع والإرث",
+      "total_reach": 23544560,
+      "posts_count": 20,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "ESPN Brasil",
+      "total_reach": 22953920,
+      "posts_count": 6,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "SportsCenter Brasil",
+      "total_reach": 22632642,
+      "posts_count": 6,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "خبر عاجل",
+      "total_reach": 22570129,
+      "posts_count": 2,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "The Supreme Committee for Delivery and Legacy",
+      "total_reach": 21358479,
+      "posts_count": 18,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "فرانس 24 / FRANCE 24",
+      "total_reach": 17141694,
+      "posts_count": 2,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "ESPN FC",
+      "total_reach": 16451597,
+      "posts_count": 1,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "الموجز الرياضي",
+      "total_reach": 15856643,
+      "posts_count": 20,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "B/R Football",
+      "total_reach": 15228119,
+      "posts_count": 2,
+      "dominant_sentiment": "neutral"
+    }
+  ],
+  "كأس العرب 2025 (FIFA Arab Cup)": [
+    {
+      "author": "قناة الجزيرة",
+      "total_reach": 1283372697,
+      "posts_count": 57,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "Grok",
+      "total_reach": 663784361,
+      "posts_count": 98,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "قنوات الكاس",
+      "total_reach": 523098160,
+      "posts_count": 328,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "beIN SPORTS",
+      "total_reach": 281718201,
+      "posts_count": 29,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "التلفزيون العربي",
+      "total_reach": 264391782,
+      "posts_count": 28,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "الجزيرة مباشر",
+      "total_reach": 188503137,
+      "posts_count": 23,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "أخبار الهلال",
+      "total_reach": 178310375,
+      "posts_count": 62,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "أخبار السعودية",
+      "total_reach": 172578985,
+      "posts_count": 10,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "beIN SPORTS الإخبارية",
+      "total_reach": 155442143,
+      "posts_count": 16,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "خبر عاجل",
+      "total_reach": 135209846,
+      "posts_count": 13,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "خالد جاسم",
+      "total_reach": 124975345,
+      "posts_count": 97,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "صحيفة سبق الإلكترونية",
+      "total_reach": 89237430,
+      "posts_count": 8,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "منبر الهلال - Mnbr Alhilal",
+      "total_reach": 86540411,
+      "posts_count": 21,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "صحيفة الشرق - قطر",
+      "total_reach": 46683364,
+      "posts_count": 145,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "مرسال قطر",
+      "total_reach": 45445880,
+      "posts_count": 65,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "ADSportsTV",
+      "total_reach": 43143159,
+      "posts_count": 39,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "تذاكر / MY TICKET",
+      "total_reach": 41505791,
+      "posts_count": 353,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "Gorgeous",
+      "total_reach": 40229720,
+      "posts_count": 12,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "Annahar النهار",
+      "total_reach": 39823103,
+      "posts_count": 46,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "Ibrahim fayek - إبراهيم فايق",
+      "total_reach": 39579855,
+      "posts_count": 6,
+      "dominant_sentiment": "neutral"
+    }
+  ],
+  "WTT تنس الطاولة": [
+    {
+      "author": "Grok",
+      "total_reach": 14441492,
+      "posts_count": 2,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "L'Équipe",
+      "total_reach": 12307423,
+      "posts_count": 2,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "World Table Tennis",
+      "total_reach": 2790129,
+      "posts_count": 25,
+      "dominant_sentiment": "positive"
+    },
+    {
+      "author": "Sports China",
+      "total_reach": 1038410,
+      "posts_count": 1,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "Xinhua Sports",
+      "total_reach": 835302,
+      "posts_count": 1,
+      "dominant_sentiment": "positive"
+    },
+    {
+      "author": "Piu Esportes",
+      "total_reach": 723049,
+      "posts_count": 4,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "Time Brasil",
+      "total_reach": 666289,
+      "posts_count": 1,
+      "dominant_sentiment": "positive"
+    },
+    {
+      "author": "BandSports",
+      "total_reach": 583937,
+      "posts_count": 2,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "The Peninsula Qatar",
+      "total_reach": 467471,
+      "posts_count": 5,
+      "dominant_sentiment": "positive"
+    },
+    {
+      "author": "Wapa Televisión",
+      "total_reach": 381814,
+      "posts_count": 1,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "محمد الجزار 🦅",
+      "total_reach": 380836,
+      "posts_count": 1,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "El Vocero de Puerto Rico",
+      "total_reach": 363525,
+      "posts_count": 1,
+      "dominant_sentiment": "positive"
+    },
+    {
+      "author": "Qatar News Agency",
+      "total_reach": 357216,
+      "posts_count": 3,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "India_AllSports",
+      "total_reach": 346967,
+      "posts_count": 4,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "صحيفة الشرق - قطر",
+      "total_reach": 318704,
+      "posts_count": 1,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "صحيفة العرب - قطر",
+      "total_reach": 309869,
+      "posts_count": 1,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "NotiCentro",
+      "total_reach": 299862,
+      "posts_count": 1,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "Rickard Bergquist",
+      "total_reach": 264254,
+      "posts_count": 2,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "قناة الريان الفضائية",
+      "total_reach": 252937,
+      "posts_count": 1,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "محمد بن عبدالرحمن آل سعود",
+      "total_reach": 236124,
+      "posts_count": 1,
+      "dominant_sentiment": "positive"
+    }
+  ],
+  "UFC قطر (UFC Qatar:Doha)": [
+    {
+      "author": "UFC",
+      "total_reach": 1262708735,
+      "posts_count": 98,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "Grok",
+      "total_reach": 922762181,
+      "posts_count": 138,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "UFC Español",
+      "total_reach": 199266731,
+      "posts_count": 166,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "danawhite",
+      "total_reach": 142380161,
+      "posts_count": 21,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "MMA Fighting",
+      "total_reach": 134903742,
+      "posts_count": 86,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "MMA Junkie",
+      "total_reach": 133738920,
+      "posts_count": 105,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "UFC Brasil",
+      "total_reach": 127911647,
+      "posts_count": 75,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "UFC News",
+      "total_reach": 112486735,
+      "posts_count": 105,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "MARCA",
+      "total_reach": 58605235,
+      "posts_count": 9,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "UFC on TNT Sports",
+      "total_reach": 56150659,
+      "posts_count": 167,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "UFC Europe",
+      "total_reach": 48874154,
+      "posts_count": 81,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "Ariel Helwani",
+      "total_reach": 32590923,
+      "posts_count": 23,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "ESPN MMA",
+      "total_reach": 24887947,
+      "posts_count": 15,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "bjpenndotcom",
+      "total_reach": 21376361,
+      "posts_count": 37,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "Bleacher Report",
+      "total_reach": 19808099,
+      "posts_count": 1,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "Diario AS",
+      "total_reach": 19540721,
+      "posts_count": 6,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "La Sueur",
+      "total_reach": 18858508,
+      "posts_count": 81,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "堀口恭司 Kyoji Horiguchi",
+      "total_reach": 13234878,
+      "posts_count": 42,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "Dovy🔌",
+      "total_reach": 10099781,
+      "posts_count": 34,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "MMA Orbit",
+      "total_reach": 9870122,
+      "posts_count": 93,
+      "dominant_sentiment": "neutral"
+    }
+  ],
+  " جائزة قطر الكبرى - فورمولا 1 (Qatar Grand Prix)": [
+    {
+      "author": "Grok",
+      "total_reach": 1666467130,
+      "posts_count": 248,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "Formula 1",
+      "total_reach": 631679917,
+      "posts_count": 54,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "beIN SPORTS",
+      "total_reach": 353720598,
+      "posts_count": 46,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "SportsCenter",
+      "total_reach": 132175966,
+      "posts_count": 29,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "McLaren",
+      "total_reach": 112383271,
+      "posts_count": 25,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "Oracle Red Bull Racing",
+      "total_reach": 86514295,
+      "posts_count": 18,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "ESPN",
+      "total_reach": 56809043,
+      "posts_count": 1,
+      "dominant_sentiment": "positive"
+    },
+    {
+      "author": "Formula 2",
+      "total_reach": 54603927,
+      "posts_count": 72,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "The New York Times",
+      "total_reach": 52812619,
+      "posts_count": 1,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "The Independent",
+      "total_reach": 51463190,
+      "posts_count": 15,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "News18",
+      "total_reach": 49033375,
+      "posts_count": 11,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "beIN SPORTS الإخبارية",
+      "total_reach": 48464803,
+      "posts_count": 5,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "Mercedes-AMG PETRONAS F1 Team",
+      "total_reach": 47023502,
+      "posts_count": 9,
+      "dominant_sentiment": "positive"
+    },
+    {
+      "author": "Cesar Zulianos",
+      "total_reach": 37116001,
+      "posts_count": 52,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "MoneyGram Haas F1 Team",
+      "total_reach": 36461626,
+      "posts_count": 20,
+      "dominant_sentiment": "positive"
+    },
+    {
+      "author": "Diario Olé",
+      "total_reach": 36292218,
+      "posts_count": 10,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "SuperSport 🏆",
+      "total_reach": 33648782,
+      "posts_count": 11,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "MARCA",
+      "total_reach": 31632033,
+      "posts_count": 5,
+      "dominant_sentiment": "positive"
+    },
+    {
+      "author": "BBC Sport",
+      "total_reach": 30772366,
+      "posts_count": 3,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "Sports",
+      "total_reach": 27809890,
+      "posts_count": 2,
+      "dominant_sentiment": "neutral"
+    }
+  ],
+  "كأس العالم تحت 17 سنة (FIFA U-17 World Cup)": [
+    {
+      "author": "قنوات الكاس",
+      "total_reach": 1937564072,
+      "posts_count": 1200,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "Grok",
+      "total_reach": 908251852,
+      "posts_count": 136,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "beIN SPORTS الإخبارية",
+      "total_reach": 474423388,
+      "posts_count": 49,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "beIN SPORTS",
+      "total_reach": 424913432,
+      "posts_count": 40,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "قناة الجزيرة",
+      "total_reach": 95539840,
+      "posts_count": 4,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "🇦🇷 Selección Argentina ⭐⭐⭐",
+      "total_reach": 69260878,
+      "posts_count": 11,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "صحيفة العرب - قطر",
+      "total_reach": 67711987,
+      "posts_count": 203,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "Fabrizio Romano",
+      "total_reach": 53425580,
+      "posts_count": 2,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "الراية القطرية",
+      "total_reach": 52258026,
+      "posts_count": 158,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "اللجنة العليا للمشاريع والإرث",
+      "total_reach": 46020625,
+      "posts_count": 39,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "التلفزيون العربي",
+      "total_reach": 37839129,
+      "posts_count": 4,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "محمد الجزار 🦅",
+      "total_reach": 36541516,
+      "posts_count": 96,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "FIFA",
+      "total_reach": 32377653,
+      "posts_count": 2,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "England",
+      "total_reach": 31277384,
+      "posts_count": 5,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "خالد جاسم",
+      "total_reach": 28982201,
+      "posts_count": 22,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "The Supreme Committee for Delivery and Legacy",
+      "total_reach": 28512691,
+      "posts_count": 24,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "FIFA World Cup",
+      "total_reach": 25939553,
+      "posts_count": 2,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "Annahar النهار",
+      "total_reach": 22104774,
+      "posts_count": 24,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "صحيفة الشرق - قطر",
+      "total_reach": 21059409,
+      "posts_count": 58,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "Équipe du Maroc",
+      "total_reach": 20847371,
+      "posts_count": 17,
+      "dominant_sentiment": "neutral"
+    }
+  ],
+  "نهائي الترايثلون T100": [
+    {
+      "author": "Ooredoo Qatar",
+      "total_reach": 3098281,
+      "posts_count": 6,
+      "dominant_sentiment": "positive"
+    },
+    {
+      "author": "TNT Sports",
+      "total_reach": 2378161,
+      "posts_count": 2,
+      "dominant_sentiment": "negative"
+    },
+    {
+      "author": "Gulf News",
+      "total_reach": 1518380,
+      "posts_count": 1,
+      "dominant_sentiment": "positive"
+    },
+    {
+      "author": "RTA",
+      "total_reach": 1224173,
+      "posts_count": 1,
+      "dominant_sentiment": "positive"
+    },
+    {
+      "author": "Doha News",
+      "total_reach": 574061,
+      "posts_count": 1,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "Dubai_Calendar",
+      "total_reach": 477098,
+      "posts_count": 1,
+      "dominant_sentiment": "positive"
+    },
+    {
+      "author": "Qatar News",
+      "total_reach": 474119,
+      "posts_count": 3,
+      "dominant_sentiment": "positive"
+    },
+    {
+      "author": "Qatar Living ®",
+      "total_reach": 411371,
+      "posts_count": 1,
+      "dominant_sentiment": "positive"
+    },
+    {
+      "author": "World Triathlon",
+      "total_reach": 315274,
+      "posts_count": 3,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "Gulf Today",
+      "total_reach": 289469,
+      "posts_count": 2,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "ILoveQatar - Live",
+      "total_reach": 277601,
+      "posts_count": 4,
+      "dominant_sentiment": "positive"
+    },
+    {
+      "author": "Lovin Dubai | لوڤن دبي",
+      "total_reach": 274488,
+      "posts_count": 1,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "Triatlón Noticias",
+      "total_reach": 253972,
+      "posts_count": 8,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "247",
+      "total_reach": 210545,
+      "posts_count": 7,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "Eurosport Portugal",
+      "total_reach": 209037,
+      "posts_count": 2,
+      "dominant_sentiment": "positive"
+    },
+    {
+      "author": "The Peninsula Qatar",
+      "total_reach": 187042,
+      "posts_count": 2,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "Qatar News Agency",
+      "total_reach": 118859,
+      "posts_count": 1,
+      "dominant_sentiment": "positive"
+    },
+    {
+      "author": "Gulf News Sport",
+      "total_reach": 115988,
+      "posts_count": 1,
+      "dominant_sentiment": "positive"
+    },
+    {
+      "author": "Diario de Navarra",
+      "total_reach": 110891,
+      "posts_count": 1,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "author": "T100 Triathlon World Tour",
+      "total_reach": 103393,
+      "posts_count": 6,
+      "dominant_sentiment": "neutral"
+    }
+  ]
+}

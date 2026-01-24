@@ -1,0 +1,62 @@
+{
+  "total_records": 20000,
+  "traditional_media_records": 12070,
+  "sentiment": {
+    "neutral": 7969,
+    "positive": 3674,
+    "negative": 367,
+    "unknown": 60
+  },
+  "top_countries": {
+    "Egypt": 3330,
+    "Qatar": 1597,
+    "Saudi Arabia": 1355,
+    "United Arab Emirates": 1256,
+    "United States": 799,
+    "Morocco": 606,
+    "Jordan": 596,
+    "United Kingdom": 482,
+    "Kuwait": 249,
+    "India": 203,
+    "Russia": 192,
+    "Yemen": 116,
+    "Lebanon": 113,
+    "Iraq": 108,
+    "Australia": 82
+  },
+  "languages": {
+    "Arabic": 8569,
+    "English": 3415,
+    "Egyptian Arabic": 51,
+    "French": 7,
+    "Italian": 4,
+    "Indonesian": 4,
+    "German": 4,
+    "Japanese": 3,
+    "Croatian": 3,
+    "Dutch": 2
+  },
+  "monthly_distribution": {
+    "2025-10": 695,
+    "2025-11": 4224,
+    "2025-12": 6476,
+    "2026-01": 675
+  },
+  "top_sources": {
+    "بوابة الزهراء الإخبارية": 651,
+    "Sahafahh.net": 418,
+    "The Middle East North Africa Financial Network": 275,
+    "Al Raya الراية": 266,
+    "موقع نبض - nabd": 241,
+    "Al Sharq بوابة الشرق": 240,
+    "WinWin": 233,
+    "مصرس": 229,
+    "Qatar News Agency (QNA) وكالة الأنباء القطرية": 194,
+    "Russia Today": 191
+  },
+  "geographic_distribution": {
+    "qatar": 1597,
+    "arab_without_qatar": 8036,
+    "international": 2437
+  }
+}

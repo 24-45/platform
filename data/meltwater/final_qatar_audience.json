@@ -1,0 +1,524 @@
+{
+  "summary": {
+    "positive_count": 5777,
+    "negative_count": 1524
+  },
+  "positive_tweets": [
+    {
+      "author_handle": "aldehaniah",
+      "author_name": "الديحانية",
+      "text": "RN_Alkhalifa مو غريبه علي قطر العمل الاحترافي و قبلها كأس العالم والف مبروك نجاح افضل واجمل بطولة كأس العرب 🏆 شكراً لقطر التنظيم والأمن والأ ...",
+      "url": "https://twitter.com/aldehaniah/statuses/2001998769164898636",
+      "reach": 4819.0,
+      "engagement": 0,
+      "likes": 0,
+      "sentiment": "positive",
+      "sentiment_score": 17,
+      "keywords_found": [
+        "شكراً لقطر",
+        "احترافي",
+        "مبروك",
+        "الف مبروك",
+        "شكرا"
+      ],
+      "meltwater_sentiment": "positive"
+    },
+    {
+      "author_handle": "sf_skd",
+      "author_name": "قس بن ساعدة",
+      "text": "يستاهلون اسود الأطلس 🇲🇦 .. الف مبروك.. هاردلك للنشاما 🇯🇴 قدموا مباراة تاريخية.. شكرا قطر🇶🇦 على نجاح #كأس_العرب والتنظيم المُبهر. #المغرب_الأ ...",
+      "url": "https://twitter.com/SF_SKD/statuses/2001733164121886743",
+      "reach": 180798.0,
+      "engagement": 28.0,
+      "likes": 20.0,
+      "sentiment": "positive",
+      "sentiment_score": 16,
+      "keywords_found": [
+        "شكرا قطر",
+        "يستاهلون",
+        "مبروك",
+        "الف مبروك",
+        "شكرا"
+      ],
+      "meltwater_sentiment": "positive"
+    },
+    {
+      "author_handle": "_su6an",
+      "author_name": "سلطان",
+      "text": "... والله بطولة كأس العرب ممتعه جدًا ومليانه تنافسية - ملاعب اسطورية - نقل عظيم جدًا - معلقين ممتعين - حضور جماهيري قوي جدًا وأجواء جميلة - ...",
+      "url": "https://twitter.com/_su6an/statuses/2001734458198606026",
+      "reach": 370188.0,
+      "engagement": 817.0,
+      "likes": 722.0,
+      "sentiment": "positive",
+      "sentiment_score": 14,
+      "keywords_found": [
+        "ملاعب اسطورية",
+        "عظيم",
+        "جميل",
+        "جميل",
+        "عظيم"
+      ],
+      "meltwater_sentiment": "positive"
+    },
+    {
+      "author_handle": "nill6789",
+      "author_name": "نوال العامري",
+      "text": "تنظيم احترافي، منشآت عالمية، وضيافة عربية أصيلة 👏 شكرًا لدولة #قطر الشقيقة على إنجاح بطولة #كأس_العرب2025 وإظهارها بأبهى صورة. 🇶🇦⚽️ #كأس_الع ...",
+      "url": "https://twitter.com/nill6789/statuses/2001858211855667221",
+      "reach": 6538.0,
+      "engagement": 4.0,
+      "likes": 4.0,
+      "sentiment": "positive",
+      "sentiment_score": 15,
+      "keywords_found": [
+        "تنظيم احترافي",
+        "احترافي",
+        "عالمي",
+        "عالمية",
+        "نجاح"
+      ],
+      "meltwater_sentiment": "positive"
+    },
+    {
+      "author_handle": "turkialharpi11",
+      "author_name": "تركي الحربي💙🤍💙",
+      "text": "tkhelaiwi كل شيء جميل بالدوحة تنظيم رائع مواصلات رائعة ، ان كانت هناك سلبيات هي بعد المواقف عن الملاعب تمشيء مسافات طويلة جدا ومتعبه . شكرا ...",
+      "url": "https://twitter.com/turkialharpi11/statuses/2001976385443959167",
+      "reach": 6062.0,
+      "engagement": 1.0,
+      "likes": 0,
+      "sentiment": "positive",
+      "sentiment_score": 15,
+      "keywords_found": [
+        "تنظيم رائع",
+        "رائع",
+        "جميل",
+        "شكرا",
+        "رائع"
+      ],
+      "meltwater_sentiment": "positive"
+    },
+    {
+      "author_handle": "anasef17",
+      "author_name": "🌴أحمد ناصف🌴",
+      "text": "khalidjassem74 ماشاء الله قطر عملت عظمة والله تنظيم اكتر من رائع وأجواء جميلة قطر قوية بفضل الله شكرا الشعب القطري والقيادات القطريه وسمو ال ...",
+      "url": "https://twitter.com/Anasef17/statuses/2001817270029578613",
+      "reach": 2200.0,
+      "engagement": 0,
+      "likes": 0,
+      "sentiment": "positive",
+      "sentiment_score": 15,
+      "keywords_found": [
+        "ماشاء الله",
+        "رائع",
+        "جميل",
+        "شكرا",
+        "رائع"
+      ],
+      "meltwater_sentiment": "positive"
+    },
+    {
+      "author_handle": "7mdn_",
+      "author_name": "حمدان",
+      "text": "من بطولة هامشية غير معترف بها ومتوقفة منذ عام 2012 .. قطر حولت كأس العرب إلى بطولة تنافسية وأجواء مونديالية تنظيم رائع ملاعب عالمية بنية تحت ...",
+      "url": "https://twitter.com/7mdn_/statuses/2001762574820585772",
+      "reach": 1848.0,
+      "engagement": 0,
+      "likes": 0,
+      "sentiment": "positive",
+      "sentiment_score": 15,
+      "keywords_found": [
+        "تنظيم رائع",
+        "عالمي",
+        "عالمية",
+        "رائع",
+        "رائع"
+      ],
+      "meltwater_sentiment": "positive"
+    },
+    {
+      "author_handle": "6witi",
+      "author_name": "‏طلال",
+      "text": "والله بطولة كأس العرب ممتعه جدًا ومليانه تنافسية - ملاعب اسطورية - نقل عظيم جدا - معلقين ممتعين - حضور جماهيري قوي جدًا وأجواء جميلة - منتخب ...",
+      "url": "https://twitter.com/6witi/statuses/1997701859600146853",
+      "reach": 154728.0,
+      "engagement": 507.0,
+      "likes": 382.0,
+      "sentiment": "positive",
+      "sentiment_score": 14,
+      "keywords_found": [
+        "ملاعب اسطورية",
+        "عظيم",
+        "جميل",
+        "جميل",
+        "عظيم"
+      ],
+      "meltwater_sentiment": "positive"
+    },
+    {
+      "author_handle": "x99i3",
+      "author_name": "يعقوب",
+      "text": "... ختام بطولة كأس العرب .. استمتعنا في بطولة رائعة وكبيرة من جميع الجوانب ، تنظيم رائع، نقل تلفزيوني احترافي ومميز ، والأهم بأن البطولة شهد ...",
+      "url": "https://twitter.com/X99i3/statuses/2001732080326017281",
+      "reach": 222387.0,
+      "engagement": 18.0,
+      "likes": 16.0,
+      "sentiment": "positive",
+      "sentiment_score": 14,
+      "keywords_found": [
+        "تنظيم رائع",
+        "احترافي",
+        "رائع",
+        "رائع",
+        "استمتعنا"
+      ],
+      "meltwater_sentiment": "positive"
+    },
+    {
+      "author_handle": "ddsldss",
+      "author_name": "ابوسـ؏ـود العبدلي 🇸🇦",
+      "text": "استمتعنا في بطولة رائعة من جميع الجوانب.. تنظيم رائع ونقل تلفزيوني إحترافي ومميز .. بطولة ممتعة بكل تفاصيلها.. مبروك لدول ...",
+      "url": "https://twitter.com/ddsldss/statuses/2001768098702004478",
+      "reach": 44092.0,
+      "engagement": 0,
+      "likes": 0,
+      "sentiment": "positive",
+      "sentiment_score": 14,
+      "keywords_found": [
+        "تنظيم رائع",
+        "مبروك",
+        "رائع",
+        "رائع",
+        "استمتعنا"
+      ],
+      "meltwater_sentiment": "positive"
+    },
+    {
+      "author_handle": "rmadan1155",
+      "author_name": "رمضان فتيني",
+      "text": "ختام بطولة كأس العرب .. استمتعنا في بطولة رائعة وكبيرة من جميع الجوانب ، تنظيم رائع، نقل تلفزيوني احترافي ومميز ، والأهم بأن البط ...",
+      "url": "https://twitter.com/Rmadan1155/statuses/2001737839839416339",
+      "reach": 11002.0,
+      "engagement": 0,
+      "likes": 0,
+      "sentiment": "positive",
+      "sentiment_score": 14,
+      "keywords_found": [
+        "تنظيم رائع",
+        "احترافي",
+        "رائع",
+        "رائع",
+        "استمتعنا"
+      ],
+      "meltwater_sentiment": "positive"
+    },
+    {
+      "author_handle": "hmi95_",
+      "author_name": "حسيـن 🇰🇼",
+      "text": "أفتتاح عظيم ومُعبر جداً و تنظيم رائع ! فكرة بسيطة لكن تُمثل الإرث العربي الذي لامس قلوب كل العرب قطر دائمًا تقدم دروس في كيفية تنظيم بطولات ...",
+      "url": "https://twitter.com/HMI95_/statuses/1995518525755326841",
+      "reach": 23575.0,
+      "engagement": 24.0,
+      "likes": 24.0,
+      "sentiment": "positive",
+      "sentiment_score": 13,
+      "keywords_found": [
+        "تنظيم رائع",
+        "رائع",
+        "عظيم",
+        "رائع",
+        "عظيم"
+      ],
+      "meltwater_sentiment": "positive"
+    },
+    {
+      "author_handle": "alsaihatiaziz",
+      "author_name": "عبدالعزيز السيهاتي",
+      "text": "الف مبروك للمنتخب المغربي تحقيق بطولة كأس العرب باستحقاق. حظ اوفر لمنتخب الاردن وجميع المنتخبات. مباراة نهائية جميلة مليئة ...",
+      "url": "https://twitter.com/AlsaihatiAziz/statuses/2001925521358336072",
+      "reach": 2382.0,
+      "engagement": 4.0,
+      "likes": 4.0,
+      "sentiment": "positive",
+      "sentiment_score": 13,
+      "keywords_found": [
+        "مبروك",
+        "الف مبروك",
+        "جميل",
+        "جميل",
+        "جميلة"
+      ],
+      "meltwater_sentiment": "positive"
+    },
+    {
+      "author_handle": "jassim33jassim",
+      "author_name": "جاسم بن أحمد الجاسم",
+      "text": "... النجاح الكبير والتنظيم الرائع من دولة قطر 🇶🇦 الشقيقه لهذا الحدث الكروي الكبير لكاس العرب 2025 من ملاعب مبهرة وتنظيم إحترافي وحضور جماهير ...",
+      "url": "https://twitter.com/jassim33jassim/statuses/1999917590496587887",
+      "reach": 6044.0,
+      "engagement": 1.0,
+      "likes": 1.0,
+      "sentiment": "positive",
+      "sentiment_score": 13,
+      "keywords_found": [
+        "ملاعب مبهرة",
+        "رائع",
+        "مبهر",
+        "رائع",
+        "نجاح"
+      ],
+      "meltwater_sentiment": "positive"
+    },
+    {
+      "author_handle": "adnaan_89",
+      "author_name": "عدنان العبري",
+      "text": "بطولة ناجحة بكل المقاييس .. شكراً قطر على التنظيم الرائع 🇴🇲🇶🇦  ; وزارة الخارجية- سلطنة عمان عبر ح ...",
+      "url": "https://twitter.com/Adnaan_89/statuses/2002460371412758837",
+      "reach": 17721.0,
+      "engagement": 0,
+      "likes": 0,
+      "sentiment": "positive",
+      "sentiment_score": 13,
+      "keywords_found": [
+        "شكراً قطر",
+        "رائع",
+        "شكرا",
+        "شكراً",
+        "رائع"
+      ],
+      "meltwater_sentiment": "positive"
+    }
+  ],
+  "negative_tweets": [
+    {
+      "author_handle": "sfsf-2017",
+      "author_name": "صافي سليمان🦋في قطر🇶🇦",
+      "text": "... موقعه حلو بعيد عن الزحمه وسنتر الدوحه القديم وطبعا بالموت حصلت فندق مناسب الاسعار نار ومافي فنادق اتوقع عشان كأس العرب وانا حجزت متاخر ...",
+      "url": "https://www.snapchat.com/add/sfsf-2017/exN2VaMMShiUUzt3qeN6rgAAgaGR3c2J2d3Z6AZrE6uOIAZrE6t25AAAAAA",
+      "reach": 197374.0,
+      "engagement": 8.0,
+      "likes": 0,
+      "sentiment": "negative",
+      "sentiment_score": 9,
+      "keywords_found": [
+        "حلو",
+        "اسعار نار",
+        "زحمه",
+        "اسعار"
+      ],
+      "meltwater_sentiment": "negative"
+    },
+    {
+      "author_handle": "3bo92d",
+      "author_name": "عبدالله الفارسي🇴🇲",
+      "text": "حقيقه تنظيم سيء جدا مو معقول اقل شي تمشي نص ساعه من الملعب للباركن وين مراعاه الاطفال والكبار؟ @khalidjassem74 #كأس_العر ...",
+      "url": "https://twitter.com/3bo92d/statuses/1996002269113057644",
+      "reach": 1978.0,
+      "engagement": 0,
+      "likes": 0,
+      "sentiment": "negative",
+      "sentiment_score": 7,
+      "keywords_found": [
+        "تنظيم سيء",
+        "سيء",
+        "مو معقول"
+      ],
+      "meltwater_sentiment": "negative"
+    },
+    {
+      "author_handle": "arabicferrari",
+      "author_name": "فيراري بالعربي",
+      "text": "🔴| مراكز إنطلاق متأخرة لثنائي الفريق، رغم ذلك سنكون معكم كالعادة لتغطية مجريات سباق قطر 🇶🇦🏎️",
+      "url": "https://twitter.com/ArabicFerrari/statuses/1995068616350593322",
+      "reach": 12630.0,
+      "engagement": 10.0,
+      "likes": 9.0,
+      "sentiment": "negative",
+      "sentiment_score": 6,
+      "keywords_found": [
+        "متأخر",
+        "تأخر"
+      ],
+      "meltwater_sentiment": "neutral"
+    },
+    {
+      "author_handle": "yag225544",
+      "author_name": "اندريا بيرلو🇮🇹",
+      "text": "khalidjassem74 تنظيم فاشل مافيه تصريف للأمطار",
+      "url": "https://twitter.com/yag225544/statuses/2001629800482640304",
+      "reach": 2876.0,
+      "engagement": 18.0,
+      "likes": 5.0,
+      "sentiment": "negative",
+      "sentiment_score": 6,
+      "keywords_found": [
+        "تنظيم فاشل",
+        "فاشل"
+      ],
+      "meltwater_sentiment": "negative"
+    },
+    {
+      "author_handle": "hashim_fahmawi",
+      "author_name": "المحلل الاقتصادي / هاشم الفحماوي",
+      "text": "Ali_nori2000 لاسف اسعار التذكر غاليه جدا جدا وهنالك جمهور اردني يرغب في شراء تذاكر لكن ارتفاع سعرها بشكل جنوني امر غير منطقي",
+      "url": "https://twitter.com/hashim_fahmawi/statuses/1999410753606951300",
+      "reach": 19722.0,
+      "engagement": 0,
+      "likes": 0,
+      "sentiment": "negative",
+      "sentiment_score": 6,
+      "keywords_found": [
+        "غالي",
+        "غاليه",
+        "سعر",
+        "اسعار"
+      ],
+      "meltwater_sentiment": "negative"
+    },
+    {
+      "author_handle": "azizalmusa2",
+      "author_name": "عزيز ال يحيى ©️",
+      "text": "GenAlkhayareen احنا كعراقيين رافضين لهذه التصرفات الفردية ولسنا اصحاب فوضى بالعكس اكثر جمهور حضور وتفاعله قوي هو الجمهور العراقي ودرب لوسيل ...",
+      "url": "https://twitter.com/AzizAlMusa2/statuses/1997241438375940484",
+      "reach": 2494.0,
+      "engagement": 64.0,
+      "likes": 56.0,
+      "sentiment": "negative",
+      "sentiment_score": 5,
+      "keywords_found": [
+        "فوضى"
+      ],
+      "meltwater_sentiment": "negative"
+    },
+    {
+      "author_handle": "qrkio6",
+      "author_name": "🖤",
+      "text": "المشكله فلوس العراق تشتري هو و دولته والبندوره مالتها 🤭😂  ; توزيع المكافأة كأس العرب: المغرب 8.9 ملي ...",
+      "url": "https://twitter.com/qrkio6/statuses/2002512510545489997",
+      "reach": 2204.0,
+      "engagement": 10.0,
+      "likes": 4.0,
+      "sentiment": "negative",
+      "sentiment_score": 5,
+      "keywords_found": [
+        "مشكله"
+      ],
+      "meltwater_sentiment": "negative"
+    },
+    {
+      "author_handle": "q8q100",
+      "author_name": "أ د مهد الذهب / الامر كله لله ﷻ اخوكم في الله .",
+      "text": "alkhayat_sloom الاتحاد وغياب التنظيم شيء متعودين عليه ليش مو موقع وتسجيل بالموقع وبلا حضور وازدحام وووو يا الاتحاد اتقوا الله .",
+      "url": "https://twitter.com/Q8Q100/statuses/1996648343506989140",
+      "reach": 83059.0,
+      "engagement": 0,
+      "likes": 0,
+      "sentiment": "negative",
+      "sentiment_score": 5,
+      "keywords_found": [
+        "ازدحام"
+      ],
+      "meltwater_sentiment": "negative"
+    },
+    {
+      "author_handle": "____yasser",
+      "author_name": "ياسر",
+      "text": "يبدو أن المليارات بدأت تتكلم @ALMasrouri والملعب قال كلمته: 2–1 للأخضر 🇸🇦✨ المنجزات ما تتأخر لكنها تجي بثقة التطوير مستمر، و ...",
+      "url": "https://twitter.com/____YASSER/statuses/1995932447645798762",
+      "reach": 4915.0,
+      "engagement": 2.0,
+      "likes": 0,
+      "sentiment": "negative",
+      "sentiment_score": 5,
+      "keywords_found": [
+        "تأخر"
+      ],
+      "meltwater_sentiment": "negative"
+    },
+    {
+      "author_handle": "khalid30h",
+      "author_name": "khàłíd30H",
+      "text": "... اكبر اثبات ان المنظومة الرياضية فاشلة وسامة ستلعب كأس القارات للاندية في قطر برعاية الفيفا وارامكو والاهلي السعودي خارج البطولة لان الفر ...",
+      "url": "https://twitter.com/khalid30H/statuses/1998333238104703221",
+      "reach": 2411.0,
+      "engagement": 0,
+      "likes": 0,
+      "sentiment": "negative",
+      "sentiment_score": 4,
+      "keywords_found": [
+        "فاشل",
+        "فاشلة"
+      ],
+      "meltwater_sentiment": "negative"
+    },
+    {
+      "author_handle": "jbt_86",
+      "author_name": "JASSIM THANi 🇶🇦",
+      "text": "رسالة إلى اللجنه المنظمه لبطوله كأس العرب كالعاده وللأسف وشي محزن نشوف مناظر لاتمت للكرة ولا حتى الإحتفالية في قاعة الـ vip في اس ...",
+      "url": "https://twitter.com/JBT_86/statuses/1995549178865279099",
+      "reach": 173424.0,
+      "engagement": 0,
+      "likes": 0,
+      "sentiment": "negative",
+      "sentiment_score": 4,
+      "keywords_found": [
+        "للأسف",
+        "محزن"
+      ],
+      "meltwater_sentiment": "negative"
+    },
+    {
+      "author_handle": "home_of_fight",
+      "author_name": "Home of Fight",
+      "text": "😢💔 Jack Hermansson speaks out after his KO loss to Myktybek Orolbai at UFC Qatar.",
+      "url": "https://twitter.com/Home_of_Fight/statuses/1992750541395435930",
+      "reach": 108317.0,
+      "engagement": 2334.0,
+      "likes": 2178.0,
+      "sentiment": "negative",
+      "sentiment_score": 2,
+      "keywords_found": [],
+      "meltwater_sentiment": "negative"
+    },
+    {
+      "author_handle": "pelunaton",
+      "author_name": "Pelunaton",
+      "text": "Así luce Arman Tsarukyan para su pelea contra Dan Hooker y en su esquina tendrá a Khamzat Chimaev #UFCQatar",
+      "url": "https://twitter.com/pelunaton/statuses/1991115694386381248",
+      "reach": 24141.0,
+      "engagement": 1401.0,
+      "likes": 1270.0,
+      "sentiment": "negative",
+      "sentiment_score": 2,
+      "keywords_found": [],
+      "meltwater_sentiment": "negative"
+    },
+    {
+      "author_handle": "canalplusf1",
+      "author_name": "CANAL+ F1®",
+      "text": "Je suis touché par le soutien des fans, je n'aurais pas tenu sans ça\" Lewis Hamilton ému et sans voix après son élimination en Q1 au Qatar. ...",
+      "url": "https://twitter.com/CanalplusF1/statuses/1994865380670460259",
+      "reach": 397045.0,
+      "engagement": 2363.0,
+      "likes": 2137.0,
+      "sentiment": "negative",
+      "sentiment_score": 2,
+      "keywords_found": [],
+      "meltwater_sentiment": "negative"
+    },
+    {
+      "author_handle": "wearetherace",
+      "author_name": "The Race",
+      "text": "Red Bull's Helmut Marko thinks Kimi Antonelli lent Lando Norris a helping hand in the Qatar GP. Mercedes' Toto Wolff thinks any such accusat ...",
+      "url": "https://twitter.com/wearetherace/statuses/1995217098554163677",
+      "reach": 183502.0,
+      "engagement": 2408.0,
+      "likes": 1802.0,
+      "sentiment": "negative",
+      "sentiment_score": 2,
+      "keywords_found": [],
+      "meltwater_sentiment": "negative"
+    }
+  ]
+}

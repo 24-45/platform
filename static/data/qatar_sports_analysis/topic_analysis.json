@@ -1,0 +1,44 @@
+{
+  "فعاليات_رياضية_كبرى": {
+    "count": 51256,
+    "positive": 15161,
+    "negative": 3167,
+    "neutral": 32928,
+    "positive_rate": 29.6
+  },
+  "بنية_تحتية": {
+    "count": 7465,
+    "positive": 1379,
+    "negative": 132,
+    "neutral": 5954,
+    "positive_rate": 18.5
+  },
+  "مسؤولون": {
+    "count": 3902,
+    "positive": 1492,
+    "negative": 94,
+    "neutral": 2316,
+    "positive_rate": 38.2
+  },
+  "استضافة_وتنظيم": {
+    "count": 5027,
+    "positive": 2106,
+    "negative": 272,
+    "neutral": 2649,
+    "positive_rate": 41.9
+  },
+  "جماهير_وتجربة": {
+    "count": 3809,
+    "positive": 1548,
+    "negative": 275,
+    "neutral": 1986,
+    "positive_rate": 40.6
+  },
+  "إرث_ورؤية": {
+    "count": 591,
+    "positive": 209,
+    "negative": 176,
+    "neutral": 206,
+    "positive_rate": 35.4
+  }
+}

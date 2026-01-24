@@ -1,0 +1,253 @@
+{
+  "total_news_mentions": 6992,
+  "total_unique_sources": 30,
+  "sources_list": [
+    "AlKass Sports Channels  قنوات الكأس الرياضية",
+    "Gulf Times",
+    "Klyoum",
+    "Qatar News",
+    "WinWin",
+    "Qatar News Agency (QNA) وكالة الأنباء القطرية",
+    "Mena Focus",
+    "Qatar Happening",
+    "news.alestad.com",
+    "مصرس",
+    "The Middle East North Africa Financial Network",
+    "منصة مشيرب",
+    "I Love Qatar",
+    "موقع نبض - nabd",
+    "Al Sharq بوابة الشرق",
+    "Hayya News",
+    "بوابة الزهراء الإخبارية",
+    "NABDN",
+    "World News",
+    "Russia Today",
+    "Marhaba Information Guide",
+    "Al Watan جريدة الوطن",
+    "Sahafahh.net",
+    "Al Arab Newspaper - صحيفة العرب",
+    "Qatar Tribune",
+    "Al Raya الراية",
+    "MSN Egypt",
+    "The Peninsula",
+    "Arabkhabar",
+    "Qatar Newswire"
+  ],
+  "tracks": {
+    "track1": {
+      "name": "وزارة الرياضة والشباب القطرية",
+      "total_publications": 0,
+      "top_sources": [],
+      "qatar_sources": 0,
+      "arabic_sources": 0,
+      "international_sources": 0
+    },
+    "track2": {
+      "name": "الفعاليات الكبرى",
+      "total_publications": 6241,
+      "top_sources": [
+        {
+          "name": "بوابة الزهراء الإخبارية",
+          "count": 648
+        },
+        {
+          "name": "Klyoum",
+          "count": 510
+        },
+        {
+          "name": "Sahafahh.net",
+          "count": 418
+        },
+        {
+          "name": "NABDN",
+          "count": 320
+        },
+        {
+          "name": "The Middle East North Africa Financial Network",
+          "count": 274
+        },
+        {
+          "name": "Al Raya الراية",
+          "count": 264
+        },
+        {
+          "name": "Qatar News",
+          "count": 252
+        },
+        {
+          "name": "Al Sharq بوابة الشرق",
+          "count": 240
+        },
+        {
+          "name": "موقع نبض - nabd",
+          "count": 240
+        },
+        {
+          "name": "WinWin",
+          "count": 233
+        },
+        {
+          "name": "مصرس",
+          "count": 229
+        },
+        {
+          "name": "Qatar News Agency (QNA) وكالة الأنباء القطرية",
+          "count": 194
+        },
+        {
+          "name": "Arabkhabar",
+          "count": 194
+        },
+        {
+          "name": "Russia Today",
+          "count": 186
+        },
+        {
+          "name": "MSN Egypt",
+          "count": 178
+        }
+      ],
+      "qatar_sources": 8,
+      "arabic_sources": 6,
+      "international_sources": 16
+    },
+    "track3": {
+      "name": "الفعاليات الرياضية والصحية المحلية",
+      "total_publications": 74,
+      "top_sources": [
+        {
+          "name": "The Middle East North Africa Financial Network",
+          "count": 8
+        },
+        {
+          "name": "Qatar Tribune",
+          "count": 6
+        },
+        {
+          "name": "The Peninsula",
+          "count": 5
+        },
+        {
+          "name": "Al Sharq بوابة الشرق",
+          "count": 4
+        },
+        {
+          "name": "I Love Qatar",
+          "count": 4
+        },
+        {
+          "name": "Gulf Times",
+          "count": 4
+        },
+        {
+          "name": "World News",
+          "count": 3
+        },
+        {
+          "name": "Qatar News",
+          "count": 3
+        },
+        {
+          "name": "Qatar News Agency (QNA) وكالة الأنباء القطرية",
+          "count": 3
+        },
+        {
+          "name": "Marhaba Information Guide",
+          "count": 3
+        },
+        {
+          "name": "Qatar Newswire",
+          "count": 3
+        },
+        {
+          "name": "Al Raya الراية",
+          "count": 3
+        },
+        {
+          "name": "Mena Focus",
+          "count": 3
+        },
+        {
+          "name": "منصة مشيرب",
+          "count": 2
+        },
+        {
+          "name": "Qatar Happening",
+          "count": 2
+        }
+      ],
+      "qatar_sources": 13,
+      "arabic_sources": 1,
+      "international_sources": 16
+    },
+    "track4": {
+      "name": "الفعاليات التراثية والوطنية",
+      "total_publications": 677,
+      "top_sources": [
+        {
+          "name": "Al Raya الراية",
+          "count": 132
+        },
+        {
+          "name": "Al Sharq بوابة الشرق",
+          "count": 113
+        },
+        {
+          "name": "Qatar News",
+          "count": 105
+        },
+        {
+          "name": "Qatar News Agency (QNA) وكالة الأنباء القطرية",
+          "count": 94
+        },
+        {
+          "name": "news.alestad.com",
+          "count": 74
+        },
+        {
+          "name": "منصة مشيرب",
+          "count": 26
+        },
+        {
+          "name": "Al Arab Newspaper - صحيفة العرب",
+          "count": 18
+        },
+        {
+          "name": "Al Watan جريدة الوطن",
+          "count": 14
+        },
+        {
+          "name": "Arabkhabar",
+          "count": 13
+        },
+        {
+          "name": "The Middle East North Africa Financial Network",
+          "count": 10
+        },
+        {
+          "name": "I Love Qatar",
+          "count": 7
+        },
+        {
+          "name": "AlKass Sports Channels  قنوات الكأس الرياضية",
+          "count": 7
+        },
+        {
+          "name": "Hayya News",
+          "count": 6
+        },
+        {
+          "name": "World News",
+          "count": 6
+        },
+        {
+          "name": "Marhaba Information Guide",
+          "count": 6
+        }
+      ],
+      "qatar_sources": 11,
+      "arabic_sources": 1,
+      "international_sources": 18
+    }
+  }
+}

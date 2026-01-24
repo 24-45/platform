@@ -1,0 +1,137 @@
+{
+    "analysis_date": "2026-01-22 15:48:13",
+    "data_source": "Analytics + X insights only (no duplicates)",
+    "executive_summary": {
+        "total_volume": 41578,
+        "traditional_count": 21005,
+        "social_count": 20573,
+        "track_distribution": {
+            "Global Events": 26901,
+            "Other": 13940,
+            "Ministry": 737
+        }
+    },
+    "traditional_media": {
+        "total_volume": 21005,
+        "volume_by_track": {
+            "Global Events": 11971,
+            "Other": 8728,
+            "Ministry": 306
+        },
+        "timeline": {
+            "2025-10-20/2025-10-26": 130,
+            "2025-10-27/2025-11-02": 935,
+            "2025-11-03/2025-11-09": 629,
+            "2025-11-10/2025-11-16": 1075,
+            "2025-11-17/2025-11-23": 1158,
+            "2025-11-24/2025-11-30": 3002,
+            "2025-12-01/2025-12-07": 5224,
+            "2025-12-08/2025-12-14": 3707,
+            "2025-12-15/2025-12-21": 3374,
+            "2025-12-22/2025-12-28": 603,
+            "2025-12-29/2026-01-04": 551,
+            "2026-01-05/2026-01-11": 208,
+            "2026-01-12/2026-01-18": 236,
+            "2026-01-19/2026-01-25": 173
+        },
+        "sentiment": {
+            "neutral": 15404,
+            "positive": 4977,
+            "negative": 467,
+            "unknown": 157
+        },
+        "top_topics": {
+            "استاد خليفة": 967,
+            "الدولي لكرة": 681,
+            "country": 610,
+            "دوري أبطال": 610,
+            "drivers": 571,
+            "قطر": 446,
+            "fans": 406,
+            "بيراميدز": 390,
+            "club": 375,
+            "arab cup": 365
+        }
+    },
+    "social_media": {
+        "total_volume": 20573,
+        "metrics": {
+            "total_reach": 4456118396,
+            "total_engagement": 375675,
+            "engagement_rate": 0.0084
+        },
+        "volume_by_track": {
+            "Global Events": 14930,
+            "Other": 5212,
+            "Ministry": 431
+        },
+        "sentiment": {
+            "neutral": 12821,
+            "positive": 6234,
+            "negative": 1517,
+            "unknown": 1
+        },
+        "top_influencers": [
+            {
+                "handle": "@grok",
+                "reach": 726967464,
+                "engagement": 87,
+                "posts": 106
+            },
+            {
+                "handle": "@ajarabic",
+                "reach": 700290418,
+                "engagement": 664,
+                "posts": 31
+            },
+            {
+                "handle": "@alkasstvsports",
+                "reach": 434628201,
+                "engagement": 9246,
+                "posts": 272
+            },
+            {
+                "handle": "@beinsportsnews",
+                "reach": 165105642,
+                "engagement": 2231,
+                "posts": 17
+            },
+            {
+                "handle": "@hilalstuff",
+                "reach": 160931454,
+                "engagement": 10911,
+                "posts": 56
+            },
+            {
+                "handle": "@beinsports",
+                "reach": 124357427,
+                "engagement": 1412,
+                "posts": 12
+            },
+            {
+                "handle": "@alarabytv",
+                "reach": 113291808,
+                "engagement": 73,
+                "posts": 12
+            },
+            {
+                "handle": "@ajelnews24",
+                "reach": 112707221,
+                "engagement": 1240,
+                "posts": 10
+            },
+            {
+                "handle": "@saudinews50",
+                "reach": 107926157,
+                "engagement": 6408,
+                "posts": 5
+            },
+            {
+                "handle": "@sabqorg",
+                "reach": 89237430,
+                "engagement": 165,
+                "posts": 8
+            }
+        ]
+    }
+}

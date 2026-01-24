@@ -1,0 +1,1209 @@
+{% extends "tenant/qatar_sports/base.html" %}
+
+{% block content %}
+<!-- =====================================================
+     الشريحة 1: الغلاف الرئيسي
+     تقرير الرصد والتحليل الإعلامي للرياضة القطرية
+     ===================================================== -->
+<section class="slide slide--cover" id="slide-1">
+    <!-- الزخارف الخلفية -->
+    <div class="cover-bg">
+        <div class="cover-gradient"></div>
+        <div class="cover-pattern"></div>
+    </div>
+    
+    <div class="slide__content slide__content--center">
+        <!-- شعار الوزارة الرسمي -->
+        <div class="ministry-logo-container">
+            <img src="{{ url_for('static', filename='images/tenants/qatar_sports/ministry_logo.svg') }}" 
+                 alt="وزارة الرياضة والشباب - دولة قطر" 
+                 class="ministry-logo">
+        </div>
+        
+        <!-- الخط الفاصل -->
+        <div class="cover-divider"></div>
+        
+        <!-- العنوان الرئيسي -->
+        <h1 class="cover-title">
+            تقرير الرصد والتحليل الإعلامي
+        </h1>
+        
+        <!-- العنوان الفرعي -->
+        <h2 class="cover-subtitle">
+            دراسة تحليلية منهجية للمشهد الإعلامي
+            <br>
+            <span class="highlight">للرياضة القطرية محلياً ودولياً</span>
+        </h2>
+        
+        <!-- معلومات الفترة -->
+        <div class="cover-period">
+            <div class="period-icon">
+                <i class="fas fa-chart-line"></i>
+            </div>
+            <div class="period-info">
+                <span class="period-label">فترة الرصد</span>
+                <span class="period-dates">أكتوبر 2025 - يناير 2026</span>
+                <span class="period-duration">90 يوماً</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- =====================================================
+     الشريحة 2: نظرة عامة على التقرير
+     ===================================================== -->
+<section class="slide slide--overview" id="slide-2">
+    <!-- Slide 2 content will go here -->
+</section>
+
+<!-- Placeholder for remaining slides -->
+
+<!-- =====================================================
+     الشريحة 10: Placeholder
+     ===================================================== -->
+
+                                        <div class="stat-card stat-card--qatar">
+                                            <div class="stat-icon"><i class="fas fa-map-marker-alt"></i></div>
+                                            <div class="stat-info">
+                                                <span class="stat-number">11</span>
+                                                <span class="stat-label">مصادر قطرية</span>
+                                            </div>
+                                        </div>
+                                        <div class="stat-card stat-card--international">
+                                            <div class="stat-icon"><i class="fas fa-globe-americas"></i></div>
+                                            <div class="stat-info">
+                                                <span class="stat-number">40</span>
+                                                <span class="stat-label">مصادر دولية</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="dashboard-tracks-row">
+                                        <div class="track-card track-card--ministry">
+                                            <div class="track-card__header">
+                                                <div class="track-card__icon"><i class="fas fa-landmark"></i></div>
+                                                <div class="track-card__title">
+                                                    <h4>وزارة الرياضة والشباب</h4>
+                                                    <span class="track-badge">المسار 01</span>
+                                                </div>
+                                            </div>
+                                            <div class="track-card__stats">
+                                                <div class="track-main-stat">
+                                                    <span class="track-number">761</span>
+                                                    <span class="track-unit">منشور</span>
+                                                </div>
+                                                <div class="track-percentage">
+                                                    <span class="percentage-value">4.0%</span>
+                                                    <span class="percentage-bar" style="width: 4.0%"></span>
+                                                </div>
+                                            </div>
+                                            <div class="track-card__sources">
+                                                <div class="source-mini">
+                                                    <span class="source-name">وكالة الأنباء القطرية</span>
+                                                    <span class="source-count">80</span>
+                                                </div>
+                                                <div class="source-mini">
+                                                    <span class="source-name">الشرق</span>
+                                                    <span class="source-count">70</span>
+                                                </div>
+                                                <div class="source-mini">
+                                                    <span class="source-name">الراية</span>
+                                                    <span class="source-count">69</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="track-card track-card--events">
+                                            <div class="track-card__header">
+                                                <div class="track-card__icon"><i class="fas fa-trophy"></i></div>
+                                                <div class="track-card__title">
+                                                    <h4>الفعاليات الرياضية الكبرى</h4>
+                                                    <span class="track-badge">المسار 02</span>
+                                                </div>
+                                            </div>
+                                            <div class="track-card__stats">
+                                                <div class="track-main-stat">
+                                                    <span class="track-number">17,346</span>
+                                                    <span class="track-unit">منشور</span>
+                                                </div>
+                                                <div class="track-percentage">
+                                                    <span class="percentage-value">91.6%</span>
+                                                    <span class="percentage-bar" style="width: 91.6%"></span>
+                                                </div>
+                                            </div>
+                                            <div class="track-card__sources">
+                                                <div class="source-mini">
+                                                    <span class="source-name">بوابة الزهراء الإخبارية</span>
+                                                    <span class="source-count">648</span>
+                                                </div>
+                                                <div class="source-mini">
+                                                    <span class="source-name">Klyoum</span>
+                                                    <span class="source-count">510</span>
+                                                </div>
+                                                <div class="source-mini">
+                                                    <span class="source-name">Sahafahh</span>
+                                                    <span class="source-count">418</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="track-card track-card--community">
+                                            <div class="track-card__header">
+                                                <div class="track-card__icon"><i class="fas fa-running"></i></div>
+                                                <div class="track-card__title">
+                                                    <h4>الفعاليات الرياضية والصحية المحلية</h4>
+                                                    <span class="track-badge">المسار 03</span>
+                                                </div>
+                                            </div>
+                                            <div class="track-card__stats">
+                                                <div class="track-main-stat">
+                                                    <span class="track-number">81</span>
+                                                    <span class="track-unit">منشور</span>
+                                                </div>
+                                                <div class="track-percentage">
+                                                    <span class="percentage-value">0.4%</span>
+                                                    <span class="percentage-bar" style="width: 5%"></span>
+                                                </div>
+                                            </div>
+                                            <div class="track-card__sources">
+                                                <div class="source-mini">
+                                                    <span class="source-name">The Middle East North Africa Financial Network</span>
+                                                    <span class="source-count">8</span>
+                                                </div>
+                                                <div class="source-mini">
+                                                    <span class="source-name">Qatar Tribune</span>
+                                                    <span class="source-count">6</span>
+                                                </div>
+                                                <div class="source-mini">
+                                                    <span class="source-name">The Peninsula</span>
+                                                    <span class="source-count">5</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="track-card track-card--heritage">
+                                            <div class="track-card__header">
+                                                <div class="track-card__icon"><i class="fas fa-feather-alt"></i></div>
+                                                <div class="track-card__title">
+                                                    <h4>الفعاليات التراثية</h4>
+                                                    <span class="track-badge">المسار 04</span>
+                                                </div>
+                                            </div>
+                                            <div class="track-card__stats">
+                                                <div class="track-main-stat">
+                                                    <span class="track-number">755</span>
+                                                    <span class="track-unit">منشور</span>
+                                                </div>
+                                                <div class="track-percentage">
+                                                    <span class="percentage-value">4.0%</span>
+                                                    <span class="percentage-bar" style="width: 4.0%"></span>
+                                                </div>
+                                            </div>
+                                            <div class="track-card__sources">
+                                                <div class="source-mini">
+                                                    <span class="source-name">الراية</span>
+                                                    <span class="source-count">132</span>
+                                                </div>
+                                                <div class="source-mini">
+                                                    <span class="source-name">الشرق</span>
+                                                    <span class="source-count">113</span>
+                                                </div>
+                                                <div class="source-mini">
+                                                    <span class="source-name">Qatar News</span>
+                                                    <span class="source-count">105</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="dashboard-bottom-row">
+                                        <div class="sources-distribution">
+                                            <div class="section-header-mini">
+                                                <i class="fas fa-chart-line"></i>
+                                                <h4>التغير الزمني في الاهتمام الإعلامي</h4>
+                                            </div>
+                                            <div style="display:flex; gap:16px; align-items:center;">
+                                                <div style="flex:1; min-width:320px; height:220px;">
+                                                    <canvas id="coverageChart"></canvas>
+                                                </div>
+                                                <div class="distribution-bars" style="flex:1;">
+                                                    <div class="dist-bar-item">
+                                                        <div class="dist-bar-header">
+                                                            <span class="dist-label">إجمالي الأخبار التحريرية</span>
+                                                            <span class="dist-value">18,943 خبر</span>
+                                                        </div>
+                                                        <div class="dist-bar">
+                                                            <div class="dist-bar-fill dist-bar--qatar" style="width: 90%"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="dist-bar-item">
+                                                        <div class="dist-bar-header">
+                                                            <span class="dist-label">إعلام إلكتروني (يشمل وكالات ومواقع)</span>
+                                                            <span class="dist-value">20,646</span>
+                                                        </div>
+                                                        <div class="dist-bar">
+                                                            <div class="dist-bar-fill dist-bar--international" style="width: 85%"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="dist-bar-item">
+                                                        <div class="dist-bar-header">
+                                                            <span class="dist-label">إذاعة/تلفزيون</span>
+                                                            <span class="dist-value">1,202</span>
+                                                        </div>
+                                                        <div class="dist-bar">
+                                                            <div class="dist-bar-fill dist-bar--arabic" style="width: 20%"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="distribution-bars" style="margin-top:12px;">
+                                                <div class="dist-bar-item">
+                                                    <div class="dist-bar-header">
+                                                        <span class="dist-label">مصادر قطرية</span>
+                                                        <span class="dist-value">11 من 69</span>
+                                                    </div>
+                                                    <div class="dist-bar">
+                                                        <div class="dist-bar-fill dist-bar--qatar" style="width: 16%"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="dist-bar-item">
+                                                    <div class="dist-bar-header">
+                                                        <span class="dist-label">مصادر عربية غير قطرية</span>
+                                                        <span class="dist-value">18 من 69</span>
+                                                    </div>
+                                                    <div class="dist-bar">
+                                                        <div class="dist-bar-fill dist-bar--arabic" style="width: 26%"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="dist-bar-item">
+                                                    <div class="dist-bar-header">
+                                                        <span class="dist-label">مصادر دولية</span>
+                                                        <span class="dist-value">40 من 69</span>
+                                                    </div>
+                                                    <div class="dist-bar">
+                                                        <div class="dist-bar-fill dist-bar--international" style="width: 58%"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="peak-attention">
+                                            <div class="section-header-mini">
+                                                <i class="fas fa-fire"></i>
+                                                <h4>ذروة الاهتمام الإعلامي</h4>
+                                            </div>
+                                            <div class="peak-events">
+                                                <div class="peak-event">
+                                                    <div class="peak-date">
+                                                        <span class="peak-day">19</span>
+                                                        <span class="peak-month">ديسمبر</span>
+                                                    </div>
+                                                    <div class="peak-info">
+                                                        <span class="peak-count">5,626</span>
+                                                        <span class="peak-label">منشور</span>
+                                                    </div>
+                                                    <div class="peak-reason">
+                                                        <i class="fas fa-futbol"></i>
+                                                        <span>ذروة تغطية الفعاليات الكبرى</span>
+                                                    </div>
+                                                </div>
+                                                <div class="peak-event">
+                                                    <div class="peak-date">
+                                                        <span class="peak-day">18</span>
+                                                        <span class="peak-month">ديسمبر</span>
+                                                    </div>
+                                                    <div class="peak-info">
+                                                        <span class="peak-count">3,827</span>
+                                                        <span class="peak-label">منشور</span>
+                                                    </div>
+                                                    <div class="peak-reason">
+                                                        <i class="fas fa-flag-checkered"></i>
+                                                        <span>زخم ما قبل النهائي</span>
+                                                    </div>
+                                                </div>
+                                                <div class="peak-event">
+                                                    <div class="peak-date">
+                                                        <span class="peak-day">1</span>
+                                                        <span class="peak-month">ديسمبر</span>
+                                                    </div>
+                                                    <div class="peak-info">
+                                                        <span class="peak-count">3,008</span>
+                                                        <span class="peak-label">منشور</span>
+                                                    </div>
+                                                    <div class="peak-reason">
+                                                        <i class="fas fa-child"></i>
+                                                        <span>افتتاح الفعاليات الشتوية</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="analysis-insight">
+                                            <div class="insight-icon"><i class="fas fa-lightbulb"></i></div>
+                                            <div class="insight-content">
+                                                <h5>الملاحظة الرئيسية</h5>
+                                                <p>الفعاليات الرياضية الكبرى تستحوذ على <strong>91.6%</strong> من التغطية التحريرية (17,346 من أصل 18,943 خبر)، مع تنوع واضح في المصادر (69 مصدراً) يضمن موثوقية القراءة.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <span class="slide__number">13</span>
+                                <div class="slide__platform-logo">
+                                    <span>24°45°</span> Platform
+                                </div>
+                            </section>
+
+                            {% block extra_js %}
+                            <script>
+                            // بيانات خط الاتجاه (الأخبار التحريرية)
+                            const coverageData = {
+                                labels: ['22 أكتوبر', '29 أكتوبر', '5 نوفمبر', '12 نوفمبر', '19 نوفمبر', '26 نوفمبر', '3 ديسمبر', '10 ديسمبر', '17 ديسمبر', '24 ديسمبر', '31 ديسمبر', '7 يناير', '14 يناير'],
+                                values: [73, 169, 76, 203, 183, 372, 487, 356, 372, 155, 151, 43, 38],
+                                colors: ['#2e86de']
+                            };
+
+                            document.addEventListener('DOMContentLoaded', function() {
+                                initCoverageChart();
+                                initMatrixCells();
+                            });
+
+                            function initCoverageChart() {
+                                const ctx = document.getElementById('coverageChart');
+                                if (!ctx) return;
+
+                                new Chart(ctx, {
+                                    type: 'line',
+                                    data: {
+                                        labels: coverageData.labels,
+                                        datasets: [{
+                                            data: coverageData.values,
+                                            label: 'عدد الأخبار',
+                                            borderColor: coverageData.colors[0],
+                                            backgroundColor: 'rgba(46, 134, 222, 0.15)',
+                                            borderWidth: 2,
+                                            fill: true,
+                                            tension: 0.35,
+                                            pointRadius: 4,
+                                            pointBackgroundColor: '#D4AF37',
+                                            pointBorderColor: '#fff',
+                                            pointBorderWidth: 1,
+                                            pointHoverRadius: 6
+                                        }]
+                                    },
+                                    options: {
+                                        responsive: true,
+                                        maintainAspectRatio: false,
+                                        plugins: {
+                                            tooltip: {
+                                                backgroundColor: 'rgba(0,0,0,0.8)',
+                                                titleFont: { family: 'Tajawal', size: 12 },
+                                                bodyFont: { family: 'Tajawal', size: 11 },
+                                                rtl: true,
+                                                textDirection: 'rtl',
+                                                callbacks: {
+                                                    label: function(context) {
+                                                        return `${context.label}: ${context.raw.toLocaleString()} خبر`;
+                                                    }
+                                                }
+                                            },
+                                            legend: { display: false }
+                                        },
+                                        scales: {
+                                            x: {
+                                                grid: { color: 'rgba(255,255,255,0.05)', drawBorder: false },
+                                                ticks: { color: 'rgba(255,255,255,0.7)', font: { family: 'Tajawal', size: 10 } }
+                                            },
+                                            y: {
+                                                grid: { color: 'rgba(255,255,255,0.05)', drawBorder: false },
+                                                ticks: {
+                                                    color: 'rgba(255,255,255,0.7)',
+                                                    font: { family: 'Tajawal', size: 10 },
+                                                    callback: function(value) {
+                                                        return value >= 1000 ? (value/1000).toFixed(1) + 'K' : value;
+                                                    }
+                                                },
+                                                beginAtZero: true
+                                            }
+                                        }
+                                    }
+                                });
+                            }
+
+                            // بيانات مصفوفة تحليل المضمون
+                            const matrixData = {
+                                focus: {
+                                    title: 'تركيز',
+                                    color: '#6ab04c',
+                                    icon: 'fas fa-crosshairs',
+                                    description: 'رسائل ذات أهمية عالية لكن زخمها الإعلامي منخفض. تحتاج إلى تكثيف الجهود لزيادة انتشارها وتكرارها.',
+                                    details: [
+                                        'رسائل استراتيجية مهمة',
+                                        'تحتاج دعم إعلامي أكبر',
+                                        'فرصة لزيادة التأثير',
+                                        'أولوية في الخطة الإعلامية'
+                                    ]
+                                },
+                                enhance: {
+                                    title: 'تعزيز',
+                                    color: '#22a6b3',
+                                    icon: 'fas fa-rocket',
+                                    description: 'رسائل ذات أهمية عالية وزخم إعلامي مرتفع. هذه نقاط القوة التي يجب الحفاظ عليها وتعزيزها.',
+                                    details: [
+                                        'نقاط القوة الإعلامية',
+                                        'تغطية ناجحة ومؤثرة',
+                                        'يجب الحفاظ على الزخم',
+                                        'نموذج للنجاح الإعلامي'
+                                    ]
+                                },
+                                leverage: {
+                                    title: 'استثمار',
+                                    color: '#f1c40f',
+                                    icon: 'fas fa-bullseye',
+                                    description: 'رسائل ذات أهمية منخفضة لكن زخمها الإعلامي مرتفع. يمكن تحويل زخمها لخدمة الرسائل الأهم.',
+                                    details: [
+                                        'زخم مرتفع',
+                                        'أهمية منخفضة',
+                                        'فرصة لإعادة التوجيه',
+                                        'تخدم رسائل أخرى'
+                                    ]
+                                },
+                                correct: {
+                                    title: 'تصحيح',
+                                    color: '#eb8c47',
+                                    icon: 'fas fa-exclamation-triangle',
+                                    description: 'رسائل ذات أهمية منخفضة لكن زخمها مرتفع. تستهلك موارد إعلامية دون عائد مناسب، تحتاج إعادة توجيه.',
+                                    details: [
+                                        'إهدار للموارد الإعلامية',
+                                        'تحتاج إعادة توجيه',
+                                        'تقليل التركيز عليها',
+                                        'نقل الجهد لأولويات أعلى'
+                                    ]
+                                }
+                            };
+
+                            function initMatrixCells() {
+                                const cells = document.querySelectorAll('.matrix-cell');
+                                const explanation = document.getElementById('matrix-explanation');
+                                if (!cells.length || !explanation) return;
+
+                                cells.forEach(cell => {
+                                    cell.addEventListener('click', function() {
+                                        const cellType = this.getAttribute('data-cell');
+                                        const data = matrixData[cellType];
+                                        cells.forEach(c => c.classList.remove('active'));
+                                        this.classList.add('active');
+                                        document.getElementById('explanation-title').textContent = data.title;
+                                        document.getElementById('explanation-text').textContent = data.description;
+                                        const iconEl = document.getElementById('explanation-icon');
+                                        iconEl.innerHTML = `<i class="${data.icon}"></i>`;
+                                        iconEl.style.background = data.color;
+                                        const detailsEl = document.getElementById('explanation-details');
+                                        detailsEl.innerHTML = `<ul>${data.details.map(d => `<li>${d}</li>`).join('')}</ul>`;
+                                        explanation.classList.add('active');
+                                    });
+                                });
+                            }
+
+                            function closeExplanation() {
+                                const explanation = document.getElementById('matrix-explanation');
+                                const cells = document.querySelectorAll('.matrix-cell');
+                                if (explanation) explanation.classList.remove('active');
+                                cells.forEach(c => c.classList.remove('active'));
+                            }
+                            </script>
+                            {% endblock extra_js %}
+            <div class="matrix-container">
+                <!-- المحور الرأسي -->
+                <div class="matrix-axis matrix-axis--y">
+                    <span>أهمية الرسائل</span>
+                    <div class="axis-arrow axis-arrow--up"><i class="fas fa-arrow-up"></i></div>
+                </div>
+                
+                <!-- المصفوفة الرئيسية -->
+                <div class="content-matrix">
+                    <div class="matrix-cell matrix-cell--focus" data-cell="focus">
+                        <span class="cell-label">تركيز</span>
+                    </div>
+                    <div class="matrix-cell matrix-cell--enhance" data-cell="enhance">
+                        <span class="cell-label">تعزيز</span>
+                    </div>
+                    <div class="matrix-cell matrix-cell--improve" data-cell="improve">
+                        <span class="cell-label">تحسين</span>
+                    </div>
+                    <div class="matrix-cell matrix-cell--correct" data-cell="correct">
+                        <span class="cell-label">تصحيح</span>
+                    </div>
+                    <div class="matrix-center">
+                        <span>المضمون</span>
+                        <span>الإعلامي</span>
+                    </div>
+                </div>
+                
+                <!-- المحور الأفقي -->
+                <div class="matrix-axis matrix-axis--x">
+                    <span>الزخم الإعلامي (التكرار)</span>
+                    <div class="axis-arrow axis-arrow--right"><i class="fas fa-arrow-right"></i></div>
+                </div>
+            </div>
+            
+            <!-- تفسير المصفوفة -->
+            <div class="matrix-interpretation">
+                <div class="interp-item interp-focus">
+                    <span class="interp-label">تركيز</span>
+                    <p>أهمية عالية + زخم منخفض = زيادة التغطية</p>
+                </div>
+                <div class="interp-item interp-enhance">
+                    <span class="interp-label">تعزيز</span>
+                    <p>أهمية عالية + زخم عالي = الحفاظ والتطوير</p>
+                </div>
+                <div class="interp-item interp-improve">
+                    <span class="interp-label">تحسين</span>
+                    <p>أهمية منخفضة + زخم منخفض = إعادة تقييم</p>
+                </div>
+                <div class="interp-item interp-correct">
+                    <span class="interp-label">تصحيح</span>
+                    <p>أهمية منخفضة + زخم عالي = إعادة توجيه</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- نافذة الشرح التفاعلية -->
+        <div class="matrix-explanation" id="matrix-explanation">
+            <div class="explanation-content">
+                <button class="explanation-close" onclick="closeExplanation()">
+                    <i class="fas fa-times"></i>
+                </button>
+                <div class="explanation-icon" id="explanation-icon">
+                    <i class="fas fa-info-circle"></i>
+                </div>
+                <h3 id="explanation-title">اختر مربعاً</h3>
+                <p id="explanation-text">اضغط على أي مربع من المصفوفة لعرض شرح المفهوم</p>
+                <div class="explanation-details" id="explanation-details"></div>
+            </div>
+        </div>
+    </div>
+    
+    <span class="slide__number">10</span>
+    <div class="slide__platform-logo">
+        <span>24°45°</span> Platform
+    </div>
+</section>
+
+<!-- =====================================================
+     الشريحة 11: فاصل - التقرير التفصيلي
+     ===================================================== -->
+<section class="slide slide--divider slide--divider-detailed" id="slide-11">
+    <div class="divider-bg">
+        <div class="divider-pattern"></div>
+    </div>
+    
+    <div class="divider-content">
+        <div class="divider-number">02</div>
+        <div class="divider-line"></div>
+        <h2 class="divider-title">الملخص التنفيذي</h2>
+        <p class="divider-subtitle">أبرز النتائج والمؤشرات</p>
+    </div>
+    
+    <span class="slide__number">10</span>
+    <div class="slide__platform-logo">
+        <span>24°45°</span> Platform
+    </div>
+</section>
+
+<!-- =====================================================
+     الشريحة 11: فاصل - التقرير التفصيلي
+     ===================================================== -->
+<section class="slide slide--divider slide--divider-detailed" id="slide-11">
+    <div class="divider-bg">
+        <div class="divider-pattern"></div>
+    </div>
+    
+    <div class="divider-content">
+        <div class="divider-number">03</div>
+        <div class="divider-line"></div>
+        <h2 class="divider-title">التقرير التفصيلي</h2>
+        <p class="divider-subtitle">تحليل معمق للمشهد الإعلامي</p>
+        
+        <!-- المحاور الثلاثة -->
+        <div class="divider-axes">
+            <div class="axis-item">
+                <div class="axis-number">01</div>
+                <div class="axis-icon"><i class="fas fa-newspaper"></i></div>
+                <h4>الإعلام التقليدي</h4>
+                <p>الصحف والمواقع الإخبارية</p>
+            </div>
+            <div class="axis-item">
+                <div class="axis-number">02</div>
+                <div class="axis-icon"><i class="fas fa-hashtag"></i></div>
+                <h4>منصات التواصل الاجتماعي</h4>
+                <p>X، Instagram، Facebook، YouTube، TikTok</p>
+            </div>
+            <div class="axis-item">
+                <div class="axis-number">03</div>
+                <div class="axis-icon"><i class="fas fa-comments"></i></div>
+                <h4>تحليل المواضيع</h4>
+                <p>الموضوعات والاتجاهات الرئيسية</p>
+            </div>
+        </div>
+    </div>
+    
+    <span class="slide__number">11</span>
+    <div class="slide__platform-logo">
+        <span>24°45°</span> Platform
+    </div>
+</section>
+
+<!-- =====================================================
+     الشريحة 12: فاصل ثانوي - الإعلام التقليدي
+     ===================================================== -->
+<section class="slide slide--divider-secondary" id="slide-12">
+    <div class="secondary-divider-bg">
+        <div class="secondary-divider-accent"></div>
+    </div>
+    
+    <div class="secondary-divider-content">
+        <div class="secondary-divider-badge">
+            <span class="badge-section">المحور الأول</span>
+            <span class="badge-number">01</span>
+        </div>
+        
+        <div class="secondary-divider-icon">
+            <i class="fas fa-newspaper"></i>
+        </div>
+        
+        <h2 class="secondary-divider-title">الإعلام التقليدي</h2>
+        <p class="secondary-divider-subtitle">الصحف والمواقع الإخبارية</p>
+        
+        <div class="secondary-divider-details">
+            <div class="detail-item">
+                <i class="fas fa-globe"></i>
+                <span>المواقع الإخبارية المحلية والدولية</span>
+            </div>
+            <div class="detail-item">
+                <i class="fas fa-file-alt"></i>
+                <span>الصحف الورقية والإلكترونية</span>
+            </div>
+            <div class="detail-item">
+                <i class="fas fa-rss"></i>
+                <span>وكالات الأنباء</span>
+            </div>
+        </div>
+    </div>
+    
+    <span class="slide__number">12</span>
+    <div class="slide__platform-logo">
+        <span>24°45°</span> Platform
+    </div>
+</section>
+
+<!-- =====================================================
+     الشريحة 13: ملامح الاهتمام الإعلامي
+     ===================================================== -->
+<section class="slide slide--media-highlights" id="slide-13">
+    <div class="slide__header">
+        <div class="slide__badge">الإعلام التقليدي</div>
+        <h2 class="slide__title">ملامح الاهتمام الإعلامي</h2>
+        <p class="slide__subtitle">تحليل شامل للتغطية الإخبارية عبر المسارات الأربعة | 90 يوماً</p>
+    </div>
+    
+    <div class="slide__content media-dashboard">
+        <!-- الصف العلوي: إحصائيات رئيسية -->
+        <div class="dashboard-stats-row">
+            <div class="stat-card stat-card--total">
+                <div class="stat-icon"><i class="fas fa-newspaper"></i></div>
+                <div class="stat-info">
+                        <span class="stat-number">18,943</span>
+                        <span class="stat-label">إجمالي المنشورات الإخبارية</span>
+                </div>
+            </div>
+            <div class="stat-card stat-card--sources">
+                <div class="stat-icon"><i class="fas fa-globe"></i></div>
+                <div class="stat-info">
+                        <span class="stat-number">69</span>
+                    <span class="stat-label">مصدر إعلامي فريد</span>
+                </div>
+            </div>
+            <div class="stat-card stat-card--qatar">
+                <div class="stat-icon"><i class="fas fa-map-marker-alt"></i></div>
+                <div class="stat-info">
+                        <span class="stat-number">11</span>
+                    <span class="stat-label">مصادر قطرية</span>
+                </div>
+            </div>
+            <div class="stat-card stat-card--international">
+                <div class="stat-icon"><i class="fas fa-globe-americas"></i></div>
+                <div class="stat-info">
+                        <span class="stat-number">40</span>
+                        <span class="stat-label">مصادر دولية</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- الصف الثاني: المسارات الأربعة -->
+        <div class="dashboard-tracks-row">
+            <!-- مسار 1: الوزارة -->
+            <div class="track-card track-card--ministry">
+                <div class="track-card__header">
+                    <div class="track-card__icon"><i class="fas fa-landmark"></i></div>
+                    <div class="track-card__title">
+                        <h4>وزارة الرياضة والشباب</h4>
+                        <span class="track-badge">المسار 01</span>
+                    </div>
+                </div>
+                <div class="track-card__stats">
+                    <div class="track-main-stat">
+                        <span class="track-number">761</span>
+                        <span class="track-unit">منشور</span>
+                    </div>
+                    <div class="track-percentage">
+                        <span class="percentage-value">4.0%</span>
+                        <span class="percentage-bar" style="width: 4.0%"></span>
+                    </div>
+                </div>
+                <div class="track-card__sources">
+                    <div class="source-mini">
+                        <span class="source-name">وكالة الأنباء القطرية</span>
+                        <span class="source-count">80</span>
+                    </div>
+                    <div class="source-mini">
+                        <span class="source-name">الشرق</span>
+                        <span class="source-count">70</span>
+                    </div>
+                    <div class="source-mini">
+                        <span class="source-name">الراية</span>
+                        <span class="source-count">69</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- مسار 2: الفعاليات الكبرى -->
+            <div class="track-card track-card--events">
+                <div class="track-card__header">
+                    <div class="track-card__icon"><i class="fas fa-trophy"></i></div>
+                    <div class="track-card__title">
+                        <h4>الفعاليات الرياضية الكبرى</h4>
+                        <span class="track-badge">المسار 02</span>
+                    </div>
+                </div>
+                <div class="track-card__stats">
+                    <div class="track-main-stat">
+                        <span class="track-number">17,346</span>
+                        <span class="track-unit">منشور</span>
+                    </div>
+                    <div class="track-percentage">
+                        <span class="percentage-value">91.6%</span>
+                        <span class="percentage-bar" style="width: 91.6%"></span>
+                    </div>
+                </div>
+                <div class="track-card__sources">
+                    <div class="source-mini">
+                        <span class="source-name">بوابة الزهراء الإخبارية</span>
+                        <span class="source-count">648</span>
+                    </div>
+                    <div class="source-mini">
+                        <span class="source-name">Klyoum</span>
+                        <span class="source-count">510</span>
+                    </div>
+                    <div class="source-mini">
+                        <span class="source-name">Sahafahh</span>
+                        <span class="source-count">418</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- مسار 3: الرياضة للجميع -->
+            <div class="track-card track-card--community">
+                <div class="track-card__header">
+                    <div class="track-card__icon"><i class="fas fa-running"></i></div>
+                    <div class="track-card__title">
+                        <h4>الفعاليات الرياضية والصحية المحلية</h4>
+                        <span class="track-badge">المسار 03</span>
+                    </div>
+                </div>
+                <div class="track-card__stats">
+                    <div class="track-main-stat">
+                        <span class="track-number">81</span>
+                        <span class="track-unit">منشور</span>
+                    </div>
+                    <div class="track-percentage">
+                        <span class="percentage-value">0.4%</span>
+                        <span class="percentage-bar" style="width: 5%"></span>
+                    </div>
+                </div>
+                <div class="track-card__sources">
+                    <div class="source-mini">
+                        <span class="source-name">The Middle East North Africa Financial Network</span>
+                        <span class="source-count">8</span>
+                    </div>
+                    <div class="source-mini">
+                        <span class="source-name">Qatar Tribune</span>
+                        <span class="source-count">6</span>
+                    </div>
+                    <div class="source-mini">
+                        <span class="source-name">The Peninsula</span>
+                        <span class="source-count">5</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- مسار 4: التراثية -->
+            <div class="track-card track-card--heritage">
+                <div class="track-card__header">
+                    <div class="track-card__icon"><i class="fas fa-feather-alt"></i></div>
+                    <div class="track-card__title">
+                        <h4>الفعاليات التراثية</h4>
+                        <span class="track-badge">المسار 04</span>
+                    </div>
+                </div>
+                <div class="track-card__stats">
+                    <div class="track-main-stat">
+                        <span class="track-number">755</span>
+                        <span class="track-unit">منشور</span>
+                    </div>
+                    <div class="track-percentage">
+                        <span class="percentage-value">4.0%</span>
+                        <span class="percentage-bar" style="width: 4.0%"></span>
+                    </div>
+                </div>
+                <div class="track-card__sources">
+                    <div class="source-mini">
+                        <span class="source-name">الراية</span>
+                        <span class="source-count">132</span>
+                    </div>
+                    <div class="source-mini">
+                        <span class="source-name">الشرق</span>
+                        <span class="source-count">113</span>
+                    </div>
+                    <div class="source-mini">
+                        <span class="source-name">Qatar News</span>
+                        <span class="source-count">105</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- الصف الثالث: توزيع المصادر + الذروة -->
+        <div class="dashboard-bottom-row">
+            <!-- توزيع التغطية حسب نوع الوسيلة + مصادر جغرافية -->
+            <div class="sources-distribution">
+                <div class="section-header-mini">
+                    <i class="fas fa-chart-line"></i>
+                    <h4>التغير الزمني في الاهتمام الإعلامي</h4>
+                </div>
+                <div style="display:flex; gap:16px; align-items:center;">
+                    <div style="flex:1; min-width:320px; height:220px;">
+                        <canvas id="coverageChart"></canvas>
+                    </div>
+                    <div class="distribution-bars" style="flex:1;">
+                        <div class="dist-bar-item">
+                            <div class="dist-bar-header">
+                                <span class="dist-label">إجمالي الأخبار التحريرية</span>
+                                <span class="dist-value">18,943 خبر</span>
+                            </div>
+                            <div class="dist-bar">
+                                <div class="dist-bar-fill dist-bar--qatar" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div class="dist-bar-item">
+                            <div class="dist-bar-header">
+                                <span class="dist-label">إعلام إلكتروني (يشمل وكالات ومواقع)</span>
+                                <span class="dist-value">20,646</span>
+                            </div>
+                            <div class="dist-bar">
+                                <div class="dist-bar-fill dist-bar--international" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div class="dist-bar-item">
+                            <div class="dist-bar-header">
+                                <span class="dist-label">إذاعة/تلفزيون</span>
+                                <span class="dist-value">1,202</span>
+                            </div>
+                            <div class="dist-bar">
+                                <div class="dist-bar-fill dist-bar--arabic" style="width: 20%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="distribution-bars" style="margin-top:12px;">
+                    <div class="dist-bar-item">
+                        <div class="dist-bar-header">
+                            <span class="dist-label">مصادر قطرية</span>
+                            <span class="dist-value">11 من 69</span>
+                        </div>
+                        <div class="dist-bar">
+                            labels: ['22 أكتوبر', '29 أكتوبر', '5 نوفمبر', '12 نوفمبر', '19 نوفمبر', '26 نوفمبر', '3 ديسمبر', '10 ديسمبر', '17 ديسمبر', '24 ديسمبر', '31 ديسمبر', '7 يناير', '14 يناير'],
+                            values: [73, 169, 76, 203, 183, 372, 487, 356, 372, 155, 151, 43, 38],
+                            colors: ['#2e86de']
+                    <div class="dist-bar-item">
+                        <div class="dist-bar-header">
+                    </div>
+                    <div class="dist-bar-item">
+                        <div class="dist-bar-header">
+                            <span class="dist-value">40 من 69</span>
+                        </div>
+                        <div class="dist-bar">
+                            <div class="dist-bar-fill dist-bar--international" style="width: 58%"></div>
+                        </div>
+                    </div>
+                </div>
+                                type: 'line',
+            
+            <!-- ذروة الاهتمام -->
+            <div class="peak-attention">
+                <div class="section-header-mini">
+                                        label: 'عدد الأخبار',
+                                        borderColor: coverageData.colors[0],
+                                        backgroundColor: 'rgba(46, 134, 222, 0.15)',
+                                        borderWidth: 2,
+                                        fill: true,
+                                        tension: 0.35,
+                                        pointRadius: 4,
+                                        pointBackgroundColor: '#D4AF37',
+                                        pointBorderColor: '#fff',
+                                        pointBorderWidth: 1,
+                                        pointHoverRadius: 6
+                <div class="peak-events">
+                    <div class="peak-event">
+                        <div class="peak-date">
+                            <span class="peak-day">19</span>
+                            <span class="peak-month">ديسمبر</span>
+                        <div class="peak-info">
+                        <div class="peak-reason">
+                            <i class="fas fa-futbol"></i>
+                            <span>ذروة تغطية الفعاليات الكبرى</span>
+                        </div>
+                    </div>
+                    <div class="peak-event">
+                        <div class="peak-date">
+                            <span class="peak-day">18</span>
+                                                    return `${context.label}: ${context.raw.toLocaleString()} خبر`;
+                            <span class="peak-label">منشور</span>
+                        </div>
+                                        },
+                                        legend: { display: false }
+                                    },
+                                    scales: {
+                                        x: {
+                                            grid: { color: 'rgba(255,255,255,0.05)', drawBorder: false },
+                                            ticks: { color: 'rgba(255,255,255,0.7)', font: { family: 'Tajawal', size: 10 } }
+                                        },
+                                        y: {
+                                            grid: { color: 'rgba(255,255,255,0.05)', drawBorder: false },
+                                            ticks: {
+                                                color: 'rgba(255,255,255,0.7)',
+                                                font: { family: 'Tajawal', size: 10 },
+                                                callback: function(value) {
+                                                    return value >= 1000 ? (value/1000).toFixed(1) + 'K' : value;
+                                                }
+                                            },
+                                            beginAtZero: true
+                        <div class="peak-reason">
+                            <i class="fas fa-flag-checkered"></i>
+                            <span>زخم ما قبل النهائي</span>
+                        </div>
+                    </div>
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            cutout: '60%',
+            plugins: {
+                legend: {
+                    display: false
+                },
+                tooltip: {
+                    backgroundColor: 'rgba(0,0,0,0.8)',
+                    titleFont: { family: 'Tajawal', size: 12 },
+                    bodyFont: { family: 'Tajawal', size: 11 },
+                    rtl: true,
+                    textDirection: 'rtl',
+                    callbacks: {
+                        label: function(context) {
+                            const value = context.raw;
+                            const total = context.dataset.data.reduce((a, b) => a + b, 0);
+                            const percentage = ((value / total) * 100).toFixed(1);
+                            return `${context.label}: ${value.toLocaleString()} (${percentage}%)`;
+                        }
+                    }
+                }
+            }
+        }
+    });
+}
+
+function initTrendChart() {
+    const ctx = document.getElementById('trendChart');
+    if (!ctx) return;
+    
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: trendData.labels,
+            datasets: [{
+                label: 'المنشورات الإخبارية',
+                data: trendData.values,
+                borderColor: '#D4AF37',
+                backgroundColor: 'rgba(212, 175, 55, 0.1)',
+                borderWidth: 2,
+                fill: true,
+                tension: 0.4,
+                pointRadius: 3,
+                pointBackgroundColor: '#D4AF37',
+                pointBorderColor: '#fff',
+                pointBorderWidth: 1,
+                pointHoverRadius: 6
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                x: {
+                    grid: {
+                        color: 'rgba(255,255,255,0.05)',
+                        drawBorder: false
+                    },
+                    ticks: {
+                        color: 'rgba(255,255,255,0.5)',
+                        font: { family: 'Tajawal', size: 9 },
+                        maxRotation: 45,
+                        minRotation: 45
+                    }
+                },
+                y: {
+                    grid: {
+                        color: 'rgba(255,255,255,0.05)',
+                        drawBorder: false
+                    },
+                    ticks: {
+                        color: 'rgba(255,255,255,0.5)',
+                        font: { family: 'Tajawal', size: 10 },
+                        callback: function(value) {
+                            if (value >= 1000) return (value/1000).toFixed(1) + 'K';
+                            return value;
+                        }
+                    },
+                    beginAtZero: true
+                }
+            },
+            plugins: {
+                legend: {
+                    display: false
+                },
+                tooltip: {
+                    backgroundColor: 'rgba(0,0,0,0.8)',
+                    titleFont: { family: 'Tajawal', size: 12 },
+                    bodyFont: { family: 'Tajawal', size: 11 },
+                    rtl: true,
+                    textDirection: 'rtl',
+                    callbacks: {
+                        label: function(context) {
+                            return `${context.raw.toLocaleString()} منشور`;
+                        }
+                    }
+                }
+            }
+        }
+    });
+}
+
+// =====================================================
+// مصفوفة تحليل المضمون الإعلامي - التفاعلية
+// =====================================================
+
+const matrixData = {
+    focus: {
+        title: 'تركيز',
+        color: '#6ab04c',
+        icon: 'fas fa-crosshairs',
+        description: 'رسائل ذات أهمية عالية لكن زخمها الإعلامي منخفض. تحتاج إلى تكثيف الجهود لزيادة انتشارها وتكرارها.',
+        details: [
+            'رسائل استراتيجية مهمة',
+            'تحتاج دعم إعلامي أكبر',
+            'فرصة لزيادة التأثير',
+            'أولوية في الخطة الإعلامية'
+        ]
+    },
+    enhance: {
+        title: 'تعزيز',
+        color: '#22a6b3',
+        icon: 'fas fa-rocket',
+        description: 'رسائل ذات أهمية عالية وزخم إعلامي مرتفع. هذه نقاط القوة التي يجب الحفاظ عليها وتعزيزها.',
+        details: [
+            'نقاط القوة الإعلامية',
+            'تغطية ناجحة ومؤثرة',
+            'يجب الحفاظ على الزخم',
+            'نموذج للنجاح الإعلامي'
+        ]
+    },
+    improve: {
+        title: 'تحسين',
+        color: '#4a90d9',
+        icon: 'fas fa-chart-line',
+        description: 'رسائل ذات أهمية منخفضة وزخم منخفض. تحتاج إلى إعادة تقييم جدواها أو تحسين صياغتها.',
+        details: [
+            'مراجعة الأولويات',
+            'إعادة صياغة الرسائل',
+            'تحسين جودة المحتوى',
+            'تقييم الجدوى الإعلامية'
+        ]
+    },
+    correct: {
+        title: 'تصحيح',
+        color: '#eb8c47',
+        icon: 'fas fa-exclamation-triangle',
+        description: 'رسائل ذات أهمية منخفضة لكن زخمها مرتفع. تستهلك موارد إعلامية دون عائد مناسب، تحتاج إعادة توجيه.',
+        details: [
+            'إهدار للموارد الإعلامية',
+            'تحتاج إعادة توجيه',
+            'تقليل التركيز عليها',
+            'نقل الجهد لأولويات أعلى'
+        ]
+    }
+};
+
+// إضافة مستمعي الأحداث للمربعات
+document.addEventListener('DOMContentLoaded', function() {
+    const cells = document.querySelectorAll('.matrix-cell');
+    const explanation = document.getElementById('matrix-explanation');
+    
+    cells.forEach(cell => {
+        cell.addEventListener('click', function() {
+            const cellType = this.getAttribute('data-cell');
+            const data = matrixData[cellType];
+            
+            // إزالة الفئة النشطة من جميع المربعات
+            cells.forEach(c => c.classList.remove('active'));
+            
+            // إضافة الفئة النشطة للمربع المحدد
+            this.classList.add('active');
+            
+            // تحديث محتوى الشرح
+            document.getElementById('explanation-title').textContent = data.title;
+            document.getElementById('explanation-text').textContent = data.description;
+            
+            // تحديث الأيقونة واللون
+            const iconEl = document.getElementById('explanation-icon');
+            iconEl.innerHTML = `<i class="${data.icon}"></i>`;
+            iconEl.style.background = data.color;
+            
+            // تحديث التفاصيل
+            const detailsEl = document.getElementById('explanation-details');
+            detailsEl.innerHTML = `<ul>${data.details.map(d => `<li>${d}</li>`).join('')}</ul>`;
+            
+            // إظهار نافذة الشرح
+            explanation.classList.add('active');
+        });
+    });
+});
+
+// إغلاق نافذة الشرح
+function closeExplanation() {
+    const explanation = document.getElementById('matrix-explanation');
+    const cells = document.querySelectorAll('.matrix-cell');
+    
+    explanation.classList.remove('active');
+    cells.forEach(c => c.classList.remove('active'));
+}
+</script>
+{% endblock extra_js %}

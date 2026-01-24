@@ -1,0 +1,216 @@
+{
+  "summary": {
+    "total_records": 38134,
+    "files_processed": 8,
+    "duplicates_removed": 10144
+  },
+  "volume_by_source": {
+    "Traditional Media": 25275,
+    "X Platform": 12859
+  },
+  "volume_by_category": {
+    "Global Events": 32752,
+    "Heritage Events": 4028,
+    "Ministry": 1070,
+    "Sports Events": 284
+  },
+  "sentiment_analysis": {
+    "neutral": 23314,
+    "positive": 12170,
+    "negative": 2400,
+    "unknown": 67
+  },
+  "top_influencers_traditional": [
+    {
+      "name": "الأمير إبن الملك",
+      "posts": 197,
+      "reach": 519342263,
+      "engagement": 3658
+    },
+    {
+      "name": "Grok",
+      "posts": 67,
+      "reach": 456748834,
+      "engagement": 56
+    },
+    {
+      "name": "قنوات الكاس",
+      "posts": 229,
+      "reach": 368507329,
+      "engagement": 2897
+    },
+    {
+      "name": "قناة الجزيرة",
+      "posts": 12,
+      "reach": 273053768,
+      "engagement": 284
+    },
+    {
+      "name": "Alexander Behunin",
+      "posts": 5,
+      "reach": 250374096,
+      "engagement": 0
+    }
+  ],
+  "top_influencers_x": [
+    {
+      "name": "تذاكر || online_ticket",
+      "posts": 184,
+      "reach": 656650,
+      "engagement": 680
+    },
+    {
+      "name": "تذكرتـك | TICKET 🎫🎟️",
+      "posts": 317,
+      "reach": 518978,
+      "engagement": 1
+    },
+    {
+      "name": "تيكت زوم || Ticket Zoom🎫",
+      "posts": 266,
+      "reach": 398507,
+      "engagement": 1
+    },
+    {
+      "name": "الراية القطرية",
+      "posts": 1,
+      "reach": 329563,
+      "engagement": 0
+    },
+    {
+      "name": "one Ticket",
+      "posts": 63,
+      "reach": 194426,
+      "engagement": 575
+    }
+  ],
+  "top_engaged_posts": [
+    {
+      "title": "Owusu relishes Africa homecoming with Wuhan",
+      "engagement": 84812,
+      "source_type": "Traditional Media",
+      "category": "Global Events",
+      "url": "https://www.fifa.com/en/tournaments/womens/womens-champions-cup/2026/articles/mavis-owusu-wuhan-inte"
+    },
+    {
+      "title": "Visa presale for final three FIFA Intercontinental Cup showdowns launched",
+      "engagement": 81908,
+      "source_type": "Traditional Media",
+      "category": "Global Events",
+      "url": "https://www.fifa.com/en/tournaments/mens/intercontinentalcup/2025/articles/intercontinental-cup-qata"
+    },
+    {
+      "title": "Italy's Inacio talks heroes, hobbies and cherished memories",
+      "engagement": 81257,
+      "source_type": "Traditional Media",
+      "category": "Global Events",
+      "url": "https://www.fifa.com/en/tournaments/mens/u17worldcup/qatar-2025/articles/get-to-know-samuele-inacio-"
+    },
+    {
+      "title": "FIFA Arab Cup preliminary squad lists confirmed",
+      "engagement": 81249,
+      "source_type": "Traditional Media",
+      "category": "Global Events",
+      "url": "https://www.fifa.com/en/tournaments/mens/arab-cup/qatar-2025/articles/fifa-arab-cup-preliminary-squa"
+    },
+    {
+      "title": "Rilany Silva through her player’s eyes",
+      "engagement": 80439,
+      "source_type": "Traditional Media",
+      "category": "Global Events",
+      "url": "https://www.fifa.com/en/tournaments/womens/u17womensworldcup/morocco-2025/articles/rilany-silva-braz"
+    }
+  ],
+  "top_hashtags": [
+    {
+      "hashtag": "#كأس_العرب",
+      "count": 8685
+    },
+    {
+      "hashtag": "#قطر",
+      "count": 6277
+    },
+    {
+      "hashtag": "#كأس_العرب2025",
+      "count": 4544
+    },
+    {
+      "hashtag": "#كتارا",
+      "count": 2980
+    },
+    {
+      "hashtag": "#مهرجان_مرمي",
+      "count": 2677
+    },
+    {
+      "hashtag": "#جمعية_القناص",
+      "count": 2659
+    },
+    {
+      "hashtag": "#mall",
+      "count": 1895
+    },
+    {
+      "hashtag": "#dragon",
+      "count": 1884
+    },
+    {
+      "hashtag": "#سيلين",
+      "count": 1760
+    },
+    {
+      "hashtag": "#bahrain",
+      "count": 1510
+    }
+  ],
+  "files_info": [
+    {
+      "file": "وزارة_الرياضة_والشباب_القطرية_OR_وزارة_الرياضة_وال",
+      "source_type": "Traditional Media",
+      "category": "Ministry",
+      "rows": 1070
+    },
+    {
+      "file": "وزارة_الرياضة_والشباب_القطرية_OR_وزارة_الرياضة_وال",
+      "source_type": "X Platform",
+      "category": "Ministry",
+      "rows": 295
+    },
+    {
+      "file": "تحدي_الوكرة_OR_Al_Wakra_Challenge_OR_دروب_قطر_OR_Q",
+      "source_type": "Traditional Media",
+      "category": "Sports Events",
+      "rows": 287
+    },
+    {
+      "file": "تحدي_الوكرة_OR_Al_Wakra_Challenge_OR_دروب_قطر_OR_Q",
+      "source_type": "X Platform",
+      "category": "Sports Events",
+      "rows": 137
+    },
+    {
+      "file": "_____authoralgannas_qa_OR_authormawaterqatar_OR_au",
+      "source_type": "Traditional Media",
+      "category": "Heritage Events",
+      "rows": 4028
+    },
+    {
+      "file": "_____authoralgannas_qa_OR_authormawaterqatar_OR_au",
+      "source_type": "X Platform",
+      "category": "Heritage Events",
+      "rows": 2461
+    },
+    {
+      "file": "______________كأس_العرب_OR_مونديال_العرب_OR_بطولة",
+      "source_type": "Traditional Media",
+      "category": "Global Events",
+      "rows": 20000
+    },
+    {
+      "file": "______________كأس_العرب_OR_مونديال_العرب_OR_بطولة",
+      "source_type": "X Platform",
+      "category": "Global Events",
+      "rows": 20000
+    }
+  ]
+}

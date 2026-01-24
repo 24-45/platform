@@ -1,0 +1,5407 @@
+{
+  "ministry_analytics": {
+    "name": "وزارة الرياضة والشباب - الإعلام التقليدي",
+    "total_mentions": 5058,
+    "date_range": {
+      "start": "2025-10-25",
+      "end": "2026-01-22",
+      "days": 89
+    },
+    "sentiment": {
+      "counts": {
+        "neutral": 3150,
+        "positive": 1647,
+        "negative": 168,
+        "unknown": 3
+      },
+      "percentages": {
+        "neutral": 62.28,
+        "positive": 32.56,
+        "negative": 3.32,
+        "unknown": 0.06
+      }
+    },
+    "source_types": {
+      "online news": 2731,
+      "social network": 2302,
+      "Unknown": 12,
+      "forum": 9,
+      "rss": 2,
+      "blog": 1,
+      "print": 1
+    },
+    "languages": {
+      "Arabic": 4128,
+      "English": 775,
+      "Sindhi": 33,
+      "Russian": 14,
+      "Portuguese": 11,
+      "Egyptian Arabic": 2,
+      "Turkish": 1,
+      "Indonesian": 1,
+      "Malay (macrolanguage)": 1,
+      "French": 1
+    },
+    "countries": {
+      "Qatar": 2913,
+      "Egypt": 430,
+      "United Arab Emirates": 390,
+      "Saudi Arabia": 259,
+      "Jordan": 90,
+      "United States": 75,
+      "Kuwait": 70,
+      "Bahrain": 51,
+      "Oman": 27,
+      "Lebanon": 25,
+      "India": 22,
+      "Morocco": 21,
+      "United Kingdom": 19,
+      "Yemen": 13,
+      "Dominican Republic": 12
+    },
+    "top_sources": {
+      "Twitter": 2118,
+      "Al Raya الراية": 264,
+      "Qatar News": 259,
+      "Al Sharq بوابة الشرق": 246,
+      "Qatar News Agency (QNA) وكالة الأنباء القطرية": 224,
+      "news.alestad.com": 123,
+      "The Middle East North Africa Financial Network": 103,
+      "Youtube": 90,
+      "Snapchat": 69,
+      "The Peninsula": 68,
+      "Qatar Tribune": 62,
+      "منصة مشيرب": 55,
+      "Mena Focus": 43,
+      "Gulf Press": 41,
+      "Gulf Times": 41,
+      "MSN United Arab Emirates": 41,
+      "Al Arab Newspaper - صحيفة العرب": 36,
+      "Arabkhabar": 34,
+      "Klyoum": 32,
+      "Al Watan جريدة الوطن": 29
+    },
+    "categories": {
+      "أخرى": 2111,
+      "فعاليات تراثية": 909,
+      "مسؤولون": 860,
+      "شباب ومبادرات": 598,
+      "إرث ورؤية": 231,
+      "استضافة وتنظيم": 195,
+      "جماهير وتجربة": 48,
+      "بنية تحتية": 36,
+      "دوري وأندية": 30,
+      "منتخبات": 15,
+      "بطولات دولية": 14,
+      "غير مصنف": 11
+    },
+    "reach": {
+      "total": 1201461898,
+      "average": 242621,
+      "max": 89369492
+    },
+    "engagement": {
+      "total": 14495,
+      "average": 10
+    },
+    "daily_trend": {
+      "2025-10-25": 43,
+      "2025-10-26": 38,
+      "2025-10-27": 48,
+      "2025-10-28": 33,
+      "2025-10-29": 84,
+      "2025-10-30": 53,
+      "2025-10-31": 43,
+      "2025-11-01": 37,
+      "2025-11-02": 33,
+      "2025-11-03": 47,
+      "2025-11-04": 30,
+      "2025-11-05": 124,
+      "2025-11-06": 97,
+      "2025-11-07": 26,
+      "2025-11-08": 37,
+      "2025-11-09": 66,
+      "2025-11-10": 79,
+      "2025-11-11": 55,
+      "2025-11-12": 56,
+      "2025-11-13": 58,
+      "2025-11-14": 24,
+      "2025-11-15": 18,
+      "2025-11-16": 35,
+      "2025-11-17": 59,
+      "2025-11-18": 41,
+      "2025-11-19": 60,
+      "2025-11-20": 46,
+      "2025-11-21": 39,
+      "2025-11-22": 21,
+      "2025-11-23": 82,
+      "2025-11-24": 110,
+      "2025-11-25": 60,
+      "2025-11-26": 41,
+      "2025-11-27": 29,
+      "2025-11-28": 23,
+      "2025-11-29": 22,
+      "2025-11-30": 42,
+      "2025-12-01": 31,
+      "2025-12-02": 96,
+      "2025-12-03": 98,
+      "2025-12-04": 65,
+      "2025-12-05": 42,
+      "2025-12-06": 84,
+      "2025-12-07": 58,
+      "2025-12-08": 59,
+      "2025-12-09": 51,
+      "2025-12-10": 55,
+      "2025-12-11": 49,
+      "2025-12-12": 45,
+      "2025-12-13": 101,
+      "2025-12-14": 68,
+      "2025-12-15": 82,
+      "2025-12-16": 49,
+      "2025-12-17": 45,
+      "2025-12-18": 147,
+      "2025-12-19": 32,
+      "2025-12-20": 61,
+      "2025-12-21": 67,
+      "2025-12-22": 41,
+      "2025-12-23": 42,
+      "2025-12-24": 45,
+      "2025-12-25": 36,
+      "2025-12-26": 22,
+      "2025-12-27": 68,
+      "2025-12-28": 28,
+      "2025-12-29": 21,
+      "2025-12-30": 36,
+      "2025-12-31": 80,
+      "2026-01-01": 58,
+      "2026-01-02": 53,
+      "2026-01-03": 36,
+      "2026-01-04": 59,
+      "2026-01-05": 44,
+      "2026-01-06": 64,
+      "2026-01-07": 95,
+      "2026-01-08": 57,
+      "2026-01-09": 32,
+      "2026-01-10": 81,
+      "2026-01-11": 47,
+      "2026-01-12": 60,
+      "2026-01-13": 75,
+      "2026-01-14": 65,
+      "2026-01-15": 101,
+      "2026-01-16": 185,
+      "2026-01-17": 50,
+      "2026-01-18": 47,
+      "2026-01-19": 57,
+      "2026-01-20": 36,
+      "2026-01-21": 56,
+      "2026-01-22": 57
+    },
+    "weekly_trend": {
+      "Week_1": 343,
+      "Week_2": 420,
+      "Week_3": 583,
+      "Week_4": 206,
+      "Week_43": 81,
+      "Week_44": 331,
+      "Week_45": 427,
+      "Week_46": 325,
+      "Week_47": 348,
+      "Week_48": 327,
+      "Week_49": 474,
+      "Week_50": 428,
+      "Week_51": 483,
+      "Week_52": 282
+    },
+    "top_authors": {
+      "OoredooDohaMarathon": 279,
+      "الشرق": 203,
+      "قنوات الكاس": 137,
+      "صحيفة العرب - قطر": 100,
+      "جمعية القناص القطرية": 95,
+      "مركز نوماس": 81,
+      "Ooredoo Qatar": 70,
+      "الراية القطرية": 45,
+      "خالد آل جميح 🇸🇦": 40,
+      "Brouq - بروق": 35,
+      "Qatar Equestrian Federation & Modern Pentathlon": 34,
+      "صحيفة الشرق - قطر": 32,
+      "ALSHAQABTV": 31,
+      "العرب القطرية": 26,
+      "🐬بوصالح خبر بحري 🐬": 23
+    },
+    "top_hashtags": [
+      [
+        "#قطر",
+        541
+      ],
+      [
+        "#ماراثون_الدوحة_من_أريدُ",
+        328
+      ],
+      [
+        "#قنوات_الكاس",
+        216
+      ],
+      [
+        "#اختر_سباقك",
+        158
+      ],
+      [
+        "#الرياض",
+        129
+      ],
+      [
+        "#منصة_شووف",
+        129
+      ],
+      [
+        "#كتارا",
+        129
+      ],
+      [
+        "#أبوظبي",
+        125
+      ],
+      [
+        "#أبوظبي_الرياضية",
+        125
+      ],
+      [
+        "#أفغانستان",
+        125
+      ],
+      [
+        "#الأردن",
+        125
+      ],
+      [
+        "#الامارات",
+        125
+      ],
+      [
+        "#البحرين",
+        125
+      ],
+      [
+        "#الجزائر",
+        124
+      ],
+      [
+        "#الجزيرة",
+        123
+      ],
+      [
+        "#الحكاية",
+        120
+      ],
+      [
+        "#جمعية_القناص",
+        118
+      ],
+      [
+        "#جريدة_العرب",
+        112
+      ],
+      [
+        "#dohamarathonbyooredoo",
+        107
+      ],
+      [
+        "#مهرجان_مرمي",
+        100
+      ]
+    ],
+    "sample_positive": [
+      {
+        "date": "2025-12-27",
+        "source": "MSN.com",
+        "text": "The officially opened today at Qatar University’s Sports and Events Complex, launching five days of world-class competition that will run ...",
+        "reach": 89369492
+      },
+      {
+        "date": "2025-12-27",
+        "source": "MSN.com",
+        "text": "I took my friends on an unforgettable ride through the Sealine desert in Qatar, experiencing the thrill of high-speed dune bashing from ...",
+        "reach": 89369492
+      },
+      {
+        "date": "2025-12-14",
+        "source": "Trading View",
+        "text": "Doha, Qatar: Ooredoo, Qatar’s leading telecommunications provider, was proud to be the Official Telecom Sponsor of Polo AlMarsa Qatar 2025, ...",
+        "reach": 28119792
+      },
+      {
+        "date": "2025-12-13",
+        "source": "Youm7.com - اليوم السابع",
+        "text": "السبت، 13 ديسمبر 2025 10:15 ص",
+        "reach": 7297345
+      },
+      {
+        "date": "2025-12-31",
+        "source": "Travel And Tour World",
+        "text": "There is no doubt that Doha Festival City is one of the top attractions in Qatar , as it has definitely become an important part of the ...",
+        "reach": 7076066
+      }
+    ],
+    "sample_negative": [
+      {
+        "date": "2025-12-02",
+        "source": "Youm7.com - اليوم السابع",
+        "text": "الثلاثاء، 02 ديسمبر 2025 12:00 ص",
+        "reach": 7984122
+      },
+      {
+        "date": "2025-12-09",
+        "source": "Youm7.com - اليوم السابع",
+        "text": "الثلاثاء، 09 ديسمبر 2025 01:00 ص",
+        "reach": 7297345
+      },
+      {
+        "date": "2025-12-02",
+        "source": "CNN Arabic",
+        "text": "... دبي، الإمارات العربية المتحدة ( CNN )-- ارتفعت حصيلة قتلى العواصف الأخيرة التي اجتاحت عددا من الدول الآسيوية، إندونيسيا وتايلاند وسريلانكا، ...",
+        "reach": 2409427
+      },
+      {
+        "date": "2025-11-12",
+        "source": "Hespress",
+        "text": "... كان المغرب عبر تاريخه الطويل ملتقىً للحضارات ومعبراً للثقافات، تفاعل فيه الأمازيغي والعربي والإفريقي والأندلسي والمتوسطي في بوتقة واحدة ...",
+        "reach": 1852772
+      },
+      {
+        "date": "2025-12-01",
+        "source": "جريدة الدستور",
+        "text": "... اجتمعت الأعاصير الاستوائية مع أمطار الرياح الموسمية الغزيرة لتدمر مساحات واسعة من آسيا، ما أسفر عن مقتل أكثر من ألف شخص وتشريد العديدين ...",
+        "reach": 1624691
+      }
+    ],
+    "sample_neutral": [
+      {
+        "date": "2025-12-08",
+        "source": "Twitter",
+        "text": "QT @AJELNEWS24: عاجل 🔴 القطار السريع يربط مطار الملك سلمان في الرياض بمطار حمد بن خليفة في الدوحة . https://t.co/S02pOTMKjY ; عاجل 🔴 توقيع ا ...",
+        "reach": 11260073
+      },
+      {
+        "date": "2026-01-16",
+        "source": "Twitter",
+        "text": "🟣🎤 لقاء خاص | في لقاء خاص مع beIN SPORTS على هامش مشاركته في ماراثون الدوحة 2026 أشاد الفرنسي مامادو ساكو نجم باريس سان جيرمان @PSG_inside ا ...",
+        "reach": 9799879
+      },
+      {
+        "date": "2026-01-16",
+        "source": "Twitter",
+        "text": "🟪🎥 تقرير خاص | البطل الأولمبي الإثيبوبي تاميرات تولا يفوز بلقب النسخة الـ 14 من ماراثون الدوحة محطما الرقم القياسي 🎙️ تقرير | بلال قيزة @Bil ...",
+        "reach": 9799733
+      },
+      {
+        "date": "2025-12-04",
+        "source": "Al Jazeera Arabic Online الجزيرة.نت",
+        "text": "... اختتام أعمال النسخة الشبابية لمنتدى الدوحة (وكالة الأنباء القطرية) الدوحة ـ مفهوم العدالة وتحولاته في ظل المتغيرات العالمية كان العنوان ...",
+        "reach": 9233142
+      },
+      {
+        "date": "2025-11-30",
+        "source": "Al Jazeera Arabic Online الجزيرة.نت",
+        "text": "... المشاركون بالمؤتمر سلطوا الضوء على دور الإعلام في تأجيج النزاعات عبر خطاب الكراهية (الجزيرة) الدوحة- اختتمت اليوم الأحد في العاصمة القطرية ...",
+        "reach": 9233142
+      }
+    ]
+  },
+  "ministry_social": {
+    "name": "وزارة الرياضة والشباب - منصات التواصل",
+    "total_mentions": 2732,
+    "date_range": {
+      "start": "2025-10-25",
+      "end": "2026-01-22",
+      "days": 89
+    },
+    "sentiment": {
+      "counts": {
+        "neutral": 1584,
+        "positive": 1125,
+        "negative": 20,
+        "unknown": 3
+      },
+      "percentages": {
+        "neutral": 57.98,
+        "positive": 41.18,
+        "negative": 0.73,
+        "unknown": 0.11
+      }
+    },
+    "source_types": {
+      "online news": 2731,
+      "print": 1
+    },
+    "languages": {
+      "Arabic": 2051,
+      "English": 669,
+      "Russian": 7,
+      "Egyptian Arabic": 2,
+      "Turkish": 1,
+      "Indonesian": 1,
+      "Tagalog": 1
+    },
+    "countries": {
+      "Qatar": 1489,
+      "Egypt": 399,
+      "United Arab Emirates": 382,
+      "Saudi Arabia": 137,
+      "Jordan": 68,
+      "United States": 52,
+      "Bahrain": 49,
+      "Kuwait": 27,
+      "Lebanon": 23,
+      "Morocco": 19,
+      "Oman": 16,
+      "United Kingdom": 13,
+      "India": 8,
+      "Russia": 7,
+      "Iraq": 5
+    },
+    "top_sources": {
+      "Al Raya الراية": 264,
+      "Qatar News": 259,
+      "Al Sharq بوابة الشرق": 246,
+      "Qatar News Agency (QNA) وكالة الأنباء القطرية": 224,
+      "news.alestad.com": 123,
+      "The Middle East North Africa Financial Network": 103,
+      "The Peninsula": 68,
+      "Qatar Tribune": 62,
+      "منصة مشيرب": 55,
+      "Mena Focus": 43,
+      "Gulf Press": 41,
+      "MSN United Arab Emirates": 41,
+      "Gulf Times": 41,
+      "Al Arab Newspaper - صحيفة العرب": 36,
+      "Arabkhabar": 34,
+      "Klyoum": 32,
+      "Al Watan جريدة الوطن": 29,
+      "World News": 29,
+      "Qatar Newswire": 29,
+      "Zawya": 27
+    },
+    "categories": {
+      "أخرى": 1077,
+      "فعاليات تراثية": 541,
+      "مسؤولون": 492,
+      "شباب ومبادرات": 380,
+      "استضافة وتنظيم": 149,
+      "إرث ورؤية": 33,
+      "جماهير وتجربة": 24,
+      "بطولات دولية": 13,
+      "بنية تحتية": 9,
+      "دوري وأندية": 8,
+      "منتخبات": 6
+    },
+    "reach": {
+      "total": 734950682,
+      "average": 269015,
+      "max": 89369492
+    },
+    "engagement": {
+      "total": 6003,
+      "average": 7
+    },
+    "daily_trend": {
+      "2025-10-25": 14,
+      "2025-10-26": 15,
+      "2025-10-27": 16,
+      "2025-10-28": 20,
+      "2025-10-29": 56,
+      "2025-10-30": 41,
+      "2025-10-31": 19,
+      "2025-11-01": 21,
+      "2025-11-02": 23,
+      "2025-11-03": 29,
+      "2025-11-04": 19,
+      "2025-11-05": 38,
+      "2025-11-06": 46,
+      "2025-11-07": 13,
+      "2025-11-08": 24,
+      "2025-11-09": 32,
+      "2025-11-10": 52,
+      "2025-11-11": 37,
+      "2025-11-12": 27,
+      "2025-11-13": 31,
+      "2025-11-14": 17,
+      "2025-11-15": 7,
+      "2025-11-16": 23,
+      "2025-11-17": 26,
+      "2025-11-18": 7,
+      "2025-11-19": 33,
+      "2025-11-20": 23,
+      "2025-11-21": 26,
+      "2025-11-22": 14,
+      "2025-11-23": 32,
+      "2025-11-24": 95,
+      "2025-11-25": 31,
+      "2025-11-26": 16,
+      "2025-11-27": 20,
+      "2025-11-28": 15,
+      "2025-11-29": 17,
+      "2025-11-30": 32,
+      "2025-12-01": 16,
+      "2025-12-02": 16,
+      "2025-12-03": 55,
+      "2025-12-04": 48,
+      "2025-12-05": 26,
+      "2025-12-06": 30,
+      "2025-12-07": 31,
+      "2025-12-08": 27,
+      "2025-12-09": 31,
+      "2025-12-10": 36,
+      "2025-12-11": 24,
+      "2025-12-12": 24,
+      "2025-12-13": 84,
+      "2025-12-14": 49,
+      "2025-12-15": 54,
+      "2025-12-16": 27,
+      "2025-12-17": 32,
+      "2025-12-18": 132,
+      "2025-12-19": 19,
+      "2025-12-20": 39,
+      "2025-12-21": 52,
+      "2025-12-22": 26,
+      "2025-12-23": 18,
+      "2025-12-24": 34,
+      "2025-12-25": 18,
+      "2025-12-26": 18,
+      "2025-12-27": 30,
+      "2025-12-28": 14,
+      "2025-12-29": 12,
+      "2025-12-30": 27,
+      "2025-12-31": 65,
+      "2026-01-01": 34,
+      "2026-01-02": 30,
+      "2026-01-03": 18,
+      "2026-01-04": 36,
+      "2026-01-05": 27,
+      "2026-01-06": 36,
+      "2026-01-07": 32,
+      "2026-01-08": 27,
+      "2026-01-09": 21,
+      "2026-01-10": 28,
+      "2026-01-11": 33,
+      "2026-01-12": 36,
+      "2026-01-13": 42,
+      "2026-01-14": 14,
+      "2026-01-15": 39,
+      "2026-01-16": 13,
+      "2026-01-17": 10,
+      "2026-01-18": 22,
+      "2026-01-19": 34,
+      "2026-01-20": 20,
+      "2026-01-21": 24,
+      "2026-01-22": 35
+    },
+    "weekly_trend": {
+      "Week_1": 222,
+      "Week_2": 204,
+      "Week_3": 176,
+      "Week_4": 113,
+      "Week_43": 29,
+      "Week_44": 196,
+      "Week_45": 201,
+      "Week_46": 194,
+      "Week_47": 161,
+      "Week_48": 226,
+      "Week_49": 222,
+      "Week_50": 275,
+      "Week_51": 355,
+      "Week_52": 158
+    },
+    "top_authors": {
+      "الشرق": 203,
+      "العرب القطرية": 26,
+      "التاريخ": 15,
+      "هبه الوهالي": 10,
+      "سيف الحموري": 7,
+      "هدى حسنى": 5,
+      "Doha": 5,
+      "دار الخليج": 4,
+      "محمد السواح": 4,
+      "العلم": 3,
+      "Shahzaib": 3,
+      "الجريدة الكويتية": 3,
+      "وام": 3,
+      "كراكيب نت": 3,
+      "البيان": 3
+    },
+    "top_hashtags": [],
+    "sample_positive": [
+      {
+        "date": "2025-12-27",
+        "source": "MSN.com",
+        "text": "The officially opened today at Qatar University’s Sports and Events Complex, launching five days of world-class competition that will run ...",
+        "reach": 89369492
+      },
+      {
+        "date": "2025-12-27",
+        "source": "MSN.com",
+        "text": "I took my friends on an unforgettable ride through the Sealine desert in Qatar, experiencing the thrill of high-speed dune bashing from ...",
+        "reach": 89369492
+      },
+      {
+        "date": "2025-12-14",
+        "source": "Trading View",
+        "text": "Doha, Qatar: Ooredoo, Qatar’s leading telecommunications provider, was proud to be the Official Telecom Sponsor of Polo AlMarsa Qatar 2025, ...",
+        "reach": 28119792
+      },
+      {
+        "date": "2025-12-13",
+        "source": "Youm7.com - اليوم السابع",
+        "text": "السبت، 13 ديسمبر 2025 10:15 ص",
+        "reach": 7297345
+      },
+      {
+        "date": "2025-12-31",
+        "source": "Travel And Tour World",
+        "text": "There is no doubt that Doha Festival City is one of the top attractions in Qatar , as it has definitely become an important part of the ...",
+        "reach": 7076066
+      }
+    ],
+    "sample_negative": [
+      {
+        "date": "2025-12-02",
+        "source": "Youm7.com - اليوم السابع",
+        "text": "الثلاثاء، 02 ديسمبر 2025 12:00 ص",
+        "reach": 7984122
+      },
+      {
+        "date": "2025-12-09",
+        "source": "Youm7.com - اليوم السابع",
+        "text": "الثلاثاء، 09 ديسمبر 2025 01:00 ص",
+        "reach": 7297345
+      },
+      {
+        "date": "2025-12-02",
+        "source": "CNN Arabic",
+        "text": "... دبي، الإمارات العربية المتحدة ( CNN )-- ارتفعت حصيلة قتلى العواصف الأخيرة التي اجتاحت عددا من الدول الآسيوية، إندونيسيا وتايلاند وسريلانكا، ...",
+        "reach": 2409427
+      },
+      {
+        "date": "2025-11-12",
+        "source": "Hespress",
+        "text": "... كان المغرب عبر تاريخه الطويل ملتقىً للحضارات ومعبراً للثقافات، تفاعل فيه الأمازيغي والعربي والإفريقي والأندلسي والمتوسطي في بوتقة واحدة ...",
+        "reach": 1852772
+      },
+      {
+        "date": "2025-12-01",
+        "source": "جريدة الدستور",
+        "text": "... اجتمعت الأعاصير الاستوائية مع أمطار الرياح الموسمية الغزيرة لتدمر مساحات واسعة من آسيا، ما أسفر عن مقتل أكثر من ألف شخص وتشريد العديدين ...",
+        "reach": 1624691
+      }
+    ],
+    "sample_neutral": [
+      {
+        "date": "2025-12-04",
+        "source": "Al Jazeera Arabic Online الجزيرة.نت",
+        "text": "... اختتام أعمال النسخة الشبابية لمنتدى الدوحة (وكالة الأنباء القطرية) الدوحة ـ مفهوم العدالة وتحولاته في ظل المتغيرات العالمية كان العنوان ...",
+        "reach": 9233142
+      },
+      {
+        "date": "2025-11-30",
+        "source": "Al Jazeera Arabic Online الجزيرة.نت",
+        "text": "... المشاركون بالمؤتمر سلطوا الضوء على دور الإعلام في تأجيج النزاعات عبر خطاب الكراهية (الجزيرة) الدوحة- اختتمت اليوم الأحد في العاصمة القطرية ...",
+        "reach": 9233142
+      },
+      {
+        "date": "2025-11-29",
+        "source": "Al Jazeera Arabic Online الجزيرة.نت",
+        "text": "... المؤتمر يسعى إلى تفكيك آليات إنتاج الخطاب الإعلامي الغربي حول الحرب على غزة (الجزيرة) الدوحة- انطلقت صباح اليوم السبت في العاصمة القطرية ...",
+        "reach": 9233142
+      },
+      {
+        "date": "2025-11-03",
+        "source": "Al Jazeera Arabic Online الجزيرة.نت",
+        "text": "... سيطرة كينية في سباق ماراثون نيويورك لهذا العام (الفرنسية) واصل العداؤون الكينيون تألقهم في سباقات المسافات الطويلة بعدما سيطروا على منصات ...",
+        "reach": 8804812
+      },
+      {
+        "date": "2025-11-25",
+        "source": "Yeni Şafak",
+        "text": "... الدوحة.. عقيلة الشرع تبحث التعاون التعليمي مع مؤسسة قطر للتربية خلال لقائها الشيخة موزا رئيس مجلس إدارة المؤسسة.. بحثت لطيفة الدروبي عقيلة ...",
+        "reach": 8789918
+      }
+    ]
+  },
+  "كأس القارات FIFA_analytics": {
+    "name": "كأس القارات FIFA - الإعلام التقليدي",
+    "total_mentions": 9566,
+    "date_range": {
+      "start": "2025-10-25",
+      "end": "2026-01-22",
+      "days": 89
+    },
+    "sentiment": {
+      "counts": {
+        "neutral": 6417,
+        "positive": 2232,
+        "negative": 889,
+        "unknown": 28
+      },
+      "percentages": {
+        "neutral": 67.08,
+        "positive": 23.33,
+        "negative": 9.29,
+        "unknown": 0.29
+      }
+    },
+    "source_types": {
+      "online news": 9541,
+      "print": 25
+    },
+    "languages": {
+      "English": 4759,
+      "Arabic": 3176,
+      "Vietnamese": 473,
+      "Spanish": 140,
+      "Dutch": 134,
+      "German": 122,
+      "Indonesian": 118,
+      "Danish": 69,
+      "Portuguese": 65,
+      "Italian": 64
+    },
+    "countries": {
+      "United States": 2261,
+      "Egypt": 1466,
+      "United Kingdom": 554,
+      "Brazil": 528,
+      "Saudi Arabia": 524,
+      "United Arab Emirates": 464,
+      "Vietnam": 457,
+      "Qatar": 429,
+      "Canada": 238,
+      "India": 194,
+      "Bahrain": 161,
+      "Indonesia": 117,
+      "Morocco": 111,
+      "Nigeria": 109,
+      "Germany": 100
+    },
+    "top_sources": {
+      "Mix Vale": 495,
+      "AP (Hosted)": 210,
+      "مصرس": 147,
+      "Klyoum": 139,
+      "Yahoo! Sports": 128,
+      "Sahafahh.net": 125,
+      "NABDN": 119,
+      "موقع نبض - nabd": 83,
+      "Archysport": 77,
+      "Qatar News": 71,
+      "Youm7.com - اليوم السابع": 71,
+      "MSN Ireland": 65,
+      "Vietnam.vn": 64,
+      "بوابة فيتو": 61,
+      "World News": 60,
+      "MSN Philippines": 56,
+      "Yahoo! Canada": 56,
+      "NewsBreak": 55,
+      "The Middle East North Africa Financial Network": 55,
+      "MSN Singapore": 53
+    },
+    "categories": {
+      "أخرى": 6042,
+      "بطولات دولية": 609,
+      "دوري وأندية": 570,
+      "استضافة وتنظيم": 548,
+      "بنية تحتية": 412,
+      "شباب ومبادرات": 353,
+      "غير مصنف": 318,
+      "مسؤولون": 284,
+      "منتخبات": 188,
+      "جماهير وتجربة": 179,
+      "إرث ورؤية": 44,
+      "فعاليات تراثية": 19
+    },
+    "reach": {
+      "total": 27017984183,
+      "average": 2824966,
+      "max": 149089485
+    },
+    "engagement": {
+      "total": 258173,
+      "average": 165
+    },
+    "daily_trend": {
+      "2025-10-25": 45,
+      "2025-10-26": 12,
+      "2025-10-27": 44,
+      "2025-10-28": 40,
+      "2025-10-29": 286,
+      "2025-10-30": 73,
+      "2025-10-31": 47,
+      "2025-11-01": 16,
+      "2025-11-02": 7,
+      "2025-11-03": 41,
+      "2025-11-04": 64,
+      "2025-11-05": 47,
+      "2025-11-06": 39,
+      "2025-11-07": 42,
+      "2025-11-08": 23,
+      "2025-11-09": 18,
+      "2025-11-10": 31,
+      "2025-11-11": 20,
+      "2025-11-12": 210,
+      "2025-11-13": 51,
+      "2025-11-14": 65,
+      "2025-11-15": 80,
+      "2025-11-16": 65,
+      "2025-11-17": 28,
+      "2025-11-18": 55,
+      "2025-11-19": 48,
+      "2025-11-20": 54,
+      "2025-11-21": 33,
+      "2025-11-22": 21,
+      "2025-11-23": 164,
+      "2025-11-24": 61,
+      "2025-11-25": 37,
+      "2025-11-26": 42,
+      "2025-11-27": 278,
+      "2025-11-28": 99,
+      "2025-11-29": 41,
+      "2025-11-30": 56,
+      "2025-12-01": 67,
+      "2025-12-02": 63,
+      "2025-12-03": 111,
+      "2025-12-04": 147,
+      "2025-12-05": 112,
+      "2025-12-06": 91,
+      "2025-12-07": 49,
+      "2025-12-08": 52,
+      "2025-12-09": 201,
+      "2025-12-10": 609,
+      "2025-12-11": 304,
+      "2025-12-12": 350,
+      "2025-12-13": 593,
+      "2025-12-14": 208,
+      "2025-12-15": 232,
+      "2025-12-16": 511,
+      "2025-12-17": 985,
+      "2025-12-18": 446,
+      "2025-12-19": 199,
+      "2025-12-20": 156,
+      "2025-12-21": 45,
+      "2025-12-22": 58,
+      "2025-12-23": 57,
+      "2025-12-24": 28,
+      "2025-12-25": 46,
+      "2025-12-26": 197,
+      "2025-12-27": 27,
+      "2025-12-28": 57,
+      "2025-12-29": 70,
+      "2025-12-30": 87,
+      "2025-12-31": 67,
+      "2026-01-01": 91,
+      "2026-01-02": 74,
+      "2026-01-03": 57,
+      "2026-01-04": 19,
+      "2026-01-05": 27,
+      "2026-01-06": 23,
+      "2026-01-07": 52,
+      "2026-01-08": 26,
+      "2026-01-09": 28,
+      "2026-01-10": 18,
+      "2026-01-11": 19,
+      "2026-01-12": 95,
+      "2026-01-13": 114,
+      "2026-01-14": 34,
+      "2026-01-15": 63,
+      "2026-01-16": 41,
+      "2026-01-17": 9,
+      "2026-01-18": 7,
+      "2026-01-19": 15,
+      "2026-01-20": 12,
+      "2026-01-21": 21,
+      "2026-01-22": 113
+    },
+    "weekly_trend": {
+      "Week_1": 465,
+      "Week_2": 193,
+      "Week_3": 363,
+      "Week_4": 161,
+      "Week_43": 57,
+      "Week_44": 513,
+      "Week_45": 274,
+      "Week_46": 522,
+      "Week_47": 403,
+      "Week_48": 614,
+      "Week_49": 640,
+      "Week_50": 2317,
+      "Week_51": 2574,
+      "Week_52": 470
+    },
+    "top_authors": {
+      "Janderson Luiz": 161,
+      "Robin Gremmel Afp": 117,
+      "Menna Farouk Afp": 99,
+      "صفاء كامل": 52,
+      "Jerome Pugmire": 34,
+      "الشرق": 30,
+      "Allen Cone": 25,
+      "Javier Escribano": 24,
+      "Jamie Gardner": 24,
+      "عمرو أحمد": 23,
+      "Maria": 22,
+      "Beatriz": 22,
+      "Diane Stein": 22,
+      "Ivan Arjona": 21,
+      "Roberto Casillas": 21
+    },
+    "top_hashtags": [],
+    "sample_positive": [
+      {
+        "date": "2025-11-04",
+        "source": "MSN.com",
+        "text": "... ; ; ; Three years ago, as he shuffled through the doors of Westminster Hall, his Peaky Blinders outfit weighing heavy and the mutters of “ ...",
+        "reach": 96275936
+      },
+      {
+        "date": "2025-11-01",
+        "source": "MSN.com",
+        "text": "Featured games Live Seattle vs Minnesota See details Nov 8 Charlotte vs New York City See details Nov 8 Cincinnati vs ...",
+        "reach": 96275936
+      },
+      {
+        "date": "2025-12-30",
+        "source": "MSN.com",
+        "text": "Featured games Live Burnley vs Newcastle See details Live Nottingham vs Everton See details Live Chelsea vs Bournemouth See ...",
+        "reach": 89369492
+      },
+      {
+        "date": "2025-12-22",
+        "source": "MSN.com",
+        "text": "Featured games Final Fulham vs Nottingham See details Dec 26 Manchester United vs Newcastle See details Dec 27 Nottingham vs ...",
+        "reach": 89369492
+      },
+      {
+        "date": "2025-11-22",
+        "source": "Dailymotion",
+        "text": "No, it's a really significant moment. It's great to be on the show and talk about Salford City, which is a passion of mine.",
+        "reach": 82711217
+      }
+    ],
+    "sample_negative": [
+      {
+        "date": "2025-12-19",
+        "source": "The New York Times",
+        "text": "The protests erupted over “ unacceptable ” £77 tickets. In 2016, when Liverpool announced new prices ranging from the equivalent of $13 to ...",
+        "reach": 143725879
+      },
+      {
+        "date": "2025-12-10",
+        "source": "The New York Times",
+        "text": "Martina Navratilova has never been shy about putting herself in line for criticism. She defected from Czechoslovakia to the United States ...",
+        "reach": 143725879
+      },
+      {
+        "date": "2025-10-30",
+        "source": "MSN.com",
+        "text": "Featured games Final Los Angeles vs Austin See details Nov 1 New York City vs Charlotte See details Nov 1 Chicago Fire vs ...",
+        "reach": 96275936
+      },
+      {
+        "date": "2025-10-30",
+        "source": "MSN.com",
+        "text": "... ; ; ; View on Watch View on Watch Donald Trump didn’t try and hide his delight at the gift of an ancient crown symbolizing the “divine ...",
+        "reach": 96275936
+      },
+      {
+        "date": "2025-10-29",
+        "source": "MSN.com",
+        "text": "Featured games Final Charlotte vs New York City See details Oct 30 Los Angeles vs Austin See details Nov 1 New York City vs ...",
+        "reach": 96275936
+      }
+    ],
+    "sample_neutral": [
+      {
+        "date": "2025-11-06",
+        "source": "The New York Times",
+        "text": "In recent months, 2026 men’s World Cup host cities in the United States have watched on as President Donald Trump has repeatedly warned ...",
+        "reach": 149089485
+      },
+      {
+        "date": "2025-11-01",
+        "source": "The New York Times",
+        "text": "Tony Scholes, chief football officer of the Premier League, will be leaving to join the USL as president of its new first-division men’s ...",
+        "reach": 149089485
+      },
+      {
+        "date": "2025-11-01",
+        "source": "The New York Times",
+        "text": "The 2031 Men’s Rugby World Cup which will be held in the United States has seen 27 cities and areas apply to host games, World Rugby have ...",
+        "reach": 149089485
+      },
+      {
+        "date": "2026-01-16",
+        "source": "The New York Times",
+        "text": "... “BREAKING NEWS,” Gianni Infantino crowed on Instagram , before the news release had even dropped. “UNBELIEVABLE.” He was trumpeting a ...",
+        "reach": 144590092
+      },
+      {
+        "date": "2025-12-12",
+        "source": "The New York Times",
+        "text": "This week, I decided it might be nice, as a Brit living in New York City, to go with my partner and watch the New York City Ballet ...",
+        "reach": 143725879
+      }
+    ]
+  },
+  "كأس القارات FIFA_social": {
+    "name": "كأس القارات FIFA - منصات التواصل",
+    "total_mentions": 20000,
+    "date_range": {
+      "start": "2025-10-25",
+      "end": "2026-01-21",
+      "days": 88
+    },
+    "sentiment": {
+      "counts": {
+        "neutral": 14729,
+        "positive": 4609,
+        "negative": 658,
+        "unknown": 4
+      },
+      "percentages": {
+        "neutral": 73.65,
+        "positive": 23.04,
+        "negative": 3.29,
+        "unknown": 0.02
+      }
+    },
+    "source_types": {
+      "social network": 20000
+    },
+    "languages": {
+      "English": 13837,
+      "Arabic": 3355,
+      "French": 898,
+      "Spanish": 789,
+      "Portuguese": 679,
+      "Indonesian": 135,
+      "Sindhi": 73,
+      "Italian": 42,
+      "Turkish": 30,
+      "Polish": 24
+    },
+    "countries": {
+      "Nigeria": 2403,
+      "Brazil": 1052,
+      "United States": 824,
+      "Saudi Arabia": 822,
+      "France": 777,
+      "Ghana": 654,
+      "Qatar": 586,
+      "United Kingdom": 397,
+      "South Africa": 266,
+      "Russia": 238,
+      "Kenya": 224,
+      "Spain": 165,
+      "Egypt": 133,
+      "Uganda": 131,
+      "Kuwait": 127
+    },
+    "top_sources": {
+      "Twitter": 20000
+    },
+    "categories": {
+      "أخرى": 15413,
+      "دوري وأندية": 1740,
+      "بطولات دولية": 1546,
+      "استضافة وتنظيم": 408,
+      "بنية تحتية": 278,
+      "جماهير وتجربة": 277,
+      "إرث ورؤية": 140,
+      "مسؤولون": 101,
+      "منتخبات": 59,
+      "شباب ومبادرات": 36,
+      "فعاليات تراثية": 2
+    },
+    "reach": {
+      "total": 4471798311,
+      "average": 223589,
+      "max": 24650281
+    },
+    "engagement": {
+      "total": 584774,
+      "average": 178
+    },
+    "daily_trend": {
+      "2025-10-25": 24,
+      "2025-10-26": 9,
+      "2025-10-27": 5,
+      "2025-10-28": 5,
+      "2025-10-29": 61,
+      "2025-10-30": 25,
+      "2025-10-31": 16,
+      "2025-11-01": 7,
+      "2025-11-02": 43,
+      "2025-11-03": 115,
+      "2025-11-04": 107,
+      "2025-11-05": 50,
+      "2025-11-06": 1,
+      "2025-11-07": 7,
+      "2025-11-08": 10,
+      "2025-11-09": 4,
+      "2025-11-10": 5,
+      "2025-11-11": 6,
+      "2025-11-12": 16,
+      "2025-11-13": 5,
+      "2025-11-14": 6,
+      "2025-11-15": 55,
+      "2025-11-16": 14,
+      "2025-11-17": 22,
+      "2025-11-18": 14,
+      "2025-11-19": 11,
+      "2025-11-20": 19,
+      "2025-11-21": 19,
+      "2025-11-22": 12,
+      "2025-11-23": 48,
+      "2025-11-24": 44,
+      "2025-11-25": 169,
+      "2025-11-26": 26,
+      "2025-11-27": 14,
+      "2025-11-28": 15,
+      "2025-11-29": 30,
+      "2025-11-30": 1138,
+      "2025-12-01": 252,
+      "2025-12-02": 48,
+      "2025-12-03": 639,
+      "2025-12-04": 463,
+      "2025-12-05": 83,
+      "2025-12-06": 33,
+      "2025-12-07": 74,
+      "2025-12-08": 52,
+      "2025-12-09": 202,
+      "2025-12-10": 332,
+      "2025-12-11": 407,
+      "2025-12-12": 180,
+      "2025-12-13": 1356,
+      "2025-12-14": 1664,
+      "2025-12-15": 398,
+      "2025-12-16": 1149,
+      "2025-12-17": 4554,
+      "2025-12-18": 2740,
+      "2025-12-19": 681,
+      "2025-12-20": 488,
+      "2025-12-21": 133,
+      "2025-12-22": 86,
+      "2025-12-23": 238,
+      "2025-12-24": 34,
+      "2025-12-25": 173,
+      "2025-12-26": 52,
+      "2025-12-27": 9,
+      "2025-12-28": 4,
+      "2025-12-29": 15,
+      "2025-12-30": 18,
+      "2025-12-31": 35,
+      "2026-01-01": 35,
+      "2026-01-02": 28,
+      "2026-01-03": 72,
+      "2026-01-04": 10,
+      "2026-01-05": 98,
+      "2026-01-06": 51,
+      "2026-01-07": 193,
+      "2026-01-08": 75,
+      "2026-01-09": 117,
+      "2026-01-10": 69,
+      "2026-01-11": 35,
+      "2026-01-12": 10,
+      "2026-01-13": 28,
+      "2026-01-14": 11,
+      "2026-01-15": 8,
+      "2026-01-16": 10,
+      "2026-01-17": 8,
+      "2026-01-18": 128,
+      "2026-01-19": 48,
+      "2026-01-20": 170,
+      "2026-01-21": 27
+    },
+    "weekly_trend": {
+      "Week_1": 213,
+      "Week_2": 638,
+      "Week_3": 203,
+      "Week_4": 245,
+      "Week_43": 33,
+      "Week_44": 162,
+      "Week_45": 294,
+      "Week_46": 107,
+      "Week_47": 145,
+      "Week_48": 1436,
+      "Week_49": 1592,
+      "Week_50": 4193,
+      "Week_51": 10143,
+      "Week_52": 596
+    },
+    "top_authors": {
+      "Grok": 403,
+      "C. Mervyn Graham ™®": 214,
+      "قنوات الكاس": 86,
+      "beIN SPORTS": 58,
+      "صالح العيد": 57,
+      "Passion #PSG 1982": 48,
+      "SC News": 43,
+      "الراية القطرية": 36,
+      "Khalifa alhitmi": 33,
+      "Jack": 30,
+      "😎": 30,
+      "Sports City": 29,
+      "عمرو": 28,
+      "The Peninsula Qatar": 27,
+      "Paris Saint-Germain": 27
+    },
+    "top_hashtags": [
+      [
+        "#fifaintercontinentalcup",
+        4255
+      ],
+      [
+        "#psgfla",
+        719
+      ],
+      [
+        "#psg",
+        634
+      ],
+      [
+        "#flamengo",
+        522
+      ],
+      [
+        "#fotonuggetinqatar",
+        427
+      ],
+      [
+        "#كأس_القارات_للأندية",
+        321
+      ],
+      [
+        "#قنوات_الكاس",
+        258
+      ],
+      [
+        "#كأس_القارات_للأندية_2025",
+        255
+      ],
+      [
+        "#football",
+        240
+      ],
+      [
+        "#منصة_شووف",
+        234
+      ],
+      [
+        "#ficc2025",
+        217
+      ],
+      [
+        "#crflamengo",
+        211
+      ],
+      [
+        "#entertainment",
+        211
+      ],
+      [
+        "#fc26",
+        211
+      ],
+      [
+        "#fifa",
+        202
+      ],
+      [
+        "#fun",
+        201
+      ],
+      [
+        "#fla",
+        199
+      ],
+      [
+        "#easportsfc26",
+        198
+      ],
+      [
+        "#intercontinentalcup",
+        162
+      ],
+      [
+        "#futebol",
+        157
+      ]
+    ],
+    "sample_positive": [
+      {
+        "date": "2025-12-18",
+        "source": "Twitter",
+        "text": "باريس سان جيرمان توج بطلاً لكأس القارات للأندية FIFA قطر 2025™ إثر فوزه في النهائي على فلامنغو البرازيلي بركلات الترجيح (2-1) بعد التعادل في ...",
+        "reach": 10325513
+      },
+      {
+        "date": "2025-12-11",
+        "source": "Twitter",
+        "text": "🟣🎥تقرير خاص | توج فلامينغو بلقب ديربي الأمريكتين بفوزه على كروز أزول 2 - 1 ضمن منافسات المباريات الختامية من كأس القارات للأندية المقامة في ...",
+        "reach": 9717250
+      },
+      {
+        "date": "2025-12-09",
+        "source": "Twitter",
+        "text": "قطر تتجهز لاستضافة كأس القارات 2025 وتعد الجماهير بتجربة مميزة https://t.co/7RFpYTr3IA",
+        "reach": 9441700
+      },
+      {
+        "date": "2026-01-16",
+        "source": "Twitter",
+        "text": "Gracias por la corrección. Actualizando: Desde que Mbappé fichó por el Real Madrid en junio de 2024: Títulos ganados por PSG: - Ligue 1 2024 ...",
+        "reach": 7534793
+      },
+      {
+        "date": "2026-01-16",
+        "source": "Twitter",
+        "text": "Gracias por la corrección. Actualizando: Desde que Mbappé fichó por el Real Madrid en junio de 2024: Títulos ganados por PSG: - Ligue 1 2024 ...",
+        "reach": 7534733
+      }
+    ],
+    "sample_negative": [
+      {
+        "date": "2025-12-19",
+        "source": "Twitter",
+        "text": "PSG Intercontinental Cup shootout hero Safonov sidelined with hand fracture https://t.co/HzepfLHMJ4 https://t.co/HzepfLHMJ4",
+        "reach": 24650281
+      },
+      {
+        "date": "2025-12-19",
+        "source": "Twitter",
+        "text": "PSG Intercontinental Cup shootout hero Safonov sidelined with hand fracture https://t.co/Z4XM2gV55W https://t.co/Z4XM2gV55W",
+        "reach": 24649028
+      },
+      {
+        "date": "2026-01-20",
+        "source": "Twitter",
+        "text": "dhie_ardy @idextratime Jamal Musiala cedera pada 5 Juli 2025 saat Bayern kalah dari PSG di FIFA Club World Cup. Cederanya patah tulang kaki ...",
+        "reach": 7598486
+      },
+      {
+        "date": "2026-01-14",
+        "source": "Twitter",
+        "text": "Based on 2025 FIFA Club World Cup data, Barcelona did not participate (failed to qualify via UEFA rankings). Participating teams like Real M ...",
+        "reach": 7511014
+      },
+      {
+        "date": "2026-01-13",
+        "source": "Twitter",
+        "text": "Ei, baseado nos seus tweets, a melhor opinião que você deu foi sobre o nível do futebol brasileiro subindo com retornos de jogadores como Pa ...",
+        "reach": 7493330
+      }
+    ],
+    "sample_neutral": [
+      {
+        "date": "2025-12-17",
+        "source": "Twitter",
+        "text": "🏆 Ligue 1 🏆 Coupe de France 🏆 Trophée de Champions 🏆 UEFA Champions League 🏆 UEFA Super Cup 🏆 FIFIA Intercontinental Cup 2025 was PSG's year ...",
+        "reach": 16451597
+      },
+      {
+        "date": "2025-12-15",
+        "source": "Twitter",
+        "text": "📍 Doha #FIFAIntercontinentalCup https://t.co/HKnuG9NHEo",
+        "reach": 14618847
+      },
+      {
+        "date": "2025-12-15",
+        "source": "Twitter",
+        "text": "Les Parisiens sont à Doha ! 🇶🇦 #FIFAIntercontinentalCup https://t.co/9ogi1lq1Vq",
+        "reach": 14618268
+      },
+      {
+        "date": "2025-12-14",
+        "source": "Twitter",
+        "text": "📄 Le groupe parisien pour la finale de la Coupe Intercontinentale au Qatar. #PSGFLA I #FIFAIntercontinentalCup https://t.co/Sps7p2CMbV",
+        "reach": 14613773
+      },
+      {
+        "date": "2025-12-17",
+        "source": "Twitter",
+        "text": "باريس سان جيرمان يتحدى فلامنجو فى نهائى كأس القارات للأندية الليلة https://t.co/SIZotZ8iX7",
+        "reach": 12297647
+      }
+    ]
+  },
+  "كأس العرب 2025 (FIFA Arab Cup)_analytics": {
+    "name": "كأس العرب 2025 (FIFA Arab Cup) - الإعلام التقليدي",
+    "total_mentions": 10974,
+    "date_range": {
+      "start": "2025-10-25",
+      "end": "2026-01-22",
+      "days": 89
+    },
+    "sentiment": {
+      "counts": {
+        "neutral": 7414,
+        "positive": 3395,
+        "negative": 135,
+        "unknown": 30
+      },
+      "percentages": {
+        "neutral": 67.56,
+        "positive": 30.94,
+        "negative": 1.23,
+        "unknown": 0.27
+      }
+    },
+    "source_types": {
+      "online news": 10973,
+      "print": 1
+    },
+    "languages": {
+      "Arabic": 7973,
+      "English": 2821,
+      "Indonesian": 28,
+      "Egyptian Arabic": 25,
+      "German": 22,
+      "French": 17,
+      "Italian": 13,
+      "Dutch": 12,
+      "Spanish": 6,
+      "Norwegian": 6
+    },
+    "countries": {
+      "Egypt": 2259,
+      "Qatar": 1675,
+      "Saudi Arabia": 1443,
+      "United Arab Emirates": 1275,
+      "Morocco": 815,
+      "Jordan": 641,
+      "United States": 523,
+      "Bahrain": 486,
+      "Kuwait": 261,
+      "Iraq": 176,
+      "Yemen": 149,
+      "United Kingdom": 137,
+      "India": 102,
+      "Lebanon": 97,
+      "Palestinian Territory": 80
+    },
+    "top_sources": {
+      "بوابة الزهراء الإخبارية": 369,
+      "Klyoum": 360,
+      "Sahafahh.net": 348,
+      "موقع نبض - nabd": 253,
+      "NABDN": 235,
+      "Qatar News": 232,
+      "The Middle East North Africa Financial Network": 216,
+      "World News": 203,
+      "Al Sharq بوابة الشرق": 190,
+      "Al Raya الراية": 176,
+      "Qatar News Agency (QNA) وكالة الأنباء القطرية": 157,
+      "Qatar Tribune": 118,
+      "The Peninsula": 114,
+      "MSN United Arab Emirates": 112,
+      "مصرس": 102,
+      "Gulf Times": 96,
+      "Akher Khabar": 96,
+      "Arabkhabar": 95,
+      "Mena Focus": 78,
+      "مصر اليوم": 76
+    },
+    "categories": {
+      "أخرى": 3606,
+      "بطولات دولية": 2288,
+      "منتخبات": 1555,
+      "مسؤولون": 1039,
+      "استضافة وتنظيم": 843,
+      "بنية تحتية": 722,
+      "جماهير وتجربة": 271,
+      "دوري وأندية": 254,
+      "شباب ومبادرات": 231,
+      "غير مصنف": 68,
+      "فعاليات تراثية": 60,
+      "إرث ورؤية": 37
+    },
+    "reach": {
+      "total": 7945498296,
+      "average": 724227,
+      "max": 143725879
+    },
+    "engagement": {
+      "total": 189480,
+      "average": 79
+    },
+    "daily_trend": {
+      "2025-10-25": 39,
+      "2025-10-26": 30,
+      "2025-10-27": 74,
+      "2025-10-28": 33,
+      "2025-10-29": 39,
+      "2025-10-30": 47,
+      "2025-10-31": 12,
+      "2025-11-01": 32,
+      "2025-11-02": 16,
+      "2025-11-03": 9,
+      "2025-11-04": 11,
+      "2025-11-05": 18,
+      "2025-11-06": 6,
+      "2025-11-07": 26,
+      "2025-11-08": 20,
+      "2025-11-09": 15,
+      "2025-11-10": 10,
+      "2025-11-11": 38,
+      "2025-11-12": 41,
+      "2025-11-13": 26,
+      "2025-11-14": 24,
+      "2025-11-15": 73,
+      "2025-11-16": 43,
+      "2025-11-17": 33,
+      "2025-11-18": 69,
+      "2025-11-19": 80,
+      "2025-11-20": 62,
+      "2025-11-21": 81,
+      "2025-11-22": 55,
+      "2025-11-23": 211,
+      "2025-11-24": 153,
+      "2025-11-25": 159,
+      "2025-11-26": 246,
+      "2025-11-27": 190,
+      "2025-11-28": 98,
+      "2025-11-29": 417,
+      "2025-11-30": 358,
+      "2025-12-01": 663,
+      "2025-12-02": 484,
+      "2025-12-03": 353,
+      "2025-12-04": 304,
+      "2025-12-05": 224,
+      "2025-12-06": 228,
+      "2025-12-07": 195,
+      "2025-12-08": 331,
+      "2025-12-09": 431,
+      "2025-12-10": 301,
+      "2025-12-11": 311,
+      "2025-12-12": 275,
+      "2025-12-13": 177,
+      "2025-12-14": 283,
+      "2025-12-15": 300,
+      "2025-12-16": 268,
+      "2025-12-17": 296,
+      "2025-12-18": 828,
+      "2025-12-19": 501,
+      "2025-12-20": 191,
+      "2025-12-21": 98,
+      "2025-12-22": 79,
+      "2025-12-23": 84,
+      "2025-12-24": 78,
+      "2025-12-25": 63,
+      "2025-12-26": 51,
+      "2025-12-27": 18,
+      "2025-12-28": 16,
+      "2025-12-29": 25,
+      "2025-12-30": 36,
+      "2025-12-31": 43,
+      "2026-01-01": 34,
+      "2026-01-02": 24,
+      "2026-01-03": 12,
+      "2026-01-04": 113,
+      "2026-01-05": 131,
+      "2026-01-06": 16,
+      "2026-01-07": 17,
+      "2026-01-08": 8,
+      "2026-01-09": 12,
+      "2026-01-10": 17,
+      "2026-01-11": 8,
+      "2026-01-12": 6,
+      "2026-01-13": 14,
+      "2026-01-14": 11,
+      "2026-01-15": 4,
+      "2026-01-16": 2,
+      "2026-01-17": 14,
+      "2026-01-18": 16,
+      "2026-01-19": 15,
+      "2026-01-20": 35,
+      "2026-01-21": 21,
+      "2026-01-22": 15
+    },
+    "weekly_trend": {
+      "Week_1": 287,
+      "Week_2": 209,
+      "Week_3": 67,
+      "Week_4": 86,
+      "Week_43": 69,
+      "Week_44": 253,
+      "Week_45": 105,
+      "Week_46": 255,
+      "Week_47": 591,
+      "Week_48": 1621,
+      "Week_49": 2451,
+      "Week_50": 2109,
+      "Week_51": 2482,
+      "Week_52": 389
+    },
+    "top_authors": {
+      "الشرق": 148,
+      "عبده": 44,
+      "شريف": 34,
+      "هاي كورة": 28,
+      "نور": 26,
+      "ميرنا": 24,
+      "محمد جمال": 24,
+      "كراكيب نت": 23,
+      "Abdallah": 21,
+      "كورا نيو": 20,
+      "البوابة": 18,
+      "Janderson Luiz": 17,
+      "مصر اليوم": 17,
+      "هبه الوهالي": 16,
+      "زيد عفوت": 16
+    },
+    "top_hashtags": [],
+    "sample_positive": [
+      {
+        "date": "2025-12-01",
+        "source": "MSN.com",
+        "text": "Featured tournaments Final · Nov 2 NASCAR Cup Series Championship See details Final · Oct 26 Xfinity 500 See details Final · Oct 19 ...",
+        "reach": 90830350
+      },
+      {
+        "date": "2025-11-28",
+        "source": "MSN.com",
+        "text": "The 2025 Qatar Grand Prix sprint weekend lived up to its hype — and it was Oscar Piastri who stole the spotlight. In a tense and ...",
+        "reach": 90830350
+      },
+      {
+        "date": "2025-11-28",
+        "source": "MSN.com",
+        "text": "When Lawh Wa Qalam: M. F. Husain Museum officially opens its doors on at Qatar Foundation’s Education City in Doha, it will mark a major ...",
+        "reach": 90830350
+      },
+      {
+        "date": "2025-11-28",
+        "source": "MSN.com",
+        "text": "As the engines roar and the lights shine bright at Lusail International Circuit (LIC), attending the Formula 1 Qatar Grand Prix 2025 ...",
+        "reach": 90830350
+      },
+      {
+        "date": "2025-12-08",
+        "source": "MSN.com",
+        "text": "Jeddah — A hush fell over the theatre as Rekha — the reclusive, legendary icon of Indian cinema — stepped into the spotlight at the fifth ...",
+        "reach": 89369492
+      }
+    ],
+    "sample_negative": [
+      {
+        "date": "2025-12-19",
+        "source": "India Today",
+        "text": "As authorities remain on alert, residents are being urged to stay cautious as unstable weather continues in the region.",
+        "reach": 33632871
+      },
+      {
+        "date": "2025-12-03",
+        "source": "Goal.com",
+        "text": "التعادل السلبي الأول في كأس العرب",
+        "reach": 21551502
+      },
+      {
+        "date": "2025-12-10",
+        "source": "Al Jazeera [EN]",
+        "text": "Palestine has made history in the Arab Cup, reaching the quarterfinals for the first time. For Palestinians in Gaza and the West Bank, the ...",
+        "reach": 18327370
+      },
+      {
+        "date": "2025-12-09",
+        "source": "Al Jazeera [EN]",
+        "text": "... “I hope he continues at Liverpool and Arne Slot gets sacked.” Mohamed Salah fans at the Arab Cup told Al Jazeera’s Rylee Carlson he has ...",
+        "reach": 18327370
+      },
+      {
+        "date": "2025-12-19",
+        "source": "Daily Mail",
+        "text": "A freak storm has hit the United Arab Emirates, leaving streets completely flooded and civilians warned to stay inside as flights are ...",
+        "reach": 12711876
+      }
+    ],
+    "sample_neutral": [
+      {
+        "date": "2025-12-13",
+        "source": "The New York Times",
+        "text": "An unusually potent atmospheric river system has dumped waves of intense rain across western Washington State, inundating towns in the area ...",
+        "reach": 143725879
+      },
+      {
+        "date": "2025-12-04",
+        "source": "MSN.com",
+        "text": "Featured games Final Manchester United vs West Ham See details Dec 6 Aston Villa vs Arsenal See details Dec 6 Manchester City ...",
+        "reach": 90830350
+      },
+      {
+        "date": "2025-12-11",
+        "source": "MSN.com",
+        "text": "Morocco's team work out prior to the World Cup round of 16 soccer match between Morocco and Spain, at the Education City Stadium in Al ...",
+        "reach": 89369492
+      },
+      {
+        "date": "2025-12-11",
+        "source": "MSN.com",
+        "text": "Morocco's team work out prior to the World Cup round of 16 soccer match between Morocco and Spain, at the Education City Stadium in Al ...",
+        "reach": 89369492
+      },
+      {
+        "date": "2025-10-28",
+        "source": "The Times of India",
+        "text": "Qatar has launched the Road to Qatar ticketing app for the FIFA U-17 World Cup 2025, running from 3–27 November. Developed by the Local ...",
+        "reach": 63062476
+      }
+    ]
+  },
+  "كأس العرب 2025 (FIFA Arab Cup)_social": {
+    "name": "كأس العرب 2025 (FIFA Arab Cup) - منصات التواصل",
+    "total_mentions": 20000,
+    "date_range": {
+      "start": "2025-10-25",
+      "end": "2026-01-22",
+      "days": 89
+    },
+    "sentiment": {
+      "counts": {
+        "neutral": 12655,
+        "positive": 6778,
+        "negative": 567
+      },
+      "percentages": {
+        "neutral": 63.28,
+        "positive": 33.89,
+        "negative": 2.83
+      }
+    },
+    "source_types": {
+      "social network": 20000
+    },
+    "languages": {
+      "Arabic": 17578,
+      "English": 2267,
+      "Portuguese": 58,
+      "Sindhi": 49,
+      "French": 20,
+      "Thai": 15,
+      "Malay (macrolanguage)": 6,
+      "Turkish": 2,
+      "German": 1,
+      "Indonesian": 1
+    },
+    "countries": {
+      "Saudi Arabia": 5533,
+      "Qatar": 2975,
+      "Kuwait": 735,
+      "United Arab Emirates": 661,
+      "United States": 365,
+      "Jordan": 274,
+      "Egypt": 219,
+      "United Kingdom": 199,
+      "Morocco": 194,
+      "Oman": 192,
+      "Iraq": 159,
+      "Brazil": 156,
+      "Sudan": 151,
+      "Palestinian Territory": 123,
+      "Algeria": 95
+    },
+    "top_sources": {
+      "Twitter": 20000
+    },
+    "categories": {
+      "بطولات دولية": 6483,
+      "أخرى": 3147,
+      "بنية تحتية": 2688,
+      "منتخبات": 2388,
+      "استضافة وتنظيم": 1880,
+      "جماهير وتجربة": 1697,
+      "مسؤولون": 1146,
+      "فعاليات تراثية": 199,
+      "دوري وأندية": 144,
+      "شباب ومبادرات": 138,
+      "إرث ورؤية": 90
+    },
+    "reach": {
+      "total": 6386716536,
+      "average": 319335,
+      "max": 23274751
+    },
+    "engagement": {
+      "total": 497542,
+      "average": 82
+    },
+    "daily_trend": {
+      "2025-10-25": 20,
+      "2025-10-26": 15,
+      "2025-10-27": 22,
+      "2025-10-28": 11,
+      "2025-10-29": 11,
+      "2025-10-30": 35,
+      "2025-10-31": 16,
+      "2025-11-01": 8,
+      "2025-11-02": 17,
+      "2025-11-03": 4,
+      "2025-11-04": 14,
+      "2025-11-05": 5,
+      "2025-11-06": 5,
+      "2025-11-07": 44,
+      "2025-11-08": 8,
+      "2025-11-09": 12,
+      "2025-11-10": 38,
+      "2025-11-11": 15,
+      "2025-11-12": 14,
+      "2025-11-13": 10,
+      "2025-11-14": 22,
+      "2025-11-15": 10,
+      "2025-11-16": 21,
+      "2025-11-17": 27,
+      "2025-11-18": 57,
+      "2025-11-19": 24,
+      "2025-11-20": 31,
+      "2025-11-21": 44,
+      "2025-11-22": 28,
+      "2025-11-23": 58,
+      "2025-11-24": 97,
+      "2025-11-25": 224,
+      "2025-11-26": 312,
+      "2025-11-27": 198,
+      "2025-11-28": 100,
+      "2025-11-29": 350,
+      "2025-11-30": 620,
+      "2025-12-01": 1495,
+      "2025-12-02": 921,
+      "2025-12-03": 507,
+      "2025-12-04": 503,
+      "2025-12-05": 837,
+      "2025-12-06": 839,
+      "2025-12-07": 594,
+      "2025-12-08": 915,
+      "2025-12-09": 700,
+      "2025-12-10": 420,
+      "2025-12-11": 1047,
+      "2025-12-12": 1434,
+      "2025-12-13": 725,
+      "2025-12-14": 463,
+      "2025-12-15": 1403,
+      "2025-12-16": 399,
+      "2025-12-17": 231,
+      "2025-12-18": 1304,
+      "2025-12-19": 1365,
+      "2025-12-20": 321,
+      "2025-12-21": 80,
+      "2025-12-22": 66,
+      "2025-12-23": 23,
+      "2025-12-24": 71,
+      "2025-12-25": 69,
+      "2025-12-26": 45,
+      "2025-12-27": 7,
+      "2025-12-28": 41,
+      "2025-12-29": 263,
+      "2025-12-30": 185,
+      "2025-12-31": 22,
+      "2026-01-01": 17,
+      "2026-01-02": 10,
+      "2026-01-03": 3,
+      "2026-01-04": 7,
+      "2026-01-05": 2,
+      "2026-01-06": 4,
+      "2026-01-07": 3,
+      "2026-01-08": 2,
+      "2026-01-09": 10,
+      "2026-01-10": 8,
+      "2026-01-11": 5,
+      "2026-01-13": 5,
+      "2026-01-14": 4,
+      "2026-01-15": 3,
+      "2026-01-16": 2,
+      "2026-01-17": 20,
+      "2026-01-18": 28,
+      "2026-01-19": 13,
+      "2026-01-20": 9,
+      "2026-01-21": 2,
+      "2026-01-22": 1
+    },
+    "weekly_trend": {
+      "Week_1": 507,
+      "Week_2": 34,
+      "Week_3": 62,
+      "Week_4": 25,
+      "Week_43": 35,
+      "Week_44": 120,
+      "Week_45": 92,
+      "Week_46": 130,
+      "Week_47": 269,
+      "Week_48": 1901,
+      "Week_49": 5696,
+      "Week_50": 5704,
+      "Week_51": 5103,
+      "Week_52": 322
+    },
+    "top_authors": {
+      "تذاكر / MY TICKET": 353,
+      "قنوات الكاس": 328,
+      "كأس العرب FIFA ™": 162,
+      "صحيفة الشرق - قطر": 145,
+      "KARIMOON": 128,
+      "Talal..AlThani": 121,
+      "تذاكر || online_ticket": 103,
+      "Grok": 98,
+      "tichub": 98,
+      "خالد جاسم": 97,
+      "Security Committee - اللجنة الأمنية": 95,
+      "الراية القطرية": 90,
+      "Alkass English": 89,
+      "الإخبارية - رياضة": 85,
+      "The Peninsula Qatar": 83
+    },
+    "top_hashtags": [
+      [
+        "#كأس_العرب",
+        6937
+      ],
+      [
+        "#كأس_العرب2025",
+        2842
+      ],
+      [
+        "#قطر",
+        1413
+      ],
+      [
+        "#fifarabcup",
+        901
+      ],
+      [
+        "#قنوات_الكاس",
+        642
+      ],
+      [
+        "#كأس_العرب_2025",
+        638
+      ],
+      [
+        "#السعودية",
+        620
+      ],
+      [
+        "#arabcup2025",
+        540
+      ],
+      [
+        "#الأردن",
+        439
+      ],
+      [
+        "#المغرب",
+        432
+      ],
+      [
+        "#السعوديه_الاردن",
+        395
+      ],
+      [
+        "#fifaarabcup",
+        350
+      ],
+      [
+        "#منصة_شووف",
+        325
+      ],
+      [
+        "#منصة_شوف",
+        313
+      ],
+      [
+        "#السعودية_جزر_القمر",
+        265
+      ],
+      [
+        "#الإخبارية_رياضة",
+        260
+      ],
+      [
+        "#كاس_العرب_fifa_قطر_2025",
+        258
+      ],
+      [
+        "#السعودية_فلسطين",
+        250
+      ],
+      [
+        "#qatar",
+        237
+      ],
+      [
+        "#ولي_العهد",
+        220
+      ]
+    ],
+    "sample_positive": [
+      {
+        "date": "2025-11-25",
+        "source": "Twitter",
+        "text": "أجواء جماهيرية مميزة وحماسية.. شهدت العاصمة القطرية الدوحة تجمعًا كبيرًا لمشجعي المنتخبات العربية، وذلك مع بداية العدّ التنازلي لبطولة كأس ا ...",
+        "reach": 23274751
+      },
+      {
+        "date": "2025-11-25",
+        "source": "Twitter",
+        "text": "في أجواء جماهيرية مميزة وحماسية، شهدت العاصمة القطرية الدوحة تجمعًا كبيرًا لمشجعي المنتخبات العربية، وذلك مع بداية العدّ التنازلي لبطولة كأس ...",
+        "reach": 23274749
+      },
+      {
+        "date": "2025-12-12",
+        "source": "Twitter",
+        "text": "فرحة الجماهير الأردنية خارج استاد المدينة التعليمية بالفوز على العراق والتأهل لمواجهة السعودية في نصف نهائي بطولة كأس العرب #الجزيرة_أخبار h ...",
+        "reach": 22368381
+      },
+      {
+        "date": "2025-12-12",
+        "source": "Twitter",
+        "text": "حارس المنتخب الأردني يزيد أبو ليلى يوجه رسالة شكر إلى جماهير النشامى عقب الفوز على المنتخب العراقي بهدف دون مقابل والترشح لنصف نهائي كأس الع ...",
+        "reach": 22368117
+      },
+      {
+        "date": "2025-12-08",
+        "source": "Twitter",
+        "text": "فرحة جماهير المنتخب الفلسطيني في #غزة بعد تأهله إلى ربع النهائي من كأس العرب #رقمي #الجزيرة_كأس_العرب25 https://t.co/eATEniZhQ0",
+        "reach": 22361548
+      }
+    ],
+    "sample_negative": [
+      {
+        "date": "2025-12-18",
+        "source": "Twitter",
+        "text": "تأثر أرضية استاد خليفة الدولي جراء الأمطار الغزيرة #FIFArabCup | #كأس_العرب #السعودية_الإمارات https://t.co/2kmEbO1hIv",
+        "reach": 11155066
+      },
+      {
+        "date": "2025-12-09",
+        "source": "Twitter",
+        "text": "Mohamed Salah fans at the FIFA Arab Cup told Al Jazeera’s @RyleeCarlson he has done a lot for Liverpool and shouldn’t be sidelined. Salah ha ...",
+        "reach": 8967595
+      },
+      {
+        "date": "2025-12-20",
+        "source": "Twitter",
+        "text": "... الكره ده ممكن يكون بسبب نجاح النشامى المفاجئ في كأس العرب 2025، زي الفوز على السعودية في النصف النهائي والوصول للنهائي، اللي خلى بعض الج ...",
+        "reach": 6800832
+      },
+      {
+        "date": "2025-12-19",
+        "source": "Twitter",
+        "text": "3bdalmlk_zh @s_mossawi المنشور ينتقد إعلام \"البنفسجية\" وأبو تريكة لازدواجية معاييرهم: يصفون مشكلة بسيطة في تنظيم يورو 2024 بألمانيا (تسرب أم ...",
+        "reach": 6797256
+      },
+      {
+        "date": "2025-12-19",
+        "source": "Twitter",
+        "text": "... @YouJay1st @FIFAcom The FIFA Arab Cup 2025 third-place match between Saudi Arabia and UAE was abandoned due to severe storms and heavy r ...",
+        "reach": 6796376
+      }
+    ],
+    "sample_neutral": [
+      {
+        "date": "2025-11-25",
+        "source": "Twitter",
+        "text": "أجواء مونديالية وجوائز ضخمة في انتظار الفائزين.. مسيرة احتفالية بالدوحة استعدادا لبطولة كأس العرب، فهل نشهد بطولة عربية استثنائية؟ التفاصيل ...",
+        "reach": 23274341
+      },
+      {
+        "date": "2025-11-26",
+        "source": "Twitter",
+        "text": "في إطار الاستعدادات للمشاركة في بطولة كأس العرب.. مشاهد من وصول منتخبات الكويت وعُمان وجزر القمر والصومال إلى مطار الدوحة #فيديو https://t.c ...",
+        "reach": 23086251
+      },
+      {
+        "date": "2025-11-28",
+        "source": "Twitter",
+        "text": "استعدادًا للمشاركة في بطولة كأس العرب.. مشاهد من وصول المنتخب التونسي إلى مطار حمد الدولي في #الدوحة. #فيديو https://t.co/QUWkodKZCa",
+        "reach": 22954378
+      },
+      {
+        "date": "2025-11-28",
+        "source": "Twitter",
+        "text": "استعدادا للمشاركة في بطولة كأس العرب.. مشاهد من وصول المنتخب المصري إلى مطار حمد الدولي في #الدوحة #فيديو https://t.co/9HuQynhmab",
+        "reach": 22937814
+      },
+      {
+        "date": "2025-11-29",
+        "source": "Twitter",
+        "text": "استعدادا للمشاركة في بطولة كأس العرب.. بعثة المنتخب السعودي تصل إلى مطار حمد الدولي في العاصمة القطرية الدوحة #فيديو https://t.co/qFHnVk0aIj",
+        "reach": 22900766
+      }
+    ]
+  },
+  "WTT تنس الطاولة_analytics": {
+    "name": "WTT تنس الطاولة - الإعلام التقليدي",
+    "total_mentions": 904,
+    "date_range": {
+      "start": "2025-11-25",
+      "end": "2026-01-22",
+      "days": 58
+    },
+    "sentiment": {
+      "counts": {
+        "neutral": 633,
+        "positive": 249,
+        "negative": 21,
+        "unknown": 1
+      },
+      "percentages": {
+        "neutral": 70.02,
+        "positive": 27.54,
+        "negative": 2.32,
+        "unknown": 0.11
+      }
+    },
+    "source_types": {
+      "online news": 903,
+      "print": 1
+    },
+    "languages": {
+      "English": 555,
+      "Portuguese": 141,
+      "Arabic": 38,
+      "Russian": 32,
+      "Romanian": 26,
+      "French": 26,
+      "Spanish": 19,
+      "German": 17,
+      "Kazakh": 13,
+      "Vietnamese": 12
+    },
+    "countries": {
+      "Brazil": 118,
+      "United States": 84,
+      "Qatar": 83,
+      "China": 67,
+      "United Arab Emirates": 58,
+      "Australia": 45,
+      "Bahrain": 32,
+      "India": 28,
+      "Kazakhstan": 28,
+      "Nigeria": 27,
+      "Romania": 26,
+      "Russia": 26,
+      "South Korea": 24,
+      "France": 22,
+      "Singapore": 21
+    },
+    "top_sources": {
+      "World News": 36,
+      "Qatar News.Net": 22,
+      "新华网": 22,
+      "Big News Network": 16,
+      "The Middle East North Africa Financial Network": 15,
+      "조선일보": 13,
+      "China.org.cn": 12,
+      "Singapore News | Local & World Coverage: Singapore News.Net": 12,
+      "Qatar Tribune": 12,
+      "Australian News.net": 11,
+      "Asia Pacific Star": 10,
+      "Manila Metro": 10,
+      "The Peninsula": 10,
+      "Beijing News.Net": 10,
+      "L'Équipe": 10,
+      "Qatar News Agency (QNA) وكالة الأنباء القطرية": 10,
+      "Olympics": 9,
+      "Gulf Press": 9,
+      "Gulf Times": 9,
+      "MSN United Arab Emirates": 9
+    },
+    "categories": {
+      "أخرى": 811,
+      "بنية تحتية": 52,
+      "فعاليات تراثية": 11,
+      "غير مصنف": 6,
+      "إرث ورؤية": 6,
+      "جماهير وتجربة": 5,
+      "شباب ومبادرات": 4,
+      "دوري وأندية": 3,
+      "استضافة وتنظيم": 3,
+      "مسؤولون": 3
+    },
+    "reach": {
+      "total": 973741270,
+      "average": 1080733,
+      "max": 18202950
+    },
+    "engagement": {
+      "total": 972,
+      "average": 6
+    },
+    "daily_trend": {
+      "2025-11-25": 1,
+      "2025-12-09": 2,
+      "2025-12-10": 3,
+      "2025-12-14": 2,
+      "2025-12-15": 1,
+      "2025-12-21": 1,
+      "2025-12-23": 1,
+      "2025-12-25": 1,
+      "2025-12-27": 1,
+      "2025-12-29": 5,
+      "2025-12-30": 13,
+      "2025-12-31": 13,
+      "2026-01-01": 8,
+      "2026-01-02": 6,
+      "2026-01-03": 84,
+      "2026-01-04": 3,
+      "2026-01-05": 11,
+      "2026-01-06": 58,
+      "2026-01-07": 90,
+      "2026-01-08": 117,
+      "2026-01-09": 80,
+      "2026-01-10": 44,
+      "2026-01-11": 36,
+      "2026-01-12": 71,
+      "2026-01-13": 34,
+      "2026-01-14": 25,
+      "2026-01-15": 27,
+      "2026-01-16": 19,
+      "2026-01-17": 22,
+      "2026-01-18": 87,
+      "2026-01-19": 27,
+      "2026-01-20": 4,
+      "2026-01-21": 5,
+      "2026-01-22": 2
+    },
+    "weekly_trend": {
+      "Week_1": 132,
+      "Week_2": 436,
+      "Week_3": 285,
+      "Week_4": 38,
+      "Week_48": 1,
+      "Week_50": 7,
+      "Week_51": 2,
+      "Week_52": 3
+    },
+    "top_authors": {
+      "Xinhua": 78,
+      "Ben Ben": 5,
+      "Telinha": 5,
+      "الشرق": 5,
+      "Jarniel Canales": 4,
+      "Refli Puasa": 4,
+      "Lusa": 4,
+      "Carlos Mendes": 4,
+      "Kang Woo-seok": 3,
+      "Viviana Chan": 3,
+      "Titan English": 3,
+      "Jamie Taylor": 3,
+      "Huy Đăng": 3,
+      "Gabriel Quiles": 3,
+      "Marian Bocai": 2
+    },
+    "top_hashtags": [],
+    "sample_positive": [
+      {
+        "date": "2026-01-05",
+        "source": "Goal.com",
+        "text": "A terrific year of table tennis highs await and we kick it all off in Qatar this week",
+        "reach": 18033124
+      },
+      {
+        "date": "2026-01-05",
+        "source": "Goal.com",
+        "text": "A terrific year of table tennis highs await and we kick it all off in Qatar this week",
+        "reach": 18033124
+      },
+      {
+        "date": "2026-01-16",
+        "source": "Times Now",
+        "text": "Photo : AP Star Indian table tennis player Manika Batra delivered an enchanting performance in the Round of 64 of the WTT Star Contender ...",
+        "reach": 14343744
+      },
+      {
+        "date": "2026-01-18",
+        "source": "Tuổi Trẻ Online",
+        "text": "Cuộc khủng hoảng phong độ của bóng bàn Trung Quốc tiếp tục kéo dài, khi hàng loạt tay vợt hùng mạnh của họ lại thất bại tại giải WTT Star ...",
+        "reach": 13977944
+      },
+      {
+        "date": "2026-01-12",
+        "source": "Tuổi Trẻ Online",
+        "text": "Cú sốc xuất hiện ở WTT Champions Doha, giải đấu lớn đầu tiên của làng bóng bàn thế giới trong năm 2026, khi các tay vợt Trung Quốc hoàn ...",
+        "reach": 13977944
+      }
+    ],
+    "sample_negative": [
+      {
+        "date": "2026-01-01",
+        "source": "조선일보",
+        "text": "Overwork cited as cause; Asian Cup participation uncertain after ankle injury setback",
+        "reach": 13217782
+      },
+      {
+        "date": "2026-01-01",
+        "source": "조선일보",
+        "text": "Ankle injury and plantar fasciitis force 8-week absence; Shin Yu-bin expresses concern amid overwork criticism",
+        "reach": 13217782
+      },
+      {
+        "date": "2026-01-10",
+        "source": "L'Équipe",
+        "text": "Opposé à Tomokazu Harimoto, 4e joueur mondial, en quarts de finale des WTT Champions de Doha ce samedi, Félix Lebrun a tenté de résister ...",
+        "reach": 10469427
+      },
+      {
+        "date": "2026-01-07",
+        "source": "L'Équipe",
+        "text": "Dans un premier tour piège, pour le premier tournoi de la saison 2026, le Français Alexis Lebrun a remonté deux sets avant de s'incliner ...",
+        "reach": 10469427
+      },
+      {
+        "date": "2026-01-18",
+        "source": "Vietnam.vn",
+        "text": "The crisis in form for Chinese table tennis continues, with a series of their strong players failing again at the WTT Star Contender Doha ...",
+        "reach": 10215371
+      }
+    ],
+    "sample_neutral": [
+      {
+        "date": "2026-01-18",
+        "source": "Metrópoles",
+        "text": "Wen Ruibo venceu Hugo Calderano por 3 sets a 2 e eliminou o brasileiro na semifinal do WTT Star Contender de Doha",
+        "reach": 18202950
+      },
+      {
+        "date": "2026-01-05",
+        "source": "Goal.com",
+        "text": "A terrific year of table tennis highs await and we kick it all off in Qatar this week",
+        "reach": 18033124
+      },
+      {
+        "date": "2026-01-18",
+        "source": "Rádio Itatiaia",
+        "text": "Caso vença, brasileiro disputa título contra vencedor de Dimitrij Ovtcharov x Zhou Qihao",
+        "reach": 14681861
+      },
+      {
+        "date": "2026-01-18",
+        "source": "조선일보",
+        "text": "South Korean duo overcomes first-game deficit to claim first WTT title in three years",
+        "reach": 14350598
+      },
+      {
+        "date": "2026-01-18",
+        "source": "조선일보",
+        "text": "South Korean duo defeats Chinese pair 3-2, first WTT victory in 3 years and 7 months",
+        "reach": 14350598
+      }
+    ]
+  },
+  "WTT تنس الطاولة_social": {
+    "name": "WTT تنس الطاولة - منصات التواصل",
+    "total_mentions": 1893,
+    "date_range": {
+      "start": "2025-11-28",
+      "end": "2026-01-22",
+      "days": 55
+    },
+    "sentiment": {
+      "counts": {
+        "neutral": 1152,
+        "positive": 695,
+        "negative": 46
+      },
+      "percentages": {
+        "neutral": 60.86,
+        "positive": 36.71,
+        "negative": 2.43
+      }
+    },
+    "source_types": {
+      "social network": 1893
+    },
+    "languages": {
+      "English": 1086,
+      "French": 214,
+      "Spanish": 190,
+      "Japanese": 122,
+      "Thai": 117,
+      "Portuguese": 105,
+      "Arabic": 25,
+      "German": 11,
+      "Indonesian": 8,
+      "Chinese (trad.)": 3
+    },
+    "countries": {
+      "United States": 224,
+      "Japan": 159,
+      "France": 129,
+      "India": 119,
+      "Brazil": 44,
+      "Qatar": 38,
+      "Singapore": 25,
+      "Greece": 24,
+      "Thailand": 19,
+      "Germany": 14,
+      "Malaysia": 14,
+      "Bangladesh": 13,
+      "United Kingdom": 11,
+      "China": 11,
+      "Nigeria": 9
+    },
+    "top_sources": {
+      "Twitter": 1893
+    },
+    "categories": {
+      "أخرى": 1835,
+      "بنية تحتية": 21,
+      "شباب ومبادرات": 20,
+      "بطولات دولية": 10,
+      "استضافة وتنظيم": 2,
+      "فعاليات تراثية": 2,
+      "جماهير وتجربة": 2,
+      "مسؤولون": 1
+    },
+    "reach": {
+      "total": 42121984,
+      "average": 22251,
+      "max": 7537101
+    },
+    "engagement": {
+      "total": 9636,
+      "average": 22
+    },
+    "daily_trend": {
+      "2025-11-28": 6,
+      "2025-11-29": 9,
+      "2025-11-30": 2,
+      "2025-12-01": 2,
+      "2025-12-02": 1,
+      "2025-12-05": 2,
+      "2025-12-09": 4,
+      "2025-12-13": 1,
+      "2025-12-14": 1,
+      "2025-12-15": 25,
+      "2025-12-16": 1,
+      "2025-12-17": 1,
+      "2025-12-19": 11,
+      "2025-12-21": 1,
+      "2025-12-22": 5,
+      "2025-12-24": 1,
+      "2025-12-25": 10,
+      "2025-12-26": 6,
+      "2025-12-27": 4,
+      "2025-12-28": 1,
+      "2025-12-29": 59,
+      "2025-12-30": 25,
+      "2025-12-31": 17,
+      "2026-01-01": 42,
+      "2026-01-02": 17,
+      "2026-01-03": 3,
+      "2026-01-04": 12,
+      "2026-01-05": 95,
+      "2026-01-06": 63,
+      "2026-01-07": 103,
+      "2026-01-08": 116,
+      "2026-01-09": 92,
+      "2026-01-10": 34,
+      "2026-01-11": 103,
+      "2026-01-12": 107,
+      "2026-01-13": 173,
+      "2026-01-14": 111,
+      "2026-01-15": 83,
+      "2026-01-16": 127,
+      "2026-01-17": 172,
+      "2026-01-18": 93,
+      "2026-01-19": 104,
+      "2026-01-20": 42,
+      "2026-01-21": 5,
+      "2026-01-22": 1
+    },
+    "weekly_trend": {
+      "Week_1": 175,
+      "Week_2": 606,
+      "Week_3": 866,
+      "Week_4": 152,
+      "Week_48": 17,
+      "Week_49": 5,
+      "Week_50": 6,
+      "Week_51": 39,
+      "Week_52": 27
+    },
+    "top_authors": {
+      "3XT | TABLE TENNIS TIPS🏓": 177,
+      "Tobe | Betting tips": 52,
+      "SPORTS CENTER HD": 44,
+      "kittyoyaji": 41,
+      "ISAmidala": 39,
+      "Actu Ping 🏓": 36,
+      "World Table Tennis": 25,
+      "Thomas KOUS Kousioris": 24,
+      "Cho Allez !🏓": 23,
+      "HIGH SCHOOL SPORTS TODAY": 22,
+      "BC SPORTS LIVE": 22,
+      "三九狼": 22,
+      "abura": 21,
+      "OS HIGH SPORTS": 21,
+      "Lorys": 17
+    },
+    "top_hashtags": [
+      [
+        "#tabletennis",
+        601
+      ],
+      [
+        "#wttdoha",
+        385
+      ],
+      [
+        "#wttchampions",
+        75
+      ],
+      [
+        "#wtt",
+        39
+      ],
+      [
+        "#timebrasil",
+        34
+      ],
+      [
+        "#tênisdemesa",
+        34
+      ],
+      [
+        "#wttstarcontender",
+        24
+      ],
+      [
+        "#ittfworldrankings",
+        20
+      ],
+      [
+        "#teamlebrun",
+        19
+      ],
+      [
+        "#doha",
+        19
+      ],
+      [
+        "#wttchampionsdoha2026",
+        18
+      ],
+      [
+        "#pingpong",
+        18
+      ],
+      [
+        "#今日の日本女子",
+        18
+      ],
+      [
+        "#doha2026",
+        13
+      ],
+      [
+        "#qatar",
+        13
+      ],
+      [
+        "#wttfinals",
+        13
+      ],
+      [
+        "#卓球",
+        11
+      ],
+      [
+        "#linyunju",
+        10
+      ],
+      [
+        "#gre78tv",
+        10
+      ],
+      [
+        "#teamegypt",
+        10
+      ]
+    ],
+    "sample_positive": [
+      {
+        "date": "2026-01-08",
+        "source": "Twitter",
+        "text": "🏓 China's Lin Shidong, Wang Yidi and Kuai Man all claimed victories in straight games to start strongly on the opening day of the World Tabl ...",
+        "reach": 835302
+      },
+      {
+        "date": "2026-01-17",
+        "source": "Twitter",
+        "text": "VITÓRIA E DE VIRADA! 🇧🇷🔥 Hugo Calderano venceu de virada o francês Simon Gauzy e garantir vaga nas semifinais do WTT Star Contender Doha! 🏓💪 ...",
+        "reach": 666289
+      },
+      {
+        "date": "2026-01-08",
+        "source": "Twitter",
+        "text": "La tenimesista boricua dominó a Hoi Kem Doo en cuatro parciales para meterse en la ronda de los mejores 16 del WTT Champions Doha. https://t ...",
+        "reach": 363525
+      },
+      {
+        "date": "2026-01-17",
+        "source": "Twitter",
+        "text": "🏓🇧🇷 Calderano vence francês e avança à semifinal do WTT Star Contender de Doha #Calderano #WTTDoha #TableTennis #TenisdeMesa #Bandsports htt ...",
+        "reach": 291970
+      },
+      {
+        "date": "2026-01-12",
+        "source": "Twitter",
+        "text": "RT @sttf_ksa: 🇸🇦 أبطالنا يمثلون المملكة في بطولة WTT Star Contender Doha 2026 كل التوفيق لأبطالنا علي خضراوي وعبدالعزيز بو شليبي 💚🏓 #الاتحاد ...",
+        "reach": 236124
+      }
+    ],
+    "sample_negative": [
+      {
+        "date": "2026-01-09",
+        "source": "Twitter",
+        "text": "🇳🇬 Aruna Suffers Early Exit at WTT Champions Doha 2026 #mostshared #nigeria https://t.co/RNQ1vWmao7",
+        "reach": 145787
+      },
+      {
+        "date": "2026-01-08",
+        "source": "Twitter",
+        "text": "Shock in Second Day of WTT Champions Doha as World Cup Winner Loses. #QNA #Qatar https://t.co/s72DEjrn4Z https://t.co/fm2CueruOE",
+        "reach": 119019
+      },
+      {
+        "date": "2026-01-08",
+        "source": "Twitter",
+        "text": "It was a disappointing start for Africa’s table tennis stars at the ongoing WTT Champions Doha, as Quadri Aruna of Nigeria and Hana Goda of ...",
+        "reach": 33500
+      },
+      {
+        "date": "2026-01-08",
+        "source": "Twitter",
+        "text": "African stars suffer early exit at WTT Champions Doha https://t.co/eq64ZVWEVH",
+        "reach": 11176
+      },
+      {
+        "date": "2026-01-08",
+        "source": "Twitter",
+        "text": "WTT CHAMPIONS DOHA: ARUNA QUADRI, GODA FAIL TO ADVANCE https://t.co/Yk6YchrCaq #hotjist #Liverpool #sport",
+        "reach": 6782
+      }
+    ],
+    "sample_neutral": [
+      {
+        "date": "2026-01-16",
+        "source": "Twitter",
+        "text": "Ye video 15 January 2026 ke match ka hai, WTT Star Contender Doha se. Manika Batra ki achievements: 2 gold CWG 2018, bronze Asian Cup 2022, ...",
+        "reach": 7537101
+      },
+      {
+        "date": "2026-01-01",
+        "source": "Twitter",
+        "text": "BBekeboh3407 There are no major table tennis events scheduled for January 1, 2026, as it's New Year's Day. The earliest is WTT Champions Doh ...",
+        "reach": 6904391
+      },
+      {
+        "date": "2026-01-10",
+        "source": "Twitter",
+        "text": "PETIT EXPLOIT À DOHA ! 🏓 Ying Han, l’Allemande de 42 ans, vient d’éliminer Wang Manyu, la n°2 mondiale, au terme d’un match ultra partagé ! ...",
+        "reach": 6153893
+      },
+      {
+        "date": "2026-01-09",
+        "source": "Twitter",
+        "text": "Benedick Duda est en grande forme et a déjà pris le premier set sur Lin Shidong ! Suivez les huitièmes de finale de du tournoi de Doha en di ...",
+        "reach": 6153530
+      },
+      {
+        "date": "2026-01-08",
+        "source": "Twitter",
+        "text": "Lin Shidong secured the first win of 2026 for China’s men’s table tennis team on Wednesday, easing past Flavien Coton of France 11-3, 12-10, ...",
+        "reach": 1038410
+      }
+    ]
+  },
+  "UFC قطر (UFC Qatar:Doha)_analytics": {
+    "name": "UFC قطر (UFC Qatar:Doha) - الإعلام التقليدي",
+    "total_mentions": 3993,
+    "date_range": {
+      "start": "2025-10-25",
+      "end": "2026-01-22",
+      "days": 89
+    },
+    "sentiment": {
+      "counts": {
+        "neutral": 2828,
+        "positive": 709,
+        "negative": 446,
+        "unknown": 10
+      },
+      "percentages": {
+        "neutral": 70.82,
+        "positive": 17.76,
+        "negative": 11.17,
+        "unknown": 0.25
+      }
+    },
+    "source_types": {
+      "online news": 3993
+    },
+    "languages": {
+      "English": 3135,
+      "Spanish": 382,
+      "Russian": 104,
+      "Portuguese": 82,
+      "Indonesian": 67,
+      "French": 66,
+      "Swedish": 43,
+      "Dutch": 22,
+      "Vietnamese": 21,
+      "Arabic": 17
+    },
+    "countries": {
+      "United States": 2415,
+      "Spain": 300,
+      "India": 212,
+      "Brazil": 149,
+      "United Kingdom": 139,
+      "Canada": 90,
+      "Russia": 88,
+      "Sweden": 83,
+      "Indonesia": 68,
+      "France": 56,
+      "Mexico": 29,
+      "Malaysia": 27,
+      "Morocco": 23,
+      "Australia": 23,
+      "United Arab Emirates": 21
+    },
+    "top_sources": {
+      "Yahoo! Sports": 312,
+      "Yardbarker": 297,
+      "NewsBreak": 225,
+      "EssentiallySports": 143,
+      "ChatSports": 131,
+      "LowKickMMA.com": 126,
+      "BVM Sports": 126,
+      "Bloody Elbow": 112,
+      "MSN.com": 103,
+      "Marca": 87,
+      "BJPenn.com": 70,
+      "SUPER LUTAS": 68,
+      "MMA Junkie": 54,
+      "First Sportz": 49,
+      "Eurosport": 48,
+      "Sportskeeda": 45,
+      "The Playoffs": 43,
+      "Cageside Press": 35,
+      "MSN - Noticias": 34,
+      "Spotify": 30
+    },
+    "categories": {
+      "بطولات دولية": 2426,
+      "أخرى": 1232,
+      "غير مصنف": 134,
+      "إرث ورؤية": 58,
+      "مسؤولون": 46,
+      "استضافة وتنظيم": 42,
+      "جماهير وتجربة": 34,
+      "دوري وأندية": 14,
+      "شباب ومبادرات": 4,
+      "بنية تحتية": 3
+    },
+    "reach": {
+      "total": 37819684835,
+      "average": 9509601,
+      "max": 199611075
+    },
+    "engagement": {
+      "total": 5591,
+      "average": 5
+    },
+    "daily_trend": {
+      "2025-10-25": 14,
+      "2025-10-26": 4,
+      "2025-10-27": 4,
+      "2025-10-28": 5,
+      "2025-10-29": 14,
+      "2025-10-30": 25,
+      "2025-10-31": 13,
+      "2025-11-01": 6,
+      "2025-11-02": 3,
+      "2025-11-03": 7,
+      "2025-11-04": 9,
+      "2025-11-05": 11,
+      "2025-11-06": 7,
+      "2025-11-07": 8,
+      "2025-11-08": 11,
+      "2025-11-09": 6,
+      "2025-11-10": 16,
+      "2025-11-11": 22,
+      "2025-11-12": 7,
+      "2025-11-13": 13,
+      "2025-11-14": 10,
+      "2025-11-15": 2,
+      "2025-11-16": 25,
+      "2025-11-17": 35,
+      "2025-11-18": 60,
+      "2025-11-19": 150,
+      "2025-11-20": 239,
+      "2025-11-21": 442,
+      "2025-11-22": 864,
+      "2025-11-23": 560,
+      "2025-11-24": 283,
+      "2025-11-25": 223,
+      "2025-11-26": 132,
+      "2025-11-27": 79,
+      "2025-11-28": 95,
+      "2025-11-29": 41,
+      "2025-11-30": 32,
+      "2025-12-01": 24,
+      "2025-12-02": 21,
+      "2025-12-03": 17,
+      "2025-12-04": 20,
+      "2025-12-05": 22,
+      "2025-12-06": 18,
+      "2025-12-07": 19,
+      "2025-12-08": 14,
+      "2025-12-09": 4,
+      "2025-12-10": 9,
+      "2025-12-11": 6,
+      "2025-12-12": 21,
+      "2025-12-13": 11,
+      "2025-12-14": 7,
+      "2025-12-15": 9,
+      "2025-12-16": 6,
+      "2025-12-17": 14,
+      "2025-12-18": 8,
+      "2025-12-19": 11,
+      "2025-12-21": 5,
+      "2025-12-22": 11,
+      "2025-12-23": 7,
+      "2025-12-24": 11,
+      "2025-12-25": 5,
+      "2025-12-26": 6,
+      "2025-12-27": 4,
+      "2025-12-28": 3,
+      "2025-12-29": 6,
+      "2025-12-30": 4,
+      "2025-12-31": 18,
+      "2026-01-01": 7,
+      "2026-01-02": 2,
+      "2026-01-03": 8,
+      "2026-01-04": 2,
+      "2026-01-05": 6,
+      "2026-01-06": 6,
+      "2026-01-07": 13,
+      "2026-01-08": 1,
+      "2026-01-09": 21,
+      "2026-01-10": 26,
+      "2026-01-11": 10,
+      "2026-01-12": 9,
+      "2026-01-13": 6,
+      "2026-01-14": 6,
+      "2026-01-15": 13,
+      "2026-01-16": 9,
+      "2026-01-17": 3,
+      "2026-01-18": 4,
+      "2026-01-19": 4,
+      "2026-01-20": 4,
+      "2026-01-21": 9,
+      "2026-01-22": 6
+    },
+    "weekly_trend": {
+      "Week_1": 47,
+      "Week_2": 83,
+      "Week_3": 50,
+      "Week_4": 23,
+      "Week_43": 18,
+      "Week_44": 70,
+      "Week_45": 59,
+      "Week_46": 95,
+      "Week_47": 2350,
+      "Week_48": 885,
+      "Week_49": 141,
+      "Week_50": 72,
+      "Week_51": 53,
+      "Week_52": 47
+    },
+    "top_authors": {
+      "Daniel Dobish": 162,
+      "Harvey Leonard": 87,
+      "Jeff Cain": 86,
+      "Biplob Chakraborty": 68,
+      "Kyle Dimond": 66,
+      "Subham": 61,
+      "Aatif Khan": 57,
+      "Irati Prat": 47,
+      "Fernando Quiles": 44,
+      "Alex Pattle": 44,
+      "Pedro De Pablos": 44,
+      "Jordan Ellis": 42,
+      "Alexander Behunin": 41,
+      "Donagh Corby": 37,
+      "Alexander K. Lee": 36
+    },
+    "top_hashtags": [],
+    "sample_positive": [
+      {
+        "date": "2025-11-27",
+        "source": "Spotify",
+        "text": "Video and audio version available on Spotify and YouTube or listen on Apple Podcasts and all the usual platforms!Join the patreon and get ...",
+        "reach": 199611075
+      },
+      {
+        "date": "2025-11-25",
+        "source": "Spotify",
+        "text": "UFC Qatar RECAP: Tsarukyan SUBMITS Hooker, Garry vs Chimaev BACKSTAGE Fight, What’s Next for Ilia Topuria? BREAKING reaction to the WILD ...",
+        "reach": 199611075
+      },
+      {
+        "date": "2025-11-24",
+        "source": "Spotify",
+        "text": "At UFC Qatar, Arman Tsarukyan didn’t merely batter and submit Dan Hooker in the main event, he showed a vastly improved depth and ...",
+        "reach": 199611075
+      },
+      {
+        "date": "2025-11-24",
+        "source": "Spotify",
+        "text": "Fight Disciples Adam Catterall and Nick Peet review UFC QATAR which saw wins for Arman Tsarukyan and Ian Machado Garry as well as a ...",
+        "reach": 175854940
+      },
+      {
+        "date": "2025-11-21",
+        "source": "Spotify",
+        "text": "Give the gift of smooth this holiday season with The Performance Package 5.0 Ultra. Get 15% OFF your entire order with code P4P at ...",
+        "reach": 175854940
+      }
+    ],
+    "sample_negative": [
+      {
+        "date": "2025-10-25",
+        "source": "MSN.com",
+        "text": "... ; ; Kamaru Usman is unfazed by the constant taunts from Belal Muhammad . While Usman and Muhammad have never been the best of friends, ...",
+        "reach": 96275936
+      },
+      {
+        "date": "2026-01-22",
+        "source": "MSN.com",
+        "text": "... ; ; ; UFC CEO has overseen the UFC’s development since 2001, navigating early financial and regulatory struggles. His leadership helped ...",
+        "reach": 94434123
+      },
+      {
+        "date": "2026-01-10",
+        "source": "MSN.com",
+        "text": "... ; ; Arman Tsarukyan is now back in pursuit of another title shot, after having to withdraw from his long-awaited fight against Islam ...",
+        "reach": 94434123
+      },
+      {
+        "date": "2026-01-09",
+        "source": "MSN.com",
+        "text": "... ; ; Some highly-questionable trash talk from UFC star Paddy Pimblett generated a heated response from fellow lightweight contender Dan ...",
+        "reach": 94434123
+      },
+      {
+        "date": "2025-11-28",
+        "source": "MSN.com",
+        "text": "... ; ; ; The unveiling of UFC 324’s main event has unleashed a wave of arguments throughout the division. UFC President Dana White revealed ...",
+        "reach": 90830350
+      }
+    ],
+    "sample_neutral": [
+      {
+        "date": "2025-11-26",
+        "source": "Spotify",
+        "text": "There's lots of title talk following this past weekend's UFC Qatar event, and I've got a lot to say on today's episode. First, I explain ...",
+        "reach": 199611075
+      },
+      {
+        "date": "2025-11-25",
+        "source": "Spotify",
+        "text": "Jim and Matt kick off the show with British bantamweight Davey Grant, who joins live from the UFC Performance Institute as a brand-new Las ...",
+        "reach": 199611075
+      },
+      {
+        "date": "2025-11-24",
+        "source": "Spotify",
+        "text": "Welcome to Episode 78 of the MMArcade Podcast! Join Robert Whittaker and Jonny Roses as they share their reactions to UFC Qatar Fight Night ...",
+        "reach": 199611075
+      },
+      {
+        "date": "2025-11-23",
+        "source": "Spotify",
+        "text": "Mike Perry and Mac Mally are joined by the undefeated Muhammad Mokaev for an exclusive deep dive. Mokaev breaks down exactly how he pulled ...",
+        "reach": 199611075
+      },
+      {
+        "date": "2025-11-21",
+        "source": "Spotify",
+        "text": "Madlab Michael Iurato and Dan Tom break down UFC Fight Night Qatar, headlined by Arman Tsarukyan vs. Dan Hooker. The guys give their expert ...",
+        "reach": 199611075
+      }
+    ]
+  },
+  "UFC قطر (UFC Qatar:Doha)_social": {
+    "name": "UFC قطر (UFC Qatar:Doha) - منصات التواصل",
+    "total_mentions": 20000,
+    "date_range": {
+      "start": "2025-10-25",
+      "end": "2026-01-22",
+      "days": 89
+    },
+    "sentiment": {
+      "counts": {
+        "neutral": 11075,
+        "positive": 6304,
+        "negative": 2589,
+        "unknown": 32
+      },
+      "percentages": {
+        "neutral": 55.38,
+        "positive": 31.52,
+        "negative": 12.95,
+        "unknown": 0.16
+      }
+    },
+    "source_types": {
+      "social network": 20000
+    },
+    "languages": {
+      "English": 14200,
+      "Japanese": 2310,
+      "Spanish": 1009,
+      "unknown": 513,
+      "French": 493,
+      "Portuguese": 318,
+      "Arabic": 296,
+      "Turkish": 200,
+      "Polish": 74,
+      "Hindi": 52
+    },
+    "countries": {
+      "United States": 4107,
+      "Japan": 2291,
+      "Canada": 1136,
+      "United Kingdom": 684,
+      "Spain": 311,
+      "Brazil": 303,
+      "France": 275,
+      "Nigeria": 208,
+      "Ireland": 177,
+      "United Arab Emirates": 155,
+      "India": 152,
+      "South Africa": 141,
+      "Turkey": 84,
+      "Belgium": 74,
+      "Poland": 62
+    },
+    "top_sources": {
+      "Twitter": 20000
+    },
+    "categories": {
+      "بطولات دولية": 14414,
+      "أخرى": 5066,
+      "مسؤولون": 360,
+      "إرث ورؤية": 51,
+      "فعاليات تراثية": 33,
+      "استضافة وتنظيم": 28,
+      "جماهير وتجربة": 16,
+      "دوري وأندية": 16,
+      "شباب ومبادرات": 11,
+      "بنية تحتية": 4,
+      "غير مصنف": 1
+    },
+    "reach": {
+      "total": 3848696726,
+      "average": 192434,
+      "max": 19808099
+    },
+    "engagement": {
+      "total": 2357308,
+      "average": 254
+    },
+    "daily_trend": {
+      "2025-10-25": 30,
+      "2025-10-26": 9,
+      "2025-10-28": 11,
+      "2025-10-29": 28,
+      "2025-10-30": 12,
+      "2025-10-31": 16,
+      "2025-11-01": 22,
+      "2025-11-02": 7,
+      "2025-11-03": 2,
+      "2025-11-04": 9,
+      "2025-11-05": 17,
+      "2025-11-06": 6,
+      "2025-11-07": 8,
+      "2025-11-08": 8,
+      "2025-11-09": 4,
+      "2025-11-10": 8,
+      "2025-11-11": 21,
+      "2025-11-12": 12,
+      "2025-11-13": 12,
+      "2025-11-14": 2,
+      "2025-11-15": 11,
+      "2025-11-16": 55,
+      "2025-11-17": 270,
+      "2025-11-18": 442,
+      "2025-11-19": 931,
+      "2025-11-20": 1018,
+      "2025-11-21": 2038,
+      "2025-11-22": 9999,
+      "2025-11-23": 3817,
+      "2025-11-24": 554,
+      "2025-11-25": 249,
+      "2025-11-26": 110,
+      "2025-11-27": 56,
+      "2025-11-28": 31,
+      "2025-11-29": 13,
+      "2025-11-30": 13,
+      "2025-12-01": 4,
+      "2025-12-02": 22,
+      "2025-12-03": 3,
+      "2025-12-04": 8,
+      "2025-12-06": 15,
+      "2025-12-07": 6,
+      "2025-12-08": 2,
+      "2025-12-09": 3,
+      "2025-12-11": 7,
+      "2025-12-12": 2,
+      "2025-12-13": 2,
+      "2025-12-14": 9,
+      "2025-12-15": 3,
+      "2025-12-16": 2,
+      "2025-12-17": 3,
+      "2025-12-19": 2,
+      "2025-12-20": 2,
+      "2025-12-21": 2,
+      "2025-12-22": 2,
+      "2025-12-23": 3,
+      "2025-12-24": 2,
+      "2025-12-25": 2,
+      "2025-12-29": 6,
+      "2025-12-30": 1,
+      "2025-12-31": 2,
+      "2026-01-04": 3,
+      "2026-01-05": 6,
+      "2026-01-06": 6,
+      "2026-01-07": 5,
+      "2026-01-09": 1,
+      "2026-01-11": 3,
+      "2026-01-12": 3,
+      "2026-01-16": 1,
+      "2026-01-18": 2,
+      "2026-01-19": 2,
+      "2026-01-20": 1,
+      "2026-01-22": 1
+    },
+    "weekly_trend": {
+      "Week_1": 12,
+      "Week_2": 21,
+      "Week_3": 6,
+      "Week_4": 4,
+      "Week_43": 39,
+      "Week_44": 96,
+      "Week_45": 54,
+      "Week_46": 121,
+      "Week_47": 18515,
+      "Week_48": 1026,
+      "Week_49": 58,
+      "Week_50": 25,
+      "Week_51": 14,
+      "Week_52": 9
+    },
+    "top_authors": {
+      "Leslie💯": 500,
+      "Consensus Score": 207,
+      "♚ ISRAEL ♚": 192,
+      "MMA FRONTIER": 187,
+      "RX": 169,
+      "UFC on TNT Sports": 167,
+      "UFC Español": 166,
+      "nick kemp": 161,
+      "Rudy": 156,
+      "Grok": 138,
+      "Cageside Press": 132,
+      "UPGRADE": 123,
+      "Joe Fielding": 116,
+      "Fight Junkie ®": 114,
+      "Muhyedeen Al Fahel": 106
+    },
+    "top_hashtags": [
+      [
+        "#ufcqatar",
+        18513
+      ],
+      [
+        "#ufc",
+        1501
+      ],
+      [
+        "#mma",
+        572
+      ],
+      [
+        "#mmatwitter",
+        456
+      ],
+      [
+        "#ufcfightpass",
+        344
+      ],
+      [
+        "#堀口恭司",
+        315
+      ],
+      [
+        "#gamblingx",
+        217
+      ],
+      [
+        "#ufc322",
+        147
+      ],
+      [
+        "#whougot",
+        147
+      ],
+      [
+        "#ufchbomax",
+        126
+      ],
+      [
+        "#ufcbr",
+        119
+      ],
+      [
+        "#ufc323",
+        95
+      ],
+      [
+        "#fightid",
+        93
+      ],
+      [
+        "#boxing",
+        86
+      ],
+      [
+        "#gsvgb",
+        77
+      ],
+      [
+        "#fightjunkie",
+        71
+      ],
+      [
+        "#gamblingtwitter",
+        68
+      ],
+      [
+        "#ashes2025",
+        57
+      ],
+      [
+        "#g20southafrica",
+        54
+      ],
+      [
+        "#abhaarena",
+        54
+      ]
+    ],
+    "sample_positive": [
+      {
+        "date": "2025-11-18",
+        "source": "Twitter",
+        "text": "He's been impressive since day one 👊 @IanGarryMMA is back in action Saturday at #UFCQatar! https://t.co/z9OG1cDC5m",
+        "reach": 12957505
+      },
+      {
+        "date": "2025-11-19",
+        "source": "Twitter",
+        "text": "A full week ahead at #UFCQatar 😮‍💨 Don't miss out on any of the fight week activities! [ ⏰ 1pmET on the @ESPN app ] https://t.co/1GSRqWb4CY",
+        "reach": 12913000
+      },
+      {
+        "date": "2025-11-19",
+        "source": "Twitter",
+        "text": "Oh what a night! 🤩 Doha, you pulled up in a BIG way tonight for the #UFCQatar open workouts! @VisitQatar | @QatarCalendar https://t.co/rWU6K ...",
+        "reach": 12887030
+      },
+      {
+        "date": "2025-11-19",
+        "source": "Twitter",
+        "text": "The Future is here 🙌 @IanGarryMMA will look to start a NEW winning streak this weekend at #UFCQatar! https://t.co/MgbntSM3OO",
+        "reach": 12886703
+      },
+      {
+        "date": "2025-11-19",
+        "source": "Twitter",
+        "text": "He’s feeling like a million bucks ahead of #UFCQatar! 🤑 @DanTheHangman is ready to shine in Saturday’s main event! [ Watch live on the @ESPN ...",
+        "reach": 12886550
+      }
+    ],
+    "sample_negative": [
+      {
+        "date": "2025-11-19",
+        "source": "Twitter",
+        "text": "HE’S A MADMAN😱 @DanTheHangman aims to make it four in a row at #UFCQatar this weekend 👊 [ NOV 22 | 1pmET on the @ESPN app ] https://t.co/TtY ...",
+        "reach": 12922958
+      },
+      {
+        "date": "2025-11-21",
+        "source": "Twitter",
+        "text": "He’s as dangerous as they get💥 @DanTheHangman plans to make it an early night TOMORROW! [ #UFCQatar | NOV 22 | 1pmET on the @ESPN app ] http ...",
+        "reach": 12874029
+      },
+      {
+        "date": "2025-11-20",
+        "source": "Twitter",
+        "text": "HE WASTES NO TIME ⏳ @ArmanUFC looks to make a statement in the #UFCQatar main event! [ LIVE NOV 22 at 1pmET on the @ESPN app ] https://t.co/ ...",
+        "reach": 12873640
+      },
+      {
+        "date": "2025-11-24",
+        "source": "Twitter",
+        "text": "Okdoky4 @ChampRDS Yes, multiple reports confirm Khamzat Chimaev posted this message to Ian Garry on X after an altercation at UFC Qatar, but ...",
+        "reach": 6683457
+      },
+      {
+        "date": "2025-11-24",
+        "source": "Twitter",
+        "text": "Kuwait2kn @newsnow7345 وفقاً لتصريحات حمزة تشيماييف، انفعل بسبب ضربة مزاحية من إيان غاري في ظهره أولاً، واعتبر أن غاري يحاول تقليد كونور ماك ...",
+        "reach": 6682763
+      }
+    ],
+    "sample_neutral": [
+      {
+        "date": "2025-11-22",
+        "source": "Twitter",
+        "text": "RT @ufcontnt: SIGN THIS MAN UP! 🔥 Cage Warriors welterweight champion Justin Burlinson flew to Qatar and made weight on the off chance that ...",
+        "reach": 19808099
+      },
+      {
+        "date": "2025-11-17",
+        "source": "Twitter",
+        "text": "Always looking for damage 😮‍💨 @ArmanUFC is BACK this weekend and looking to make sure this fight doesn't go a full 25 minutes! [ #UFCQatar | ...",
+        "reach": 12967384
+      },
+      {
+        "date": "2025-11-17",
+        "source": "Twitter",
+        "text": "It's all going down at #UFCQatar 🇶🇦 [ SAT NOV 22 | 1pmET on the @ESPN app | @VisitQatar | @QatarCalendar ] https://t.co/lc2JgD4cJH",
+        "reach": 12967312
+      },
+      {
+        "date": "2025-11-17",
+        "source": "Twitter",
+        "text": "Do not stand in front of this man 😳 @DanTheHangman returns to the Octagon looking for another finish this Saturday! [ #UFCQatar | NOV 22 | 1 ...",
+        "reach": 12967144
+      },
+      {
+        "date": "2025-11-18",
+        "source": "Twitter",
+        "text": "Don't forget what the former champ can do 😤 @BullyB170 returns this weekend against Ian Machado Garry! [ #UFCQatar | SAT NOV 22 | 1pmET on t ...",
+        "reach": 12962514
+      }
+    ]
+  },
+  " جائزة قطر الكبرى - فورمولا 1 (Qatar Grand Prix)_analytics": {
+    "name": " جائزة قطر الكبرى - فورمولا 1 (Qatar Grand Prix) - الإعلام التقليدي",
+    "total_mentions": 6647,
+    "date_range": {
+      "start": "2025-10-26",
+      "end": "2026-01-22",
+      "days": 88
+    },
+    "sentiment": {
+      "counts": {
+        "neutral": 4402,
+        "positive": 1256,
+        "negative": 988,
+        "unknown": 1
+      },
+      "percentages": {
+        "neutral": 66.23,
+        "positive": 18.9,
+        "negative": 14.86,
+        "unknown": 0.02
+      }
+    },
+    "source_types": {
+      "online news": 6629,
+      "print": 18
+    },
+    "languages": {
+      "English": 4628,
+      "Arabic": 436,
+      "Spanish": 412,
+      "Italian": 237,
+      "Dutch": 140,
+      "Indonesian": 105,
+      "German": 94,
+      "French": 90,
+      "Portuguese": 65,
+      "Modern Greek (1453-)": 60
+    },
+    "countries": {
+      "United States": 1541,
+      "United Kingdom": 1076,
+      "Australia": 459,
+      "Netherlands": 282,
+      "Qatar": 274,
+      "India": 270,
+      "United Arab Emirates": 233,
+      "Italy": 220,
+      "Brazil": 201,
+      "Argentina": 136,
+      "Malaysia": 116,
+      "Indonesia": 115,
+      "Spain": 110,
+      "Egypt": 103,
+      "Mexico": 94
+    },
+    "top_sources": {
+      "Motorcycle Sports": 259,
+      "DailyGP": 160,
+      "World News": 137,
+      "GPblog.com": 120,
+      "Mix Vale": 118,
+      "Zazoom": 116,
+      "AP (Hosted)": 112,
+      "MSN.com": 88,
+      "BVM Sports": 85,
+      "MSN UK": 81,
+      "Sky Sports": 75,
+      "RacingNews365.com": 69,
+      "Yahoo! Sports": 66,
+      "Motorsport.com": 55,
+      "Drimble": 53,
+      "VIASPORT": 49,
+      "Automundo": 49,
+      "Motorsport Week": 43,
+      "Sportskeeda": 43,
+      "Motorsport.com [AU]": 43
+    },
+    "categories": {
+      "أخرى": 3452,
+      "بطولات دولية": 1862,
+      "بنية تحتية": 498,
+      "غير مصنف": 477,
+      "مسؤولون": 110,
+      "استضافة وتنظيم": 87,
+      "شباب ومبادرات": 84,
+      "جماهير وتجربة": 39,
+      "إرث ورؤية": 29,
+      "دوري وأندية": 6,
+      "منتخبات": 2,
+      "فعاليات تراثية": 1
+    },
+    "reach": {
+      "total": 23930807290,
+      "average": 3605666,
+      "max": 183319156
+    },
+    "engagement": {
+      "total": 19068,
+      "average": 11
+    },
+    "daily_trend": {
+      "2025-10-26": 10,
+      "2025-10-27": 27,
+      "2025-10-28": 10,
+      "2025-10-29": 18,
+      "2025-10-30": 29,
+      "2025-10-31": 19,
+      "2025-11-01": 21,
+      "2025-11-02": 7,
+      "2025-11-03": 28,
+      "2025-11-04": 7,
+      "2025-11-05": 2,
+      "2025-11-06": 10,
+      "2025-11-07": 9,
+      "2025-11-08": 14,
+      "2025-11-09": 23,
+      "2025-11-10": 13,
+      "2025-11-11": 17,
+      "2025-11-12": 15,
+      "2025-11-13": 7,
+      "2025-11-14": 3,
+      "2025-11-15": 4,
+      "2025-11-16": 1,
+      "2025-11-17": 47,
+      "2025-11-18": 13,
+      "2025-11-19": 8,
+      "2025-11-20": 60,
+      "2025-11-21": 19,
+      "2025-11-22": 21,
+      "2025-11-23": 232,
+      "2025-11-24": 82,
+      "2025-11-25": 69,
+      "2025-11-26": 120,
+      "2025-11-27": 540,
+      "2025-11-28": 918,
+      "2025-11-29": 1068,
+      "2025-11-30": 1284,
+      "2025-12-01": 663,
+      "2025-12-02": 307,
+      "2025-12-03": 160,
+      "2025-12-04": 158,
+      "2025-12-05": 76,
+      "2025-12-06": 35,
+      "2025-12-07": 53,
+      "2025-12-08": 40,
+      "2025-12-09": 61,
+      "2025-12-10": 24,
+      "2025-12-11": 6,
+      "2025-12-12": 19,
+      "2025-12-13": 5,
+      "2025-12-14": 12,
+      "2025-12-15": 12,
+      "2025-12-16": 7,
+      "2025-12-17": 3,
+      "2025-12-18": 5,
+      "2025-12-19": 9,
+      "2025-12-20": 6,
+      "2025-12-21": 4,
+      "2025-12-22": 16,
+      "2025-12-23": 7,
+      "2025-12-24": 3,
+      "2025-12-25": 7,
+      "2025-12-26": 3,
+      "2025-12-27": 5,
+      "2025-12-29": 7,
+      "2025-12-30": 5,
+      "2025-12-31": 2,
+      "2026-01-01": 7,
+      "2026-01-02": 6,
+      "2026-01-03": 6,
+      "2026-01-05": 17,
+      "2026-01-06": 6,
+      "2026-01-07": 10,
+      "2026-01-08": 12,
+      "2026-01-09": 8,
+      "2026-01-11": 1,
+      "2026-01-12": 10,
+      "2026-01-13": 3,
+      "2026-01-14": 6,
+      "2026-01-15": 8,
+      "2026-01-16": 3,
+      "2026-01-17": 4,
+      "2026-01-18": 8,
+      "2026-01-19": 16,
+      "2026-01-20": 11,
+      "2026-01-21": 7,
+      "2026-01-22": 3
+    },
+    "weekly_trend": {
+      "Week_1": 33,
+      "Week_2": 54,
+      "Week_3": 42,
+      "Week_4": 37,
+      "Week_43": 10,
+      "Week_44": 131,
+      "Week_45": 93,
+      "Week_46": 60,
+      "Week_47": 400,
+      "Week_48": 4081,
+      "Week_49": 1452,
+      "Week_50": 167,
+      "Week_51": 46,
+      "Week_52": 41
+    },
+    "top_authors": {
+      "David Castro": 256,
+      "Ben Vinel": 46,
+      "Arman Khan": 44,
+      "Filip Cleeren": 36,
+      "Julian Linden": 33,
+      "Janderson Luiz": 33,
+      "Keith Collantine": 30,
+      "Philip Duncan": 27,
+      "Samriddhi Jaiswal": 26,
+      "Peppe Marino": 25,
+      "Kieran Jackson": 24,
+      "الشرق": 23,
+      "Samson Ero": 22,
+      "Kerry Violet": 21,
+      "Xinhua": 20
+    },
+    "top_hashtags": [],
+    "sample_positive": [
+      {
+        "date": "2025-11-23",
+        "source": "IMDb",
+        "text": "The 2025 Formula 1 Heineken Las Vegas Grand Prix was quite the star-studded affair! This weekend’s F1 race in Las Vegas was the 22nd one of ...",
+        "reach": 183319156
+      },
+      {
+        "date": "2025-10-29",
+        "source": "MSN.com",
+        "text": "... ; View this post on Instagram This November, the Las Vegas Grand Prix will feature a unique collaboration between The Walt Disney Company ...",
+        "reach": 96275936
+      },
+      {
+        "date": "2025-12-03",
+        "source": "MSN.com",
+        "text": "... ; ; Racing Bulls team principal Alan Permane has explained why Liam Lawson was chosen over Yuki Tsunoda for the team’s 2026 seat. \"In some ...",
+        "reach": 90830350
+      },
+      {
+        "date": "2025-12-01",
+        "source": "MSN.com",
+        "text": "Featured tournaments Final · Nov 2 NASCAR Cup Series Championship See details Final · Oct 26 Xfinity 500 See details Final · Oct 19 ...",
+        "reach": 90830350
+      },
+      {
+        "date": "2025-12-01",
+        "source": "MSN.com",
+        "text": "... ; ; View this post on Instagram Metallica’s performance at the Qatar Grand Prix was a standout moment of the Formula 1 weekend, yet it ...",
+        "reach": 90830350
+      }
+    ],
+    "sample_negative": [
+      {
+        "date": "2025-12-06",
+        "source": "MSN.com",
+        "text": "Featured tournaments Final · Nov 2 NASCAR Cup Series Championship See details Final · Oct 26 Xfinity 500 See details Final · Oct 19 ...",
+        "reach": 90830350
+      },
+      {
+        "date": "2025-12-03",
+        "source": "MSN.com",
+        "text": "... ; ; To watch Lewis Hamilton’s post-race reflections is to feel, increasingly, as if you are intruding on private grief. Take the moment ...",
+        "reach": 90830350
+      },
+      {
+        "date": "2025-12-02",
+        "source": "MSN.com",
+        "text": "... ; ; Lewis Hamilton admitted he was genuinely surprised to learn that the Qatar Grand Prix had been won by Max Verstappen rather than Oscar ...",
+        "reach": 90830350
+      },
+      {
+        "date": "2025-12-01",
+        "source": "MSN.com",
+        "text": "... ; Mercedes will contact the FIA regarding their United Against Online Abuse campaign after the enormous wave of online hate directed at ...",
+        "reach": 90830350
+      },
+      {
+        "date": "2025-12-01",
+        "source": "MSN.com",
+        "text": "Breaking News Former Trump lawyer Alina Habba is disqualified as top New Jersey prosecutor, US appeals court rules ; ; Oscar Piastri ...",
+        "reach": 90830350
+      }
+    ],
+    "sample_neutral": [
+      {
+        "date": "2025-12-01",
+        "source": "BBC",
+        "text": "... 30 November 2025 36 minutes Available for 29 days Harry Benjamin, Jennie Gow and former McLaren mechanic Marc Priestley look back on a ...",
+        "reach": 148040304
+      },
+      {
+        "date": "2025-11-30",
+        "source": "BBC",
+        "text": "... 29 November 2025 33 minutes Available for 29 days Harry Benjamin, Jennie Gow and former McLaren mechanic Marc Priestley look back on a ...",
+        "reach": 148040304
+      },
+      {
+        "date": "2025-11-29",
+        "source": "BBC",
+        "text": "... 28 November 2025 55 minutes Available for 28 days Harry Benjamin, former McLaren mechanic Marc Priestley and the BBC’s F1 correspondent ...",
+        "reach": 148040304
+      },
+      {
+        "date": "2025-11-23",
+        "source": "The New York Times",
+        "text": "The 2025 Formula One season is here. Below is the full schedule for all 24 races, based on Eastern Time, along with details on how to view ...",
+        "reach": 144590092
+      },
+      {
+        "date": "2025-11-29",
+        "source": "The New York Times",
+        "text": "LUSAIL, Qatar — Lando Norris has brushed off Max Verstappen’s claim the championship would have been over “a long time ago” if he was ...",
+        "reach": 139869459
+      }
+    ]
+  },
+  " جائزة قطر الكبرى - فورمولا 1 (Qatar Grand Prix)_social": {
+    "name": " جائزة قطر الكبرى - فورمولا 1 (Qatar Grand Prix) - منصات التواصل",
+    "total_mentions": 20000,
+    "date_range": {
+      "start": "2025-10-25",
+      "end": "2026-01-22",
+      "days": 89
+    },
+    "sentiment": {
+      "counts": {
+        "neutral": 12150,
+        "positive": 6074,
+        "negative": 1774,
+        "unknown": 2
+      },
+      "percentages": {
+        "neutral": 60.75,
+        "positive": 30.37,
+        "negative": 8.87,
+        "unknown": 0.01
+      }
+    },
+    "source_types": {
+      "social network": 20000
+    },
+    "languages": {
+      "English": 13715,
+      "Spanish": 2229,
+      "Arabic": 1006,
+      "French": 615,
+      "Catalan": 469,
+      "Dutch": 353,
+      "Welsh": 349,
+      "Italian": 320,
+      "Portuguese": 179,
+      "Thai": 114
+    },
+    "countries": {
+      "United States": 1544,
+      "Argentina": 993,
+      "United Kingdom": 987,
+      "Japan": 577,
+      "Australia": 525,
+      "Netherlands": 523,
+      "Qatar": 513,
+      "Mexico": 486,
+      "Spain": 426,
+      "India": 416,
+      "France": 339,
+      "Brazil": 268,
+      "Kenya": 253,
+      "South Africa": 228,
+      "Italy": 209
+    },
+    "top_sources": {
+      "Twitter": 20000
+    },
+    "categories": {
+      "بطولات دولية": 12505,
+      "أخرى": 5192,
+      "بنية تحتية": 1267,
+      "جماهير وتجربة": 537,
+      "مسؤولون": 206,
+      "استضافة وتنظيم": 180,
+      "شباب ومبادرات": 67,
+      "إرث ورؤية": 34,
+      "دوري وأندية": 9,
+      "فعاليات تراثية": 2,
+      "منتخبات": 1
+    },
+    "reach": {
+      "total": 4736127024,
+      "average": 236806,
+      "max": 56809043
+    },
+    "engagement": {
+      "total": 2145805,
+      "average": 308
+    },
+    "daily_trend": {
+      "2025-10-25": 115,
+      "2025-10-26": 141,
+      "2025-10-27": 123,
+      "2025-10-28": 46,
+      "2025-10-29": 64,
+      "2025-10-30": 19,
+      "2025-10-31": 24,
+      "2025-11-01": 105,
+      "2025-11-02": 30,
+      "2025-11-03": 41,
+      "2025-11-04": 53,
+      "2025-11-05": 62,
+      "2025-11-06": 98,
+      "2025-11-07": 94,
+      "2025-11-08": 38,
+      "2025-11-09": 180,
+      "2025-11-10": 52,
+      "2025-11-11": 21,
+      "2025-11-12": 45,
+      "2025-11-13": 46,
+      "2025-11-14": 17,
+      "2025-11-15": 16,
+      "2025-11-16": 45,
+      "2025-11-17": 237,
+      "2025-11-18": 65,
+      "2025-11-19": 48,
+      "2025-11-20": 77,
+      "2025-11-21": 59,
+      "2025-11-22": 58,
+      "2025-11-23": 369,
+      "2025-11-24": 526,
+      "2025-11-25": 436,
+      "2025-11-26": 692,
+      "2025-11-27": 898,
+      "2025-11-28": 1943,
+      "2025-11-29": 3369,
+      "2025-11-30": 5280,
+      "2025-12-01": 1916,
+      "2025-12-02": 520,
+      "2025-12-03": 250,
+      "2025-12-04": 180,
+      "2025-12-05": 142,
+      "2025-12-06": 124,
+      "2025-12-07": 194,
+      "2025-12-08": 137,
+      "2025-12-09": 71,
+      "2025-12-10": 40,
+      "2025-12-11": 55,
+      "2025-12-12": 56,
+      "2025-12-13": 27,
+      "2025-12-14": 23,
+      "2025-12-15": 30,
+      "2025-12-16": 35,
+      "2025-12-17": 17,
+      "2025-12-18": 14,
+      "2025-12-19": 14,
+      "2025-12-20": 18,
+      "2025-12-21": 28,
+      "2025-12-22": 21,
+      "2025-12-23": 29,
+      "2025-12-24": 14,
+      "2025-12-25": 24,
+      "2025-12-26": 14,
+      "2025-12-27": 9,
+      "2025-12-28": 8,
+      "2025-12-29": 20,
+      "2025-12-30": 15,
+      "2025-12-31": 22,
+      "2026-01-01": 23,
+      "2026-01-02": 25,
+      "2026-01-03": 5,
+      "2026-01-04": 5,
+      "2026-01-05": 23,
+      "2026-01-06": 28,
+      "2026-01-07": 29,
+      "2026-01-08": 20,
+      "2026-01-09": 9,
+      "2026-01-10": 5,
+      "2026-01-11": 8,
+      "2026-01-12": 25,
+      "2026-01-13": 15,
+      "2026-01-14": 19,
+      "2026-01-15": 18,
+      "2026-01-16": 24,
+      "2026-01-17": 7,
+      "2026-01-18": 13,
+      "2026-01-19": 13,
+      "2026-01-20": 11,
+      "2026-01-21": 48,
+      "2026-01-22": 28
+    },
+    "weekly_trend": {
+      "Week_1": 115,
+      "Week_2": 122,
+      "Week_3": 121,
+      "Week_4": 100,
+      "Week_43": 256,
+      "Week_44": 411,
+      "Week_45": 566,
+      "Week_46": 242,
+      "Week_47": 913,
+      "Week_48": 13144,
+      "Week_49": 3326,
+      "Week_50": 409,
+      "Week_51": 156,
+      "Week_52": 119
+    },
+    "top_authors": {
+      "This is Formula 1": 302,
+      "Lucho Yoma": 282,
+      "Grok": 248,
+      "ゆういち": 234,
+      "🏁🇶🇦#QatarGP #F1 #C4F1 #SkyF1🇶🇦🏁": 202,
+      "Junaid #JB17": 186,
+      "M Sports": 164,
+      "F1 Naija": 144,
+      "Flyin18T Motorsports": 139,
+      "Arnaud Meunier": 127,
+      "Motorsport LATAM": 124,
+      "Alpine Club": 122,
+      "Carburando": 99,
+      "GPFans NL": 94,
+      "Motorsport.com España": 88
+    },
+    "top_hashtags": [
+      [
+        "#f1",
+        13236
+      ],
+      [
+        "#qatargp",
+        10405
+      ],
+      [
+        "#formula1",
+        1471
+      ],
+      [
+        "#f1sprint",
+        1233
+      ],
+      [
+        "#mclaren",
+        578
+      ],
+      [
+        "#f2",
+        549
+      ],
+      [
+        "#abudhabigp",
+        455
+      ],
+      [
+        "#lasvegasgp",
+        443
+      ],
+      [
+        "#qatar",
+        410
+      ],
+      [
+        "#brazilgp",
+        381
+      ],
+      [
+        "#mexicogp",
+        319
+      ],
+      [
+        "#colapinto",
+        231
+      ],
+      [
+        "#f12025",
+        227
+      ],
+      [
+        "#فورمولا1",
+        213
+      ],
+      [
+        "#redbullracing",
+        186
+      ],
+      [
+        "#piastri",
+        186
+      ],
+      [
+        "#verstappen",
+        184
+      ],
+      [
+        "#vcarb",
+        178
+      ],
+      [
+        "#قطر",
+        161
+      ],
+      [
+        "#maxverstappen",
+        149
+      ]
+    ],
+    "sample_positive": [
+      {
+        "date": "2025-11-29",
+        "source": "Twitter",
+        "text": "RT @ESPNF1: OSCAR PIASTRI TAKES POLE FOR THE QATAR GRAND PRIX 👀 WHAT A WEEKEND HE'S HAVING 🔥 https://t.co/09Q4MSUfu9",
+        "reach": 56809043
+      },
+      {
+        "date": "2025-11-30",
+        "source": "Twitter",
+        "text": "RT @SkySportsF1: MAX VERSTAPPEN WINS THE QATAR GP! 🇶🇦⚡ https://t.co/f1Ecs9tZSB",
+        "reach": 12617273
+      },
+      {
+        "date": "2025-11-25",
+        "source": "Twitter",
+        "text": "Max and Lando side-by-side! ⚔️ It was an eventful first lap in Qatar last season, featuring a battle for the lead and collisions further bac ...",
+        "reach": 11722582
+      },
+      {
+        "date": "2025-11-25",
+        "source": "Twitter",
+        "text": "A dramatic drive and well-executed strategy to secure a podium spot! 🥉 Fernando Alonso's Qatar podium in 2021 was his first in over seven ye ...",
+        "reach": 11722385
+      },
+      {
+        "date": "2025-10-28",
+        "source": "Twitter",
+        "text": "Just a few rounds of the season to go it's time to take a chance! The fans in Mexico let us know who they wanted to see risk it all in Sunda ...",
+        "reach": 11720355
+      }
+    ],
+    "sample_negative": [
+      {
+        "date": "2025-11-09",
+        "source": "Twitter",
+        "text": "A moment for Bortoleto and his home fans 🥹🇧🇷 #F1 #BrazilGP https://t.co/db88qoWBJ7",
+        "reach": 11708599
+      },
+      {
+        "date": "2025-12-09",
+        "source": "Twitter",
+        "text": "In the 2025 F1 finale at Abu Dhabi, Lando Norris (McLaren) won the Drivers' Championship with 423 points, edging out Max Verstappen (Red Bul ...",
+        "reach": 6751250
+      },
+      {
+        "date": "2025-12-09",
+        "source": "Twitter",
+        "text": "In the 2025 Qatar GP, Kimi Antonelli suffered oversteer late in the race, forcing him to slow and pull over briefly. This allowed Lando Norr ...",
+        "reach": 6751201
+      },
+      {
+        "date": "2025-12-05",
+        "source": "Twitter",
+        "text": "Logans352502 @racepluscom Based on reports, Max Verstappen told Kimi Antonelli to ignore online trolls abusing him after the Qatar GP incide ...",
+        "reach": 6736068
+      },
+      {
+        "date": "2025-12-03",
+        "source": "Twitter",
+        "text": "As of December 3, 2025, McLaren hasn't issued a public explanation for their minimal presence in parc fermé after Piastri's P2 at the Qatar ...",
+        "reach": 6726675
+      }
+    ],
+    "sample_neutral": [
+      {
+        "date": "2025-11-30",
+        "source": "Twitter",
+        "text": "RT @TheAthleticAUTO: Max Verstappen beat his McLaren rivals on strategy to claim a crucial victory at the Qatar Grand Prix, guaranteeing a t ...",
+        "reach": 52812619
+      },
+      {
+        "date": "2025-11-30",
+        "source": "Twitter",
+        "text": "RT @Sports_NDTV: Title-Chasing Oscar Piastri Takes Pole For Qatar Grand Prix #OscarPiastri #QatarGrandPrix https://t.co/aWHdkwx3u3",
+        "reach": 17374835
+      },
+      {
+        "date": "2025-11-24",
+        "source": "Twitter",
+        "text": "RT @F1: IT'S RACE WEEK IN QATAR! 🇶🇦 And it's the penultimate round of the season 👀 #F1 #QatarGP https://t.co/I5vcCO8GA1",
+        "reach": 13961968
+      },
+      {
+        "date": "2025-11-26",
+        "source": "Twitter",
+        "text": "RT @F1: We go to Qatar with the potential to crown a new world champion 🏆👀 #F1 #QatarGP https://t.co/k0WygemPBW ...",
+        "reach": 13847922
+      },
+      {
+        "date": "2025-11-30",
+        "source": "Twitter",
+        "text": "I'd like Lando to bring it home\" David Beckham looks ahead to today's Qatar Grand Prix, where Lando Norris can be crowned world champion 🇬🇧 ...",
+        "reach": 12621728
+      }
+    ]
+  },
+  "كأس العالم تحت 17 سنة (FIFA U-17 World Cup)_analytics": {
+    "name": "كأس العالم تحت 17 سنة (FIFA U-17 World Cup) - الإعلام التقليدي",
+    "total_mentions": 8568,
+    "date_range": {
+      "start": "2025-10-25",
+      "end": "2026-01-22",
+      "days": 89
+    },
+    "sentiment": {
+      "counts": {
+        "neutral": 6926,
+        "positive": 1502,
+        "negative": 89,
+        "unknown": 51
+      },
+      "percentages": {
+        "neutral": 80.84,
+        "positive": 17.53,
+        "negative": 1.04,
+        "unknown": 0.6
+      }
+    },
+    "source_types": {
+      "online news": 8552,
+      "print": 16
+    },
+    "languages": {
+      "Arabic": 5688,
+      "English": 2139,
+      "Vietnamese": 357,
+      "French": 149,
+      "Indonesian": 100,
+      "Egyptian Arabic": 42,
+      "Italian": 34,
+      "Spanish": 13,
+      "Romanian": 10,
+      "Albanian": 6
+    },
+    "countries": {
+      "Egypt": 2671,
+      "United Arab Emirates": 752,
+      "Qatar": 718,
+      "United States": 673,
+      "Saudi Arabia": 648,
+      "Morocco": 435,
+      "Vietnam": 382,
+      "United Kingdom": 258,
+      "Bahrain": 240,
+      "Indonesia": 155,
+      "Yemen": 145,
+      "India": 121,
+      "Jordan": 103,
+      "Kuwait": 102,
+      "Australia": 86
+    },
+    "top_sources": {
+      "بوابة الزهراء الإخبارية": 289,
+      "Klyoum": 170,
+      "مصرس": 166,
+      "Al Araby Al Jadeed العربي الجديد": 161,
+      "AP (Hosted)": 143,
+      "Qatar News": 133,
+      "بوابة فيتو": 121,
+      "موقع نبض - nabd": 117,
+      "مصر اليوم": 111,
+      "WinWin": 96,
+      "Al Raya الراية": 92,
+      "NABDN": 92,
+      "Youm7.com - اليوم السابع": 90,
+      "Sahafahh.net": 87,
+      "MSN Egypt": 83,
+      "الوطن": 83,
+      "يمن فايب": 72,
+      "The Middle East North Africa Financial Network": 70,
+      "جريدة الدستور": 69,
+      "Arabkhabar": 67
+    },
+    "categories": {
+      "أخرى": 3034,
+      "منتخبات": 2532,
+      "بطولات دولية": 1525,
+      "استضافة وتنظيم": 475,
+      "بنية تحتية": 298,
+      "مسؤولون": 224,
+      "شباب ومبادرات": 135,
+      "دوري وأندية": 112,
+      "جماهير وتجربة": 90,
+      "غير مصنف": 89,
+      "إرث ورؤية": 36,
+      "فعاليات تراثية": 18
+    },
+    "reach": {
+      "total": 11259585076,
+      "average": 1314143,
+      "max": 96275936
+    },
+    "engagement": {
+      "total": 535906,
+      "average": 355
+    },
+    "daily_trend": {
+      "2025-10-25": 40,
+      "2025-10-26": 24,
+      "2025-10-27": 127,
+      "2025-10-28": 83,
+      "2025-10-29": 148,
+      "2025-10-30": 234,
+      "2025-10-31": 141,
+      "2025-11-01": 175,
+      "2025-11-02": 252,
+      "2025-11-03": 441,
+      "2025-11-04": 521,
+      "2025-11-05": 305,
+      "2025-11-06": 188,
+      "2025-11-07": 372,
+      "2025-11-08": 182,
+      "2025-11-09": 253,
+      "2025-11-10": 392,
+      "2025-11-11": 340,
+      "2025-11-12": 248,
+      "2025-11-13": 142,
+      "2025-11-14": 284,
+      "2025-11-15": 214,
+      "2025-11-16": 124,
+      "2025-11-17": 129,
+      "2025-11-18": 173,
+      "2025-11-19": 141,
+      "2025-11-20": 101,
+      "2025-11-21": 218,
+      "2025-11-22": 112,
+      "2025-11-23": 140,
+      "2025-11-24": 278,
+      "2025-11-25": 133,
+      "2025-11-26": 106,
+      "2025-11-27": 290,
+      "2025-11-28": 199,
+      "2025-11-29": 51,
+      "2025-11-30": 38,
+      "2025-12-01": 130,
+      "2025-12-02": 96,
+      "2025-12-03": 47,
+      "2025-12-04": 26,
+      "2025-12-05": 22,
+      "2025-12-06": 27,
+      "2025-12-07": 9,
+      "2025-12-08": 1,
+      "2025-12-09": 5,
+      "2025-12-10": 13,
+      "2025-12-11": 44,
+      "2025-12-12": 33,
+      "2025-12-13": 11,
+      "2025-12-14": 11,
+      "2025-12-15": 10,
+      "2025-12-16": 22,
+      "2025-12-17": 18,
+      "2025-12-18": 60,
+      "2025-12-19": 34,
+      "2025-12-20": 44,
+      "2025-12-21": 13,
+      "2025-12-22": 16,
+      "2025-12-23": 18,
+      "2025-12-24": 27,
+      "2025-12-25": 23,
+      "2025-12-26": 30,
+      "2025-12-27": 20,
+      "2025-12-28": 12,
+      "2025-12-29": 25,
+      "2025-12-30": 9,
+      "2025-12-31": 22,
+      "2026-01-01": 23,
+      "2026-01-02": 20,
+      "2026-01-03": 30,
+      "2026-01-04": 18,
+      "2026-01-05": 11,
+      "2026-01-06": 11,
+      "2026-01-07": 9,
+      "2026-01-08": 50,
+      "2026-01-09": 28,
+      "2026-01-10": 8,
+      "2026-01-11": 8,
+      "2026-01-12": 11,
+      "2026-01-13": 14,
+      "2026-01-14": 6,
+      "2026-01-15": 5,
+      "2026-01-16": 11,
+      "2026-01-17": 2,
+      "2026-01-19": 15,
+      "2026-01-20": 21,
+      "2026-01-21": 46,
+      "2026-01-22": 4
+    },
+    "weekly_trend": {
+      "Week_1": 147,
+      "Week_2": 125,
+      "Week_3": 49,
+      "Week_4": 86,
+      "Week_43": 64,
+      "Week_44": 1160,
+      "Week_45": 2262,
+      "Week_46": 1744,
+      "Week_47": 1014,
+      "Week_48": 1095,
+      "Week_49": 357,
+      "Week_50": 118,
+      "Week_51": 201,
+      "Week_52": 146
+    },
+    "top_authors": {
+      "Xinhua": 188,
+      "الأمير إبن الملك": 64,
+      "يوسف شعبان": 48,
+      "الشرق": 47,
+      "محمود درويش": 34,
+      "بُراق": 31,
+      "نور": 30,
+      "Neil Davidson": 29,
+      "العرب القطرية": 28,
+      "محمد راشد": 25,
+      "محمد جمال": 23,
+      "Mali Actu": 21,
+      "عمر القاضي": 21,
+      "محمود قابيل": 20,
+      "عمرو أحمد": 19
+    },
+    "top_hashtags": [],
+    "sample_positive": [
+      {
+        "date": "2026-01-09",
+        "source": "MSN.com",
+        "text": "Featured games Final Arsenal vs Liverpool See details Final Newcastle vs Leeds United See details Final Burnley vs Manchester ...",
+        "reach": 94434123
+      },
+      {
+        "date": "2025-11-27",
+        "source": "Hindustan Times",
+        "text": "Union Sports and Youth Affairs Minister Mansukh Mandaviya. (PTI) India is now widely regarded as a dependable, high-capacity and ...",
+        "reach": 43354081
+      },
+      {
+        "date": "2026-01-04",
+        "source": "The Indian Express",
+        "text": "Prime Minister Narendra Modi says reforms have changed the sports ecosystem in the country in the past decade and that every citizen is ...",
+        "reach": 33044875
+      },
+      {
+        "date": "2025-11-04",
+        "source": "Goal.com",
+        "text": "The 2025 FIFA U17 World Cup, the first-ever World Cup to feature 48 teams, got off to a spectacular start in Qatar as the hosts took on ...",
+        "reach": 25381457
+      },
+      {
+        "date": "2025-10-30",
+        "source": "Goal.com",
+        "text": "FIFA and the Local Organising Committee (LOC) have officially unveiled BOMA, the Desert Owl, as the mascot for the FIFA U-17 World Cup ...",
+        "reach": 25381457
+      }
+    ],
+    "sample_negative": [
+      {
+        "date": "2025-11-16",
+        "source": "Marca",
+        "text": "U17 World Cup post match fight shocks fans worldwide",
+        "reach": 32805247
+      },
+      {
+        "date": "2025-11-12",
+        "source": "Yahoo! Sports",
+        "text": "Appearing in the Paris Saint-Germain professional group a few weeks ago, the young offensive midfielder Wassim Slama got seriously injured ...",
+        "reach": 24178323
+      },
+      {
+        "date": "2025-11-28",
+        "source": "VN Express",
+        "text": "Hưng YênViệt Nam hạ Macau 4-0 ở lượt bốn, trước khi quyết đấu Malaysia ở lượt cuối bảng C để tranh vé duy nhất dự vòng chung kết U17 châu Á ...",
+        "reach": 18631470
+      },
+      {
+        "date": "2025-11-04",
+        "source": "Tuổi Trẻ Online",
+        "text": "Đại diện duy nhất của Đông Nam Á Indonesia sẽ ra quân tại U17 World Cup 2025 bằng cuộc chạm trán với Zambia lúc 22h45 tối 4-11. Lịch trực ...",
+        "reach": 14535553
+      },
+      {
+        "date": "2025-10-28",
+        "source": "Tuổi Trẻ Online",
+        "text": "Indonesia là đại diện Đông Nam Á duy nhất góp mặt ở U17 World Cup 2025 diễn ra tại Qatar. Mới đây, họ vừa chốt danh sách 21 tuyển thủ dự ...",
+        "reach": 14535553
+      }
+    ],
+    "sample_neutral": [
+      {
+        "date": "2025-11-05",
+        "source": "MSN.com",
+        "text": "Featured games Nov 8 Charlotte vs New York City See details Nov 8 Minnesota vs Seattle See details Nov 8 Cincinnati vs ...",
+        "reach": 96275936
+      },
+      {
+        "date": "2025-11-05",
+        "source": "MSN.com",
+        "text": "France and Chile face off in opening Group K action of the FIFA U-17 World Cup . Here’s everything you need to know ahead of kickoff, ...",
+        "reach": 96275936
+      },
+      {
+        "date": "2026-01-09",
+        "source": "MSN.com",
+        "text": "Featured games Final Arsenal vs Liverpool See details Final Newcastle vs Leeds United See details Final Burnley vs Manchester ...",
+        "reach": 94434123
+      },
+      {
+        "date": "2026-01-09",
+        "source": "MSN.com",
+        "text": "... ; ; Liverpool is set to conclude a transfer deal to sign the young Senegalese center-back Mor Ndiaye from Amitie FC, while the Reds are ...",
+        "reach": 94434123
+      },
+      {
+        "date": "2026-01-09",
+        "source": "MSN.com",
+        "text": "Featured games Final Arsenal vs Liverpool See details Final Newcastle vs Leeds United See details Final Burnley vs Manchester ...",
+        "reach": 94434123
+      }
+    ]
+  },
+  "كأس العالم تحت 17 سنة (FIFA U-17 World Cup)_social": {
+    "name": "كأس العالم تحت 17 سنة (FIFA U-17 World Cup) - منصات التواصل",
+    "total_mentions": 20000,
+    "date_range": {
+      "start": "2025-10-25",
+      "end": "2026-01-21",
+      "days": 88
+    },
+    "sentiment": {
+      "counts": {
+        "neutral": 14041,
+        "positive": 5541,
+        "negative": 405,
+        "unknown": 13
+      },
+      "percentages": {
+        "neutral": 70.2,
+        "positive": 27.71,
+        "negative": 2.02,
+        "unknown": 0.07
+      }
+    },
+    "source_types": {
+      "social network": 20000
+    },
+    "languages": {
+      "English": 11013,
+      "Arabic": 6580,
+      "Spanish": 1366,
+      "French": 252,
+      "Sindhi": 216,
+      "Indonesian": 104,
+      "Italian": 95,
+      "Portuguese": 63,
+      "Breton": 61,
+      "Japanese": 58
+    },
+    "countries": {
+      "Qatar": 3244,
+      "Uganda": 1746,
+      "South Africa": 1564,
+      "Saudi Arabia": 975,
+      "United States": 561,
+      "Kuwait": 426,
+      "United Kingdom": 370,
+      "Ghana": 326,
+      "Nigeria": 295,
+      "Ireland": 238,
+      "Venezuela": 211,
+      "France": 206,
+      "Morocco": 205,
+      "Philippines": 197,
+      "Indonesia": 188
+    },
+    "top_sources": {
+      "Twitter": 20000
+    },
+    "categories": {
+      "أخرى": 7062,
+      "بطولات دولية": 6862,
+      "منتخبات": 2717,
+      "بنية تحتية": 1197,
+      "جماهير وتجربة": 661,
+      "استضافة وتنظيم": 523,
+      "مسؤولون": 371,
+      "شباب ومبادرات": 340,
+      "فعاليات تراثية": 124,
+      "دوري وأندية": 77,
+      "إرث ورؤية": 66
+    },
+    "reach": {
+      "total": 5195090447,
+      "average": 259754,
+      "max": 26717348
+    },
+    "engagement": {
+      "total": 374805,
+      "average": 76
+    },
+    "daily_trend": {
+      "2025-10-25": 115,
+      "2025-10-26": 80,
+      "2025-10-27": 174,
+      "2025-10-28": 168,
+      "2025-10-29": 311,
+      "2025-10-30": 631,
+      "2025-10-31": 463,
+      "2025-11-01": 663,
+      "2025-11-02": 501,
+      "2025-11-03": 1306,
+      "2025-11-04": 1175,
+      "2025-11-05": 1116,
+      "2025-11-06": 999,
+      "2025-11-07": 662,
+      "2025-11-08": 583,
+      "2025-11-09": 746,
+      "2025-11-10": 676,
+      "2025-11-11": 1052,
+      "2025-11-12": 783,
+      "2025-11-13": 304,
+      "2025-11-14": 507,
+      "2025-11-15": 1050,
+      "2025-11-16": 376,
+      "2025-11-17": 118,
+      "2025-11-18": 708,
+      "2025-11-19": 328,
+      "2025-11-20": 157,
+      "2025-11-21": 383,
+      "2025-11-22": 124,
+      "2025-11-23": 88,
+      "2025-11-24": 208,
+      "2025-11-25": 121,
+      "2025-11-26": 71,
+      "2025-11-27": 416,
+      "2025-11-28": 203,
+      "2025-11-29": 20,
+      "2025-11-30": 31,
+      "2025-12-01": 56,
+      "2025-12-02": 23,
+      "2025-12-03": 14,
+      "2025-12-04": 11,
+      "2025-12-05": 85,
+      "2025-12-06": 21,
+      "2025-12-07": 40,
+      "2025-12-08": 17,
+      "2025-12-09": 11,
+      "2025-12-10": 28,
+      "2025-12-11": 20,
+      "2025-12-12": 5,
+      "2025-12-13": 2,
+      "2025-12-14": 3,
+      "2025-12-15": 17,
+      "2025-12-16": 9,
+      "2025-12-17": 27,
+      "2025-12-18": 41,
+      "2025-12-19": 111,
+      "2025-12-20": 27,
+      "2025-12-21": 8,
+      "2025-12-22": 2,
+      "2025-12-24": 3,
+      "2025-12-25": 14,
+      "2025-12-26": 3,
+      "2025-12-27": 16,
+      "2025-12-28": 9,
+      "2025-12-29": 16,
+      "2025-12-30": 25,
+      "2025-12-31": 2,
+      "2026-01-01": 1,
+      "2026-01-02": 3,
+      "2026-01-04": 17,
+      "2026-01-05": 86,
+      "2026-01-06": 6,
+      "2026-01-07": 7,
+      "2026-01-08": 1572,
+      "2026-01-09": 140,
+      "2026-01-10": 22,
+      "2026-01-11": 6,
+      "2026-01-13": 14,
+      "2026-01-14": 6,
+      "2026-01-15": 3,
+      "2026-01-16": 17,
+      "2026-01-17": 7,
+      "2026-01-18": 3,
+      "2026-01-19": 1,
+      "2026-01-20": 3,
+      "2026-01-21": 3
+    },
+    "weekly_trend": {
+      "Week_1": 64,
+      "Week_2": 1839,
+      "Week_3": 50,
+      "Week_4": 7,
+      "Week_43": 195,
+      "Week_44": 2911,
+      "Week_45": 6587,
+      "Week_46": 4748,
+      "Week_47": 1906,
+      "Week_48": 1070,
+      "Week_49": 250,
+      "Week_50": 86,
+      "Week_51": 240,
+      "Week_52": 47
+    },
+    "top_authors": {
+      "قنوات الكاس": 1200,
+      "Alkass English": 502,
+      "صحيفة العرب - قطر": 203,
+      "ASEAN Football News": 179,
+      "الراية القطرية": 158,
+      "Grok": 136,
+      "استاد الدوحة": 102,
+      "محمد الجزار 🦅": 96,
+      "SC News": 93,
+      "Wbeimar lo dice": 87,
+      "علي عيسى #قطر 🇶🇦": 83,
+      "FUFA": 82,
+      "Football Stage": 75,
+      "Ham Kisekka": 70,
+      "Gulf Times": 62
+    },
+    "top_hashtags": [
+      [
+        "#u17wc",
+        7768
+      ],
+      [
+        "#كأس_العالم_تحت_17_سنة",
+        2431
+      ],
+      [
+        "#قنوات_الكاس",
+        1648
+      ],
+      [
+        "#منصة_شوف",
+        1624
+      ],
+      [
+        "#fifau17wc",
+        1370
+      ],
+      [
+        "#u17worldcup",
+        909
+      ],
+      [
+        "#قطر",
+        818
+      ],
+      [
+        "#qatar2025",
+        755
+      ],
+      [
+        "#معاك_يالأخضر",
+        622
+      ],
+      [
+        "#cksports",
+        460
+      ],
+      [
+        "#africanfootball",
+        387
+      ],
+      [
+        "#risingtalents",
+        378
+      ],
+      [
+        "#qatar",
+        316
+      ],
+      [
+        "#dimamaghrib",
+        293
+      ],
+      [
+        "#coybig",
+        289
+      ],
+      [
+        "#amajimbos",
+        274
+      ],
+      [
+        "#vinotintosub17",
+        265
+      ],
+      [
+        "#قطر2025",
+        238
+      ],
+      [
+        "#fifau17",
+        230
+      ],
+      [
+        "#ugabfa",
+        229
+      ]
+    ],
+    "sample_positive": [
+      {
+        "date": "2026-01-08",
+        "source": "Twitter",
+        "text": "🚨 Liverpool reach verbal agreement to sign left-sided CB Mor Ndiaye 🛑🇸🇳 Senegal defender has played at the recent U17 World Cup in Qatar; de ...",
+        "reach": 26708232
+      },
+      {
+        "date": "2025-11-12",
+        "source": "Twitter",
+        "text": "🗣️ “It’s like nothing I’ve ever experienced before,” The #U17WC has created a unique atmosphere for teams and fans 📣",
+        "reach": 12933862
+      },
+      {
+        "date": "2025-11-15",
+        "source": "Twitter",
+        "text": "🎥🇲🇦 شاهد فرحة أشبال الأطلس بتأهلهم إلى دور الـ16 من بطولة كأس العالم تحت 17 سنة FIFA قطر 2025™ بعد الفوز على المنتخب الأمريكي #كأس_العالم_تح ...",
+        "reach": 10662157
+      },
+      {
+        "date": "2025-11-15",
+        "source": "Twitter",
+        "text": "🎥🇲🇦 شاهد فرحة لاعبي أشبال الأطلس بتأهلهم إلى دور الـ16 من بطولة كأس العالم تحت 17 سنة FIFA قطر 2025™ بعد الفوز على المنتخب الأمريكي #كأس_الع ...",
+        "reach": 10662156
+      },
+      {
+        "date": "2025-11-27",
+        "source": "Twitter",
+        "text": "فينغر يعبر عن شكره لدولة قطر على استضافتها لبطولة كأس العالم تحت 17 عاماً FIFA قطر 2025™ #كأس_العالم_تحت_17_سنة #FIFAU17WC https://t.co/MLE ...",
+        "reach": 10505605
+      }
+    ],
+    "sample_negative": [
+      {
+        "date": "2025-11-17",
+        "source": "Twitter",
+        "text": "During the FIFA U-17 World Cup match in Qatar, France beat Colombia 1-0, but tensions exploded into a massive post-match brawl with players ...",
+        "reach": 6644150
+      },
+      {
+        "date": "2025-11-06",
+        "source": "Twitter",
+        "text": "Terminó el primer tiempo en Doha: @laverde_fbf cae ante Italia por el #U17WC 🇧🇴🇮🇹 #CreeEnGrande https://t.co/tNTTEZcpxP",
+        "reach": 1983181
+      },
+      {
+        "date": "2025-11-27",
+        "source": "Twitter",
+        "text": "▶️ 1' ROOOOOOOOOOLAAAAAA A BOLAAAAAAAAAAAA, NO QATAR! VAMOS SEGUIR O NOSSO SONHO. VAMOS VENCER E CONQUISTAR O PRIMEIRO TÍTULO! VAMOS, EQUIPA ...",
+        "reach": 1978347
+      },
+      {
+        "date": "2025-10-25",
+        "source": "Twitter",
+        "text": "شوف| لاعبو #منتخب_مصر يقولون بعد الوصول إلى الدوحة للجماهير المصرية \" هنشرفكم\" في كأس العالم تحت 17 عاما #WCU17 #كأس_العالم_تحت_17_سنة #قنوا ...",
+        "reach": 1626142
+      },
+      {
+        "date": "2025-10-30",
+        "source": "Twitter",
+        "text": "شوف | حماس كبير على لاعبي المنتخب الانجليزي عقب وصولهم مطار الدوحة للمشاركة في كأس العالم تحت 17 عاماً #كأس_العالم_تحت_17_سنة #قنوات_الكاس | ...",
+        "reach": 1624523
+      }
+    ],
+    "sample_neutral": [
+      {
+        "date": "2026-01-09",
+        "source": "Twitter",
+        "text": "QT @FabrizioRomano: 🛑🇸🇳 Mor Ndiaye, new Liverpool player as all done to join #LFC U-21 team. https://t.co/Tq4rZG5ZCD https://t.co/t3QxUDaLEk ...",
+        "reach": 26717348
+      },
+      {
+        "date": "2025-11-04",
+        "source": "Twitter",
+        "text": "للمرة الأولى بمشاركة 48 منتخبًا.. انطلاق بطولة كأس العالم للناشئين في #قطر على ملاعب أسباير زون #فيديو https://t.co/LWtpEGgPkU",
+        "reach": 23886588
+      },
+      {
+        "date": "2025-11-03",
+        "source": "Twitter",
+        "text": "ما رمزية \"بومة الصحراء\" تميمة كأس العالم للناشئين الذي ينطلق في قطر اليوم الاثنين؟ #الجزيرة_ألبوم https://t.co/x7iWKsubUE",
+        "reach": 23885043
+      },
+      {
+        "date": "2025-11-03",
+        "source": "Twitter",
+        "text": "ما رمزية \"بومة الصحراء\" تميمة كأس العالم للناشئين الذي ينطلق في قطر اليوم الاثنين؟ #الجزيرة_ألبوم https://t.co/UStf6GzDIy",
+        "reach": 23885040
+      },
+      {
+        "date": "2025-11-02",
+        "source": "Twitter",
+        "text": "وصول أول المنتخبات المشاركة في كأس العالم تحت 17 سنة إلى #الدوحة.. ما التفاصيل؟ #الجزيرة_رقمي https://t.co/4DJRgIp9co",
+        "reach": 23883169
+      }
+    ]
+  },
+  "نهائي الترايثلون T100_analytics": {
+    "name": "نهائي الترايثلون T100 - الإعلام التقليدي",
+    "total_mentions": 293,
+    "date_range": {
+      "start": "2025-10-25",
+      "end": "2026-01-20",
+      "days": 87
+    },
+    "sentiment": {
+      "counts": {
+        "neutral": 224,
+        "positive": 68,
+        "negative": 1
+      },
+      "percentages": {
+        "neutral": 76.45,
+        "positive": 23.21,
+        "negative": 0.34
+      }
+    },
+    "source_types": {
+      "online news": 291,
+      "print": 2
+    },
+    "languages": {
+      "English": 109,
+      "Spanish": 64,
+      "German": 39,
+      "Arabic": 24,
+      "Dutch": 11,
+      "French": 8,
+      "Polish": 6,
+      "Portuguese": 5,
+      "Latin": 5,
+      "Estonian": 5
+    },
+    "countries": {
+      "Spain": 62,
+      "United States": 42,
+      "Germany": 38,
+      "United Kingdom": 23,
+      "Qatar": 19,
+      "Saudi Arabia": 18,
+      "United Arab Emirates": 14,
+      "Belgium": 8,
+      "France": 7,
+      "Russia": 6,
+      "Poland": 6,
+      "Austria": 6,
+      "Brazil": 5,
+      "New Zealand": 3,
+      "Netherlands": 3
+    },
+    "top_sources": {
+      "Triatlón Noticias": 18,
+      "World News": 15,
+      "news.de": 14,
+      "triathlon": 10,
+      "Objetivo Triatlón": 10,
+      "La Web de la Revista Triatlón": 5,
+      "Sport.es": 5,
+      "TRI SPORT": 5,
+      "Central Fife Times & Advertiser": 5,
+      "3athlon.be": 5,
+      "Qatar Tribune": 4,
+      "Ealing Times": 4,
+      "TVGuide.co.uk": 4,
+      "Marhaba Information Guide": 3,
+      "The Middle East North Africa Financial Network": 3,
+      "Travel And Tour World": 3,
+      "Tvinfo.de": 3,
+      "MSN United Arab Emirates": 3,
+      "SportoweTempo.pl": 2,
+      "SAT Kurier": 2
+    },
+    "categories": {
+      "أخرى": 133,
+      "بطولات دولية": 114,
+      "شباب ومبادرات": 19,
+      "بنية تحتية": 10,
+      "مسؤولون": 5,
+      "استضافة وتنظيم": 4,
+      "غير مصنف": 4,
+      "فعاليات تراثية": 3,
+      "جماهير وتجربة": 1
+    },
+    "reach": {
+      "total": 831236720,
+      "average": 2836985,
+      "max": 177663094
+    },
+    "engagement": {
+      "total": 3076,
+      "average": 31
+    },
+    "daily_trend": {
+      "2025-10-25": 1,
+      "2025-10-27": 4,
+      "2025-10-28": 3,
+      "2025-10-29": 4,
+      "2025-10-31": 4,
+      "2025-11-01": 1,
+      "2025-11-02": 3,
+      "2025-11-04": 2,
+      "2025-11-05": 1,
+      "2025-11-06": 3,
+      "2025-11-09": 1,
+      "2025-11-10": 2,
+      "2025-11-11": 2,
+      "2025-11-12": 2,
+      "2025-11-13": 5,
+      "2025-11-14": 28,
+      "2025-11-15": 7,
+      "2025-11-16": 3,
+      "2025-11-17": 8,
+      "2025-11-18": 5,
+      "2025-11-21": 1,
+      "2025-11-23": 1,
+      "2025-11-24": 5,
+      "2025-11-25": 11,
+      "2025-11-26": 10,
+      "2025-11-27": 2,
+      "2025-11-28": 2,
+      "2025-11-29": 7,
+      "2025-11-30": 3,
+      "2025-12-01": 3,
+      "2025-12-02": 1,
+      "2025-12-03": 10,
+      "2025-12-04": 2,
+      "2025-12-05": 2,
+      "2025-12-06": 1,
+      "2025-12-07": 3,
+      "2025-12-10": 5,
+      "2025-12-11": 11,
+      "2025-12-12": 28,
+      "2025-12-13": 31,
+      "2025-12-14": 5,
+      "2025-12-15": 6,
+      "2025-12-16": 4,
+      "2025-12-17": 10,
+      "2025-12-18": 6,
+      "2025-12-19": 1,
+      "2025-12-20": 2,
+      "2025-12-22": 7,
+      "2025-12-26": 1,
+      "2025-12-27": 1,
+      "2025-12-28": 7,
+      "2025-12-29": 1,
+      "2025-12-31": 1,
+      "2026-01-02": 1,
+      "2026-01-09": 1,
+      "2026-01-11": 4,
+      "2026-01-14": 2,
+      "2026-01-16": 1,
+      "2026-01-19": 2,
+      "2026-01-20": 2
+    },
+    "weekly_trend": {
+      "Week_1": 3,
+      "Week_2": 5,
+      "Week_3": 3,
+      "Week_4": 4,
+      "Week_43": 1,
+      "Week_44": 19,
+      "Week_45": 7,
+      "Week_46": 49,
+      "Week_47": 15,
+      "Week_48": 40,
+      "Week_49": 22,
+      "Week_50": 80,
+      "Week_51": 29,
+      "Week_52": 16
+    },
+    "top_authors": {
+      "Sarah Knauth": 14,
+      "James Reid": 12,
+      "Hans Cleemput": 5,
+      "Francisco Bastero": 3,
+      "Anna Bruder": 3,
+      "Grace Wood": 2,
+      "Thomas Bauer": 2,
+      "Javier Nieto": 2,
+      "Jan Luca Grüneberg": 2,
+      "Shahba Mayyeri": 2,
+      "Bengt Lüdke": 2,
+      "Jakub Sulisz": 2,
+      "Pascal": 2,
+      "Olatz Zubia Zeberio": 2,
+      "Kevin Mackinnon": 2
+    },
+    "top_hashtags": [],
+    "sample_positive": [
+      {
+        "date": "2025-11-11",
+        "source": "Spotify",
+        "text": "Präsentiert von feels.like, Schneider & Piecha und feels.likeHeute erwartet euch der Podcast mit Profi-Triathlet Jannik Schaufler, der ...",
+        "reach": 177663094
+      },
+      {
+        "date": "2026-01-11",
+        "source": "BBC",
+        "text": "From triathlons to Celtic tribes: there were positive news stories across Yorkshire this week Across Yorkshire, there are people doing ...",
+        "reach": 143003552
+      },
+      {
+        "date": "2026-01-11",
+        "source": "Yahoo! News",
+        "text": "From triathlons to Celtic tribes: there were positive news stories across Yorkshire this week [BBC/David Duggleby Auctioneers] Across ...",
+        "reach": 51110593
+      },
+      {
+        "date": "2025-12-02",
+        "source": "NewsBreak",
+        "text": "The Sailfish Night of the Year is held every year in Langen, Germany (near Frankfurt), and is, according to the organizers, “the grand ...",
+        "reach": 17603984
+      },
+      {
+        "date": "2025-11-05",
+        "source": "Europa Press",
+        "text": "Dubai Fitness Challenge vuelve este noviembre a Dubái con un mes dedicado al deporte y el bienestar - TURISMO DE DUBAI MARID 5 Nov. ( ...",
+        "reach": 4339532
+      }
+    ],
+    "sample_negative": [
+      {
+        "date": "2025-11-16",
+        "source": "World News",
+        "text": "Dubai motorists faced a morning of major gridlock on Sunday as a severe accident on Sheikh Zayed Road (SZR) near the Commercial Center ...",
+        "reach": 152911
+      }
+    ],
+    "sample_neutral": [
+      {
+        "date": "2025-12-10",
+        "source": "Spotify",
+        "text": "Ein letztes mal für dieses Jahr heißt es \"on your marks\" für Mika. Das T100 Finale in Qatar steht an und Mika nimmt Anlauf für den ganz ...",
+        "reach": 177663094
+      },
+      {
+        "date": "2025-12-13",
+        "source": "Reuters",
+        "text": "Dec 13 (Reuters) - A new World Triathlon Tour aims to streamline competitions and management and create a more attractive broadcast product ...",
+        "reach": 37199426
+      },
+      {
+        "date": "2025-12-17",
+        "source": "Marca",
+        "text": "El presidente de World Triathlon, Antonio Fernández Arimany, desgrana la alianza con PTO para crear un circuito más potente y la inclusión ...",
+        "reach": 32691127
+      },
+      {
+        "date": "2025-12-17",
+        "source": "Diario AS",
+        "text": "Ambas organizaciones refuerzan su alianza para rediseñar un nuevo circuito mundial que dará comienzo oficialmente en el año 2027 y que ...",
+        "reach": 22427457
+      },
+      {
+        "date": "2025-11-24",
+        "source": "Zee News",
+        "text": "Kolhapur : कोल्हापूरचे अप्पर पोलीस अधीक्षक विष्णू ताम्हाणे यांनी आपल्या मुलासोबत दुबईतील आंतरराष्ट्रीय T100 Triathlon World Tour स्पर्धेत ...",
+        "reach": 21412697
+      }
+    ]
+  },
+  "نهائي الترايثلون T100_social": {
+    "name": "نهائي الترايثلون T100 - منصات التواصل",
+    "total_mentions": 210,
+    "date_range": {
+      "start": "2025-10-28",
+      "end": "2026-01-19",
+      "days": 83
+    },
+    "sentiment": {
+      "counts": {
+        "neutral": 104,
+        "positive": 91,
+        "negative": 15
+      },
+      "percentages": {
+        "neutral": 49.52,
+        "positive": 43.33,
+        "negative": 7.14
+      }
+    },
+    "source_types": {
+      "social network": 210
+    },
+    "languages": {
+      "English": 142,
+      "Spanish": 33,
+      "Arabic": 15,
+      "Portuguese": 5,
+      "Sindhi": 2,
+      "Turkish": 2,
+      "French": 2,
+      "Dutch": 2,
+      "Basque": 1,
+      "Persian": 1
+    },
+    "countries": {
+      "Qatar": 33,
+      "Spain": 22,
+      "United Arab Emirates": 21,
+      "United Kingdom": 10,
+      "Saudi Arabia": 8,
+      "Portugal": 3,
+      "France": 3,
+      "Germany": 2,
+      "Italy": 2,
+      "South Africa": 2,
+      "India": 2,
+      "United States": 2,
+      "Turkey": 2,
+      "Chile": 2,
+      "Dominican Republic": 1
+    },
+    "top_sources": {
+      "Twitter": 210
+    },
+    "categories": {
+      "بطولات دولية": 137,
+      "أخرى": 45,
+      "بنية تحتية": 15,
+      "مسؤولون": 6,
+      "استضافة وتنظيم": 4,
+      "شباب ومبادرات": 2,
+      "فعاليات تراثية": 1
+    },
+    "reach": {
+      "total": 13601826,
+      "average": 64770,
+      "max": 1518380
+    },
+    "engagement": {
+      "total": 581,
+      "average": 9
+    },
+    "daily_trend": {
+      "2025-10-28": 1,
+      "2025-10-29": 2,
+      "2025-10-30": 2,
+      "2025-11-01": 1,
+      "2025-11-11": 1,
+      "2025-11-12": 10,
+      "2025-11-13": 3,
+      "2025-11-14": 6,
+      "2025-11-15": 16,
+      "2025-11-16": 4,
+      "2025-11-17": 2,
+      "2025-11-18": 1,
+      "2025-11-20": 1,
+      "2025-11-24": 1,
+      "2025-11-25": 12,
+      "2025-11-26": 2,
+      "2025-11-27": 4,
+      "2025-11-28": 1,
+      "2025-12-03": 2,
+      "2025-12-07": 1,
+      "2025-12-08": 1,
+      "2025-12-09": 3,
+      "2025-12-10": 18,
+      "2025-12-11": 12,
+      "2025-12-12": 20,
+      "2025-12-13": 29,
+      "2025-12-14": 7,
+      "2025-12-15": 7,
+      "2025-12-16": 1,
+      "2025-12-17": 6,
+      "2025-12-18": 12,
+      "2025-12-19": 1,
+      "2025-12-22": 1,
+      "2025-12-23": 1,
+      "2025-12-24": 1,
+      "2025-12-25": 1,
+      "2025-12-29": 1,
+      "2025-12-30": 2,
+      "2025-12-31": 3,
+      "2026-01-03": 2,
+      "2026-01-07": 1,
+      "2026-01-08": 2,
+      "2026-01-12": 1,
+      "2026-01-13": 3,
+      "2026-01-19": 1
+    },
+    "weekly_trend": {
+      "Week_1": 8,
+      "Week_2": 3,
+      "Week_3": 4,
+      "Week_4": 1,
+      "Week_44": 6,
+      "Week_46": 40,
+      "Week_47": 4,
+      "Week_48": 20,
+      "Week_49": 3,
+      "Week_50": 90,
+      "Week_51": 27,
+      "Week_52": 4
+    },
+    "top_authors": {
+      "Triatlón Noticias": 8,
+      "247": 7,
+      "Endurance Sportswire": 7,
+      "Ooredoo Qatar": 6,
+      "Objetivo Triatlón": 6,
+      "T100 Triathlon World Tour": 6,
+      "ILoveQatar - Live": 4,
+      "Steve Knowles": 4,
+      "TriSchedule": 4,
+      "World Triathlon": 3,
+      "HolaQatar92": 3,
+      "Revista Triatlón": 3,
+      "Qatar News": 3,
+      "triatlonchannel": 2,
+      "MarhabaGuideQatar": 2
+    },
+    "top_hashtags": [
+      [
+        "#qatar",
+        18
+      ],
+      [
+        "#triathlon",
+        13
+      ],
+      [
+        "#t100triathlon",
+        11
+      ],
+      [
+        "#dubai",
+        8
+      ],
+      [
+        "#dubait100",
+        7
+      ],
+      [
+        "#doha",
+        6
+      ],
+      [
+        "#ooredoo",
+        6
+      ],
+      [
+        "#upgradeyourworld",
+        6
+      ],
+      [
+        "#qatarnews",
+        6
+      ],
+      [
+        "#t100",
+        6
+      ],
+      [
+        "#t100ondazn",
+        4
+      ],
+      [
+        "#uae",
+        4
+      ],
+      [
+        "#t100qatar",
+        4
+      ],
+      [
+        "#lovindubai",
+        3
+      ],
+      [
+        "#qna",
+        3
+      ],
+      [
+        "#iloveqatar",
+        3
+      ],
+      [
+        "#holaqatar",
+        3
+      ],
+      [
+        "#raceday",
+        3
+      ],
+      [
+        "#daretodream",
+        2
+      ],
+      [
+        "#hotshot",
+        2
+      ]
+    ],
+    "sample_positive": [
+      {
+        "date": "2025-11-13",
+        "source": "Twitter",
+        "text": "100 triathlons in 100 days: Souleymane’s amazing feat On Nov 16, during Dubai T100 Triathlon at Meydan, Ghani will complete his 100th triath ...",
+        "reach": 1518380
+      },
+      {
+        "date": "2025-11-14",
+        "source": "Twitter",
+        "text": "Check out the roads affected by the T100 Triathlon World Championship, taking place on Saturday, 15 November, and Sunday, 16 November. Plan ...",
+        "reach": 1224173
+      },
+      {
+        "date": "2025-12-13",
+        "source": "Twitter",
+        "text": "... 🔴 Check out our video from the Qatar T100 Triathlon World Championship Final, featuring intense competition and outstanding performances ...",
+        "reach": 516402
+      },
+      {
+        "date": "2025-12-12",
+        "source": "Twitter",
+        "text": "... 🔴 See today’s photos from the Qatar T100 Triathlon World Championship Final, featuring intense competition and outstanding performances ...",
+        "reach": 516386
+      },
+      {
+        "date": "2025-12-11",
+        "source": "Twitter",
+        "text": "... 🔴 See the video from the press conference of the Qatar T100 Triathlon World Championship Final 2025, where we proudly serve as the Offic ...",
+        "reach": 516381
+      }
+    ],
+    "sample_negative": [
+      {
+        "date": "2025-11-15",
+        "source": "Twitter",
+        "text": "What are you doing?!\" 🚨 Remarkable scenes as the leading group in the T100 Triathlon miss the transition zone and are forced to do an extra ...",
+        "reach": 1193852
+      },
+      {
+        "date": "2025-12-09",
+        "source": "Twitter",
+        "text": "Oh dear 🤦‍♂️ Let’s relive the moment Youri Keulen missed ALL the bottles at the Singapore T100 triathlon 🤣🍼 https://t.co/i8nyBa4sIk",
+        "reach": 1184309
+      },
+      {
+        "date": "2025-11-26",
+        "source": "Twitter",
+        "text": "It all comes down to this 😱 Who will claim the crown at the Qatar T100 Triathlon World Championship Final? 🔥 Don’t miss the epic series conc ...",
+        "reach": 17251
+      },
+      {
+        "date": "2026-01-03",
+        "source": "Twitter",
+        "text": "me acab de entrar una ansiedad del copon, CUANDO ANUNCIEN QUE EL PTO TOUR EMPIEZA EL MISMO DIA QUE EL COMEBACK A MI DEJADME ASIMILAR LAS COS ...",
+        "reach": 1274
+      },
+      {
+        "date": "2025-11-15",
+        "source": "Twitter",
+        "text": "RT @tntsports: \"What are you doing?!\" 🚨 Remarkable scenes as the leading group in the T100 Triathlon miss the transition zone and are forced ...",
+        "reach": 193
+      }
+    ],
+    "sample_neutral": [
+      {
+        "date": "2025-12-11",
+        "source": "Twitter",
+        "text": "Here are the top stories in #Qatar today: 🇸🇾 New Qatari Ambassador to #Syria appointed 🇶🇦 T100 Triathlon World Championship final kicks off ...",
+        "reach": 574061
+      },
+      {
+        "date": "2025-11-15",
+        "source": "Twitter",
+        "text": "Some crazyyy drama unfolded at the T100 Triathlon 👀 via: @t100triathlon #lovindubai https://t.co/RnRr9WwboK",
+        "reach": 274488
+      },
+      {
+        "date": "2025-11-15",
+        "source": "Twitter",
+        "text": "Wilde, Waugh aim Dubai dominance as T100 Triathlon World Tour reaches penultimate stop https://t.co/omzsOa2GuL",
+        "reach": 144727
+      },
+      {
+        "date": "2025-11-25",
+        "source": "Twitter",
+        "text": "Pamplona será la sede de la Spain T100 Triathlon a partir de 2026 https://t.co/iULkCVdjbq",
+        "reach": 110891
+      },
+      {
+        "date": "2025-12-03",
+        "source": "Twitter",
+        "text": "Follow Paris 2024 Olympic silver medalist Hayden Wilde 🇳🇿 as he continues to deliver at this year’s T100 World Tour in the Wollongong T100 🥇 ...",
+        "reach": 105099
+      }
+    ]
+  }
+}

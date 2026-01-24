@@ -1,0 +1,1609 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}وزارة الرياضة والشباب - قطر | 24°45°{% endblock %}</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='images/tenants/qatar_sports/favicon.svg') }}">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Flag Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.0.0/css/flag-icons.min.css">
+    
+    <!-- 1. ملف CSS الأساسي للمنصة (ثابت لجميع العملاء) -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/slides-platform.css') }}">
+    
+    <!-- 2. ملف CSS خاص بالعميل (ألوان وهوية العميل) -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/tenants/qatar_sports/client.css') }}">
+    
+    <!-- 3. ملف CSS خاص بالشرائح (التنقل والعناصر الإضافية) -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/tenants/qatar_sports/slides.css') }}">
+    
+    <!-- مكتبة html2pdf لتصدير PDF بمقاس مخصص -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    
+    <!-- Chart.js للمخططات البيانية -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <!-- شريط المنصة العلوي -->
+    <div class="platform-bar"></div>
+    
+    <!-- =====================================================
+         شريط الأدوات التفاعلية (Interactive Toolbar)
+         ===================================================== -->
+    <div class="interactive-toolbar" id="interactiveToolbar">
+        <!-- زر الفهرس (أول زر على اليمين) -->
+        <button class="toolbar-btn" id="tocBtn" title="فهرس الشرائح">
+            <i class="fas fa-list"></i>
+        </button>
+        
+        <!-- زر البحث -->
+        <button class="toolbar-btn" id="searchBtn" title="البحث في المحتوى (Ctrl+F)">
+            <i class="fas fa-search"></i>
+        </button>
+        
+        <!-- زر الملاحظات -->
+        <button class="toolbar-btn" id="notesBtn" title="الملاحظات">
+            <i class="fas fa-sticky-note"></i>
+            <span class="toolbar-badge" id="notesBadge" style="display: none;">0</span>
+        </button>
+        
+        <!-- زر الإشارات المرجعية -->
+        <button class="toolbar-btn" id="bookmarksBtn" title="الإشارات المرجعية">
+            <i class="fas fa-bookmark"></i>
+            <span class="toolbar-badge" id="bookmarksBadge" style="display: none;">0</span>
+        </button>
+        
+        <!-- زر شريط التقدم -->
+        <button class="toolbar-btn" id="progressBtn" title="شريط التقدم">
+            <i class="fas fa-tasks"></i>
+        </button>
+        
+        <!-- زر مشاركة الشريحة -->
+        <button class="toolbar-btn" id="shareBtn" title="مشاركة الشريحة الحالية">
+            <i class="fas fa-share-alt"></i>
+        </button>
+    </div>
+    
+    <!-- =====================================================
+         نافذة البحث (Search Modal)
+         ===================================================== -->
+    <div class="search-modal" id="searchModal">
+        <div class="search-modal__content">
+            <div class="search-modal__header">
+                <i class="fas fa-search"></i>
+                <input type="text" id="searchInput" placeholder="ابحث في العرض التقديمي..." autocomplete="off">
+                <button class="search-modal__close" onclick="closeSearch()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="search-modal__results" id="searchResults">
+                <p class="search-modal__hint">اكتب للبحث في جميع الشرائح...</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- =====================================================
+         لوحة الملاحظات (Notes Panel)
+         ===================================================== -->
+    <div class="notes-panel" id="notesPanel">
+        <div class="notes-panel__header">
+            <h3><i class="fas fa-sticky-note"></i> ملاحظاتي</h3>
+            <button class="notes-panel__close" onclick="toggleNotesPanel()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="notes-panel__content">
+            <div class="notes-panel__current">
+                <h4>ملاحظة على الشريحة الحالية:</h4>
+                <textarea id="currentSlideNote" placeholder="أضف ملاحظتك هنا..."></textarea>
+                <button class="notes-panel__save" onclick="saveCurrentNote()">
+                    <i class="fas fa-save"></i> حفظ
+                </button>
+            </div>
+            <div class="notes-panel__list">
+                <h4>جميع الملاحظات:</h4>
+                <div id="notesList"></div>
+            </div>
+            <div class="notes-panel__actions">
+                <button class="notes-action-btn" onclick="exportNotes()">
+                    <i class="fas fa-download"></i> تصدير الملاحظات
+                </button>
+                <button class="notes-action-btn notes-action-btn--danger" onclick="clearAllNotes()">
+                    <i class="fas fa-trash"></i> حذف الكل
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- =====================================================
+         لوحة الإشارات المرجعية (Bookmarks Panel)
+         ===================================================== -->
+    <div class="bookmarks-panel" id="bookmarksPanel">
+        <div class="bookmarks-panel__header">
+            <h3><i class="fas fa-bookmark"></i> الإشارات المرجعية</h3>
+            <button class="bookmarks-panel__close" onclick="toggleBookmarksPanel()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="bookmarks-panel__content">
+            <button class="bookmark-current-btn" onclick="toggleCurrentBookmark()">
+                <i class="fas fa-plus"></i> إضافة الشريحة الحالية
+            </button>
+            <div class="bookmarks-list" id="bookmarksList">
+                <p class="bookmarks-empty">لا توجد إشارات مرجعية بعد</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- =====================================================
+         شريط التقدم (Progress Bar)
+         ===================================================== -->
+    <div class="progress-bar-container" id="progressBarContainer" style="display: none;">
+        <div class="progress-bar">
+            <div class="progress-bar__fill" id="progressFill"></div>
+        </div>
+        <span class="progress-bar__text" id="progressText">0%</span>
+    </div>
+    
+    <!-- =====================================================
+         نافذة المشاركة (Share Modal)
+         ===================================================== -->
+    <div class="share-modal" id="shareModal">
+        <div class="share-modal__content">
+            <div class="share-modal__header">
+                <h3><i class="fas fa-share-alt"></i> مشاركة الشريحة</h3>
+                <button class="share-modal__close" onclick="closeShareModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="share-modal__body">
+                <div class="share-option">
+                    <label>رابط الشريحة:</label>
+                    <div class="share-link-container">
+                        <input type="text" id="shareLink" readonly>
+                        <button onclick="copyShareLink()"><i class="fas fa-copy"></i></button>
+                    </div>
+                </div>
+                <div class="share-option">
+                    <label>تصدير كصورة:</label>
+                    <button class="share-btn" onclick="exportSlideAsImage()">
+                        <i class="fas fa-image"></i> تحميل PNG
+                    </button>
+                </div>
+                <div class="share-option">
+                    <label>مشاركة عبر:</label>
+                    <div class="share-social">
+                        <button onclick="shareVia('whatsapp')" class="share-social-btn share-social-btn--whatsapp">
+                            <i class="fab fa-whatsapp"></i>
+                        </button>
+                        <button onclick="shareVia('twitter')" class="share-social-btn share-social-btn--twitter">
+                            <i class="fab fa-twitter"></i>
+                        </button>
+                        <button onclick="shareVia('email')" class="share-social-btn share-social-btn--email">
+                            <i class="fas fa-envelope"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- =====================================================
+         قائمة الفهرس (Table of Contents)
+         ===================================================== -->
+    <div class="toc-container" id="tocContainer">
+        <!-- أيقونة القائمة (3 خطوط) -->
+        <button class="toc-trigger" id="tocTrigger" aria-label="فهرس الشرائح">
+            <span class="toc-trigger__line"></span>
+            <span class="toc-trigger__line"></span>
+            <span class="toc-trigger__line"></span>
+        </button>
+        
+        <!-- القائمة المنسدلة -->
+        <div class="toc-menu" id="tocMenu">
+            <div class="toc-menu__header">
+                <h3><i class="fas fa-list"></i> فهرس العرض</h3>
+                {% if session.get('is_admin') %}
+                <button class="toc-menu__add-section" id="addSectionBtn" title="إضافة قسم جديد">
+                    <i class="fas fa-folder-plus"></i>
+                </button>
+                {% endif %}
+            </div>
+            <div class="toc-menu__content" id="tocContent">
+                <!-- سيتم إنشاؤها ديناميكياً -->
+            </div>
+            
+            <!-- أزرار الإجراءات السريعة -->
+            <div class="toc-menu__actions">
+                <button class="toc-action-btn" onclick="toggleGridView()" title="عرض جميع الشرائح">
+                    <i class="fas fa-th-large"></i>
+                    <span>عرض الشرائح</span>
+                </button>
+                <button class="toc-action-btn toc-action-btn--gold" onclick="printSlides()" title="تصدير PDF">
+                    <i class="fas fa-file-pdf"></i>
+                    <span>تصدير PDF</span>
+                </button>
+                {% if session.get('is_admin') or request.args.get('admin') == '1' %}
+                <button class="toc-action-btn toc-action-btn--reset" onclick="resetSlideOrder()" title="إعادة تعيين الترتيب">
+                    <i class="fas fa-undo"></i>
+                    <span>إعادة الترتيب</span>
+                </button>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    
+    {% block content %}{% endblock %}
+    
+    <!-- =====================================================
+         التنقل المصغر بين الشرائح (Minimal Navigation)
+         ===================================================== -->
+    <div class="slide-nav-minimal" id="slideNavMinimal">
+        <!-- زر السهم للأعلى -->
+        <button class="nav-arrow nav-arrow--up" id="navArrowUp" title="الشريحة السابقة">
+            <i class="fas fa-chevron-up"></i>
+        </button>
+        
+        <!-- المؤشر الرقمي + زر القائمة -->
+        <button class="nav-indicator" id="navIndicator" title="فتح قائمة الشرائح">
+            <span class="nav-current" id="navCurrent">1</span>
+            <span class="nav-separator">/</span>
+            <span class="nav-total" id="navTotal">34</span>
+        </button>
+        
+        <!-- زر السهم للأسفل -->
+        <button class="nav-arrow nav-arrow--down" id="navArrowDown" title="الشريحة التالية">
+            <i class="fas fa-chevron-down"></i>
+        </button>
+    </div>
+    
+    <!-- قائمة الشرائح المنسدلة -->
+    <div class="slide-nav-dropdown" id="slideNavDropdown">
+        <div class="dropdown-header">
+            <span class="dropdown-title"><i class="fas fa-layer-group"></i> الانتقال السريع</span>
+            <button class="dropdown-close" id="dropdownClose"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="dropdown-search">
+            <i class="fas fa-search"></i>
+            <input type="text" id="slideSearchInput" placeholder="ابحث عن شريحة...">
+        </div>
+        <div class="dropdown-list" id="dropdownList">
+            <!-- سيتم ملؤها ديناميكياً -->
+        </div>
+    </div>
+    
+    <!-- nav قديم للتوافق -->
+    <nav class="slides-nav" id="slidesNav" style="display: none;">
+        <!-- سيتم إنشاؤها ديناميكياً -->
+    </nav>
+    
+    <!-- سكربت التنقل -->
+    <script>
+        // متغير لتحديد صلاحيات الأدمن
+        // يمكن تفعيل وضع الأدمن عبر إضافة ?admin=1 للرابط
+        const urlParams = new URLSearchParams(window.location.search);
+        const isAdmin = urlParams.get('admin') === '1' || {{ 'true' if session.get('is_admin') else 'false' }};
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            const slides = document.querySelectorAll('.slide');
+            const nav = document.getElementById('slidesNav');
+            const tocTrigger = document.getElementById('tocTrigger');
+            const tocMenu = document.getElementById('tocMenu');
+            const tocContent = document.getElementById('tocContent');
+            const tocContainer = document.getElementById('tocContainer');
+            
+            // =====================================================
+            // إنشاء فهرس الشرائح (TOC)
+            // =====================================================
+            function buildTOC() {
+                tocContent.innerHTML = '';
+                
+                // الحصول على تخطيط الأقسام من localStorage أو إنشاء افتراضي
+                let tocStructure = JSON.parse(localStorage.getItem('tocStructure_qatar_sports')) || {
+                    sections: [
+                        { id: 'intro', name: 'المقدمة', slides: ['slide-1', 'slide-2'] },
+                        { id: 'stats', name: 'الإحصائيات والأهداف', slides: ['slide-3', 'slide-4'] },
+                        { id: 'other', name: 'شرائح أخرى', slides: [] }
+                    ]
+                };
+                
+                // جمع الشرائح غير المصنفة
+                const allSlideIds = Array.from(slides).map(s => s.id);
+                const categorizedSlides = tocStructure.sections.flatMap(s => s.slides);
+                const uncategorized = allSlideIds.filter(id => !categorizedSlides.includes(id));
+                
+                // إضافة غير المصنفة للقسم الأخير
+                if (uncategorized.length > 0) {
+                    const otherSection = tocStructure.sections.find(s => s.id === 'other');
+                    if (otherSection) {
+                        otherSection.slides = [...otherSection.slides, ...uncategorized];
+                    }
+                }
+                
+                // إنشاء عناصر الفهرس
+                tocStructure.sections.forEach((section, sectionIndex) => {
+                    const sectionEl = document.createElement('div');
+                    sectionEl.className = 'toc-section';
+                    sectionEl.dataset.sectionId = section.id;
+                    
+                    // رأس القسم
+                    const headerEl = document.createElement('div');
+                    headerEl.className = 'toc-section__header';
+                    headerEl.innerHTML = `
+                        <span class="toc-section__toggle"><i class="fas fa-chevron-down"></i></span>
+                        <span class="toc-section__name">${section.name}</span>
+                        ${isAdmin ? `
+                            <div class="toc-section__actions">
+                                <button class="toc-section__edit" title="تعديل"><i class="fas fa-edit"></i></button>
+                                <button class="toc-section__delete" title="حذف"><i class="fas fa-trash"></i></button>
+                            </div>
+                        ` : ''}
+                    `;
+                    
+                    // أحداث رأس القسم
+                    headerEl.querySelector('.toc-section__toggle').addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        sectionEl.classList.toggle('collapsed');
+                    });
+                    
+                    if (isAdmin) {
+                        headerEl.querySelector('.toc-section__edit').addEventListener('click', (e) => {
+                            e.stopPropagation();
+                            editSection(section.id);
+                        });
+                        headerEl.querySelector('.toc-section__delete').addEventListener('click', (e) => {
+                            e.stopPropagation();
+                            deleteSection(section.id);
+                        });
+                    }
+                    
+                    sectionEl.appendChild(headerEl);
+                    
+                    // قائمة الشرائح
+                    const slidesEl = document.createElement('div');
+                    slidesEl.className = 'toc-section__slides';
+                    if (isAdmin) {
+                        slidesEl.setAttribute('data-section', section.id);
+                    }
+                    
+                    section.slides.forEach((slideId, slideIndex) => {
+                        const slide = document.getElementById(slideId);
+                        if (!slide) return;
+                        
+                        const globalIndex = Array.from(slides).indexOf(slide);
+                        const customTitles = JSON.parse(localStorage.getItem('slideTitles_qatar_sports')) || {};
+                        const title = customTitles[slideId] || getSlideTitle(slide, globalIndex);
+                        
+                        const slideEl = document.createElement('div');
+                        slideEl.className = 'toc-slide';
+                        slideEl.dataset.slideId = slideId;
+                        slideEl.innerHTML = `
+                            ${isAdmin ? '<span class="toc-slide__drag"><i class="fas fa-grip-vertical"></i></span>' : ''}
+                            <span class="toc-slide__number">${String(globalIndex + 1).padStart(2, '0')}</span>
+                            <span class="toc-slide__title">${title}</span>
+                            ${isAdmin ? '<button class="toc-slide__edit" title="تعديل الاسم"><i class="fas fa-pen"></i></button>' : ''}
+                        `;
+                        
+                        // النقر للانتقال للشريحة
+                        slideEl.querySelector('.toc-slide__title').addEventListener('click', () => {
+                            slide.scrollIntoView({ behavior: 'smooth' });
+                            tocMenu.classList.remove('active');
+                        });
+                        
+                        // تعديل اسم الشريحة (للأدمن)
+                        if (isAdmin) {
+                            slideEl.querySelector('.toc-slide__edit').addEventListener('click', (e) => {
+                                e.stopPropagation();
+                                editSlideTitle(slideId, title);
+                            });
+                        }
+                        
+                        slidesEl.appendChild(slideEl);
+                    });
+                    
+                    sectionEl.appendChild(slidesEl);
+                    tocContent.appendChild(sectionEl);
+                });
+                
+                // تفعيل السحب والإفلات للأدمن
+                if (isAdmin) {
+                    enableDragDrop();
+                }
+            }
+            
+            // استخراج عنوان الشريحة
+            function getSlideTitle(slide, index) {
+                const h1 = slide.querySelector('h1');
+                const h2 = slide.querySelector('h2');
+                const badge = slide.querySelector('.slide__badge');
+                
+                if (h1) return h1.textContent.trim().substring(0, 30);
+                if (h2) return h2.textContent.trim().substring(0, 30);
+                if (badge) return badge.textContent.trim();
+                return `شريحة ${index + 1}`;
+            }
+            
+            // =====================================================
+            // السحب والإفلات (Drag & Drop) - للأدمن فقط
+            // =====================================================
+            function enableDragDrop() {
+                const draggables = document.querySelectorAll('.toc-slide');
+                const containers = document.querySelectorAll('.toc-section__slides');
+                
+                draggables.forEach(draggable => {
+                    const dragHandle = draggable.querySelector('.toc-slide__drag');
+                    if (!dragHandle) return;
+                    
+                    dragHandle.addEventListener('mousedown', () => {
+                        draggable.setAttribute('draggable', 'true');
+                    });
+                    
+                    draggable.addEventListener('dragstart', (e) => {
+                        draggable.classList.add('dragging');
+                        e.dataTransfer.effectAllowed = 'move';
+                    });
+                    
+                    draggable.addEventListener('dragend', () => {
+                        draggable.classList.remove('dragging');
+                        draggable.setAttribute('draggable', 'false');
+                        saveTOCStructure();
+                    });
+                });
+                
+                containers.forEach(container => {
+                    container.addEventListener('dragover', (e) => {
+                        e.preventDefault();
+                        const dragging = document.querySelector('.dragging');
+                        const afterElement = getDragAfterElement(container, e.clientY);
+                        
+                        if (afterElement == null) {
+                            container.appendChild(dragging);
+                        } else {
+                            container.insertBefore(dragging, afterElement);
+                        }
+                    });
+                });
+            }
+            
+            function getDragAfterElement(container, y) {
+                const draggableElements = [...container.querySelectorAll('.toc-slide:not(.dragging)')];
+                
+                return draggableElements.reduce((closest, child) => {
+                    const box = child.getBoundingClientRect();
+                    const offset = y - box.top - box.height / 2;
+                    
+                    if (offset < 0 && offset > closest.offset) {
+                        return { offset: offset, element: child };
+                    } else {
+                        return closest;
+                    }
+                }, { offset: Number.NEGATIVE_INFINITY }).element;
+            }
+            
+            // حفظ هيكل الفهرس وإعادة ترتيب الشرائح في العرض
+            function saveTOCStructure() {
+                const sections = [];
+                const newSlideOrder = []; // ترتيب الشرائح الجديد
+                
+                document.querySelectorAll('.toc-section').forEach(sectionEl => {
+                    const sectionId = sectionEl.dataset.sectionId;
+                    const name = sectionEl.querySelector('.toc-section__name').textContent;
+                    const sectionSlides = [];
+                    
+                    sectionEl.querySelectorAll('.toc-slide').forEach(slideEl => {
+                        const slideId = slideEl.dataset.slideId;
+                        sectionSlides.push(slideId);
+                        newSlideOrder.push(slideId);
+                    });
+                    
+                    sections.push({ id: sectionId, name, slides: sectionSlides });
+                });
+                
+                localStorage.setItem('tocStructure_qatar_sports', JSON.stringify({ sections }));
+                
+                // =====================================================
+                // إعادة ترتيب الشرائح الفعلية في العرض (مثل PowerPoint)
+                // =====================================================
+                reorderActualSlides(newSlideOrder);
+            }
+            
+            // إعادة ترتيب الشرائح في DOM
+            function reorderActualSlides(newOrder) {
+                const container = document.querySelector('.slides-container') || document.querySelector('main');
+                if (!container) return;
+                
+                // جمع كل الشرائح
+                const slideElements = {};
+                newOrder.forEach(slideId => {
+                    const slide = document.getElementById(slideId);
+                    if (slide) {
+                        slideElements[slideId] = slide;
+                    }
+                });
+                
+                // إعادة ترتيب الشرائح في DOM
+                newOrder.forEach(slideId => {
+                    const slide = slideElements[slideId];
+                    if (slide) {
+                        container.appendChild(slide);
+                    }
+                });
+                
+                // تحديث أرقام الشرائح في الفهرس
+                updateSlideNumbers();
+                
+                // تحديث نقاط التنقل
+                updateNavigationDots();
+                
+                // إظهار رسالة تأكيد
+                showToast('✅ تم تحديث ترتيب الشرائح');
+            }
+            
+            // تحديث أرقام الشرائح بعد إعادة الترتيب
+            function updateSlideNumbers() {
+                const allSlides = document.querySelectorAll('.slide');
+                allSlides.forEach((slide, index) => {
+                    // تحديث أرقام في الفهرس
+                    const tocSlide = document.querySelector(`.toc-slide[data-slide-id="${slide.id}"]`);
+                    if (tocSlide) {
+                        const numEl = tocSlide.querySelector('.toc-slide__number');
+                        if (numEl) {
+                            numEl.textContent = String(index + 1).padStart(2, '0');
+                        }
+                    }
+                });
+            }
+            
+            // تحديث نقاط التنقل
+            function updateNavigationDots() {
+                const nav = document.getElementById('slidesNav');
+                const slides = document.querySelectorAll('.slide');
+                
+                nav.innerHTML = '';
+                slides.forEach((slide, index) => {
+                    const dot = document.createElement('button');
+                    dot.className = 'slides-nav__dot';
+                    dot.setAttribute('aria-label', `الانتقال للشريحة ${index + 1}`);
+                    dot.addEventListener('click', () => {
+                        slide.scrollIntoView({ behavior: 'smooth' });
+                    });
+                    nav.appendChild(dot);
+                });
+            }
+            
+            // إظهار رسالة Toast
+            function showToast(message) {
+                let toast = document.getElementById('reorderToast');
+                if (!toast) {
+                    toast = document.createElement('div');
+                    toast.id = 'reorderToast';
+                    toast.style.cssText = `
+                        position: fixed;
+                        bottom: 30px;
+                        left: 50%;
+                        transform: translateX(-50%);
+                        background: linear-gradient(135deg, var(--client-primary, #8B1538), var(--client-secondary, #D4AF37));
+                        color: white;
+                        padding: 12px 24px;
+                        border-radius: 8px;
+                        font-size: 14px;
+                        font-weight: 600;
+                        z-index: 10000;
+                        opacity: 0;
+                        transition: opacity 0.3s ease;
+                        box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+                    `;
+                    document.body.appendChild(toast);
+                }
+                
+                toast.textContent = message;
+                toast.style.opacity = '1';
+                
+                setTimeout(() => {
+                    toast.style.opacity = '0';
+                }, 2000);
+            }
+            
+            // =====================================================
+            // إدارة الأقسام (للأدمن)
+            // =====================================================
+            window.editSection = function(sectionId) {
+                const structure = JSON.parse(localStorage.getItem('tocStructure_qatar_sports'));
+                const section = structure.sections.find(s => s.id === sectionId);
+                
+                const newName = prompt('أدخل اسم القسم الجديد:', section.name);
+                if (newName && newName.trim()) {
+                    section.name = newName.trim();
+                    localStorage.setItem('tocStructure_qatar_sports', JSON.stringify(structure));
+                    buildTOC();
+                }
+            };
+            
+            // تعديل اسم الشريحة
+            window.editSlideTitle = function(slideId, currentTitle) {
+                const newTitle = prompt('أدخل اسم الشريحة الجديد:', currentTitle);
+                if (newTitle && newTitle.trim()) {
+                    const customTitles = JSON.parse(localStorage.getItem('slideTitles_qatar_sports')) || {};
+                    customTitles[slideId] = newTitle.trim();
+                    localStorage.setItem('slideTitles_qatar_sports', JSON.stringify(customTitles));
+                    buildTOC();
+                }
+            };
+            
+            // إعادة تعيين ترتيب الشرائح للترتيب الأصلي
+            window.resetSlideOrder = function() {
+                if (!confirm('هل أنت متأكد من إعادة تعيين ترتيب الشرائح للترتيب الأصلي؟')) return;
+                
+                localStorage.removeItem('tocStructure_qatar_sports');
+                localStorage.removeItem('slideTitles_qatar_sports');
+                
+                showToast('🔄 جاري إعادة تحميل الصفحة...');
+                
+                setTimeout(() => {
+                    window.location.reload();
+                }, 500);
+            };
+            
+            window.deleteSection = function(sectionId) {
+                if (!confirm('هل أنت متأكد من حذف هذا القسم؟ سيتم نقل الشرائح للقسم الأخير.')) return;
+                
+                const structure = JSON.parse(localStorage.getItem('tocStructure_qatar_sports'));
+                const sectionIndex = structure.sections.findIndex(s => s.id === sectionId);
+                const section = structure.sections[sectionIndex];
+                
+                // نقل الشرائح للقسم الأخير
+                const lastSection = structure.sections[structure.sections.length - 1];
+                if (lastSection.id !== sectionId) {
+                    lastSection.slides = [...lastSection.slides, ...section.slides];
+                }
+                
+                structure.sections.splice(sectionIndex, 1);
+                localStorage.setItem('tocStructure_qatar_sports', JSON.stringify(structure));
+                buildTOC();
+            };
+            
+            // إضافة قسم جديد
+            const addSectionBtn = document.getElementById('addSectionBtn');
+            if (addSectionBtn) {
+                addSectionBtn.addEventListener('click', () => {
+                    const name = prompt('أدخل اسم القسم الجديد:');
+                    if (name && name.trim()) {
+                        const structure = JSON.parse(localStorage.getItem('tocStructure_qatar_sports')) || { sections: [] };
+                        const id = 'section_' + Date.now();
+                        structure.sections.push({ id, name: name.trim(), slides: [] });
+                        localStorage.setItem('tocStructure_qatar_sports', JSON.stringify(structure));
+                        buildTOC();
+                    }
+                });
+            }
+            
+            // =====================================================
+            // أحداث القائمة
+            // =====================================================
+            tocTrigger.addEventListener('click', () => {
+                tocMenu.classList.toggle('active');
+            });
+            
+            // ربط زر الفهرس في شريط الأدوات
+            const tocBtnToolbar = document.getElementById('tocBtn');
+            if (tocBtnToolbar) {
+                tocBtnToolbar.addEventListener('click', () => {
+                    tocMenu.classList.toggle('active');
+                });
+            }
+            
+            // إغلاق القائمة عند النقر خارجها
+            document.addEventListener('click', (e) => {
+                if (!tocContainer.contains(e.target) && e.target.id !== 'tocBtn' && !e.target.closest('#tocBtn')) {
+                    tocMenu.classList.remove('active');
+                }
+            });
+            
+            // إظهار/إخفاء القائمة عند hover
+            tocContainer.addEventListener('mouseenter', () => {
+                tocMenu.classList.add('active');
+            });
+            
+            // =====================================================
+            // تطبيق الترتيب المحفوظ عند تحميل الصفحة
+            // =====================================================
+            function applySavedSlideOrder() {
+                const tocStructure = JSON.parse(localStorage.getItem('tocStructure_qatar_sports'));
+                if (!tocStructure || !tocStructure.sections) return;
+                
+                // جمع ترتيب الشرائح من الهيكل المحفوظ
+                const savedOrder = tocStructure.sections.flatMap(s => s.slides);
+                if (savedOrder.length === 0) return;
+                
+                const container = document.querySelector('.slides-container') || document.querySelector('main');
+                if (!container) return;
+                
+                // إعادة ترتيب الشرائح
+                savedOrder.forEach(slideId => {
+                    const slide = document.getElementById(slideId);
+                    if (slide) {
+                        container.appendChild(slide);
+                    }
+                });
+            }
+            
+            // تطبيق الترتيب المحفوظ أولاً
+            applySavedSlideOrder();
+            
+            // =====================================================
+            // بناء الفهرس والتنقل
+            // =====================================================
+            buildTOC();
+            
+            // =====================================================
+            // نظام التنقل المصغر الجديد
+            // =====================================================
+            const navMinimal = document.getElementById('slideNavMinimal');
+            const navIndicator = document.getElementById('navIndicator');
+            const navCurrent = document.getElementById('navCurrent');
+            const navTotal = document.getElementById('navTotal');
+            const navArrowUp = document.getElementById('navArrowUp');
+            const navArrowDown = document.getElementById('navArrowDown');
+            const navDropdown = document.getElementById('slideNavDropdown');
+            const dropdownClose = document.getElementById('dropdownClose');
+            const dropdownList = document.getElementById('dropdownList');
+            const slideSearchInput = document.getElementById('slideSearchInput');
+            
+            // تحديث العدد الإجمالي
+            navTotal.textContent = slides.length;
+            
+            // بناء قائمة الشرائح
+            function buildDropdownList() {
+                dropdownList.innerHTML = '';
+                
+                const currentIndex = getCurrentSlideIndex();
+                
+                slides.forEach((slide, index) => {
+                    const item = document.createElement('div');
+                    item.className = 'dropdown-slide' + (index === currentIndex ? ' active' : '');
+                    
+                    // الحصول على عنوان الشريحة
+                    let title = '';
+                    const titleEl = slide.querySelector('.slide__title, h1, h2, .slide__big-number');
+                    if (titleEl) {
+                        title = titleEl.textContent.trim().substring(0, 40);
+                        if (titleEl.textContent.trim().length > 40) title += '...';
+                    } else {
+                        title = `شريحة ${index + 1}`;
+                    }
+                    
+                    item.innerHTML = `
+                        <span class="dropdown-slide__number">${index + 1}</span>
+                        <span class="dropdown-slide__title">${title}</span>
+                    `;
+                    
+                    item.addEventListener('click', () => {
+                        slide.scrollIntoView({ behavior: 'smooth' });
+                        closeDropdown();
+                    });
+                    
+                    dropdownList.appendChild(item);
+                });
+            }
+            
+            // الحصول على فهرس الشريحة الحالية
+            function getCurrentSlideIndex() {
+                const viewingSlide = document.querySelector('.slide.in-view');
+                if (viewingSlide) {
+                    return Array.from(slides).indexOf(viewingSlide);
+                }
+                return 0;
+            }
+            
+            // تحديث المؤشر
+            function updateNavIndicator(index) {
+                navCurrent.textContent = index + 1;
+                
+                // تحديث حالة الأسهم
+                navArrowUp.disabled = index === 0;
+                navArrowDown.disabled = index === slides.length - 1;
+                
+                // تحديث القائمة إذا كانت مفتوحة
+                if (navDropdown.classList.contains('active')) {
+                    document.querySelectorAll('.dropdown-slide').forEach((item, i) => {
+                        item.classList.toggle('active', i === index);
+                    });
+                }
+            }
+            
+            // فتح/إغلاق القائمة
+            function toggleDropdown() {
+                navDropdown.classList.toggle('active');
+                if (navDropdown.classList.contains('active')) {
+                    buildDropdownList();
+                    slideSearchInput.value = '';
+                    slideSearchInput.focus();
+                }
+            }
+            
+            function closeDropdown() {
+                navDropdown.classList.remove('active');
+            }
+            
+            // أحداث التنقل
+            navIndicator.addEventListener('click', toggleDropdown);
+            dropdownClose.addEventListener('click', closeDropdown);
+            
+            navArrowUp.addEventListener('click', () => {
+                const index = getCurrentSlideIndex();
+                if (index > 0) {
+                    slides[index - 1].scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+            
+            navArrowDown.addEventListener('click', () => {
+                const index = getCurrentSlideIndex();
+                if (index < slides.length - 1) {
+                    slides[index + 1].scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+            
+            // البحث في الشرائح
+            slideSearchInput.addEventListener('input', (e) => {
+                const query = e.target.value.toLowerCase();
+                document.querySelectorAll('.dropdown-slide').forEach(item => {
+                    const title = item.querySelector('.dropdown-slide__title').textContent.toLowerCase();
+                    const number = item.querySelector('.dropdown-slide__number').textContent;
+                    if (title.includes(query) || number.includes(query)) {
+                        item.style.display = 'flex';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+            
+            // إغلاق القائمة عند النقر خارجها
+            document.addEventListener('click', (e) => {
+                if (!navDropdown.contains(e.target) && !navIndicator.contains(e.target)) {
+                    closeDropdown();
+                }
+            });
+            
+            // إغلاق بـ Escape
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && navDropdown.classList.contains('active')) {
+                    closeDropdown();
+                }
+            });
+            
+            // تتبع الشريحة الحالية (المراقب الجديد)
+            const slideObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const index = Array.from(slides).indexOf(entry.target);
+                        updateNavIndicator(index);
+                        entry.target.classList.add('in-view');
+                        
+                        // إزالة in-view من الشرائح الأخرى
+                        slides.forEach((s, i) => {
+                            if (i !== index) s.classList.remove('in-view');
+                        });
+                    }
+                });
+            }, { threshold: 0.5 });
+            
+            slides.forEach(slide => slideObserver.observe(slide));
+            
+            // تهيئة أولية
+            updateNavIndicator(0);
+            
+            // إنشاء نقاط التنقل (للتوافق مع الكود القديم)
+            slides.forEach((slide, index) => {
+                const dot = document.createElement('button');
+                dot.className = 'slides-nav__dot';
+                dot.setAttribute('aria-label', `الانتقال للشريحة ${index + 1}`);
+                dot.addEventListener('click', () => {
+                    slide.scrollIntoView({ behavior: 'smooth' });
+                });
+                nav.appendChild(dot);
+            });
+            
+            // تتبع الشريحة الحالية (قديم - للتوافق)
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const index = Array.from(slides).indexOf(entry.target);
+                        document.querySelectorAll('.slides-nav__dot').forEach((dot, i) => {
+                            dot.classList.toggle('active', i === index);
+                        });
+                        entry.target.classList.add('in-view');
+                    }
+                });
+            }, { threshold: 0.5 });
+            
+            slides.forEach(slide => observer.observe(slide));
+            
+            // التنقل بالأسهم
+            document.addEventListener('keydown', (e) => {
+                const currentSlide = document.querySelector('.slide.in-view') || slides[0];
+                const currentIndex = Array.from(slides).indexOf(currentSlide);
+                
+                if (e.key === 'ArrowDown' || e.key === 'ArrowLeft') {
+                    if (currentIndex < slides.length - 1) {
+                        slides[currentIndex + 1].scrollIntoView({ behavior: 'smooth' });
+                    }
+                } else if (e.key === 'ArrowUp' || e.key === 'ArrowRight') {
+                    if (currentIndex > 0) {
+                        slides[currentIndex - 1].scrollIntoView({ behavior: 'smooth' });
+                    }
+                }
+            });
+        });
+        
+        // طباعة / تصدير PDF بمقاس مخصص
+        function printSlides() {
+            showPrintToast('📄 جاري تصدير PDF بمقاس 33.87cm × 19.05cm...');
+            
+            // فتح رابط التصدير من الخادم
+            window.location.href = '/qatar_sports/export-pdf';
+        }
+        
+        // دالة Toast للطباعة (مستقلة)
+        function showPrintToast(message) {
+            let toast = document.getElementById('printToast');
+            if (!toast) {
+                toast = document.createElement('div');
+                toast.id = 'printToast';
+                toast.style.cssText = `
+                    position: fixed;
+                    bottom: 30px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    background: linear-gradient(135deg, #8B1538, #D4AF37);
+                    color: white;
+                    padding: 12px 24px;
+                    border-radius: 8px;
+                    font-size: 14px;
+                    font-weight: 600;
+                    z-index: 10000;
+                    opacity: 0;
+                    transition: opacity 0.3s ease;
+                    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+                `;
+                document.body.appendChild(toast);
+            }
+            
+            toast.textContent = message;
+            toast.style.opacity = '1';
+            
+            setTimeout(() => {
+                toast.style.opacity = '0';
+            }, 2000);
+        }
+    </script>
+    
+    <!-- =====================================================
+         سكريبتات الميزات التفاعلية
+         ===================================================== -->
+    <script>
+        // =====================================================
+        // متغيرات عامة
+        // =====================================================
+        let currentSlideIndex = 0;
+        const STORAGE_PREFIX = 'qatar_sports_';
+        
+        // =====================================================
+        // 1. نظام البحث في المحتوى
+        // =====================================================
+        const searchBtn = document.getElementById('searchBtn');
+        const searchModal = document.getElementById('searchModal');
+        const searchInput = document.getElementById('searchInput');
+        const searchResults = document.getElementById('searchResults');
+        
+        // فتح نافذة البحث
+        searchBtn.addEventListener('click', () => {
+            searchModal.classList.add('active');
+            searchInput.focus();
+        });
+        
+        // إغلاق البحث بـ Escape
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeSearch();
+                closeShareModal();
+            }
+            // اختصار Ctrl+F للبحث
+            if ((e.ctrlKey || e.metaKey) && e.key === 'f') {
+                e.preventDefault();
+                searchModal.classList.add('active');
+                searchInput.focus();
+            }
+        });
+        
+        function closeSearch() {
+            searchModal.classList.remove('active');
+            searchInput.value = '';
+            searchResults.innerHTML = '<p class="search-modal__hint">اكتب للبحث في جميع الشرائح...</p>';
+        }
+        
+        // البحث في الشرائح
+        searchInput.addEventListener('input', (e) => {
+            const query = e.target.value.trim().toLowerCase();
+            
+            if (query.length < 2) {
+                searchResults.innerHTML = '<p class="search-modal__hint">اكتب للبحث في جميع الشرائح...</p>';
+                return;
+            }
+            
+            const slides = document.querySelectorAll('.slide');
+            const results = [];
+            
+            slides.forEach((slide, index) => {
+                const text = slide.textContent.toLowerCase();
+                if (text.includes(query)) {
+                    const title = getSlideTitle(slide, index);
+                    // استخراج النص المحيط بالكلمة
+                    const fullText = slide.textContent;
+                    const matchIndex = fullText.toLowerCase().indexOf(query);
+                    const start = Math.max(0, matchIndex - 30);
+                    const end = Math.min(fullText.length, matchIndex + query.length + 30);
+                    let snippet = fullText.substring(start, end).trim();
+                    
+                    // تمييز الكلمة المطابقة
+                    const regex = new RegExp(`(${query})`, 'gi');
+                    snippet = snippet.replace(regex, '<mark>$1</mark>');
+                    
+                    results.push({
+                        slideIndex: index,
+                        slideId: slide.id,
+                        title: title,
+                        snippet: snippet
+                    });
+                }
+            });
+            
+            if (results.length === 0) {
+                searchResults.innerHTML = '<p class="search-modal__hint">لا توجد نتائج</p>';
+                return;
+            }
+            
+            searchResults.innerHTML = results.map(r => `
+                <div class="search-result-item" onclick="goToSlide('${r.slideId}')">
+                    <div class="search-result-item__slide">شريحة ${r.slideIndex + 1}: ${r.title}</div>
+                    <div class="search-result-item__text">...${r.snippet}...</div>
+                </div>
+            `).join('');
+        });
+        
+        function goToSlide(slideId) {
+            const slide = document.getElementById(slideId);
+            if (slide) {
+                slide.scrollIntoView({ behavior: 'smooth' });
+                closeSearch();
+                
+                // تأثير تمييز مؤقت
+                slide.style.boxShadow = '0 0 0 4px var(--client-secondary)';
+                setTimeout(() => {
+                    slide.style.boxShadow = '';
+                }, 2000);
+            }
+        }
+        
+        function getSlideTitle(slide, index) {
+            const h1 = slide.querySelector('h1');
+            const h2 = slide.querySelector('h2');
+            const badge = slide.querySelector('.slide__badge');
+            
+            if (h1) return h1.textContent.trim().substring(0, 30);
+            if (h2) return h2.textContent.trim().substring(0, 30);
+            if (badge) return badge.textContent.trim();
+            return `شريحة ${index + 1}`;
+        }
+        
+        // =====================================================
+        // 2. نظام الملاحظات
+        // =====================================================
+        const notesBtn = document.getElementById('notesBtn');
+        const notesPanel = document.getElementById('notesPanel');
+        const notesBadge = document.getElementById('notesBadge');
+        const currentSlideNote = document.getElementById('currentSlideNote');
+        const notesList = document.getElementById('notesList');
+        
+        notesBtn.addEventListener('click', toggleNotesPanel);
+        
+        function toggleNotesPanel() {
+            notesPanel.classList.toggle('active');
+            if (notesPanel.classList.contains('active')) {
+                loadCurrentSlideNote();
+                renderNotesList();
+            }
+        }
+        
+        function loadCurrentSlideNote() {
+            const notes = JSON.parse(localStorage.getItem(STORAGE_PREFIX + 'notes')) || {};
+            const currentSlide = getCurrentSlide();
+            if (currentSlide) {
+                currentSlideNote.value = notes[currentSlide.id] || '';
+            }
+        }
+        
+        function saveCurrentNote() {
+            const currentSlide = getCurrentSlide();
+            if (!currentSlide) return;
+            
+            const notes = JSON.parse(localStorage.getItem(STORAGE_PREFIX + 'notes')) || {};
+            const noteText = currentSlideNote.value.trim();
+            
+            if (noteText) {
+                notes[currentSlide.id] = noteText;
+            } else {
+                delete notes[currentSlide.id];
+            }
+            
+            localStorage.setItem(STORAGE_PREFIX + 'notes', JSON.stringify(notes));
+            updateNotesBadge();
+            renderNotesList();
+            showPrintToast('✅ تم حفظ الملاحظة');
+        }
+        
+        function renderNotesList() {
+            const notes = JSON.parse(localStorage.getItem(STORAGE_PREFIX + 'notes')) || {};
+            const entries = Object.entries(notes);
+            
+            if (entries.length === 0) {
+                notesList.innerHTML = '<p style="color: rgba(255,255,255,0.5); text-align: center;">لا توجد ملاحظات</p>';
+                return;
+            }
+            
+            notesList.innerHTML = entries.map(([slideId, text]) => {
+                const slide = document.getElementById(slideId);
+                const index = slide ? Array.from(document.querySelectorAll('.slide')).indexOf(slide) : -1;
+                const title = slide ? getSlideTitle(slide, index) : 'شريحة محذوفة';
+                
+                return `
+                    <div class="note-item">
+                        <div class="note-item__slide" onclick="goToSlide('${slideId}')">
+                            شريحة ${index + 1}: ${title}
+                        </div>
+                        <div class="note-item__text">${text}</div>
+                        <div class="note-item__actions">
+                            <button onclick="editNote('${slideId}')"><i class="fas fa-edit"></i></button>
+                            <button onclick="deleteNote('${slideId}')"><i class="fas fa-trash"></i></button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+        
+        function editNote(slideId) {
+            goToSlide(slideId);
+            const notes = JSON.parse(localStorage.getItem(STORAGE_PREFIX + 'notes')) || {};
+            currentSlideNote.value = notes[slideId] || '';
+            currentSlideNote.focus();
+        }
+        
+        function deleteNote(slideId) {
+            if (!confirm('حذف هذه الملاحظة؟')) return;
+            
+            const notes = JSON.parse(localStorage.getItem(STORAGE_PREFIX + 'notes')) || {};
+            delete notes[slideId];
+            localStorage.setItem(STORAGE_PREFIX + 'notes', JSON.stringify(notes));
+            updateNotesBadge();
+            renderNotesList();
+            loadCurrentSlideNote();
+        }
+        
+        function clearAllNotes() {
+            if (!confirm('حذف جميع الملاحظات؟')) return;
+            localStorage.removeItem(STORAGE_PREFIX + 'notes');
+            updateNotesBadge();
+            renderNotesList();
+            currentSlideNote.value = '';
+        }
+        
+        function exportNotes() {
+            const notes = JSON.parse(localStorage.getItem(STORAGE_PREFIX + 'notes')) || {};
+            const entries = Object.entries(notes);
+            
+            if (entries.length === 0) {
+                showPrintToast('لا توجد ملاحظات للتصدير');
+                return;
+            }
+            
+            let text = '# ملاحظات العرض التقديمي\n\n';
+            entries.forEach(([slideId, noteText]) => {
+                const slide = document.getElementById(slideId);
+                const index = slide ? Array.from(document.querySelectorAll('.slide')).indexOf(slide) + 1 : '?';
+                text += `## شريحة ${index}\n${noteText}\n\n`;
+            });
+            
+            const blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'presentation_notes.txt';
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+        
+        function updateNotesBadge() {
+            const notes = JSON.parse(localStorage.getItem(STORAGE_PREFIX + 'notes')) || {};
+            const count = Object.keys(notes).length;
+            notesBadge.textContent = count;
+            notesBadge.style.display = count > 0 ? 'flex' : 'none';
+        }
+        
+        // =====================================================
+        // 3. نظام الإشارات المرجعية
+        // =====================================================
+        const bookmarksBtn = document.getElementById('bookmarksBtn');
+        const bookmarksPanel = document.getElementById('bookmarksPanel');
+        const bookmarksBadge = document.getElementById('bookmarksBadge');
+        const bookmarksList = document.getElementById('bookmarksList');
+        
+        bookmarksBtn.addEventListener('click', toggleBookmarksPanel);
+        
+        function toggleBookmarksPanel() {
+            bookmarksPanel.classList.toggle('active');
+            if (bookmarksPanel.classList.contains('active')) {
+                renderBookmarksList();
+                updateBookmarkButton();
+            }
+        }
+        
+        function toggleCurrentBookmark() {
+            const currentSlide = getCurrentSlide();
+            if (!currentSlide) return;
+            
+            const bookmarks = JSON.parse(localStorage.getItem(STORAGE_PREFIX + 'bookmarks')) || [];
+            const index = bookmarks.findIndex(b => b.slideId === currentSlide.id);
+            
+            if (index === -1) {
+                // إضافة
+                const slideIndex = Array.from(document.querySelectorAll('.slide')).indexOf(currentSlide);
+                bookmarks.push({
+                    slideId: currentSlide.id,
+                    title: getSlideTitle(currentSlide, slideIndex),
+                    date: new Date().toLocaleDateString('ar-QA')
+                });
+                showPrintToast('✅ تمت إضافة الإشارة المرجعية');
+            } else {
+                // إزالة
+                bookmarks.splice(index, 1);
+                showPrintToast('🗑️ تمت إزالة الإشارة المرجعية');
+            }
+            
+            localStorage.setItem(STORAGE_PREFIX + 'bookmarks', JSON.stringify(bookmarks));
+            updateBookmarksBadge();
+            renderBookmarksList();
+            updateBookmarkButton();
+        }
+        
+        function updateBookmarkButton() {
+            const btn = document.querySelector('.bookmark-current-btn');
+            const currentSlide = getCurrentSlide();
+            if (!currentSlide || !btn) return;
+            
+            const bookmarks = JSON.parse(localStorage.getItem(STORAGE_PREFIX + 'bookmarks')) || [];
+            const isBookmarked = bookmarks.some(b => b.slideId === currentSlide.id);
+            
+            if (isBookmarked) {
+                btn.innerHTML = '<i class="fas fa-check"></i> الشريحة محفوظة';
+                btn.classList.add('bookmarked');
+            } else {
+                btn.innerHTML = '<i class="fas fa-plus"></i> إضافة الشريحة الحالية';
+                btn.classList.remove('bookmarked');
+            }
+        }
+        
+        function renderBookmarksList() {
+            const bookmarks = JSON.parse(localStorage.getItem(STORAGE_PREFIX + 'bookmarks')) || [];
+            
+            if (bookmarks.length === 0) {
+                bookmarksList.innerHTML = '<p class="bookmarks-empty">لا توجد إشارات مرجعية بعد</p>';
+                return;
+            }
+            
+            bookmarksList.innerHTML = bookmarks.map((b, i) => {
+                const slide = document.getElementById(b.slideId);
+                const slideNum = slide ? Array.from(document.querySelectorAll('.slide')).indexOf(slide) + 1 : '?';
+                
+                return `
+                    <div class="bookmark-item" onclick="goToSlide('${b.slideId}')">
+                        <div class="bookmark-item__number">${slideNum}</div>
+                        <div class="bookmark-item__info">
+                            <div class="bookmark-item__title">${b.title}</div>
+                            <div class="bookmark-item__date">${b.date}</div>
+                        </div>
+                        <button class="bookmark-item__remove" onclick="event.stopPropagation(); removeBookmark(${i})">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                `;
+            }).join('');
+        }
+        
+        function removeBookmark(index) {
+            const bookmarks = JSON.parse(localStorage.getItem(STORAGE_PREFIX + 'bookmarks')) || [];
+            bookmarks.splice(index, 1);
+            localStorage.setItem(STORAGE_PREFIX + 'bookmarks', JSON.stringify(bookmarks));
+            updateBookmarksBadge();
+            renderBookmarksList();
+            updateBookmarkButton();
+        }
+        
+        function updateBookmarksBadge() {
+            const bookmarks = JSON.parse(localStorage.getItem(STORAGE_PREFIX + 'bookmarks')) || [];
+            const count = bookmarks.length;
+            bookmarksBadge.textContent = count;
+            bookmarksBadge.style.display = count > 0 ? 'flex' : 'none';
+        }
+        
+        // =====================================================
+        // 4. شريط التقدم
+        // =====================================================
+        const progressBtn = document.getElementById('progressBtn');
+        const progressBarContainer = document.getElementById('progressBarContainer');
+        const progressFill = document.getElementById('progressFill');
+        const progressText = document.getElementById('progressText');
+        
+        progressBtn.addEventListener('click', () => {
+            progressBarContainer.style.display = 
+                progressBarContainer.style.display === 'none' ? 'flex' : 'none';
+            progressBtn.classList.toggle('active');
+        });
+        
+        function updateProgress() {
+            const slides = document.querySelectorAll('.slide');
+            const scrollPosition = window.scrollY;
+            const totalHeight = document.body.scrollHeight - window.innerHeight;
+            const progress = Math.min(100, Math.round((scrollPosition / totalHeight) * 100));
+            
+            progressFill.style.width = progress + '%';
+            progressText.textContent = progress + '%';
+        }
+        
+        window.addEventListener('scroll', updateProgress);
+        
+        // =====================================================
+        // 5. نظام المشاركة
+        // =====================================================
+        const shareBtn = document.getElementById('shareBtn');
+        const shareModal = document.getElementById('shareModal');
+        const shareLink = document.getElementById('shareLink');
+        
+        shareBtn.addEventListener('click', () => {
+            const currentSlide = getCurrentSlide();
+            if (currentSlide) {
+                const url = window.location.origin + window.location.pathname + '#' + currentSlide.id;
+                shareLink.value = url;
+            }
+            shareModal.classList.add('active');
+        });
+        
+        function closeShareModal() {
+            shareModal.classList.remove('active');
+        }
+        
+        function copyShareLink() {
+            shareLink.select();
+            document.execCommand('copy');
+            showPrintToast('✅ تم نسخ الرابط');
+        }
+        
+        function shareVia(platform) {
+            const url = shareLink.value;
+            const text = 'شاهد هذا العرض التقديمي';
+            
+            let shareUrl;
+            switch(platform) {
+                case 'whatsapp':
+                    shareUrl = `https://wa.me/?text=${encodeURIComponent(text + ' ' + url)}`;
+                    break;
+                case 'twitter':
+                    shareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`;
+                    break;
+                case 'email':
+                    shareUrl = `mailto:?subject=${encodeURIComponent(text)}&body=${encodeURIComponent(url)}`;
+                    break;
+            }
+            
+            window.open(shareUrl, '_blank');
+        }
+        
+        function exportSlideAsImage() {
+            const currentSlide = getCurrentSlide();
+            if (!currentSlide) return;
+            
+            showPrintToast('📸 جاري تصدير الصورة...');
+            
+            // استخدام html2canvas
+            if (typeof html2canvas !== 'undefined') {
+                html2canvas(currentSlide, {
+                    scale: 2,
+                    useCORS: true,
+                    backgroundColor: null
+                }).then(canvas => {
+                    const link = document.createElement('a');
+                    link.download = `slide_${getCurrentSlideIndex() + 1}.png`;
+                    link.href = canvas.toDataURL('image/png');
+                    link.click();
+                    showPrintToast('✅ تم تصدير الصورة');
+                });
+            } else {
+                showPrintToast('❌ مكتبة التصدير غير متوفرة');
+            }
+        }
+        
+        // =====================================================
+        // دوال مساعدة
+        // =====================================================
+        function getCurrentSlide() {
+            const slides = document.querySelectorAll('.slide');
+            const scrollPosition = window.scrollY + window.innerHeight / 2;
+            
+            for (let i = slides.length - 1; i >= 0; i--) {
+                if (slides[i].offsetTop <= scrollPosition) {
+                    return slides[i];
+                }
+            }
+            return slides[0];
+        }
+        
+        function getCurrentSlideIndex() {
+            const currentSlide = getCurrentSlide();
+            return Array.from(document.querySelectorAll('.slide')).indexOf(currentSlide);
+        }
+        
+        // تحديث عند التمرير
+        window.addEventListener('scroll', () => {
+            if (notesPanel.classList.contains('active')) {
+                loadCurrentSlideNote();
+            }
+            if (bookmarksPanel.classList.contains('active')) {
+                updateBookmarkButton();
+            }
+        });
+        
+        // تهيئة
+        updateNotesBadge();
+        updateBookmarksBadge();
+        updateProgress();
+        
+        // ربط زر الفهرس بقائمة الفهرس
+        const tocBtn = document.getElementById('tocBtn');
+        const tocMenu = document.getElementById('tocMenu');
+        const tocTrigger = document.getElementById('tocTrigger');
+        
+        if (tocBtn && tocTrigger) {
+            tocBtn.addEventListener('click', () => {
+                tocTrigger.click();
+            });
+        }
+        
+        // التعامل مع روابط الشرائح المباشرة
+        if (window.location.hash) {
+            const slideId = window.location.hash.substring(1);
+            setTimeout(() => goToSlide(slideId), 500);
+        }
+    </script>
+    
+    <!-- =====================================================
+         عرض الشرائح في شبكة (Grid View)
+         ===================================================== -->
+    <div class="grid-overlay" id="gridOverlay">
+        <div class="grid-overlay__header">
+            <h2><i class="fas fa-th-large"></i> عرض جميع الشرائح</h2>
+            <button class="grid-overlay__close" onclick="toggleGridView()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="grid-container" id="gridContainer">
+            <!-- سيتم إنشاء الشرائح ديناميكياً -->
+        </div>
+    </div>
+    
+    <script>
+        // =====================================================
+        // عرض الشبكة (Grid View)
+        // =====================================================
+        function toggleGridView() {
+            const overlay = document.getElementById('gridOverlay');
+            if (!overlay) return;
+            
+            const isActive = overlay.classList.contains('active');
+            
+            if (!isActive) {
+                generateThumbnails();
+                overlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            } else {
+                overlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
+        
+        // إنشاء المصغرات مع محتوى الشرائح الفعلي
+        function generateThumbnails() {
+            const container = document.getElementById('gridContainer');
+            if (!container) return;
+            
+            const slides = document.querySelectorAll('.slide');
+            container.innerHTML = '';
+            
+            // حساب نسبة التصغير بناءً على حجم المصغرة
+            const thumbWidth = (window.innerWidth - 160) / 4; // 4 أعمدة مع padding
+            const scale = thumbWidth / 1920;
+            
+            slides.forEach((slide, index) => {
+                // استخراج العنوان
+                const titleEl = slide.querySelector('.slide__title, .methodology-title, .cover__title, .divider-title, h2, h3');
+                const title = titleEl ? titleEl.textContent.trim().substring(0, 35) : `شريحة ${index + 1}`;
+                
+                // استخراج الرقم
+                const numberEl = slide.querySelector('.slide__number');
+                const number = numberEl ? numberEl.textContent : String(index + 1).padStart(2, '0');
+                
+                const thumbnail = document.createElement('div');
+                thumbnail.className = 'grid-thumbnail';
+                
+                // نسخ الشريحة
+                const slideClone = slide.cloneNode(true);
+                slideClone.className = 'grid-thumbnail__frame';
+                slideClone.style.transform = `scale(${scale})`;
+                
+                // إزالة العناصر غير الضرورية
+                const toRemove = slideClone.querySelectorAll('.slide__number, .slide__platform-logo');
+                toRemove.forEach(el => el.remove());
+                
+                thumbnail.innerHTML = `
+                    <span class="grid-thumbnail__number">${number}</span>
+                    <div class="grid-thumbnail__label">
+                        <h4>${title}</h4>
+                    </div>
+                `;
+                
+                thumbnail.insertBefore(slideClone, thumbnail.firstChild);
+                
+                thumbnail.addEventListener('click', () => {
+                    toggleGridView();
+                    setTimeout(() => {
+                        slide.scrollIntoView({ behavior: 'smooth' });
+                    }, 300);
+                });
+                
+                container.appendChild(thumbnail);
+            });
+        }
+    </script>
+    
+    <!-- سكريبت زر الفهرس -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const tocBtn = document.getElementById('tocBtn');
+            const tocMenu = document.getElementById('tocMenu');
+            
+            if (tocBtn && tocMenu) {
+                tocBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    tocMenu.classList.toggle('active');
+                    console.log('TOC Button clicked!');
+                });
+            }
+        });
+    </script>
+    
+    <!-- مكتبة html2canvas للتصدير كصورة -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

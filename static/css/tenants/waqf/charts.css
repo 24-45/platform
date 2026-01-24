@@ -7,14 +7,16 @@
     width: 100% !important;
     max-width: 100% !important;
     margin: 0 auto !important;
-    height: 500px !important;
+    min-height: 550px !important;
+    height: auto !important;
     direction: ltr !important;
     display: block !important;
     position: relative !important;
-    background: rgba(255, 255, 255, 0.9);
-    border-radius: 12px;
-    padding: 15px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 16px;
+    padding: 25px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    box-sizing: border-box !important;
 }
 
 /* Post Types Daily Chart Container */
@@ -63,19 +65,35 @@
 /* Force Plotly chart to center and take full width */
 #post-type-trend-root {
     width: 100% !important;
-    height: 500px !important;
+    min-height: 550px !important;
+    height: auto !important;
     margin: 0 auto !important;
     display: block !important;
+    padding: 20px 0 !important;
 }
 
 #post-type-trend-root .js-plotly-plot {
     width: 100% !important;
-    height: 100% !important;
+    min-height: 500px !important;
+    height: auto !important;
+    margin: 0 auto !important;
 }
 
 #post-type-trend-root .plotly-graph-div {
     width: 100% !important;
-    height: 100% !important;
+    min-height: 500px !important;
+    height: auto !important;
+    margin: 0 auto !important;
+}
+
+/* Center the SVG container inside Plotly */
+#post-type-trend-root .svg-container {
+    margin: 0 auto !important;
+}
+
+#post-type-trend-root .main-svg {
+    display: block !important;
+    margin: 0 auto !important;
 }
 
 /* Chart Container Wrapper Overrides */

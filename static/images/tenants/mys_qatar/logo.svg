@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <linearGradient id="qatarGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8B1538"/>
+      <stop offset="100%" style="stop-color:#6A1029"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- الخلفية الدائرية -->
+  <circle cx="100" cy="100" r="95" fill="url(#qatarGrad)" stroke="#D4AF37" stroke-width="3"/>
+  
+  <!-- رمز الرياضة -->
+  <g fill="#D4AF37">
+    <!-- كرة -->
+    <circle cx="100" cy="80" r="25" fill="none" stroke="#D4AF37" stroke-width="3"/>
+    <path d="M85 80 Q100 65 115 80" fill="none" stroke="#D4AF37" stroke-width="2"/>
+    <path d="M85 80 Q100 95 115 80" fill="none" stroke="#D4AF37" stroke-width="2"/>
+    
+    <!-- نجمة -->
+    <polygon points="100,110 103,120 113,120 105,126 108,136 100,130 92,136 95,126 87,120 97,120" fill="#D4AF37"/>
+  </g>
+  
+  <!-- النص -->
+  <text x="100" y="165" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="14" font-weight="bold">
+    وزارة الرياضة والشباب
+  </text>
+</svg>

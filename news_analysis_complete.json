@@ -1,0 +1,255 @@
+{
+  "summary": {
+    "total_publications": 7646,
+    "total_unique_sources": 23,
+    "qatar_sources_count": 11,
+    "arabic_sources_count": 3,
+    "international_sources_count": 9
+  },
+  "tracks": {
+    "track1": {
+      "name": "وزارة الرياضة والشباب القطرية",
+      "total_publications": 654,
+      "sources": [
+        {
+          "name": "Qatar News Agency (QNA) وكالة الأنباء القطرية",
+          "publications": 80,
+          "category": "قطري"
+        },
+        {
+          "name": "Al Sharq بوابة الشرق",
+          "publications": 70,
+          "category": "قطري"
+        },
+        {
+          "name": "Al Raya الراية",
+          "publications": 69,
+          "category": "قطري"
+        },
+        {
+          "name": "Qatar News",
+          "publications": 67,
+          "category": "قطري"
+        },
+        {
+          "name": "The Middle East North Africa Financial Network",
+          "publications": 47,
+          "category": "دولي"
+        },
+        {
+          "name": "The Peninsula",
+          "publications": 33,
+          "category": "قطري"
+        },
+        {
+          "name": "Qatar Tribune",
+          "publications": 32,
+          "category": "قطري"
+        },
+        {
+          "name": "Mena Focus",
+          "publications": 27,
+          "category": "دولي"
+        },
+        {
+          "name": "Gulf Times",
+          "publications": 24,
+          "category": "قطري"
+        },
+        {
+          "name": "news.alestad.com",
+          "publications": 22,
+          "category": "دولي"
+        }
+      ],
+      "classification": {
+        "قطري": 17,
+        "عربي": 1,
+        "دولي": 12
+      }
+    },
+    "track2": {
+      "name": "الفعاليات الكبرى",
+      "total_publications": 6241,
+      "sources": [
+        {
+          "name": "بوابة الزهراء الإخبارية",
+          "publications": 648,
+          "category": "عربي"
+        },
+        {
+          "name": "Klyoum",
+          "publications": 510,
+          "category": "عربي"
+        },
+        {
+          "name": "Sahafahh.net",
+          "publications": 418,
+          "category": "دولي"
+        },
+        {
+          "name": "NABDN",
+          "publications": 320,
+          "category": "دولي"
+        },
+        {
+          "name": "The Middle East North Africa Financial Network",
+          "publications": 274,
+          "category": "دولي"
+        },
+        {
+          "name": "Al Raya الراية",
+          "publications": 264,
+          "category": "قطري"
+        },
+        {
+          "name": "Qatar News",
+          "publications": 252,
+          "category": "قطري"
+        },
+        {
+          "name": "Al Sharq بوابة الشرق",
+          "publications": 240,
+          "category": "قطري"
+        },
+        {
+          "name": "موقع نبض - nabd",
+          "publications": 240,
+          "category": "عربي"
+        },
+        {
+          "name": "WinWin",
+          "publications": 233,
+          "category": "دولي"
+        }
+      ],
+      "classification": {
+        "قطري": 8,
+        "عربي": 7,
+        "دولي": 15
+      }
+    },
+    "track3": {
+      "name": "الفعاليات الرياضية والصحية المحلية",
+      "total_publications": 74,
+      "sources": [
+        {
+          "name": "The Middle East North Africa Financial Network",
+          "publications": 8,
+          "category": "دولي"
+        },
+        {
+          "name": "Qatar Tribune",
+          "publications": 6,
+          "category": "قطري"
+        },
+        {
+          "name": "The Peninsula",
+          "publications": 5,
+          "category": "قطري"
+        },
+        {
+          "name": "Al Sharq بوابة الشرق",
+          "publications": 4,
+          "category": "قطري"
+        },
+        {
+          "name": "I Love Qatar",
+          "publications": 4,
+          "category": "قطري"
+        },
+        {
+          "name": "Gulf Times",
+          "publications": 4,
+          "category": "قطري"
+        },
+        {
+          "name": "World News",
+          "publications": 3,
+          "category": "دولي"
+        },
+        {
+          "name": "Qatar News",
+          "publications": 3,
+          "category": "قطري"
+        },
+        {
+          "name": "Qatar News Agency (QNA) وكالة الأنباء القطرية",
+          "publications": 3,
+          "category": "قطري"
+        },
+        {
+          "name": "Marhaba Information Guide",
+          "publications": 3,
+          "category": "دولي"
+        }
+      ],
+      "classification": {
+        "قطري": 15,
+        "عربي": 0,
+        "دولي": 15
+      }
+    },
+    "track4": {
+      "name": "الفعاليات التراثية والوطنية",
+      "total_publications": 677,
+      "sources": [
+        {
+          "name": "Al Raya الراية",
+          "publications": 132,
+          "category": "قطري"
+        },
+        {
+          "name": "Al Sharq بوابة الشرق",
+          "publications": 113,
+          "category": "قطري"
+        },
+        {
+          "name": "Qatar News",
+          "publications": 105,
+          "category": "قطري"
+        },
+        {
+          "name": "Qatar News Agency (QNA) وكالة الأنباء القطرية",
+          "publications": 94,
+          "category": "قطري"
+        },
+        {
+          "name": "news.alestad.com",
+          "publications": 74,
+          "category": "دولي"
+        },
+        {
+          "name": "منصة مشيرب",
+          "publications": 26,
+          "category": "قطري"
+        },
+        {
+          "name": "Al Arab Newspaper - صحيفة العرب",
+          "publications": 18,
+          "category": "قطري"
+        },
+        {
+          "name": "Al Watan جريدة الوطن",
+          "publications": 14,
+          "category": "قطري"
+        },
+        {
+          "name": "Arabkhabar",
+          "publications": 13,
+          "category": "دولي"
+        },
+        {
+          "name": "The Middle East North Africa Financial Network",
+          "publications": 10,
+          "category": "دولي"
+        }
+      ],
+      "classification": {
+        "قطري": 13,
+        "عربي": 1,
+        "دولي": 16
+      }
+    }
+  }
+}

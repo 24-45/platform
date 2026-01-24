@@ -1,0 +1,114 @@
+{
+  "analysis_date": "2026-01-22 15:35:03",
+  "source_folder": "qatr3",
+  "tracks": {
+    "ministry": {
+      "count": 1003,
+      "reach": 335893586,
+      "engagement": 3308,
+      "sentiment": {
+        "neutral": 636,
+        "positive": 345,
+        "negative": 22
+      },
+      "sources": {
+        "online news": 515,
+        "social network": 487,
+        "print": 1
+      }
+    },
+    "global_events": {
+      "count": 31800,
+      "reach": 31531034805,
+      "engagement": 1457424,
+      "sentiment": {
+        "neutral": 22121,
+        "positive": 8142,
+        "negative": 1392,
+        "unknown": 145
+      },
+      "sources": {
+        "online news": 16473,
+        "social network": 15319,
+        "print": 8
+      }
+    }
+  },
+  "totals": {
+    "total_records": 32803,
+    "ministry_count": 1003,
+    "global_events_count": 31800,
+    "total_reach": 31866928391,
+    "total_engagement": 1460732
+  },
+  "sentiment_distribution": {
+    "neutral": 22757,
+    "positive": 8487,
+    "negative": 1414,
+    "unknown": 145
+  },
+  "source_distribution": {
+    "social": 15806,
+    "traditional": 16997,
+    "detailed": {
+      "online news": 16988,
+      "social network": 15806,
+      "print": 9
+    }
+  },
+  "top_influencers": [
+    {
+      "name": "شريف",
+      "mentions": 234,
+      "reach": 619559953,
+      "engagement": 1230
+    },
+    {
+      "name": "قنوات الكاس",
+      "mentions": 231,
+      "reach": 369013050,
+      "engagement": 8675
+    },
+    {
+      "name": "الأمير إبن الملك",
+      "mentions": 211,
+      "reach": 556541409,
+      "engagement": 3658
+    },
+    {
+      "name": "نور",
+      "mentions": 152,
+      "reach": 401628799,
+      "engagement": 2
+    },
+    {
+      "name": "صحيفة العرب - قطر",
+      "mentions": 132,
+      "reach": 42248617,
+      "engagement": 61
+    }
+  ],
+  "top_hashtags": [
+    {
+      "tag": "#كأس_العرب;#كأس_العرب_2025",
+      "count": 357
+    },
+    {
+      "tag": "#كأس_العرب",
+      "count": 293
+    },
+    {
+      "tag": "#كأس_العرب2025",
+      "count": 258
+    },
+    {
+      "tag": "#قنوات_الكاس;#كأس_العرب2025;#منصة_شوف",
+      "count": 230
+    },
+    {
+      "tag": "#خادم_الحرمين_الشريفين;#واس;#ولي_العهد",
+      "count": 220
+    }
+  ],
+  "excluded_count": 42
+}

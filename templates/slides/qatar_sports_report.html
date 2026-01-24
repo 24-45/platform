@@ -1,0 +1,1363 @@
+{% extends "slides/base.html" %}
+
+{% block title %}تقرير السمعة الإعلامية | وزارة الرياضة والشباب - قطر{% endblock %}
+
+{% block client_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/tenants/qatar_sports/slides.css') }}">
+<style>
+/* =====================================================
+   أنماط إضافية خاصة بالتقرير
+   ===================================================== */
+
+/* بطاقات الإحصائيات */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.stat-card {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 40px 30px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.stat-card--maroon {
+    background: linear-gradient(135deg, rgba(139, 21, 56, 0.9), rgba(106, 16, 41, 0.9));
+    border: 1px solid var(--qatar-gold);
+}
+
+.stat-card__icon {
+    font-size: 3rem;
+    margin-bottom: 15px;
+}
+
+.stat-card__value {
+    font-size: 3.5rem;
+    font-weight: 900;
+    color: var(--qatar-gold);
+    margin-bottom: 10px;
+}
+
+.stat-card__label {
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+
+/* المخططات */
+.chart-container {
+    width: 100%;
+    max-width: 800px;
+    height: 400px;
+    margin: 30px auto;
+    position: relative;
+}
+
+.chart-container--large {
+    max-width: 1000px;
+    height: 500px;
+}
+
+.chart-container--full {
+    max-width: 1200px;
+    height: 600px;
+}
+
+/* شريحة المقارنة */
+.comparison-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+    width: 100%;
+    max-width: 1200px;
+}
+
+/* بطاقات المؤثرين */
+.influencers-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.influencer-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    padding: 25px 20px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.influencer-card:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: scale(1.02);
+}
+
+.influencer-card__avatar {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--qatar-maroon), var(--qatar-gold));
+    margin: 0 auto 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    color: white;
+}
+
+.influencer-card__name {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.influencer-card__reach {
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: var(--qatar-gold);
+}
+
+.influencer-card__type {
+    font-size: 0.9rem;
+    opacity: 0.7;
+    margin-top: 5px;
+}
+
+/* Word Cloud */
+.word-cloud-container {
+    width: 100%;
+    max-width: 1000px;
+    height: 500px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    padding: 30px;
+}
+
+.word-cloud__word {
+    transition: all 0.3s ease;
+    cursor: default;
+}
+
+.word-cloud__word:hover {
+    transform: scale(1.1);
+    color: var(--qatar-gold) !important;
+}
+
+/* SWOT Matrix */
+.swot-matrix {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    width: 100%;
+    max-width: 1000px;
+}
+
+.swot-card {
+    border-radius: 16px;
+    padding: 30px;
+    min-height: 200px;
+}
+
+.swot-card--strengths {
+    background: linear-gradient(135deg, #27AE60, #2ECC71);
+}
+
+.swot-card--weaknesses {
+    background: linear-gradient(135deg, #E74C3C, #C0392B);
+}
+
+.swot-card--opportunities {
+    background: linear-gradient(135deg, #3498DB, #2980B9);
+}
+
+.swot-card--threats {
+    background: linear-gradient(135deg, #F39C12, #E67E22);
+}
+
+.swot-card__title {
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.swot-card__list {
+    list-style: none;
+    padding: 0;
+}
+
+.swot-card__list li {
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    font-size: 1rem;
+}
+
+.swot-card__list li:last-child {
+    border-bottom: none;
+}
+
+/* Scorecard */
+.scorecard-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    width: 100%;
+    max-width: 1100px;
+}
+
+.score-item {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    padding: 30px;
+    text-align: center;
+    border: 2px solid transparent;
+}
+
+.score-item--a-plus {
+    border-color: #27AE60;
+}
+
+.score-item--a {
+    border-color: #2ECC71;
+}
+
+.score-item--a-minus {
+    border-color: #58D68D;
+}
+
+.score-item__grade {
+    font-size: 4rem;
+    font-weight: 900;
+    margin-bottom: 10px;
+}
+
+.score-item__grade--green {
+    color: #27AE60;
+}
+
+.score-item__label {
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+.score-item__bar {
+    height: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    margin-top: 15px;
+    overflow: hidden;
+}
+
+.score-item__bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--qatar-gold), #27AE60);
+    border-radius: 4px;
+    transition: width 1s ease;
+}
+
+/* قائمة الفعاليات */
+.events-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+    max-width: 900px;
+}
+
+.event-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 20px 25px;
+    border-right: 4px solid var(--qatar-gold);
+}
+
+.event-item__icon {
+    font-size: 2rem;
+    width: 60px;
+    text-align: center;
+}
+
+.event-item__info {
+    flex: 1;
+}
+
+.event-item__name {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.event-item__date {
+    font-size: 0.95rem;
+    opacity: 0.7;
+}
+
+/* التوصيات */
+.recommendations-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    max-width: 1000px;
+}
+
+.recommendation-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    background: rgba(139, 21, 56, 0.1);
+    border-radius: 16px;
+    padding: 25px 30px;
+    border: 1px solid rgba(139, 21, 56, 0.3);
+}
+
+.recommendation-item__number {
+    width: 50px;
+    height: 50px;
+    background: var(--qatar-maroon);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 800;
+    flex-shrink: 0;
+}
+
+.recommendation-item__content {
+    flex: 1;
+}
+
+.recommendation-item__title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--qatar-maroon);
+    margin-bottom: 8px;
+}
+
+.recommendation-item__desc {
+    font-size: 1rem;
+    opacity: 0.8;
+    line-height: 1.6;
+}
+
+/* Progress bars للمشاعر */
+.sentiment-bars {
+    width: 100%;
+    max-width: 800px;
+}
+
+.sentiment-bar {
+    margin-bottom: 25px;
+}
+
+.sentiment-bar__header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.sentiment-bar__label {
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.sentiment-bar__value {
+    font-size: 1.1rem;
+    font-weight: 800;
+}
+
+.sentiment-bar__track {
+    height: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.sentiment-bar__fill {
+    height: 100%;
+    border-radius: 10px;
+    transition: width 1.5s ease;
+}
+
+.sentiment-bar__fill--positive {
+    background: linear-gradient(90deg, #27AE60, #2ECC71);
+}
+
+.sentiment-bar__fill--negative {
+    background: linear-gradient(90deg, #E74C3C, #C0392B);
+}
+
+.sentiment-bar__fill--neutral {
+    background: linear-gradient(90deg, #F39C12, #E67E22);
+}
+
+/* الجدول */
+.data-table {
+    width: 100%;
+    max-width: 1100px;
+    border-collapse: collapse;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.data-table th,
+.data-table td {
+    padding: 18px 20px;
+    text-align: right;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.data-table th {
+    background: var(--qatar-maroon);
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+.data-table tr:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.data-table tr:last-child td {
+    border-bottom: none;
+}
+
+/* الشعارات */
+.logos-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 60px;
+    margin-bottom: 40px;
+}
+
+.logo {
+    height: 100px;
+    object-fit: contain;
+}
+
+.logo--small {
+    height: 60px;
+}
+
+/* Timeline */
+.timeline {
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+    padding-right: 40px;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    right: 15px;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: var(--qatar-gold);
+}
+
+.timeline-item {
+    position: relative;
+    padding-right: 50px;
+    padding-bottom: 30px;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 5px;
+    width: 30px;
+    height: 30px;
+    background: var(--qatar-maroon);
+    border: 4px solid var(--qatar-gold);
+    border-radius: 50%;
+}
+
+.timeline-item__date {
+    font-size: 1rem;
+    color: var(--qatar-gold);
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.timeline-item__content {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 20px;
+}
+
+.timeline-item__title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes countUp {
+    from {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.slide.in-view .stat-card,
+.slide.in-view .influencer-card,
+.slide.in-view .event-item,
+.slide.in-view .recommendation-item {
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+.slide.in-view .stat-card:nth-child(1) { animation-delay: 0.1s; }
+.slide.in-view .stat-card:nth-child(2) { animation-delay: 0.2s; }
+.slide.in-view .stat-card:nth-child(3) { animation-delay: 0.3s; }
+.slide.in-view .stat-card:nth-child(4) { animation-delay: 0.4s; }
+.slide.in-view .stat-card:nth-child(5) { animation-delay: 0.5s; }
+.slide.in-view .stat-card:nth-child(6) { animation-delay: 0.6s; }
+
+.slide.in-view .stat-card__value {
+    animation: countUp 0.8s ease forwards;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .influencers-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .slide {
+        padding: 40px 30px;
+    }
+    
+    .slide__title {
+        font-size: 2.5rem;
+    }
+    
+    .stats-grid,
+    .comparison-grid,
+    .swot-matrix,
+    .scorecard-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .influencers-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .stat-card__value {
+        font-size: 2.5rem;
+    }
+}
+
+/* Print styles */
+@media print {
+    .slide {
+        page-break-after: always;
+        page-break-inside: avoid;
+    }
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- =====================================================
+     شريحة 1: الغلاف
+     ===================================================== -->
+<section class="slide slide--maroon" id="slide-cover">
+    <div class="slide__content slide__content--center">
+        <div class="logos-container">
+            <img src="{{ url_for('static', filename='images/qatar_sports_logo.png') }}" alt="وزارة الرياضة والشباب" class="logo" onerror="this.style.display='none'">
+            <img src="{{ url_for('static', filename='images/platform-logo.svg') }}" alt="24°45°" class="logo logo--small" onerror="this.style.display='none'">
+        </div>
+        
+        <h1 class="slide__title slide__title--large">
+            تقرير السمعة الإعلامية
+        </h1>
+        <h2 class="slide__subtitle slide__title--gold">
+            وزارة الرياضة والشباب - دولة قطر
+        </h2>
+        <p class="slide__subtitle" style="opacity: 0.8; font-size: 1.5rem;">
+            تحليل شامل للفعاليات الرياضية الكبرى
+        </p>
+        <div style="margin-top: 60px; padding: 20px 40px; background: rgba(0,0,0,0.3); border-radius: 12px;">
+            <p style="font-size: 1.3rem;">
+                <i class="fas fa-calendar-alt" style="color: var(--qatar-gold); margin-left: 10px;"></i>
+                نوفمبر 2025 - يناير 2026
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- =====================================================
+     شريحة 2: نظرة عامة - الأرقام الرئيسية
+     ===================================================== -->
+<section class="slide slide--dark" id="slide-overview">
+    <div class="slide__content">
+        <h2 class="slide__title slide__title--gold" style="text-align: center; margin-bottom: 50px;">
+            <i class="fas fa-chart-line" style="margin-left: 15px;"></i>
+            الأرقام الرئيسية
+        </h2>
+        
+        <div class="stats-grid">
+            <div class="stat-card stat-card--maroon">
+                <div class="stat-card__icon">📰</div>
+                <div class="stat-card__value" data-count="150838">150,838</div>
+                <div class="stat-card__label">مادة إعلامية</div>
+            </div>
+            
+            <div class="stat-card stat-card--maroon">
+                <div class="stat-card__icon">📣</div>
+                <div class="stat-card__value">134+ مليار</div>
+                <div class="stat-card__label">إجمالي الوصول</div>
+            </div>
+            
+            <div class="stat-card stat-card--maroon">
+                <div class="stat-card__icon">💬</div>
+                <div class="stat-card__value" data-count="6982717">6.9M</div>
+                <div class="stat-card__label">إجمالي التفاعل</div>
+            </div>
+            
+            <div class="stat-card stat-card--maroon">
+                <div class="stat-card__icon">✅</div>
+                <div class="stat-card__value" style="color: #27AE60;">28%</div>
+                <div class="stat-card__label">نسبة الإيجابية</div>
+            </div>
+            
+            <div class="stat-card stat-card--maroon">
+                <div class="stat-card__icon">⚠️</div>
+                <div class="stat-card__value" style="color: #E74C3C;">5.8%</div>
+                <div class="stat-card__label">نسبة السلبية</div>
+            </div>
+            
+            <div class="stat-card stat-card--maroon">
+                <div class="stat-card__icon">🏆</div>
+                <div class="stat-card__value">7</div>
+                <div class="stat-card__label">فعاليات رياضية كبرى</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- =====================================================
+     شريحة 3: توزيع المشاعر
+     ===================================================== -->
+<section class="slide slide--white" id="slide-sentiment">
+    <div class="slide__content">
+        <h2 class="slide__title" style="color: var(--qatar-maroon); text-align: center; margin-bottom: 50px;">
+            <i class="fas fa-heart" style="margin-left: 15px;"></i>
+            توزيع المشاعر العامة
+        </h2>
+        
+        <div class="comparison-grid">
+            <div class="chart-container">
+                <canvas id="sentimentChart"></canvas>
+            </div>
+            
+            <div class="sentiment-bars">
+                <div class="sentiment-bar">
+                    <div class="sentiment-bar__header">
+                        <span class="sentiment-bar__label" style="color: #27AE60;">✅ إيجابي</span>
+                        <span class="sentiment-bar__value" style="color: #27AE60;">28.0%</span>
+                    </div>
+                    <div class="sentiment-bar__track">
+                        <div class="sentiment-bar__fill sentiment-bar__fill--positive" style="width: 28%;"></div>
+                    </div>
+                </div>
+                
+                <div class="sentiment-bar">
+                    <div class="sentiment-bar__header">
+                        <span class="sentiment-bar__label" style="color: #F39C12;">⚪ محايد</span>
+                        <span class="sentiment-bar__value" style="color: #F39C12;">66.2%</span>
+                    </div>
+                    <div class="sentiment-bar__track">
+                        <div class="sentiment-bar__fill sentiment-bar__fill--neutral" style="width: 66.2%;"></div>
+                    </div>
+                </div>
+                
+                <div class="sentiment-bar">
+                    <div class="sentiment-bar__header">
+                        <span class="sentiment-bar__label" style="color: #E74C3C;">❌ سلبي</span>
+                        <span class="sentiment-bar__value" style="color: #E74C3C;">5.8%</span>
+                    </div>
+                    <div class="sentiment-bar__track">
+                        <div class="sentiment-bar__fill sentiment-bar__fill--negative" style="width: 5.8%;"></div>
+                    </div>
+                </div>
+                
+                <div style="margin-top: 40px; padding: 25px; background: rgba(39, 174, 96, 0.1); border-radius: 12px; border-right: 4px solid #27AE60;">
+                    <p style="font-size: 1.2rem; color: var(--qatar-black);">
+                        <strong style="color: #27AE60;">نسبة الإيجابية تفوق السلبية بـ 4.8 ضعف</strong>
+                        <br>
+                        <span style="opacity: 0.8;">مؤشر قوي على نجاح التغطية الإعلامية</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- =====================================================
+     شريحة 4: توزيع نوع الإعلام
+     ===================================================== -->
+<section class="slide slide--dark" id="slide-media-type">
+    <div class="slide__content">
+        <h2 class="slide__title slide__title--gold" style="text-align: center; margin-bottom: 50px;">
+            <i class="fas fa-broadcast-tower" style="margin-left: 15px;"></i>
+            توزيع التغطية الإعلامية
+        </h2>
+        
+        <div class="comparison-grid">
+            <div class="chart-container">
+                <canvas id="mediaTypeChart"></canvas>
+            </div>
+            
+            <div style="display: flex; flex-direction: column; justify-content: center; gap: 30px;">
+                <div class="stat-card">
+                    <div class="stat-card__icon">📱</div>
+                    <div class="stat-card__value">69.5%</div>
+                    <div class="stat-card__label">منصات التواصل الاجتماعي</div>
+                    <p style="margin-top: 15px; opacity: 0.7;">104,835 منشور</p>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-card__icon">📺</div>
+                    <div class="stat-card__value">30.5%</div>
+                    <div class="stat-card__label">الإعلام التقليدي</div>
+                    <p style="margin-top: 15px; opacity: 0.7;">46,003 مادة</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- =====================================================
+     شريحة 5: الفعاليات السبع
+     ===================================================== -->
+<section class="slide slide--white" id="slide-events">
+    <div class="slide__content">
+        <h2 class="slide__title" style="color: var(--qatar-maroon); text-align: center; margin-bottom: 40px;">
+            <i class="fas fa-trophy" style="margin-left: 15px;"></i>
+            الفعاليات الرياضية السبع الكبرى
+        </h2>
+        
+        <div class="events-list">
+            <div class="event-item">
+                <div class="event-item__icon">⚽</div>
+                <div class="event-item__info">
+                    <div class="event-item__name" style="color: var(--qatar-maroon);">كأس العرب FIFA قطر 2025</div>
+                    <div class="event-item__date">1-18 ديسمبر 2025</div>
+                </div>
+                <div style="text-align: left;">
+                    <div style="font-size: 1.5rem; font-weight: 800; color: var(--qatar-maroon);">30,974</div>
+                    <div style="font-size: 0.9rem; opacity: 0.7;">مادة إعلامية</div>
+                </div>
+            </div>
+            
+            <div class="event-item">
+                <div class="event-item__icon">🌍</div>
+                <div class="event-item__info">
+                    <div class="event-item__name" style="color: var(--qatar-maroon);">كأس القارات FIFA</div>
+                    <div class="event-item__date">ديسمبر 2025</div>
+                </div>
+                <div style="text-align: left;">
+                    <div style="font-size: 1.5rem; font-weight: 800; color: var(--qatar-maroon);">29,566</div>
+                    <div style="font-size: 0.9rem; opacity: 0.7;">مادة إعلامية</div>
+                </div>
+            </div>
+            
+            <div class="event-item">
+                <div class="event-item__icon">🏎️</div>
+                <div class="event-item__info">
+                    <div class="event-item__name" style="color: var(--qatar-maroon);">جائزة قطر الكبرى - فورمولا 1</div>
+                    <div class="event-item__date">28-30 نوفمبر 2025</div>
+                </div>
+                <div style="text-align: left;">
+                    <div style="font-size: 1.5rem; font-weight: 800; color: var(--qatar-maroon);">26,647</div>
+                    <div style="font-size: 0.9rem; opacity: 0.7;">مادة إعلامية</div>
+                </div>
+            </div>
+            
+            <div class="event-item">
+                <div class="event-item__icon">🥊</div>
+                <div class="event-item__info">
+                    <div class="event-item__name" style="color: var(--qatar-maroon);">UFC قطر</div>
+                    <div class="event-item__date">2025</div>
+                </div>
+                <div style="text-align: left;">
+                    <div style="font-size: 1.5rem; font-weight: 800; color: var(--qatar-maroon);">23,993</div>
+                    <div style="font-size: 0.9rem; opacity: 0.7;">مادة إعلامية</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- =====================================================
+     شريحة 6: ترتيب الفعاليات حسب الوصول
+     ===================================================== -->
+<section class="slide slide--maroon" id="slide-events-reach">
+    <div class="slide__content">
+        <h2 class="slide__title" style="text-align: center; margin-bottom: 50px;">
+            <i class="fas fa-globe" style="margin-left: 15px; color: var(--qatar-gold);"></i>
+            الفعاليات الأعلى وصولاً
+        </h2>
+        
+        <div class="chart-container chart-container--large">
+            <canvas id="eventsReachChart"></canvas>
+        </div>
+    </div>
+</section>
+
+<!-- =====================================================
+     شريحة 7: المصادر الإعلامية
+     ===================================================== -->
+<section class="slide slide--white" id="slide-sources">
+    <div class="slide__content">
+        <h2 class="slide__title" style="color: var(--qatar-maroon); text-align: center; margin-bottom: 40px;">
+            <i class="fas fa-newspaper" style="margin-left: 15px;"></i>
+            أهم المصادر الإعلامية
+        </h2>
+        
+        <div class="chart-container chart-container--large">
+            <canvas id="sourcesChart"></canvas>
+        </div>
+    </div>
+</section>
+
+<!-- =====================================================
+     شريحة 8: التوزيع الجغرافي
+     ===================================================== -->
+<section class="slide slide--dark" id="slide-geo">
+    <div class="slide__content">
+        <h2 class="slide__title slide__title--gold" style="text-align: center; margin-bottom: 40px;">
+            <i class="fas fa-map-marked-alt" style="margin-left: 15px;"></i>
+            التوزيع الجغرافي للتغطية
+        </h2>
+        
+        <div class="chart-container chart-container--large">
+            <canvas id="geoChart"></canvas>
+        </div>
+    </div>
+</section>
+
+<!-- =====================================================
+     شريحة 9: منصات التواصل
+     ===================================================== -->
+<section class="slide slide--white" id="slide-social">
+    <div class="slide__content">
+        <h2 class="slide__title" style="color: var(--qatar-maroon); text-align: center; margin-bottom: 50px;">
+            <i class="fas fa-share-alt" style="margin-left: 15px;"></i>
+            توزيع منصات التواصل الاجتماعي
+        </h2>
+        
+        <div class="comparison-grid">
+            <div class="chart-container">
+                <canvas id="platformsChart"></canvas>
+            </div>
+            
+            <div style="display: flex; flex-direction: column; gap: 20px;">
+                <div class="stat-card" style="background: rgba(29, 161, 242, 0.1); border: 2px solid #1DA1F2;">
+                    <div style="display: flex; align-items: center; gap: 15px;">
+                        <i class="fab fa-twitter" style="font-size: 2rem; color: #1DA1F2;"></i>
+                        <div style="text-align: right;">
+                            <div style="font-size: 1.5rem; font-weight: 800; color: var(--qatar-black);">45%</div>
+                            <div style="opacity: 0.7;">X (Twitter)</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="stat-card" style="background: rgba(66, 103, 178, 0.1); border: 2px solid #4267B2;">
+                    <div style="display: flex; align-items: center; gap: 15px;">
+                        <i class="fab fa-facebook" style="font-size: 2rem; color: #4267B2;"></i>
+                        <div style="text-align: right;">
+                            <div style="font-size: 1.5rem; font-weight: 800; color: var(--qatar-black);">25%</div>
+                            <div style="opacity: 0.7;">Facebook</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="stat-card" style="background: rgba(225, 48, 108, 0.1); border: 2px solid #E1306C;">
+                    <div style="display: flex; align-items: center; gap: 15px;">
+                        <i class="fab fa-instagram" style="font-size: 2rem; color: #E1306C;"></i>
+                        <div style="text-align: right;">
+                            <div style="font-size: 1.5rem; font-weight: 800; color: var(--qatar-black);">15%</div>
+                            <div style="opacity: 0.7;">Instagram</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- =====================================================
+     شريحة 10: أهم المؤثرين
+     ===================================================== -->
+<section class="slide slide--dark" id="slide-influencers">
+    <div class="slide__content">
+        <h2 class="slide__title slide__title--gold" style="text-align: center; margin-bottom: 50px;">
+            <i class="fas fa-users" style="margin-left: 15px;"></i>
+            أبرز المؤثرين والحسابات
+        </h2>
+        
+        <div class="influencers-grid">
+            <div class="influencer-card">
+                <div class="influencer-card__avatar">📺</div>
+                <div class="influencer-card__name">قناة الجزيرة</div>
+                <div class="influencer-card__reach">1.3 مليار</div>
+                <div class="influencer-card__type">قناة إخبارية</div>
+            </div>
+            
+            <div class="influencer-card">
+                <div class="influencer-card__avatar">🥊</div>
+                <div class="influencer-card__name">UFC Official</div>
+                <div class="influencer-card__reach">1.26 مليار</div>
+                <div class="influencer-card__type">حساب رسمي</div>
+            </div>
+            
+            <div class="influencer-card">
+                <div class="influencer-card__avatar">🏎️</div>
+                <div class="influencer-card__name">Formula 1</div>
+                <div class="influencer-card__reach">632 مليون</div>
+                <div class="influencer-card__type">حساب رسمي</div>
+            </div>
+            
+            <div class="influencer-card">
+                <div class="influencer-card__avatar">⚽</div>
+                <div class="influencer-card__name">قنوات الكاس</div>
+                <div class="influencer-card__reach">523 مليون</div>
+                <div class="influencer-card__type">قناة رياضية</div>
+            </div>
+            
+            <div class="influencer-card">
+                <div class="influencer-card__avatar">📡</div>
+                <div class="influencer-card__name">beIN SPORTS</div>
+                <div class="influencer-card__reach">354 مليون</div>
+                <div class="influencer-card__type">قناة رياضية</div>
+            </div>
+            
+            <div class="influencer-card">
+                <div class="influencer-card__avatar">👤</div>
+                <div class="influencer-card__name">Dana White</div>
+                <div class="influencer-card__reach">142 مليون</div>
+                <div class="influencer-card__type">رئيس UFC</div>
+            </div>
+            
+            <div class="influencer-card">
+                <div class="influencer-card__avatar">🎙️</div>
+                <div class="influencer-card__name">خالد جاسم</div>
+                <div class="influencer-card__reach">125 مليون</div>
+                <div class="influencer-card__type">صحفي رياضي</div>
+            </div>
+            
+            <div class="influencer-card">
+                <div class="influencer-card__avatar">🏎️</div>
+                <div class="influencer-card__name">McLaren</div>
+                <div class="influencer-card__reach">112 مليون</div>
+                <div class="influencer-card__type">فريق F1</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- =====================================================
+     شريحة 11: Word Cloud
+     ===================================================== -->
+<section class="slide slide--maroon" id="slide-wordcloud">
+    <div class="slide__content slide__content--center">
+        <h2 class="slide__title" style="margin-bottom: 40px;">
+            <i class="fas fa-cloud" style="margin-left: 15px; color: var(--qatar-gold);"></i>
+            الكلمات الأكثر تداولاً
+        </h2>
+        
+        <div class="word-cloud-container" id="wordCloud">
+            <span class="word-cloud__word" style="font-size: 4rem; font-weight: 900; color: var(--qatar-gold);">قطر</span>
+            <span class="word-cloud__word" style="font-size: 3.5rem; font-weight: 800; color: white;">كأس</span>
+            <span class="word-cloud__word" style="font-size: 3rem; font-weight: 700; color: rgba(255,255,255,0.9);">العرب</span>
+            <span class="word-cloud__word" style="font-size: 2.8rem; font-weight: 700; color: var(--qatar-gold);">الدوحة</span>
+            <span class="word-cloud__word" style="font-size: 2.5rem; font-weight: 600; color: white;">FIFA</span>
+            <span class="word-cloud__word" style="font-size: 2.3rem; font-weight: 600; color: rgba(255,255,255,0.8);">المغرب</span>
+            <span class="word-cloud__word" style="font-size: 2.2rem; font-weight: 500; color: var(--qatar-gold);">نهائي</span>
+            <span class="word-cloud__word" style="font-size: 2rem; font-weight: 500; color: white;">استاد</span>
+            <span class="word-cloud__word" style="font-size: 1.9rem; font-weight: 500; color: rgba(255,255,255,0.7);">لوسيل</span>
+            <span class="word-cloud__word" style="font-size: 1.8rem; font-weight: 500; color: var(--qatar-gold);">فورمولا</span>
+            <span class="word-cloud__word" style="font-size: 1.7rem; font-weight: 400; color: white;">UFC</span>
+            <span class="word-cloud__word" style="font-size: 1.6rem; font-weight: 400; color: rgba(255,255,255,0.8);">تنظيم</span>
+            <span class="word-cloud__word" style="font-size: 1.5rem; font-weight: 400; color: var(--qatar-gold);">جماهير</span>
+            <span class="word-cloud__word" style="font-size: 1.4rem; font-weight: 400; color: white;">سباق</span>
+            <span class="word-cloud__word" style="font-size: 1.3rem; font-weight: 400; color: rgba(255,255,255,0.7);">منتخب</span>
+            <span class="word-cloud__word" style="font-size: 1.2rem; font-weight: 400; color: var(--qatar-gold);">رياضة</span>
+        </div>
+    </div>
+</section>
+
+<!-- =====================================================
+     شريحة 12: الهاشتاقات
+     ===================================================== -->
+<section class="slide slide--dark" id="slide-hashtags">
+    <div class="slide__content">
+        <h2 class="slide__title slide__title--gold" style="text-align: center; margin-bottom: 50px;">
+            <i class="fas fa-hashtag" style="margin-left: 15px;"></i>
+            الهاشتاقات الأكثر تداولاً
+        </h2>
+        
+        <div class="chart-container chart-container--large">
+            <canvas id="hashtagsChart"></canvas>
+        </div>
+    </div>
+</section>
+
+<!-- =====================================================
+     شريحة 13: مقارنة الفعاليات الثلاث
+     ===================================================== -->
+<section class="slide slide--white" id="slide-top3">
+    <div class="slide__content">
+        <h2 class="slide__title" style="color: var(--qatar-maroon); text-align: center; margin-bottom: 40px;">
+            <i class="fas fa-medal" style="margin-left: 15px;"></i>
+            أهم 3 فعاليات: تحليل معمق
+        </h2>
+        
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>الفعالية</th>
+                    <th>الحجم</th>
+                    <th>الوصول</th>
+                    <th>الإيجابية</th>
+                    <th>السلبية</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>⚽ كأس العرب</strong></td>
+                    <td>30,974</td>
+                    <td>14.3 مليار</td>
+                    <td style="color: #27AE60; font-weight: 700;">32.84%</td>
+                    <td style="color: #E74C3C;">2.27%</td>
+                </tr>
+                <tr>
+                    <td><strong>🏎️ فورمولا 1</strong></td>
+                    <td>26,647</td>
+                    <td>28.7 مليار</td>
+                    <td style="color: #27AE60; font-weight: 700;">27.51%</td>
+                    <td style="color: #E74C3C;">10.37%</td>
+                </tr>
+                <tr>
+                    <td><strong>🥊 UFC قطر</strong></td>
+                    <td>23,993</td>
+                    <td>41.7 مليار</td>
+                    <td style="color: #27AE60; font-weight: 700;">29.23%</td>
+                    <td style="color: #E74C3C;">12.65%</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <div style="margin-top: 40px; display: flex; gap: 20px; justify-content: center;">
+            <div style="background: rgba(39, 174, 96, 0.1); padding: 20px 30px; border-radius: 12px; text-align: center;">
+                <div style="font-size: 1rem; opacity: 0.7; color: var(--qatar-black);">الأعلى إيجابية</div>
+                <div style="font-size: 1.5rem; font-weight: 800; color: #27AE60;">كأس العرب</div>
+            </div>
+            <div style="background: rgba(52, 152, 219, 0.1); padding: 20px 30px; border-radius: 12px; text-align: center;">
+                <div style="font-size: 1rem; opacity: 0.7; color: var(--qatar-black);">الأعلى وصولاً</div>
+                <div style="font-size: 1.5rem; font-weight: 800; color: #3498DB;">UFC قطر</div>
+            </div>
+            <div style="background: rgba(155, 89, 182, 0.1); padding: 20px 30px; border-radius: 12px; text-align: center;">
+                <div style="font-size: 1rem; opacity: 0.7; color: var(--qatar-black);">الأكثر تغطية</div>
+                <div style="font-size: 1.5rem; font-weight: 800; color: #9B59B6;">كأس العرب</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- =====================================================
+     شريحة 14: بطاقة الأداء
+     ===================================================== -->
+<section class="slide slide--dark" id="slide-scorecard">
+    <div class="slide__content">
+        <h2 class="slide__title slide__title--gold" style="text-align: center; margin-bottom: 50px;">
+            <i class="fas fa-award" style="margin-left: 15px;"></i>
+            بطاقة الأداء الإعلامي
+        </h2>
+        
+        <div class="scorecard-grid">
+            <div class="score-item score-item--a-plus">
+                <div class="score-item__grade score-item__grade--green">A+</div>
+                <div class="score-item__label">حجم التغطية</div>
+                <div class="score-item__bar">
+                    <div class="score-item__bar-fill" style="width: 95%;"></div>
+                </div>
+            </div>
+            
+            <div class="score-item score-item--a">
+                <div class="score-item__grade score-item__grade--green">A</div>
+                <div class="score-item__label">نسبة الإيجابية</div>
+                <div class="score-item__bar">
+                    <div class="score-item__bar-fill" style="width: 90%;"></div>
+                </div>
+            </div>
+            
+            <div class="score-item score-item--a-plus">
+                <div class="score-item__grade score-item__grade--green">A+</div>
+                <div class="score-item__label">الوصول</div>
+                <div class="score-item__bar">
+                    <div class="score-item__bar-fill" style="width: 98%;"></div>
+                </div>
+            </div>
+            
+            <div class="score-item score-item--a">
+                <div class="score-item__grade score-item__grade--green">A</div>
+                <div class="score-item__label">التنوع الجغرافي</div>
+                <div class="score-item__bar">
+                    <div class="score-item__bar-fill" style="width: 88%;"></div>
+                </div>
+            </div>
+            
+            <div class="score-item score-item--a-minus">
+                <div class="score-item__grade score-item__grade--green">A-</div>
+                <div class="score-item__label">التفاعل</div>
+                <div class="score-item__bar">
+                    <div class="score-item__bar-fill" style="width: 85%;"></div>
+                </div>
+            </div>
+            
+            <div class="score-item score-item--a-plus">
+                <div class="score-item__grade score-item__grade--green">A+</div>
+                <div class="score-item__label">إدارة السمعة</div>
+                <div class="score-item__bar">
+                    <div class="score-item__bar-fill" style="width: 95%;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- =====================================================
+     شريحة 15: تحليل SWOT
+     ===================================================== -->
+<section class="slide slide--white" id="slide-swot">
+    <div class="slide__content">
+        <h2 class="slide__title" style="color: var(--qatar-maroon); text-align: center; margin-bottom: 40px;">
+            <i class="fas fa-th-large" style="margin-left: 15px;"></i>
+            تحليل SWOT
+        </h2>
+        
+        <div class="swot-matrix">
+            <div class="swot-card swot-card--strengths">
+                <div class="swot-card__title">
+                    <i class="fas fa-plus-circle"></i>
+                    نقاط القوة
+                </div>
+                <ul class="swot-card__list">
+                    <li>خبرة متراكمة من كأس العالم 2022</li>
+                    <li>بنية تحتية رياضية عالمية المستوى</li>
+                    <li>سمعة إيجابية راسخة في التنظيم</li>
+                    <li>تنوع الفعاليات الرياضية</li>
+                </ul>
+            </div>
+            
+            <div class="swot-card swot-card--weaknesses">
+                <div class="swot-card__title">
+                    <i class="fas fa-minus-circle"></i>
+                    نقاط الضعف
+                </div>
+                <ul class="swot-card__list">
+                    <li>محدودية التأثير على نتائج المنتخبات</li>
+                    <li>تركز التغطية في فترات الفعاليات فقط</li>
+                    <li>الاعتماد على منصات التواصل أكثر من التقليدي</li>
+                </ul>
+            </div>
+            
+            <div class="swot-card swot-card--opportunities">
+                <div class="swot-card__title">
+                    <i class="fas fa-lightbulb"></i>
+                    الفرص
+                </div>
+                <ul class="swot-card__list">
+                    <li>السياحة الرياضية المتنامية</li>
+                    <li>استضافة فعاليات جديدة</li>
+                    <li>تعزيز الرياضات التراثية</li>
+                    <li>رياضة المرأة والشباب</li>
+                </ul>
+            </div>
+            
+            <div class="swot-card swot-card--threats">
+                <div class="swot-card__title">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    التحديات
+                </div>
+                <ul class="swot-card__list">
+                    <li>المنافسة الإقليمية على الفعاليات</li>
+                    <li>الربط غير المبرر بالسياسة</li>
+                    <li>التغطية السلبية من بعض الوسائل</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- =====================================================
+     شريحة 16: التوصيات
+     ===================================================== -->
+<section class="slide slide--white" id="slide-recommendations">
+    <div class="slide__content">
+        <h2 class="slide__title" style="color: var(--qatar-maroon); text-align: center; margin-bottom: 40px;">
+            <i class="fas fa-lightbulb" style="margin-left: 15px;"></i>
+            التوصيات الاستراتيجية
+        </h2>
+        
+        <div class="recommendations-list">
+            <div class="recommendation-item">
+                <div class="recommendation-item__number">1</div>
+                <div class="recommendation-item__content">
+                    <div class="recommendation-item__title">تعزيز التواصل مع المؤثرين</div>
+                    <div class="recommendation-item__desc">بناء شراكات استراتيجية مع المؤثرين الرياضيين المحليين والدوليين لتعزيز الوصول والتفاعل</div>
+                </div>
+            </div>
+            
+            <div class="recommendation-item">
+                <div class="recommendation-item__number">2</div>
+                <div class="recommendation-item__content">
+                    <div class="recommendation-item__title">توحيد الهاشتاقات الرسمية</div>
+                    <div class="recommendation-item__desc">إطلاق حملات هاشتاق موحدة قبل كل فعالية لتعزيز الحضور الرقمي وتسهيل الرصد</div>
+                </div>
+            </div>
+            
+            <div class="recommendation-item">
+                <div class="recommendation-item__number">3</div>
+                <div class="recommendation-item__content">
+                    <div class="recommendation-item__title">الاستثمار في المحتوى القصير</div>
+                    <div class="recommendation-item__desc">إنتاج محتوى احترافي على TikTok وReels للوصول للجمهور الشاب</div>
+                </div>
+            </div>
+            
+            <div class="recommendation-item">
+                <div class="recommendation-item__number">4</div>
+                <div class="recommendation-item__content">
+                    <div class="recommendation-item__title">تعزيز الإرث الرياضي</div>
+                    <div class="recommendation-item__desc">حملات إعلامية مستمرة تبرز استدامة إرث كأس العالم 2022</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- =====================================================
+     شريحة 17: الخلاصة
+     ===================================================== -->
+<section class="slide slide--maroon" id="slide-conclusion">
+    <div class="slide__content slide__content--center">
+        <h2 class="slide__title slide__title--large" style="margin-bottom: 50px;">
+            <i class="fas fa-check-circle" style="margin-left: 20px; color: var(--qatar-gold);"></i>
+            الخلاصة
+        </h2>
+        
+        <div style="max-width: 900px; text-align: center;">
+            <p style="font-size: 1.8rem; line-height: 1.8; margin-bottom: 40px;">
+                حققت وزارة الرياضة والشباب القطرية نجاحاً إعلامياً استثنائياً خلال موسم الفعاليات الرياضية الكبرى
+            </p>
+            
+            <div class="stats-grid" style="grid-template-columns: repeat(3, 1fr); gap: 30px;">
+                <div style="text-align: center;">
+                    <div style="font-size: 3rem; font-weight: 900; color: var(--qatar-gold);">150K+</div>
+                    <div style="opacity: 0.8;">مادة إعلامية</div>
+                </div>
+                <div style="text-align: center;">
+                    <div style="font-size: 3rem; font-weight: 900; color: var(--qatar-gold);">134B+</div>
+                    <div style="opacity: 0.8;">وصول عالمي</div>
+                </div>
+                <div style="text-align: center;">
+                    <div style="font-size: 3rem; font-weight: 900; color: var(--qatar-gold);">4.8x</div>
+                    <div style="opacity: 0.8;">الإيجابية / السلبية</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- =====================================================
+     شريحة 18: الشكر
+     ===================================================== -->
+<section class="slide slide--gradient" id="slide-thanks">
+    <div class="slide__content slide__content--center">
+        <h1 class="slide__title slide__title--large slide__title--gold" style="margin-bottom: 30px;">
+            شكراً لكم
+        </h1>
+        
+        <p class="slide__subtitle" style="margin-bottom: 60px;">
+            تم إعداد هذا التقرير بواسطة منصة 24°45° للذكاء الإعلامي
+        </p>
+        
+        <div style="display: flex; gap: 40px; margin-top: 40px;">
+            <div style="text-align: center;">
+                <i class="fas fa-envelope" style="font-size: 2rem; color: var(--qatar-gold); margin-bottom: 10px;"></i>
+                <p>info@2445.ai</p>
+            </div>
+            <div style="text-align: center;">
+                <i class="fas fa-globe" style="font-size: 2rem; color: var(--qatar-gold); margin-bottom: 10px;"></i>
+                <p>www.2445.ai</p>
+            </div>
+        </div>
+        
+        <div style="margin-top: 80px; opacity: 0.6; font-size: 0.9rem;">
+            يناير 2026 | جميع الحقوق محفوظة
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+
+{% block extra_css %}
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/qatar_sports_charts.js') }}"></script>
+{% endblock %}

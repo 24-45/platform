@@ -456,10 +456,14 @@
 
         rootEl.innerHTML = '';
 
+        // Get container width for proper sizing
+        const containerWidth = rootEl.parentElement?.offsetWidth || rootEl.offsetWidth || window.innerWidth - 100;
+        const chartHeight = 500;
+
         const layout = {
-            margin: { l: 60, r: 30, t: 40, b: 100 },
-            paper_bgcolor: 'rgba(255,255,255,0.95)',
-            plot_bgcolor: 'rgba(248,250,252,0.5)',
+            margin: { l: 70, r: 40, t: 30, b: 120 },
+            paper_bgcolor: 'rgba(255,255,255,0)',
+            plot_bgcolor: 'rgba(248,250,252,0.3)',
             font: {
                 family: 'Tajawal, Arial, sans-serif',
                 size: 12,
@@ -526,8 +530,8 @@
             },
             showlegend: true,
             autosize: true,
-            width: null,
-            height: null
+            width: containerWidth,
+            height: chartHeight
         };
 
         const config = {
@@ -539,8 +543,8 @@
             toImageButtonOptions: {
                 format: 'png',
                 filename: 'post_type_trend_awqaf',
-                height: 500,
-                width: 900,
+                height: 600,
+                width: 1200,
                 scale: 2
             }
         };

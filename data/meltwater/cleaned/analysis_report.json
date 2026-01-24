@@ -1,0 +1,102 @@
+{
+  "meta": {
+    "title": "تقرير الرصد الإعلامي - وزارة الرياضة والشباب قطر",
+    "period": "أكتوبر 2025 - يناير 2026",
+    "total_mentions": 19867,
+    "generated_date": "2026-01-19"
+  },
+  "summary": {
+    "total_mentions": 19867,
+    "positive": 6285,
+    "neutral": 12622,
+    "negative": 902,
+    "positivity_rate": 31.6,
+    "negativity_rate": 4.5
+  },
+  "events": {
+    "other": {
+      "name": "أخرى",
+      "total": 10213,
+      "positive": 3102,
+      "negative": 700,
+      "positivity_rate": 30.4,
+      "negativity_rate": 6.9
+    },
+    "f1_qatar": {
+      "name": "فورمولا 1 قطر",
+      "total": 787,
+      "positive": 316,
+      "negative": 35,
+      "positivity_rate": 40.2,
+      "negativity_rate": 4.4
+    },
+    "ufc_doha": {
+      "name": "UFC الدوحة",
+      "total": 322,
+      "positive": 103,
+      "negative": 55,
+      "positivity_rate": 32.0,
+      "negativity_rate": 17.1
+    },
+    "u17_worldcup": {
+      "name": "كأس العالم U-17",
+      "total": 915,
+      "positive": 310,
+      "negative": 22,
+      "positivity_rate": 33.9,
+      "negativity_rate": 2.4
+    },
+    "arab_cup": {
+      "name": "كأس العرب",
+      "total": 7558,
+      "positive": 2408,
+      "negative": 89,
+      "positivity_rate": 31.9,
+      "negativity_rate": 1.2
+    },
+    "padel": {
+      "name": "بطولة البادل",
+      "total": 72,
+      "positive": 46,
+      "negative": 1,
+      "positivity_rate": 63.9,
+      "negativity_rate": 1.4
+    }
+  },
+  "sentiment_analysis": {},
+  "geographic_distribution": {
+    "Saudi Arabia": {
+      "count": 3568,
+      "percentage": 18.0
+    },
+    "Egypt": {
+      "count": 3404,
+      "percentage": 17.1
+    },
+    "Qatar": {
+      "count": 2834,
+      "percentage": 14.3
+    },
+    "United Arab Emirates": {
+      "count": 1469,
+      "percentage": 7.4
+    },
+    "United States": {
+      "count": 954,
+      "percentage": 4.8
+    },
+    "Kuwait": {
+      "count": 700,
+      "percentage": 3.5
+    },
+    "Jordan": {
+      "count": 677,
+      "percentage": 3.4
+    },
+    "Morocco": {
+      "count": 651,
+      "percentage": 3.3
+    }
+  },
+  "recommendations": []
+}

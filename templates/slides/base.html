@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}عرض تقديمي | 24°45°{% endblock %}</title>
+    
+    <!-- Favicon -->
+    {% block favicon %}
+    <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='images/platform-favicon.svg') }}">
+    {% endblock %}
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Flag Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.0.0/css/flag-icons.min.css">
+    
+    <!-- ========================================
+         نظام الهوية الموحد
+         ======================================== -->
+    
+    <!-- 1. ملف CSS الأساسي للمنصة (ثابت - لا يتغير) -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/slides-platform.css') }}">
+    
+    <!-- 2. ملف CSS خاص بالعميل (متغير - يحدد في القالب الفرعي) -->
+    {% block client_css %}{% endblock %}
+    
+    <!-- 3. أي CSS إضافي -->
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <!-- شريط المنصة العلوي - هوية ثابتة -->
+    <div class="platform-bar"></div>
+    
+    <!-- محتوى العرض -->
+    {% block content %}{% endblock %}
+    
+    <!-- التنقل بين الشرائح -->
+    <nav class="slides-nav" id="slidesNav"></nav>
+    
+    <!-- ========================================
+         JavaScript الأساسي للمنصة
+         ======================================== -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const slides = document.querySelectorAll('.slide');
+            const nav = document.getElementById('slidesNav');
+            
+            // إنشاء نقاط التنقل
+            slides.forEach((slide, index) => {
+                const dot = document.createElement('button');
+                dot.className = 'slides-nav__dot';
+                dot.setAttribute('aria-label', `الانتقال للشريحة ${index + 1}`);
+                dot.addEventListener('click', () => {
+                    slide.scrollIntoView({ behavior: 'smooth' });
+                });
+                nav.appendChild(dot);
+            });
+            
+            // تتبع الشريحة الحالية
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const index = Array.from(slides).indexOf(entry.target);
+                        document.querySelectorAll('.slides-nav__dot').forEach((dot, i) => {
+                            dot.classList.toggle('active', i === index);
+                        });
+                        entry.target.classList.add('in-view');
+                    }
+                });
+            }, { threshold: 0.5 });
+            
+            slides.forEach(slide => observer.observe(slide));
+            
+            // التنقل بالأسهم
+            document.addEventListener('keydown', (e) => {
+                const currentSlide = document.querySelector('.slide.in-view') || slides[0];
+                const currentIndex = Array.from(slides).indexOf(currentSlide);
+                
+                if (e.key === 'ArrowDown' || e.key === 'ArrowLeft') {
+                    if (currentIndex < slides.length - 1) {
+                        slides[currentIndex + 1].scrollIntoView({ behavior: 'smooth' });
+                    }
+                } else if (e.key === 'ArrowUp' || e.key === 'ArrowRight') {
+                    if (currentIndex > 0) {
+                        slides[currentIndex - 1].scrollIntoView({ behavior: 'smooth' });
+                    }
+                }
+            });
+        });
+        
+        // طباعة / تصدير PDF
+        function printSlides() {
+            window.print();
+        }
+        
+        // عرض الشبكة
+        function toggleGridView() {
+            const overlay = document.getElementById('gridOverlay');
+            if (!overlay) return;
+            
+            const isActive = overlay.classList.contains('active');
+            
+            if (!isActive) {
+                generateThumbnails();
+                overlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            } else {
+                overlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
+        
+        // إنشاء المصغرات
+        function generateThumbnails() {
+            const container = document.getElementById('gridContainer');
+            if (!container) return;
+            
+            const slides = document.querySelectorAll('.slide');
+            
+            container.innerHTML = '';
+            
+            slides.forEach((slide, index) => {
+                // تحديد لون الشريحة
+                let colorClass = 'primary';
+                if (slide.classList.contains('slide--dark')) colorClass = 'dark';
+                else if (slide.classList.contains('slide--white')) colorClass = 'white';
+                else if (slide.classList.contains('slide--secondary')) colorClass = 'secondary';
+                else if (slide.classList.contains('slide--gradient')) colorClass = 'gradient';
+                
+                // استخراج العنوان
+                const titleEl = slide.querySelector('.slide__title, h1, h2, h3');
+                const title = titleEl ? titleEl.textContent.trim().substring(0, 40) : `شريحة ${index + 1}`;
+                
+                // استخراج النص الفرعي
+                const subtitleEl = slide.querySelector('.slide__subtitle, .slide__text');
+                const subtitle = subtitleEl ? subtitleEl.textContent.trim().substring(0, 50) : '';
+                
+                const thumbnail = document.createElement('div');
+                thumbnail.className = `slide-thumbnail slide-thumbnail--${colorClass}`;
+                thumbnail.innerHTML = `
+                    <span class="slide-thumbnail__number">${String(index + 1).padStart(2, '0')}</span>
+                    <div class="slide-thumbnail__preview">
+                        <h3>${title}</h3>
+                        ${subtitle ? `<p>${subtitle}...</p>` : ''}
+                    </div>
+                `;
+                
+                thumbnail.addEventListener('click', () => {
+                    toggleGridView();
+                    setTimeout(() => {
+                        slide.scrollIntoView({ behavior: 'smooth' });
+                    }, 100);
+                });
+                
+                container.appendChild(thumbnail);
+            });
+        }
+        
+        // اختصارات لوحة المفاتيح
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                const overlay = document.getElementById('gridOverlay');
+                if (overlay && overlay.classList.contains('active')) {
+                    toggleGridView();
+                }
+            }
+            
+            // G لفتح عرض الشبكة
+            if (e.key === 'g' || e.key === 'G' || e.key === 'ع') {
+                toggleGridView();
+            }
+        });
+    </script>
+    
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

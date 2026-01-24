@@ -1,0 +1,894 @@
+/* =====================================================
+   24°45° Platform - نظام الشرائح الموحد
+   هوية المنصة الثابتة لجميع العروض التقديمية
+   ===================================================== */
+
+/* =====================================================
+   هوية المنصة الثابتة (لا تتغير)
+   ===================================================== */
+:root {
+    /* ألوان المنصة الأساسية */
+    --platform-black: #0a0a0a;
+    --platform-black-light: #111111;
+    --platform-black-card: #161616;
+    --platform-white: #ffffff;
+    --platform-green: #00d46a;
+    --platform-green-dark: #00a854;
+    --platform-green-light: #00ff7f;
+    --platform-gray: #888888;
+    --platform-gray-light: #aaaaaa;
+    
+    /* الخط الأساسي */
+    --platform-font: 'Tajawal', 'Cairo', sans-serif;
+    
+    /* أبعاد الشريحة - نسبة 16:9 */
+    --slide-aspect-ratio: 16 / 9;
+}
+
+/* =====================================================
+   متغيرات العميل (تُعرَّف في ملف العميل)
+   ===================================================== */
+:root {
+    /* ألوان العميل الافتراضية - تُستبدل بألوان العميل */
+    --client-primary: #8B1538;
+    --client-primary-dark: #6A1029;
+    --client-secondary: #D4AF37;
+    --client-secondary-light: #E5C76B;
+    --client-accent: #ffffff;
+    --client-text: #ffffff;
+    --client-text-dark: #1A1A1A;
+}
+
+/* =====================================================
+   الخطوط
+   ===================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-snap-type: y mandatory;
+}
+
+body {
+    font-family: var(--platform-font);
+    background: var(--platform-black);
+    color: var(--platform-white);
+    overflow-x: hidden;
+    direction: rtl;
+}
+
+/* =====================================================
+   تصميم الشريحة الأساسي
+   ===================================================== */
+.slide {
+    width: 100vw;
+    height: 100vh;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    padding: 60px 80px;
+}
+
+/* خلفيات الشرائح - تستخدم ألوان العميل */
+.slide--primary {
+    background: linear-gradient(135deg, var(--client-primary) 0%, var(--client-primary-dark) 100%);
+    color: var(--client-accent);
+}
+
+.slide--secondary {
+    background: linear-gradient(135deg, var(--client-secondary) 0%, var(--client-secondary-light) 100%);
+    color: var(--client-text-dark);
+}
+
+.slide--white {
+    background: var(--platform-white);
+    color: var(--client-text-dark);
+}
+
+.slide--dark {
+    background: linear-gradient(135deg, var(--platform-black) 0%, #2a2a2a 100%);
+    color: var(--platform-white);
+}
+
+.slide--gradient {
+    background: linear-gradient(135deg, var(--client-primary) 0%, var(--platform-black) 100%);
+    color: var(--platform-white);
+}
+
+/* نمط الصورة الخلفية */
+.slide--image {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.slide--image::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+.slide--image > * {
+    position: relative;
+    z-index: 2;
+}
+
+/* =====================================================
+   محتوى الشريحة
+   ===================================================== */
+.slide__content {
+    max-width: 1400px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.slide__content--center {
+    align-items: center;
+    text-align: center;
+}
+
+.slide__content--right {
+    align-items: flex-start;
+    text-align: right;
+}
+
+/* =====================================================
+   العناوين
+   ===================================================== */
+.slide__title {
+    font-size: 4rem;
+    font-weight: 900;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+}
+
+.slide__title--large {
+    font-size: 5rem;
+}
+
+.slide__title--accent {
+    color: var(--client-secondary);
+}
+
+.slide__subtitle {
+    font-size: 2rem;
+    font-weight: 500;
+    opacity: 0.9;
+    margin-bottom: 2rem;
+}
+
+.slide__text {
+    font-size: 1.5rem;
+    line-height: 1.8;
+    max-width: 900px;
+}
+
+/* =====================================================
+   الشعارات
+   ===================================================== */
+.slide__logo {
+    width: 200px;
+    height: auto;
+    margin-bottom: 2rem;
+}
+
+.slide__logo--large {
+    width: 300px;
+}
+
+.slide__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--client-secondary);
+    color: var(--client-text-dark);
+    padding: 0.75rem 1.5rem;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+}
+
+/* =====================================================
+   التخطيطات
+   ===================================================== */
+.slide__columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    width: 100%;
+    align-items: center;
+}
+
+.slide__column {
+    display: flex;
+    flex-direction: column;
+}
+
+.slide__grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    width: 100%;
+}
+
+.slide__grid-4 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    width: 100%;
+}
+
+/* =====================================================
+   البطاقات
+   ===================================================== */
+.slide__card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.slide__card:hover {
+    transform: translateY(-5px);
+}
+
+.slide__card--white {
+    background: var(--platform-white);
+    color: var(--client-text-dark);
+    border: none;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+}
+
+.slide__card-icon {
+    font-size: 3rem;
+    color: var(--client-secondary);
+    margin-bottom: 1.5rem;
+}
+
+.slide__card-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.slide__card-text {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    line-height: 1.7;
+}
+
+/* =====================================================
+   الإحصائيات
+   ===================================================== */
+.slide__stat {
+    text-align: center;
+    padding: 30px;
+}
+
+.slide__stat-number {
+    font-size: 5rem;
+    font-weight: 900;
+    color: var(--client-secondary);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+}
+
+.slide--white .slide__stat-number,
+.slide--secondary .slide__stat-number {
+    color: var(--client-primary);
+}
+
+.slide__stat-label {
+    font-size: 1.3rem;
+    font-weight: 500;
+    opacity: 0.9;
+}
+
+/* =====================================================
+   القوائم
+   ===================================================== */
+.slide__list {
+    list-style: none;
+    padding: 0;
+}
+
+.slide__list li {
+    font-size: 1.4rem;
+    padding: 1rem 0;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.slide__list li:last-child {
+    border-bottom: none;
+}
+
+.slide__list li::before {
+    content: '';
+    width: 12px;
+    height: 12px;
+    background: var(--client-secondary);
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+/* =====================================================
+   الجدول الزمني
+   ===================================================== */
+.slide__timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 100%;
+}
+
+.slide__timeline-item {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+}
+
+.slide__timeline-marker {
+    width: 60px;
+    height: 60px;
+    background: var(--client-secondary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+    font-size: 1.2rem;
+    color: var(--client-text-dark);
+    flex-shrink: 0;
+}
+
+.slide__timeline-content {
+    flex: 1;
+    padding-top: 0.5rem;
+}
+
+.slide__timeline-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.slide__timeline-text {
+    font-size: 1.1rem;
+    opacity: 0.8;
+}
+
+/* =====================================================
+   الصور
+   ===================================================== */
+.slide__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+.slide__image-container {
+    width: 100%;
+    height: 400px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.3);
+}
+
+/* =====================================================
+   الزخارف
+   ===================================================== */
+.slide__decoration {
+    position: absolute;
+    pointer-events: none;
+}
+
+.slide__decoration--circle {
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--client-secondary) 0%, transparent 70%);
+    opacity: 0.1;
+}
+
+.slide__decoration--top-right {
+    top: -200px;
+    right: -200px;
+}
+
+.slide__decoration--bottom-left {
+    bottom: -200px;
+    left: -200px;
+}
+
+.slide__line {
+    width: 100px;
+    height: 4px;
+    background: var(--client-secondary);
+    margin: 2rem 0;
+}
+
+.slide__line--center {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* =====================================================
+   هوية المنصة الثابتة - رقم الشريحة وشعار المنصة
+   ===================================================== */
+.slide__number {
+    position: absolute;
+    bottom: 30px;
+    left: 30px;
+    font-size: 1rem;
+    opacity: 0.5;
+    font-weight: 500;
+}
+
+/* شعار المنصة - ثابت في جميع العروض */
+.slide__platform-logo {
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    opacity: 0.7;
+}
+
+.slide__platform-logo::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    background: var(--platform-green);
+    border-radius: 50%;
+}
+
+.slide__platform-logo span {
+    color: var(--platform-green);
+    font-weight: 700;
+}
+
+/* =====================================================
+   شريط المنصة العلوي (اختياري)
+   ===================================================== */
+.platform-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--platform-green) 0%, var(--client-primary) 50%, var(--client-secondary) 100%);
+    z-index: 1000;
+}
+
+/* =====================================================
+   التنقل بين الشرائح
+   ===================================================== */
+.slides-nav {
+    position: fixed;
+    left: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    z-index: 1000;
+}
+
+.slides-nav__dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.slides-nav__dot:hover,
+.slides-nav__dot.active {
+    background: var(--platform-green);
+    transform: scale(1.3);
+}
+
+/* =====================================================
+   أزرار التحكم - هوية المنصة
+   ===================================================== */
+.floating-controls {
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 1001;
+}
+
+.control-btn {
+    background: var(--platform-black);
+    color: var(--platform-white);
+    border: 2px solid var(--platform-gray);
+    padding: 12px 20px;
+    border-radius: 50px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: inherit;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+}
+
+.control-btn:hover {
+    background: var(--platform-black-light);
+    border-color: var(--platform-green);
+    transform: translateY(-2px);
+}
+
+/* زر المنصة الأخضر */
+.control-btn--platform {
+    background: var(--platform-green);
+    color: var(--platform-black);
+    border: none;
+}
+
+.control-btn--platform:hover {
+    background: var(--platform-green-light);
+}
+
+/* زر العميل */
+.control-btn--client {
+    background: var(--client-secondary);
+    color: var(--client-text-dark);
+    border: none;
+}
+
+.control-btn--client:hover {
+    background: var(--client-secondary-light);
+}
+
+/* =====================================================
+   عرض الشبكة
+   ===================================================== */
+.grid-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(10, 10, 10, 0.98);
+    z-index: 2000;
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.grid-overlay.active {
+    display: flex;
+}
+
+.grid-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    background: linear-gradient(90deg, var(--platform-green) 0%, transparent 50%);
+    background-size: 100% 2px;
+    background-repeat: no-repeat;
+    background-position: bottom;
+}
+
+.grid-header h2 {
+    color: var(--platform-white);
+    font-size: 1.5rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.grid-header h2 i {
+    color: var(--platform-green);
+}
+
+.grid-close-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: var(--platform-white);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.grid-close-btn:hover {
+    background: var(--client-primary);
+}
+
+.grid-container {
+    flex: 1;
+    padding: 40px;
+    overflow-y: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+    align-content: start;
+}
+
+/* مصغرات الشرائح */
+.slide-thumbnail {
+    aspect-ratio: 16 / 9;
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s ease;
+    border: 3px solid transparent;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.slide-thumbnail:hover {
+    transform: translateY(-8px) scale(1.02);
+    border-color: var(--platform-green);
+    box-shadow: 0 20px 50px rgba(0, 212, 106, 0.3);
+}
+
+.slide-thumbnail__preview {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    text-align: center;
+}
+
+.slide-thumbnail__preview h3 {
+    font-size: 0.9rem;
+    font-weight: 700;
+    margin-bottom: 5px;
+    line-height: 1.3;
+}
+
+.slide-thumbnail__preview p {
+    font-size: 0.75rem;
+    opacity: 0.8;
+}
+
+.slide-thumbnail__number {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: var(--platform-green);
+    color: var(--platform-black);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 0.8rem;
+}
+
+/* ألوان المصغرات */
+.slide-thumbnail--primary .slide-thumbnail__preview {
+    background: linear-gradient(135deg, var(--client-primary) 0%, var(--client-primary-dark) 100%);
+    color: var(--client-accent);
+}
+
+.slide-thumbnail--dark .slide-thumbnail__preview {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+    color: var(--platform-white);
+}
+
+.slide-thumbnail--white .slide-thumbnail__preview {
+    background: var(--platform-white);
+    color: var(--client-text-dark);
+}
+
+.slide-thumbnail--secondary .slide-thumbnail__preview {
+    background: linear-gradient(135deg, var(--client-secondary) 0%, var(--client-secondary-light) 100%);
+    color: var(--client-text-dark);
+}
+
+.slide-thumbnail--gradient .slide-thumbnail__preview {
+    background: linear-gradient(135deg, var(--client-primary) 0%, #1a1a1a 100%);
+    color: var(--platform-white);
+}
+
+/* =====================================================
+   طباعة PDF
+   ===================================================== */
+@media print {
+    html {
+        scroll-snap-type: none;
+    }
+    
+    body {
+        background: white;
+    }
+    
+    .slide {
+        page-break-after: always;
+        page-break-inside: avoid;
+        break-after: page;
+        break-inside: avoid;
+        height: 100vh;
+        width: 100vw;
+        margin: 0;
+        padding: 40px 60px;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+    
+    .slide:last-child {
+        page-break-after: avoid;
+    }
+    
+    .slides-nav,
+    .floating-controls,
+    .grid-overlay,
+    .platform-bar,
+    .print-hide {
+        display: none !important;
+    }
+    
+    .slide__card:hover {
+        transform: none;
+    }
+}
+
+@page {
+    size: landscape;
+    margin: 0;
+}
+
+/* =====================================================
+   الاستجابة
+   ===================================================== */
+@media (max-width: 1200px) {
+    .slide {
+        padding: 40px 50px;
+    }
+    
+    .slide__title {
+        font-size: 3rem;
+    }
+    
+    .slide__title--large {
+        font-size: 4rem;
+    }
+    
+    .slide__columns {
+        gap: 40px;
+    }
+}
+
+@media (max-width: 992px) {
+    .slide__columns {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .slide__grid-3 {
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    .slide__grid-4 {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .slide {
+        padding: 30px;
+    }
+    
+    .slide__title {
+        font-size: 2.5rem;
+    }
+    
+    .slide__title--large {
+        font-size: 3rem;
+    }
+    
+    .slide__subtitle {
+        font-size: 1.5rem;
+    }
+    
+    .slide__text {
+        font-size: 1.2rem;
+    }
+    
+    .slide__grid-3,
+    .slide__grid-4 {
+        grid-template-columns: 1fr;
+    }
+    
+    .slide__stat-number {
+        font-size: 3.5rem;
+    }
+    
+    .slides-nav {
+        display: none;
+    }
+    
+    .floating-controls {
+        bottom: 20px;
+        left: 20px;
+    }
+    
+    .control-btn span {
+        display: none;
+    }
+    
+    .control-btn {
+        padding: 15px;
+        border-radius: 50%;
+    }
+    
+    .grid-container {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        padding: 20px;
+        gap: 15px;
+    }
+}
+
+/* =====================================================
+   أنيميشن
+   ===================================================== */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.slide.in-view .slide__title,
+.slide.in-view .slide__subtitle,
+.slide.in-view .slide__text {
+    animation: fadeInUp 0.8s ease forwards;
+}
+
+.slide.in-view .slide__card {
+    animation: fadeInUp 0.8s ease forwards;
+    animation-delay: calc(var(--card-index, 0) * 0.1s);
+}

@@ -48,6 +48,42 @@
             "website": "/waqf",
             "active": true,
             "featured": true
+        },
+        {
+            "id": "qatar_sports",
+            "name": "وزارة الرياضة والشباب",
+            "name_en": "Ministry of Sports and Youth",
+            "slug": "qatar_sports",
+            "logo": "qatar-sports-logo.png",
+            "primary_color": "#8B1538",
+            "secondary_color": "#ffffff",
+            "accent_color": "#D4AF37",
+            "type": "حكومي",
+            "type_en": "Government",
+            "country": "قطر",
+            "country_en": "Qatar",
+            "description": "وزارة الرياضة والشباب - دولة قطر",
+            "website": "/qatar-sports",
+            "active": true,
+            "featured": true
+        },
+        {
+            "id": "mys_qatar",
+            "name": "وزارة الشباب والرياضة",
+            "name_en": "Ministry of Youth and Sports",
+            "slug": "mys_qatar",
+            "logo": "mys-qatar-logo.png",
+            "primary_color": "#8B1538",
+            "secondary_color": "#ffffff",
+            "accent_color": "#D4AF37",
+            "type": "حكومي",
+            "type_en": "Government",
+            "country": "قطر",
+            "country_en": "Qatar",
+            "description": "وزارة الشباب والرياضة - دولة قطر",
+            "website": "/mys-qatar",
+            "active": true,
+            "featured": true
         }
     ]
 }
