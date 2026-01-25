@@ -366,8 +366,7 @@ def mys_qatar_main():
 def qatar_sports_export_pdf():
     """
     تصدير العرض التقديمي إلى PDF بمقاس 33.87cm × 19.05cm
-    الطريقة: تصوير كل شريحة كصورة ثم دمجها في PDF
-    هذا يضمن الحفاظ على كل الألوان والخلفيات والتصميم
+    تم التحديث: استخدام دقة HD مع معامل تكبير 2 للحفاظ على التنسيق والجودة
     """
     import asyncio
     from playwright.async_api import async_playwright
@@ -375,131 +374,156 @@ def qatar_sports_export_pdf():
     from datetime import datetime
     from io import BytesIO
     
-    # المقاس بالبكسل (96 DPI)
-    # 33.87cm = 1280px, 19.05cm = 720px
-    SLIDE_WIDTH = 1280
-    SLIDE_HEIGHT = 720
+    # 1. إعدادات المتصفح: 1280x720 (الأبعاد الطبيعية عند تحويل cm إلى px في المتصفح)
+    # 33.87cm * 96dpi / 2.54 = ~1280px
+    VIEWPORT_W = 1280
+    VIEWPORT_H = 720
+    
+    # 2. معامل التكبير للحصول على دقة عالية للطباعة (300 DPI تقريباً)
+    # 1280 * 3.125 = 4000px
+    SCALE_FACTOR = 3.125
     
     async def generate_pdf():
         async with async_playwright() as p:
-            browser = await p.chromium.launch(headless=True)
-            page = await browser.new_page(viewport={'width': SLIDE_WIDTH, 'height': SLIDE_HEIGHT})
+            browser = await p.chromium.launch(
+                headless=True,
+                args=[
+                    '--no-sandbox',
+                    '--disable-setuid-sandbox',
+                    '--disable-dev-shm-usage',
+                    '--force-color-profile=srgb',
+                    '--font-render-hinting=none'
+                ]
+            )
+            # محاكاة شاشة عالية الدقة (Retina)
+            context = await browser.new_context(
+                viewport={'width': VIEWPORT_W, 'height': VIEWPORT_H},
+                device_scale_factor=SCALE_FACTOR
+            )
+            page = await context.new_page()
             
-            # الحصول على الرابط الكامل
             base_url = request.host_url.rstrip('/')
             url = f"{base_url}/qatar_sports/"
             
-            await page.goto(url, wait_until='networkidle')
-            await page.wait_for_selector('.slide', timeout=15000)
+            await page.goto(url, wait_until='networkidle', timeout=60000)
+            await page.wait_for_selector('.slide', timeout=20000)
+            # انتظار إضافي لتحميل الصور والرسوم
+            await page.wait_for_timeout(3000)
             
-            # انتظار إضافي لتحميل الخطوط والصور
-            await page.wait_for_timeout(2000)
+            slide_ids = await page.evaluate('''() => {
+                return Array.from(document.querySelectorAll('.slide'))
+                    .map(slide => slide.id)
+                    .filter(Boolean);
+            }''')
             
-            # إخفاء عناصر التنقل وإيقاف جميع الحركات
-            await page.evaluate('''
-                () => {
-                    // إخفاء عناصر التنقل
-                    const hide = document.querySelectorAll('.toc-container, .slides-nav, .fab-container, .grid-view-overlay, .slide__number, .slide__platform-logo');
-                    hide.forEach(el => el.style.display = 'none');
-                    
-                    // إيقاف جميع الحركات (animations) وجعل العناصر مرئية
-                    const style = document.createElement('style');
-                    style.textContent = `
-                        *, *::before, *::after {
-                            animation: none !important;
-                            animation-delay: 0s !important;
-                            animation-duration: 0s !important;
-                            transition: none !important;
-                            transition-delay: 0s !important;
-                            transition-duration: 0s !important;
-                            opacity: 1 !important;
-                            visibility: visible !important;
-                            transform: none !important;
-                        }
-                        
-                        /* استثناء بعض العناصر من إزالة transform */
-                        .slide__decoration,
-                        .slide__decoration--circle {
-                            transform: translate(-50%, -50%) !important;
-                        }
-                    `;
-                    document.head.appendChild(style);
-                    
-                    // التأكد من ظهور جميع العناصر
-                    document.querySelectorAll('[style*="opacity"]').forEach(el => {
-                        el.style.opacity = '1';
-                    });
-                    document.querySelectorAll('[style*="visibility"]').forEach(el => {
-                        el.style.visibility = 'visible';
-                    });
+            if not slide_ids:
+                raise ValueError('لم يتم العثور على أي شرائح للتصدير')
+            
+            # حقن CSS لإخفاء القوائم فقط، دون التلاعب بالأبعاد
+            await page.add_style_tag(content='''
+                /* إخفاء عناصر التحكم والواجهة */
+                .toc-container, .slides-nav, .fab-container, .grid-view-overlay,
+                .slide-nav-minimal, .slide-nav-dropdown, .interactive-toolbar,
+                .progress-bar-container, .search-modal, .notes-panel,
+                .bookmarks-panel, .share-modal, .platform-bar,
+                #interactiveToolbar, .slide__number, .slide__platform-logo {
+                    display: none !important;
+                }
+                
+                /* ضبط الصفحة لتملأ الشاشة */
+                html, body {
+                    overflow: hidden !important;
+                    margin: 0 !important;
+                    padding: 0 !important;
+                    background: #ffffff !important;
+                    width: 100vw !important;
+                    height: 100vh !important;
+                }
+                
+                /* إخفاء جميع الشرائح بقوة */
+                .slide {
+                    display: none !important;
+                    opacity: 0 !important;
+                    visibility: hidden !important;
+                    z-index: -100 !important;
+                }
+                
+                /* الشريحة النشطة تملأ الشاشة */
+                .slide.export-active {
+                    display: flex !important;
+                    opacity: 1 !important;
+                    visibility: visible !important;
+                    position: fixed !important;
+                    top: 0 !important;
+                    left: 0 !important;
+                    width: 100vw !important;
+                    height: 100vh !important;
+                    z-index: 9999 !important;
+                    background: white !important; /* أو الخلفية الافتراضية */
+                    margin: 0 !important;
                 }
             ''')
             
-            # انتظار بعد إيقاف الحركات
-            await page.wait_for_timeout(500)
-            
-            # الحصول على عدد الشرائح
-            slides_count = await page.evaluate('document.querySelectorAll(".slide").length')
-            
-            # تصوير كل شريحة
             screenshots = []
-            for i in range(slides_count):
-                # الانتقال للشريحة وإظهار جميع عناصرها
-                await page.evaluate(f'''
-                    () => {{
-                        const slides = document.querySelectorAll('.slide');
-                        if (slides[{i}]) {{
-                            // الانتقال للشريحة
-                            slides[{i}].scrollIntoView({{ behavior: 'instant' }});
-                            
-                            // جعل جميع عناصر الشريحة مرئية
-                            slides[{i}].querySelectorAll('*').forEach(el => {{
-                                el.style.opacity = '1';
-                                el.style.visibility = 'visible';
-                            }});
-                        }}
-                    }}
-                ''')
+            for slide_id in slide_ids:
+                # تفعيل الشريحة الحالية فقط
+                await page.evaluate('''(targetId) => {
+                    document.querySelectorAll('.slide').forEach(slide => {
+                        if (slide.id === targetId) {
+                            slide.classList.add('export-active');
+                            // تأكيد النمط عبر JS أيضاً ليغلب أي نمط مضمن
+                            slide.style.setProperty('display', 'flex', 'important');
+                        } else {
+                            slide.classList.remove('export-active');
+                            slide.style.setProperty('display', 'none', 'important');
+                        }
+                    });
+                }''', slide_id)
                 
-                # انتظار قصير للتأكد من التمرير والظهور
-                await page.wait_for_timeout(400)
+                await page.wait_for_timeout(500)
                 
-                # تصوير الشريحة
+                # التقاط الصورة (ستكون بدقة 3840x2160 بسبب scale factor)
                 screenshot = await page.screenshot(
                     type='png',
-                    full_page=False,
-                    clip={'x': 0, 'y': 0, 'width': SLIDE_WIDTH, 'height': SLIDE_HEIGHT}
+                    full_page=False
                 )
                 screenshots.append(screenshot)
             
+            await context.close()
             await browser.close()
             
-            # دمج الصور في PDF باستخدام reportlab
+            # قسم تجميع PDF
             try:
-                from reportlab.lib.pagesizes import landscape
                 from reportlab.lib.units import cm
                 from reportlab.pdfgen import canvas
                 from PIL import Image
-                import io
+                from reportlab.lib.utils import ImageReader
                 
-                # حجم الصفحة: 33.87cm × 19.05cm
-                PAGE_WIDTH = 33.87 * cm
-                PAGE_HEIGHT = 19.05 * cm
+                # أبعاد الصفحة النهائية المطلوبة
+                PAGE_PDF_W = 33.87 * cm
+                PAGE_PDF_H = 19.05 * cm
                 
                 pdf_buffer = BytesIO()
-                c = canvas.Canvas(pdf_buffer, pagesize=(PAGE_WIDTH, PAGE_HEIGHT))
+                c = canvas.Canvas(pdf_buffer, pagesize=(PAGE_PDF_W, PAGE_PDF_H))
                 
                 for screenshot in screenshots:
-                    # تحويل الـ screenshot لصورة
                     img = Image.open(BytesIO(screenshot))
+                    if img.mode != 'RGB':
+                        img = img.convert('RGB')
+
                     img_buffer = BytesIO()
-                    img.save(img_buffer, format='PNG')
+                    img.save(img_buffer, format='JPEG', quality=95)
                     img_buffer.seek(0)
-                    
-                    # رسم الصورة على الصفحة
-                    from reportlab.lib.utils import ImageReader
-                    img_reader = ImageReader(img_buffer)
-                    c.drawImage(img_reader, 0, 0, width=PAGE_WIDTH, height=PAGE_HEIGHT)
+                
+                    # رسم الصورة لتملأ الصفحة بالكامل (تمدد لملء الفراغ)
+                    c.drawImage(
+                        ImageReader(img_buffer),
+                        0,
+                        0,
+                        width=PAGE_PDF_W,
+                        height=PAGE_PDF_H,
+                        preserveAspectRatio=False 
+                    )
                     c.showPage()
                 
                 c.save()
@@ -541,9 +565,7 @@ def qatar_sports_export_pdf():
 @app.route('/mys-qatar/export-pdf')
 def mys_qatar_export_pdf():
     """
-    تصدير العرض التقديمي لوزارة الشباب والرياضة إلى PDF
-    بمقاس 33.87cm × 19.05cm (نسبة 16:9)
-    الطريقة: تصوير كل شريحة كصورة عالية الجودة ثم دمجها في PDF
+    تصدير PDF لوزارة الرياضة - إصلاح التنسيق الجذري
     """
     import asyncio
     from playwright.async_api import async_playwright
@@ -551,199 +573,144 @@ def mys_qatar_export_pdf():
     from datetime import datetime
     from io import BytesIO
     
-    # المقاس بالبكسل - نسبة 16:9 بدقة عالية جداً
-    SLIDE_WIDTH = 1920
-    SLIDE_HEIGHT = 1080
+    # 1. إعدادات المتصفح: 1280x720 (مطابق لأبعاد CSS بالسنتيمتر)
+    VIEWPORT_W = 1280
+    VIEWPORT_H = 720
+    # 2. دقة عالية جداً (x3.125 => ~4000px width)
+    SCALE_FACTOR = 3.125
     
     async def generate_pdf():
         async with async_playwright() as p:
             browser = await p.chromium.launch(
                 headless=True,
-                args=[
-                    '--no-sandbox',
-                    '--disable-setuid-sandbox',
-                    '--disable-dev-shm-usage',
-                    '--disable-gpu'
-                ]
+                args=['--no-sandbox', '--disable-setuid-sandbox']
             )
             
-            # الحصول على الرابط الكامل
             base_url = request.host_url.rstrip('/')
             url = f"{base_url}/mys-qatar/"
             
-            # أولاً: الحصول على عدد الشرائح
-            context = await browser.new_context(
-                viewport={'width': SLIDE_WIDTH, 'height': SLIDE_HEIGHT}
-            )
+            # سياق أولي لجلب عدد الشرائح
+            context = await browser.new_context(viewport={'width': VIEWPORT_W, 'height': VIEWPORT_H})
             page = await context.new_page()
             
-            logger.info(f"جاري تحميل الصفحة: {url}")
+            logger.info(f"Loading: {url}")
             await page.goto(url, wait_until='networkidle', timeout=60000)
             await page.wait_for_selector('.slide', timeout=30000)
-            await page.wait_for_timeout(3000)
             
-            # الحصول على معرفات الشرائح
-            slide_ids = await page.evaluate('''
-                () => {
-                    return Array.from(document.querySelectorAll('.slide')).map(s => s.id);
-                }
-            ''')
-            slides_count = len(slide_ids)
-            logger.info(f"عدد الشرائح للتصدير: {slides_count}")
-            
+            slide_ids = await page.evaluate('() => Array.from(document.querySelectorAll(".slide")).map(s => s.id)')
             await context.close()
             
-            # تصوير كل شريحة في صفحة مستقلة
             screenshots = []
             
+            # معالجة كل شريحة
             for i, slide_id in enumerate(slide_ids):
-                # إنشاء context جديد لكل شريحة
+                # إنشاء سياق جديد "نظيف" لكل شريحة لضمان عدم تداخل الذاكرة
                 ctx = await browser.new_context(
-                    viewport={'width': SLIDE_WIDTH, 'height': SLIDE_HEIGHT},
-                    device_scale_factor=2  # جودة عالية
+                    viewport={'width': VIEWPORT_W, 'height': VIEWPORT_H},
+                    device_scale_factor=SCALE_FACTOR
                 )
                 pg = await ctx.new_page()
                 
-                # تحميل الصفحة
                 await pg.goto(url, wait_until='networkidle', timeout=60000)
-                await pg.wait_for_selector('.slide', timeout=30000)
-                await pg.wait_for_timeout(2000)
+                await pg.wait_for_timeout(2000) # انتظار استقرار الأنيميشن
                 
-                # إعداد الشريحة للتصوير
+                # إخفاء العناصر وتجهيز الشريحة
                 await pg.evaluate(f'''
                     () => {{
-                        // إخفاء جميع عناصر التنقل والأدوات
-                        const hideSelectors = [
-                            '.toc-container', '.slides-nav', '.fab-container',
-                            '.grid-overlay', '.slide-nav-minimal', '.slide-nav-dropdown',
-                            '.interactive-toolbar', '.platform-bar', '.notes-panel',
-                            '.bookmarks-panel', '.search-modal', '.share-modal',
-                            '.progress-bar-container', '.toolbar-btn', '#interactiveToolbar'
+                        // 1. إزالة القوائم
+                        const selectors = [
+                            '.toc-container', '.slides-nav', '.fab-container', '.grid-overlay',
+                            '.slide-nav-minimal', '.slide-nav-dropdown', '.interactive-toolbar',
+                            '.platform-bar', '.notes-panel', '.bookmarks-panel',
+                            '.share-modal', '.progress-bar-container', '#interactiveToolbar'
                         ];
+                        selectors.forEach(s => document.querySelectorAll(s).forEach(e => e.style.setProperty('display', 'none', 'important')));
                         
-                        hideSelectors.forEach(sel => {{
-                            document.querySelectorAll(sel).forEach(el => el.remove());
+                        // 2. إخفاء كل الشرائح (Brutal Force)
+                        document.querySelectorAll('.slide').forEach(el => {{
+                           el.style.setProperty('display', 'none', 'important');
+                           el.style.setProperty('opacity', '0', 'important');
+                           el.style.setProperty('visibility', 'hidden', 'important');
+                           el.style.position = 'absolute'; // أبعده عن التدفق
+                           el.style.zIndex = '-1';
+                           el.classList.remove('active', 'current', 'export-active');
                         }});
-                        
-                        // إضافة CSS للتصدير
-                        const style = document.createElement('style');
-                        style.textContent = `
-                            html, body {{
-                                margin: 0 !important;
-                                padding: 0 !important;
-                                overflow: hidden !important;
-                                background: transparent !important;
-                            }}
+
+                        // 3. منع الهوامش
+                        document.body.style.margin = '0';
+                        document.body.style.padding = '0';
+                        document.body.style.overflow = 'hidden';
+                        document.documentElement.style.margin = '0';
+                        document.documentElement.style.padding = '0';
+                        document.documentElement.style.overflow = 'hidden';
+
+                        // 4. إظهار الشريحة الهدف فقط وتثبيتها
+                        const target = document.getElementById('{slide_id}');
+                        if (target) {{
+                            target.style.setProperty('display', 'flex', 'important');
+                            target.style.setProperty('opacity', '1', 'important');
+                            target.style.setProperty('visibility', 'visible', 'important');
                             
-                            .slide {{
-                                display: none !important;
-                            }}
-                            
-                            .slide#slide-target {{
-                                display: flex !important;
-                                position: fixed !important;
-                                top: 0 !important;
-                                left: 0 !important;
-                                width: {SLIDE_WIDTH}px !important;
-                                height: {SLIDE_HEIGHT}px !important;
-                                margin: 0 !important;
-                                z-index: 999999 !important;
-                                animation: none !important;
-                                transition: none !important;
-                            }}
-                            
-                            .slide#slide-target * {{
-                                animation: none !important;
-                                transition: none !important;
-                            }}
-                        `;
-                        document.head.appendChild(style);
-                        
-                        // تعيين الشريحة المطلوبة
-                        const targetSlide = document.getElementById("{slide_id}");
-                        if (targetSlide) {{
-                            targetSlide.id = "slide-target";
-                            
-                            // التأكد من ظهور جميع العناصر
-                            targetSlide.querySelectorAll('*').forEach(el => {{
-                                el.style.opacity = '1';
-                                el.style.visibility = 'visible';
-                            }});
+                            target.classList.add('export-active');
+                            target.style.position = 'fixed';
+                            target.style.top = '0';
+                            target.style.left = '0';
+                            target.style.width = '100vw';
+                            target.style.height = '100vh';
+                            target.style.margin = '0';
+                            target.style.zIndex = '9999';
                         }}
                     }}
                 ''')
                 
                 await pg.wait_for_timeout(500)
                 
-                # تصوير الشريحة
-                screenshot = await pg.screenshot(
-                    type='png',
-                    clip={'x': 0, 'y': 0, 'width': SLIDE_WIDTH, 'height': SLIDE_HEIGHT}
-                )
+                screenshot = await pg.screenshot(type='png')
                 screenshots.append(screenshot)
                 
                 await ctx.close()
-                
-                if (i + 1) % 10 == 0:
-                    logger.info(f"تم تصوير {i + 1} من {slides_count} شريحة")
             
             await browser.close()
-            logger.info(f"تم تصوير جميع الشرائح ({slides_count})")
             
-            # دمج الصور في PDF
-            try:
-                from reportlab.lib.units import cm
-                from reportlab.pdfgen import canvas
-                from PIL import Image
+            # تجميع PDF
+            from reportlab.lib.units import cm
+            from reportlab.pdfgen import canvas
+            from PIL import Image
+            from reportlab.lib.utils import ImageReader
+            
+            PAGE_W = 33.87 * cm
+            PAGE_H = 19.05 * cm
+            
+            pdf_buffer = BytesIO()
+            c = canvas.Canvas(pdf_buffer, pagesize=(PAGE_W, PAGE_H))
+            
+            for screenshot in screenshots:
+                img = Image.open(BytesIO(screenshot))
+                if img.mode != 'RGB':
+                    img = img.convert('RGB')
                 
-                # حجم الصفحة: 33.87cm × 19.05cm
-                PAGE_WIDTH = 33.87 * cm
-                PAGE_HEIGHT = 19.05 * cm
+                img_buffer = BytesIO()
+                img.save(img_buffer, format='JPEG', quality=95)
+                img_buffer.seek(0)
                 
-                pdf_buffer = BytesIO()
-                c = canvas.Canvas(pdf_buffer, pagesize=(PAGE_WIDTH, PAGE_HEIGHT))
+                c.drawImage(
+                    ImageReader(img_buffer),
+                    0, 0,
+                    width=PAGE_W,
+                    height=PAGE_H,
+                    preserveAspectRatio=False
+                )
+                c.showPage()
                 
-                from reportlab.lib.utils import ImageReader
-                
-                for idx, screenshot in enumerate(screenshots):
-                    img = Image.open(BytesIO(screenshot))
-                    
-                    # تحويل لـ RGB إذا كانت RGBA
-                    if img.mode == 'RGBA':
-                        background = Image.new('RGB', img.size, (255, 255, 255))
-                        background.paste(img, mask=img.split()[3])
-                        img = background
-                    
-                    img_buffer = BytesIO()
-                    img.save(img_buffer, format='PNG')
-                    img_buffer.seek(0)
-                    
-                    img_reader = ImageReader(img_buffer)
-                    # رسم الصورة لتملأ كامل الصفحة
-                    c.drawImage(img_reader, 0, 0, 
-                                width=PAGE_WIDTH, 
-                                height=PAGE_HEIGHT,
-                                preserveAspectRatio=False,
-                                anchor='sw')
-                    c.showPage()
-                
-                c.save()
-                pdf_buffer.seek(0)
-                logger.info("تم إنشاء ملف PDF بنجاح")
-                return pdf_buffer.getvalue()
-                
-            except ImportError as e:
-                logger.error(f"مكتبات غير متوفرة: {e}")
-                return None
-    
+            c.save()
+            pdf_buffer.seek(0)
+            return pdf_buffer.getvalue()
+
     try:
         loop = asyncio.new_event_loop()
         asyncio.set_event_loop(loop)
         pdf_bytes = loop.run_until_complete(generate_pdf())
         loop.close()
-        
-        if pdf_bytes is None:
-            return jsonify({'error': 'Missing required libraries'}), 500
         
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
         filename = f"mys_qatar_report_{timestamp}.pdf"
@@ -757,7 +724,113 @@ def mys_qatar_export_pdf():
             }
         )
     except Exception as e:
-        logger.error(f"خطأ في تصدير PDF: {e}")
+        logger.error(f"Error: {e}")
+        return jsonify({'error': str(e)}), 500
+
+
+@app.route('/mys-qatar/export-pdf-test')
+def mys_qatar_export_pdf_test():
+    """
+    اختبار تصدير الشريحة الأولى فقط - بدون resize
+    """
+    import asyncio
+    from playwright.async_api import async_playwright
+    from flask import Response
+    from datetime import datetime
+    from io import BytesIO
+    
+    SLIDE_WIDTH = 4000
+    SLIDE_HEIGHT = 2250
+    
+    async def generate_pdf():
+        async with async_playwright() as p:
+            browser = await p.chromium.launch(
+                headless=True,
+                args=[
+                    '--no-sandbox',
+                    '--disable-setuid-sandbox',
+                    '--disable-dev-shm-usage',
+                    '--disable-accelerated-2d-canvas',
+                    '--disable-gpu',
+                    '--window-size=4000,2250'
+                ]
+            )
+            page = await browser.new_page()
+            
+            await page.set_viewport_size({'width': SLIDE_WIDTH, 'height': SLIDE_HEIGHT})
+            
+            url = f'http://127.0.0.1:5001/mys-qatar/'
+            await page.goto(url, wait_until='networkidle', timeout=60000)
+            await asyncio.sleep(5)
+            
+            logger.info("اختبار: تصوير الشريحة الأولى")
+            
+            await page.evaluate('''() => {
+                const slide1 = document.getElementById('slide-1');
+                if (slide1) {
+                    document.querySelectorAll('.slide').forEach(s => {
+                        s.style.display = 'none';
+                    });
+                    slide1.style.display = 'block';
+                    slide1.classList.add('export-active');
+                }
+            }''')
+            
+            await asyncio.sleep(2)
+            
+            screenshot = await page.screenshot(
+                type='png',
+                full_page=False
+            )
+            
+            await browser.close()
+            
+            from PIL import Image
+            from reportlab.lib.units import cm
+            from reportlab.pdfgen import canvas
+            from reportlab.lib.utils import ImageReader
+            
+            PAGE_WIDTH = 33.87 * cm
+            PAGE_HEIGHT = 19.05 * cm
+            
+            img = Image.open(BytesIO(screenshot))
+            img_buffer = BytesIO()
+            img.save(img_buffer, format='JPEG', quality=95, optimize=True)
+            img_buffer.seek(0)
+            
+            pdf_buffer = BytesIO()
+            c = canvas.Canvas(pdf_buffer, pagesize=(PAGE_WIDTH, PAGE_HEIGHT))
+            
+            c.drawImage(
+                ImageReader(img_buffer),
+                0, 0,
+                width=PAGE_WIDTH,
+                height=PAGE_HEIGHT,
+                preserveAspectRatio=False
+            )
+            
+            c.save()
+            pdf_data = pdf_buffer.getvalue()
+            
+            logger.info("تم إنشاء PDF للاختبار بنجاح - الشريحة الأولى فقط")
+            return pdf_data
+    
+    try:
+        pdf_data = asyncio.run(generate_pdf())
+        
+        timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
+        filename = f'mys_qatar_test_slide1_{timestamp}.pdf'
+        
+        return Response(
+            pdf_data,
+            mimetype='application/pdf',
+            headers={
+                'Content-Disposition': f'attachment; filename="{filename}"',
+                'Content-Type': 'application/pdf'
+            }
+        )
+    except Exception as e:
+        logger.error(f"خطأ في اختبار تصدير PDF: {e}")
         import traceback
         traceback.print_exc()
         return jsonify({'error': str(e)}), 500
@@ -2352,4 +2425,3 @@ if __name__ == '__main__':
         threaded=True,
         use_reloader=True
     )
-
