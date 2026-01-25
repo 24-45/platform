@@ -44,6 +44,11 @@
          شريط الأدوات التفاعلية (Interactive Toolbar)
          ===================================================== -->
     <div class="interactive-toolbar" id="interactiveToolbar">
+        <!-- زر عرض الشبكة (Slide Sorter) -->
+        <button class="toolbar-btn" onclick="toggleGridView()" title="عرض فارز الشرائح (Slide Sorter)">
+            <i class="fas fa-th-large"></i>
+        </button>
+
         <!-- زر الفهرس (أول زر على اليمين) -->
         <button class="toolbar-btn" id="tocBtn" title="فهرس الشرائح">
             <i class="fas fa-list"></i>
@@ -1551,7 +1556,7 @@
             }
         }
         
-        // إنشاء المصغرات
+        // إنشاء المصغرات (Live Preview like PowerPoint)
         function generateThumbnails() {
             const container = document.getElementById('gridContainer');
             if (!container) return;
@@ -1559,65 +1564,130 @@
             const slides = document.querySelectorAll('.slide');
             container.innerHTML = '';
             
+            // حساب نسبة التحجيم بناءً على عرض الشريحة الفعلي
+            // نفترض أن عرض الشريحة في CSS هو 33.87cm أي حوالي 1280px
+            // وعرض المصغر حوالي 260px => Scale ~ 0.2
+            
             slides.forEach((slide, index) => {
-                // استخراج العنوان بشكل أفضل
-                let title = '';
-                const selectors = [
-                    '.content-title',
-                    '.cover-title', 
-                    '.cover__title',
-                    '.divider-title',
-                    '.slide__title',
-                    '.methodology-title',
-                    'h1',
-                    'h2',
-                    'h3'
-                ];
-                
-                for (const selector of selectors) {
-                    const el = slide.querySelector(selector);
-                    if (el && el.textContent.trim()) {
-                        title = el.textContent.trim();
-                        break;
-                    }
-                }
-                
-                if (!title) title = `شريحة ${index + 1}`;
-                if (title.length > 35) title = title.substring(0, 32) + '...';
-                
-                // استخراج نوع الشريحة
-                const classes = slide.className.split(' ');
-                const slideType = classes.find(c => c.startsWith('slide-') && c !== 'slide') || 'slide-content';
-                
-                // تحديد لون الخلفية
-                let bgColor = 'linear-gradient(135deg, #1a1a2e 0%, #16213e 100%)';
-                if (slideType.includes('cover')) bgColor = 'linear-gradient(135deg, #8B1538 0%, #5d0e26 100%)';
-                else if (slideType.includes('divider')) bgColor = 'linear-gradient(135deg, #0a5446 0%, #063d32 100%)';
-                else if (slideType.includes('thank')) bgColor = 'linear-gradient(135deg, #c5a028 0%, #8a7019 100%)';
-                else if (slideType.includes('swot')) bgColor = 'linear-gradient(135deg, #2d1b4e 0%, #1a1030 100%)';
-                else if (slideType.includes('recommend')) bgColor = 'linear-gradient(135deg, #1e3a5f 0%, #0f1f33 100%)';
-                
                 const thumbnail = document.createElement('div');
                 thumbnail.className = 'grid-thumbnail';
-                thumbnail.style.background = bgColor;
+                if (slide.classList.contains('active') || slide.style.display === 'flex') {
+                    thumbnail.classList.add('selected');
+                }
+
+                // 1. الإطار المصغر (Viewport)
+                const previewFrame = document.createElement('div');
+                previewFrame.className = 'grid-thumbnail__frame';
                 
-                thumbnail.innerHTML = `
-                    <div class="grid-thumbnail__preview">
-                        <div class="grid-thumbnail__icon">
-                            <i class="fas ${getSlideIcon(slideType)}"></i>
-                        </div>
-                    </div>
-                    <div class="grid-thumbnail__info">
-                        <span class="grid-thumbnail__number">${index + 1}</span>
-                        <span class="grid-thumbnail__title">${title}</span>
-                    </div>
+                // 2. المحتوى المنسوخ (Scaled Content)
+                // نستخدم HTML للعرض بدلاً من الصور ليكون "حي" وخفيف التحميل نسبياً مقارنة بالكانفاس
+                const clonedContent = slide.cloneNode(true);
+                
+                // تنظيف المعرفات لتجنب التكرار
+                clonedContent.removeAttribute('id');
+                clonedContent.querySelectorAll('[id]').forEach(el => el.removeAttribute('id'));
+                
+                // [تحسين]: نسخ محتوى الكانفاس (Charts)
+                const originalCanvases = slide.querySelectorAll('canvas');
+                const clonedCanvases = clonedContent.querySelectorAll('canvas');
+                
+                // [إصلاح]: نسخ الخلفية الأصلية للشريحة بدقة
+                // لأن بعض الشرائح تعتمد على تنسيقات الـ body أو الكونتينر
+                const compStyle = window.getComputedStyle(slide);
+                // نسخ لون الخلفية والصورة والتدرج
+                if (compStyle.backgroundImage !== 'none') {
+                    clonedContent.style.backgroundImage = compStyle.backgroundImage;
+                    clonedContent.style.backgroundSize = compStyle.backgroundSize;
+                    clonedContent.style.backgroundPosition = compStyle.backgroundPosition;
+                    clonedContent.style.backgroundRepeat = compStyle.backgroundRepeat;
+                }
+                if (compStyle.backgroundColor !== 'rgba(0, 0, 0, 0)' && compStyle.backgroundColor !== 'transparent') {
+                    clonedContent.style.backgroundColor = compStyle.backgroundColor;
+                }
+                
+                originalCanvases.forEach((orig, i) => {
+                    if (clonedCanvases[i]) {
+                        try {
+                            const img = document.createElement('img');
+                            img.src = orig.toDataURL();
+                            img.style.width = '100%';
+                            img.style.height = '100%';
+                            img.style.objectFit = 'contain';
+                            img.className = orig.className;
+                            clonedCanvases[i].parentNode.replaceChild(img, clonedCanvases[i]);
+                        } catch (e) {
+                            console.warn('Canvas snapshot failed', e);
+                        }
+                    }
+                });
+
+                // إعداد الحاوية المصغرة بمقاس ثابت (ليست absolute) لحل مشاكل التداخل
+                // نضع الشريحة داخل غلاف "Scale Wrapper"
+                const scaleWrapper = document.createElement('div');
+                scaleWrapper.className = 'slide-scale-wrapper';
+                
+                // تجميد الأبعاد للشريحة المنسوخة
+                clonedContent.className += ' slide-preview-content';
+                clonedContent.style.cssText = `
+                    width: 1280px !important;
+                    height: 720px !important;
+                    min-width: 1280px !important;
+                    min-height: 720px !important;
+                    max-width: 1280px !important;
+                    max-height: 720px !important;
+                    transform: scale(0.2); /* سيتم تحديثه */
+                    transform-origin: top left;
+                    display: flex !important;
+                    opacity: 1 !important;
+                    visibility: visible !important;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    margin: 0 !important;
+                    --slide-w: 1280px;
+                    --slide-h: 720px;
                 `;
                 
+                scaleWrapper.appendChild(clonedContent);
+                previewFrame.appendChild(scaleWrapper);
+                
+                // حساب التكبير الديناميكي (Robust Scaling)
+                // نستخدم ResizeObserver لمراقبة تغير حجم الكرت وتحديث الـ Scale
+                const ro = new ResizeObserver(entries => {
+                    for (let entry of entries) {
+                        const width = entry.contentRect.width;
+                        const scale = width / 1280; // 1280px هو العرض الأصلي
+                        clonedContent.style.transform = `scale(${scale})`;
+                        // تعديل ارتفاع الغلاف ليتناسب مع المحتوى المصغر
+                        // previewFrame لديه aspect-ratio، لذا الارتفاع سيضبط تلقائياً
+                    }
+                });
+                ro.observe(previewFrame);
+                
+                // 3. رقم الشريحة
+                const numberBadge = document.createElement('div');
+                numberBadge.className = 'grid-thumbnail__number';
+                numberBadge.textContent = index + 1;
+                
+                // 4. تجميع العناصر
+                thumbnail.appendChild(previewFrame);
+                thumbnail.appendChild(numberBadge);
+                
+                // حدث النقر
                 thumbnail.addEventListener('click', () => {
-                    toggleGridView();
-                    setTimeout(() => {
-                        slide.scrollIntoView({ behavior: 'smooth' });
-                    }, 300);
+                    toggleGridView(); // إغلاق الشبكة
+                    
+                    // إخفاء الكل وإظهار المختارة
+                    document.querySelectorAll('.slide').forEach(s => {
+                        s.classList.remove('export-active'); // تنظيف حالة التصدير إن وجدت
+                        s.style.display = 'none';
+                    });
+                    
+                    slide.style.display = 'flex';
+                    slide.scrollIntoView({ behavior: 'auto' });
+                    
+                    // تحديث مؤشرات التنقل إن وجدت
+                    // ...
                 });
                 
                 container.appendChild(thumbnail);

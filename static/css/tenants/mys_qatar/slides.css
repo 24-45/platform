@@ -12201,3 +12201,182 @@ a.tweet-card.tweet-link:hover .click-hint {
    ===================================================== */
 @media print {
     body { padding: 0; background: white; }
+}
+
+/* =====================================================
+   GRID VIEW OVERLAY (PowerPoint Style)
+   ===================================================== */
+.grid-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(20, 3, 10, 0.98);
+    z-index: 2147483647; /* MAX Z-INDEX */
+    padding: 20px;
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+    backdrop-filter: blur(15px);
+    direction: rtl;
+}
+
+.grid-overlay.active {
+    display: flex;
+}
+
+.grid-overlay__header {
+    flex: 0 0 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 25px;
+    background: linear-gradient(90deg, #5D0E26, #3a0915);
+    border-bottom: 2px solid #C5A059;
+    border-radius: 8px 8px 0 0;
+    margin-bottom: 0;
+}
+
+.grid-overlay__title {
+    color: #C5A059;
+    font-size: 1.4rem;
+    font-family: 'Tajawal', sans-serif;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.grid-overlay__close {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    transition: all 0.2s;
+}
+
+.grid-overlay__close:hover {
+    background: #E74C3C;
+    border-color: #E74C3C;
+    transform: rotate(90deg);
+}
+
+.grid-container {
+    flex: 1;
+    display: grid;
+    /* Responsive grid: columns adapt to width, approx 300px per card */
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-auto-rows: min-content; /* Ensure rows don't expand unnecessarily */
+    gap: 30px;
+    padding: 30px;
+    overflow-y: auto;
+    background: rgba(0,0,0,0.2);
+}
+
+/* Scrollbar Styling */
+.grid-container::-webkit-scrollbar {
+    width: 10px;
+}
+.grid-container::-webkit-scrollbar-track {
+    background: #2a0e19;
+}
+.grid-container::-webkit-scrollbar-thumb {
+    background-color: #C5A059;
+    border-radius: 5px;
+    border: 2px solid #2a0e19;
+}
+
+/* Component: Slide Thumbnail Card */
+.grid-thumbnail {
+    background: #1a050b;
+    border: 1px solid rgba(197, 160, 89, 0.3);
+    border-radius: 12px;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    /* overflow-y: hidden is important */
+    max-height: 400px; /* Safety cap */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.grid-thumbnail:hover {
+    transform: translateY(-8px);
+    border-color: #C5A059;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.5), 0 0 15px rgba(197, 160, 89, 0.2);
+    z-index: 10;
+}
+
+.grid-thumbnail.current {
+    border: 2px solid #C5A059;
+    box-shadow: 0 0 0 2px rgba(197, 160, 89, 0.5), 0 0 30px rgba(197, 160, 89, 0.2);
+}
+
+/* The Window/Frame */
+.grid-thumbnail__frame {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    position: relative;
+    overflow: hidden; /* CRITICAL: Crops the 1280px content */
+    background: #000;
+    border-bottom: 1px solid rgba(197, 160, 89, 0.1);
+}
+
+/* Scale Wrapper */
+.slide-scale-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    /* This element contains the scaled slide */
+}
+
+/* Force override of slide content styles in preview */
+.slide-preview-content {
+    /* Dimensions and Transform handled in JS */
+    /* Ensure no margins or absolute positioning breaks flow */
+    transform-origin: top left;
+    background: transparent; /* Changed from white to transparent to allow original slide bg */
+    pointer-events: none;
+    user-select: none;
+}
+.dark-theme .slide-preview-content {
+    background: transparent; /* Let the slide's own styling dictate bg */
+}
+
+/* Info Bar at Bottom */
+.grid-thumbnail__info {
+    padding: 10px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(to top, rgba(0,0,0,0.5), transparent);
+}
+
+.grid-thumbnail__number {
+    background: #C5A059;
+    color: #3b0a1a;
+    font-weight: 800;
+    padding: 2px 10px;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    font-family: 'Tajawal', sans-serif;
+}
+
+.grid-thumbnail:hover .grid-thumbnail__number {
+    background: #fff;
+    color: #5D0E26;
+}
