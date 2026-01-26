@@ -12380,3 +12380,330 @@ a.tweet-card.tweet-link:hover .click-hint {
     background: #fff;
     color: #5D0E26;
 }
+
+/* =====================================================
+   PRESENTATION MODE (Slide Show) - FIXED
+   ===================================================== */
+body.presentation-mode {
+    overflow: hidden !important;
+    background-color: #000 !important;
+}
+
+/* Hide regular UI elements */
+body.presentation-mode .interactive-toolbar,
+body.presentation-mode .toc-trigger,
+body.presentation-mode .grid-overlay,
+body.presentation-mode .floating-nav,
+body.presentation-mode .platform-bar,
+body.presentation-mode .slide-nav-minimal,
+body.presentation-mode #tocContainer {
+    display: none !important;
+}
+
+/* Reset Container Constraints */
+body.presentation-mode main,
+body.presentation-mode .slide-container,
+body.presentation-mode .container {
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: none !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    background: #000 !important;
+    border: none !important;
+    box-shadow: none !important;
+    overflow: hidden !important;
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    transform: none !important;
+}
+
+/* Slide Styling in Presentation Mode */
+/* Active Slide */
+body.presentation-mode .slide.present-active {
+    position: fixed !important;
+    top: 50% !important;
+    left: 50% !important;
+    margin: 0 !important;
+    display: flex !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    z-index: 2000 !important;
+    box-shadow: 0 0 0 100vmax #000 !important;
+    transform-origin: center center !important; 
+}
+
+/* Inactive Slides - FORCE HIDE */
+body.presentation-mode .slide:not(.present-active) {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+}
+
+
+/* =====================================================
+   AI CHAT WIDGET (NotebookLM Style)
+   ===================================================== */
+.ai-chat-widget {
+    position: fixed;
+    bottom: 30px;
+    left: 30px; /* RTL layout */
+    z-index: 10000;
+    font-family: 'Tajawal', sans-serif;
+    direction: rtl;
+}
+
+/* Floating Button */
+.ai-chat-btn {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #8B1538, #5D0E26);
+    border: 1px solid rgba(197, 160, 89, 0.5);
+    color: #fff;
+    font-size: 1.5rem;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3), 0 0 20px rgba(139, 21, 56, 0.4);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 10002;
+}
+
+.ai-chat-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.4), 0 0 30px rgba(139, 21, 56, 0.6);
+    border-color: #C5A059;
+}
+
+.ai-chat-btn i {
+    animation: pulse-sparkle 3s infinite;
+}
+
+@keyframes pulse-sparkle {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.8; transform: scale(0.9); }
+}
+
+/* Chat Window */
+.ai-chat-window {
+    position: absolute;
+    bottom: 80px;
+    left: 0;
+    width: 380px;
+    height: 550px;
+    max-height: 80vh;
+    background: rgba(20, 3, 10, 0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(197, 160, 89, 0.3);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+    overflow: hidden;
+    transform-origin: bottom left;
+    transform: scale(0.9) translateY(20px);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.ai-chat-window.active {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+    pointer-events: all;
+}
+
+/* Header */
+.ai-chat-header {
+    padding: 15px 20px;
+    background: linear-gradient(90deg, #5D0E26, #3a0915);
+    border-bottom: 1px solid rgba(197, 160, 89, 0.2);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ai-chat-title {
+    color: #C5A059;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.1rem;
+}
+
+.ai-chat-close {
+    background: transparent;
+    border: none;
+    color: rgba(255,255,255,0.6);
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: color 0.2s;
+}
+.ai-chat-close:hover { color: #fff; }
+
+/* Body */
+.ai-chat-body {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Scrollbar */
+.ai-chat-body::-webkit-scrollbar { width: 6px; }
+.ai-chat-body::-webkit-scrollbar-track { background: transparent; }
+.ai-chat-body::-webkit-scrollbar-thumb { background: rgba(197, 160, 89, 0.3); border-radius: 3px; }
+
+/* Messages */
+.ai-message {
+    display: flex;
+    gap: 12px;
+    max-width: 90%;
+    align-items: flex-start;
+}
+
+.ai-message-user {
+    align-self: flex-end;
+    flex-direction: row-reverse; /* Flip for user */
+}
+
+.ai-avatar {
+    width: 32px;
+    height: 32px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #C5A059;
+    flex-shrink: 0;
+    font-size: 0.9rem;
+    border: 1px solid rgba(197, 160, 89, 0.2);
+}
+
+.ai-message-user .ai-avatar {
+    background: #C5A059;
+    color: #3b0a1a;
+}
+
+.ai-content {
+    background: rgba(255,255,255,0.05);
+    padding: 10px 15px;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: #eee;
+    border: 1px solid rgba(255,255,255,0.05);
+}
+
+.ai-message-user .ai-content {
+    background: #3a0915;
+    border-color: #5D0E26;
+    color: #fff;
+}
+
+.ai-message.error .ai-content {
+    color: #ff6b6b;
+    border-color: #ff6b6b;
+}
+
+/* Typing Indicator */
+.typing-indicator span {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    background: #C5A059;
+    border-radius: 50%;
+    margin: 0 2px;
+    animation: typing 1s infinite alternate;
+}
+.typing-indicator span:nth-child(2) { animation-delay: 0.2s; }
+.typing-indicator span:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes typing {
+    from { opacity: 0.3; transform: translateY(0); }
+    to { opacity: 1; transform: translateY(-4px); }
+}
+
+/* Footer */
+.ai-chat-footer {
+    padding: 15px;
+    background: rgba(0,0,0,0.3);
+    border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+.ai-input-wrapper {
+    display: flex;
+    gap: 10px;
+    align-items: flex-end;
+    background: rgba(255,255,255,0.05);
+    padding: 8px 12px;
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,0.1);
+    transition: border-color 0.2s;
+}
+
+.ai-input-wrapper:focus-within {
+    border-color: #C5A059;
+    background: rgba(0,0,0,0.2);
+}
+
+textarea#aiChatInput {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-family: inherit;
+    font-size: 0.95rem;
+    resize: none;
+    max-height: 100px;
+    padding: 5px 0;
+    outline: none;
+}
+
+button#aiChatSend {
+    background: #C5A059;
+    border: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    color: #3b0a1a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 0.9rem;
+}
+
+button#aiChatSend:disabled {
+    background: #555;
+    color: #888;
+    cursor: not-allowed;
+}
+
+button#aiChatSend:not(:disabled):hover {
+    transform: scale(1.1);
+    background: #fff;
+}
+
+.ai-disclaimer {
+    font-size: 0.7rem;
+    color: rgba(255,255,255,0.4);
+    text-align: center;
+    margin-top: 8px;
+}
+
+/* Hide in Print/Presentation Mode */
+@media print { .ai-chat-widget { display: none !important; } }
+body.presentation-mode .ai-chat-widget { display: none !important; }
+

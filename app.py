@@ -12,6 +12,10 @@ import json
 import os
 import logging
 import traceback
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 # إعداد logging
 logging.basicConfig(level=logging.DEBUG)
@@ -559,6 +563,35 @@ def qatar_sports_export_pdf():
         )
     except Exception as e:
         logger.error(f"خطأ في تصدير PDF: {e}")
+        return jsonify({'error': str(e)}), 500
+
+
+# ==================== AI Chat API ====================
+@app.route('/api/ai-chat', methods=['POST'])
+def ai_chat_endpoint():
+    """
+    Endpoint to handle AI queries about the report data.
+    """
+    try:
+        data = request.get_json()
+        user_query = data.get('query')
+        if not user_query:
+            return jsonify({'error': 'No query provided'}), 400
+            
+        # Lazy import to ensure module is picked up
+        import ai_chat
+        import importlib
+        importlib.reload(ai_chat) # Relax for dev
+        
+        # Get optional API key from request header if client wants to provide it
+        client_api_key = request.headers.get('X-OpenAI-Key')
+        
+        response_text = ai_chat.query_intelligence_engine(user_query, api_key=client_api_key)
+        
+        return jsonify({'response': response_text})
+    except Exception as e:
+        logger.error(f"AI Chat Error: {e}")
+        traceback.print_exc()
         return jsonify({'error': str(e)}), 500
 
 

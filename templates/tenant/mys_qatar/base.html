@@ -49,9 +49,9 @@
             <i class="fas fa-th-large"></i>
         </button>
 
-        <!-- زر الفهرس (أول زر على اليمين) -->
-        <button class="toolbar-btn" id="tocBtn" title="فهرس الشرائح">
-            <i class="fas fa-list"></i>
+        <!-- زر عرض الشرائح (Slide Show) -->
+        <button class="toolbar-btn" onclick="startPresentation()" title="بدء عرض الشرائح (Slide Show)">
+            <i class="fas fa-play"></i>
         </button>
         
         <!-- زر البحث -->
@@ -1498,6 +1498,12 @@
             }
         });
         
+        // [New]: إجبار الصفحة على البدء من الشريحة الأولى عند التحديث
+        if ('scrollRestoration' in history) {
+            history.scrollRestoration = 'manual';
+        }
+        window.scrollTo(0, 0);
+        
         // تهيئة
         updateNotesBadge();
         updateBookmarksBadge();
@@ -1721,6 +1727,197 @@
             };
             return icons[slideType] || 'fa-file';
         }
+        
+        // =====================================================
+        // منطق عرض الشرائح (Presentation Mode)
+        // =====================================================
+        let presentationActive = false;
+        let currentPresentationIndex = 0;
+        
+        function startPresentation() {
+            // [Fix]: Calculate index BEFORE applying presentation styles/classes
+            // (Because presentation-mode hides slides, setting offsetTop to 0, which breaks calculation)
+            let startIndex = getCurrentSlideIndex();
+            if (startIndex < 0) startIndex = 0;
+
+            // Check if grid view is active by checking the DOM element class
+            const overlay = document.getElementById('gridOverlay');
+            if (overlay && overlay.classList.contains('active')) {
+                toggleGridView(); 
+            }
+            
+            presentationActive = true;
+            document.body.classList.add('presentation-mode');
+            
+            // Request Fullscreen
+            const elem = document.documentElement;
+            if (elem.requestFullscreen) {
+                elem.requestFullscreen().catch(err => console.log('Fullscreen denied:', err));
+            } else if (elem.webkitRequestFullscreen) { /* Safari */
+                elem.webkitRequestFullscreen();
+            } else if (elem.msRequestFullscreen) { /* IE11 */
+                elem.msRequestFullscreen();
+            }
+            
+            // Set current slide
+            currentPresentationIndex = startIndex;
+            showPresentationSlide(currentPresentationIndex);
+            
+            // Add Listeners
+            document.addEventListener('keydown', handlePresentationKeys);
+            window.addEventListener('resize', resizePresentationSlide);
+            // [New]: Mouse Support (Wheel + Right Click)
+            document.addEventListener('contextmenu', handlePresentationContext);
+            window.addEventListener('wheel', handlePresentationWheel, { passive: false });
+        }
+        
+        function stopPresentation() {
+            presentationActive = false;
+            document.body.classList.remove('presentation-mode');
+            
+            // Exit Fullscreen
+            if (document.exitFullscreen) {
+                document.exitFullscreen().catch(err => console.log(err));
+            } else if (document.webkitExitFullscreen) { /* Safari */
+                document.webkitExitFullscreen();
+            }
+            
+            // Cleanup slides styles
+            const slides = document.querySelectorAll('.slide');
+            slides.forEach(s => {
+                s.classList.remove('present-active');
+                s.style.transform = ''; // Clear JS scaling
+            });
+            
+            // Remove Listeners
+            document.removeEventListener('keydown', handlePresentationKeys);
+            window.removeEventListener('resize', resizePresentationSlide);
+            document.removeEventListener('contextmenu', handlePresentationContext);
+            window.removeEventListener('wheel', handlePresentationWheel);
+            
+            // Go to the last viewed slide
+            if (slides[currentPresentationIndex]) {
+                slides[currentPresentationIndex].scrollIntoView({ behavior: 'auto' });
+            }
+        }
+        
+        function showPresentationSlide(index) {
+            const slides = document.querySelectorAll('.slide');
+            if (index < 0) index = 0;
+            if (index >= slides.length) index = slides.length - 1;
+            
+            currentPresentationIndex = index;
+            
+            // Hide all, show active
+            slides.forEach((s, i) => {
+                if (i === index) {
+                    s.classList.add('present-active');
+                    scaleSlideToFit(s);
+                } else {
+                    s.classList.remove('present-active');
+                }
+            });
+        }
+        
+        function scaleSlideToFit(slideElement) {
+            if (!slideElement) return;
+            
+            const winW = window.innerWidth;
+            const winH = window.innerHeight;
+            
+            // Slide defaults
+            const slideW = 1280;
+            const slideH = 720;
+            
+            // Calculate ratios
+            const scaleW = winW / slideW;
+            const scaleH = winH / slideH;
+            
+            // Choose the smaller scale to fit entirely
+            const scale = Math.min(scaleW, scaleH);
+            
+            // Apply Transform
+            // We use translate to center it (relative to fixed 50% top/left) and scale it.
+            slideElement.style.transform = `translate(-50%, -50%) scale(${scale})`;
+        }
+        
+        function resizePresentationSlide() {
+            if (!presentationActive) return;
+            const slides = document.querySelectorAll('.slide');
+            if (slides[currentPresentationIndex]) {
+                scaleSlideToFit(slides[currentPresentationIndex]);
+            }
+        }
+        
+        function handlePresentationKeys(e) {
+            if (!presentationActive) return;
+            
+            // Right Arrow or Space or PageDown or Down Arrow -> Next
+            if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown' || e.key === 'ArrowDown') {
+                e.preventDefault(); // Prevent scroll
+                showPresentationSlide(currentPresentationIndex + 1);
+            }
+            
+            // Left Arrow or PageUp or Up Arrow -> Prev
+            if (e.key === 'ArrowLeft' || e.key === 'PageUp' || e.key === 'ArrowUp') {
+                e.preventDefault(); // Prevent scroll
+                showPresentationSlide(currentPresentationIndex - 1);
+            }
+            
+            // Escape -> Exit
+            if (e.key === 'Escape') {
+                e.preventDefault();
+                stopPresentation();
+            }
+            
+            // Home -> First
+            if (e.key === 'Home') {
+                 e.preventDefault();
+                 showPresentationSlide(0);
+            }
+            
+            // End -> Last
+            if (e.key === 'End') {
+                 e.preventDefault();
+                 const slides = document.querySelectorAll('.slide');
+                 showPresentationSlide(slides.length - 1);
+            }
+        }
+        
+        // [New]: Mouse Wheel Navigation
+        let lastScrollTime = 0;
+        function handlePresentationWheel(e) {
+            if (!presentationActive) return;
+            e.preventDefault(); // Stop normal scroll
+            
+            const now = Date.now();
+            if (now - lastScrollTime < 300) return; // Throttle to avoid fast skipping
+            
+            if (e.deltaY > 0) {
+                // Scroll Down -> Next Slide
+                showPresentationSlide(currentPresentationIndex + 1);
+                lastScrollTime = now;
+            } else if (e.deltaY < 0) {
+                // Scroll Up -> Prev Slide
+                showPresentationSlide(currentPresentationIndex - 1);
+                lastScrollTime = now;
+            }
+        }
+        
+        // [New]: Right Click Navigation
+        function handlePresentationContext(e) {
+            if (!presentationActive) return;
+            e.preventDefault(); // Block context menu
+            // Right Click -> Next Slide
+            showPresentationSlide(currentPresentationIndex + 1);
+        }
+        
+        // Listen for Fullscreen Change (User might press ESC)
+        document.addEventListener('fullscreenchange', (e) => {
+            if (!document.fullscreenElement && presentationActive) {
+                stopPresentation();
+            }
+        });
     </script>
     
     <!-- سكريبت زر الفهرس -->
@@ -1741,6 +1938,184 @@
     
     <!-- مكتبة html2canvas للتصدير كصورة -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    
+    <!-- =====================================================
+         AI Assistant Chat (NotebookLM Style)
+         ===================================================== -->
+    <div class="ai-chat-widget">
+        <!-- Chat Button -->
+        <button class="ai-chat-btn" id="aiChatBtn" title="المساعد الذكي">
+            <i class="fas fa-wand-magic-sparkles"></i>
+        </button>
+
+        <!-- Chat Window -->
+        <div class="ai-chat-window" id="aiChatWindow">
+            <div class="ai-chat-header">
+                <div class="ai-chat-title">
+                    <i class="fas fa-robot"></i>
+                    <span>المحلل الذكي</span>
+                </div>
+                <button class="ai-chat-close" id="aiChatClose">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="ai-chat-body" id="aiChatBody">
+                <div class="ai-message ai-message-bot">
+                    <div class="ai-avatar"><i class="fas fa-robot"></i></div>
+                    <div class="ai-content">
+                        مرحباً بك! أنا مساعدك الذكي. قمت بقراءة جميع بيانات هذا التقرير وأنا جاهز للإجابة على أسئلتك. <br>
+                        <small style="color: #aaa; margin-top:5px; display:block;">جرب أن تسأل: "ما هي أبرز النتائج؟" أو "لخص لي التوصيات"</small>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="ai-chat-footer">
+                <div class="ai-input-wrapper">
+                    <textarea id="aiChatInput" placeholder="اسأل أي شيء حول البيانات..." rows="1"></textarea>
+                    <button id="aiChatSend">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+                <div class="ai-disclaimer">
+                   مدعوم بواسطة GPT-4o ويقرأ بيانات JSON الحية من المشروع
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const chatBtn = document.getElementById('aiChatBtn');
+            const chatWindow = document.getElementById('aiChatWindow');
+            const chatClose = document.getElementById('aiChatClose');
+            const chatInput = document.getElementById('aiChatInput');
+            const chatSend = document.getElementById('aiChatSend');
+            const chatBody = document.getElementById('aiChatBody');
+            
+            // Toggle Window
+            chatBtn.addEventListener('click', () => {
+                chatWindow.classList.toggle('active');
+                if(chatWindow.classList.contains('active')) {
+                    setTimeout(() => chatInput.focus(), 300);
+                }
+            });
+            
+            chatClose.addEventListener('click', () => {
+                chatWindow.classList.remove('active');
+            });
+            
+            // Auto-resize Textarea
+            chatInput.addEventListener('input', function() {
+                this.style.height = 'auto';
+                this.style.height = (this.scrollHeight) + 'px';
+                if(this.value.trim() !== '') {
+                    chatSend.removeAttribute('disabled');
+                    chatSend.style.opacity = '1';
+                } else {
+                    chatSend.style.opacity = '0.5';
+                }
+            });
+            
+            // Send Message
+            const sendMessage = async () => {
+                const query = chatInput.value.trim();
+                if(!query) return;
+                
+                // Add User Message
+                addMessage(query, 'user');
+                chatInput.value = '';
+                chatInput.style.height = 'auto';
+                
+                // Show Loading
+                const loadingId = addLoading();
+                
+                try {
+                    const response = await fetch('/api/ai-chat', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ query: query })
+                    });
+                    
+                    const data = await response.json();
+                    
+                    // Remove Loading
+                    removeMessage(loadingId);
+                    
+                    if (data.error) {
+                        addMessage('عذراً، حدث خطأ: ' + data.error, 'bot', true);
+                    } else {
+                        addMessage(data.response, 'bot');
+                    }
+                    
+                } catch (err) {
+                    removeMessage(loadingId);
+                    addMessage('خطأ في الاتصال بالخادم.', 'bot', true);
+                    console.error(err);
+                }
+            };
+            
+            chatSend.addEventListener('click', sendMessage);
+            
+            chatInput.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' && !e.shiftKey) {
+                    e.preventDefault();
+                    sendMessage();
+                }
+            });
+            
+            // Helper Functions
+            function addMessage(text, sender, isError = false) {
+                const msgDiv = document.createElement('div');
+                msgDiv.className = `ai-message ai-message-${sender} ${isError ? 'error' : ''}`;
+                
+                let avatarHTML = '';
+                if (sender === 'bot') {
+                    avatarHTML = '<div class="ai-avatar"><i class="fas fa-robot"></i></div>';
+                     // Parse Markdown simple bold
+                    text = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+                    text = text.replace(/\n/g, '<br>');
+                } else {
+                     avatarHTML = '<div class="ai-avatar"><i class="fas fa-user"></i></div>';
+                }
+                
+                msgDiv.innerHTML = `
+                    ${sender === 'bot' ? avatarHTML : ''}
+                    <div class="ai-content">${text}</div>
+                    ${sender === 'user' ? avatarHTML : ''}
+                `;
+                
+                chatBody.appendChild(msgDiv);
+                chatBody.scrollTop = chatBody.scrollHeight;
+                return msgDiv;
+            }
+            
+            function addLoading() {
+                const id = 'loading-' + Date.now();
+                const msgDiv = document.createElement('div');
+                msgDiv.className = 'ai-message ai-message-bot loading-msg';
+                msgDiv.id = id;
+                msgDiv.innerHTML = `
+                    <div class="ai-avatar"><i class="fas fa-robot"></i></div>
+                    <div class="ai-content">
+                        <div class="typing-indicator">
+                            <span></span><span></span><span></span>
+                        </div>
+                    </div>
+                `;
+                chatBody.appendChild(msgDiv);
+                chatBody.scrollTop = chatBody.scrollHeight;
+                return id;
+            }
+            
+            function removeMessage(id) {
+                const el = document.getElementById(id);
+                if(el) el.remove();
+            }
+        });
+    </script>
     
     {% block extra_js %}{% endblock %}
 </body>
