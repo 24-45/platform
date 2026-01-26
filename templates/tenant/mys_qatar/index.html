@@ -20,11 +20,13 @@
         <!-- شعار الوزارة (يسار) -->
         <img src="{{ url_for('static', filename='images/tenants/qatar_sports/ministry_logo.svg') }}" 
              alt="وزارة الرياضة والشباب" 
-             class="cover-logo cover-logo-ministry">
+             class="cover-logo cover-logo-ministry"
+             style="height: 105px; width: auto;">
         <!-- شعار رؤية قطر 2030 (يمين) -->
         <img src="{{ url_for('static', filename='images/tenants/qatar_sports/QNV2030-logo.png') }}" 
              alt="رؤية قطر 2030" 
-             class="cover-logo cover-logo-vision">
+             class="cover-logo cover-logo-vision"
+             style="filter: none; opacity: 1;">
     </div>
 
     <!-- ═══ المحتوى الرئيسي ═══ -->
@@ -3663,7 +3665,7 @@
     <div class="content-header">
         <h1 class="content-title">
             <i class="fas fa-users"></i>
-            أبرز المؤثرين في التغطية
+            أبرز الحسابات المؤثرة في التغطية
         </h1>
         <div class="content-header-line"></div>
     </div>
@@ -6739,7 +6741,7 @@
             </div>
             <div class="rec-problem">
                 <i class="fas fa-exclamation-triangle"></i>
-                <span>المشكلة: وكالة الأنباء القطرية في المرتبة #12 - فقط 20% تغطية من مصادر رسمية</span>
+                <span>المشكلة: وكالة الأنباء القطرية في المرتبة #12 (عالمياً) - فقط 20% تغطية من مصادر رسمية</span>
             </div>
             <ol class="rec-list-v2">
                 <li>رفع مستوى التنسيق مع وكالة الأنباء القطرية لتكون المصدر الأول</li>
@@ -6761,7 +6763,7 @@
             </div>
             <div class="rec-problem">
                 <i class="fas fa-exclamation-triangle"></i>
-                <span>المشكلة: غياب شبه كامل للمؤثرين وكتاب الرأي في التغطية</span>
+                <span>المشكلة: غياب شبه كامل للمؤثرين الأفراد وكتاب الرأي في التغطية</span>
             </div>
             <ol class="rec-list-v2">
                 <li>إنشاء برنامج سفراء رياضيين من المؤثرين المحليين والخليجيين</li>
@@ -6805,7 +6807,7 @@
             </div>
             <div class="rec-problem">
                 <i class="fas fa-exclamation-triangle"></i>
-                <span>المشكلة: 40% ربط سياسي + 35% انتقادات تنظيمية + 25% نتائج رياضية</span>
+                <span>المشكلة: 40% من السلبيات ربط سياسي + 35% انتقادات تنظيمية + 25% نتائج رياضية</span>
             </div>
             <ol class="rec-list-v2">
                 <li>فريق استجابة سريعة للتعامل مع الأزمات خلال 24 ساعة</li>
@@ -6855,7 +6857,7 @@
                     <div class="op-v2-card-icon"><i class="fas fa-broadcast-tower"></i></div>
                     <div class="op-v2-card-content">
                         <h4>تفعيل التنسيق مع وكالة الأنباء القطرية</h4>
-                        <p>رفع ترتيب QNA من المرتبة #12 إلى المصدر الأول للأخبار الرياضية</p>
+                        <p>رفع ترتيب QNA من المرتبة #12 (عالمياً) إلى المصدر الأول للأخبار الرياضية</p>
                         <div class="op-v2-meta">
                             <span class="op-v2-chip time"><i class="fas fa-clock"></i> أسبوعين</span>
                             <span class="op-v2-chip target"><i class="fas fa-bullseye"></i> هدف: المرتبة #1</span>
@@ -6866,7 +6868,7 @@
                     <div class="op-v2-card-icon"><i class="fas fa-shield-alt"></i></div>
                     <div class="op-v2-card-content">
                         <h4>فريق إدارة الأزمات الإعلامية</h4>
-                        <p>فريق استجابة سريعة للتعامل مع 40% ربط سياسي و35% انتقادات تنظيمية</p>
+                        <p>فريق استجابة سريعة للتعامل مع 40% من السلبيات (ربط سياسي) و35% انتقادات تنظيمية</p>
                         <div class="op-v2-meta">
                             <span class="op-v2-chip time"><i class="fas fa-clock"></i> شهر واحد</span>
                             <span class="op-v2-chip team"><i class="fas fa-user-friends"></i> 5 متخصصين</span>
@@ -6892,7 +6894,7 @@
                     <div class="op-v2-card-icon"><i class="fas fa-user-tie"></i></div>
                     <div class="op-v2-card-content">
                         <h4>برنامج المؤثرين وكتاب الرأي</h4>
-                        <p>سد فجوة غياب المؤثرين من التغطية - التعاقد مع 20+ مؤثر</p>
+                        <p>سد فجوة غياب المؤثرين الأفراد من التغطية - التعاقد مع 20+ مؤثر</p>
                         <div class="op-v2-meta">
                             <span class="op-v2-chip time"><i class="fas fa-clock"></i> شهرين</span>
                             <span class="op-v2-chip scope"><i class="fas fa-users"></i> 20+ مؤثر</span>
@@ -7307,12 +7309,10 @@
         <!-- Logos -->
         <div class="thank-logos">
             <div class="logo-item">
-                <img src="{{ url_for('static', filename='images/tenants/mys_qatar/mys-logo.png') }}" alt="شعار وزارة الرياضة والشباب" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                <div class="logo-placeholder" style="display:none;">🏟️<br>وزارة الرياضة والشباب</div>
+                <img src="{{ url_for('static', filename='images/tenants/mys_qatar/ministry_logo.svg') }}" alt="شعار وزارة الرياضة والشباب" style="height: 120px; width: auto; filter: brightness(0) invert(1);">
             </div>
             <div class="logo-item">
-                <img src="{{ url_for('static', filename='images/tenants/mys_qatar/qnv-2030.png') }}" alt="رؤية قطر 2030" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                <div class="logo-placeholder" style="display:none;">🇺🇳<br>رؤية قطر 2030</div>
+                <img src="{{ url_for('static', filename='images/tenants/qatar_sports/QNV2030-logo.png') }}" alt="رؤية قطر 2030" style="height: 120px; width: auto; filter: none;">
             </div>
         </div>
         
