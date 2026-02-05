@@ -1,0 +1,197 @@
+{
+  "template_name": "24-45-Platform Project Template",
+  "version": "1.0",
+  "last_updated": "2026-01-27",
+  
+  "ai_prompt": {
+    "description": "الأمر الكامل لإنشاء مشروع جديد",
+    "template": "أنشئ مشروع عرض تقديمي تفاعلي جديد لعميل {client_name} باسم {project_slug} بنفس نظام منصة 24°45° في مشروع qatar_sports",
+    "variables": {
+      "client_name": "اسم العميل بالعربي",
+      "project_slug": "اسم_المشروع_بالإنجليزية"
+    }
+  },
+
+  "file_structure": {
+    "templates": "templates/tenant/{project_slug}/",
+    "css": "static/css/tenants/{project_slug}/",
+    "images": "static/images/tenants/{project_slug}/",
+    "files": {
+      "base_html": "templates/tenant/{project_slug}/base.html",
+      "index_html": "templates/tenant/{project_slug}/index.html",
+      "client_css": "static/css/tenants/{project_slug}/client.css",
+      "slides_css": "static/css/tenants/{project_slug}/slides.css",
+      "logo": "static/images/tenants/{project_slug}/logo.svg",
+      "favicon": "static/images/tenants/{project_slug}/favicon.svg"
+    }
+  },
+
+  "slide_dimensions": {
+    "width": "33.87cm",
+    "height": "19.05cm",
+    "aspect_ratio": "16:9",
+    "safe_margins": {
+      "top": "15mm",
+      "right": "25mm",
+      "bottom": "18mm",
+      "left": "25mm"
+    }
+  },
+
+  "css_variables": {
+    "client_colors": {
+      "--client-primary": "#8B1538",
+      "--client-primary-dark": "#6A1029",
+      "--client-secondary": "#D4AF37",
+      "--client-secondary-light": "#E5C76B",
+      "--client-accent": "#ffffff",
+      "--client-text": "#ffffff",
+      "--client-text-dark": "#1A1A1A"
+    },
+    "background_colors": {
+      "--bg-primary": "#5D0E26",
+      "--bg-dark": "#3D0616",
+      "--accent-gold": "#C5A059",
+      "--text-white": "#FFFFFF"
+    },
+    "slide_dimensions": {
+      "--slide-w": "33.87cm",
+      "--slide-h": "19.05cm",
+      "--safe-margin-top": "15mm",
+      "--safe-margin-right": "25mm",
+      "--safe-margin-bottom": "18mm",
+      "--safe-margin-left": "25mm"
+    },
+    "platform_colors": {
+      "--platform-black": "#0a0a0a",
+      "--platform-black-light": "#111111",
+      "--platform-black-card": "#161616",
+      "--platform-white": "#ffffff",
+      "--platform-green": "#00d46a",
+      "--platform-gray": "#888888",
+      "--platform-font": "'Tajawal', 'Cairo', sans-serif",
+      "--slide-aspect-ratio": "16 / 9"
+    }
+  },
+
+  "interactive_elements": [
+    {
+      "id": "slide-nav-minimal",
+      "name": "شريط التنقل الجانبي",
+      "position": "left",
+      "description": "أزرار التنقل بين الشرائح مع عداد"
+    },
+    {
+      "id": "interactive-toolbar",
+      "name": "شريط الأدوات",
+      "position": "top-right",
+      "description": "أزرار الأدوات التفاعلية"
+    },
+    {
+      "id": "searchModal",
+      "name": "نافذة البحث",
+      "shortcut": "Ctrl+F",
+      "description": "البحث في محتوى الشرائح"
+    },
+    {
+      "id": "notesPanel",
+      "name": "لوحة الملاحظات",
+      "description": "إضافة ملاحظات على الشرائح"
+    },
+    {
+      "id": "bookmarksPanel",
+      "name": "لوحة الإشارات المرجعية",
+      "description": "حفظ شرائح مفضلة"
+    },
+    {
+      "id": "gridView",
+      "name": "عرض الشبكة",
+      "description": "عرض جميع الشرائح كصور مصغرة"
+    },
+    {
+      "id": "presentation-mode",
+      "name": "وضع العرض التقديمي",
+      "description": "عرض ملء الشاشة"
+    },
+    {
+      "id": "tocModal",
+      "name": "نافذة الفهرس",
+      "description": "قائمة بجميع الشرائح"
+    },
+    {
+      "id": "progressBar",
+      "name": "شريط التقدم",
+      "description": "نسبة التقدم في العرض"
+    }
+  ],
+
+  "slides_structure": [
+    {"type": "slide-cover", "name": "شريحة الغلاف", "order": 1},
+    {"type": "slide-intro", "name": "شريحة المقدمة", "order": 2},
+    {"type": "slide-toc", "name": "شريحة الفهرس", "order": 3},
+    {"type": "slide-content", "name": "شرائح المحتوى", "order": 4},
+    {"type": "slide-closing", "name": "شريحة الختام", "order": "last"}
+  ],
+
+  "source_files": {
+    "base_template": "templates/tenant/qatar_sports/base.html",
+    "index_template": "templates/tenant/qatar_sports/index.html",
+    "client_css": "static/css/tenants/qatar_sports/client.css",
+    "slides_css": "static/css/tenants/qatar_sports/slides.css",
+    "platform_css": "static/css/slides-platform.css"
+  },
+
+  "app_route_template": {
+    "code": "@app.route('/{project_slug}')\n@app.route('/{project_slug}/')\ndef {project_slug}_page():\n    tenant = get_tenant_by_slug('{project_slug}')\n    return render_template('tenant/{project_slug}/index.html', tenant=tenant)",
+    "file": "app.py"
+  },
+
+  "tenant_config_template": {
+    "id": "{project_slug}",
+    "slug": "{project_slug}",
+    "name": "{client_name_ar}",
+    "name_en": "{client_name_en}",
+    "description": "{project_description}",
+    "logo": "/static/images/tenants/{project_slug}/logo.svg",
+    "favicon": "/static/images/tenants/{project_slug}/favicon.svg",
+    "colors": {
+      "primary": "{color_primary}",
+      "secondary": "{color_secondary}",
+      "accent": "{color_accent}"
+    },
+    "active": true
+  },
+
+  "print_settings": {
+    "page_size": "33.87cm 19.05cm",
+    "margin": "0",
+    "color_adjust": "exact",
+    "hidden_elements": [
+      ".slide-nav-minimal",
+      ".interactive-toolbar",
+      ".platform-bar",
+      ".search-modal",
+      ".notes-panel",
+      ".bookmarks-panel",
+      ".toc-modal",
+      ".grid-view"
+    ]
+  },
+
+  "checklist": [
+    "إنشاء مجلد templates/tenant/{project_slug}/",
+    "إنشاء ملف base.html",
+    "إنشاء ملف index.html",
+    "إنشاء مجلد static/css/tenants/{project_slug}/",
+    "إنشاء ملف client.css",
+    "إنشاء ملف slides.css",
+    "إنشاء مجلد static/images/tenants/{project_slug}/",
+    "إضافة الشعار والأيقونة",
+    "تعديل الألوان في CSS",
+    "إضافة Route في app.py",
+    "إضافة Tenant في data/tenants.json",
+    "اختبار العرض في المتصفح",
+    "اختبار تصدير PDF",
+    "اختبار العناصر التفاعلية"
+  ]
+}

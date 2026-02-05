@@ -598,7 +598,8 @@ def ai_chat_endpoint():
 @app.route('/mys-qatar/export-pdf')
 def mys_qatar_export_pdf():
     """
-    تصدير PDF لوزارة الرياضة - إصلاح التنسيق الجذري
+    تصدير PDF لوزارة الرياضة - نسخة محسنة وسريعة
+    تحميل الصفحة مرة واحدة فقط ثم التقاط كل الشرائح
     """
     import asyncio
     from playwright.async_api import async_playwright
@@ -606,85 +607,87 @@ def mys_qatar_export_pdf():
     from datetime import datetime
     from io import BytesIO
     
-    # 1. إعدادات المتصفح: 1280x720 (مطابق لأبعاد CSS بالسنتيمتر)
+    # إعدادات المتصفح
     VIEWPORT_W = 1280
     VIEWPORT_H = 720
-    # 2. دقة عالية جداً (x3.125 => ~4000px width)
     SCALE_FACTOR = 3.125
     
     async def generate_pdf():
         async with async_playwright() as p:
             browser = await p.chromium.launch(
                 headless=True,
-                args=['--no-sandbox', '--disable-setuid-sandbox']
+                args=['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage']
             )
             
             base_url = request.host_url.rstrip('/')
             url = f"{base_url}/mys-qatar/"
             
-            # سياق أولي لجلب عدد الشرائح
-            context = await browser.new_context(viewport={'width': VIEWPORT_W, 'height': VIEWPORT_H})
+            # إنشاء سياق واحد فقط
+            context = await browser.new_context(
+                viewport={'width': VIEWPORT_W, 'height': VIEWPORT_H},
+                device_scale_factor=SCALE_FACTOR
+            )
             page = await context.new_page()
             
-            logger.info(f"Loading: {url}")
-            await page.goto(url, wait_until='networkidle', timeout=60000)
+            logger.info(f"🚀 Loading page: {url}")
+            await page.goto(url, wait_until='networkidle', timeout=120000)
             await page.wait_for_selector('.slide', timeout=30000)
             
+            # انتظار تحميل الصور
+            await page.wait_for_timeout(3000)
+            
+            # جلب معرفات الشرائح
             slide_ids = await page.evaluate('() => Array.from(document.querySelectorAll(".slide")).map(s => s.id)')
-            await context.close()
+            total_slides = len(slide_ids)
+            logger.info(f"📊 Found {total_slides} slides")
+            
+            # إعداد الصفحة للتصدير (مرة واحدة)
+            await page.evaluate('''
+                () => {
+                    // إزالة العناصر التفاعلية
+                    const selectors = [
+                        '.toc-container', '.slides-nav', '.fab-container', '.grid-overlay',
+                        '.slide-nav-minimal', '.slide-nav-dropdown', '.interactive-toolbar',
+                        '.platform-bar', '.notes-panel', '.bookmarks-panel',
+                        '.share-modal', '.progress-bar-container', '#interactiveToolbar',
+                        '.ai-chat-widget', '.map-zoom-controls', '.search-modal'
+                    ];
+                    selectors.forEach(s => document.querySelectorAll(s).forEach(e => e.remove()));
+                    
+                    // تعيين أنماط الجسم
+                    document.body.style.margin = '0';
+                    document.body.style.padding = '0';
+                    document.body.style.overflow = 'hidden';
+                    document.documentElement.style.margin = '0';
+                    document.documentElement.style.padding = '0';
+                    document.documentElement.style.overflow = 'hidden';
+                }
+            ''')
             
             screenshots = []
             
-            # معالجة كل شريحة
+            # التقاط كل شريحة
             for i, slide_id in enumerate(slide_ids):
-                # إنشاء سياق جديد "نظيف" لكل شريحة لضمان عدم تداخل الذاكرة
-                ctx = await browser.new_context(
-                    viewport={'width': VIEWPORT_W, 'height': VIEWPORT_H},
-                    device_scale_factor=SCALE_FACTOR
-                )
-                pg = await ctx.new_page()
+                logger.info(f"📸 Capturing slide {i+1}/{total_slides}: {slide_id}")
                 
-                await pg.goto(url, wait_until='networkidle', timeout=60000)
-                await pg.wait_for_timeout(2000) # انتظار استقرار الأنيميشن
-                
-                # إخفاء العناصر وتجهيز الشريحة
-                await pg.evaluate(f'''
-                    () => {{
-                        // 1. إزالة القوائم
-                        const selectors = [
-                            '.toc-container', '.slides-nav', '.fab-container', '.grid-overlay',
-                            '.slide-nav-minimal', '.slide-nav-dropdown', '.interactive-toolbar',
-                            '.platform-bar', '.notes-panel', '.bookmarks-panel',
-                            '.share-modal', '.progress-bar-container', '#interactiveToolbar'
-                        ];
-                        selectors.forEach(s => document.querySelectorAll(s).forEach(e => e.style.setProperty('display', 'none', 'important')));
-                        
-                        // 2. إخفاء كل الشرائح (Brutal Force)
+                # إظهار الشريحة المطلوبة فقط
+                await page.evaluate(f'''
+                    (slideId) => {{
+                        // إخفاء كل الشرائح
                         document.querySelectorAll('.slide').forEach(el => {{
-                           el.style.setProperty('display', 'none', 'important');
-                           el.style.setProperty('opacity', '0', 'important');
-                           el.style.setProperty('visibility', 'hidden', 'important');
-                           el.style.position = 'absolute'; // أبعده عن التدفق
-                           el.style.zIndex = '-1';
-                           el.classList.remove('active', 'current', 'export-active');
+                            el.style.setProperty('display', 'none', 'important');
+                            el.style.setProperty('opacity', '0', 'important');
+                            el.style.setProperty('visibility', 'hidden', 'important');
+                            el.style.position = 'absolute';
+                            el.style.zIndex = '-1';
                         }});
-
-                        // 3. منع الهوامش
-                        document.body.style.margin = '0';
-                        document.body.style.padding = '0';
-                        document.body.style.overflow = 'hidden';
-                        document.documentElement.style.margin = '0';
-                        document.documentElement.style.padding = '0';
-                        document.documentElement.style.overflow = 'hidden';
-
-                        // 4. إظهار الشريحة الهدف فقط وتثبيتها
-                        const target = document.getElementById('{slide_id}');
+                        
+                        // إظهار الشريحة الهدف
+                        const target = document.getElementById(slideId);
                         if (target) {{
                             target.style.setProperty('display', 'flex', 'important');
                             target.style.setProperty('opacity', '1', 'important');
                             target.style.setProperty('visibility', 'visible', 'important');
-                            
-                            target.classList.add('export-active');
                             target.style.position = 'fixed';
                             target.style.top = '0';
                             target.style.left = '0';
@@ -694,16 +697,19 @@ def mys_qatar_export_pdf():
                             target.style.zIndex = '9999';
                         }}
                     }}
-                ''')
+                ''', slide_id)
                 
-                await pg.wait_for_timeout(500)
+                # انتظار قصير للرندر
+                await page.wait_for_timeout(100)
                 
-                screenshot = await pg.screenshot(type='png')
+                # التقاط الصورة
+                screenshot = await page.screenshot(type='png')
                 screenshots.append(screenshot)
-                
-                await ctx.close()
             
+            await context.close()
             await browser.close()
+            
+            logger.info(f"🎨 Creating PDF from {len(screenshots)} screenshots...")
             
             # تجميع PDF
             from reportlab.lib.units import cm
@@ -734,9 +740,11 @@ def mys_qatar_export_pdf():
                     preserveAspectRatio=False
                 )
                 c.showPage()
-                
+            
             c.save()
             pdf_buffer.seek(0)
+            
+            logger.info(f"✅ PDF created successfully!")
             return pdf_buffer.getvalue()
 
     try:
