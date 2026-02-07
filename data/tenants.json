@@ -84,6 +84,24 @@
             "website": "/mys-qatar",
             "active": true,
             "featured": true
+        },
+        {
+            "id": "cda_dubai",
+            "name": "هيئة تنمية المجتمع",
+            "name_en": "Community Development Authority",
+            "slug": "cda_dubai",
+            "logo": "cda-logo.png",
+            "primary_color": "#00A79D",
+            "secondary_color": "#ffffff",
+            "accent_color": "#E31B23",
+            "type": "حكومي",
+            "type_en": "Government",
+            "country": "الإمارات",
+            "country_en": "UAE",
+            "description": "هيئة تنمية المجتمع - دبي",
+            "website": "/cda-dubai",
+            "active": true,
+            "featured": true
         }
     ]
 }

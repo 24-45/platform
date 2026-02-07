@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 80">
+  <defs>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#DAA520"/>
+      <stop offset="100%" style="stop-color:#B8860B"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Dubai Skyline silhouette -->
+  <g fill="#FFFFFF" opacity="0.9">
+    <!-- Burj Khalifa -->
+    <path d="M40 75 L40 25 L42 15 L44 25 L44 75 Z"/>
+    <!-- Building 1 -->
+    <rect x="50" y="45" width="8" height="30"/>
+    <!-- Building 2 -->
+    <rect x="62" y="35" width="10" height="40"/>
+    <!-- Building 3 -->
+    <rect x="76" y="50" width="8" height="25"/>
+    <!-- Sail building -->
+    <path d="M88 75 L88 40 Q95 35 102 40 L102 75 Z"/>
+  </g>
+  
+  <!-- Text -->
+  <text x="115" y="45" font-family="Tajawal, Arial" font-size="18" font-weight="700" fill="#FFFFFF" text-anchor="start">
+    حكومة دبي
+  </text>
+  <text x="115" y="65" font-family="Tajawal, Arial" font-size="12" font-weight="400" fill="url(#goldGrad)" text-anchor="start">
+    Government of Dubai
+  </text>
+</svg>

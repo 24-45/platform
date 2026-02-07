@@ -1,0 +1,605 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="profile" href="https://gmpg.org/xfn/11">
+	<link rel="icon" type="image/x-icon" href="https://www.dm.gov.ae/wp-content/themes/dubaimunicipality/assets/images/favicon.ico">
+	<meta name='robots' content='noindex, follow' />
+
+	<!-- This site is optimized with the Yoast SEO plugin v23.8 - https://yoast.com/wordpress/plugins/seo/ -->
+	<title>Page not found |  Dubai Municipality</title>
+	<meta property="og:locale" content="en_US" />
+	<meta property="og:title" content="Page not found |  Dubai Municipality" />
+	<meta property="og:site_name" content=" Dubai Municipality" />
+	<script type="application/ld+json" class="yoast-schema-graph">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://www.dm.gov.ae/#website","url":"https://www.dm.gov.ae/","name":" Dubai Municipality","description":"","potentialAction":[{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://www.dm.gov.ae/?s={search_term_string}"},"query-input":{"@type":"PropertyValueSpecification","valueRequired":true,"valueName":"search_term_string"}}],"inLanguage":"en-US"}]}</script>
+	<!-- / Yoast SEO plugin. -->
+
+
+<link rel='dns-prefetch' href='//www.dm.gov.ae' />
+<link rel="alternate" type="application/rss+xml" title=" Dubai Municipality &raquo; Feed" href="https://www.dm.gov.ae/feed/" />
+<link rel="alternate" type="application/rss+xml" title=" Dubai Municipality &raquo; Comments Feed" href="https://www.dm.gov.ae/comments/feed/" />
+<script>
+window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15.0.3\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15.0.3\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/www.dm.gov.ae\/wp-includes\/js\/wp-emoji-release.min.js"}};
+/*! This file is auto-generated */
+!function(i,n){var o,s,e;function c(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(o,JSON.stringify(t))}catch(e){}}function p(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data),r=(e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0),new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data));return t.every(function(e,t){return e===r[t]})}function u(e,t,n){switch(t){case"flag":return n(e,"\ud83c\udff3\ufe0f\u200d\u26a7\ufe0f","\ud83c\udff3\ufe0f\u200b\u26a7\ufe0f")?!1:!n(e,"\ud83c\uddfa\ud83c\uddf3","\ud83c\uddfa\u200b\ud83c\uddf3")&&!n(e,"\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f","\ud83c\udff4\u200b\udb40\udc67\u200b\udb40\udc62\u200b\udb40\udc65\u200b\udb40\udc6e\u200b\udb40\udc67\u200b\udb40\udc7f");case"emoji":return!n(e,"\ud83d\udc26\u200d\u2b1b","\ud83d\udc26\u200b\u2b1b")}return!1}function f(e,t,n){var r="undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):i.createElement("canvas"),a=r.getContext("2d",{willReadFrequently:!0}),o=(a.textBaseline="top",a.font="600 32px Arial",{});return e.forEach(function(e){o[e]=t(a,e,n)}),o}function t(e){var t=i.createElement("script");t.src=e,t.defer=!0,i.head.appendChild(t)}"undefined"!=typeof Promise&&(o="wpEmojiSettingsSupports",s=["flag","emoji"],n.supports={everything:!0,everythingExceptFlag:!0},e=new Promise(function(e){i.addEventListener("DOMContentLoaded",e,{once:!0})}),new Promise(function(t){var n=function(){try{var e=JSON.parse(sessionStorage.getItem(o));if("object"==typeof e&&"number"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&"object"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if("undefined"!=typeof Worker&&"undefined"!=typeof OffscreenCanvas&&"undefined"!=typeof URL&&URL.createObjectURL&&"undefined"!=typeof Blob)try{var e="postMessage("+f.toString()+"("+[JSON.stringify(s),u.toString(),p.toString()].join(",")+"));",r=new Blob([e],{type:"text/javascript"}),a=new Worker(URL.createObjectURL(r),{name:"wpTestEmojiSupports"});return void(a.onmessage=function(e){c(n=e.data),a.terminate(),t(n)})}catch(e){}c(n=f(s,u,p))}t(n)}).then(function(e){for(var t in e)n.supports[t]=e[t],n.supports.everything=n.supports.everything&&n.supports[t],"flag"!==t&&(n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&n.supports[t]);n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&!n.supports.flag,n.DOMReady=!1,n.readyCallback=function(){n.DOMReady=!0}}).then(function(){return e}).then(function(){var e;n.supports.everything||(n.readyCallback(),(e=n.source||{}).concatemoji?t(e.concatemoji):e.wpemoji&&e.twemoji&&(t(e.twemoji),t(e.wpemoji)))}))}((window,document),window._wpemojiSettings);
+</script>
+<style id='wp-emoji-styles-inline-css'>
+
+	img.wp-smiley, img.emoji {
+		display: inline !important;
+		border: none !important;
+		box-shadow: none !important;
+		height: 1em !important;
+		width: 1em !important;
+		margin: 0 0.07em !important;
+		vertical-align: -0.1em !important;
+		background: none !important;
+		padding: 0 !important;
+	}
+</style>
+<link rel='stylesheet' id='wp-block-library-css' href='https://www.dm.gov.ae/wp-includes/css/dist/block-library/style.min.css?ver=6.6.2' media='all' />
+<style id='classic-theme-styles-inline-css'>
+/*! This file is auto-generated */
+.wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}
+</style>
+<link rel='stylesheet' id='contact-form-7-css' href='https://www.dm.gov.ae/wp-content/plugins/contact-form-7/includes/css/styles.css?ver=5.4.2' media='all' />
+<link rel='stylesheet' id='wpcf7-redirect-script-frontend-css' href='https://www.dm.gov.ae/wp-content/plugins/wpcf7-redirect/build/css/wpcf7-redirect-frontend.min.css?ver=6.6.2' media='all' />
+<link rel='stylesheet' id='wpml-legacy-dropdown-0-css' href='https://www.dm.gov.ae/wp-content/plugins/sitepress-multilingual-cms/templates/language-switchers/legacy-dropdown/style.min.css?ver=1' media='all' />
+<link rel='stylesheet' id='dubaimunicipality-style-css' href='https://www.dm.gov.ae/wp-content/themes/dubaimunicipality/style.css?ver=1.0.0' media='all' />
+<link rel='stylesheet' id='cf7cf-style-css' href='https://www.dm.gov.ae/wp-content/plugins/cf7-conditional-fields/style.css?ver=2.0.4' media='all' />
+<script src="https://www.dm.gov.ae/wp-content/themes/dubaimunicipality/assets/scripts/jquery.min.js" id="jquery-js"></script>
+<script src="https://www.dm.gov.ae/wp-content/themes/dubaimunicipality/assets/scripts/jquery-migrate.min.js" id="jquery-migrate-js"></script>
+<script src="https://www.dm.gov.ae/wp-content/plugins/sitepress-multilingual-cms/templates/language-switchers/legacy-dropdown/script.min.js" id="wpml-legacy-dropdown-0-js"></script>
+<script id="dm_script-js-extra">
+var dm_script_ajax_object = {"url":"https:\/\/www.dm.gov.ae\/wp-admin\/admin-ajax.php","nonce":"ed2fbbf5f5"};
+</script>
+<script src="https://www.dm.gov.ae/wp-content/themes/dubaimunicipality/assets/scripts/script.js" id="dm_script-js"></script>
+<script></script><link rel="https://api.w.org/" href="https://www.dm.gov.ae/wp-json/" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://www.dm.gov.ae/xmlrpc.php?rsd" />
+<meta name="generator" content="WPML ver:4.6.13 stt:5,1;" />
+<meta name="generator" content="Powered by WPBakery Page Builder - drag and drop page builder for WordPress."/>
+<link rel="icon" href="https://www.dm.gov.ae/wp-content/uploads/2023/06/cropped-dm-favicon-2023-32x32.png" sizes="32x32" />
+<link rel="icon" href="https://www.dm.gov.ae/wp-content/uploads/2023/06/cropped-dm-favicon-2023-192x192.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://www.dm.gov.ae/wp-content/uploads/2023/06/cropped-dm-favicon-2023-180x180.png" />
+<meta name="msapplication-TileImage" content="https://www.dm.gov.ae/wp-content/uploads/2023/06/cropped-dm-favicon-2023-270x270.png" />
+<noscript><style> .wpb_animate_when_almost_visible { opacity: 1; }</style></noscript>	<!-- Styles -->
+    <!-- Font Awesome -->
+   <link rel="stylesheet" href="https://www.dm.gov.ae/wp-content/themes/dubaimunicipality/assets/styles/font-awesome.css"/>
+   <link rel="stylesheet" href="https://www.dm.gov.ae/wp-content/themes/dubaimunicipality/assets/scripts/autocomplete/jquery-ui.min.css"/>
+   <link rel="stylesheet" href="https://www.dm.gov.ae/wp-content/themes/dubaimunicipality/assets/scripts/addsearch/addsearch-search-ui.min.css"/>
+	<link rel="stylesheet" href="https://www.dm.gov.ae/wp-content/themes/dubaimunicipality/assets/styles/animate.min.css"/>
+   <!--<link rel="stylesheet" href="https://www.dm.gov.ae/wp-content/themes/dubaimunicipality/assets/styles/dda.css"/>-->
+   <link rel="stylesheet" href="https://www.dm.gov.ae/wp-content/themes/dubaimunicipality/assets/scripts/slick/slick.css"/>
+   <link rel="stylesheet" href="https://www.dm.gov.ae/wp-content/themes/dubaimunicipality/assets/scripts/slick/slick-theme.css"/>
+      <!-- Flickity Slider -->
+    <link rel="stylesheet" href="https://www.dm.gov.ae/wp-content/themes/dubaimunicipality/assets/styles/flickity.css"/>
+   <!-- <link rel='stylesheet' href="https://www.dm.gov.ae/wp-content/plugins/js_composer/assets/css/js_composer_tta.min.css"/> -->
+      <link rel="stylesheet" href="https://www.dm.gov.ae/wp-content/themes/dubaimunicipality/assets/styles/main.css"/>
+	<!--<link rel="stylesheet" href="https://www.dm.gov.ae/wp-content/themes/dubaimunicipality/assets/styles/common.css"/>
+   <link rel="stylesheet" href="https://www.dm.gov.ae/wp-content/themes/dubaimunicipality/assets/styles/searchcustom.css"/>-->
+
+   <!-- CSS for Inner Pages & Sections -->
+   <!--<link rel="stylesheet" href="https://www.dm.gov.ae/wp-content/themes/dubaimunicipality/assets/styles/page.css"/>-->
+    <!-- Google tag (gtag.js) -->
+    <script src="https://www.googletagmanager.com/gtag/js?id=G-7PW36K7923" crossorigin="anonymous"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-7PW36K7923');
+    </script>
+       <meta name="addsearch-custom-field" content="isContent=1"/>
+      </head>
+
+<body class="error404 hfeed wpb-js-composer js-comp-ver-7.9 vc_responsive">
+<div id="page" class="site">
+
+            <!-- ENGLISH HEADER START -->
+
+      <section class="dda-header-container">
+         <!-- Skip to Content -->
+         <a href="#iconMenu" class="skip-to-main">Press Enter to jump to Navigation menu</a>
+         <a href="#main" class="skip-to-main skiptocontent">Press Enter to jump to main content</a>
+         <!-- primary header -->
+         <header class="d-flex white dda-main-header" dir="ltr">
+            <div class="container d-flex align-center justify-space-between">
+               <a href="https://www.smartdubai.ae/" aria-label="Dubai Government Logo" class="dda-main-header__gov-logo"></a>
+               
+               <div class="d-flex align-center cursor-pointer position-relative" id="selectEntity">
+                  <a href="https://www.dm.gov.ae/" aria-label="Dubai Municipality">
+                     <!--<img src="https://www.dm.gov.ae/wp-content/themes/dubaimunicipality/assets/images/dmLogo.svg" class="dda-main-header__logo" alt="Dubai Municipality logo" />--><img src="https://www.dm.gov.ae/wp-content/themes/dubaimunicipality/assets/images/dmLogo.png" class="dda-main-header__logo" alt="Dubai Municipality logo" />
+                  </a>
+               </div>
+            </div>
+         </header>
+         <!-- secondary header (menu) -->
+         <header class="dda-sub-header d-flex align-center white" id="sub-header">
+            <div class="w-100">
+               <div class="container d-flex align-center justify-space-between">
+                  <div class="dda-sub-header__navbar d-flex align-center justify-center">
+                     <button class="dda-sub-header__navbar-toggle" aria-controls="side-nav" aria-expanded="false" aria-label="Toggle navigation" id="iconMenu">
+                        <i class="dda-icon-md icon-menu cursor-pointer"></i>
+                     </button>
+                     <!-- Sidebar & Mobile Nav Options -->
+                     <div class="dda-side-nav d-flex flex-column d-none" id="side-nav" tabindex="-1">
+                        <button id="sideNavCloseBtn" class="hide-md dda-side-nav__close-btn" title="Close Side Menu">
+                           <i class="icon-close"></i>
+                        </button>
+                        <div class="position-relative d-flex flex-column height-100 pa-8">
+                           <!-- Side Nav-->
+                           <div class="dda-side-nav__content pa-1">
+                           <h4 class="dda-side-nav__title mobile-onlyx">MAIN MENU</h4>
+                                <div class="sidenav mobile-onlyx">
+                                    <div class="mobile-menu-container"><a href="https://www.dm.gov.ae/" aria-label="Home">Home</a><button class="dropdown-btn level-0" aria-haspopup="true">
+                <span class="w-100 d-flex justify-space-between align-center">About Us<i class="icon-arrows-right"></i>
+                </span>
+            </button><div class="dropdown-container level-0"><button class="dropdown-btn level-1" aria-haspopup="true">
+                <span class="w-100 d-flex justify-space-between align-center">About Dubai Municipality<i class="icon-arrows-right"></i>
+                </span>
+            </button><div class="dropdown-container level-1"><a href="https://www.dm.gov.ae/about-dubai-municipality/responsibilities/" aria-label="Responsibilities">Responsibilities</a><a href="https://www.dm.gov.ae/about-dubai-municipality/mission-vision-values/" aria-label="Vision, Mission, and Values">Vision, Mission, and Values</a><a href="https://www.dm.gov.ae/about-dubai-municipality/impact-pillars/" aria-label="Impact Pillars">Impact Pillars</a><button class="dropdown-btn level-2" aria-haspopup="true">
+                <span class="w-100 d-flex justify-space-between align-center">Leadership<i class="icon-arrows-right"></i>
+                </span>
+            </button><div class="dropdown-container level-2"><a href="https://www.dm.gov.ae/about-dubai-municipality/director-general/" aria-label="Director General">Director General</a></div><a href="https://www.dm.gov.ae/about-dubai-municipality/organizational-chart/" aria-label="Organizational Structure">Organizational Structure</a><a href="https://www.dm.gov.ae/about-dubai-municipality/strategic-plan-of-dm/" aria-label="Strategic Plan">Strategic Plan</a><a href="https://www.dm.gov.ae/about-dubai-municipality/history-of-dubai-municipality/" aria-label="History of Dubai Municipality">History of Dubai Municipality</a></div><button class="dropdown-btn level-1" aria-haspopup="true">
+                <span class="w-100 d-flex justify-space-between align-center">Sustainability<i class="icon-arrows-right"></i>
+                </span>
+            </button><div class="dropdown-container level-1"><a href="https://www.dm.gov.ae/projects-and-programmes/" aria-label="Projects and Programmes">Projects and Programmes</a><a href="https://www.dm.gov.ae/race-to-zero/" aria-label="Race to Zero">Race to Zero</a><a href="https://www.dm.gov.ae/sustainability-framework/" aria-label="Sustainability Framework">Sustainability Framework</a><a href="https://www.dm.gov.ae/sustainability-reports/" aria-label="Sustainability Reports">Sustainability Reports</a><a href="https://www.dm.gov.ae/corporate-social-responsibility/" aria-label="Corporate Social Responsibility">Corporate Social Responsibility</a></div><button class="dropdown-btn level-1" aria-haspopup="true">
+                <span class="w-100 d-flex justify-space-between align-center">Award Certifications<i class="icon-arrows-right"></i>
+                </span>
+            </button><div class="dropdown-container level-1"><a href="https://www.dm.gov.ae/about-dubai-municipality/awards-and-certifications/pioneering-awards/" aria-label="Pioneering Awards">Pioneering Awards</a><a href="https://www.dm.gov.ae/about-dubai-municipality/awards-and-certifications/international-standards-certifications/" aria-label="International Standards Certifications">International Standards Certifications</a></div><a href="https://www.dm.gov.ae/people-of-determination/" aria-label="People of Determination">People of Determination</a><a href="https://www.dm.gov.ae/about-dubai-municipality/public-utility-services-2/" aria-label="Vital Urban Services">Vital Urban Services</a><button class="dropdown-btn level-1" aria-haspopup="true">
+                <span class="w-100 d-flex justify-space-between align-center">Governance and Policy<i class="icon-arrows-right"></i>
+                </span>
+            </button><div class="dropdown-container level-1"><a href="https://www.dm.gov.ae/about-dubai-municipality/governance-policy/" aria-label="Governance and Policy">Governance and Policy</a><button class="dropdown-btn level-2" aria-haspopup="true">
+                <span class="w-100 d-flex justify-space-between align-center">Governance<i class="icon-arrows-right"></i>
+                </span>
+            </button><div class="dropdown-container level-2"><a href="https://www.dm.gov.ae/governance-questionnaire/" aria-label="Governance Questionnaire">Governance Questionnaire</a><a href="https://www.dm.gov.ae/governance-report/" aria-label="Governance Report">Governance Report</a></div><a href="https://www.dm.gov.ae/policies/" aria-label="Policies">Policies</a></div><a href="https://www.dm.gov.ae/report-and-statistics/" aria-label="Report and Statistics">Report and Statistics</a></div><a href="https://hub.dm.gov.ae/link/service" aria-label="Services">Services</a><a href="/easy-payments/" aria-label="Easy Payment">Easy Payment</a><a href="https://www.dm.gov.ae/open-data2/" aria-label="Open Data">Open Data</a><button class="dropdown-btn level-0" aria-haspopup="true">
+                <span class="w-100 d-flex justify-space-between align-center">Contact Us<i class="icon-arrows-right"></i>
+                </span>
+            </button><div class="dropdown-container level-0"><a href="https://www.dm.gov.ae/contact/service-centers/" aria-label="Service Centers">Service Centers</a><a href="https://www.dm.gov.ae/contact/" aria-label="Help and Support">Help and Support</a><a href="https://www.dm.gov.ae/contact/discover-dubai-public-market/" aria-label="Discover Dubai">Discover Dubai</a></div></div>                              </div>
+
+                              <h4 class="dda-side-nav__title">More About Us</h4>
+                              <div class="sidenav">
+                                 <a href="/municipality-business/" aria-label="Legislation & Information">Legislation & Information</a>
+                                 <a href="/discover-dubai/" aria-label="Discover Dubai">Discover Dubai</a>
+                                 <a href="/media-center/spotlight/" aria-label="Media Center">Media Center</a>
+                                 <a href="/media-center/projects/" aria-label="Projects & Initiatives">Projects & Initiatives</a>
+                                 <a href="/dubai-municipality-academy/" aria-label="Dubai Municipality Academy">Dubai Municipality Academy</a>
+                              </div>
+
+                              <h4 class="dda-side-nav__title">Investment & Leasing</h4>
+                              <div class="sidenav">
+                                 <a href="https://investmentopportunities.dm.gov.ae/external/OpenOpportunity" target="_blank" rel="noopener noreferrer nofollow" aria-label="Investment Opportunities" title="Investment Opportunities - Opens in new tab/window">Investment Opportunities</a>
+                                 <a href="https://www.dm.gov.ae/leasing-properties-renewing-contracts/" aria-label="Leasing Properties & Renewing Contracts" title="Leasing Properties & Renewing Contracts - Opens in new tab/window">Leasing Properties & Renewing Contracts</a>
+                              </div>
+
+                              <h4 class="dda-side-nav__title">Applications & Platforms</h4>
+                              <div class="sidenav">
+                                 <a href="/dubai-municipality-app/" aria-label="Dubai Municipality App Mobile App">Dubai Municipality App <span class="sr-only">Mobile App</span></a>                                 
+                                 <a href="https://www.makani.ae/" target="_blank" rel="noopener noreferrer nofollow" aria-label="Makani" title="Makani - Opens in new tab/window">Makani</a>
+                              </div>
+                           </div>
+
+                           <!-- Sidebar footer options -->
+                           <div class="d-flex flex-column dda-side-nav__footer d-none w-100 align-center justify-center">
+                              <div class="dda-side-nav__quick-links d-flex w-100 pa-3">
+                                 <button class="dda-side-nav__quick-link-btn d-flex align-center justify-center bg dda-side-nav__access-btn accessibility-btn" aria-expanded="false" aria-haspopup="true" aria-label="Accessibility" title="Accessibility">
+                                 <i class="icon-accessibility dda-icon-md"></i>
+                                 </button>
+                                 <a aria-label="Click to go to Arabic page - عربي" title="Click to go to Arabic page" class="translate show-no-translate primary--text rounded-circle dda-sub-header__btn dda-sub-header__locale d-flex align-center justify-center bg" href="#">عربي</a><div class="no-translate-msg"><b>There is currently no translation available for this content. Please check again later</b><a href="/?lang=ar">Home</a></div>                                 <a href="https://hub.dm.gov.ae/openid/login?usertype=dm_external&locale=en&challenge=2f02" class="dda-side-nav__quick-link-btn d-flex align-center justify-center bg dda-side-nav__profile-btn" id="profileMobileBtn" aria-expanded="false" aria-haspopup="true" aria-label="Login - Click to open Profile"  title="Click to Login"><i class="icon-account dda-icon-md"></i>Login</a>
+                              </div>
+                              <img src="https://www.dm.gov.ae/wp-content/themes/dubaimunicipality/assets/images/dubai-gov.svg" class="dda-side-nav__footer-logo" alt="Government of Dubai Logo" />
+                           </div>
+                        </div>
+                     </div>
+
+                     <!-- Top Main Navigation -->
+                     <div class="menu">
+                        <div class="menu-main-menu-container"><ul id="primary-menu" class="menu"><li id="menu-item-5479" class="home_link_menu menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-5479"><a title="Home Page Icon" href="https://www.dm.gov.ae/">Home</a></li>
+<li id="menu-item-302268" class="about-menu menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-302268"><a href="https://www.dm.gov.ae/about-dubai-municipality/" class="mega-dropdown">About Us</a>
+<ul class="sub-menu">
+	<li id="menu-item-302269" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-302269"><a href="#" class="mega-dropdown">About Dubai Municipality</a>
+	<ul class="sub-menu">
+		<li id="menu-item-362284" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-362284"><a href="https://www.dm.gov.ae/about-dubai-municipality/responsibilities/">Responsibilities</a></li>
+		<li id="menu-item-302594" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-302594"><a href="https://www.dm.gov.ae/about-dubai-municipality/mission-vision-values/">Vision, Mission, and Values</a></li>
+		<li id="menu-item-362285" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-362285"><a href="https://www.dm.gov.ae/about-dubai-municipality/impact-pillars/">Impact Pillars</a></li>
+		<li id="menu-item-362371" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-362371"><a href="#" class="mega-dropdown">Leadership</a>
+		<ul class="sub-menu">
+			<li id="menu-item-362372" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-362372"><a href="https://www.dm.gov.ae/about-dubai-municipality/director-general/">Director General</a></li>
+		</ul>
+</li>
+		<li id="menu-item-302278" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-302278"><a href="https://www.dm.gov.ae/about-dubai-municipality/organizational-chart/">Organizational Structure</a></li>
+		<li id="menu-item-302595" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-302595"><a href="https://www.dm.gov.ae/about-dubai-municipality/strategic-plan-of-dm/">Strategic Plan</a></li>
+		<li id="menu-item-362288" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-362288"><a href="https://www.dm.gov.ae/about-dubai-municipality/history-of-dubai-municipality/">History of Dubai Municipality</a></li>
+	</ul>
+</li>
+	<li id="menu-item-362289" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-362289"><a href="#" class="mega-dropdown">Sustainability</a>
+	<ul class="sub-menu">
+		<li id="menu-item-362290" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-362290"><a href="https://www.dm.gov.ae/projects-and-programmes/">Projects and Programmes</a></li>
+		<li id="menu-item-362291" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-362291"><a href="https://www.dm.gov.ae/race-to-zero/">Race to Zero</a></li>
+		<li id="menu-item-362294" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-362294"><a href="https://www.dm.gov.ae/sustainability-framework/">Sustainability Framework</a></li>
+		<li id="menu-item-362292" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-362292"><a href="https://www.dm.gov.ae/sustainability-reports/">Sustainability Reports</a></li>
+		<li id="menu-item-362295" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-362295"><a href="https://www.dm.gov.ae/corporate-social-responsibility/">Corporate Social Responsibility</a></li>
+	</ul>
+</li>
+	<li id="menu-item-362296" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-362296"><a href="#" class="mega-dropdown">Award Certifications</a>
+	<ul class="sub-menu">
+		<li id="menu-item-362297" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-362297"><a href="https://www.dm.gov.ae/about-dubai-municipality/awards-and-certifications/pioneering-awards/">Pioneering Awards</a></li>
+		<li id="menu-item-362298" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-362298"><a href="https://www.dm.gov.ae/about-dubai-municipality/awards-and-certifications/international-standards-certifications/">International Standards Certifications</a></li>
+	</ul>
+</li>
+	<li id="menu-item-302277" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-302277"><a href="https://www.dm.gov.ae/people-of-determination/">People of Determination</a></li>
+	<li id="menu-item-302276" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-302276"><a href="https://www.dm.gov.ae/about-dubai-municipality/public-utility-services-2/">Vital Urban Services</a></li>
+	<li id="menu-item-362299" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-362299"><a href="#" class="mega-dropdown">Governance and Policy</a>
+	<ul class="sub-menu">
+		<li id="menu-item-362302" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-362302"><a href="https://www.dm.gov.ae/about-dubai-municipality/governance-policy/">Governance and Policy</a></li>
+		<li id="menu-item-362304" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-362304"><a href="#" class="mega-dropdown">Governance</a>
+		<ul class="sub-menu">
+			<li id="menu-item-362301" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-362301"><a href="https://www.dm.gov.ae/governance-questionnaire/">Governance Questionnaire</a></li>
+			<li id="menu-item-362300" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-362300"><a href="https://www.dm.gov.ae/governance-report/">Governance Report</a></li>
+		</ul>
+</li>
+		<li id="menu-item-362303" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-362303"><a href="https://www.dm.gov.ae/policies/">Policies</a></li>
+	</ul>
+</li>
+	<li id="menu-item-302272" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-302272"><a href="https://www.dm.gov.ae/report-and-statistics/">Report and Statistics</a></li>
+</ul>
+</li>
+<li id="menu-item-302295" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-302295"><a href="https://hub.dm.gov.ae/link/service">Services</a></li>
+<li id="menu-item-355" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-355"><a title="Easy Payment" href="/easy-payments/">Easy Payment</a></li>
+<li id="menu-item-5403" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5403"><a title="Open Data" href="https://www.dm.gov.ae/open-data2/">Open Data</a></li>
+<li id="menu-item-362305" class="about-menu menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-362305"><a href="#" class="mega-dropdown">Contact Us</a>
+<ul class="sub-menu">
+	<li id="menu-item-88839" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-88839"><a title="Contact Dubai Municipality" href="https://www.dm.gov.ae/contact/service-centers/">Service Centers</a></li>
+	<li id="menu-item-362306" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-362306"><a href="https://www.dm.gov.ae/contact/">Help and Support</a></li>
+	<li id="menu-item-362308" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-362308"><a href="https://www.dm.gov.ae/contact/discover-dubai-public-market/">Discover Dubai</a></li>
+</ul>
+</li>
+</ul></div>                     </div>
+                  </div>
+                  <div>
+                     <a href="https://www.dm.gov.ae/" title="Dubai Municipality Homepage" aria-label="Dubai Municipality Homepage"><img src="https://www.dm.gov.ae/wp-content/themes/dubaimunicipality/assets/images/dmLogo.png" class="dda-sub-header__logo" alt="Dubai Municipality logo for mobile" /></a>
+                  </div>
+                  <div class="dda-sub-header__actions">
+                  	<div id="searchcontainer-headermain" class="search">
+                    	<i class="dda-icon-md icon-search"></i>
+                        <!--<label for="subheaderSearch" class="visually-hidden">Search</label>-->
+                        <div id="searchcontainer-header"></div>
+                        <div id="scrollable-header">
+                           <div id="autocomplete-header"></div>
+                        </div>
+                    </div>
+                    <div class="position-relative">
+                     	<a aria-label="Click to go to Arabic page - عربي" title="Click to go to Arabic page" class="translate show-no-translate primary--text rounded-circle dda-sub-header__btn dda-sub-header__locale d-flex align-center justify-center bg" href="#">عربي</a><div class="no-translate-msg"><b>There is currently no translation available for this content. Please check again later</b><a href="/?lang=ar">Home</a></div>                     </div>
+                     <div class="position-relative">
+                        <button class="rounded-circle dda-sub-header__btn d-flex align-center justify-center bg accessibility-btn" aria-expanded="false" aria-haspopup="true" aria-label="Accessibility">
+                        <i class="icon-accessibility dda-icon-md"></i>
+                        </button>
+                     </div>
+                     <div class="position-relative">
+                        <a href="https://hub.dm.gov.ae/openid/login?usertype=dm_external&locale=en&challenge=2f02" class="rounded-circle dda-sub-header__btn d-flex align-center justify-center bg dda-sub-header__profile-btn" id="profileBtn" aria-expanded="false" aria-haspopup="true" aria-label="Click to Login" title="Click to Login"><i class="icon-account dda-icon-md"></i>Login</a>
+                     </div>
+                  </div>
+                  <div class="dda-sub-header__mobile-actions">
+                     <button class="dda-sub-header__mobile-action" id="mobileSearchBtn" title="Search">
+                        <i class="dda-icon-md icon-search"></i>
+                     </button>
+                     <div class="dda-side-nav mobile-search d-flex flex-column d-none" id="mobileSearchSection" tabindex="-1">
+						<div id="searchcontainer-headermobilemain" class="mobile-search__box">
+							<i class="dda-icon-md mobile-search__icon-search icon-search"></i>
+							<!--<label for="navSearch" class="visually-hidden">Search</label>-->
+							<div id="searchcontainer-headermobile"></div>
+							<div id="scrollable-headermobile">
+							   <div id="autocomplete-headermobile"></div>
+							</div>
+						</div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </header>
+	   </section>
+
+      <!-- ENGLISH HEADER START -->         
+      	<!-- HEADER START -->
+	
+	<!-- HEADER END --><div id="main" class="body-content">
+
+	<!-- Page Title Section start -->
+	<header class="page-header">
+		<div class="container">
+		   <span><span><a href="https://www.dm.gov.ae/">Home</a></span></span>           <h1>Page not found</h1>
+		</div>
+	</header>
+	<!-- Page Title Section end -->
+	<div class="dm_inner_pages_content relatedWrap">
+		<div class="container">
+			<h1 class="page-title">Oops! That page can&rsquo;t be found.</h1>
+			<p>It looks like nothing was found at this location. Maybe try one of the links below or a search?</p>
+		</div>
+	</div>
+</div>
+
+</div><!-- #page -->
+
+<!-- ARABIC FOOTER START -->
+<!-- ENGLISH FOOTER START -->
+	<!-- FOOTER START -->
+	<div id="main-footer">
+		<div class="d-flex container">
+			<div class="footer__section">
+				<p><strong>Quick Links</strong></p>
+				<ul>
+					<li><a href="/faq/" aria-label="FAQ">FAQ</a></li>
+					<li><a href="https://jobs.dubaicareers.ae/careersection/dubaicareers/jobsearch.ftl?lang=en" aria-label="Careers - Opens in new tab/window" title="Careers - Opens in new tab/window" target="_blank" rel="noopener noreferrer nofollow">Careers</a></li>
+					
+					<li><a href="/contact/service-centers/" aria-label="Contact Us">Contact Us</a></li>
+					<li><a href="/site-map/" aria-label="Sitemap">Sitemap</a></li>
+				</ul>
+			</div>
+			<div class="footer__section">
+				<p><strong>Website T&Cs</strong></p>
+				<ul>
+					<li><a href="/website-policies/accessibility-information/" aria-label="Accessibility">Accessibility</a></li>
+					<li><a href="/website-policies/terms-and-conditions/" aria-label="Terms & Conditions">Terms & Conditions</a></li>
+					<li><a href="/website-policies/security-privacy/" aria-label="Security & Privacy">Security & Privacy</a></li>
+					<li><a href="/website-policies/information-security-awareness-in-dubai-municipality/" aria-label="Information Security Awareness">Information Security Awareness</a></li>
+				</ul>
+			</div>
+			<div class="footer__section empty-col"></div>
+			<div class="footer__section">
+				<p><strong>Download Applications</strong></p>
+				<ul class="footer-icon-apps">
+					<li><a href="https://play.google.com/store/apps/details?id=ae.gov.dm.uma" aria-label="Android App - Opens in new tab/window" target="_blank" title="Download our Android App - Opens in new tab/window" rel="noopener noreferrer nofollow"><img src="https://www.dm.gov.ae/wp-content/themes/dubaimunicipality/assets/images/icon-android.svg" alt="Android App icon"></a></li>
+					<li><a href="https://apps.apple.com/ae/app/id1504636184" aria-label="iOS App - Opens in new tab/window" target="_blank" title="Download our iOS App - Opens in new tab/window" rel="noopener noreferrer nofollow"><img src="https://www.dm.gov.ae/wp-content/themes/dubaimunicipality/assets/images/icon-ios.svg" alt="iOS App icon"></a></li>
+				</ul>
+			</div>
+			<div class="footer__section">
+				<p><strong>Follow Us</strong></p>
+				<ul class="footer-icon-social-media">
+					<li><a href="https://www.facebook.com/DubaiMunicipality" aria-label="Facebook - Opens in new tab/window" title="Go to our Facebook page - Opens in new tab/window" target="_blank" rel="noopener noreferrer nofollow"><img src="https://www.dm.gov.ae/wp-content/themes/dubaimunicipality/assets/images/icon-facebook.svg" alt="Facebook"></a></li>
+					<li><a href="https://twitter.com/DMunicipality" aria-label="Twitter - Opens in new tab/window" title="Go to our Twitter - Opens in new tab/window" target="_blank" rel="noopener noreferrer nofollow"><img src="https://www.dm.gov.ae/wp-content/themes/dubaimunicipality/assets/images/icon-twitter.svg" alt="Twitter"></a></li>
+					<li><a href="https://www.youtube.com/user/DubaiMunicipalityUAE" aria-label="Youtube - Opens in new tab/window"  title="Go to our Youtube channel - Opens in new tab/window" target="_blank" rel="noopener noreferrer nofollow"><img src="https://www.dm.gov.ae/wp-content/themes/dubaimunicipality/assets/images/icon-youtube.svg" alt="Youtube"></a></li>
+					<li><a href="http://instagram.com/dubaimunicipality" aria-label="Instagram - Opens in new tab/window" target="_blank"  title="Go to our Instagram page - Opens in new tab/window" rel="noopener noreferrer nofollow"><img src="https://www.dm.gov.ae/wp-content/themes/dubaimunicipality/assets/images/icon-instagam.svg" alt="Instagram"></a></li>
+					<li><a href="https://ae.linkedin.com/company/dubai-municipality" aria-label="LinkedIn" target="_blank"  title="Go to our LinkedIn page" rel="noopener noreferrer nofollow"><img src="https://www.dm.gov.ae/wp-content/themes/dubaimunicipality/assets/images/icon-linkedin.svg" alt="LinkedIn"></a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="container">
+			<div class="copyright__section">
+            <p>
+			Copyright © 2026 Dubai Municipality, all rights reserved. This site is maintained by the Dubai Municipality.
+            <br>
+            The site is best viewed using Microsoft Edge, Mozilla Firefox, Safari and Chrome.
+            <br>
+            Page last modified:             <span id="dynamicDate">
+			04 February 2026			</span>
+            </p>
+            </div>
+         </div>
+	</div>
+	<!-- FOOTER END -->
+
+	<!-- STICKY BAR STARTa7f2f61a-bc06-ec11-b6e5-0022486fc780 -->
+	<div class="d-flex white dda-footer align-center" id="footer">
+		<div class="width-100 d-flex justify-space-between">
+		<!-- left side -->
+		<div class="d-flex dda-footer__section-links">
+			<a aria-label="Select Happiness meter" class="dda-footer__section dda-footer__section-btn dda-footer__section--bordered d-flex align-center justify-center dda-footer__section-link fancybox fancybox.iframe first-dda-footer__section-btn" href="https://portal.dm.gov.ae/HappinessMeterDMClient/HappinessProccessor?type=2&lang=en&appId=DMPortal&appUrl=http://dm.gov.ae&notes=DMPortalVote&themeColor=%2336454F" title="Happiness Meter - مؤشر السعادة">
+			<i class="primary--text icon-happiness dda-icon-md"></i>
+			</a>
+			<a aria-label="04 Unified Platform" class="dda-footer__section dda-footer__section-btn dda-footer__section--bordered d-flex align-center justify-center dda-footer__section-link fancybox-zerofour" href="https://04.gov.ae/case-generate?entity=567c740b-0572-ec11-8943-000d3a6c3da5&lang=en" title="The Unified interactive platform between Dubai Government and its Customers - المنصة التفاعلية الموحدة">
+				<img src="https://www.dm.gov.ae/wp-content/themes/dubaimunicipality/assets/images/04.svg" alt="The Unified interactive platform between Dubai Government and its Customers - Icon" class="icon-32" />
+			</a>
+			<a href="https://hub.dm.gov.ae/link/service" aria-label="Go to Services page" class="dda-footer__section-link dda-footer__section--bordered d-flex align-center dda-footer__icon-wrapper justify-center" style="padding-right: 10px;">
+				<i class="primary--text icon-apps dda-icon-md ms-3"></i>
+				<p class="primary--text ms-2 hide-lg dda-footer__section-link--md">Services</p>
+			</a>
+			<!--<a href="/scholarship-application-form-future-talents/" aria-label="Future Talents scholarship Program" class="dda-footer__section-link d-flex align-center dda-footer__icon-wrapper dda-footer__section--bordered justify-center" style="padding-right: 10px;">
+				<i class="primary--text icon-scholarship dda-icon-md ms-3"></i>
+				<p class="primary--text ms-2 hide-lg dda-footer__section-link--md">Future Talents scholarship Program</p>
+			</a>-->
+			<!--<a href="/scholarship-application/" aria-label="Scholarship" class="dda-footer__section-link d-flex align-center dda-footer__icon-wrapper dda-footer__section--bordered justify-center" style="padding-right: 10px;">
+				<i class="primary--text icon-scholarship dda-icon-md ms-3"></i>
+				<p class="primary--text ms-2 hide-lg dda-footer__section-link--md">Scholarship</p>
+			</a>
+            <a href="/pioneers-application-form/" aria-label="Pioneers" class="dda-footer__section-link d-flex align-center dda-footer__icon-wrapper dda-footer__section--bordered justify-center" style="padding-right: 10px;">
+				<i class="primary--text icon-scholarship dda-icon-md ms-3"></i>
+				<p class="primary--text ms-2 hide-lg dda-footer__section-link--md">Pioneers</p>
+			</a>-->
+		</div>
+		<!-- right side -->
+		<div class="d-flex dda-footer__section-links dda-footer__section-links--right">
+			<div class="hide-lg d-flex dda-footer__section--bordered dda-footer__icon-wrapper">
+				<a href="https://appointmentsystem.dm.gov.ae/category/create?language=en" aria-label="This service enables you to book an appointment with the service Consultant for new customers" title="This service enables you to book an appointment with the service Consultant for new customers" class="hide-lg dda-footer__section-link d-flex align-center justify-center dda-footer__icon-wrapper pe-3">
+					<i class="icon-calendarplus dda-icon-sm"></i>
+					<p class="ms-2">New Customer Consultant</p>
+				</a>
+			</div>
+			<div class="hide-lg d-flex dda-footer__section--bordered dda-footer__icon-wrapper">
+				<a href="/contact/service-centers/" aria-label="See our locations" class="hide-lg dda-footer__section-link d-flex align-center justify-center dda-footer__icon-wrapper pe-3">
+					<i class="icon-location dda-icon-sm"></i>
+					<p class="ms-2">Locations</p>
+				</a>
+			</div>
+			<div class="hide-lg d-flex dda-footer__section--bordered dda-footer__icon-wrapper">
+				<a href="/media-center/spotlight/" aria-label="Go to Media Center" class="dda-footer__section-link d-flex align-center justify-center pe-3">
+					<i class="icon-icons-stickybar-newspaper dda-icon-sm"></i>
+					<p class="ms-2">Media Center</p>
+				</a>
+			</div>
+			<div class="hide-lg d-flex dda-footer__section--bordered dda-footer__icon-wrapper">
+				<a href="/feedback/" aria-label="Get In Touch/ Contact Us/ Feedback" class="dda-footer__section-link d-flex align-center justify-center pe-3">
+					<i class="icon-mail dda-icon-xs"></i>
+					<p class="ms-2">Get In Touch</p>
+				</a>
+			</div>
+			<div class="d-flex dda-footer__section--bordered dda-footer__icon-wrapper">
+			<a class="ai-icon" href="https://chat.dubai.ae/?lang=en-US&mode=modal&source=DM" aria-label="AI" target="_blank" rel="noopener noreferrer nofollow">
+				<img src="https://www.dm.gov.ae/wp-content/themes/dubaimunicipality/assets/images/iconAI.svg" alt="AI Icon" class="icon-32" />
+				</a>
+			</div>
+			<div class="d-flex dda-footer__section--bordered dda-footer__icon-wrapper last-footer_section">
+				<a class="chat-popup__link open-icon" href="javascript:void(0);" aria-label="Chat with Fares"><i class="primary--text icon-chat dda-icon-md"></i>
+				</a>
+			</div>
+		</div>
+		</div>
+	</div>
+	<!-- STICKY BAR END -->
+<!-- ENGLISH FOOTER END -->
+
+<!-- Chat with Fares start -->
+<div id="chat-content" class="chat-content">
+	<div class="close-icon"></div>
+</div>
+<!-- Chat with Fares end -->
+
+<!-- Responsive CSS -->
+<link rel="stylesheet" href="https://www.dm.gov.ae/wp-content/themes/dubaimunicipality/assets/styles/responsive.css"/>
+
+<!-- Scripts -->
+<script defer id="flickity-bg-lazy-js" src="https://www.dm.gov.ae/wp-content/themes/dubaimunicipality/assets/scripts/flickity.js"></script>
+<script src="https://www.dm.gov.ae/wp-content/themes/dubaimunicipality/assets/scripts/fancy.js"></script>
+<script src="https://www.dm.gov.ae/wp-content/themes/dubaimunicipality/assets/scripts/dda.js"></script>
+<script src="https://www.dm.gov.ae/wp-includes/js/dist/vendor/wp-polyfill.min.js" id="wp-polyfill-js"></script>
+<script id="contact-form-7-js-extra">
+var wpcf7 = {"api":{"root":"https:\/\/www.dm.gov.ae\/wp-json\/","namespace":"contact-form-7\/v1"}};
+</script>
+<script src="https://www.dm.gov.ae/wp-content/plugins/contact-form-7/includes/js/index.js" id="contact-form-7-js"></script>
+<script src="https://www.dm.gov.ae/wp-content/plugins/cf7-repeatable-fields/assets/js/scripts.min.js" id="wpcf7-field-group-script-js"></script>
+<script id="wpcf7-redirect-script-js-extra">
+var wpcf7r = {"ajax_url":"https:\/\/www.dm.gov.ae\/wp-admin\/admin-ajax.php"};
+</script>
+<script src="https://www.dm.gov.ae/wp-content/plugins/wpcf7-redirect/build/js/wpcf7-redirect-frontend-script.js" id="wpcf7-redirect-script-js"></script>
+<script id="wpcf7cf-scripts-js-extra">
+var wpcf7cf_global_settings = {"ajaxurl":"https:\/\/www.dm.gov.ae\/wp-admin\/admin-ajax.php"};
+</script>
+<script src="https://www.dm.gov.ae/wp-content/plugins/cf7-conditional-fields/js/scripts.js" id="wpcf7cf-scripts-js"></script>
+<script></script><script src="https://www.dm.gov.ae/wp-content/themes/dubaimunicipality/assets/scripts/addsearch/addsearch-search-ui.min.js"></script>
+<script src="https://www.dm.gov.ae/wp-content/themes/dubaimunicipality/assets/scripts/autocomplete/jquery-ui.min.js"></script>
+<script src="https://www.dm.gov.ae/wp-content/themes/dubaimunicipality/assets/scripts/search.js"></script>
+<script src="https://www.dm.gov.ae/wp-content/themes/dubaimunicipality/assets/scripts/slick/slick.min.js"></script>
+<script src="https://www.dm.gov.ae/wp-content/themes/dubaimunicipality/assets/scripts/jquery-ui-accordion.min.js"></script>
+<!-- JS Composer -->
+<!-- <script src="https://www.dm.gov.ae/wp-content/plugins/js_composer/assets/js/dist/js_composer_front.min.js"></script>
+<script src="https://www.dm.gov.ae/wp-content/plugins/js_composer/assets/lib/vc_accordion/vc-accordion.min.js"></script> -->
+<!-- <script src="https://www.dm.gov.ae/wp-content/plugins/js_composer/assets/lib/vc-tta-autoplay/vc-tta-autoplay.min.js"></script> -->
+<!-- <script src="https://www.dm.gov.ae/wp-content/plugins/js_composer/assets/lib/vc_tabs/vc-tabs.min.js"></script>  -->
+
+<!-- Custom JS for the website -->
+<script src="https://www.dm.gov.ae/wp-content/themes/dubaimunicipality/assets/scripts/custom.js"></script>
+
+
+<!-- Maze 
+<script>
+(function (m, a, z, e) {
+  var s, t;
+  try {
+    t = m.sessionStorage.getItem('maze-us');
+  } catch (err) {}
+
+  if (!t) {
+    t = new Date().getTime();
+    try {
+      m.sessionStorage.setItem('maze-us', t);
+    } catch (err) {}
+  }
+
+  s = a.createElement('script');
+  s.src = z + '?apiKey=' + e;
+  s.async = true;
+  a.getElementsByTagName('head')[0].appendChild(s);
+  m.mazeUniversalSnippetApiKey = e;
+})(window, document, 'https://snippet.maze.co/maze-universal-loader.js', '0c80c473-16db-41d3-8234-5708b3080230');
+</script>-->
+
+<!-- Hotjar Tracking Code for Dubai Municipality - Production -->
+<script>
+    (function(h,o,t,j,a,r){
+        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+        h._hjSettings={hjid:5176283,hjsv:6};
+        a=o.getElementsByTagName('head')[0];
+        r=o.createElement('script');r.async=1;
+        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+        a.appendChild(r);
+    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+</script>
+
+<!-- EqualWeb Accessibility -->
+<link rel="dns-prefetch" href="//cdn.equalweb.com">
+<link rel="preconnect" href="https://cdn.equalweb.com" crossorigin>
+<link rel="dns-prefetch" href="//access.equalweb.com">
+<link rel="preconnect" href="https://access.equalweb.com" crossorigin>
+
+<script data-cfasync="false">
+(function () {
+  function initEqualWeb() {
+    var position = 'Right', lang = 'EN';
+
+    // Detect RTL safely (no hard dependency on jQuery)
+    try {
+      if (document.body && document.body.classList.contains('rtl')) {
+        lang = 'AR';
+        position = 'Left';
+      }
+    } catch (e) {}
+
+    window.interdeal = {
+      sitekey: '393257ec6430c9dedd8e6bf074ee6792', // change per domain if needed
+      Position: position,
+      Menulang: lang,
+      domains: { js: 'https://cdn.equalweb.com/', acc: 'https://access.equalweb.com/' },
+      btnStyle: {
+        vPosition: ['80%', null],
+        scale: ['0.8', null],
+        color: { main: '#3B3F54' },
+        icon: { type: 7, shape: 'semicircle' }
+      }
+    };
+
+    var s = document.createElement('script');
+    s.src = window.interdeal.domains.js + 'core/4.6.3/accessibility.js';
+    s.defer = true;
+    s.crossOrigin = 'anonymous';
+    s.setAttribute('data-cfasync', 'false'); // keep consistent
+    s.onerror = function () {
+      // If CDN is blocked/slow, at least you can detect it in console
+      console.warn('EqualWeb failed to load (blocked or network issue).');
+    };
+
+    (document.body || document.head).appendChild(s);
+  }
+
+  // Ensure DOM is ready so document.body exists
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initEqualWeb);
+  } else {
+    initEqualWeb();
+  }
+
+  // Make the custom button robust even if widget loads slowly
+  function openEqualWebMenu() {
+    var tries = 0;
+    var timer = setInterval(function () {
+      var btn = document.getElementById('INDmenu-btn');
+      if (btn) {
+        clearInterval(timer);
+        btn.click();
+      } else if (++tries > 30) { // ~3 seconds
+        clearInterval(timer);
+        console.warn('EqualWeb menu button not found yet.');
+      }
+    }, 100);
+  }
+
+  document.addEventListener('click', function (e) {
+    if (e.target.closest('.accessibility-btn')) {
+      openEqualWebMenu();
+    }
+  });
+})();
+</script>
+
+
+</body>
+</html>
