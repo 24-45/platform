@@ -13021,7 +13021,7 @@ button#aiChatSend:not(:disabled):hover {
    ═══════════════════════════════════════════════════════════════════════════════ */
 
 .slide::after {
-    content: "إعداد شركة TURJUMAN Consultancy - متخصصون في الاتصال الاستراتيجي وإدارة السمعة";
+    content: "إعداد شركة 𝗧𝗨𝗥𝗝𝗨𝗠𝗔𝗡 Consultancy - متخصصون في الاتصال الاستراتيجي وإدارة السمعة";
     position: absolute;
     bottom: 3mm;
     left: 50%;
@@ -13041,12 +13041,6 @@ button#aiChatSend:not(:disabled):hover {
 .slide-thank-you::after,
 .slide-final::after {
     display: none !important;
-}
-
-/* صفحة الغلاف - إظهار النص */
-.slide-cover::after {
-    bottom: 5mm !important;
-    color: rgba(255, 255, 255, 0.35);
 }
 
 /* Hide in Print/Presentation Mode */
