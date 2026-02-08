@@ -1,0 +1,1918 @@
+
+    <!DOCTYPE html>
+    <html lang="ar" dir="rtl">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>عرض فني - الخدمات الاتصالية - هيئة تنمية المجتمع</title>
+        <style>
+            
+    @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap');
+    
+    @page {
+        size: 1920px 1080px;
+        margin: 0;
+    }
+    
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    
+    body {
+        font-family: 'Tajawal', -apple-system, BlinkMacSystemFont, sans-serif;
+        direction: rtl;
+        background: #0a0a0a;
+        -webkit-font-smoothing: antialiased;
+    }
+    
+    .slide {
+        width: 1920px;
+        height: 1080px;
+        position: relative;
+        overflow: hidden;
+        page-break-after: always;
+        page-break-inside: avoid;
+        display: flex;
+        flex-direction: column;
+        padding: 60px 80px;
+    }
+    
+    /* ═══════════════════════════════════════════════════════════════
+       شريحة الغلاف
+       ═══════════════════════════════════════════════════════════════ */
+    .slide-cover {
+        background: linear-gradient(135deg, #004D47 0%, #003D38 100%);
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .slide-cover::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: 
+            repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(255,255,255,0.02) 35px, rgba(255,255,255,0.02) 70px),
+            repeating-linear-gradient(-45deg, transparent, transparent 35px, rgba(255,255,255,0.02) 35px, rgba(255,255,255,0.02) 70px);
+    }
+    
+    .cover-border {
+        position: absolute;
+        top: 40px;
+        left: 40px;
+        right: 40px;
+        bottom: 40px;
+        border: 2px solid rgba(184, 134, 11, 0.4);
+        border-radius: 12px;
+    }
+    
+    .cover-watermark {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 400px;
+        font-weight: 900;
+        color: #B8860B;
+        opacity: 0.05;
+        letter-spacing: 30px;
+    }
+    
+    .cover-logos {
+        position: absolute;
+        top: 80px;
+        left: 100px;
+        right: 100px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .cover-logo {
+        height: 80px;
+    }
+    
+    .cover-content {
+        position: relative;
+        z-index: 10;
+    }
+    
+    .cover-subtitle {
+        color: #B8860B;
+        font-size: 28px;
+        font-weight: 500;
+        letter-spacing: 8px;
+        margin-bottom: 30px;
+        text-transform: uppercase;
+    }
+    
+    .cover-title {
+        color: #FFFFFF;
+        font-size: 72px;
+        font-weight: 900;
+        margin-bottom: 15px;
+        line-height: 1.2;
+    }
+    
+    .cover-title-gold {
+        color: #B8860B;
+    }
+    
+    .cover-tagline {
+        color: rgba(255,255,255,0.8);
+        font-size: 32px;
+        margin-top: 40px;
+        font-weight: 400;
+    }
+    
+    .cover-date {
+        position: absolute;
+        bottom: 100px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(0,0,0,0.3);
+        padding: 15px 60px;
+        border-radius: 50px;
+        border: 1px solid rgba(184, 134, 11, 0.3);
+        color: #B8860B;
+        font-size: 20px;
+    }
+    
+    .cover-confidential {
+        position: absolute;
+        bottom: 60px;
+        right: 100px;
+        color: rgba(255,255,255,0.5);
+        font-size: 16px;
+    }
+    
+    /* ═══════════════════════════════════════════════════════════════
+       الشرائح القياسية
+       ═══════════════════════════════════════════════════════════════ */
+    .slide-standard {
+        background: linear-gradient(135deg, #004D47 0%, #003D38 100%);
+    }
+    
+    .slide-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 50px;
+        padding-bottom: 25px;
+        border-bottom: 2px solid rgba(255,255,255,0.1);
+    }
+    
+    .slide-header-content {
+        flex: 1;
+    }
+    
+    .slide-number {
+        width: 80px;
+        height: 80px;
+        background: #B8860B;
+        color: #004D47;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 32px;
+        font-weight: 700;
+    }
+    
+    .slide-title {
+        color: #FFFFFF;
+        font-size: 56px;
+        font-weight: 800;
+        margin-bottom: 10px;
+    }
+    
+    .slide-subtitle {
+        color: #B8860B;
+        font-size: 28px;
+        font-weight: 500;
+    }
+    
+    .slide-body {
+        flex: 1;
+        color: #FFFFFF;
+    }
+    
+    .slide-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 20px;
+        border-top: 1px solid rgba(255,255,255,0.1);
+        font-size: 16px;
+        color: rgba(255,255,255,0.5);
+        margin-top: auto;
+    }
+    
+    /* ═══════════════════════════════════════════════════════════════
+       جدول المحتويات
+       ═══════════════════════════════════════════════════════════════ */
+    .toc-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+        margin-top: 40px;
+    }
+    
+    .toc-card {
+        background: rgba(0,167,157,0.15);
+        border: 2px solid rgba(184,134,11,0.3);
+        border-radius: 20px;
+        padding: 40px;
+        text-align: center;
+        transition: transform 0.3s;
+    }
+    
+    .toc-card-num {
+        font-size: 56px;
+        font-weight: 900;
+        color: #B8860B;
+        margin-bottom: 15px;
+    }
+    
+    .toc-card-title {
+        font-size: 28px;
+        font-weight: 700;
+        color: #FFFFFF;
+        margin-bottom: 10px;
+    }
+    
+    .toc-card-desc {
+        font-size: 18px;
+        color: rgba(255,255,255,0.7);
+    }
+    
+    /* ═══════════════════════════════════════════════════════════════
+       البطاقات والشبكات
+       ═══════════════════════════════════════════════════════════════ */
+    .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 30px;
+        margin: 30px 0;
+    }
+    
+    .stat-card {
+        background: rgba(0,167,157,0.2);
+        border: 2px solid rgba(184,134,11,0.3);
+        border-radius: 20px;
+        padding: 40px;
+        text-align: center;
+    }
+    
+    .stat-value {
+        font-size: 64px;
+        font-weight: 900;
+        color: #B8860B;
+        margin-bottom: 10px;
+    }
+    
+    .stat-label {
+        font-size: 20px;
+        color: rgba(255,255,255,0.8);
+    }
+    
+    .cards-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 25px;
+    }
+    
+    .card {
+        background: rgba(0,0,0,0.3);
+        border: 1px solid rgba(184,134,11,0.2);
+        border-radius: 16px;
+        padding: 35px;
+    }
+    
+    .card-icon {
+        font-size: 56px;
+        margin-bottom: 15px;
+    }
+    
+    .card-title {
+        font-size: 26px;
+        font-weight: 700;
+        color: #FFFFFF;
+        margin-bottom: 12px;
+    }
+    
+    .card-text {
+        font-size: 18px;
+        color: rgba(255,255,255,0.7);
+        line-height: 1.7;
+    }
+    
+    /* ═══════════════════════════════════════════════════════════════
+       SWOT
+       ═══════════════════════════════════════════════════════════════ */
+    .swot-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+        margin-top: 25px;
+    }
+    
+    .swot-box {
+        background: rgba(0,0,0,0.3);
+        border-radius: 16px;
+        padding: 30px;
+    }
+    
+    .swot-box.strengths { border-right: 6px solid #28a745; }
+    .swot-box.weaknesses { border-right: 6px solid #dc3545; }
+    .swot-box.opportunities { border-right: 6px solid #ffc107; }
+    .swot-box.threats { border-right: 6px solid #6c757d; }
+    
+    .swot-title {
+        font-size: 24px;
+        font-weight: 700;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+    
+    .swot-list {
+        list-style: none;
+        font-size: 18px;
+        line-height: 2;
+    }
+    
+    .swot-list li {
+        padding-right: 20px;
+        position: relative;
+    }
+    
+    .swot-list li::before {
+        content: '•';
+        color: #B8860B;
+        position: absolute;
+        right: 0;
+    }
+    
+    /* ═══════════════════════════════════════════════════════════════
+       القوائم
+       ═══════════════════════════════════════════════════════════════ */
+    .list {
+        list-style: none;
+    }
+    
+    .list li {
+        padding: 12px 0;
+        padding-right: 35px;
+        position: relative;
+        font-size: 20px;
+        line-height: 1.6;
+    }
+    
+    .list li::before {
+        content: '✓';
+        position: absolute;
+        right: 0;
+        color: #B8860B;
+        font-weight: bold;
+    }
+    
+    /* ═══════════════════════════════════════════════════════════════
+       خارطة الطريق
+       ═══════════════════════════════════════════════════════════════ */
+    .timeline {
+        display: flex;
+        gap: 25px;
+        margin-top: 30px;
+    }
+    
+    .timeline-item {
+        flex: 1;
+        background: rgba(0,0,0,0.3);
+        border-radius: 16px;
+        padding: 30px;
+        border-top: 6px solid #B8860B;
+    }
+    
+    .timeline-quarter {
+        font-size: 22px;
+        font-weight: 700;
+        color: #B8860B;
+        margin-bottom: 10px;
+    }
+    
+    .timeline-focus {
+        font-size: 16px;
+        color: rgba(255,255,255,0.6);
+        margin-bottom: 15px;
+    }
+    
+    .timeline-list {
+        list-style: none;
+        font-size: 16px;
+        line-height: 2;
+    }
+    
+    /* ═══════════════════════════════════════════════════════════════
+       شريحة الشكر
+       ═══════════════════════════════════════════════════════════════ */
+    .slide-thanks {
+        background: linear-gradient(135deg, #004D47 0%, #00A79D 100%);
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .thanks-title {
+        font-size: 96px;
+        font-weight: 900;
+        color: #FFFFFF;
+        margin-bottom: 30px;
+    }
+    
+    .thanks-subtitle {
+        font-size: 40px;
+        color: #B8860B;
+        margin-bottom: 60px;
+    }
+    
+    .thanks-quote {
+        font-size: 28px;
+        color: rgba(255,255,255,0.8);
+        font-style: italic;
+        max-width: 1200px;
+        margin: 0 auto 60px;
+        padding: 30px;
+        border-right: 6px solid #B8860B;
+    }
+    
+    .contact-grid {
+        display: flex;
+        justify-content: center;
+        gap: 80px;
+        margin-top: 50px;
+    }
+    
+    .contact-item {
+        text-align: center;
+    }
+    
+    .contact-icon {
+        font-size: 40px;
+        color: #B8860B;
+        margin-bottom: 15px;
+    }
+    
+    .contact-text {
+        font-size: 22px;
+        color: #FFFFFF;
+    }
+    
+    /* ═══════════════════════════════════════════════════════════════
+       Two Columns Layout
+       ═══════════════════════════════════════════════════════════════ */
+    .two-columns {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 50px;
+    }
+    
+    .column-title {
+        font-size: 26px;
+        font-weight: 700;
+        color: #B8860B;
+        margin-bottom: 20px;
+        padding-bottom: 12px;
+        border-bottom: 3px solid rgba(184,134,11,0.3);
+    }
+    
+    /* ═══════════════════════════════════════════════════════════════
+       Problem Cards
+       ═══════════════════════════════════════════════════════════════ */
+    .problem-header {
+        background: rgba(220,53,69,0.15);
+        border: 2px solid rgba(220,53,69,0.3);
+        border-radius: 16px;
+        padding: 35px;
+        margin-bottom: 30px;
+    }
+    
+    .problem-statement {
+        font-size: 26px;
+        font-weight: 500;
+        color: #FFFFFF;
+        line-height: 1.6;
+    }
+    
+    .evidence-box {
+        background: rgba(0,0,0,0.3);
+        border-radius: 16px;
+        padding: 25px;
+        margin-top: 20px;
+    }
+    
+    .evidence-title {
+        font-size: 20px;
+        font-weight: 700;
+        color: #B8860B;
+        margin-bottom: 15px;
+    }
+    
+    /* ═══════════════════════════════════════════════════════════════
+       Package Cards
+       ═══════════════════════════════════════════════════════════════ */
+    .package-header {
+        background: rgba(0,167,157,0.2);
+        border: 2px solid #B8860B;
+        border-radius: 16px;
+        padding: 25px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 30px;
+    }
+    
+    .package-meta {
+        display: flex;
+        gap: 40px;
+    }
+    
+    .package-meta-item {
+        font-size: 18px;
+        color: rgba(255,255,255,0.8);
+    }
+    
+    .package-meta-item strong {
+        color: #B8860B;
+    }
+    
+    .deliverables-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+    
+    .deliverable-card {
+        background: rgba(0,0,0,0.3);
+        border-radius: 12px;
+        padding: 25px;
+    }
+    
+    .deliverable-title {
+        font-size: 22px;
+        font-weight: 700;
+        color: #FFFFFF;
+        margin-bottom: 8px;
+    }
+    
+    .deliverable-desc {
+        font-size: 16px;
+        color: rgba(255,255,255,0.7);
+        margin-bottom: 12px;
+    }
+    
+    .deliverable-output {
+        font-size: 14px;
+        color: #B8860B;
+        background: rgba(184,134,11,0.15);
+        padding: 8px 16px;
+        border-radius: 8px;
+        display: inline-block;
+    }
+    
+    /* Investment */
+    .investment-box {
+        background: #B8860B;
+        color: #004D47;
+        padding: 25px 40px;
+        border-radius: 12px;
+        text-align: center;
+        margin-top: 30px;
+    }
+    
+    .investment-label {
+        font-size: 18px;
+        font-weight: 500;
+    }
+    
+    .investment-value {
+        font-size: 36px;
+        font-weight: 900;
+    }
+    
+    /* ═══════════════════════════════════════════════════════════════
+       Section Dividers
+       ═══════════════════════════════════════════════════════════════ */
+    .slide-section {
+        background: linear-gradient(135deg, #004D47 0%, #00A79D 100%);
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .section-number {
+        font-size: 120px;
+        font-weight: 900;
+        color: #B8860B;
+        opacity: 0.3;
+        margin-bottom: 20px;
+    }
+    
+    .section-title {
+        font-size: 72px;
+        font-weight: 900;
+        color: #FFFFFF;
+        margin-bottom: 20px;
+    }
+    
+    .section-subtitle {
+        font-size: 32px;
+        color: rgba(255,255,255,0.7);
+    }
+    
+        </style>
+    </head>
+    <body>
+        
+    <div class="slide slide-cover">
+        <div class="cover-border"></div>
+        <div class="cover-watermark">CDA</div>
+        
+        <div class="cover-content">
+            <div class="cover-subtitle">عرض الخدمات الاتصالية الاستراتيجية</div>
+            <h1 class="cover-title">العرض الفني للخدمات الاتصالية</h1>
+            <h2 class="cover-title cover-title-gold">هيئة تنمية المجتمع - دبي</h2>
+            <p class="cover-tagline">نحو تواصل أكثر تأثيراً وشمولية</p>
+        </div>
+        
+        <div class="cover-date">📅 فبراير 2026</div>
+        <div class="cover-confidential">🔒 سري - للاستخدام الداخلي</div>
+    </div>
+    
+    <div class="slide slide-standard">
+        <div class="slide-header">
+            <div class="slide-header-content">
+                <h1 class="slide-title">جدول المحتويات</h1>
+            </div>
+            <div class="slide-number">02</div>
+        </div>
+        <div class="slide-body">
+            <div class="toc-grid">
+                
+        <div class="toc-card">
+            <div class="toc-card-num">01</div>
+            <div class="toc-card-title">المقدمة</div>
+            <div class="toc-card-desc">من نحن ومنهجيتنا</div>
+        </div>
+        
+        <div class="toc-card">
+            <div class="toc-card-num">02</div>
+            <div class="toc-card-title">فهم الهيئة</div>
+            <div class="toc-card-desc">الفئات والخدمات</div>
+        </div>
+        
+        <div class="toc-card">
+            <div class="toc-card-num">03</div>
+            <div class="toc-card-title">التحليل</div>
+            <div class="toc-card-desc">تشخيص الوضع الحالي</div>
+        </div>
+        
+        <div class="toc-card">
+            <div class="toc-card-num">04</div>
+            <div class="toc-card-title">المشاكل</div>
+            <div class="toc-card-desc">الفجوات الاتصالية</div>
+        </div>
+        
+        <div class="toc-card">
+            <div class="toc-card-num">05</div>
+            <div class="toc-card-title">الحلول</div>
+            <div class="toc-card-desc">الحزم المقترحة</div>
+        </div>
+        
+        <div class="toc-card">
+            <div class="toc-card-num">06</div>
+            <div class="toc-card-title">التنفيذ</div>
+            <div class="toc-card-desc">الخطة والاستثمار</div>
+        </div>
+        
+            </div>
+        </div>
+        <div class="slide-footer">
+            <span>هيئة تنمية المجتمع - دبي</span>
+            <span>24°45° للاستشارات الاتصالية</span>
+        </div>
+    </div>
+    
+    <div class="slide slide-standard">
+        <div class="slide-header">
+            <div class="slide-header-content">
+                <h1 class="slide-title">من نحن</h1>
+                <p class="slide-subtitle">24°45° للاستشارات الاتصالية</p>
+            </div>
+            <div class="slide-number">03</div>
+        </div>
+        <div class="slide-body">
+            <p style="font-size: 26px; margin-bottom: 35px; color: rgba(255,255,255,0.9);">شريككم الاستراتيجي في بناء جسور التواصل</p>
+            <div class="stats-grid">
+                
+        <div class="stat-card">
+            <div class="stat-value">15+</div>
+            <div class="stat-label">جهة حكومية خدمناها</div>
+        </div>
+        
+        <div class="stat-card">
+            <div class="stat-value">50+</div>
+            <div class="stat-label">حملة اتصالية ناجحة</div>
+        </div>
+        
+        <div class="stat-card">
+            <div class="stat-value">8</div>
+            <div class="stat-label">سنوات من الخبرة</div>
+        </div>
+        
+        <div class="stat-card">
+            <div class="stat-value">300%</div>
+            <div class="stat-label">متوسط نمو التفاعل</div>
+        </div>
+        
+            </div>
+            <div class="two-columns" style="margin-top: 30px;">
+                <div class="column">
+                    <div class="column-title">تخصصاتنا</div>
+                    <ul class="list"><li>الاتصال الحكومي</li><li>إدارة السمعة</li><li>المحتوى الرقمي</li><li>الاتصال الشامل</li></ul>
+                </div>
+                <div class="column">
+                    <div class="column-title">عملاؤنا</div>
+                    <ul class="list">
+                        <li>هيئات حكومية</li><li>وزارات اتحادية</li><li>مؤسسات خيرية</li><li>قطاع خاص</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="slide-footer">
+            <span>هيئة تنمية المجتمع - دبي</span>
+            <span>24°45° للاستشارات الاتصالية</span>
+        </div>
+    </div>
+    
+    <div class="slide slide-standard">
+        <div class="slide-header">
+            <div class="slide-header-content">
+                <h1 class="slide-title">منهجية العمل</h1>
+                <p class="slide-subtitle">كيف أعددنا هذا التحليل</p>
+            </div>
+            <div class="slide-number">04</div>
+        </div>
+        <div class="slide-body">
+            <div class="cards-grid">
+                
+        <div class="card">
+            <div class="card-title" style="color: #B8860B;">01. البحث المكتبي</div>
+            <ul class="list" style="font-size: 18px;"><li>مراجعة الموقع الإلكتروني</li><li>تحليل حسابات التواصل</li><li>دراسة التقارير السنوية</li><li>مقارنة معيارية</li></ul>
+        </div>
+        
+        <div class="card">
+            <div class="card-title" style="color: #B8860B;">02. التحليل الميداني</div>
+            <ul class="list" style="font-size: 18px;"><li>تجربة رحلة المتعامل</li><li>اختبار قنوات الاتصال</li><li>رصد المحتوى المنشور</li><li>تحليل التفاعل</li></ul>
+        </div>
+        
+        <div class="card">
+            <div class="card-title" style="color: #B8860B;">03. التشخيص</div>
+            <ul class="list" style="font-size: 18px;"><li>تحديد الفجوات</li><li>تحليل SWOT</li><li>ترتيب الأولويات</li><li>بناء التوصيات</li></ul>
+        </div>
+        
+            </div>
+        </div>
+        <div class="slide-footer">
+            <span>هيئة تنمية المجتمع - دبي</span>
+            <span>24°45° للاستشارات الاتصالية</span>
+        </div>
+    </div>
+    
+    <div class="slide slide-standard">
+        <div class="slide-header">
+            <div class="slide-header-content">
+                <h1 class="slide-title">هيئة تنمية المجتمع</h1>
+                <p class="slide-subtitle">نظرة عامة</p>
+            </div>
+            <div class="slide-number">05</div>
+        </div>
+        <div class="slide-body">
+            <div class="two-columns">
+                <div class="column">
+                    <div class="card" style="margin-bottom: 20px; padding: 30px;">
+                        <div class="card-title" style="color: #B8860B; font-size: 24px;">الرؤية</div>
+                        <div class="card-text" style="font-size: 24px; font-weight: 500;">"مجتمع متماسك ومستدام"</div>
+                    </div>
+                    <div class="card" style="padding: 30px;">
+                        <div class="card-title" style="color: #B8860B; font-size: 24px;">الرسالة</div>
+                        <div class="card-text" style="font-size: 18px;">"تمكين الأفراد والأسر لبناء مجتمع متماسك من خلال سياسات اجتماعية مبتكرة وخدمات نوعية"</div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="stats-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <div class="stat-card">
+                            <div class="stat-value">2008</div>
+                            <div class="stat-label">سنة التأسيس</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value">1,200+</div>
+                            <div class="stat-label">الموظفون</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value">12 مركز خدمة</div>
+                            <div class="stat-label">مراكز الخدمة</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value">200,000+</div>
+                            <div class="stat-label">المستفيدون سنوياً</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="margin-top: 30px;">
+                <div class="column-title">القيم المؤسسية</div>
+                <span style='background: rgba(184,134,11,0.2); padding: 12px 25px; border-radius: 30px; margin-left: 15px; font-size: 18px;'>الابتكار</span><span style='background: rgba(184,134,11,0.2); padding: 12px 25px; border-radius: 30px; margin-left: 15px; font-size: 18px;'>التمكين</span><span style='background: rgba(184,134,11,0.2); padding: 12px 25px; border-radius: 30px; margin-left: 15px; font-size: 18px;'>الشراكة</span><span style='background: rgba(184,134,11,0.2); padding: 12px 25px; border-radius: 30px; margin-left: 15px; font-size: 18px;'>الشفافية</span>
+            </div>
+        </div>
+        <div class="slide-footer">
+            <span>هيئة تنمية المجتمع - دبي</span>
+            <span>24°45° للاستشارات الاتصالية</span>
+        </div>
+    </div>
+    
+    <div class="slide slide-standard">
+        <div class="slide-header">
+            <div class="slide-header-content">
+                <h1 class="slide-title">الفئات المستهدفة</h1>
+                <p class="slide-subtitle">من نخدم؟</p>
+            </div>
+            <div class="slide-number">06</div>
+        </div>
+        <div class="slide-body">
+            <div class="cards-grid" style="grid-template-columns: repeat(3, 1fr);">
+                
+        <div class="card">
+            <div class="card-icon">♿</div>
+            <div class="card-title">أصحاب الهمم</div>
+            <div class="card-text">
+                <strong style="color: #B8860B;">50,000+</strong> مستفيد<br>
+                <span style="font-size: 16px;">بطاقة سند، المنافع، التأهيل</span>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-icon">👴</div>
+            <div class="card-title">كبار السن</div>
+            <div class="card-text">
+                <strong style="color: #B8860B;">30,000+</strong> مستفيد<br>
+                <span style="font-size: 16px;">بطاقة ذخر، الرعاية المنزلية</span>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-icon">👨‍👩‍👧‍👦</div>
+            <div class="card-title">الأسر</div>
+            <div class="card-text">
+                <strong style="color: #B8860B;">100,000+</strong> مستفيد<br>
+                <span style="font-size: 16px;">الإرشاد الأسري، حل النزاعات</span>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-icon">👶</div>
+            <div class="card-title">الأيتام والقصّر</div>
+            <div class="card-text">
+                <strong style="color: #B8860B;">5,000+</strong> مستفيد<br>
+                <span style="font-size: 16px;">الحضانة، الوصاية</span>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-icon">🤲</div>
+            <div class="card-title">المحتاجون</div>
+            <div class="card-text">
+                <strong style="color: #B8860B;">20,000+</strong> مستفيد<br>
+                <span style="font-size: 16px;">المساعدات الاجتماعية</span>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-icon">🙋</div>
+            <div class="card-title">المتطوعون</div>
+            <div class="card-text">
+                <strong style="color: #B8860B;">15,000+</strong> مستفيد<br>
+                <span style="font-size: 16px;">برامج التطوع</span>
+            </div>
+        </div>
+        
+            </div>
+        </div>
+        <div class="slide-footer">
+            <span>هيئة تنمية المجتمع - دبي</span>
+            <span>24°45° للاستشارات الاتصالية</span>
+        </div>
+    </div>
+    
+    <div class="slide slide-standard">
+        <div class="slide-header">
+            <div class="slide-header-content">
+                <h1 class="slide-title">الخدمات الرئيسية</h1>
+                <p class="slide-subtitle">محفظة الخدمات الاتصالية المطلوبة</p>
+            </div>
+            <div class="slide-number">07</div>
+        </div>
+        <div class="slide-body">
+            
+        </div>
+        <div class="slide-footer">
+            <span>هيئة تنمية المجتمع - دبي</span>
+            <span>24°45° للاستشارات الاتصالية</span>
+        </div>
+    </div>
+    
+    <div class="slide slide-standard">
+        <div class="slide-header">
+            <div class="slide-header-content">
+                <h1 class="slide-title">تحليل القنوات الرقمية</h1>
+                <p class="slide-subtitle">الموقع الإلكتروني والتطبيق</p>
+            </div>
+            <div class="slide-number">08</div>
+        </div>
+        <div class="slide-body">
+            
+        </div>
+        <div class="slide-footer">
+            <span>هيئة تنمية المجتمع - دبي</span>
+            <span>24°45° للاستشارات الاتصالية</span>
+        </div>
+    </div>
+    
+    <div class="slide slide-standard">
+        <div class="slide-header">
+            <div class="slide-header-content">
+                <h1 class="slide-title">تحليل وسائل التواصل الاجتماعي</h1>
+                <p class="slide-subtitle">الحضور الرقمي</p>
+            </div>
+            <div class="slide-number">09</div>
+        </div>
+        <div class="slide-body">
+            
+        </div>
+        <div class="slide-footer">
+            <span>هيئة تنمية المجتمع - دبي</span>
+            <span>24°45° للاستشارات الاتصالية</span>
+        </div>
+    </div>
+    
+    <div class="slide slide-standard">
+        <div class="slide-header">
+            <div class="slide-header-content">
+                <h1 class="slide-title">قنوات الاتصال المباشر</h1>
+                <p class="slide-subtitle">نقاط التماس مع المتعاملين</p>
+            </div>
+            <div class="slide-number">10</div>
+        </div>
+        <div class="slide-body">
+            
+        </div>
+        <div class="slide-footer">
+            <span>هيئة تنمية المجتمع - دبي</span>
+            <span>24°45° للاستشارات الاتصالية</span>
+        </div>
+    </div>
+    
+    <div class="slide slide-standard">
+        <div class="slide-header">
+            <div class="slide-header-content">
+                <h1 class="slide-title">تحليل SWOT الاتصالي</h1>
+                <p class="slide-subtitle">نقاط القوة والضعف والفرص والتهديدات</p>
+            </div>
+            <div class="slide-number">11</div>
+        </div>
+        <div class="slide-body">
+            <div class="swot-grid">
+                <div class="swot-box strengths">
+                    <div class="swot-title" style="color: #28a745;">💪 نقاط القوة</div>
+                    <ul class="swot-list"><li>علامة تجارية حكومية موثوقة</li><li>دعم حكومة دبي والموارد</li><li>خدمات متنوعة تلامس شرائح واسعة</li><li>بنية تحتية رقمية جيدة</li><li>شراكات قوية</li></ul>
+                </div>
+                <div class="swot-box weaknesses">
+                    <div class="swot-title" style="color: #dc3545;">⚠️ نقاط الضعف</div>
+                    <ul class="swot-list"><li>ضعف الهوية الاتصالية الموحدة</li><li>محتوى رسمي يفتقر للجاذبية</li><li>غياب استراتيجية محتوى</li><li>ضعف قياس الأثر</li><li>عدم استغلال البيانات</li></ul>
+                </div>
+                <div class="swot-box opportunities">
+                    <div class="swot-title" style="color: #ffc107;">🎯 الفرص</div>
+                    <ul class="swot-list"><li>توجه دبي نحو التحول الرقمي</li><li>اهتمام متزايد بالمسؤولية الاجتماعية</li><li>شراكات مع المؤثرين</li><li>منصات جديدة (TikTok, Podcasts)</li><li>أجندة دبي الاجتماعية 2033</li></ul>
+                </div>
+                <div class="swot-box threats">
+                    <div class="swot-title" style="color: #6c757d;">⚡ التهديدات</div>
+                    <ul class="swot-list"><li>منافسة من جهات خيرية خاصة</li><li>تغير سلوك الجمهور الرقمي</li><li>أزمات سمعة محتملة</li><li>ارتفاع توقعات الجمهور</li><li>تطور سريع في التقنيات</li></ul>
+                </div>
+            </div>
+        </div>
+        <div class="slide-footer">
+            <span>هيئة تنمية المجتمع - دبي</span>
+            <span>24°45° للاستشارات الاتصالية</span>
+        </div>
+    </div>
+    
+    <div class="slide slide-standard">
+        <div class="slide-header">
+            <div class="slide-header-content">
+                <h1 class="slide-title">رحلة المتعامل</h1>
+                <p class="slide-subtitle">مثال: طلب بطاقة سند</p>
+            </div>
+            <div class="slide-number">12</div>
+        </div>
+        <div class="slide-body">
+            
+        </div>
+        <div class="slide-footer">
+            <span>هيئة تنمية المجتمع - دبي</span>
+            <span>24°45° للاستشارات الاتصالية</span>
+        </div>
+    </div>
+    
+    <div class="slide slide-standard">
+        <div class="slide-header">
+            <div class="slide-header-content">
+                <h1 class="slide-title">ملخص الفجوات الاتصالية</h1>
+                <p class="slide-subtitle">5 فجوات رئيسية تحتاج معالجة</p>
+            </div>
+            <div class="slide-number">13</div>
+        </div>
+        <div class="slide-body">
+            
+        </div>
+        <div class="slide-footer">
+            <span>هيئة تنمية المجتمع - دبي</span>
+            <span>24°45° للاستشارات الاتصالية</span>
+        </div>
+    </div>
+    
+    <div class="slide slide-standard">
+        <div class="slide-header">
+            <div class="slide-header-content">
+                <h1 class="slide-title">المشكلة الأولى</h1>
+                <p class="slide-subtitle">ضعف الوعي بالخدمات</p>
+            </div>
+            <div class="slide-number">14</div>
+        </div>
+        <div class="slide-body">
+            <div class="problem-header">
+                <div class="problem-statement">نسبة كبيرة من المستحقين للخدمات لا يعلمون بوجودها أو كيفية الوصول إليها</div>
+            </div>
+            <div class="two-columns">
+                <div class="column">
+                    <div class="evidence-box">
+                        <div class="evidence-title">📊 الأدلة والشواهد</div>
+                        <ul class="list" style="font-size: 18px;"><li>40% فقط من الفئات المستهدفة يعرفون خدمات الهيئة</li><li>استفسارات متكررة عن خدمات أساسية في مركز الاتصال</li><li>اعتماد كبير على الإحالات الشخصية (الواسطة)</li></ul>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="evidence-box">
+                        <div class="evidence-title">🔍 الأسباب الجذرية</div>
+                        <ul class="list" style="font-size: 18px;"><li>غياب حملات توعوية مستمرة</li><li>محتوى رقمي ضعيف الانتشار</li><li>عدم استهداف الفئات بدقة</li></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slide-footer">
+            <span>هيئة تنمية المجتمع - دبي</span>
+            <span>24°45° للاستشارات الاتصالية</span>
+        </div>
+    </div>
+    
+    <div class="slide slide-standard">
+        <div class="slide-header">
+            <div class="slide-header-content">
+                <h1 class="slide-title">المشكلة الثانية</h1>
+                <p class="slide-subtitle">فجوة الاتصال مع أصحاب الهمم</p>
+            </div>
+            <div class="slide-number">15</div>
+        </div>
+        <div class="slide-body">
+            <div class="problem-header">
+                <div class="problem-statement">قنوات الاتصال الحالية لا تلبي معايير إمكانية الوصول الكاملة لذوي الإعاقة</div>
+            </div>
+            <div class="two-columns">
+                <div class="column">
+                    <div class="evidence-box">
+                        <div class="evidence-title">📊 الأدلة والشواهد</div>
+                        <ul class="list" style="font-size: 18px;"><li>الموقع يحقق 50% فقط من معايير WCAG 2.1</li><li>غياب لغة الإشارة في جميع الفيديوهات</li><li>نماذج إلكترونية غير متوافقة مع قارئات الشاشة</li><li>غياب نسخ Easy Read للمحتوى</li></ul>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="evidence-box">
+                        <div class="evidence-title">🔍 الأسباب الجذرية</div>
+                        <ul class="list" style="font-size: 18px;"><li>تحليل معمق مطلوب</li></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slide-footer">
+            <span>هيئة تنمية المجتمع - دبي</span>
+            <span>24°45° للاستشارات الاتصالية</span>
+        </div>
+    </div>
+    
+    <div class="slide slide-standard">
+        <div class="slide-header">
+            <div class="slide-header-content">
+                <h1 class="slide-title">المشكلة الثالثة</h1>
+                <p class="slide-subtitle">ضعف التواصل متعدد الثقافات</p>
+            </div>
+            <div class="slide-number">16</div>
+        </div>
+        <div class="slide-body">
+            <div class="problem-header">
+                <div class="problem-statement">دبي تضم أكثر من 200 جنسية، لكن التواصل يركز على الناطقين بالعربية</div>
+            </div>
+            <div class="two-columns">
+                <div class="column">
+                    <div class="evidence-box">
+                        <div class="evidence-title">📊 الأدلة والشواهد</div>
+                        <ul class="list" style="font-size: 18px;"></ul>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="evidence-box">
+                        <div class="evidence-title">🔍 الأسباب الجذرية</div>
+                        <ul class="list" style="font-size: 18px;"><li>تحليل معمق مطلوب</li></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slide-footer">
+            <span>هيئة تنمية المجتمع - دبي</span>
+            <span>24°45° للاستشارات الاتصالية</span>
+        </div>
+    </div>
+    
+    <div class="slide slide-standard">
+        <div class="slide-header">
+            <div class="slide-header-content">
+                <h1 class="slide-title">المشكلة الرابعة</h1>
+                <p class="slide-subtitle">غياب إدارة السمعة الاستباقية</p>
+            </div>
+            <div class="slide-number">17</div>
+        </div>
+        <div class="slide-body">
+            <div class="problem-header">
+                <div class="problem-statement">لا توجد آلية منهجية لرصد وإدارة السمعة الرقمية والتعامل مع الأزمات</div>
+            </div>
+            <div class="two-columns">
+                <div class="column">
+                    <div class="evidence-box">
+                        <div class="evidence-title">📊 الأدلة والشواهد</div>
+                        <ul class="list" style="font-size: 18px;"></ul>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="evidence-box">
+                        <div class="evidence-title">🔍 الأسباب الجذرية</div>
+                        <ul class="list" style="font-size: 18px;"><li>تحليل معمق مطلوب</li></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slide-footer">
+            <span>هيئة تنمية المجتمع - دبي</span>
+            <span>24°45° للاستشارات الاتصالية</span>
+        </div>
+    </div>
+    
+    <div class="slide slide-standard">
+        <div class="slide-header">
+            <div class="slide-header-content">
+                <h1 class="slide-title">المشكلة الخامسة</h1>
+                <p class="slide-subtitle">ضعف الاتصال الداخلي</p>
+            </div>
+            <div class="slide-number">18</div>
+        </div>
+        <div class="slide-body">
+            <div class="problem-header">
+                <div class="problem-statement">تحديات في التنسيق والتواصل بين الإدارات والفروع تؤثر على تجربة المتعامل</div>
+            </div>
+            <div class="two-columns">
+                <div class="column">
+                    <div class="evidence-box">
+                        <div class="evidence-title">📊 الأدلة والشواهد</div>
+                        <ul class="list" style="font-size: 18px;"></ul>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="evidence-box">
+                        <div class="evidence-title">🔍 الأسباب الجذرية</div>
+                        <ul class="list" style="font-size: 18px;"><li>غياب منصة اتصال داخلي موحدة</li><li>عدم وجود آلية تحديث مركزية</li><li>ضعف برامج تدريب الموظفين</li><li>لا يوجد برنامج سفراء داخليين</li></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slide-footer">
+            <span>هيئة تنمية المجتمع - دبي</span>
+            <span>24°45° للاستشارات الاتصالية</span>
+        </div>
+    </div>
+    
+    <div class="slide slide-standard">
+        <div class="slide-header">
+            <div class="slide-header-content">
+                <h1 class="slide-title">الحلول المقترحة</h1>
+                <p class="slide-subtitle">6 حزم متكاملة لسد الفجوات</p>
+            </div>
+            <div class="slide-number">19</div>
+        </div>
+        <div class="slide-body">
+            <div class="cards-grid" style="grid-template-columns: repeat(3, 1fr);">
+            <div class="card">
+                <div class="card-icon">🎯</div>
+                <div class="card-title">الاستراتيجية المتكاملة</div>
+                <div class="card-text">
+                    <span style="background: rgba(220,53,69,0.2); color: #ff6b6b; padding: 5px 15px; border-radius: 20px; font-size: 14px;">أساسي</span>
+                    <br><small style="color: rgba(255,255,255,0.6);">Q1-Q2</small>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-icon">📱</div>
+                <div class="card-title">المحتوى والسوشيال</div>
+                <div class="card-text">
+                    <span style="background: rgba(220,53,69,0.2); color: #ff6b6b; padding: 5px 15px; border-radius: 20px; font-size: 14px;">أساسي</span>
+                    <br><small style="color: rgba(255,255,255,0.6);">مستمر</small>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-icon">♿</div>
+                <div class="card-title">الاتصال الشامل</div>
+                <div class="card-text">
+                    <span style="background: rgba(220,53,69,0.2); color: #ff6b6b; padding: 5px 15px; border-radius: 20px; font-size: 14px;">حرج</span>
+                    <br><small style="color: rgba(255,255,255,0.6);">Q1-Q3</small>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-icon">🛡️</div>
+                <div class="card-title">إدارة السمعة</div>
+                <div class="card-text">
+                    <span style="background: rgba(255,193,7,0.2); color: #ffc107; padding: 5px 15px; border-radius: 20px; font-size: 14px;">عالي</span>
+                    <br><small style="color: rgba(255,255,255,0.6);">Q2+</small>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-icon">💻</div>
+                <div class="card-title">التحول الرقمي</div>
+                <div class="card-text">
+                    <span style="background: rgba(255,193,7,0.2); color: #ffc107; padding: 5px 15px; border-radius: 20px; font-size: 14px;">متوسط</span>
+                    <br><small style="color: rgba(255,255,255,0.6);">Q3-Q4</small>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-icon">👥</div>
+                <div class="card-title">الاتصال الداخلي</div>
+                <div class="card-text">
+                    <span style="background: rgba(255,193,7,0.2); color: #ffc107; padding: 5px 15px; border-radius: 20px; font-size: 14px;">متوسط</span>
+                    <br><small style="color: rgba(255,255,255,0.6);">Q2-Q4</small>
+                </div>
+            </div>
+            </div>
+        </div>
+        <div class="slide-footer">
+            <span>هيئة تنمية المجتمع - دبي</span>
+            <span>24°45° للاستشارات الاتصالية</span>
+        </div>
+    </div>
+    
+    <div class="slide slide-standard">
+        <div class="slide-header">
+            <div class="slide-header-content">
+                <h1 class="slide-title">الحزمة الأولى</h1>
+                <p class="slide-subtitle">استراتيجية الاتصال المتكاملة</p>
+            </div>
+            <div class="slide-number">20</div>
+        </div>
+        <div class="slide-body">
+            <div class="package-header">
+                <div style="font-size: 22px; color: white;">بناء أساس استراتيجي متين للعمل الاتصالي</div>
+                <div class="package-meta">
+                    <div class="package-meta-item"><strong>المدة:</strong> 3-6 أشهر</div>
+                </div>
+            </div>
+            <div class="deliverables-grid">
+                
+        <div class="deliverable-card">
+            <div class="deliverable-title">تدقيق اتصالي شامل</div>
+            <div class="deliverable-desc">تحليل معمق لجميع القنوات والرسائل</div>
+            <div class="deliverable-output">📦 تقرير 100+ صفحة</div>
+        </div>
+        
+        <div class="deliverable-card">
+            <div class="deliverable-title">استراتيجية اتصال 3 سنوات</div>
+            <div class="deliverable-desc">خطة شاملة بأهداف ومؤشرات</div>
+            <div class="deliverable-output">📦 وثيقة استراتيجية</div>
+        </div>
+        
+        <div class="deliverable-card">
+            <div class="deliverable-title">خرائط رحلة المتعامل</div>
+            <div class="deliverable-desc">لكل فئة مستهدفة</div>
+            <div class="deliverable-output">📦 7 خرائط تفصيلية</div>
+        </div>
+        
+        <div class="deliverable-card">
+            <div class="deliverable-title">دليل الهوية الاتصالية</div>
+            <div class="deliverable-desc">توحيد الصوت والرسائل</div>
+            <div class="deliverable-output">📦 Brand Voice Guide</div>
+        </div>
+        
+            </div>
+            <div class="investment-box">
+                <div class="investment-label">الاستثمار المقدر</div>
+                <div class="investment-value">150,000 - 200,000 درهم</div>
+            </div>
+        </div>
+        <div class="slide-footer">
+            <span>هيئة تنمية المجتمع - دبي</span>
+            <span>24°45° للاستشارات الاتصالية</span>
+        </div>
+    </div>
+    
+    <div class="slide slide-standard">
+        <div class="slide-header">
+            <div class="slide-header-content">
+                <h1 class="slide-title">الحزمة الثانية</h1>
+                <p class="slide-subtitle">إدارة المحتوى والتواصل الاجتماعي</p>
+            </div>
+            <div class="slide-number">21</div>
+        </div>
+        <div class="slide-body">
+            <div class="package-header">
+                <div style="font-size: 22px; color: white;">بناء حضور رقمي مؤثر وجاذب</div>
+                <div class="package-meta">
+                    <div class="package-meta-item"><strong>المدة:</strong> مستمرة</div>
+                </div>
+            </div>
+            <div class="deliverables-grid">
+                
+        <div class="deliverable-card">
+            <div class="deliverable-title">استراتيجية محتوى</div>
+            <div class="deliverable-desc">تقويم سنوي + أعمدة محتوى + نبرة صوت</div>
+            <div class="deliverable-output">📦 Content Strategy</div>
+        </div>
+        
+        <div class="deliverable-card">
+            <div class="deliverable-title">إنتاج محتوى شهري</div>
+            <div class="deliverable-desc">قصص نجاح، فيديوهات، إنفوجرافيك، ريلز</div>
+            <div class="deliverable-output">📦 20-30 قطعة/شهر</div>
+        </div>
+        
+        <div class="deliverable-card">
+            <div class="deliverable-title">إدارة حسابات</div>
+            <div class="deliverable-desc">نشر يومي + تفاعل + رد على استفسارات</div>
+            <div class="deliverable-output">📦 إدارة 5 منصات</div>
+        </div>
+        
+        <div class="deliverable-card">
+            <div class="deliverable-title">حملات توعوية</div>
+            <div class="deliverable-desc">حملة لكل خدمة رئيسية</div>
+            <div class="deliverable-output">📦 4-6 حملات/سنة</div>
+        </div>
+        
+            </div>
+            <div class="investment-box">
+                <div class="investment-label">الاستثمار المقدر</div>
+                <div class="investment-value">50,000 - 80,000 درهم/شهر</div>
+            </div>
+        </div>
+        <div class="slide-footer">
+            <span>هيئة تنمية المجتمع - دبي</span>
+            <span>24°45° للاستشارات الاتصالية</span>
+        </div>
+    </div>
+    
+    <div class="slide slide-standard">
+        <div class="slide-header">
+            <div class="slide-header-content">
+                <h1 class="slide-title">الحزمة الثالثة</h1>
+                <p class="slide-subtitle">الاتصال الشامل (Inclusive Communication)</p>
+            </div>
+            <div class="slide-number">22</div>
+        </div>
+        <div class="slide-body">
+            <div class="package-header">
+                <div style="font-size: 22px; color: white;">ضمان وصول جميع الفئات للمعلومات والخدمات</div>
+                <div class="package-meta">
+                    <div class="package-meta-item"><strong>المدة:</strong> 6 أشهر</div>
+                </div>
+            </div>
+            <div class="deliverables-grid">
+                
+        <div class="deliverable-card">
+            <div class="deliverable-title">تدقيق إمكانية الوصول</div>
+            <div class="deliverable-desc">فحص شامل للموقع والتطبيق والمحتوى</div>
+            <div class="deliverable-output">📦 تقرير WCAG 2.1 AA</div>
+        </div>
+        
+        <div class="deliverable-card">
+            <div class="deliverable-title">ترجمة لغة الإشارة</div>
+            <div class="deliverable-desc">للفيديوهات والمحتوى التوعوي الرئيسي</div>
+            <div class="deliverable-output">📦 20+ فيديو مترجم</div>
+        </div>
+        
+        <div class="deliverable-card">
+            <div class="deliverable-title">محتوى Easy Read</div>
+            <div class="deliverable-desc">نسخ مبسطة لذوي الإعاقة الذهنية</div>
+            <div class="deliverable-output">📦 كتيبات + صفحات ويب</div>
+        </div>
+        
+        <div class="deliverable-card">
+            <div class="deliverable-title">تعدد اللغات</div>
+            <div class="deliverable-desc">إنجليزي كامل + لغات إضافية</div>
+            <div class="deliverable-output">📦 محتوى بـ 4 لغات</div>
+        </div>
+        
+            </div>
+            <div class="investment-box">
+                <div class="investment-label">الاستثمار المقدر</div>
+                <div class="investment-value">100,000 - 150,000 درهم</div>
+            </div>
+        </div>
+        <div class="slide-footer">
+            <span>هيئة تنمية المجتمع - دبي</span>
+            <span>24°45° للاستشارات الاتصالية</span>
+        </div>
+    </div>
+    
+    <div class="slide slide-standard">
+        <div class="slide-header">
+            <div class="slide-header-content">
+                <h1 class="slide-title">الحزمة الرابعة</h1>
+                <p class="slide-subtitle">إدارة السمعة والأزمات</p>
+            </div>
+            <div class="slide-number">23</div>
+        </div>
+        <div class="slide-body">
+            <div class="package-header">
+                <div style="font-size: 22px; color: white;">حماية السمعة وبناء صورة إيجابية مستدامة</div>
+                <div class="package-meta">
+                    <div class="package-meta-item"><strong>المدة:</strong> مستمرة</div>
+                </div>
+            </div>
+            <div class="deliverables-grid">
+                
+        <div class="deliverable-card">
+            <div class="deliverable-title">نظام رصد إعلامي</div>
+            <div class="deliverable-desc">رصد 24/7 للإشارات والأخبار والمحادثات</div>
+            <div class="deliverable-output">📦 تقارير يومية + تنبيهات فورية</div>
+        </div>
+        
+        <div class="deliverable-card">
+            <div class="deliverable-title">بروتوكول أزمات</div>
+            <div class="deliverable-desc">خطة استجابة + سيناريوهات + تدريب</div>
+            <div class="deliverable-output">📦 دليل أزمات + 3 ورش تدريبية</div>
+        </div>
+        
+        <div class="deliverable-card">
+            <div class="deliverable-title">خطة إدارة السمعة</div>
+            <div class="deliverable-desc">بناء الصورة الإيجابية استباقياً</div>
+            <div class="deliverable-output">📦 خطة سنوية</div>
+        </div>
+        
+        <div class="deliverable-card">
+            <div class="deliverable-title">علاقات إعلامية</div>
+            <div class="deliverable-desc">بناء شبكة صحفيين ومؤثرين</div>
+            <div class="deliverable-output">📦 قاعدة بيانات + فعاليات</div>
+        </div>
+        
+            </div>
+            <div class="investment-box">
+                <div class="investment-label">الاستثمار المقدر</div>
+                <div class="investment-value">30,000 - 50,000 درهم/شهر</div>
+            </div>
+        </div>
+        <div class="slide-footer">
+            <span>هيئة تنمية المجتمع - دبي</span>
+            <span>24°45° للاستشارات الاتصالية</span>
+        </div>
+    </div>
+    
+    <div class="slide slide-standard">
+        <div class="slide-header">
+            <div class="slide-header-content">
+                <h1 class="slide-title">الحزمة الخامسة</h1>
+                <p class="slide-subtitle">التحول الرقمي الاتصالي</p>
+            </div>
+            <div class="slide-number">24</div>
+        </div>
+        <div class="slide-body">
+            <div class="package-header">
+                <div style="font-size: 22px; color: white;">تعزيز القدرات الرقمية وتحسين تجربة المتعامل</div>
+                <div class="package-meta">
+                    <div class="package-meta-item"><strong>المدة:</strong> 12 شهر</div>
+                </div>
+            </div>
+            <div class="deliverables-grid">
+                
+        <div class="deliverable-card">
+            <div class="deliverable-title">Chatbot ذكي</div>
+            <div class="deliverable-desc">للموقع + WhatsApp + التطبيق</div>
+            <div class="deliverable-output">📦 نظام AI متكامل</div>
+        </div>
+        
+        <div class="deliverable-card">
+            <div class="deliverable-title">تحسين التطبيق</div>
+            <div class="deliverable-desc">تجربة مستخدم جديدة</div>
+            <div class="deliverable-output">📦 UX/UI محسّن</div>
+        </div>
+        
+        <div class="deliverable-card">
+            <div class="deliverable-title">بوابة الشركاء</div>
+            <div class="deliverable-desc">للمتطوعين والجمعيات</div>
+            <div class="deliverable-output">📦 Portal تفاعلي</div>
+        </div>
+        
+        <div class="deliverable-card">
+            <div class="deliverable-title">لوحة بيانات القيادة</div>
+            <div class="deliverable-desc">مؤشرات اتصالية لحظية</div>
+            <div class="deliverable-output">📦 Dashboard تفاعلي</div>
+        </div>
+        
+            </div>
+            <div class="investment-box">
+                <div class="investment-label">الاستثمار المقدر</div>
+                <div class="investment-value">300,000 - 500,000 درهم</div>
+            </div>
+        </div>
+        <div class="slide-footer">
+            <span>هيئة تنمية المجتمع - دبي</span>
+            <span>24°45° للاستشارات الاتصالية</span>
+        </div>
+    </div>
+    
+    <div class="slide slide-standard">
+        <div class="slide-header">
+            <div class="slide-header-content">
+                <h1 class="slide-title">خارطة طريق التنفيذ</h1>
+                <p class="slide-subtitle">خطة السنة الأولى</p>
+            </div>
+            <div class="slide-number">25</div>
+        </div>
+        <div class="slide-body">
+            <div class="timeline">
+                
+        <div class="timeline-item">
+            <div class="timeline-quarter">الربع الأول</div>
+            <div class="timeline-focus">التأسيس</div>
+            <ul class="timeline-list"><li>التدقيق الاتصالي الشامل</li><li>بناء استراتيجية الاتصال</li><li>تدقيق إمكانية الوصول</li><li>إعداد فريق العمل</li></ul>
+            <div style="margin-top: 15px; font-size: 16px; color: #B8860B;">🎯 إطلاق الاستراتيجية</div>
+        </div>
+        
+        <div class="timeline-item">
+            <div class="timeline-quarter">الربع الثاني</div>
+            <div class="timeline-focus">الانطلاق</div>
+            <ul class="timeline-list"><li>إطلاق استراتيجية المحتوى</li><li>بدء إدارة التواصل الاجتماعي</li><li>ترجمة لغة الإشارة</li><li>نظام الرصد الإعلامي</li></ul>
+            <div style="margin-top: 15px; font-size: 16px; color: #B8860B;">🎯 أول حملة توعوية</div>
+        </div>
+        
+        <div class="timeline-item">
+            <div class="timeline-quarter">الربع الثالث</div>
+            <div class="timeline-focus">التوسع</div>
+            <ul class="timeline-list"><li>بروتوكول الأزمات + تدريب</li><li>تطوير Chatbot</li><li>محتوى متعدد اللغات</li><li>تحسين الموقع (Accessibility)</li></ul>
+            <div style="margin-top: 15px; font-size: 16px; color: #B8860B;">🎯 إطلاق Chatbot</div>
+        </div>
+        
+        <div class="timeline-item">
+            <div class="timeline-quarter">الربع الرابع</div>
+            <div class="timeline-focus">التعزيز</div>
+            <ul class="timeline-list"><li>حملات توعوية كبرى</li><li>تقييم منتصف المدة</li><li>تحسينات بناءً على البيانات</li><li>التخطيط للسنة الثانية</li></ul>
+            <div style="margin-top: 15px; font-size: 16px; color: #B8860B;">🎯 تقرير الإنجازات</div>
+        </div>
+        
+            </div>
+        </div>
+        <div class="slide-footer">
+            <span>هيئة تنمية المجتمع - دبي</span>
+            <span>24°45° للاستشارات الاتصالية</span>
+        </div>
+    </div>
+    
+    <div class="slide slide-standard">
+        <div class="slide-header">
+            <div class="slide-header-content">
+                <h1 class="slide-title">مؤشرات الأداء</h1>
+                <p class="slide-subtitle">كيف نقيس النجاح</p>
+            </div>
+            <div class="slide-number">26</div>
+        </div>
+        <div class="slide-body">
+            
+        <div style="background: rgba(0,0,0,0.2); border-radius: 12px; padding: 20px; margin-bottom: 15px;">
+            <div style="font-size: 20px; font-weight: 700; color: #B8860B; margin-bottom: 15px;">الوعي والوصول</div>
+            <table style="width: 100%; border-collapse: collapse;">
+                <tr style="background: #00A79D;">
+                    <th style="padding: 12px 15px; text-align: right; color: white;">المؤشر</th>
+                    <th style="padding: 12px 15px; text-align: right; color: white;">الحالي</th>
+                    <th style="padding: 12px 15px; text-align: right; color: white;">السنة 1</th>
+                    <th style="padding: 12px 15px; text-align: right; color: white;">السنة 3</th>
+                </tr>
+                
+            <tr>
+                <td style="font-weight: 500;">متابعو التواصل</td>
+                <td style="color: #dc3545;">115K</td>
+                <td style="color: #ffc107;">200K</td>
+                <td style="color: #28a745;">500K</td>
+            </tr>
+            
+            <tr>
+                <td style="font-weight: 500;">زيارات الموقع/شهر</td>
+                <td style="color: #dc3545;">50K</td>
+                <td style="color: #ffc107;">100K</td>
+                <td style="color: #28a745;">250K</td>
+            </tr>
+            
+            <tr>
+                <td style="font-weight: 500;">الوصول للفئات المستهدفة</td>
+                <td style="color: #dc3545;">40%</td>
+                <td style="color: #ffc107;">60%</td>
+                <td style="color: #28a745;">85%</td>
+            </tr>
+            
+            </table>
+        </div>
+        
+        <div style="background: rgba(0,0,0,0.2); border-radius: 12px; padding: 20px; margin-bottom: 15px;">
+            <div style="font-size: 20px; font-weight: 700; color: #B8860B; margin-bottom: 15px;">التفاعل والرضا</div>
+            <table style="width: 100%; border-collapse: collapse;">
+                <tr style="background: #00A79D;">
+                    <th style="padding: 12px 15px; text-align: right; color: white;">المؤشر</th>
+                    <th style="padding: 12px 15px; text-align: right; color: white;">الحالي</th>
+                    <th style="padding: 12px 15px; text-align: right; color: white;">السنة 1</th>
+                    <th style="padding: 12px 15px; text-align: right; color: white;">السنة 3</th>
+                </tr>
+                
+            <tr>
+                <td style="font-weight: 500;">معدل التفاعل</td>
+                <td style="color: #dc3545;">1%</td>
+                <td style="color: #ffc107;">3%</td>
+                <td style="color: #28a745;">5%</td>
+            </tr>
+            
+            <tr>
+                <td style="font-weight: 500;">رضا المتعاملين</td>
+                <td style="color: #dc3545;">75%</td>
+                <td style="color: #ffc107;">85%</td>
+                <td style="color: #28a745;">92%</td>
+            </tr>
+            
+            <tr>
+                <td style="font-weight: 500;">سرعة الاستجابة</td>
+                <td style="color: #dc3545;">48h</td>
+                <td style="color: #ffc107;">24h</td>
+                <td style="color: #28a745;">4h</td>
+            </tr>
+            
+            </table>
+        </div>
+        
+        <div style="background: rgba(0,0,0,0.2); border-radius: 12px; padding: 20px; margin-bottom: 15px;">
+            <div style="font-size: 20px; font-weight: 700; color: #B8860B; margin-bottom: 15px;">السمعة والأثر</div>
+            <table style="width: 100%; border-collapse: collapse;">
+                <tr style="background: #00A79D;">
+                    <th style="padding: 12px 15px; text-align: right; color: white;">المؤشر</th>
+                    <th style="padding: 12px 15px; text-align: right; color: white;">الحالي</th>
+                    <th style="padding: 12px 15px; text-align: right; color: white;">السنة 1</th>
+                    <th style="padding: 12px 15px; text-align: right; color: white;">السنة 3</th>
+                </tr>
+                
+            <tr>
+                <td style="font-weight: 500;">الإشارات الإيجابية</td>
+                <td style="color: #dc3545;">70%</td>
+                <td style="color: #ffc107;">80%</td>
+                <td style="color: #28a745;">90%</td>
+            </tr>
+            
+            <tr>
+                <td style="font-weight: 500;">التغطية الإعلامية/سنة</td>
+                <td style="color: #dc3545;">50</td>
+                <td style="color: #ffc107;">100</td>
+                <td style="color: #28a745;">200</td>
+            </tr>
+            
+            <tr>
+                <td style="font-weight: 500;">قصص النجاح المنشورة</td>
+                <td style="color: #dc3545;">10</td>
+                <td style="color: #ffc107;">50</td>
+                <td style="color: #28a745;">100</td>
+            </tr>
+            
+            </table>
+        </div>
+        
+        </div>
+        <div class="slide-footer">
+            <span>هيئة تنمية المجتمع - دبي</span>
+            <span>24°45° للاستشارات الاتصالية</span>
+        </div>
+    </div>
+    
+    <div class="slide slide-standard">
+        <div class="slide-header">
+            <div class="slide-header-content">
+                <h1 class="slide-title">الاستثمار المالي</h1>
+                <p class="slide-subtitle">سيناريوهات الميزانية</p>
+            </div>
+            <div class="slide-number">27</div>
+        </div>
+        <div class="slide-body">
+            <div class="two-columns">
+            <div class="card" style="padding: 30px;">
+                <div class="card-title" style="font-size: 28px; margin-bottom: 20px;">السيناريو الأساسي</div>
+                <div class="card-text" style="margin-bottom: 20px; font-size: 18px;">الحد الأدنى الضروري</div>
+                <ul class="list" style="font-size: 16px; margin-bottom: 20px;"><li>استراتيجية</li><li>محتوى وسوشيال</li><li>إمكانية الوصول</li></ul>
+                <div class="stats-grid" style="grid-template-columns: repeat(3, 1fr); gap: 15px;">
+                    <div class="stat-card" style="padding: 15px;">
+                        <div class="stat-value" style="font-size: 24px;">950K درهم</div>
+                        <div class="stat-label" style="font-size: 12px;">السنة 1</div>
+                    </div>
+                    <div class="stat-card" style="padding: 15px;">
+                        <div class="stat-value" style="font-size: 24px;">750K درهم</div>
+                        <div class="stat-label" style="font-size: 12px;">السنة 2</div>
+                    </div>
+                    <div class="stat-card" style="padding: 15px;">
+                        <div class="stat-value" style="font-size: 24px;">900K درهم</div>
+                        <div class="stat-label" style="font-size: 12px;">السنة 3</div>
+                    </div>
+                </div>
+                <div class="investment-box" style="margin-top: 20px;">
+                    <div class="investment-label">إجمالي 3 سنوات</div>
+                    <div class="investment-value">2.6M درهم</div>
+                </div>
+            </div>
+            
+            <div class="card" style="padding: 30px;">
+                <div class="card-title" style="font-size: 28px; margin-bottom: 20px;">السيناريو المتقدم</div>
+                <div class="card-text" style="margin-bottom: 20px; font-size: 18px;">تحول شامل</div>
+                <ul class="list" style="font-size: 16px; margin-bottom: 20px;"><li>كل ما سبق</li><li>إدارة سمعة</li><li>تحول رقمي</li><li>اتصال داخلي</li></ul>
+                <div class="stats-grid" style="grid-template-columns: repeat(3, 1fr); gap: 15px;">
+                    <div class="stat-card" style="padding: 15px;">
+                        <div class="stat-value" style="font-size: 24px;">1.97M درهم</div>
+                        <div class="stat-label" style="font-size: 12px;">السنة 1</div>
+                    </div>
+                    <div class="stat-card" style="padding: 15px;">
+                        <div class="stat-value" style="font-size: 24px;">1.43M درهم</div>
+                        <div class="stat-label" style="font-size: 12px;">السنة 2</div>
+                    </div>
+                    <div class="stat-card" style="padding: 15px;">
+                        <div class="stat-value" style="font-size: 24px;">1.48M درهم</div>
+                        <div class="stat-label" style="font-size: 12px;">السنة 3</div>
+                    </div>
+                </div>
+                <div class="investment-box" style="margin-top: 20px;">
+                    <div class="investment-label">إجمالي 3 سنوات</div>
+                    <div class="investment-value">4.88M درهم</div>
+                </div>
+            </div>
+            </div>
+        </div>
+        <div class="slide-footer">
+            <span>هيئة تنمية المجتمع - دبي</span>
+            <span>24°45° للاستشارات الاتصالية</span>
+        </div>
+    </div>
+    
+    <div class="slide slide-standard">
+        <div class="slide-header">
+            <div class="slide-header-content">
+                <h1 class="slide-title">لماذا 24°45°؟</h1>
+                <p class="slide-subtitle">شريككم الأمثل</p>
+            </div>
+            <div class="slide-number">28</div>
+        </div>
+        <div class="slide-body">
+            <div class="cards-grid" style="grid-template-columns: repeat(3, 1fr);">
+            <div class="card">
+                <div class="card-icon">🏛️</div>
+                <div class="card-title">خبرة حكومية عميقة</div>
+                <div class="card-text">15+ جهة حكومية في الإمارات</div>
+            </div>
+            
+            <div class="card">
+                <div class="card-icon">❤️</div>
+                <div class="card-title">تخصص في القطاع الاجتماعي</div>
+                <div class="card-text">فهم احتياجات الفئات الهشة</div>
+            </div>
+            
+            <div class="card">
+                <div class="card-icon">👥</div>
+                <div class="card-title">فريق متعدد القدرات</div>
+                <div class="card-text">استراتيجيون، مبدعون، تقنيون</div>
+            </div>
+            
+            <div class="card">
+                <div class="card-icon">📈</div>
+                <div class="card-title">نتائج مثبتة</div>
+                <div class="card-text">300% متوسط نمو التفاعل</div>
+            </div>
+            
+            <div class="card">
+                <div class="card-icon">🤖</div>
+                <div class="card-title">تقنيات متقدمة</div>
+                <div class="card-text">AI، تحليلات، أتمتة</div>
+            </div>
+            
+            <div class="card">
+                <div class="card-icon">🤝</div>
+                <div class="card-title">شراكة حقيقية</div>
+                <div class="card-text">نجاحكم هو نجاحنا</div>
+            </div>
+            </div>
+        </div>
+        <div class="slide-footer">
+            <span>هيئة تنمية المجتمع - دبي</span>
+            <span>24°45° للاستشارات الاتصالية</span>
+        </div>
+    </div>
+    
+    <div class="slide slide-standard">
+        <div class="slide-header">
+            <div class="slide-header-content">
+                <h1 class="slide-title">الخطوات التالية</h1>
+                <p class="slide-subtitle">كيف نبدأ معاً</p>
+            </div>
+            <div class="slide-number">29</div>
+        </div>
+        <div class="slide-body">
+            <div class="timeline">
+            <div class="timeline-item" style="flex: 1;">
+                <div class="timeline-quarter">الخطوة 1</div>
+                <div style="font-size: 22px; font-weight: 700; color: white; margin: 15px 0;">اجتماع تعريفي</div>
+                <div style="font-size: 16px; color: rgba(255,255,255,0.7);">عرض التقرير على أصحاب القرار</div>
+                <div style="margin-top: 15px; font-size: 14px; color: #B8860B;">⏱️ خلال أسبوع</div>
+            </div>
+            
+            <div class="timeline-item" style="flex: 1;">
+                <div class="timeline-quarter">الخطوة 2</div>
+                <div style="font-size: 22px; font-weight: 700; color: white; margin: 15px 0;">ورشة عمل</div>
+                <div style="font-size: 16px; color: rgba(255,255,255,0.7);">تحديد الأولويات والميزانية</div>
+                <div style="margin-top: 15px; font-size: 14px; color: #B8860B;">⏱️ خلال أسبوعين</div>
+            </div>
+            
+            <div class="timeline-item" style="flex: 1;">
+                <div class="timeline-quarter">الخطوة 3</div>
+                <div style="font-size: 22px; font-weight: 700; color: white; margin: 15px 0;">عرض فني ومالي مفصل</div>
+                <div style="font-size: 16px; color: rgba(255,255,255,0.7);">مقترح مخصص بناءً على الورشة</div>
+                <div style="margin-top: 15px; font-size: 14px; color: #B8860B;">⏱️ خلال 3 أسابيع</div>
+            </div>
+            
+            <div class="timeline-item" style="flex: 1;">
+                <div class="timeline-quarter">الخطوة 4</div>
+                <div style="font-size: 22px; font-weight: 700; color: white; margin: 15px 0;">مشروع تجريبي</div>
+                <div style="font-size: 16px; color: rgba(255,255,255,0.7);">البدء بحزمة محددة لإثبات القيمة</div>
+                <div style="margin-top: 15px; font-size: 14px; color: #B8860B;">⏱️ خلال شهر</div>
+            </div>
+            </div>
+        </div>
+        <div class="slide-footer">
+            <span>هيئة تنمية المجتمع - دبي</span>
+            <span>24°45° للاستشارات الاتصالية</span>
+        </div>
+    </div>
+    
+    <div class="slide slide-thanks">
+        <div class="cover-border"></div>
+        <div class="cover-watermark">CDA</div>
+        
+        <div class="thanks-title">شكراً لكم</div>
+        <div class="thanks-subtitle">نتطلع للشراكة معكم</div>
+        
+        <div class="thanks-quote">
+            "التواصل الفعّال ليس ترفاً، بل هو جسر يوصل الخدمات لمن يحتاجها"
+        </div>
+        
+        <div class="contact-grid">
+            <div class="contact-item">
+                <div class="contact-icon">📧</div>
+                <div class="contact-text">hello@2445.ae</div>
+            </div>
+            <div class="contact-item">
+                <div class="contact-icon">📞</div>
+                <div class="contact-text">+971 4 XXX XXXX</div>
+            </div>
+            <div class="contact-item">
+                <div class="contact-icon">🌐</div>
+                <div class="contact-text">www.2445.ae</div>
+            </div>
+        </div>
+    </div>
+    
+    </body>
+    </html>
+    

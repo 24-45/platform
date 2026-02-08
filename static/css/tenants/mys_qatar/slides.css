@@ -280,12 +280,32 @@ body {
     z-index: 10;
 }
 
+/* مجموعة الشعارات على اليسار */
+.cover-logos-left {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
 .cover-logo {
     height: 60px;
     filter: brightness(0) invert(1);
     opacity: 0.9;
     transition: all 0.3s ease;
     flex-shrink: 0;
+}
+
+/* شعار ترجمان - أبيض */
+.cover-logo-turjuman {
+    height: 80px;
+    filter: brightness(0) invert(1) !important;
+    opacity: 0.95;
+}
+
+/* شعار رؤية قطر - تكبير مع الحفاظ على التفاصيل */
+.cover-logo-vision {
+    height: 100px !important;
+    filter: invert(1) brightness(2) contrast(1.2) !important;
 }
 
 .cover-logo:hover {
@@ -11978,111 +11998,152 @@ a.tweet-card.tweet-link:hover .click-hint {
     font-family: 'Tajawal', sans-serif;
 }
 
-/* =====================================================
-   شريحة 61: شكراً
-   ===================================================== */
-.slide-thank-you {
+/* ═══════════════════════════════════════════════════════════════════════════════
+   شريحة النهاية - تصميم نظيف وبسيط
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+.slide-final {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    position: relative;
+}
+
+/* الإطار */
+.final-frame {
+    position: absolute;
+    top: 12mm;
+    left: 12mm;
+    right: 12mm;
+    bottom: 12mm;
+    border: 2px solid rgba(197, 160, 89, 0.4);
+    border-radius: 4px;
+    pointer-events: none;
+}
+
+/* المحتوى */
+.final-content {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-}
-
-.slide-thank-you .content-border-frame.gold {
-    border-color: rgba(197, 160, 89, 0.5);
-    box-shadow: inset 0 0 60px rgba(197, 160, 89, 0.1);
-}
-
-.thank-you-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 25px;
-    padding: 40px;
-}
-
-.thank-you-text {
     text-align: center;
+    gap: 15px;
+    width: 100%;
 }
 
-.thank-arabic {
-    font-size: 3.5rem;
+/* العنوان العربي */
+.final-title-ar {
+    font-size: 2.6rem;
     font-weight: 800;
     color: #C5A059;
     font-family: 'Tajawal', sans-serif;
-    margin: 0 0 10px 0;
-    text-shadow: 0 4px 20px rgba(197, 160, 89, 0.3);
-}
-
-.thank-english {
-    font-size: 2rem;
-    font-weight: 600;
-    color: rgba(255,255,255,0.8);
-    font-family: 'Montserrat', sans-serif;
     margin: 0;
-    letter-spacing: 8px;
-    text-transform: uppercase;
 }
 
-.thank-line {
-    width: 200px;
-    height: 3px;
+/* العنوان الإنجليزي */
+.final-title-en {
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.7);
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 10px;
+    margin: 0;
+}
+
+/* الخط */
+.final-line {
+    width: 120px;
+    height: 2px;
     background: linear-gradient(90deg, transparent, #C5A059, transparent);
-    border-radius: 2px;
+    margin: 10px 0 20px 0;
 }
 
-.thank-logos {
-    display: flex;
+/* جميع الشعارات في صف واحد أفقي */
+.final-all-logos {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: center !important;
     gap: 60px;
-    align-items: center;
-    margin: 15px 0;
+    margin: 25px 0;
 }
 
-.logo-item img {
-    height: 80px;
+/* الفاصل العمودي */
+.final-logo-separator {
+    width: 2px;
+    height: 140px;
+    background: linear-gradient(180deg, transparent, rgba(197, 160, 89, 0.6), transparent);
+}
+
+/* شعارات الحكومة في صف أفقي */
+.final-gov-logos {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 60px;
+}
+
+.final-gov-logos img {
+    height: 200px;
     width: auto;
-    filter: brightness(1.1);
 }
 
-.logo-placeholder {
-    width: 100px;
-    height: 80px;
-    background: rgba(197, 160, 89, 0.15);
-    border: 2px solid rgba(197, 160, 89, 0.3);
-    border-radius: 12px;
+.final-gov-logos .white-logo {
+    filter: brightness(0) invert(1);
+}
+
+/* شعار الرؤية أبيض */
+.final-gov-logos img:not(.white-logo) {
+    filter: brightness(0) invert(1);
+}
+
+/* شعار ترجمان */
+.final-turjuman {
+    height: 170px;
+    width: auto;
+    filter: brightness(0) invert(1);
+    opacity: 1;
+}
+
+/* الفوتر */
+.final-bottom {
+    position: absolute;
+    bottom: 18mm;
+    left: 25mm;
+    right: 25mm;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
-    justify-content: center;
-    font-size: 0.75rem;
-    color: #C5A059;
+    border-top: 1px solid rgba(197, 160, 89, 0.2);
+    padding-top: 12px;
+}
+
+.final-ministry {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.5);
     font-family: 'Tajawal', sans-serif;
-    text-align: center;
-    padding: 10px;
 }
 
-.logo-placeholder:first-line {
-    font-size: 1.5rem;
+.final-page {
+    font-size: 14px;
+    font-weight: 700;
+    color: rgba(197, 160, 89, 0.7);
+    background: rgba(197, 160, 89, 0.1);
+    padding: 6px 16px;
+    border-radius: 6px;
+    border: 1px solid rgba(197, 160, 89, 0.25);
+    font-family: 'Montserrat', sans-serif;
 }
 
-.thank-contact {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 12px;
+/* إخفاء نص TURJUMAN من الشريحة النهائية */
+.slide-final::after {
+    display: none !important;
 }
 
-.contact-line {
-    width: 350px;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(197, 160, 89, 0.4), transparent);
-}
-
-.contact-items {
-    display: flex;
-    gap: 40px;
-    align-items: center;
-}
+/* ═══════════════════════════════════════════════════════════════════════════════ */
 
 .contact-item {
     display: flex;
@@ -12955,6 +13016,39 @@ button#aiChatSend:not(:disabled):hover {
     margin-top: 8px;
 }
 
+/* ═══════════════════════════════════════════════════════════════════════════════
+   هامش TURJUMAN Consultancy في أسفل كل شريحة
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+.slide::after {
+    content: "إعداد شركة TURJUMAN Consultancy - متخصصون في الاتصال الاستراتيجي وإدارة السمعة";
+    position: absolute;
+    bottom: 3mm;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 9px;
+    color: rgba(255, 255, 255, 0.45);
+    font-family: 'Tajawal', sans-serif;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+    z-index: 100;
+    pointer-events: none;
+}
+
+/* تجاوز للشرائح التي لديها فوتر مخصص */
+.slide-end::after,
+.slide-thank-you::after,
+.slide-final::after {
+    display: none !important;
+}
+
+/* صفحة الغلاف - إظهار النص */
+.slide-cover::after {
+    bottom: 5mm !important;
+    color: rgba(255, 255, 255, 0.35);
+}
+
 /* Hide in Print/Presentation Mode */
 @media print { 
     .ai-chat-widget { display: none !important; } 
@@ -12965,4 +13059,3 @@ body.presentation-mode .ai-chat-widget { display: none !important; }
 body.exporting-pdf .ai-chat-widget { display: none !important; }
 body.exporting-pdf .toc-container { display: none !important; }
 body.exporting-pdf .map-zoom-controls { display: none !important; }
-

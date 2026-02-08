@@ -29,7 +29,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/tenants/cda_dubai/slides.css') }}?v=20260123">
     
     <!-- 4. ملف CSS للتصميم المحسن -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/tenants/cda_dubai/enhanced-slides.css') }}?v=20260207">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/tenants/cda_dubai/enhanced-slides.css') }}?v=20260207-v10-final">
     
     <!-- مكتبة html2pdf لتصدير PDF بمقاس مخصص -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
@@ -306,23 +306,27 @@
         const isAdmin = urlParams.get('admin') === '1' || {{ 'true' if session.get('is_admin') else 'false' }};
         
         document.addEventListener('DOMContentLoaded', function() {
-            const slides = document.querySelectorAll('.slide');
+            // فقط شرائح CDA Dubai (من slide-1 إلى slide-21)
+            const validSlideIds = Array.from({length: 21}, (_, i) => `slide-${i + 1}`);
+            const allSlides = document.querySelectorAll('.slide');
+            const slides = Array.from(allSlides).filter(slide => validSlideIds.includes(slide.id));
+            
             const nav = document.getElementById('slidesNav');
             const tocTrigger = document.getElementById('tocTrigger');
             const tocMenu = document.getElementById('tocMenu');
             const tocContent = document.getElementById('tocContent');
             const tocContainer = document.getElementById('tocContainer');
             
-            // مسح الفهرس القديم لتطبيق الفهرس الجديد المحدث (نسخة 2026-02-07)
+            // مسح الفهرس القديم لتطبيق الفهرس الجديد المحدث (نسخة 2026-02-07-v2)
             const tocVersion = localStorage.getItem('tocVersion_cda_dubai');
-            if (tocVersion !== '2026-02-07-v1') {
+            if (tocVersion !== '2026-02-07-v2') {
                 localStorage.removeItem('tocStructure_cda_dubai');
                 localStorage.removeItem('slideTitles_cda_dubai');
-                localStorage.setItem('tocVersion_cda_dubai', '2026-02-07-v1');
+                localStorage.setItem('tocVersion_cda_dubai', '2026-02-07-v2');
             }
             
-            // تحديث العدد الإجمالي للشرائح فوراً
-            const totalSlidesCount = document.querySelectorAll('.slide').length;
+            // تحديث العدد الإجمالي للشرائح (21 شريحة فقط)
+            const totalSlidesCount = 21;
             const navTotalEl = document.getElementById('navTotal');
             if (navTotalEl) navTotalEl.textContent = totalSlidesCount;
             
@@ -972,7 +976,7 @@
             showPrintToast('📄 جاري تصدير PDF... يرجى الانتظار');
             
             // فتح رابط التصدير من الخادم
-            window.location.href = '/mys-qatar/export-pdf';
+            window.location.href = '/cda-dubai/export-pdf';
         }
         
         // دالة Toast للطباعة (مستقلة)
@@ -1561,7 +1565,11 @@
             const container = document.getElementById('gridContainer');
             if (!container) return;
             
-            const slides = document.querySelectorAll('.slide');
+            // فقط شرائح CDA Dubai (من slide-1 إلى slide-21)
+            const validSlideIds = Array.from({length: 21}, (_, i) => `slide-${i + 1}`);
+            const allSlides = document.querySelectorAll('.slide');
+            const slides = Array.from(allSlides).filter(slide => validSlideIds.includes(slide.id));
+            
             container.innerHTML = '';
             
             // حساب نسبة التحجيم بناءً على عرض الشريحة الفعلي

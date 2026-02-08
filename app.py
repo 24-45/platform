@@ -366,6 +366,25 @@ def mys_qatar_main():
     return render_template('tenant/mys_qatar/index.html', tenant=tenant)
 
 
+# ==================== صفحة هيئة تنمية المجتمع - دبي ====================
+
+@app.route('/cda-dubai')
+@app.route('/cda-dubai/')
+def cda_dubai_page():
+    """صفحة هيئة تنمية المجتمع - دبي"""
+    tenant = get_tenant_by_slug('cda_dubai')
+    return render_template('tenant/cda_dubai/index.html', tenant=tenant)
+
+
+@app.route('/cda_dubai/')
+@app.route('/tenant/cda_dubai/')
+@app.route('/tenant/cda_dubai')
+def cda_dubai_main():
+    """صفحة هيئة تنمية المجتمع - دبي (المسار الرئيسي)"""
+    tenant = get_tenant_by_slug('cda_dubai')
+    return render_template('tenant/cda_dubai/index.html', tenant=tenant)
+
+
 @app.route('/qatar_sports/export-pdf')
 def qatar_sports_export_pdf():
     """
@@ -563,6 +582,181 @@ def qatar_sports_export_pdf():
         )
     except Exception as e:
         logger.error(f"خطأ في تصدير PDF: {e}")
+        return jsonify({'error': str(e)}), 500
+
+
+# ==================== CDA Dubai PDF Export ====================
+@app.route('/cda-dubai/export-pdf')
+def cda_dubai_export_pdf():
+    """
+    تصدير PDF لهيئة تنمية المجتمع - دبي
+    العرض الفني: مشروع تطوير التسويق المؤسسي وإدارة السمعة
+    """
+    import asyncio
+    from playwright.async_api import async_playwright
+    from flask import Response
+    from datetime import datetime
+    from io import BytesIO
+    
+    # إعدادات المتصفح
+    VIEWPORT_W = 1280
+    VIEWPORT_H = 720
+    SCALE_FACTOR = 3.125
+    
+    async def generate_pdf():
+        async with async_playwright() as p:
+            browser = await p.chromium.launch(
+                headless=True,
+                args=['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage']
+            )
+            
+            base_url = request.host_url.rstrip('/')
+            url = f"{base_url}/cda-dubai/"
+            
+            # إنشاء سياق واحد فقط
+            context = await browser.new_context(
+                viewport={'width': VIEWPORT_W, 'height': VIEWPORT_H},
+                device_scale_factor=SCALE_FACTOR
+            )
+            page = await context.new_page()
+            
+            logger.info(f"🚀 Loading CDA Dubai page: {url}")
+            await page.goto(url, wait_until='networkidle', timeout=120000)
+            await page.wait_for_selector('.slide', timeout=30000)
+            
+            # انتظار تحميل الصور
+            await page.wait_for_timeout(3000)
+            
+            # جلب معرفات الشرائح
+            slide_ids = await page.evaluate('() => Array.from(document.querySelectorAll(".slide")).map(s => s.id)')
+            total_slides = len(slide_ids)
+            logger.info(f"📊 CDA Dubai: Found {total_slides} slides")
+            
+            # إعداد الصفحة للتصدير (مرة واحدة)
+            await page.evaluate('''
+                () => {
+                    // إزالة العناصر التفاعلية
+                    const selectors = [
+                        '.toc-container', '.slides-nav', '.fab-container', '.grid-overlay',
+                        '.slide-nav-minimal', '.slide-nav-dropdown', '.interactive-toolbar',
+                        '.platform-bar', '.notes-panel', '.bookmarks-panel',
+                        '.share-modal', '.progress-bar-container', '#interactiveToolbar',
+                        '.ai-chat-widget', '.map-zoom-controls', '.search-modal'
+                    ];
+                    selectors.forEach(s => document.querySelectorAll(s).forEach(e => e.remove()));
+                    
+                    // تعيين أنماط الجسم
+                    document.body.style.margin = '0';
+                    document.body.style.padding = '0';
+                    document.body.style.overflow = 'hidden';
+                    document.documentElement.style.margin = '0';
+                    document.documentElement.style.padding = '0';
+                    document.documentElement.style.overflow = 'hidden';
+                }
+            ''')
+            
+            screenshots = []
+            
+            # التقاط كل شريحة
+            for i, slide_id in enumerate(slide_ids):
+                logger.info(f"📸 CDA Dubai: Capturing slide {i+1}/{total_slides}: {slide_id}")
+                
+                # إظهار الشريحة المطلوبة فقط
+                await page.evaluate(f'''
+                    (slideId) => {{
+                        // إخفاء كل الشرائح
+                        document.querySelectorAll('.slide').forEach(el => {{
+                            el.style.setProperty('display', 'none', 'important');
+                            el.style.setProperty('opacity', '0', 'important');
+                            el.style.setProperty('visibility', 'hidden', 'important');
+                            el.style.position = 'absolute';
+                            el.style.zIndex = '-1';
+                        }});
+                        
+                        // إظهار الشريحة الهدف
+                        const target = document.getElementById(slideId);
+                        if (target) {{
+                            target.style.setProperty('display', 'flex', 'important');
+                            target.style.setProperty('opacity', '1', 'important');
+                            target.style.setProperty('visibility', 'visible', 'important');
+                            target.style.position = 'fixed';
+                            target.style.top = '0';
+                            target.style.left = '0';
+                            target.style.width = '100vw';
+                            target.style.height = '100vh';
+                            target.style.margin = '0';
+                            target.style.zIndex = '9999';
+                        }}
+                    }}
+                ''', slide_id)
+                
+                # انتظار قصير للرندر
+                await page.wait_for_timeout(100)
+                
+                # التقاط الصورة
+                screenshot = await page.screenshot(type='png')
+                screenshots.append(screenshot)
+            
+            await context.close()
+            await browser.close()
+            
+            logger.info(f"🎨 CDA Dubai: Creating PDF from {len(screenshots)} screenshots...")
+            
+            # تجميع PDF
+            from reportlab.lib.units import cm
+            from reportlab.pdfgen import canvas
+            from PIL import Image
+            from reportlab.lib.utils import ImageReader
+            
+            PAGE_W = 33.87 * cm
+            PAGE_H = 19.05 * cm
+            
+            pdf_buffer = BytesIO()
+            c = canvas.Canvas(pdf_buffer, pagesize=(PAGE_W, PAGE_H))
+            
+            for screenshot in screenshots:
+                img = Image.open(BytesIO(screenshot))
+                if img.mode != 'RGB':
+                    img = img.convert('RGB')
+                
+                img_buffer = BytesIO()
+                img.save(img_buffer, format='JPEG', quality=95)
+                img_buffer.seek(0)
+                
+                c.drawImage(
+                    ImageReader(img_buffer),
+                    0, 0,
+                    width=PAGE_W,
+                    height=PAGE_H,
+                    preserveAspectRatio=False
+                )
+                c.showPage()
+            
+            c.save()
+            pdf_buffer.seek(0)
+            
+            logger.info(f"✅ CDA Dubai PDF created successfully!")
+            return pdf_buffer.getvalue()
+
+    try:
+        loop = asyncio.new_event_loop()
+        asyncio.set_event_loop(loop)
+        pdf_bytes = loop.run_until_complete(generate_pdf())
+        loop.close()
+        
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        filename = f"CDA_Dubai_Proposal_{timestamp}.pdf"
+        
+        return Response(
+            pdf_bytes,
+            mimetype='application/pdf',
+            headers={
+                'Content-Disposition': f'attachment; filename={filename}',
+                'Content-Type': 'application/pdf'
+            }
+        )
+    except Exception as e:
+        logger.error(f"CDA Dubai PDF Error: {e}")
         return jsonify({'error': str(e)}), 500
 
 

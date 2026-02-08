@@ -5,14 +5,36 @@
    ═══════════════════════════════════════════════════════════════════════════════ */
 
 /* ═══════════════════════════════════════════════════════════════════════════════
-   🚨 الحل الجذري لمشكلة خروج المحتوى - ROOT FIX FOR OVERFLOW
-   هذا القسم يجب أن يكون في البداية ليأخذ الأولوية
+   � تثبيت حجم الخط الأساسي - لضمان تناسق العرض في جميع المتصفحات
+   ═══════════════════════════════════════════════════════════════════════════════ */
+html {
+    font-size: 16px !important; /* تثبيت حجم الخط الأساسي */
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   �🚨🚨🚨 إصلاح حاسم لمنع تداخل الشرائح - CRITICAL FIX 🚨🚨🚨
+   هذا القسم يجب أن يكون في البداية وبأعلى أولوية
    ═══════════════════════════════════════════════════════════════════════════════ */
 
-/* 
-   المشكلة: البطاقات والعناصر تخرج خارج حدود الحاويات
-   الحل: إجبار جميع العناصر على التقلص والاحتواء داخل حدودها
-*/
+/* 🔥 القاعدة الأساسية: كل شريحة مستقلة تماماً */
+.slide,
+section.slide,
+section[class*="slide"] {
+    position: relative !important;
+    overflow: hidden !important;
+    contain: layout style paint !important;
+    isolation: isolate !important;
+}
+
+/* 🔥 الحاوية الرئيسية للمحتوى - بدون overflow hidden */
+.slide-content-enhanced {
+    position: relative !important;
+    max-height: 100% !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   إصلاح مشكلة التداخل - الشرائح يجب أن تكون منفصلة
+   ═══════════════════════════════════════════════════════════════════════════════ */
 
 /* قاعدة شاملة: كل div وكل عنصر داخل الشريحة يتقلص */
 .slide-content-enhanced *,
@@ -21,14 +43,44 @@
     box-sizing: border-box !important;
 }
 
-/* ⚠️ القاعدة الذهبية: منع التجاوز على كل مستوى */
+/* النصوص داخل البطاقات */
+.slide-content-enhanced .slide-body-enhanced span,
+.slide-content-enhanced .slide-body-enhanced p,
+.slide-content-enhanced .slide-body-enhanced h3,
+.slide-content-enhanced .slide-body-enhanced h4,
+.slide-content-enhanced .slide-body-enhanced div {
+    font-style: normal !important;
+    font-family: 'Tajawal', 'Arial', sans-serif !important;
+}
+
+/* 🔥 إصلاح الخط المائل في جميع العناصر */
+.slide-content-enhanced * {
+    font-style: normal !important;
+    -webkit-font-smoothing: antialiased !important;
+    -moz-osx-font-smoothing: grayscale !important;
+}
+
+/* 🔥 تأكيد الخط العربي الصحيح */
+.slide-content-enhanced,
+.slide-content-enhanced div,
+.slide-content-enhanced span,
+.slide-content-enhanced p,
+.slide-content-enhanced h1,
+.slide-content-enhanced h2,
+.slide-content-enhanced h3,
+.slide-content-enhanced h4 {
+    font-family: 'Tajawal', 'Arial', sans-serif !important;
+    font-style: normal !important;
+    font-synthesis: none !important;
+}
+
+/* ⚠️ القاعدة الذهبية: العناصر داخل grids و flex */
 .slide-content-enhanced [style*="display: grid"],
 .slide-content-enhanced [style*="display:grid"],
 .slide-content-enhanced [style*="display: flex"],
 .slide-content-enhanced [style*="display:flex"] {
     min-height: 0 !important;
     min-width: 0 !important;
-    overflow: hidden !important;
 }
 
 /* جميع العناصر المباشرة داخل grids تتقلص */
@@ -38,7 +90,6 @@
 .slide-content-enhanced [style*="display:flex"] > * {
     min-height: 0 !important;
     min-width: 0 !important;
-    overflow: hidden !important;
     flex-shrink: 1 !important;
 }
 
@@ -49,7 +100,6 @@
 .slide-content-enhanced [style*="background:linear-gradient"],
 .slide-content-enhanced [style*="background: rgba"] {
     min-height: 0 !important;
-    overflow: hidden !important;
     flex-shrink: 1 !important;
 }
 
@@ -57,13 +107,10 @@
 .slide-content-enhanced ul,
 .slide-content-enhanced ol {
     min-height: 0 !important;
-    overflow: hidden !important;
     margin: 0 !important;
 }
 
 .slide-content-enhanced li {
-    overflow: hidden !important;
-    text-overflow: ellipsis !important;
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════════ */
@@ -361,15 +408,13 @@
     position: relative;
     z-index: 5;
     gap: var(--gap-sm);                /* ⚠️ مسافة صغيرة */
-    overflow: hidden !important;       /* ⚠️ منع الخروج من الحدود */
     padding: var(--gap-xs) 0;
 }
 
-/* تأكيد إضافي لمنع الخروج */
+/* تأكيد إضافي */
 .slide-content-enhanced .slide-body-enhanced {
     justify-content: flex-start !important;
     align-items: stretch !important;
-    overflow: hidden !important;
 }
 
 /* ⚠️ قاعدة ذهبية: جميع العناصر داخل slide-body يجب أن تتقلص */
@@ -377,20 +422,17 @@
     flex-shrink: 1 !important;
     min-height: 0 !important;
     max-height: 100% !important; /* ⚠️ لا يتجاوز ارتفاع الحاوية */
-    overflow: hidden !important; /* ⚠️ منع الخروج من الحدود */
 }
 
 /* ⚠️ الشبكات داخل slide-body تتقلص وتحتوي محتواها */
 .slide-content-enhanced .slide-body-enhanced [style*="grid"] {
     min-height: 0 !important;
     max-height: 100% !important;
-    overflow: hidden !important;
 }
 
 /* ⚠️ جميع أبناء الشبكات يتقلصون */
 .slide-content-enhanced .slide-body-enhanced [style*="grid"] > * {
     min-height: 0 !important;
-    overflow: hidden !important;
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════════
@@ -408,7 +450,6 @@
     max-height: 100%; /* ⚠️ لا يتجاوز ارتفاع الحاوية */
     flex-shrink: 1;
     box-shadow: 0 4px 15px var(--shadow-card);
-    overflow: hidden; /* ⚠️ منع الخروج من الحدود */
     max-width: 100%; /* ⚠️ لا يتجاوز عرض الحاوية */
     display: flex; /* ⚠️ لجعل المحتوى يتقلص */
     flex-direction: column; /* ⚠️ ترتيب عمودي */
@@ -1202,22 +1243,19 @@
 
 /* ═══════════════════════════════════════════════════════════════════════════════
    🛡️ قواعد الحماية - Override Protection
-   تمنع أي CSS خارجي من إعادة تمركز المحتوى أو تجاوز الحدود
    ═══════════════════════════════════════════════════════════════════════════════ */
 
 /* تأكيد على منع justify-content: center في جسم الشريحة */
 .slide-content-enhanced .slide-body-enhanced {
     justify-content: flex-start !important;
     align-items: stretch !important;
-    overflow: hidden !important;
 }
 
 /* ⚠️ قاعدة ذهبية: كل عنصر داخل slide-body يجب أن يتقلص */
 .slide-content-enhanced .slide-body-enhanced > * {
     flex-shrink: 1 !important;
     min-height: 0 !important;
-    max-height: 100% !important; /* ⚠️ لا يتجاوز ارتفاع الحاوية */
-    overflow: hidden !important; /* ⚠️ منع الخروج من الحدود */
+    max-height: 100% !important;
 }
 
 /* الشبكات يجب أن تبدأ من الأعلى وتتقلص */
@@ -1234,8 +1272,7 @@
     justify-content: start !important;
     flex-shrink: 1 !important;
     min-height: 0 !important;
-    max-height: 100% !important; /* ⚠️ لا يتجاوز ارتفاع الحاوية */
-    overflow: hidden !important; /* ⚠️ منع الخروج من الحدود */
+    max-height: 100% !important;
 }
 
 /* الصناديق يجب أن تتقلص */
@@ -1245,8 +1282,7 @@
 .slide-body-enhanced .content-paragraphs-enhanced {
     flex-shrink: 1 !important;
     min-height: 0 !important;
-    max-height: 100% !important; /* ⚠️ لا يتجاوز ارتفاع الحاوية */
-    overflow: hidden !important; /* ⚠️ منع الخروج من الحدود */
+    max-height: 100% !important;
 }
 
 /* ⚠️ قاعدة إضافية: البطاقات داخل slide-body */
@@ -1254,7 +1290,6 @@
     flex-shrink: 1 !important;
     min-height: 0 !important;
     max-height: 100% !important;
-    overflow: hidden !important; /* ⚠️ منع الخروج من الحدود */
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════════
@@ -1295,6 +1330,34 @@
 .slide-red-bg p,
 .slide-red-bg span {
     color: var(--text-white) !important;
+}
+
+/* شريحة بخلفية رصاصية للفواصل */
+.slide-gray-bg {
+    background: linear-gradient(145deg, #5A6A7A 0%, #3D4A5A 100%) !important;
+}
+
+.slide-gray-bg .slide-title-enhanced,
+.slide-gray-bg .slide-subtitle-enhanced,
+.slide-gray-bg h1,
+.slide-gray-bg h2,
+.slide-gray-bg p,
+.slide-gray-bg span {
+    color: var(--text-white) !important;
+}
+
+.slide-gray-bg .title-underline-enhanced,
+.slide-gray-bg div[style*="background: var(--accent-gold)"],
+.slide-gray-bg div[style*="background: white"] {
+    background: var(--accent-gold) !important;
+}
+
+.slide-gray-bg .frame-corner {
+    border-color: var(--accent-gold) !important;
+}
+
+.slide-gray-bg .track-number-watermark {
+    color: rgba(255, 255, 255, 0.08) !important;
 }
 
 /* شريحة بخلفية ذهبية */
@@ -1417,11 +1480,11 @@
    
    الحل:
    استخدام قواعد CSS شاملة تُطبق على كل مستوى من التداخل
+   ⚠️ مهم: لا نستخدم overflow: hidden على العناصر الداخلية لأنها تقطع النصوص
 */
 
-/* === المستوى 1: الشريحة نفسها === */
+/* === المستوى 1: الشريحة نفسها فقط === */
 .slide-content-enhanced {
-    overflow: hidden !important;
     max-height: var(--slide-h) !important;
 }
 
@@ -1430,7 +1493,6 @@
     flex: 1 1 0 !important;
     min-height: 0 !important;
     max-height: calc(var(--slide-h) - 150px) !important;
-    overflow: hidden !important;
 }
 
 /* === المستوى 3: الحاويات الرئيسية (grids و flexbox) === */
@@ -1438,7 +1500,6 @@
 .slide-content-enhanced .slide-body-enhanced > section {
     min-height: 0 !important;
     max-height: 100% !important;
-    overflow: hidden !important;
     flex-shrink: 1 !important;
 }
 
@@ -1446,14 +1507,12 @@
 .slide-content-enhanced .slide-body-enhanced div[style*="grid"] {
     min-height: 0 !important;
     max-height: 100% !important;
-    overflow: hidden !important;
     align-content: start !important;
 }
 
 .slide-content-enhanced .slide-body-enhanced div[style*="flex"] {
     min-height: 0 !important;
     max-height: 100% !important;
-    overflow: hidden !important;
     flex-shrink: 1 !important;
 }
 
@@ -1466,7 +1525,6 @@
 .slide-content-enhanced .slide-body-enhanced .card-enhanced {
     min-height: 0 !important;
     max-height: 100% !important;
-    overflow: hidden !important;
     flex-shrink: 1 !important;
 }
 
@@ -1477,7 +1535,6 @@
 .slide-content-enhanced .slide-body-enhanced div[style*="background"] > ul,
 .slide-content-enhanced .slide-body-enhanced div[style*="background"] > ol {
     min-height: 0 !important;
-    overflow: hidden !important;
     flex-shrink: 1 !important;
 }
 
@@ -1490,7 +1547,6 @@
 .slide-content-enhanced div[style*="grid-template-columns:1fr 1fr"] {
     min-height: 0 !important;
     max-height: 100% !important;
-    overflow: hidden !important;
     align-content: start !important;
     align-items: start !important;
 }
@@ -1499,7 +1555,6 @@
 .slide-content-enhanced div[style*="grid"] > * {
     align-self: start !important;
     min-height: 0 !important;
-    overflow: hidden !important;
 }
 
 /* === شبكة بطاقات متساوية الارتفاع (بعد قاعدة start لتجاوزها) === */
@@ -1519,7 +1574,6 @@
     align-self: stretch !important;
     height: 100% !important;
     min-height: auto !important;
-    overflow: visible !important;
 }
 
 .slide-content-enhanced .equal-height-card > div:last-child {
@@ -1531,24 +1585,20 @@
 .slide-content-enhanced .slide-body-enhanced ol {
     min-height: 0 !important;
     max-height: 100% !important;
-    overflow: hidden !important;
     margin: 0 !important;
     padding-right: 16px !important;
     list-style-position: inside !important;
 }
 
 .slide-content-enhanced .slide-body-enhanced li {
-    overflow: hidden !important;
-    text-overflow: ellipsis !important;
     white-space: normal !important;
     line-height: 1.5 !important;
 }
 
-/* === ضمان عدم تجاوز النصوص === */
+/* === ضمان ظهور النصوص بشكل كامل === */
 .slide-content-enhanced .slide-body-enhanced span,
 .slide-content-enhanced .slide-body-enhanced p {
-    overflow: hidden !important;
-    text-overflow: ellipsis !important;
+    /* لا نستخدم overflow: hidden هنا لأنها تقطع النصوص */
 }
 
 /* === الأيقونات لا تتقلص === */
@@ -1596,4 +1646,39 @@
         max-height: 100% !important;
         min-height: 0 !important;
     }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   🔥🔥🔥 إصلاح نهائي للخط المائل - FINAL ITALIC FIX 🔥🔥🔥
+   هذا القسم يجب أن يكون في النهاية ليتجاوز جميع القواعد الأخرى
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+/* إصلاح الخط المائل لجميع العناصر */
+.slide * {
+    font-style: normal !important;
+}
+
+.slide-content-enhanced *,
+.slide-content-enhanced *::before,
+.slide-content-enhanced *::after {
+    font-style: normal !important;
+    font-family: 'Tajawal', 'Arial', sans-serif !important;
+}
+
+/* تأكيد إضافي على البطاقات */
+.slide div[style*="background"],
+.slide-content-enhanced div[style*="background"],
+.slide-content-enhanced div[style*="background"] * {
+    font-style: normal !important;
+    font-family: 'Tajawal', 'Arial', sans-serif !important;
+}
+
+/* تأكيد على النصوص */
+.slide span,
+.slide p,
+.slide div,
+.slide-content-enhanced span,
+.slide-content-enhanced p,
+.slide-content-enhanced div {
+    font-style: normal !important;
 }
